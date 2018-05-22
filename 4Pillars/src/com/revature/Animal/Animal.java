@@ -11,7 +11,6 @@ public class Animal {
 	//default constructor
 	public Animal() {
 		super();
-		this.milkable = true;
 		this.loved = true;
 		// TODO Auto-generated constructor stub
 	}
@@ -53,6 +52,7 @@ public class Animal {
 		this.currentOwned = currentOwned;
 	}
 	
+	//Function for checking to see if animals were milked
 	public void milkAnimal(boolean milkable) {
 		if(this.milkable == true) {
 			System.out.println("All your animals are milked go make some cheese!");
@@ -61,7 +61,7 @@ public class Animal {
 			System.out.println("Your animals can be milked if you weren't aware");
 		}
 	}
-	
+	//Function for checking to see if animals were petted/loved today
 	public void loveAnimal(boolean loved) {
 		if(this.loved == false) {
 			System.out.println("Your animals are not petted and thus unloved terrible");
@@ -70,24 +70,20 @@ public class Animal {
 			System.out.println("Your animals are petted and thus feel loved top teir owner");
 		}
 	}
+	//Buy Animals so you can pet them
 	public void buyAnimals(int purchased) {
 		this.currentOwned += purchased;
 		System.out.println("You have more animals! You bought: " +purchased);
 		System.out.println("You now have: " +purchased+ " animals");
 	}
-	
+	//Buy both Goats and Cows
 	public void buyAnimals(int goatsPurchased, int cowPurchased){
-		
+		System.out.println("You Have bought "+goatsPurchased+" Goats, and also " +cowPurchased+ " cows!");
+		this.currentOwned = this.currentOwned + goatsPurchased + cowPurchased;
+		System.out.println("You now have " +this.currentOwned+ " Animals Total");
 	}
-	
+	//Sell your animals
 	public void canSell(int amount) {
-		if(this.currentOwned - amount < 1){
-			try {
-				throw new SellException("You can't sell animals you don't have");			
-						} catch(SellException e) {
-				e.printStackTrace();
-			}
-		}
 		this.currentOwned -= amount;
 		System.out.println("You have sold your " +amount+ " animals Ca-Ching!");
 		System.out.println("You have " +currentOwned+ " animals left");
