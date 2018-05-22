@@ -1,6 +1,6 @@
 package com.revature.beans;
 
-public class vehicle {
+public class Vehicle {
 
     private int weightCapacity;
     private int weightCarrying;
@@ -10,11 +10,11 @@ public class vehicle {
     private String color;
     private String driver;
 
-    public vehicle(){
+    public Vehicle(){
 
     }
 
-    public vehicle(int weightCapacity, int weightCarrying, int passengers, int speed, int wheels, String color, String driver){
+    public Vehicle(int weightCapacity, int weightCarrying, int passengers, int speed, int wheels, String color, String driver){
         this.weightCapacity = weightCapacity;
         this.weightCarrying = weightCarrying;
         this.passengers = passengers;
@@ -30,7 +30,7 @@ public class vehicle {
 
     public void setWheels(int wheels) {
         this.wheels = wheels;
-        System.out.println("The vehicle now has "+wheels+" wheels.");
+        System.out.println("The Vehicle now has "+wheels+" wheels.");
     }
 
     public int getWeightCapacity() {
@@ -48,7 +48,7 @@ public class vehicle {
 
     public void setPassengers(int passengers) {
         this.passengers = passengers;
-        System.out.println("The vehicle now has "+passengers+" passengers.");
+        System.out.println("The Vehicle now has "+passengers+" passengers.");
     }
 
     public int getSpeed() {
@@ -57,17 +57,17 @@ public class vehicle {
 
     public void setSpeed(int speed) {
         this.speed = speed;
-        System.out.println("The speed of the vehicle has been modified to "+speed+"MPH.");
+        System.out.println("The speed of the Vehicle has been modified to "+speed+"MPH.");
     }
 
     public void slowDown(int speed){
         this.speed -= speed;
-        System.out.println("The vehicle has slowed down.");
+        System.out.println("The Vehicle has slowed down.");
     }
 
     public void speedUp(int speed){
         this.speed += speed;
-        System.out.println("The vehicle has sped up.");
+        System.out.println("The Vehicle has sped up.");
     }
 
     public String getColor() {
@@ -76,7 +76,7 @@ public class vehicle {
 
     public void setColor(String color) {
         this.color = color;
-        System.out.println("The color of the vehicle is now "+color+".");
+        System.out.println("The color of the Vehicle is now "+color+".");
     }
 
     public String getDriver() {
@@ -94,7 +94,7 @@ public class vehicle {
 
     public void setWeightCarrying(int weightCarrying) {
         this.weightCarrying = weightCarrying;
-        System.out.println("The vehicle is now carrying "+weightCarrying+" lbs.");
+        System.out.println("The Vehicle is now carrying "+weightCarrying+" lbs.");
     }
 
     public boolean overCapacity(){

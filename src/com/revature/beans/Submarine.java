@@ -1,15 +1,15 @@
 package com.revature.beans;
 
-public class submarine extends vehicle {
+public class Submarine extends Vehicle {
     private int torpedoCount;
     private int depth;
     private boolean periscopeExtended;
     private boolean redAlert;
 
-    public submarine(){
+    public Submarine(){
         super();
     }
-    public submarine(int torpedoCount, int depth, boolean periscopeExtended, boolean redAlert){
+    public Submarine(int torpedoCount, int depth, boolean periscopeExtended, boolean redAlert){
         this.torpedoCount = torpedoCount;
         this.depth = depth;
         this.periscopeExtended = periscopeExtended;
