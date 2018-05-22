@@ -19,4 +19,8 @@ public class Dog extends Animal {
 	public void setFurColor(String furColor) {
 		this.furColor = furColor;
 	}
+	
+	public void move() {
+		System.out.println("Dog is moving");
+	}
 }
