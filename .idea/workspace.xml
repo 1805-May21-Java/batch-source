@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ca4b0bd1-b4b0-48e5-ba75-35414421099d" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/com/revature/autoboxing/Driver.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/revature/arrays/ArrayDriver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/revature/autoboxing/Driver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/revature/autoboxing/Driver.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -28,15 +30,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Ride.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/revature/beans/Ride.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="38" selection-start-line="7" selection-start-column="38" selection-end-line="7" selection-end-column="38" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="InterfaceA.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/revature/beans/InterfaceA.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -171,11 +164,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Driver.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Driver.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/revature/autoboxing/Driver.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" column="22" lean-forward="true" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="22" />
+            <state relative-caret-position="323">
+              <caret line="19" column="24" lean-forward="true" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ArrayDriver.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/revature/arrays/ArrayDriver.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="544">
+              <caret line="32" column="8" selection-start-line="32" selection-start-column="8" selection-end-line="32" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -209,6 +211,7 @@
         <option value="$PROJECT_DIR$/src/com/revature/beans/bicycle.java" />
         <option value="$PROJECT_DIR$/src/com/revature/beans/Bicycle.java" />
         <option value="$PROJECT_DIR$/src/com/revature/autoboxing/Driver.java" />
+        <option value="$PROJECT_DIR$/src/com/revature/arrays/ArrayDriver.java" />
       </list>
     </option>
   </component>
@@ -221,7 +224,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="135" />
     <option name="width" value="1735" />
     <option name="height" value="1030" />
@@ -336,12 +339,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1526995826334</updated>
-      <workItem from="1526995830355" duration="7490000" />
+      <workItem from="1526995830355" duration="8308000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7490000" />
+    <option name="totallyTimeSpent" value="8308000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="57" y="-7" width="1486" height="878" extended-state="6" />
@@ -510,8 +513,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/revature/autoboxing/Driver.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="22" lean-forward="true" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="22" />
+        <state relative-caret-position="323">
+          <caret line="19" column="24" lean-forward="true" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/revature/arrays/ArrayDriver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="32" column="8" selection-start-line="32" selection-start-column="8" selection-end-line="32" selection-end-column="8" />
         </state>
       </provider>
     </entry>

@@ -16,6 +16,7 @@ public class Driver {
         Integer val3 = val2;
 
         //Autounboxing
-
+        Integer val4 = 13;
+        int val5 = val4;
     }
 }
