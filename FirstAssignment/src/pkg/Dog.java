@@ -21,6 +21,6 @@ public class Dog extends Animal {
 	}
 	
 	public void move() {
-		System.out.println("Dog is moving");
+		System.out.println("Dog runs");
 	}
 }
