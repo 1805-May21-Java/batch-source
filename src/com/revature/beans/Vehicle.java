@@ -1,5 +1,8 @@
 package com.revature.beans;
 
+import com.revature.exceptions.NegativeSpeedException;
+import com.sun.org.apache.xpath.internal.operations.Neg;
+
 public class Vehicle {
 
     private int weightCapacity;
@@ -30,7 +33,7 @@ public class Vehicle {
 
     public void setWheels(int wheels) {
         this.wheels = wheels;
-        System.out.println("The Vehicle now has "+wheels+" wheels.");
+        System.out.println("The Vehicle now has "+this.wheels+" wheels.");
     }
 
     public int getWeightCapacity() {
@@ -39,7 +42,7 @@ public class Vehicle {
 
     public void setWeightCapacity(int weightCapacity) {
         this.weightCapacity = weightCapacity;
-        System.out.println("The weight Capacity has been set to "+weightCapacity+".");
+        System.out.println("The weight Capacity has been set to "+this.weightCapacity+".");
     }
 
     public int getPassengers() {
@@ -48,7 +51,7 @@ public class Vehicle {
 
     public void setPassengers(int passengers) {
         this.passengers = passengers;
-        System.out.println("The Vehicle now has "+passengers+" passengers.");
+        System.out.println("The Vehicle now has "+this.passengers+" passengers.");
     }
 
     public int getSpeed() {
@@ -57,11 +60,18 @@ public class Vehicle {
 
     public void setSpeed(int speed) {
         this.speed = speed;
-        System.out.println("The speed of the Vehicle has been modified to "+speed+"MPH.");
+        System.out.println("The speed of the Vehicle has been modified to "+this.speed+"MPH.");
     }
 
     public void slowDown(int speed){
         this.speed -= speed;
+        if(this.speed<0) {
+            try {
+                throw new NegativeSpeedException();
+            }catch(NegativeSpeedException e){
+                e.printStackTrace();
+            }
+        }
         System.out.println("The Vehicle has slowed down.");
     }
 
@@ -76,7 +86,7 @@ public class Vehicle {
 
     public void setColor(String color) {
         this.color = color;
-        System.out.println("The color of the Vehicle is now "+color+".");
+        System.out.println("The color of the Vehicle is now "+this.color+".");
     }
 
     public String getDriver() {
@@ -85,7 +95,7 @@ public class Vehicle {
 
     public void setDriver(String driver) {
         this.driver = driver;
-        System.out.println("The driver's name has been set to ["+driver+"].");
+        System.out.println("The driver's name has been set to ["+this.driver+"].");
     }
 
     public int getWeightCarrying() {
@@ -94,7 +104,7 @@ public class Vehicle {
 
     public void setWeightCarrying(int weightCarrying) {
         this.weightCarrying = weightCarrying;
-        System.out.println("The Vehicle is now carrying "+weightCarrying+" lbs.");
+        System.out.println("The Vehicle is now carrying "+this.weightCarrying+" lbs.");
     }
 
     public boolean overCapacity(){
