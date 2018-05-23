@@ -57,4 +57,40 @@ public class Bicycle extends Vehicle {
 	public static void staticMethod() {
 		System.out.println("Static method from bicycle");
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + (hasKickstand ? 1231 : 1237);
+		result = prime * result + numOfWheels;
+		return result;
+	}
+
+	@Override
+	public String toString() {
+		return "Bicycle [numOfWheels=" + numOfWheels + ", hasKickstand=" + hasKickstand + ", maxSpeed=" + maxSpeed
+				+ ", weightCapacity=" + weightCapacity + ", currentSpeed=" + currentSpeed + ", isOperating="
+				+ isOperating + "]";
+	}
+
+//	@Override
+//	public boolean equals(Object obj) {
+//		if (this == obj)
+//			return true;
+//		if (!super.equals(obj))
+//			return false;
+//		if (getClass() != obj.getClass())
+//			return false;
+//		Bicycle other = (Bicycle) obj;
+//		if (hasKickstand != other.hasKickstand)
+//			return false;
+//		if (numOfWheels != other.numOfWheels)
+//			return false;
+//		return true;
+//	}
+
+	
+	
+	
 }

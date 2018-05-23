@@ -70,4 +70,37 @@ public class Vehicle {
 		System.out.println("Static method from vehicle");
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + currentSpeed;
+		result = prime * result + (isOperating ? 1231 : 1237);
+		result = prime * result + maxSpeed;
+		result = prime * result + weightCapacity;
+		return result;
+	}
+
+//	@Override
+//	public boolean equals(Object obj) {
+//		if (this == obj)
+//			return true;
+//		if (obj == null)
+//			return false;
+//		if (getClass() != obj.getClass())
+//			return false;
+//		Vehicle other = (Vehicle) obj;
+//		if (currentSpeed != other.currentSpeed)
+//			return false;
+//		if (isOperating != other.isOperating)
+//			return false;
+//		if (maxSpeed != other.maxSpeed)
+//			return false;
+//		if (weightCapacity != other.weightCapacity)
+//			return false;
+//		return true;
+//	}
+
+	
+	
 }

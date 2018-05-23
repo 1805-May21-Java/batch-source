@@ -46,11 +46,10 @@ public class Submarine extends Vehicle {
 	public boolean isRedAlert() {
 		return redAlert;
 	}
-
-	public void setRedAlert(boolean redAlert) {
+	
+	public void setRedAlert(Boolean redAlert) {
 		this.redAlert = redAlert;
 	}
-	
-	
 
+	
 }

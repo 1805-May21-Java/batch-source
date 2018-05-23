@@ -27,9 +27,17 @@ public class Driver {
 //		Vehicle.staticMethod();
 //		Bicycle.staticMethod();
 		
-		Bicycle b1 = new Bicycle();
-		b1.slowDown(5);
+//		Bicycle b1 = new Bicycle();
+//		b1.slowDown(5);
 		
+		
+//		Bicycle b1 = new Bicycle();
+//		Bicycle b2 = new Bicycle();
+//		System.out.println(b1==b2);
+//		System.out.println(b1.equals(b2));
+	 
+//		System.out.println(b1.hashCode());
+//		System.out.println(b2.hashCode());
 		
 	}
 
