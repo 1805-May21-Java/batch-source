@@ -4,11 +4,13 @@ public class Driver {
 
 	public static void main(String[] args) {
 		
-		// create 3 animals
+		// create 3 animals 
 		Mammal bat = new Mammal(false);
 		Mammal dolphin = new Mammal(true);
 		Animal vulture = new Animal("Vulture", 2, true);
 		
+		// POLYMORPHISM - class can adapt to many different types
+		// ex: the mammal bat is also an Animal and an Object
 		Animal b = bat;
 		Object o = bat;
 		

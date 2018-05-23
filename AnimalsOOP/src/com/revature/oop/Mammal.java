@@ -5,7 +5,7 @@ package com.revature.oop;
  */
 public class Mammal extends Animal implements NonMonotreme{
 	
-	//private final boolean hasLiveYoung = true; // cannot be changed (not technically true, because platypus)
+	private final boolean hasLiveYoung = true; // cannot be changed (not technically true, because platypus)
 	private boolean canSwim;
 	
 	
