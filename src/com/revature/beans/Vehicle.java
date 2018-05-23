@@ -114,4 +114,17 @@ public class Vehicle {
         return (weightCarrying<weightCapacity);
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Vehicle{");
+        sb.append("weightCapacity=").append(weightCapacity);
+        sb.append(", weightCarrying=").append(weightCarrying);
+        sb.append(", passengers=").append(passengers);
+        sb.append(", speed=").append(speed);
+        sb.append(", wheels=").append(wheels);
+        sb.append(", color='").append(color).append('\'');
+        sb.append(", driver='").append(driver).append('\'');
+        sb.append('}');
+        return sb.toString();
+    }
 }

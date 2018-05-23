@@ -1,6 +1,9 @@
 package com.revature.reflection;
 
+import com.revature.beans.Bicycle;
+
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 
@@ -35,8 +38,31 @@ public class ReflectionDriver {
                 System.out.println(Modifier.toString(y.getModifiers())+" "+y.getReturnType()+" "+y.getName());
             }
 
-        }catch(ClassNotFoundException c){
+            System.out.println("Making new instance of bicycle.");
+            Bicycle b1 = (Bicycle) c1.newInstance();
+            System.out.println(b1.toString()+"\n");
+
+            //Manipulating the fields within an object.
+            Field hasWheels = c1.getDeclaredField("wheels");
+            hasWheels.setAccessible(true);
+            hasWheels.set(b1, 3);
+
+            Method speedUpMethod = c1.getDeclaredMethod("SpeedUp");
+            speedUpMethod.invoke(b1,10);
+
+
+        }catch (ClassNotFoundException c){
             
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
         }
     }
 }
