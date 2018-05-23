@@ -1,6 +1,6 @@
 package com.revature.oop.demonstration;
 
-import com.revature.intentionalexception.ExceptionHandler;
+import com.revature.oop.intentionalexception.ExceptionHandler;
 
 public class Dog extends Animal { // Inherits the states and behaviors of Animal
 
