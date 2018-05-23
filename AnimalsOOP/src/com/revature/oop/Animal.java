@@ -1,5 +1,7 @@
 package com.revature.oop;
 
+import com.revature.exceptions.NegativeLegsException;
+
 public class Animal {
 	
 	protected int numLegs;
@@ -16,6 +18,9 @@ public class Animal {
 		this.canFly = canFly;
 	}
 	
+	/* ENCAPSULATION - public getters and setters are used outside of the class
+	 * for modify internal class variables.
+	 */
 	public int getNumLegs() {
 		return numLegs;
 	}
@@ -37,8 +42,18 @@ public class Animal {
 		this.canFly = canFly;
 	}
 	
+	// Predator attack means that animal loses a limb/leg. Sorry.
 	public void predatorAttack() {
-		this.numLegs--;
+		if (this.numLegs - 1 < 0) {
+			// catch exception for negative number of limbs
+			try {
+				throw new NegativeLegsException("Animal cannot have a NEGATIVE number of limbs! That would be...weird, to say the least.");
+			} catch (NegativeLegsException e) {
+				e.printStackTrace();
+			}
+		} else {
+			this.numLegs--;
+		}
 	}
 
 	

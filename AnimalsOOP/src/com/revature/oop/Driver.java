@@ -9,6 +9,11 @@ public class Driver {
 		Mammal dolphin = new Mammal(true);
 		Animal vulture = new Animal("Vulture", 2, true);
 		
+		Animal b = bat;
+		Object o = bat;
+		
+		System.out.println(b.numLegs);
+		
 		// set values for Bat and Dolphin
 		bat.name = "Bat";
 		bat.numLegs = 2;
@@ -28,7 +33,9 @@ public class Driver {
 				+ dolphin.isCanSwim());
 		
 		// Predator attacks! Animals will lose limbs when attacked.
+		// (yes it's grim, sorry)
 		dolphin.predatorAttack();
+		
 		System.out.println(dolphin.getNumLegs());
 
 	}
