@@ -5,7 +5,7 @@ package com.revature.oopdemo;
 public interface Vehicle {
 	int NUM_LEGS = 4;
 	
-	void speedUp(int incremement);
+	void speedUp(int incremement) throws CustomAnimalException;
 	void slowDown(int increment);
 	
 	int getCurrentSpeed();

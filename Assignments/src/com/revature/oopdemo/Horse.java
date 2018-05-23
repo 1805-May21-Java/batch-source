@@ -26,10 +26,9 @@ public class Horse extends Animal implements Vehicle{
 
 
 	@Override
-	public void speedUp(int increment) {
+	public void speedUp(int increment) throws CustomAnimalException{
 		if(currentSpeed + increment > maxSpeed) {
-			System.out.println("The horse cannot exceed it's maximum speed");
-			return;
+			throw new CustomAnimalException("Cannot make horse go faster than max speed of " + maxSpeed);
 		} 
 		currentSpeed += increment;
 		System.out.println("The speed increased by " + increment);

@@ -11,10 +11,20 @@ public class AnimalDriver {
 		printAnimalDetails(winnie);
 		
 		System.out.println("Winnie's speed is: " + winnie.getCurrentSpeed());
-		winnie.speedUp(5);
+		
+		try {
+			winnie.speedUp(5);
+		} catch (CustomAnimalException e1) {
+			e1.printStackTrace();
+		}
+		
 		System.out.println("Winnie's speed is: " + winnie.getCurrentSpeed());
 		
-
+		try {
+			winnie.speedUp(30);
+		} catch (CustomAnimalException e1) {
+			e1.printStackTrace();
+		}
 	}
 	
 	public static void printAnimalDetails(Animal animal) {
