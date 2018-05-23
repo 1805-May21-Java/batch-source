@@ -6,6 +6,7 @@ import oop_pillars.data.ForumMessage;
 import oop_pillars.data.Member;
 import oop_pillars.data.Moderator;
 import oop_pillars.data.User;
+import oop_pillars.exceptions.InvalidAdminPermission;
 
 public class main {
 
@@ -33,7 +34,15 @@ public class main {
 		
 		//Direct and Forum Messages extend Message which allows them to use the getText method while having their own unique member variables
 		System.out.println("Direct Message is: " + directMessage.getText() + " from: " + directMessage.getFromUser().getName() + " to: " + directMessage.getToUser().getName());
-		System.out.println("Forum Message is: " + forumMessage.getText() + " from: " + forumMessage.getFromUser().getName() + " to Channel ID: " + forumMessage.getChannelID());
+		System.out.println("Forum Message is: " + forumMessage.getText() + " from: " + forumMessage.getFromUser().getName() + " to Channel ID: " + forumMessage.getChannelID() + "\n");
+		
+		try {
+			if(!member1.getAdminPrivileges()) {
+				throw new InvalidAdminPermission("User does not have Admin Privileges");
+			}
+		} catch (InvalidAdminPermission e) {
+			System.out.println(e.getMessage());
+		}
 	}
 
 }
