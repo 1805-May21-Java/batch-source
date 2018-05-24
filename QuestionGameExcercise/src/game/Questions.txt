@@ -1,0 +1,8 @@
+What is an interface?
+Contract of method declarations.
+Is String Immutable?
+Yes
+Is a Comparator interface the same as a Comparable interface?
+No
+What is the super class of all objects?
+The Object class
