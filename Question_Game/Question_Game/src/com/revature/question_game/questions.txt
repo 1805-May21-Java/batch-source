@@ -1,0 +1,10 @@
+What is the JDK?
+What is reflection?
+What are the important interfaces in the collections framework?
+What is the main difference between StringBuilder and StringBuffer?
+What are the 4 pillars of Object Oriented Programming?
+What is the JVM?
+What is the JRE?
+What are some examples of non-access modifiers?
+What are some differences between interfaces and abstract classes?
+What are some differences between checked and unchecked exceptions?
