@@ -1,0 +1,7 @@
+﻿Create a question game which randomly matches an associate with a question
+-        Create a new java project
+-        Create a collection (implementation of the collection interface of your choice) which contains a pool of associate names
+-        Create a collection (implementation of the collection interface of your choice) which contains a pool of questions
+-        Randomly match associates to questions, essentially “asking” them the question
+-        Display associate/question match one at a time, using the scanner class to require user input to display the next consecutive associate/question match
+-        If you have time, have the associate names and question content be read from an external file
