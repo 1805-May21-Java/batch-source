@@ -1,0 +1,7 @@
+What is the difference between StringBuffer and StringBuilder?
+What is the difference between Comparable and Comparator?
+What is the difference between an abstract class and an interface?
+What is a functional interface?
+What are the four pillars of Object Oriented Programming?
+What is a wrapper?
+What is reflection?
