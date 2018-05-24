@@ -51,7 +51,6 @@ public class QuizAdministrator {
 	
 	public void randomQuestion(int i) {
 		Random rand = new Random();
-		System.out.println(this.associates.size() + " " + this.questions.size());
 		int r1 = rand.nextInt(this.associates.size());
 		int r2 = rand.nextInt(this.questions.size());
 		System.out.println("Question " + i + ", for " + this.associates.get(r1) + ":");
