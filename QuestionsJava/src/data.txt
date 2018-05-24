@@ -1,0 +1,36 @@
+Names
+Devon
+Rodrigo
+Jingda
+Reese
+Mark
+Nick
+Adora
+Keandre
+Jordan
+Sydney
+Vannara
+Michael
+Haris
+Joel
+Christian
+Stefan
+Hunter
+Nicholas
+Matthew
+Jay
+Nate
+Joseph
+Thomas
+Michael (the other one)
+Noah
+Sahir
+Questions
+what is reflection?
+what are the important interfaces in the collections framework?
+what's the JDK?
+what is the airspeed velocity of an unladen sparrow?
+what are the four pillars of OOP?
+what is the naming convention for variables and methods?
+what is serialization?
+what is the advantage of using StringBuilder?
