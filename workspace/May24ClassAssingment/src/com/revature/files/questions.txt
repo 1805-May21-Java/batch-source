@@ -1,0 +1,6 @@
+What is Polymorphism?
+What is Encapulation?
+What is Inheritance?
+What is Abstraction?
+What is Reflection?
+What is the difference between abstraction and interface?
