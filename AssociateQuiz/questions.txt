@@ -1,0 +1,11 @@
+What interface requires the use of the compareTo(Object obj) method?
+What is the relationship between Queue and LinkedList?
+Can Reflection allow us to access private variables?
+What classes can normally access a protected variable?
+What are the 4 principles of Object Oriented Programming?
+What is an example of polymorphism?
+Can a class extend multiple other classes?
+Which add() method is faster, LinkedList.add() or ArrayList.add()?
+What is the difference between == and .equals()?
+Why use Java?
+What is the best practice for naming a public static variable?
