@@ -1,0 +1,17 @@
+What is the JDK?
+What is Abstraction?
+What are the 4 Pillars of Object Oriented Programming?
+What is the bit-depth of an Integer?
+What is a transient variable?
+What is the naming convention for packages?
+What is variable shadowing?
+What is the return type of a constructor?
+How many classes can a class extend?
+How many variable arguments can a method have?
+What is the ternary operator?
+Is String Buffer or String Builder threadsafe?
+What is reflection?
+What is a scanner?
+What is the difference between a Set and a Map?
+What is a generic?
+What is serializtion?
