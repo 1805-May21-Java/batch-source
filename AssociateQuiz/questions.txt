@@ -16,3 +16,9 @@ What does it mean for a class to be final?
 Is it ok to have multiple constructors in a class?
 What happens if multiple catch blocks are able to catch a single exception?
 What input stream is used for user input in the console?
+How do you normally get the value of a private variable from another class?
+What has a longer bit depth in Java, 3 chars or 2 ints?
+What is the wrapper class for char?
+What is the difference between a while loop and a do while loop?
+What is the use of a finally block?
+How do you import a whole package?
