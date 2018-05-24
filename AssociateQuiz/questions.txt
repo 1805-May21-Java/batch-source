@@ -9,3 +9,10 @@ Which add() method is faster, LinkedList.add() or ArrayList.add()?
 What is the difference between == and .equals()?
 Why use Java?
 What is the best practice for naming a public static variable?
+What are some potential issues with casting a long variable as an int?
+What modifiers are implied with all variables in an interface?
+What kind of interface is the Serializable interface?
+What does it mean for a class to be final?
+Is it ok to have multiple constructors in a class?
+What happens if multiple catch blocks are able to catch a single exception?
+What input stream is used for user input in the console?
