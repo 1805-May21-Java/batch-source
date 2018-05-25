@@ -1,0 +1,96 @@
+package com.revature.bank;
+
+public class BankInfo {
+
+	String username;
+	String password;
+	String email;
+	int money;
+	//getter and setter
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public int getMoney() {
+		return money;
+	}
+	public void setMoney(int money) {
+		this.money = money;
+	}
+	
+	//super class and field
+	public BankInfo(String username, String password, String email, int money) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.email = email;
+		this.money = money;
+	}
+	public BankInfo() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	//hashcode and .equals
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		result = prime * result + money;
+		result = prime * result + ((password == null) ? 0 : password.hashCode());
+		result = prime * result + ((username == null) ? 0 : username.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		BankInfo other = (BankInfo) obj;
+		if (email == null) {
+			if (other.email != null)
+				return false;
+		} else if (!email.equals(other.email))
+			return false;
+		if (money != other.money)
+			return false;
+		if (password == null) {
+			if (other.password != null)
+				return false;
+		} else if (!password.equals(other.password))
+			return false;
+		if (username == null) {
+			if (other.username != null)
+				return false;
+		} else if (!username.equals(other.username))
+			return false;
+		return true;
+	}
+	
+	//tostring
+	@Override
+	public String toString() {
+		return username + ":" + password + ":" + email + ":" + money;
+	}
+
+	
+	
+}
