@@ -1,4 +1,4 @@
-package revature.com.question14;
+package com.revature.question14;
 
 public class FourteenDriver
 {

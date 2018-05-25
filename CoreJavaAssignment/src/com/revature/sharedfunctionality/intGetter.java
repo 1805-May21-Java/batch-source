@@ -16,7 +16,7 @@ public class intGetter
 		}
 		catch(NumberFormatException e)
 		{
-			System.out.println("You can only factorial an integer.  Please enter an integer: ");
+			System.out.println("Please enter an integer: ");
 			return getInt();
 		}
 	}
