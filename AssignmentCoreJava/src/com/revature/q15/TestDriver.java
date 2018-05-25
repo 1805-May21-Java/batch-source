@@ -6,6 +6,10 @@ public class TestDriver {
 		System.out.println(calculator.addition(3, 10));
 		System.out.println(calculator.subtraction(3, 10));
 		System.out.println(calculator.multiplication(3, 10));
-		System.out.println(calculator.division(3, 10));
+		try {
+			System.out.println(calculator.division(3, 10));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

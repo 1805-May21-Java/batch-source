@@ -12,6 +12,10 @@ public class EmployeeDriver {
 		
 		
 		System.out.println("Sorted by name:");
+		/*
+		 * The sort method is only available for use because I implemented Comparator into a couple
+		 * of comparison classes
+		 */
 		Arrays.sort(employees, new CompareEmployeeName());
 		for(Employee e: employees) {
 			System.out.println(e.toString());

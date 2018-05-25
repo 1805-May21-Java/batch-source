@@ -8,7 +8,9 @@ public class EvenArrayDriver {
 		}
 		
 		System.out.println("Here are the even numbers up to 100: ");
+		//Enhanced For Loop
 		for(int num : hundred) {
+			//if the number is even, print it
 			if(num % 2 == 0) {
 				System.out.print(num + " ");
 			}

@@ -1,6 +1,7 @@
 package com.revature.q11.floats;
 
 
+//POJO
 public class OutsideClass {
 	private float f1;
 	private float f2;
@@ -28,5 +29,28 @@ public class OutsideClass {
 	@Override
 	public String toString() {
 		return "OutsideClass [f1=" + f1 + ", f2=" + f2 + "]";
+	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + Float.floatToIntBits(f1);
+		result = prime * result + Float.floatToIntBits(f2);
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		OutsideClass other = (OutsideClass) obj;
+		if (Float.floatToIntBits(f1) != Float.floatToIntBits(other.f1))
+			return false;
+		if (Float.floatToIntBits(f2) != Float.floatToIntBits(other.f2))
+			return false;
+		return true;
 	}
 }

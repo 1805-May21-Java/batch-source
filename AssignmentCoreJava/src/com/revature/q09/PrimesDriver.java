@@ -6,6 +6,7 @@ public class PrimesDriver {
 
 	public static void main(String[] args) {
 		
+		//populate an ArrayList with the numbers 1 to 100;
 		ArrayList<Integer> numbers = new ArrayList<Integer>();
 		int n = 1;
 		while (n <= 100) {
@@ -21,7 +22,12 @@ public class PrimesDriver {
 	static void printPrimes(ArrayList<Integer> list) {
 		boolean isPrime;
 		for(Integer num : list) {
+			//prime until proven composite
 			isPrime = true;
+			/*
+			 * similar to the palindrome test, we check if each number is 
+			 * divisible by any number before it
+			 */
 			for (int i = 2; i < num; i++) {
 				if(num%i == 0) {
 					isPrime = false;
@@ -29,10 +35,13 @@ public class PrimesDriver {
 				}
 			}
 			
+			//one is not a prime number
 			if( num == 1) {
 				isPrime = false;
 			}
 			
+			
+			//Print prime
 			if(isPrime) {
 				System.out.print(num + " ");
 			}

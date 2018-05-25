@@ -9,6 +9,7 @@ public class TernaryDriver {
 	}
 	
 	static int minimum(int a, int b) {
+		//if a is less than b, return a, else return b
 		return (a < b) ? a : b;
 	}
 

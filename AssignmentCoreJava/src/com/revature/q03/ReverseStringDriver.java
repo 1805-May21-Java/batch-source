@@ -15,7 +15,8 @@ public class ReverseStringDriver {
 		}		
 		/*
 		 * here is where the string is being reversed, it returns the last letter
-		 * and then recursively calls the rest of the string to be reversed
+		 * and then recursively calls the rest of the string to be reversed and 
+		 * appended to the last letter
 		 */
 		return string.substring(string.length()-1) 
 				+ reverseString(string.substring(0, string.length()-1));
