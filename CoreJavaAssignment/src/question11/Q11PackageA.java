@@ -1,11 +1,14 @@
 package question11;
 
+//Q11PackageA contains two package-scoped variables f1 and f2.
 public class Q11PackageA {
+	
 	float f1;
 	float f2;
+	
+	//Constructors are provided
 	public Q11PackageA() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	public Q11PackageA(float f1, float f2) {
@@ -14,6 +17,7 @@ public class Q11PackageA {
 		this.f2 = f2;
 	}
 	
+	//Getters and Setters are provided
 	public float getF1() {
 		return f1;
 	}
