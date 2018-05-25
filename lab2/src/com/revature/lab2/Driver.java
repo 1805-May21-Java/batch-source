@@ -18,25 +18,31 @@ public class Driver {
         ArrayList<Associate> a = new ArrayList<Associate>();
 		ArrayList<Question> q = new ArrayList<Question>();
 
-		System.out.println("Enter -1 to exit");
 		System.out.println("Enter your associate name (ex. John Doe): ");
+		System.out.println("Enter -1 to exit");
 		String str1 = s.nextLine();
+		if(str1.equals("-1")) 
+			System.exit(0);
+		
 		System.out.println("Enter your associate age (ex. 30): ");
 		String str2 = s.nextLine();
-
-		if(str1.equals("-1")||str2.equals("-1")) 
+		if(str2.equals("-1")) 
 			System.exit(0);
 		a.add(new Associate(str1,Integer.parseInt(str2)));
 
 		while(!str1.equals("-1")&&!str2.equals("-1")) {
-			System.out.println("Enter -1 to exit, -2 to enter Questions");
 			System.out.println("Enter your associate name (ex. John Doe): ");
+			System.out.println("Enter -1 to exit, -2 to enter Questions");
 			str1 = s.nextLine();
-			System.out.println("Enter your associate age (ex. 30): ");
-			str2 = s.nextLine();
-			if(str1.equals("-1")||str2.equals("-1")) 
+			if(str1.equals("-1")) 
 				System.exit(0);
 			if(str1.equals("-2"))
+				break;
+			System.out.println("Enter your associate age (ex. 30): ");
+			str2 = s.nextLine();
+			if(str2.equals("-1")) 
+				System.exit(0);
+			if(str2.equals("-2"))
 				break;
 			a.add(new Associate(str1,Integer.parseInt(str2)));
 
@@ -66,7 +72,7 @@ public class Driver {
 //        q.add(new Question("1.  What's the JDK?"));
 //        q.add(new Question("3.  What are the important interfaces in the Collection Framework?"));
 //        q.add(new Question("2.  What is Reflection?"));
-        
+//        
 //        a.add(new Associate("Mary",50));
 //        a.add(new Associate("Paul",20));
 //        a.add(new Associate("Jenna",30));
@@ -120,25 +126,29 @@ public class Driver {
 		}
 	 
  		
-		for(Associate as: a) {
-	
-			n1 = rand.nextInt(a.size()-1);
-			
-			while (visited1[n1]!=true) {
-				if(visited1[n1]!=true) {
-					visited1[n1]=true;
-//					System.out.println("inside"+visited1[n2]);
-					
-				}
-				n1 = rand.nextInt(a.size()-1);
-				
-			}
-			System.out.println("a(name): " + as.getName() + " a(age): " + as.getAge() + " asks: " );
-			System.out.println("q: " + q.get(n1).getQuestion());
+	    ArrayList<String>  mylist = new ArrayList<String>();
+//        System.out.println("here1");
+	    for(int z = 0;z<a.size();z++) {
+	        mylist.add(Integer.toString(z));
+        }
+        Collections.shuffle(mylist);
+        
+//        System.out.println("here2"); 		
+ 		for (int i = 0; i < a.size(); i++) {
+            Associate value = a.get(i);
 
- 		}	
+            System.out.println("Associate: " + value.getName() + " "  + value.getAge() + " asks " + mylist.get(i)+1);
+        }
+		
+//        System.out.println("here3");
+        for (int i = 0; i < q.size(); i++) {
+            Question value = q.get(i);
+            System.out.println(value.getQuestion());
+        }
+		
 
-	        	
+
+		}
 	}
 
-}
+

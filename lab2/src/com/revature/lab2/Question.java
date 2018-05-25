@@ -9,10 +9,10 @@ public class Question {
 		// TODO Auto-generated constructor stub
 		super();
 	}
-	public Question(String q) {
+	public Question(String qt) {
 		super();
-		this.question = q;
-		this.qid=q.charAt(0);
+		this.question = qt;
+		this.qid=qt.charAt(0);
 	}
 	public String getQuestion() {
 		return question;
