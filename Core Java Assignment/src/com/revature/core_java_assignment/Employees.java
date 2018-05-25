@@ -2,6 +2,7 @@ package com.revature.core_java_assignment;
 
 class Employees implements Comparable<Employees>
 {
+	//this is my employees class which I use to create the two employees to use in my driver
 	String name;
 	String department;
 	Integer age;
@@ -49,6 +50,7 @@ class Employees implements Comparable<Employees>
 		return "Employees [name=" + name + ", department=" + department + ", age=" + age + "]";
 	}
 
+	//this makes it so that they are sorted by age
 	@Override
 	public int compareTo(Employees e)
 	{
