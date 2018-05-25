@@ -1,6 +1,7 @@
 package com.revature.collections;
 
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.TreeSet;
@@ -78,11 +79,37 @@ public class Driver {
 		System.out.println();
 		
 		System.out.println("After using utility class's sort method with ComparePrice:");
-		Collections.sort(foodList, new ComparePrice());
+		Comparator<ChineseFood> comparePrice = new ComparePrice();
+		Collections.sort(foodList, comparePrice);
+		for(ChineseFood f : foodList) {
+			System.out.println(f);
+		};
+		System.out.println();
+		
+		System.out.println("Using a lambda to sort by name again");
+		Comparator<ChineseFood> compareName = 
+				(ChineseFood cf1, ChineseFood cf2) -> cf1.getName().compareTo(cf2.getName());
+		Collections.sort(foodList, compareName);
 		for(ChineseFood f : foodList) {
 			System.out.println(f);
 		}
+		System.out.println();
 		
+		System.out.println("Using a lambda to sort to price again:");
+		Comparator<ChineseFood> comparePrice2 = 
+				(cf1, cf2) -> {
+					if (cf1.getPrice() == cf2.getPrice()) {
+						return 0;
+					} else {
+						return (cf1.getPrice()-cf2.getPrice()>0)? 1 : -1;
+					}
+				};
+		Collections.sort(foodList, comparePrice2);
+		
+		//using a lambda to print out all of the elements in our list
+		foodList.forEach((i)->{
+			//multi-line behavior could go here
+			System.out.println(i);
+		});
 	}
-
 }

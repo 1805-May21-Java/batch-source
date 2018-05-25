@@ -44,7 +44,7 @@ class Basket {
 		while (available) {
 			try {
 				System.out.println("\t\t\t" + Thread.currentThread().getName() + " is waiting");
-				wait();
+				wait();  
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
