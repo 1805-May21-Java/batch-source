@@ -1,11 +1,16 @@
 package com.revature.beans;
 
-import java.io.*;
-import java.util.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.Scanner;
 
-import com.revature.accountGrouping.*;
+import com.revature.accountGrouping.Account;
+import com.revature.accountGrouping.AccountList;
 import com.revature.errors.DuplicateUserNameException;
-import com.revature.errors.NoSuchUserException;
 
 public class Menu
 {
@@ -27,7 +32,8 @@ public class Menu
 		while(isRunning)
 		{
 			printMenu();
-			takeAction(getChoice());
+			int choice = getChoice();
+			takeAction(choice);
 		}
 	}
 
@@ -100,26 +106,48 @@ public class Menu
 
 	private void logIn()
 	{
-		boolean isValidLogin = false;
+		Scanner scan = new Scanner(System.in);
+		Account pertinantAccount = new Account();
+	
 		System.out.print("Enter the username or email associated with the account: ");
-		String userName = sc.nextLine();
-		try
+		String userName = scan.nextLine();
+		Account relevantAccount = accounts.retrieveAccount(userName);
+
+		while(relevantAccount == null)
 		{
-			loggedInAccount = accounts.logOn(userName);
+			System.out.print("Invalid username.  Please reenter: ");
+			userName = scan.nextLine();
+			relevantAccount = accounts.retrieveAccount(userName);
 		}
-		catch (NoSuchUserException e)
+		
+		System.out.print("Enter the password: ");
+		String password = scan.nextLine();
+		
+		while(!relevantAccount.isPassword(password))
 		{
-			e.printStackTrace();
-			logIn();
+			System.out.print("Incorrect password.  Please reenter: ");
+			password = scan.nextLine();
 		}
+		
+		loggedInAccount = relevantAccount;
 	}
 
 	private void createAccount()
 	{
-		System.out.print("Enter a username or email: ");
+		Scanner sc = new Scanner(System.in);
 		try
 		{
-			accounts.createAccount(sc.nextLine());
+			System.out.print("Enter a username or email: ");
+			String uName = sc.nextLine();
+//			uName = sc.nextLine();
+			
+			System.out.print("Enter your name: ");
+			String name = sc.nextLine();
+			
+			System.out.print("Enter your password: ");
+			String password = sc.nextLine();
+			
+			accounts.createAccount(uName, name, password);
 		}
 		catch (DuplicateUserNameException e)
 		{
@@ -138,11 +166,23 @@ public class Menu
 	
 	public int getChoice()
 	{
+	
 		int choice;
 		System.out.print("Enter the number associated with your choice: ");
+		
 		try
 		{
 			choice = sc.nextInt();
+
+			if(loggedInAccount == null)
+			{
+				if(choice > 2 && choice < 7) //All these actions require the user to be logged in
+				{
+					System.out.println("Please log in before doing that");
+					return getChoice();
+				}
+			}
+
 			if((choice > menuOptions.length) || (choice <= 0))
 			{
 				throw new NumberFormatException();
@@ -171,20 +211,21 @@ public class Menu
 	
 	public void deserializeData()
 	{
-		try (FileInputStream fis = new FileInputStream("./Bank.ser"); ObjectInputStream ois = new ObjectInputStream(fis)) 
+		File file = new File("./Bank.ser");
+		try (FileInputStream fis = new FileInputStream(file); ObjectInputStream ois = new ObjectInputStream(fis)) 
 		{	
+			
 			accounts = (AccountList) ois.readObject();
-			if(accounts == null)
-			{
-				accounts = new AccountList();
-			}
 		} 
 		catch (IOException e) 
 		{
-			e.printStackTrace();
 			accounts = new AccountList();
 		}
-		catch (ClassNotFoundException e) 
+//		catch (ClassNotFoundException e) 
+//		{
+//			e.printStackTrace();
+//		}
+		catch(Exception e)
 		{
 			e.printStackTrace();
 		}

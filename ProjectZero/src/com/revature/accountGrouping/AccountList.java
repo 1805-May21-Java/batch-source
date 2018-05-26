@@ -11,10 +11,10 @@ public class AccountList implements Serializable
 
 	private ArrayList<Account> accounts = new ArrayList<Account>();
 
-	public AccountList()
-	{
-		super();
-	}
+//	public AccountList()
+//	{
+//		super();
+//	}
 
 	@Override
 	public int hashCode()
@@ -45,29 +45,42 @@ public class AccountList implements Serializable
 		return true;
 	}
 	
-	public void createAccount(String userName) throws DuplicateUserNameException
+	public void createAccount(String userName, String name, String password) throws DuplicateUserNameException
 	{
 		for(Account account : accounts)
 		{
 			//Making sure the provided user name is unique
-			if(account.getUserName().equals(userName))
+			if(account.getUsername().equals(userName))
 			{
 				throw new DuplicateUserNameException("An account already has this username.  Please select another.");
 			}
 		}
-		accounts.add(new Account(userName));
+		accounts.add(new Account(userName, name, password));
 	}
 	
-	public Account logOn(String userName) throws NoSuchUserException
+	public Account logOn(String userName, String password)
+	{
+		Account account = retrieveAccount(userName);
+		
+		if(!account.isPassword(password))
+		{
+			
+		}
+		return account;
+	}
+	
+	public Account retrieveAccount(String username)
 	{
 		for(Account account : accounts)
 		{
-			if(userName.equals(account.getUserName()))
-			{
+			if(username.equals(account.getUsername()))
 				return account;
-			}
 		}
-		
-		throw new NoSuchUserException("User " + userName + " does not exist.  Try again or create a new account.");
+		return null;
+	}
+	
+	public ArrayList<Account> getAccounts()
+	{
+		return accounts;
 	}
 }
