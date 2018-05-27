@@ -3,6 +3,16 @@ package com.revature.bank;
 import java.util.*;
 import java.io.*;
 
+/*
+ * Bank information class for account information storage
+ * 
+ * BankDriver serializes the Account information into a file and reads them
+ * as a BankInfo object when starting the application
+ * 
+ * While running the program, all interaction with Account information occurs
+ * within the program from the BankMenu class
+ */
+
 public class BankInfo implements Serializable {
 
 	private static final long serialVersionUID = 7104008807727037474L;
@@ -10,7 +20,10 @@ public class BankInfo implements Serializable {
 	private transient int accountNumber;
 	private ArrayList<Account> accounts;
 
+	// nested class to specifically encapsulate account information
 	public class Account implements Serializable {
+		private static final long serialVersionUID = -2172682221453629514L;
+		
 		private String user;
 		private String pass;
 		private double balance;
