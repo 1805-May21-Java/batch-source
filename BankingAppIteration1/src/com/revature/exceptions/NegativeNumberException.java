@@ -1,10 +1,12 @@
 package com.revature.exceptions;
 
+/*
+ * 
+ * Exception used to indicate when an negative number is not desired
+ * 
+ */
 public class NegativeNumberException extends Exception{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 8350080095562221299L;
 
 	public NegativeNumberException() {

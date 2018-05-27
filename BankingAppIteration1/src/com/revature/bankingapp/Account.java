@@ -29,14 +29,14 @@ public class Account implements Serializable{
 		this.balance = balance;
 	}
 	
-	//this adds to the balance without having to use getters and setters
-	//validation must be handled before this is called
+	// This adds to the balance without having to use getters and setters
+	// validation must be handled before this is called
 	protected void addToBalance(float amount) {
 		this.balance += amount;
 	}
 	
-	//this removes from the balance without having to use getters and setters
-	//validation must be handled before this is called
+	// This removes from the balance without having to use getters and setters
+	// validation must be handled before this is called
 	protected void removeFromBalance(float amount) {
 		this.balance -= amount;
 	}
