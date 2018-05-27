@@ -44,20 +44,21 @@ public class Bank extends Account implements Serializable{
 			newSession();
 			String option;
 			
-			while(true) {
+			boolean validYesNo = false;
+			do {
 				System.out.println("Would you like to start a new session?");
 				System.out.println("Enter 'y' for yes or 'n' for no");
 				option = Bank.sc.nextLine();
 				if(option.toLowerCase().equals("y")) {
 					keepGoing = true;
-					break;
+					validYesNo = true;
 				} else if(option.toLowerCase().equals("n")) {
 					keepGoing = false;
-					break;
+					validYesNo = true;
 				} else {
 					System.out.println("Could not recognize input.");
 				}
-			}
+			} while(!validYesNo);
 		} while(keepGoing);
 		System.out.println("The bank is closed!");
 	}
@@ -146,12 +147,14 @@ public class Bank extends Account implements Serializable{
 	private void createAccount() {
 		System.out.println("Enter an email or username: ");
 		String username;
-		while(true) {
+		
+		boolean used = false;
+		do {
 			username = sc.nextLine();
 			if(accounts.isEmpty()) {
 				break;
 			}
-			boolean used = false;
+			used = false;
 			for(Account person: accounts) {
 				if(username.toLowerCase().equals(person.getUsername())) {
 					System.out.println("Sorry, username or email is taken. Please enter another: ");
@@ -159,26 +162,25 @@ public class Bank extends Account implements Serializable{
 					break;
 				}
 			}
-			if(used) {
-				continue;
-			}
-			break;
-		}
+		} while (used);
 		
 		System.out.println("Enter a password: ");
 		String password;
 		String confirmPassword;
-		while(true) {
+		
+		boolean validPassword = false;
+		do {
 			password = sc.nextLine();
 			System.out.println("Confirm password by typing it again: ");
 			confirmPassword = sc.nextLine();
 			if(!confirmPassword.equals(password)) {
 				System.out.println("Password doesn't match!");
 				System.out.println("Re-enter password: ");
-				continue;
+				validPassword = false;
+			} else {
+				validPassword = true;
 			}
-			break;
-		}
+		} while(!validPassword);
 		
 		
 		accounts.add(new Account(username.toLowerCase(), password, 0));
@@ -190,26 +192,23 @@ public class Bank extends Account implements Serializable{
 	private void login() {
 		String username;
 		String password;
-		boolean match;
-		while(true) {
+		
+		boolean match = false;
+		do {
 			System.out.println("Enter your username/email: ");
 			username = sc.nextLine();
 			System.out.println("Enter your password: ");
 			password = sc.nextLine();
-			match = false;
 			for(Account person : accounts) {
 				if(username.toLowerCase().equals(person.getUsername()) && password.equals(person.getPassword())) {
 					match = true;
 					newCurrentUser(person);
-					break;
 				}
 			}
-			
-			if(match) {
-				break;
+			if(!match) {
+				System.out.println("Username or password didn't match. Please try again.");
 			}
-			System.out.println("Username or password didn't match. Please try again.");
-		}
+		} while(!match);
 	}
 	
 	
@@ -221,8 +220,10 @@ public class Bank extends Account implements Serializable{
 	
 	private void deposit() {
 		String amountString;
-		float amount;
-		while(true) {
+		float amount = 0;
+		
+		boolean validDeposit = false;
+		do {
 			System.out.println("How much would you like to deposit?");
 			amountString = sc.nextLine();
 			try {
@@ -230,13 +231,13 @@ public class Bank extends Account implements Serializable{
 				if(amount < 0) {
 					throw new NegativeNumberException();
 				}
-				break;
+				validDeposit = true;
 			} catch(NumberFormatException e) {
 				System.out.println("Sorry, that's an invalid input");
 			} catch (NegativeNumberException e) {
 				System.out.println("Sorry, you can't deposit negative money.");
 			}
-		}
+		} while(!validDeposit);
 		
 		accounts.get(currentUser).addToBalance(amount);
 		System.out.println("We've added $" + amount + " to your account!");
@@ -245,8 +246,10 @@ public class Bank extends Account implements Serializable{
 	
 	private void withdraw() {
 		String amountString;
-		float amount;
-		while (true) {
+		float amount = 0;
+		
+		boolean validWithdrawl = false;
+		do{
 			System.out.println("You have $" + accounts.get(currentUser).getBalance() + " in your account.");
 			System.out.println("How much would you like to withdraw?");
 			amountString = sc.nextLine();
@@ -255,13 +258,13 @@ public class Bank extends Account implements Serializable{
 				if(accounts.get(currentUser).getBalance() - amount < 0) {
 					throw new NegativeNumberException();
 				}
-				break;
+				validWithdrawl = true;
 			} catch(NumberFormatException e) {
 				System.out.println("Sorry, that's an invalid input");
 			} catch (NegativeNumberException e) {
 				System.out.println("Sorry, you can't withdraw more than what's in your account.");
 			}
-		}
+		} while(!validWithdrawl);
 		
 		accounts.get(currentUser).removeFromBalance(amount);
 		System.out.println("We've removed $" + amount + " to your account!");
