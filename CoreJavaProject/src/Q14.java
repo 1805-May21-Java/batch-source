@@ -1,6 +1,5 @@
-import java.sql.Time;
+
 import java.time.LocalDate;
-import java.util.Arrays;
 
 public class Q14 {
 
@@ -12,13 +11,15 @@ public class Q14 {
 		
 		switch (num) {
 		case 1:
+			//if 1, find the square root
 			Math.sqrt(squareRootMe);
-			break;
+			break; 
 		case 2:
+			//if 2, print the time
 			System.out.println(LocalDate.now());
 			break;
 		case 3:
-			//splits the string by spaces to create an array with each word being an element
+			//if 3, splits the string by spaces to create an array with each word being an element
 			String[] stringArray = str.split(" ");
 			break;
 		}

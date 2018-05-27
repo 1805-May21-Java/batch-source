@@ -2,27 +2,32 @@
 public class Q15 implements Q15Interface{
 
 	public static void main(String[] args) {
-
+		//Need to create a main object to run non-static methods.  
+		//Methods cannot be static because they are inherited from an interface,
+		//which cannot define static abstract methods
+		Q15 calculator = new Q15();
+		System.out.println(calculator.addition(5.6, 7));
+		System.out.println(calculator.division(9, 6));
 		
 	}
 
 	@Override
-	public int addition(int a, int b) {
+	public double addition(double a, double b) {
 		return a+b;
 	}
 
 	@Override
-	public int subtraction(int a, int b) {
+	public double subtraction(double a, double b) {
 		return a-b;
 	}
 
 	@Override
-	public int multiplication(int a, int b) {
+	public double multiplication(double a, double b) {
 		return a*b;
 	}
 
 	@Override
-	public int division(int a, int b) {
+	public double division(double a, double b) {
 		if(b != 0) {
 			return a/b;
 		}else {

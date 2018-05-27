@@ -6,6 +6,7 @@ public class Q19 {
 
 	public static void main(String[] args) {
 
+		//initializes array 1-10
 		for(int i=1;i<=10;i++) {
 			arrayList.add(i);
 		}
@@ -14,7 +15,6 @@ public class Q19 {
 		System.out.println("Evens: "+addEven(arrayList));
 		System.out.println("Odds: "+addOdd(arrayList));
 		System.out.println("Primes: "+addPrimes(arrayList));
-		
 	}
 	
 	//checks if a number is even
@@ -68,6 +68,4 @@ public class Q19 {
 		}
 		return total;
 	}
-	
-
 }

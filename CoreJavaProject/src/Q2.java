@@ -1,5 +1,3 @@
-import org.omg.CORBA.PRIVATE_MEMBER;
-
 public class Q2 {
 
 	public static void main(String[] args) {

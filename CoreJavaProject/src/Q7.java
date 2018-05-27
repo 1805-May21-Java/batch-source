@@ -1,5 +1,3 @@
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils.Comparison;
-
 public class Q7 implements Comparable<Q7>{
 //This class defines the employee class, if I didn't want to label each file by their question number
 //then this class would be called Empolyee
@@ -26,7 +24,7 @@ public class Q7 implements Comparable<Q7>{
 		
 	}
 
-	//Compares first by name, then age, then department
+	//Compares first by name, then age, then department.  
 	@Override
 	public int compareTo(Q7 other) {
 		//Compares string by the built-in compareTo method of strings
@@ -44,8 +42,5 @@ public class Q7 implements Comparable<Q7>{
 			return 0;
 		}
 	}
-	
-	
-
 }
 

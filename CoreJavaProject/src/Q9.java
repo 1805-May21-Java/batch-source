@@ -1,19 +1,18 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class Q9 {
 
 	public static void main(String[] args) {
 		//creates the arraylist 1-100
-		ArrayList<Integer> arrayList = new ArrayList<>();
+		List<Integer> arrayList = new ArrayList<>();
 		for(int i = 1;i<101;i++) {
 			arrayList.add(i);
 		}
 		//loops over each, tests if it's prime, and if it is then print it
-		for(Integer j : arrayList) {
-			if(isPrime(j)) {
-				System.out.println(j);
-			}
-		}
+		(arrayList).forEach(j -> {
+			if(isPrime(j)) System.out.println(j);
+		});
 		
 	}
 	
