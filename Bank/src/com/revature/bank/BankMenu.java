@@ -240,10 +240,15 @@ public class BankMenu {
 			amount = account.getBalance();
 		}
 		
-		account.setBalance(account.getBalance() - amount);
+		if(amount < 0)
+			System.out.println("\nCannot withdraw a negative amount of money.");
+		else {
+			account.setBalance(account.getBalance() - amount);
+			
+			System.out.println("\nWithdrew $" + df.format(amount));
+			System.out.println("Remaining balance: $" + df.format(account.getBalance()));
+		}
 		
-		System.out.println("\nWithdrew $" + df.format(amount));
-		System.out.println("Remaining balance: $" + df.format(account.getBalance()));
 		printLoginScreen(account);
 	}
 	
@@ -255,10 +260,14 @@ public class BankMenu {
 		String deposit = input.nextLine();
 		double amount = Double.parseDouble(deposit);
 		
-		account.setBalance(account.getBalance() + amount);
-		
-		System.out.println("\nDeposited $" + df.format(amount));
-		System.out.println("New balance: $" + df.format(account.getBalance()));
+		if(amount < 0)
+			System.out.println("\nCannot deposit a negative amount of money.");
+		else {
+			account.setBalance(account.getBalance() + amount);
+			
+			System.out.println("\nDeposited $" + df.format(amount));
+			System.out.println("New balance: $" + df.format(account.getBalance()));
+		}
 		printLoginScreen(account);
 	}
 }
