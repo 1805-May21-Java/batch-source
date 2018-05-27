@@ -26,15 +26,17 @@ public class Menu {
 		System.out.println("Welcome to Tank Bank, where we keep your money safe!");
 		System.out.println(tank);
 		System.out.println("Do you already have an account with us, or would you like to make a new one?");
-		System.out.println("Type 1 for existing account, 2 to create a new one");
+		System.out.println("Type 1 for existing account, 2 to create a new one, or 3 to exit");
 		switch (scan.nextLine()) {
 		case "1":
-			bankAccount = GetBankAccount.getAccount();
+			bankAccount = WriteReadBankAccount.getAccount();
 			mainMenu();
 			break;
 		case "2":
 			//creates a new account, prompting user for information
 			this.createBankAccount();
+		case "3":
+			exit();
 		default:
 			System.out.println("Please enter 1 or 2!");
 			existingAccount();
@@ -54,7 +56,7 @@ public class Menu {
 			System.out.println(String.format("%s, you have $%.2f in your account", 
 					bankAccount.getUsername(),bankAccount.getBalence()));
 			//Saves changes
-			SaveBankAccount.save(bankAccount);
+			WriteReadBankAccount.save(bankAccount);
 			break;
 			
 		case "2":
@@ -66,7 +68,7 @@ public class Menu {
 			System.out.println(String.format("%s, you have $%.2f in your account", 
 					bankAccount.getUsername(),bankAccount.getBalence()));
 			//Saves changes
-			SaveBankAccount.save(bankAccount);
+			WriteReadBankAccount.save(bankAccount);
 			break;
 			
 		case "3":
@@ -80,13 +82,12 @@ public class Menu {
 			System.out.println("Logged out!");
 			//creates a transition to the message that will appear in the getAccount method
 			System.out.print("To login again, ");
-			bankAccount = GetBankAccount.getAccount();
+			bankAccount = WriteReadBankAccount.getAccount();
 			mainMenu();
 		case "5":
 			//closes resources then exits
-			System.out.println("Have a good day!");
 			scan.close();
-			System.exit(0);
+			exit();
 		default:
 			//prints message, then runs the mainMenu method again
 			System.out.println("I'm sorry, that wasn't one of our options!");
@@ -100,18 +101,22 @@ public class Menu {
 		//creates a new account, prompting the user for a username, password, and email address
 		String username;
 		do{
+			System.out.println("Type 'exit' at any time to quit this process.");
+			System.out.println("Please do not make your username 'exit' or you will have a bad time");
 			System.out.println("Please enter a username");
 			username = inputUserPass();
 			bankAccount.setUsername(username);
 		}while(usernameFree(username));
 		System.out.println("Great!  Now enter your password");
 		bankAccount.setPassword(inputUserPass());
+		if(username.equals("exit")) exit();
 		System.out.println("Awesome.  Now enter your email address");
 		bankAccount.setEmail(inputEmail());
+		if(username.equals("exit")) exit();
 		bankAccount.setLoggedIn(true);
 		
 		System.out.println("You're all set up!");
-		SaveBankAccount.save(bankAccount);
+		WriteReadBankAccount.save(bankAccount);
 		mainMenu();
 	}
 	
@@ -133,6 +138,8 @@ public class Menu {
 	private String inputUserPass() {
 		while(scan.hasNext()) {
 			String entry = scan.nextLine();
+			//exits if user entered "exit"
+			if(entry.equals("exit")) exit();
 			//makes sure there are no spaces
 			if(!entry.contains(" ")) {
 				return entry;
@@ -148,6 +155,8 @@ public class Menu {
 		private String inputEmail() {
 			while(scan.hasNext()) {
 				String entry = scan.nextLine();
+				//exits if user entered "exit"
+				if(entry.equals("exit")) exit();
 				//makes sure there are no spaces, there is an '@', and there is a '.'
 				if( (!entry.contains(" ")) && entry.contains(".") && entry.contains("@")) {
 					return entry;
@@ -171,6 +180,12 @@ public class Menu {
 			}else {
 				return false;
 			}
+		}
+		
+		//Exits program, static protected so other classes in the package can use it
+		static protected void exit() {
+			System.out.println("Have a good day!");
+			System.exit(0);
 		}
 		
 		//tank ascii to print on welcome screen

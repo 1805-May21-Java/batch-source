@@ -18,15 +18,21 @@ public class Q20 {
 				String lastName;
 				int age;
 				String state;
+				
 				ArrayList<Integer> colonList = findColons(line);
 				//First name is always between the start and the first colon
+				
 				firstName = line.substring(0, colonList.get(0));
+				
 				//Last name always between the first two colons. Plus 1 gets rid of the colon
 				lastName = line.substring(colonList.get(0)+1, colonList.get(1));
+				
 				age = Integer.valueOf(line.substring(colonList.get(1)+1, colonList.get(2)));
 				//state between last colon and the end
+				
 				state = line.substring(colonList.get(2)+1,line.length());
-				System.out.println(String.format("Name: %s %s\nAge: %d\nState: %s State", firstName,lastName,age,state));
+				System.out.println(String.format(
+						"Name: %s %s\nAge: %d\nState: %s State", firstName,lastName,age,state));
 				
 				
 			}
@@ -36,7 +42,8 @@ public class Q20 {
 		}
 	}
 	
-	//I want to make substrings around every colon, so this method finds the location of all the colons in the string
+	//I want to make substrings around every colon, 
+	//so this method finds the location of all the colons in the string
 	static private ArrayList<Integer> findColons(String line) {
 		ArrayList<Integer> colonLocation = new ArrayList<>();
 		char[] charArr = line.toCharArray();

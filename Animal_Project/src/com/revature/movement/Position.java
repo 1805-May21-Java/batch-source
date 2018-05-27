@@ -13,6 +13,7 @@ public class Position {
 		return x;
 	}
 	public void changeX(int x) {
+		System.out.println(x);
 		this.x += x;
 	}
 	public int getY() {

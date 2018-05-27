@@ -2,12 +2,15 @@ package com.revature;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.Scanner;
+import com.revature.Menu;
 
-//retrieves a bank account object
-public class GetBankAccount {
+//Stores methods that write and read bank account information
+public class WriteReadBankAccount {
 	
 	private static Scanner scanner = new Scanner(System.in);
 	static String username;
@@ -15,10 +18,13 @@ public class GetBankAccount {
 	public static BankAccount getAccount() {
 		do{
 			//prompts the user for username and password
+			System.out.println("Type 'exit' at any time to exit");
 			System.out.println("Please enter your username:");
 			username = scanner.nextLine();
+			if(username.equals("exit")) Menu.exit();
 			System.out.println("Please enter your password:");
 			password = scanner.nextLine();
+			if(password.equals("exit")) Menu.exit();
 			
 			//attempts to open using the username
 			String fileName = "src/com/revature/accounts/"+username+".txt";
@@ -47,5 +53,21 @@ public class GetBankAccount {
 					
 		}while(true);
 	}
+	
+	//writes the given bank account to a file
+	public static void save(BankAccount bankAccount) {
+		String fileName = "src/com/revature/accounts/"+bankAccount.getUsername()+".txt";
+		try(ObjectOutputStream oStream = new ObjectOutputStream(new FileOutputStream(fileName));){
+			
+			//writes object to file, overwriting old balance if there
+			oStream.writeObject(bankAccount);
+		
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
 
 }
