@@ -3,16 +3,18 @@ package com.Revature.pkg;
 import java.io.Serializable;
 import java.util.LinkedList;
 
+//Serialize for persistence
 public class Bank implements Serializable {
-	/**
-	 * 
-	 */
+
+	//Default
 	private static final long serialVersionUID = 1L;
 
+	//Bank keeps a current list of all accounts/clients
 	private LinkedList<Client> clientList;
 
 	public Bank() {
 		super();
+		//Initialize clientList
 		clientList = new LinkedList<Client>();
 	}
 
@@ -21,37 +23,42 @@ public class Bank implements Serializable {
 		this.clientList = clientList;
 	}
 	
-	public Client login(String str ) {
+	//On login, either a clients account or null is returned
+	public Client login(String username , String password) {
 		for ( Client c : clientList ) {
-			if ( str.equals(c.getUsername())) {
+			if ( username.equals(c.getUsername()) && password.equals(c.getPassword())) { //Validate credentials
 				return c;
 			}
 		}
 		return null;
 	}
 	
-	public Client createUser(String username ) {
-		if ( login(username ) != null ) {
-			return null;
+	//Creating a user is similar to login, either a new Client is returned or null
+	public Client createUser(String username , String password ) { //Used to create user
+		for ( Client c : clientList ) {
+			if ( c.getUsername().equals(username)) { //If username is taken
+				return null;
+			}
 		}
-		Client c = new Client(username , 0f);
+		Client c = new Client(username , password, 0f);
 		clientList.add(c);
 		return c;
 	}
 	
-	public boolean deposit(Client c , float money ) {
-		if ( c == null ) {
+	public boolean deposit(Client c , float money ) { //Attempt to deposit funds into an account
+		if ( c == null ) { //Checks login
 			return false;
 		}
 		
-		if ( money < 0 ) {
+		if ( money < 0 ) { //Cannot deposit negative funds
 			return false;
 		}
 		
-		c.setMoney(c.getMoney()+money);
+		c.setMoney(c.getMoney()+money); //Adds money to accounts
 		return true;
 	}
 	
+	//Similar to deposit
 	public boolean withdraw(Client c , float money ) {
 		if ( c == null ) {
 			return false;
@@ -61,22 +68,34 @@ public class Bank implements Serializable {
 			return false;
 		}
 		
-		if ( c.getMoney() < money ) {
+		//This bank does not do overdrafts
+		if ( c.getMoney() < money ) { //Verify client has funds to withdraw
 			return false;
 		}
 		
 		c.setMoney(c.getMoney() - money);
 		return true;
 	}
+	
+	public boolean deleteAccount(Client client ) { //Removes a client from list
+		return clientList.remove(client); //Returns true false for list containing client
+	}
 
-	public LinkedList<Client> getClientList() {
+	//These methods are removed
+	//No one should have access to list of clients besides the bank
+	//Without these methods, clients are forced to use the bank as an interface
+	//in between them and their account
+	
+	/*public LinkedList<Client> getClientList() {
 		return clientList;
 	}
 
 	public void setClientList(LinkedList<Client> clientList) {
 		this.clientList = clientList;
-	}
+	}*/
 
+	
+	//POJO studd
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
@@ -106,9 +125,12 @@ public class Bank implements Serializable {
 		return true;
 	}
 
+	//Bank can be printed
+	//Output specific string instead of
+	//default which returns member list
 	@Override
 	public String toString() {
-		return "Bank [clientList=" + clientList + "]";
+		return "Bank of Thomas Jansen " + clientList.size() + " users world wide";
 	}
 
 }
