@@ -1,6 +1,7 @@
 package com.revature;
 
 import java.io.File;
+import java.util.Iterator;
 import java.util.Scanner;
 
 
@@ -9,16 +10,16 @@ public class Menu {
 	//Contains all menu and navigation for Tank Bank
 	
 	static Scanner scan = new Scanner(System.in);
-	BankAccount bankAccount;
+	Client client;
 	
 	public Menu() {
 		super();
-		bankAccount = new BankAccount();
+		Client client = new Client();
 		}
 	
-	public Menu(BankAccount bankAccount) {
+	public Menu(Client client) {
 		super();
-		this.bankAccount = bankAccount;
+		this.client = client;
 	}
 	
 	//Asks the user if they have an existing account, and creates one if not
@@ -29,12 +30,12 @@ public class Menu {
 		System.out.println("Type 1 for existing account, 2 to create a new one, or 3 to exit");
 		switch (scan.nextLine()) {
 		case "1":
-			bankAccount = WriteReadBankAccount.getAccount();
-			mainMenu();
+			client = WriteReadBankAccount.getClient();
+			selectAccount();
 			break;
 		case "2":
 			//creates a new account, prompting user for information
-			this.createBankAccount();
+			createClient();
 		case "3":
 			exit();
 		default:
@@ -43,9 +44,21 @@ public class Menu {
 		}
 	}
 	
-	public void mainMenu() {
+	//Client can select an existing account or create a new one
+	private void selectAccount() {
+		System.out.println("Select from existing accounts by typing the name of the account, "
+				+ "or create a new one by typing 'new'");
+		System.out.println("Type 'exit' at any time to exit");
+		client.accounts.forEach(account -> System.out.println(account.getAccountName()+" $"+account.getBalence()));
+		BankAccount account = inputAccount();
+		accountAction(account);
+		
+	}
+	
+	private void accountAction(BankAccount bankAccount) {
 		//menu to withdraw, deposit, or view balance
-		System.out.println("Would you like to withdraw (1), deposit (2), view balance (3), logout(4) or exit (5)?");
+		System.out.println("Would you like to withdraw (1), deposit (2), view balance (3),"
+				+ "select a differnt account(4), logout(5) or exit (6)?");
 		switch (scan.nextLine()) {
 		case "1":
 			System.out.println("How much would you like to withdraw?");
@@ -54,9 +67,9 @@ public class Menu {
 			bankAccount.withdraw(withdrawAmount);
 			//Withdraws the amount left in the account and prints the amount left
 			System.out.println(String.format("%s, you have $%.2f in your account", 
-					bankAccount.getUsername(),bankAccount.getBalence()));
+					client.getUsername(),bankAccount.getBalence()));
 			//Saves changes
-			WriteReadBankAccount.save(bankAccount);
+			WriteReadBankAccount.saveClient(client);
 			break;
 			
 		case "2":
@@ -66,25 +79,25 @@ public class Menu {
 			bankAccount.deposit(depositAmount);
 			//prints out the amount the user has 
 			System.out.println(String.format("%s, you have $%.2f in your account", 
-					bankAccount.getUsername(),bankAccount.getBalence()));
+					client.getUsername(),bankAccount.getBalence()));
 			//Saves changes
-			WriteReadBankAccount.save(bankAccount);
+			WriteReadBankAccount.saveClient(client);
 			break;
 			
 		case "3":
 			//prints balance
 			System.out.println(String.format("%s, you have $%.2f in your account", 
-					bankAccount.getUsername(),bankAccount.getBalence()));
+					client.getUsername(),bankAccount.getBalence()));
 			break;
 		case "4":
-			//logs user out, then sends to login screen
-			bankAccount.setLoggedIn(false);
-			System.out.println("Logged out!");
-			//creates a transition to the message that will appear in the getAccount method
-			System.out.print("To login again, ");
-			bankAccount = WriteReadBankAccount.getAccount();
-			mainMenu();
+			//Lets user go back to select account screen
+			selectAccount();
 		case "5":
+			//logs user out, then sends to login screen
+			System.out.println("Logged out!");
+			client = WriteReadBankAccount.getClient();
+			selectAccount();
+		case "6":
 			//closes resources then exits
 			scan.close();
 			exit();
@@ -93,31 +106,30 @@ public class Menu {
 			System.out.println("I'm sorry, that wasn't one of our options!");
 			break;
 		}
-		mainMenu();
+		accountAction(bankAccount);
 		
 	}
 	
-	public void createBankAccount() {
+	private void createClient() {
 		//creates a new account, prompting the user for a username, password, and email address
 		String username;
+		client = new Client();
 		do{
 			System.out.println("Type 'exit' at any time to quit this process.");
-			System.out.println("Please do not make your username 'exit' or you will have a bad time");
 			System.out.println("Please enter a username");
 			username = inputUserPass();
-			bankAccount.setUsername(username);
+			client.setUsername(username);
 		}while(usernameFree(username));
 		System.out.println("Great!  Now enter your password");
-		bankAccount.setPassword(inputUserPass());
+		client.setPassword(inputUserPass());
 		if(username.equals("exit")) exit();
 		System.out.println("Awesome.  Now enter your email address");
-		bankAccount.setEmail(inputEmail());
+		client.setEmail(inputEmail());
 		if(username.equals("exit")) exit();
-		bankAccount.setLoggedIn(true);
 		
 		System.out.println("You're all set up!");
-		WriteReadBankAccount.save(bankAccount);
-		mainMenu();
+		WriteReadBankAccount.saveClient(client);
+		selectAccount();
 	}
 	
 	//makes sure user enters a double
@@ -165,6 +177,37 @@ public class Menu {
 				}
 			}
 			//should never get here
+			return null;
+		}
+		
+		//user entry for selecting an existing account or opening a new one
+		private BankAccount inputAccount() {
+			while(scan.hasNext()) {
+				String entry = scan.nextLine();
+				//exits if the user entered 'exit'
+				if(entry.equals("exit")) exit();
+				if(entry.equals("new")) {
+					//creates new account
+					
+					System.out.println("What is the name of your new account?");
+					String accountName = scan.nextLine();
+					//Capitalizes first letter, both for formality
+					//And if the user is a jerk and tries to call the account 'exit', it will change to 'Exit'
+					accountName = accountName.substring(0, 1).toUpperCase() + accountName.substring(1);
+					//adds the new account to the client's list of accounts
+					BankAccount bankAccount = new BankAccount(0,accountName);
+					client.addNewAccount(bankAccount);
+					return bankAccount;
+				}else {
+					for(BankAccount account : client.accounts) {
+						if(entry.equals(account.getAccountName())) {
+							return account;
+						}
+					}
+				}
+				System.out.println("Invalid account name!  Enter another name, or type 'new' for a new account");
+			}
+			//Should never reach here
 			return null;
 		}
 		

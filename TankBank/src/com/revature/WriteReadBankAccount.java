@@ -15,7 +15,7 @@ public class WriteReadBankAccount {
 	private static Scanner scanner = new Scanner(System.in);
 	static String username;
 	static String password;
-	public static BankAccount getAccount() {
+	public static Client getClient() {
 		do{
 			//prompts the user for username and password
 			System.out.println("Type 'exit' at any time to exit");
@@ -31,12 +31,12 @@ public class WriteReadBankAccount {
 					try(ObjectInputStream oStream = new ObjectInputStream(new FileInputStream(fileName))){
 						
 						//Returns the object
-						BankAccount account = (BankAccount) oStream.readObject();
+						Client client = (Client) oStream.readObject();
 						//checks to see if password is correct
-						if(account.getPassword().equals(password)) {
+						if(client.getPassword().equals(password)) {
 							//if so, prints message and returns the account
-							System.out.println("Login successful!  Welcome, "+account.getUsername());
-							return account;
+							System.out.println("Login successful!  Welcome, "+client.getUsername());
+							return client;
 						}else {
 							//if not, informs the user and prompts for username and password again
 							System.out.println("Invalid password!");
@@ -55,12 +55,12 @@ public class WriteReadBankAccount {
 	}
 	
 	//writes the given bank account to a file
-	public static void save(BankAccount bankAccount) {
-		String fileName = "src/com/revature/accounts/"+bankAccount.getUsername()+".txt";
+	public static void saveClient(Client client) {
+		String fileName = "src/com/revature/accounts/"+client.getUsername()+".txt";
 		try(ObjectOutputStream oStream = new ObjectOutputStream(new FileOutputStream(fileName));){
 			
 			//writes object to file, overwriting old balance if there
-			oStream.writeObject(bankAccount);
+			oStream.writeObject(client);
 		
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
