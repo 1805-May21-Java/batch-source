@@ -1,5 +1,6 @@
 package com.revature.bank;
 
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 import com.revature.bank.BankInfo.Account;
@@ -7,6 +8,8 @@ import com.revature.bank.BankInfo.Account;
 public class BankMenu {
 
 	private static final Scanner input = new Scanner(System.in);
+	private static final DecimalFormat df = new DecimalFormat("#0.00");
+	
 	private BankInfo bankInfo;
 	
 	public BankMenu() {
@@ -109,17 +112,17 @@ public class BankMenu {
 		System.out.println("Your premier banking solution in the Reston area!\n");
 		System.out.println("[L] - Log in");
 		System.out.println("[R] - Register");
-		System.out.println("[Q] - Quit\n");
+		System.out.println("[Q] - Quit");
 		
-		System.out.print("Option: ");
+		System.out.print("\nOption: ");
 		String option = input.nextLine();
 		boolean optionChosen = false;
 		
 		while(!optionChosen) {
 			if(option.length() != 1) {
-				System.out.println("Invalid option.\n");
+				System.out.println("\nInvalid option.");
 				
-				System.out.print("Option: ");
+				System.out.print("\nOption: ");
 				option = input.nextLine();
 			}
 			
@@ -137,9 +140,9 @@ public class BankMenu {
 					break;
 				default:
 					optionChosen = false;
-					System.out.println("Invalid option.\n");
+					System.out.println("\nInvalid option.");
 					
-					System.out.print("Option: ");
+					System.out.print("\nOption: ");
 					option = input.nextLine();
 				}
 			}
@@ -151,17 +154,17 @@ public class BankMenu {
 		System.out.println("[W] - Withdraw money");
 		System.out.println("[D] - Deposit money");
 		System.out.println("[C] - Check balance");
-		System.out.println("[L] - Log off\n");
+		System.out.println("[L] - Log out");
 		
-		System.out.print("Option: ");
+		System.out.print("\nOption: ");
 		String option = input.nextLine();
 		boolean optionChosen = false;
 		
 		while(!optionChosen) {
 			if(option.length() != 1) {
-				System.out.println("Invalid option.\n");
+				System.out.println("\nInvalid option.");
 				
-				System.out.print("Option: ");
+				System.out.print("\nOption: ");
 				option = input.nextLine();
 			}
 			
@@ -178,15 +181,15 @@ public class BankMenu {
 					showBankAccountInfo(account);
 					break;
 				case 'L':
-					System.out.println("\nSee you soon!");
+					System.out.println("\nLogging out...");
 					bankInfo.setAccountNumber(-1);
 					printHome();
 					break;
 				default:
 					optionChosen = false;
-					System.out.println("Invalid option.\n");
+					System.out.println("\nInvalid option.");
 					
-					System.out.print("Option: ");
+					System.out.print("\nOption: ");
 					option = input.nextLine();
 				}
 			}
@@ -195,12 +198,12 @@ public class BankMenu {
 	
 	public void showBankAccountInfo(BankInfo.Account account) {
 		System.out.println("\nUsername - " + account.getUser());
-		System.out.println("Balance: $" + account.getBalance());
+		System.out.println("Balance: $" + df.format(account.getBalance()));
 		printLoginScreen(account);
 	}
 	
 	public void withdraw(BankInfo.Account account) {
-		System.out.println("\nCurrent balance: $" + account.getBalance());
+		System.out.println("\nCurrent balance: $" + df.format(account.getBalance()));
 		System.out.print("\nWithdrawal Amount: $");
 		String withdraw = input.nextLine();
 		double amount = Double.parseDouble(withdraw);
@@ -212,21 +215,21 @@ public class BankMenu {
 		
 		account.setBalance(account.getBalance() - amount);
 		
-		System.out.println("\nWithdrew $" + amount);
-		System.out.println("Remaining balance: $" + account.getBalance());
+		System.out.println("\nWithdrew $" + df.format(amount));
+		System.out.println("Remaining balance: $" + df.format(account.getBalance()));
 		printLoginScreen(account);
 	}
 	
 	public void deposit(BankInfo.Account account) {
-		System.out.println("\nCurrent balance: $" + account.getBalance());
+		System.out.println("\nCurrent balance: $" + df.format(account.getBalance()));
 		System.out.print("\nDeposit Amount: $");
 		String deposit = input.nextLine();
 		double amount = Double.parseDouble(deposit);
 		
 		account.setBalance(account.getBalance() + amount);
 		
-		System.out.println("\nDeposited $" + amount);
-		System.out.println("New balance: $" + account.getBalance());
+		System.out.println("\nDeposited $" + df.format(amount));
+		System.out.println("New balance: $" + df.format(account.getBalance()));
 		printLoginScreen(account);
 	}
 }
