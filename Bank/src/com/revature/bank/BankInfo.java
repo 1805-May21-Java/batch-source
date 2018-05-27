@@ -6,7 +6,7 @@ import java.io.*;
 /*
  * Bank information class for account information storage
  * 
- * BankDriver serializes the Account information into a file and reads them
+ * BankDriver serializes the Account information into a file and reads it
  * as a BankInfo object when starting the application
  * 
  * While running the program, all interaction with Account information occurs

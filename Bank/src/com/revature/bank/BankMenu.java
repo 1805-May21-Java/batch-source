@@ -174,9 +174,10 @@ public class BankMenu {
 	// methods called by this method usually end with a printLoginScreen() call
 	// or a printHome() call to keep the program running
 	public void printLoginScreen(Account account) {
-		System.out.println("\nBank Account information for - " + account.getUser());
+		System.out.println("\nHello, " + account.getUser() + "!");
 		System.out.println("[W] - Withdraw money");
 		System.out.println("[D] - Deposit money");
+		System.out.println("[T] - Make a transfer");
 		System.out.println("[C] - Check balance");
 		System.out.println("[L] - Log out");
 		
@@ -200,6 +201,9 @@ public class BankMenu {
 					break;
 				case 'D':
 					deposit(account);
+					break;
+				case 'T':
+					transfer(account);
 					break;
 				case 'C':
 					showBankAccountInfo(account);
@@ -233,23 +237,28 @@ public class BankMenu {
 		System.out.println("\nCurrent balance: $" + df.format(account.getBalance()));
 		System.out.print("\nWithdrawal Amount: $");
 		String withdraw = input.nextLine();
-		double amount = Double.parseDouble(withdraw);
 		
-		if(amount > account.getBalance()) {
-			System.out.println("\nInsufficient funds.");
-			amount = account.getBalance();
-		}
+		try {
+			double amount = Double.parseDouble(withdraw);
 		
-		if(amount < 0)
-			System.out.println("\nCannot withdraw a negative amount of money.");
-		else {
-			account.setBalance(account.getBalance() - amount);
+			if(amount > account.getBalance()) {
+				System.out.println("\nInsufficient funds.");
+				amount = account.getBalance();
+			}
 			
-			System.out.println("\nWithdrew $" + df.format(amount));
-			System.out.println("Remaining balance: $" + df.format(account.getBalance()));
+			if(amount < 0)
+				System.out.println("\nCannot withdraw a negative amount of money.");
+			else {
+				account.setBalance(account.getBalance() - amount);
+				
+				System.out.println("\nSuccessfully withdrew $" + df.format(amount));
+				System.out.println("Remaining balance: $" + df.format(account.getBalance()));
+			}
+		} catch (NumberFormatException e) {
+			System.out.println("\nInvalid input. Returning to main menu...");
+		} finally {
+			printLoginScreen(account);
 		}
-		
-		printLoginScreen(account);
 	}
 	
 	// prompts the user for the deposit value and notifies the user of their account balance
@@ -258,16 +267,92 @@ public class BankMenu {
 		System.out.println("\nCurrent balance: $" + df.format(account.getBalance()));
 		System.out.print("\nDeposit Amount: $");
 		String deposit = input.nextLine();
-		double amount = Double.parseDouble(deposit);
-		
-		if(amount < 0)
-			System.out.println("\nCannot deposit a negative amount of money.");
-		else {
-			account.setBalance(account.getBalance() + amount);
+		try {
+			double amount = Double.parseDouble(deposit);
 			
-			System.out.println("\nDeposited $" + df.format(amount));
-			System.out.println("New balance: $" + df.format(account.getBalance()));
+			if(amount < 0)
+				System.out.println("\nCannot deposit a negative amount of money.");
+			else {
+				account.setBalance(account.getBalance() + amount);
+				
+				System.out.println("\nSuccessfully deposited $" + df.format(amount));
+				System.out.println("New balance: $" + df.format(account.getBalance()));
+			}
+		} catch(NumberFormatException e) {
+			System.out.println("\nInvalid input. Returning to main menu...");
+		} finally {
+			printLoginScreen(account);
 		}
-		printLoginScreen(account);
+	}
+	
+	public void transfer(BankInfo.Account account) {
+		System.out.println("\nCurrent balance: $" + df.format(account.getBalance()));
+		System.out.println("Please enter the username / email of the account you wish to transfer to.");
+		int acc = -1;
+		String transferUser;
+		
+		do {
+			System.out.print("\nUsername / email - ");
+			transferUser = input.nextLine();
+			acc = findAccount(transferUser);
+						
+			if(transferUser.equals("")) {
+				printLoginScreen(account);
+				break;
+			}
+			else if(acc == -1) {
+				System.out.println("\nUsername / email is not linked to an account. Please try again");
+			}
+			else
+				break;
+		} while(true);
+		
+		System.out.print("\nTransfer Amount to " + transferUser + ": $");
+		String transfer = input.nextLine();
+		try {
+			double amount = Double.parseDouble(transfer);
+		
+			if(amount > account.getBalance())
+				System.out.println("\nInsufficient funds. Transfer cancelled.");
+			else if(amount < 0)
+				System.out.println("\nCannot transfer a negative amount of money.");
+			else {
+				System.out.println("\nPlease confirm this transfer.");
+				System.out.println("\nAmount: $" + df.format(amount));
+				System.out.println("Account username: " + transferUser);
+				boolean confirm = false;
+				
+				do {
+					System.out.print("\nIs this correct? (Y / N) - ");
+					String confirmation = input.nextLine();
+								
+					if(confirmation.length() != 1)
+						System.out.println("\nPlease enter Y or N.");
+					else if(Character.toUpperCase(confirmation.charAt(0)) == 'N') {
+						break;
+					}
+					else if(Character.toUpperCase(confirmation.charAt(0)) == 'Y') {
+						confirm = true;
+						break;
+					}
+					else
+						System.out.println("\nPlease enter Y or N.");
+				} while(true);
+				
+				if(confirm) {
+					account.setBalance(account.getBalance() - amount);
+					bankInfo.getAccount(acc).setBalance(bankInfo.getAccount(acc).getBalance() + amount);
+					
+					System.out.println("\nSuccessfully transfered $" + df.format(amount) + " to " + transferUser);
+					System.out.println("Remaining balance: $" + df.format(account.getBalance()));
+				}
+				else
+					System.out.println("\nTransfer cancelled.");
+			}
+		} catch(NumberFormatException e) {
+			System.out.println("\nInvalid input. Returning to main menu...");
+		} finally {
+			printLoginScreen(account);
+		}
 	}
 }
