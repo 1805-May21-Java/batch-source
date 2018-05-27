@@ -1,6 +1,8 @@
 package com.revature.bank;
 
 import java.text.DecimalFormat;
+import java.time.LocalDate;
+import java.util.ListIterator;
 import java.util.Scanner;
 
 import com.revature.bank.BankInfo.Account;
@@ -67,7 +69,6 @@ public class BankMenu {
 			newUser = input.nextLine();
 		}
 		
-		// possible password specifications
 		System.out.print("Password - ");
 		String newPass = input.nextLine();
 		
@@ -179,6 +180,7 @@ public class BankMenu {
 		System.out.println("[D] - Deposit money");
 		System.out.println("[T] - Make a transfer");
 		System.out.println("[C] - Check balance");
+		System.out.println("[H] - Show account history");
 		System.out.println("[L] - Log out");
 		
 		System.out.print("\nOption: ");
@@ -208,6 +210,9 @@ public class BankMenu {
 				case 'C':
 					showBankAccountInfo(account);
 					break;
+				case 'H':
+					accountHistory(account);
+					break;
 				case 'L':
 					System.out.println("\nLogging out...");
 					bankInfo.setAccountNumber(-1);
@@ -225,6 +230,7 @@ public class BankMenu {
 	}
 	
 	// shows the username and balance for the account in the argument
+	// returns to account information screen when done
 	public void showBankAccountInfo(BankInfo.Account account) {
 		System.out.println("\nUsername - " + account.getUser());
 		System.out.println("Balance: $" + df.format(account.getBalance()));
@@ -233,6 +239,8 @@ public class BankMenu {
 	
 	// prompts the user for the withdrawal value and notifies the user of their account balance
 	// modifies the value in the account provided in the argument
+	// creates a Transaction record for the account upon a successful withdrawal
+	// returns to account information screen when done
 	public void withdraw(BankInfo.Account account) {
 		System.out.println("\nCurrent balance: $" + df.format(account.getBalance()));
 		System.out.print("\nWithdrawal Amount: $");
@@ -250,6 +258,8 @@ public class BankMenu {
 				System.out.println("\nCannot withdraw a negative amount of money.");
 			else {
 				account.setBalance(account.getBalance() - amount);
+				account.addTransaction(bankInfo.new 
+						Transaction("Withdrawal", "", amount, account.getBalance(), LocalDate.now()));
 				
 				System.out.println("\nSuccessfully withdrew $" + df.format(amount));
 				System.out.println("Remaining balance: $" + df.format(account.getBalance()));
@@ -263,6 +273,8 @@ public class BankMenu {
 	
 	// prompts the user for the deposit value and notifies the user of their account balance
 	// modifies the value in the account provided in the argument
+	// creates a Transaction record for the account upon a successful deposit
+	// returns to account information screen when done
 	public void deposit(BankInfo.Account account) {
 		System.out.println("\nCurrent balance: $" + df.format(account.getBalance()));
 		System.out.print("\nDeposit Amount: $");
@@ -274,6 +286,8 @@ public class BankMenu {
 				System.out.println("\nCannot deposit a negative amount of money.");
 			else {
 				account.setBalance(account.getBalance() + amount);
+				account.addTransaction(bankInfo.new 
+						Transaction("Deposit", "", amount, account.getBalance(), LocalDate.now()));
 				
 				System.out.println("\nSuccessfully deposited $" + df.format(amount));
 				System.out.println("New balance: $" + df.format(account.getBalance()));
@@ -285,6 +299,10 @@ public class BankMenu {
 		}
 	}
 	
+	// prompts the user for all information related to transfers
+	// modifies the balances of both accounts related to the transfer
+	// creates a Transaction record for each account upon a successful transfer
+	// returns to account information screen when done
 	public void transfer(BankInfo.Account account) {
 		System.out.println("\nCurrent balance: $" + df.format(account.getBalance()));
 		System.out.println("Please enter the username / email of the account you wish to transfer to.");
@@ -319,7 +337,8 @@ public class BankMenu {
 			else {
 				System.out.println("\nPlease confirm this transfer.");
 				System.out.println("\nAmount: $" + df.format(amount));
-				System.out.println("Account username: " + transferUser);
+				System.out.println("From: " + account.getUser());
+				System.out.println("To: " + transferUser);
 				boolean confirm = false;
 				
 				do {
@@ -342,6 +361,11 @@ public class BankMenu {
 				if(confirm) {
 					account.setBalance(account.getBalance() - amount);
 					bankInfo.getAccount(acc).setBalance(bankInfo.getAccount(acc).getBalance() + amount);
+					account.addTransaction(bankInfo.new 
+							Transaction("TransferTo", transferUser, amount, account.getBalance(), LocalDate.now()));
+					bankInfo.getAccount(acc).addTransaction(bankInfo.new 
+							Transaction("TransferFrom", account.getUser(), amount,
+									bankInfo.getAccount(acc).getBalance(), LocalDate.now()));
 					
 					System.out.println("\nSuccessfully transfered $" + df.format(amount) + " to " + transferUser);
 					System.out.println("Remaining balance: $" + df.format(account.getBalance()));
@@ -354,5 +378,79 @@ public class BankMenu {
 		} finally {
 			printLoginScreen(account);
 		}
+	}
+	
+	// prints the account history in Transactions three at a time
+	// prompts user to navigate through remaining Transactions using a ListIterator
+	// returns to account information screen when done
+	public void accountHistory(BankInfo.Account account) {
+		if(account.getTransactions().size() == 0) {
+			System.out.println("\nNo transaction history for " + account.getUser());
+		}
+		else {
+			System.out.println("\nAccount History for " + account.getUser() + ":");
+			ListIterator<BankInfo.Transaction> lt = account.getTransactions().listIterator();
+			int idx = 0;
+			int endIdx = 0;
+			
+			do {
+				System.out.println("\n===============================================");
+				if(endIdx > idx)
+					do {
+						lt.previous();
+					} while(lt.previousIndex() >= idx);
+				for(int i = idx; i < idx + 3 && lt.hasNext(); i++) {
+					System.out.println(lt.next().toString());
+					System.out.println("===============================================");
+					endIdx = i;
+				}
+				
+				if(idx > 0) {
+					System.out.print("1...");
+				}
+				System.out.print((idx + 1) + " - " + (endIdx + 1));
+				if(endIdx < account.getTransactions().size() - 1) {
+					System.out.print("..." + account.getTransactions().size());
+				}
+			
+				boolean noInput = true;
+				char option = '1';
+				do{
+					System.out.println("\n");
+					if(idx > 0)
+						System.out.println("[P] - Previous");
+					if(endIdx < account.getTransactions().size() - 1)
+						System.out.println("[N] - Next");
+					System.out.println("[E] - Exit");
+					
+					System.out.print("\nOption: ");
+					String confirmation = input.nextLine();
+					
+					if(!confirmation.equals(null) || !confirmation.equals(""))
+						option = Character.toUpperCase(confirmation.charAt(0));
+								
+					if(confirmation.length() != 1)
+						System.out.print("\nPlease enter a valid option.");
+					else if(option == 'P' && idx > 0) {
+						idx -= 3;
+						noInput = false;
+					}
+					else if(option == 'N' && endIdx < account.getTransactions().size() - 1) {
+						idx += 3;
+						noInput = false;
+					}
+					else if(option == 'E') {
+						noInput = false;
+					}
+					else
+						System.out.print("\nPlease enter a valid option.");
+				} while(noInput);
+				
+				if(option == 'E')
+					break;
+			} while(true);
+		}
+		
+		printLoginScreen(account);
 	}
 }

@@ -2,6 +2,8 @@ package com.revature.bank;
 
 import java.util.*;
 import java.io.*;
+import java.text.DecimalFormat;
+import java.time.LocalDate;
 
 /*
  * Bank information class for account information storage
@@ -16,6 +18,7 @@ import java.io.*;
 public class BankInfo implements Serializable {
 
 	private static final long serialVersionUID = 7104008807727037474L;
+	private static final DecimalFormat df = new DecimalFormat("#0.00");
 	
 	private transient int accountNumber;
 	private ArrayList<Account> accounts;
@@ -27,49 +30,152 @@ public class BankInfo implements Serializable {
 		private String user;
 		private String pass;
 		private double balance;
+		private LinkedList<Transaction> transactions;
 		
-		@SuppressWarnings("unused")
 		public Account() {
 			super();
 			balance = 0;
+			transactions = new LinkedList<Transaction>();
 		}
 		
-		@SuppressWarnings("unused")
 		public Account(String user, String pass) {
 			super();
 			this.user = user;
 			this.pass = pass;
 			this.balance = 0;
+			transactions = new LinkedList<Transaction>();
 		}
 		
-		@SuppressWarnings("unused")
 		public String getUser() {
 			return user;
 		}
 
-		@SuppressWarnings("unused")
 		public void setUser(String user) {
 			this.user = user;
 		}
 
-		@SuppressWarnings("unused")
 		public String getPass() {
 			return pass;
 		}
 
-		@SuppressWarnings("unused")
 		public void setPass(String pass) {
 			this.pass = pass;
 		}
 
-		@SuppressWarnings("unused")
 		public double getBalance() {
 			return balance;
 		}
 
-		@SuppressWarnings("unused")
 		public void setBalance(double balance) {
 			this.balance = balance;
+		}
+		
+		public Transaction getTransaction(int i) {
+			return this.transactions.get(i);
+		}
+		
+		public LinkedList<Transaction> getTransactions(){
+			return this.transactions;
+		}
+		
+		public void addTransaction(Transaction t) {
+			transactions.addFirst(t);
+		}
+	}
+	
+	// Nested class for handling Transaction related features
+	public class Transaction implements Serializable {
+		private static final long serialVersionUID = 3401336348247420513L;
+		
+		String type;
+		String user;
+		double amount;
+		double balance;
+		LocalDate date;
+		
+		public Transaction() {
+			super();
+			date = LocalDate.now();
+		}
+		
+		public Transaction(String type, String user,  double amount, double balance, LocalDate date) {
+			super();
+			this.type = type;
+			this.user = user;
+			this.amount = amount;
+			this.balance = balance;
+			this.date = date;
+		}
+
+		public String getType() {
+			return type;
+		}
+
+		public void setType(String type) {
+			this.type = type;
+		}
+
+		public double getAmount() {
+			return amount;
+		}
+
+		public void setAmount(double amount) {
+			this.amount = amount;
+		}
+
+		public String getUser() {
+			return user;
+		}
+
+		public void setUser(String user) {
+			this.user = user;
+		}
+		
+		public double getBalance() {
+			return balance;
+		}
+
+		public void setBalance(double balance) {
+			this.balance = balance;
+		}
+
+		public LocalDate getDate() {
+			return date;
+		}
+
+		public void setDate(LocalDate date) {
+			this.date = date;
+		}
+		
+		// most importantly in this class is this toString() method
+		// returns a String message depending on the type of transaction
+		// represented by the Transaction object
+		public String toString() {
+			String s = date.toString() + "\n\t";
+			switch(this.type) {
+			case "Withdrawal":
+				s += ("Withdrew $" + df.format(this.amount));
+				s += ("\n\n\t-$" + df.format(this.amount));
+				s += ("\n\tBalance: $" + df.format(this.balance));
+				break;
+			case "Deposit":
+				s += ("Deposited $" + df.format(this.amount));
+				s += ("\n\n\t+$" + df.format(this.amount));
+				s += ("\n\tBalance: $" + df.format(this.balance));
+				break;
+			case "TransferTo":
+				s += ("Transferred $" + df.format(this.amount) + " to " + this.user);
+				s += ("\n\n\t-$" + df.format(this.amount));
+				s += ("\n\tBalance: $" + df.format(this.balance));
+				break;
+			case "TransferFrom":
+				s += ("Received transfer of $" + df.format(this.amount) + " from " + this.user);
+				s += ("\n\n\t+$" + df.format(this.amount));
+				s += ("\n\tBalance: $" + df.format(this.balance));
+				break;
+			}
+			
+			return s;
 		}
 	}
 	
