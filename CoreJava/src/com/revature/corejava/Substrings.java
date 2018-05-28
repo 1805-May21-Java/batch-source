@@ -1,3 +1,4 @@
+package com.revature.corejava;
 import java.util.Scanner;
 
 public class Substrings {
