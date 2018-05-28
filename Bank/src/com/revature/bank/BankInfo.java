@@ -174,6 +174,8 @@ public class BankInfo implements Serializable {
 				s += ("\n\n\t+$" + df.format(this.amount));
 				s += ("\n\tBalance: $" + df.format(this.balance));
 				break;
+			case "Open":
+				s += ("Opened account under username " + this.user);
 			}
 			
 			return s;

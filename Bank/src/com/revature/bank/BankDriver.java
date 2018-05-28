@@ -53,6 +53,5 @@ public class BankDriver {
 		BankInfo bi = readFromFile();
 		BankMenu bm = new BankMenu(bi);
 		bm.printHome();
-		writeToFile(bi);
 	}
 }

@@ -87,6 +87,8 @@ public class BankMenu {
 		
 		if(!(newUser.equals("") && newPass.equals("") && newPass2.equals(""))) {
 			Account r = bankInfo.new Account(newUser, newPass);
+			r.addTransaction(bankInfo.new 
+					Transaction("Open", newUser, 0, r.getBalance(), LocalDateTime.now()));
 			bankInfo.addAccount(r);
 			System.out.println("\nYour account has been created. Thank you for joining Boulos Bank!");
 		}
@@ -161,6 +163,7 @@ public class BankMenu {
 					break;
 				case 'Q':
 					System.out.println("\nSee you soon!");
+					System.exit(0);
 					break;
 				default:
 					optionChosen = false;
