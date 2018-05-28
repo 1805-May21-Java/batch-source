@@ -3,7 +3,8 @@ package com.revature.bank;
 import java.util.*;
 import java.io.*;
 import java.text.DecimalFormat;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /*
  * Bank information class for account information storage
@@ -91,14 +92,14 @@ public class BankInfo implements Serializable {
 		String user;
 		double amount;
 		double balance;
-		LocalDate date;
+		LocalDateTime date;
 		
 		public Transaction() {
 			super();
-			date = LocalDate.now();
+			date = LocalDateTime.now();
 		}
 		
-		public Transaction(String type, String user,  double amount, double balance, LocalDate date) {
+		public Transaction(String type, String user,  double amount, double balance, LocalDateTime date) {
 			super();
 			this.type = type;
 			this.user = user;
@@ -139,11 +140,11 @@ public class BankInfo implements Serializable {
 			this.balance = balance;
 		}
 
-		public LocalDate getDate() {
+		public LocalDateTime getDate() {
 			return date;
 		}
 
-		public void setDate(LocalDate date) {
+		public void setDate(LocalDateTime date) {
 			this.date = date;
 		}
 		
@@ -151,7 +152,7 @@ public class BankInfo implements Serializable {
 		// returns a String message depending on the type of transaction
 		// represented by the Transaction object
 		public String toString() {
-			String s = date.toString() + "\n\t";
+			String s = date.format(DateTimeFormatter.ofPattern("MM-dd-yyyy HH:mm")) + "\n\t";
 			switch(this.type) {
 			case "Withdrawal":
 				s += ("Withdrew $" + df.format(this.amount));

@@ -1,7 +1,7 @@
 package com.revature.bank;
 
 import java.text.DecimalFormat;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ListIterator;
 import java.util.Scanner;
 
@@ -261,8 +261,9 @@ public class BankMenu {
 				System.out.println("\nCannot withdraw a negative amount of money.");
 			else {
 				account.setBalance(account.getBalance() - amount);
-				account.addTransaction(bankInfo.new 
-						Transaction("Withdrawal", "", amount, account.getBalance(), LocalDate.now()));
+				if(amount != 0)
+					account.addTransaction(bankInfo.new 
+						Transaction("Withdrawal", "", amount, account.getBalance(), LocalDateTime.now()));
 				
 				System.out.println("\nSuccessfully withdrew $" + df.format(amount));
 				System.out.println("Remaining balance: $" + df.format(account.getBalance()));
@@ -290,7 +291,7 @@ public class BankMenu {
 			else {
 				account.setBalance(account.getBalance() + amount);
 				account.addTransaction(bankInfo.new 
-						Transaction("Deposit", "", amount, account.getBalance(), LocalDate.now()));
+						Transaction("Deposit", "", amount, account.getBalance(), LocalDateTime.now()));
 				
 				System.out.println("\nSuccessfully deposited $" + df.format(amount));
 				System.out.println("New balance: $" + df.format(account.getBalance()));
@@ -365,10 +366,10 @@ public class BankMenu {
 					account.setBalance(account.getBalance() - amount);
 					bankInfo.getAccount(acc).setBalance(bankInfo.getAccount(acc).getBalance() + amount);
 					account.addTransaction(bankInfo.new 
-							Transaction("TransferTo", transferUser, amount, account.getBalance(), LocalDate.now()));
+							Transaction("TransferTo", transferUser, amount, account.getBalance(), LocalDateTime.now()));
 					bankInfo.getAccount(acc).addTransaction(bankInfo.new 
 							Transaction("TransferFrom", account.getUser(), amount,
-									bankInfo.getAccount(acc).getBalance(), LocalDate.now()));
+									bankInfo.getAccount(acc).getBalance(), LocalDateTime.now()));
 					
 					System.out.println("\nSuccessfully transfered $" + df.format(amount) + " to " + transferUser);
 					System.out.println("Remaining balance: $" + df.format(account.getBalance()));
