@@ -1,4 +1,4 @@
-package com.revature;
+package menu;
 
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;

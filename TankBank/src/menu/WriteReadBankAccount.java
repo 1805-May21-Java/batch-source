@@ -1,4 +1,4 @@
-package com.revature;
+package menu;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -7,7 +7,10 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.Scanner;
-import com.revature.Menu;
+
+import com.revature.Client;
+
+import menu.Menu;
 
 //Stores methods that write and read bank account information
 public class WriteReadBankAccount {

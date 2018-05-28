@@ -11,10 +11,10 @@ public class Client implements Serializable{
 	 */
 	private static final long serialVersionUID = 7164980474022034266L;
 	//List of all accounts the user has
-	ArrayList<BankAccount> accounts;
-	String username;
-	String password;
-	String email;
+	private ArrayList<BankAccount> accounts;
+	private String username;
+	private String password;
+	private String email;
 	
 	
 	public Client() {
