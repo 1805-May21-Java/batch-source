@@ -130,6 +130,8 @@ public class BankMenu {
 	// methods called by this method usually end with a printHome() call
 	// or a printLoginScreen() call to keep the program running
 	public void printHome() {
+		BankDriver.writeToFile(bankInfo);
+		
 		System.out.println("\nWelcome to Boulos Bank!");
 		System.out.println("Your premier banking solution in the Reston area!\n");
 		System.out.println("[L] - Log in");
@@ -175,6 +177,7 @@ public class BankMenu {
 	// methods called by this method usually end with a printLoginScreen() call
 	// or a printHome() call to keep the program running
 	public void printLoginScreen(Account account) {
+		BankDriver.writeToFile(bankInfo);
 		System.out.println("\nHello, " + account.getUser() + "!");
 		System.out.println("[W] - Withdraw money");
 		System.out.println("[D] - Deposit money");

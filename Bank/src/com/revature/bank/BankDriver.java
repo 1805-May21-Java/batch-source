@@ -36,7 +36,7 @@ public class BankDriver {
 	}
 	
 	// serializes back account information and writes it to the ACCOUNT_FILE
-	private static void writeToFile(BankInfo b) {
+	static void writeToFile(BankInfo b) {
 		FileOutputStream fos = null;
 		ObjectOutputStream oos = null;
 		
