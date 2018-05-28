@@ -1,2 +1,0 @@
-nick,nick,300.0
-alex,alex,200.0

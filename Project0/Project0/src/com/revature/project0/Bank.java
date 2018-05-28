@@ -1,11 +1,10 @@
 package com.revature.project0;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 public class Bank {
@@ -13,6 +12,7 @@ public class Bank {
 
 	public Bank() {
 		super();
+		this.accounts = new ArrayList<Account>();
 	}
 	
 	public Bank(ArrayList<Account> accounts) {
@@ -20,66 +20,25 @@ public class Bank {
 		this.accounts = accounts;
 	}
 	
-	public void save(String content, boolean append) {
-		String path = "src/com/revature/project0/Data.txt";
-		BufferedWriter bw = null;
-		File file = new File(path);
-		FileWriter fw = null;
-		try {
-			if(!file.exists())
-				file.createNewFile();
-			
-			if(append)
-				fw = new FileWriter(file, true);
-			else
-				fw = new FileWriter(file);
-			
-			bw = new BufferedWriter(fw);
-			bw.write(content);
+	public void save() {
+		String path = "src/com/revature/project0/Data.ser";
+		try (FileOutputStream fos = new FileOutputStream(path); ObjectOutputStream oos = new ObjectOutputStream(fos)) {
+			oos.writeObject(accounts);
 		} catch (IOException e) {
 			e.printStackTrace();
-		} finally {
-			if(bw != null) {
-				try {
-					bw.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
 		}
 	}
 	
-	public void edit(String username, String content) {
-		BufferedReader br = null;
-		String path = "src/com/revature/project0/Data.txt";
-		StringBuilder input = new StringBuilder();
-		try {
-			br = new BufferedReader(new FileReader(path));
-			String line = null;
-			
-			
-			while((line = br.readLine()) != null) {
-				String[] parts = line.split(",");
-				if(parts[0].equals(username)) {
-					input.append(content);
-				} else {
-					input.append(line + "\n");
-				}
-			}
-			
+	public void read() {
+		String path = "src/com/revature/project0/Data.ser";
+
+		try (FileInputStream fis = new FileInputStream(path); ObjectInputStream ois = new ObjectInputStream(fis)) {
+			accounts = (ArrayList<Account>) ois.readObject();
 		} catch (IOException e) {
 			e.printStackTrace();
-		} finally {
-			if(br != null) {
-				try {
-					br.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
 		}
-		String inputStr = input.toString();
-		save(inputStr, false);
 	}
 	
 	public boolean createAccount(Account newAccount) {
@@ -90,8 +49,8 @@ public class Bank {
 		}
 		
 		accounts.add(newAccount);
-		
-		save(newAccount.getUsername() + "," + newAccount.getPassword() + "," + newAccount.getBalance() + "\n", true);
+		System.out.println(accounts);
+		save();
 		
 		newAccount.setLoggedIn(true);
 		
@@ -115,7 +74,7 @@ public class Bank {
 	}
 	
 	public boolean logout(Account account) {
-		edit(account.getUsername(), account.getUsername() + "," + account.getPassword() + "," + account.getBalance() + "\n");
+		save();
 
 		for(Account acc : accounts) {
 			if(acc.getUsername().equals(account.getUsername())) {
@@ -123,5 +82,23 @@ public class Bank {
 			}
 		}
 		return false;
+	}
+	
+	public boolean transfer(String username, double amount) {
+		for(Account account : accounts) {
+			if(account.getUsername().equals(username)) {
+				account.deposit(amount);
+				return true;
+			}
+		}
+		return false; // account does not exist
+	}
+
+	public ArrayList<Account> getAccounts() {
+		return accounts;
+	}
+
+	public void setAccounts(ArrayList<Account> accounts) {
+		this.accounts = accounts;
 	}
 }

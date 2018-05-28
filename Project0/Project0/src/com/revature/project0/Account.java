@@ -1,6 +1,9 @@
 package com.revature.project0;
 
-public class Account {
+import java.io.Serializable;
+
+public class Account implements Serializable {
+	private static final long serialVersionUID = -6260234582326963129L;
 	private String username;
 	private String password;
 	private double balance;

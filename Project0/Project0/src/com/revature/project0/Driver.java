@@ -1,8 +1,5 @@
 package com.revature.project0;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -10,33 +7,9 @@ public class Driver {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		ArrayList<Account> accounts = new ArrayList<>();
-		BufferedReader br = null;
-		String path = "src/com/revature/project0/Data.txt";
-		
-		try {
-			br = new BufferedReader(new FileReader(path));
-			String line = null;
-			
-			while((line = br.readLine()) != null) {
-				String[] parts = line.split(",");
-				Account newAccount = new Account(parts[0], parts[1], Double.parseDouble(parts[2]));
-				accounts.add(newAccount);
-			}
-			
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			if(br != null) {
-				try {
-					br.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-		}
-
-		Bank bank = new Bank(accounts);
+		Bank bank = new Bank();
+		bank.read();
+		ArrayList<Account> accounts = bank.getAccounts();
 		
 		String operation = "";
 		String username;
@@ -86,7 +59,7 @@ public class Driver {
 		if(account.isLoggedIn()) {
 			while(flag != true) {
 				System.out.println();
-				System.out.println("Enter 1 to view balance. Enter 2 to deposit money. Enter 3 to withdraw money. Enter 4 to logout and exit.");
+				System.out.println("Enter 1 to view balance. Enter 2 to deposit money. Enter 3 to withdraw money. Enter 4 to transfer funds to another account. Enter 5 to logout and exit.");
 				operation = sc.nextLine();
 				switch(operation) {
 					case "1":
@@ -98,16 +71,40 @@ public class Driver {
 					case "2":
 						System.out.println("How much money would you like to deposit?");
 						amount = Double.parseDouble(sc.nextLine());
-						account.deposit(amount);
-						System.out.println("Successfully deposited " + amount + " dollars.");
+						if(amount < 0) {
+							System.out.println("You must enter a positive number.");
+						} else {
+							account.deposit(amount);
+							System.out.println("Successfully deposited " + amount + " dollars.");
+						}
 						break;
 					case "3":
 						System.out.println("How much money would you like to withdraw?");
 						amount = Double.parseDouble(sc.nextLine());
-						account.withdraw(amount);
-						System.out.println("Successfully withdrew " + amount + " dollars.");
+						if(amount < 0) {
+							System.out.println("You must enter a positive number.");
+						} else {
+							account.withdraw(amount);
+							System.out.println("Successfully withdrew " + amount + " dollars.");	
+						}
 						break;
 					case "4":
+						System.out.println("How much money would you like to transfer?");
+						amount = Double.parseDouble(sc.nextLine());
+						if(amount < 0) {
+							System.out.println("You must enter a positive number.");
+						} else {
+							System.out.println("Enter the username of the account to transfer the funds to.");
+							username = sc.nextLine();
+							if(bank.transfer(username, amount)) {
+								account.withdraw(amount);
+								System.out.println("Successfully transferred " + amount + " dollars to " + username);
+							} else {
+								System.out.println("An account with that username does not exist");
+							}
+						}
+						break;
+					case "5":
 						bank.logout(account);
 						flag = true;
 						System.out.println("Good bye!");
