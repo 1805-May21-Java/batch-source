@@ -1,6 +1,6 @@
 package com.revature.corejava;
 
-public class Triangle {
+public class Q13Triangle {
 
 	public static void main(String[] args) {
 		

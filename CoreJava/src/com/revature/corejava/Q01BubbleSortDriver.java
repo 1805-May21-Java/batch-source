@@ -1,6 +1,6 @@
 package com.revature.corejava;
 
-public class BubbleSortDriver {
+public class Q01BubbleSortDriver {
 	
 	public static void main(String args[]) {
 		

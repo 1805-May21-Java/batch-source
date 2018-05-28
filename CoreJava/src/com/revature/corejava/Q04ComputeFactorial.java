@@ -1,7 +1,7 @@
 package com.revature.corejava;
 import java.util.Scanner;
 
-public class ComputeFactorial {
+public class Q04ComputeFactorial {
 	
 	public static Scanner sc = new Scanner(System.in);
 

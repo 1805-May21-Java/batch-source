@@ -2,7 +2,7 @@ package com.revature.corejava;
 
 import java.util.ArrayList;
 
-public class Palindromes {
+public class Q08Palindromes {
 
 	public static void main(String[] args) {
 		

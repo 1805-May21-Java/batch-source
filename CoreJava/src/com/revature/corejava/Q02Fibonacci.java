@@ -1,6 +1,6 @@
 package com.revature.corejava;
 
-public class Fibonacci {
+public class Q02Fibonacci {
 
 	public static void main(String[] args) {
 		

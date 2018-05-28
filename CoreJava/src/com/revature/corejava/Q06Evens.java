@@ -2,7 +2,7 @@ package com.revature.corejava;
 
 import java.util.Scanner;
 
-public class Evens {
+public class Q06Evens {
 	
 	private static Scanner sc = new Scanner(System.in);
 

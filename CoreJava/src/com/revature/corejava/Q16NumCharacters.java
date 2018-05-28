@@ -2,7 +2,7 @@ package com.revature.corejava;
 
 import java.util.Scanner;
 
-public class NumCharacters {
+public class Q16NumCharacters {
 	
 	private static Scanner sc = new Scanner(System.in);
 

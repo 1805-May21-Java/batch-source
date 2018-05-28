@@ -2,7 +2,7 @@ package com.revature.corejava;
 
 import java.util.ArrayList;
 
-public class PrintPrimeNumbers {
+public class Q09PrintPrimeNumbers {
 
 	public static void main(String[] args) {
 		

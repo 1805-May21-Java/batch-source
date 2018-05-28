@@ -1,6 +1,6 @@
 package com.revature.corejava;
 
-public class EnhancedForLoop {
+public class Q12EnhancedForLoop {
 
 	public static void main(String[] args) {
 		

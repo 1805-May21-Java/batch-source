@@ -1,7 +1,7 @@
 package com.revature.corejava;
 import java.util.Scanner;
 
-public class Substrings {
+public class Q05Substrings {
 	
 	private static Scanner sc = new Scanner(System.in);
 

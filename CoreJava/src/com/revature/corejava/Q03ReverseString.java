@@ -1,7 +1,7 @@
 package com.revature.corejava;
 import java.util.Scanner;
 
-public class ReverseString {
+public class Q03ReverseString {
 	
 	private static Scanner sc = new Scanner(System.in);
 

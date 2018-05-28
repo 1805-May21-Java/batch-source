@@ -2,7 +2,7 @@ package com.revature.corejava;
 
 import java.util.Scanner;
 
-public class SimpleInterest {
+public class Q17SimpleInterest {
 	
 	private static Scanner sc = new Scanner(System.in);
 
