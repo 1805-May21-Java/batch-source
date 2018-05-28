@@ -24,6 +24,9 @@ public class BankAccount implements Serializable{
 		if(this.balence - amountToWithdraw < 0) {
 			System.out.println("You don't have that much money!");
 			return;
+		}else if(amountToWithdraw < 0) {
+			System.out.println("Cannot withdraw negative money!");
+			return;
 		}else {
 			//This will later involve writing to a database, which is computationally expensive
 			//So this method is being implemented as a separate thread
@@ -41,6 +44,10 @@ public class BankAccount implements Serializable{
 	
 	//adds amount entered to total amount
 	public void deposit(double amountToDeposit) {
+		if(amountToDeposit < 0) {
+			System.out.println("Cannot depsoit negative money!");
+			return;
+		}
 		//This will later involve writing to a database, which is computationally expensive
 		//So this method is being implemented as a separate thread
 		Thread thread = new Thread(new Runnable() {
