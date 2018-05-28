@@ -20,20 +20,37 @@ public class BankAccount implements Serializable{
 	}
 
 	//withdraws amount entered to total amount
-	public double withdraw(double amountToWithdraw) {
+	public void withdraw(double amountToWithdraw) {
 		if(this.balence - amountToWithdraw < 0) {
 			System.out.println("You don't have that much money!");
-			return balence;
+			return;
 		}else {
-			this.balence -= amountToWithdraw;
-			return balence;
+			//This will later involve writing to a database, which is computationally expensive
+			//So this method is being implemented as a separate thread
+			Thread thread = new Thread(new Runnable() {
+				
+				@Override
+				public void run() {
+					balence -= amountToWithdraw;
+				}
+			});
+			thread.start();
+
 		}
 	}
 	
 	//adds amount entered to total amount
-	public double deposit(double amountToDeposit) {
-		balence += amountToDeposit;
-		return balence;
+	public void deposit(double amountToDeposit) {
+		//This will later involve writing to a database, which is computationally expensive
+		//So this method is being implemented as a separate thread
+		Thread thread = new Thread(new Runnable() {
+			
+			@Override
+			public void run() {
+				balence += amountToDeposit;
+			}
+		});
+		thread.start();
 	}
 	
 	public String getAccountName() {

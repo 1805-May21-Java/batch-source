@@ -15,17 +15,23 @@ public class WriteReadBankAccount {
 	private static Scanner scanner = new Scanner(System.in);
 	static String username;
 	static String password;
+
+	
 	public static Client getClient() {
 		do{
 			//prompts the user for username and password
+			//This method cannot be run in a separate thread, because the program needs to stop when the user
+			//enters the username and password.
+			//This is acceptable because while the user is logging in, nothing else should be happening
 			System.out.println("Type 'exit' at any time to exit");
-			System.out.println("Please enter your username:");
+			System.out.println(Menu.lineBreak);
+			System.out.print("Please enter your username: ");
 			username = scanner.nextLine();
 			if(username.equals("exit")) Menu.exit();
-			System.out.println("Please enter your password:");
+			System.out.print("Please enter your password: ");
 			password = scanner.nextLine();
 			if(password.equals("exit")) Menu.exit();
-			
+		
 			//attempts to open using the username
 			String fileName = "src/com/revature/accounts/"+username+".txt";
 					try(ObjectInputStream oStream = new ObjectInputStream(new FileInputStream(fileName))){
@@ -35,6 +41,7 @@ public class WriteReadBankAccount {
 						//checks to see if password is correct
 						if(client.getPassword().equals(password)) {
 							//if so, prints message and returns the account
+							System.out.println(Menu.lineBreak);
 							System.out.println("Login successful!  Welcome, "+client.getUsername());
 							return client;
 						}else {
@@ -56,17 +63,28 @@ public class WriteReadBankAccount {
 	
 	//writes the given bank account to a file
 	public static void saveClient(Client client) {
-		String fileName = "src/com/revature/accounts/"+client.getUsername()+".txt";
-		try(ObjectOutputStream oStream = new ObjectOutputStream(new FileOutputStream(fileName));){
-			
-			//writes object to file, overwriting old balance if there
-			oStream.writeObject(client);
 		
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		//Saving is a background process, so it is done in a new thread
+		Thread thread = new Thread(new Runnable() {
+			
+			@Override
+			public void run() {
+				String fileName = "src/com/revature/accounts/"+client.getUsername()+".txt";
+				try(ObjectOutputStream oStream = new ObjectOutputStream(new FileOutputStream(fileName));){
+					
+					//writes object to file, overwriting old balance if there
+					oStream.writeObject(client);
+				
+				} catch (FileNotFoundException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		});
+		
+		thread.start();
+		
 	}
 	
 
