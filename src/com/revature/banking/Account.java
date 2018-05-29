@@ -1,8 +1,11 @@
 package com.revature.banking;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Account {
+public class Account implements Serializable {
+    private static final long serialVersionUID = 6699070296291826555L;
+
     /**
      *
      * The Account object holds 4 variables.
@@ -14,8 +17,10 @@ public class Account {
      */
     private String uName;
     private String uPass;
-    private double uBal;
+    private double uBal = 0;
     private double tHold;
+
+
 
     //Argless constructor.
     public Account(){
@@ -23,9 +28,8 @@ public class Account {
     }
 
     //Constructor with required inputs.
-    public Account(String uName, String uPass) {
+    public Account(String uName) {
         this.uName = uName;
-        this.uPass = uPass;
     }
 
     //Full constructor.
@@ -70,7 +74,8 @@ public class Account {
         this.tHold = tHold;
     }
 
-    //
+    //JavaBean/POJO
+    //Functions
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

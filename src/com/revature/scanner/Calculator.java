@@ -7,7 +7,7 @@ public class Calculator {
 
     private static Scanner scanner = new Scanner(System.in);
 
-    public void calculate(){
+    public static void calculate(){
 
         System.out.println("Please enter the operation you'd like to perform: ");
         String op = scanner.nextLine();
