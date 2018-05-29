@@ -16,10 +16,6 @@ public class Driver {
 
 	public static void main(String[] args) {
 		
-		/*
-		 * checklist:
-		 * withdraw money
-		 */
 		accounts = new ArrayList<Account>();
 		
 		// Read in data file with account info
@@ -41,7 +37,7 @@ public class Driver {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		System.out.println(accounts);
+
 		mainPage(); // start bank program
 		
 	}
@@ -222,6 +218,21 @@ public class Driver {
 			editValue(); // write value to file
 			System.out.println("Transaction was successful!");
 			System.out.println();
+			dashboardMenu();
+			break;
+		case "withdraw":
+			System.out.print("Enter withdrawal amount: ");
+			System.out.println();
+			double withdrawal = Double.parseDouble(sc.nextLine());
+			if (withdrawal > session.getBalance()) { // check that amount being withdrawn isn't greater than the available balance
+				System.out.println("ERROR: You don't have enough funds! Try again.");
+				System.out.println();
+			} else {
+				session.setBalance(session.getBalance() - withdrawal); // subtract amount from balance
+				editValue(); // write new value to file
+				System.out.println("Transaction was successful!");
+				System.out.println();
+			}
 			dashboardMenu();
 			break;
 		case "balance":
