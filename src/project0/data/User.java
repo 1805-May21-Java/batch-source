@@ -2,26 +2,19 @@ package project0.data;
 
 import java.io.Serializable;
 
-public class Account implements Serializable{
-	
-	private double savings;
-	private String username;
-	private long accountID;
+public class User implements Serializable {
 	
 	private static final long serialVersionUID = 1;
 	
-	public Account (String username, long accountID) {
+	private String username;
+	private long accountID;
+	private String password;
+	
+	public User (String username, long accountID){
 		this.username = username;
 		this.accountID = accountID;
-		savings = 0.;
 	}
 	
-	public double getSavings() {
-		return savings;
-	}
-	public void setSavings(double savings) {
-		this.savings = savings;
-	}
 	public String getUsername() {
 		return username;
 	}
@@ -33,6 +26,12 @@ public class Account implements Serializable{
 	}
 	public void setAccountID(long accountID) {
 		this.accountID = accountID;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	
 }
