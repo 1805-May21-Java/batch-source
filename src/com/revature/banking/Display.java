@@ -2,6 +2,10 @@ package com.revature.banking;
 
 import com.sun.glass.ui.Screen;
 
+import java.math.BigDecimal;
+import java.math.MathContext;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public class Display {
@@ -24,7 +28,7 @@ public class Display {
     }
 
     public static void mainScreen(){
-        String title = "Wasnik Central Bank Main Menu";
+        String title = "Wasnik National Bank Main Menu";
         String div = ("#####################################################\n");
         int x = 0;
 
@@ -57,7 +61,7 @@ public class Display {
         System.out.println(title+"\n");
         System.out.println(div);
         System.out.println("Please follow the instructions to continue... \n");
-        System.out.println("Enter a username and a password.");
+        System.out.println("Enter a username and a password.\n");
         System.out.println(div);
 
 
@@ -77,14 +81,16 @@ public class Display {
         System.out.println(title+"\n");
         System.out.println(div);
         System.out.println("Please follow the instructions to continue... \n");
-        System.out.println("Enter your username and a password.");
+        System.out.println("Enter your username and a password.\n");
         System.out.println(div);
     }
 
     public static void bankScreen(String u, double z) {
+        DecimalFormat df = new DecimalFormat("$#0.00");
+        df.setRoundingMode(RoundingMode.FLOOR);
+
         String title = u+"\'s Bank Account";
-        String bal = u+"\'s Bank Balance: "+z;
-        double balance = z;
+        String bal = u+"\'s Bank Balance: "+df.format(z);
 
         String div = ("#####################################################\n");
         int x = 0;
@@ -105,6 +111,6 @@ public class Display {
         System.out.println(bal+"\n");
         System.out.println(div);
         System.out.println("Please select an option and press enter/return.");
-        System.out.println("[D]eposit [W]ithdraw [L]ogout [E]xit");
+        System.out.println("[D]eposit [W]ithdraw [L]ogout [E]xit\n");
     }
 }

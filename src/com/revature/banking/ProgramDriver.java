@@ -57,10 +57,10 @@ public class ProgramDriver {
             }
             else if(s.equalsIgnoreCase("L")){
                 Display.loginScreen();
-                System.out.println("Username: ");
-                s = scanner.nextLine();
-                if(!AccountList.getInstance().getaList().containsKey(s)){
-                    System.out.println("That username does not exist.");
+                while(!AccountList.getInstance().getaList().containsKey(s)){
+                    System.out.println("Username: ");
+                    s = scanner.nextLine();
+                    if((!AccountList.getInstance().getaList().containsKey(s)))System.out.println("That username does not exist.");
                 }
                 System.out.println("Password: ");
                 t = scanner.nextLine();
