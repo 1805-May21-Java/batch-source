@@ -54,4 +54,8 @@ public class BankingAccount {
 			return false;
 		}
 	}
+	
+	public String toString() {
+		return username + " " + password +  " " + Float.toString(balance);
+	}
 }
