@@ -1,6 +1,7 @@
 package com.revature.banking;
 
 import java.util.HashMap;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ProgramDriver {
@@ -17,6 +18,7 @@ public class ProgramDriver {
 
         String s,t = null;
         Scanner scanner = new Scanner(System.in);
+        int k = 0;
         double d,w;
         char c;
 
@@ -29,7 +31,7 @@ public class ProgramDriver {
                 do{
                     System.out.println("Username: ");
                     s = scanner.nextLine();
-                    if(s.equalsIgnoreCase("e"))System.exit(1);
+                    if(s.equalsIgnoreCase("e"))System.exit(0);
                     if(AccountList.getInstance().getaList().containsKey(s))System.out.println("This username is taken.\n" +
                             "Please select another username. Or enter E to exit.\n");
                 }while(AccountList.getInstance().getaList().containsKey(s));
@@ -67,11 +69,26 @@ public class ProgramDriver {
 
                 session=Login.auth(s,t);
                 a.setuName(s);
-                break;
+                if(session){
+                    break;
+                }else if(k==3){
+                    System.out.println("Too many failed password attempts.");
+                    System.out.print("Redirecting you to main menu");
+                    System.out.print(".");
+                    Thread.sleep(1000);
+                    System.out.print(".");
+                    Thread.sleep(1000);
+                    System.out.print(".");
+                    Thread.sleep(1000);
+                }else{
+                    System.out.println("The password you entered did not match the one registered to the account.");
+                    k++;
+                    continue;
+                }
             }
             else if(s.equalsIgnoreCase("E")){
                 Display.blankScreen();
-                System.exit(1);
+                System.exit(0);
             }
             else{
                 System.out.println("Unexpected Input, refreshing application.");
@@ -93,19 +110,41 @@ public class ProgramDriver {
             switch(c){
                 case 'd':
                     System.out.println("How much money would you like to deposit?: ");
-                    d = scanner.nextDouble();
+                    try{
+                        d = scanner.nextDouble();
+                    }catch(InputMismatchException e){
+                        System.out.print("Unable to process amount, returning to account menu");
+                        System.out.print(".");
+                        Thread.sleep(1000);
+                        System.out.print(".");
+                        Thread.sleep(1000);
+                        System.out.print(".");
+                        Thread.sleep(1000);
+                        break;
+                    }
                     //a.setuBal(a.getuBal()+d);
 
-                    AccountList.getInstance().getaList().get(a.getuName()).setuBal(a.getuBal()+d);
+                    AccountList.getInstance().getaList().get(a.getuName()).setuBal(a.getuBal()+Math.abs(d));
                     AccountList.getInstance().writeAccounts();
 
                     continue;
                 case 'w':
                     System.out.println("How much money would you like to withdraw?: ");
-                    w = scanner.nextDouble();
+                    try{
+                        w = scanner.nextDouble();
+                    }catch(InputMismatchException e){
+                        System.out.print("Unable to process amount, returning to account menu");
+                        System.out.print(".");
+                        Thread.sleep(1000);
+                        System.out.print(".");
+                        Thread.sleep(1000);
+                        System.out.print(".");
+                        Thread.sleep(1000);
+                        break;
+                    }
                     //a.setuBal(a.getuBal()-w);
-
-                    AccountList.getInstance().getaList().get(a.getuName()).setuBal(a.getuBal()-w);
+                    ;
+                    AccountList.getInstance().getaList().get(a.getuName()).setuBal(a.getuBal()-Math.abs(w));
                     AccountList.getInstance().writeAccounts();
                     continue;
                 case 'l':
