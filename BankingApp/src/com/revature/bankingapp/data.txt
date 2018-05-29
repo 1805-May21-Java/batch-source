@@ -1,2 +1,5 @@
 Sydney27:123456:540.00
 Rachel25:password123:225.00
+John55:password:0.00
+Terry57:qwerty:0.00
+Sean91:letmein:0.00

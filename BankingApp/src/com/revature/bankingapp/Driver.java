@@ -1,7 +1,9 @@
 package com.revature.bankingapp;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -16,10 +18,8 @@ public class Driver {
 		
 		/*
 		 * checklist:
-		 * create account with unique email or username
 		 * deposit money
 		 * withdraw money
-		 * view balance
 		 */
 		accounts = new ArrayList<Account>();
 		
@@ -41,7 +41,7 @@ public class Driver {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+		System.out.println(accounts);
 		mainPage(); // start bank program
 		
 	}
@@ -136,6 +136,55 @@ public class Driver {
 		System.out.println("*                   *");
 		System.out.println("*********************");
 		System.out.println();
+		newUserForm();
+	}
+	
+	public static void newUserForm() {
+		// get username and password from user
+		System.out.println("All fields are case sensitive.\n");
+		System.out.print("      Enter a username (or \"cancel\" to return to main page): ");
+		String username = sc.nextLine(); // case sensitive
+		System.out.println();
+				
+		if (username.equals("cancel")) {
+			mainPage(); // return to main page
+		} else if (listContains(username)){ // check if user already exists in system
+			session = null;
+			System.out.println("ERROR: User \"" + username + "\" already exists. Try a different username.");
+			System.out.println();
+			newUserForm();
+		} else { // username is unique
+			System.out.print("      Enter password (or \"cancel\" to return to main page): ");
+			String password = sc.nextLine(); // case sensitive
+			System.out.println();
+			
+			if (password.equals("cancel")) {
+				mainPage(); // return to main page
+			} else {
+				Account account = new Account(username, password, 0.00); // set initial balance to zero
+				session = account;
+				accounts.add(account); // add new account to system
+				
+				// write new user data to text file
+				String path = "src/com/revature/bankingapp/data.txt";
+				BufferedWriter bw;
+				try {
+					bw = new BufferedWriter(new FileWriter(path, true));
+					bw.write(username + ":" + password + ":0.00");
+					bw.newLine();
+					bw.flush();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				
+				
+				System.out.println("New account " + username + " created!");
+				System.out.println("Logging you in...");
+				System.out.println();
+				dashboardPage(); // log in automatically
+			}
+		}
+		
 	}
 	
 	public static void dashboardPage() {
@@ -150,7 +199,7 @@ public class Driver {
 	
 	// displays navigation option on dashboard page
 	public static void dashboardMenu() {
-
+		System.out.println(session);
 		// navigation menu
 		System.out.println("Navigate using the following commands:");
 		System.out.println();
