@@ -8,9 +8,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.text.NumberFormat;
 import java.util.Scanner;
-
-import javax.swing.text.NumberFormatter;
-
+	
 public class driver {
 	//Methods used for serializing the bank
 	public static boolean writeBank(String path, Bank b) { 
@@ -20,7 +18,7 @@ public class driver {
 				file.createNewFile(); //If bank has not been saved yet, create file
 			} catch (IOException e) { 
 				return false; //Return false on failed save
-			}
+			}		
 		}
 
 		try (FileOutputStream fw = new FileOutputStream(file); ObjectOutputStream os = new ObjectOutputStream(fw);) {
