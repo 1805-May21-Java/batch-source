@@ -18,7 +18,6 @@ public class Driver {
 		
 		/*
 		 * checklist:
-		 * deposit money
 		 * withdraw money
 		 */
 		accounts = new ArrayList<Account>();
@@ -38,6 +37,7 @@ public class Driver {
 				accounts.add(user);
 				line = br.readLine();
 			}
+			br.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -173,10 +173,10 @@ public class Driver {
 					bw.write(username + ":" + password + ":0.00");
 					bw.newLine();
 					bw.flush();
+					bw.close();
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
-				
 				
 				System.out.println("New account " + username + " created!");
 				System.out.println("Logging you in...");
@@ -199,7 +199,6 @@ public class Driver {
 	
 	// displays navigation option on dashboard page
 	public static void dashboardMenu() {
-		System.out.println(session);
 		// navigation menu
 		System.out.println("Navigate using the following commands:");
 		System.out.println();
@@ -215,6 +214,16 @@ public class Driver {
 		String input = sc.nextLine().toLowerCase(); // not case sensitive
 		
 		switch (input) {
+		case "deposit":
+			System.out.print("Enter deposit amount: ");
+			System.out.println();
+			double amount = Double.parseDouble(sc.nextLine());
+			session.setBalance(session.getBalance() + amount); // add deposit amount to balance
+			editValue(); // write value to file
+			System.out.println("Transaction was successful!");
+			System.out.println();
+			dashboardMenu();
+			break;
 		case "balance":
 			System.out.println("Current balance is $" + String.format("%,.2f", session.getBalance()));
 			System.out.println();
@@ -231,6 +240,25 @@ public class Driver {
 			System.out.println();
 			dashboardMenu();
 			break;
+		}
+	}
+	
+	// replace old balance value with new
+	public static void editValue() {
+		String path = "src/com/revature/bankingapp/data.txt";
+		BufferedWriter bw;
+		try {
+			bw = new BufferedWriter(new FileWriter(path));
+
+			// write all accounts into data file
+			// this action clears the file before writing
+			for (Account acc : accounts) {
+				bw.write(acc.getUsername() + ":" + acc.getPassword() + ":" + acc.getBalance());
+				bw.newLine();
+			}
+			bw.close();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 	
