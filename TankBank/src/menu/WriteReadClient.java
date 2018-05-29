@@ -13,7 +13,7 @@ import com.revature.Client;
 import menu.Menu;
 
 //Stores methods that write and read bank account information
-public class WriteReadBankAccount {
+public class WriteReadClient {
 	
 	private static Scanner scanner = new Scanner(System.in);
 	static String username;

@@ -29,6 +29,7 @@ public class SelectAccount extends Menu{
 					
 					System.out.print("What is the name of your new account? ");
 					String accountName = scan.nextLine();
+					
 					//Capitalizes first letter, both for formality
 					//If the user is a jerk and tries to call the account 'exit', it will change to 'Exit'
 					accountName = accountName.substring(0, 1).toUpperCase() + accountName.substring(1);
@@ -36,7 +37,9 @@ public class SelectAccount extends Menu{
 					BankAccount bankAccount = new BankAccount(0,accountName);
 					client.addNewAccount(bankAccount);
 					return bankAccount;
+					
 				}else {
+					//Matches user entry with existing accounts
 					for(BankAccount account : client.getAccounts()) {
 						if(entry.equals(account.getAccountName())) {
 							return account;

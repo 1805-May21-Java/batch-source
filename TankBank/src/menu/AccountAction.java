@@ -19,7 +19,7 @@ public class AccountAction extends Menu{
 			bankAccount.withdraw(withdrawAmount);
 			
 			//Saves changes
-			WriteReadBankAccount.saveClient(client);
+			WriteReadClient.saveClient(client);
 			System.out.println(lineBreak);
 			break;
 			
@@ -31,7 +31,7 @@ public class AccountAction extends Menu{
 			bankAccount.deposit(depositAmount);
 			
 			//Saves changes
-			WriteReadBankAccount.saveClient(client);
+			WriteReadClient.saveClient(client);
 			System.out.println(lineBreak);
 			break;
 			
@@ -50,7 +50,7 @@ public class AccountAction extends Menu{
 			System.out.println(lineBreak);
 			//logs user out, then sends to login screen
 			System.out.println("Logged out!");
-			client = WriteReadBankAccount.getClient();
+			client = WriteReadClient.getClient();
 			SelectAccount.selectAccount(client);
 		case "6":
 			//closes resources then exits

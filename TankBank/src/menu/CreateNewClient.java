@@ -28,7 +28,7 @@ public class CreateNewClient extends Menu{
 		
 		System.out.println("You're all set up!");
 		System.out.println(lineBreak);
-		WriteReadBankAccount.saveClient(client);
+		WriteReadClient.saveClient(client);
 		SelectAccount.selectAccount(client);
 	}
 	

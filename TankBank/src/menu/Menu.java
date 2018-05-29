@@ -5,7 +5,7 @@ import java.util.Scanner;
 import com.revature.Client;
 
 public class Menu {
-	//Contains all menu and navigation for Tank Bank
+	//Common methods and variables for all menu classes
 	
 	static Scanner scan = new Scanner(System.in);
 	Client client;
@@ -26,13 +26,5 @@ public class Menu {
 		System.exit(0);
 	}
 	
-		//tank ascii to print on welcome screen
-	public static String tank = 
-			"  $         			    \n"+ 
-			" $$$     					\n"+ 
-			"$	   .--._____,		\n"+
-			" $$$    .-='=='==-,		\n"+
-			"    $	(O_o_o_o_o_O)		\n"+
-			" $$$						\n"+
-			"  $";
+	
 }

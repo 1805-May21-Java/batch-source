@@ -2,8 +2,9 @@ package menu;
 
 import com.revature.Client;
 
-public class ExistingAccount extends Menu{
+public class WelcomeMenu extends Menu{
 
+	//Welcome menu that lets the user select accounts, create accounts, or fire the cannons
 	public static void Existing(Client client) {
 		System.out.println("Welcome to Tank Bank, where we keep your money safe!");
 		System.out.println(tank);
@@ -12,7 +13,8 @@ public class ExistingAccount extends Menu{
 				+ "3 to exit, or 4 to fire the cannons: ");
 		switch (scan.nextLine()) {
 		case "1":
-			client = WriteReadBankAccount.getClient();
+			//reads an existing client
+			client = WriteReadClient.getClient();
 			SelectAccount.selectAccount(client);
 			break;
 		case "2":
@@ -22,6 +24,7 @@ public class ExistingAccount extends Menu{
 			System.out.println(lineBreak);
 			exit();
 		case "4":
+			//This option fires the cannons
 			FireTheCannons.fire();
 		default:
 			System.out.println("Please enter 1 or 2!");
@@ -29,5 +32,14 @@ public class ExistingAccount extends Menu{
 			}
 	}
 	
+	//tank ASCII to print on welcome screen
+	public static String tank = 
+			"  $         			    \n"+ 
+			" $$$     					\n"+ 
+			"$	   .--._____,		\n"+
+			" $$$    .-='=='==-,		\n"+
+			"    $	(O_o_o_o_o_O)		\n"+
+			" $$$						\n"+
+			"  $";
 	
 }
