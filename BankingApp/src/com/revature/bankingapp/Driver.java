@@ -166,6 +166,11 @@ public class Driver {
 		String input = sc.nextLine().toLowerCase(); // not case sensitive
 		
 		switch (input) {
+		case "balance":
+			System.out.println("Current balance is $" + String.format("%,.2f", session.getBalance()));
+			System.out.println();
+			dashboardMenu(); // always refresh menu
+			break;
 		case "logout":
 			System.out.println("Logging you out...");
 			System.out.println();
