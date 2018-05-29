@@ -17,8 +17,6 @@ public class Driver {
 		/*
 		 * checklist:
 		 * create account with unique email or username
-		 * log in
-		 * log out
 		 * deposit money
 		 * withdraw money
 		 * view balance
@@ -147,6 +145,39 @@ public class Driver {
 		System.out.println("*             *");
 		System.out.println("***************");
 		System.out.println();
+		dashboardMenu();
+	}
+	
+	// displays navigation option on dashboard page
+	public static void dashboardMenu() {
+
+		// navigation menu
+		System.out.println("Navigate using the following commands:");
+		System.out.println();
+		System.out.println("      Enter \"deposit\" to deposit funds.");
+		System.out.println("      Enter \"withdraw\" to withdraw funds.");
+		System.out.println("      Enter \"balance\" to check current balance.");
+		System.out.println("      Enter \"logout\" to return to login screen.");
+		System.out.println();
+		
+		// get user input
+		System.out.print("Select an option: ");
+		System.out.println();
+		String input = sc.nextLine().toLowerCase(); // not case sensitive
+		
+		switch (input) {
+		case "logout":
+			System.out.println("Logging you out...");
+			System.out.println();
+			session = null;
+			mainPage();
+			break;
+		default:
+			System.out.println("ERROR: Input was not valid. Try again.");
+			System.out.println();
+			dashboardMenu();
+			break;
+		}
 	}
 	
 	public static boolean listContains(String username) {
