@@ -1,0 +1,1 @@
+bank.Customer@42a57993bank.Customer@42a57993Customer [name=john, id=john55, balance=2500.0, prevTransaction=0]
