@@ -7,8 +7,8 @@ import java.util.Scanner;
 public class BankSystem {
 
 
-	ArrayList<User> users;
-	ArrayList<Account> accounts;
+	ArrayList<User> users = new ArrayList<User>();
+	ArrayList<Account> accounts = new ArrayList<Account>();
 	
 	public BankSystem() {
 		super();
@@ -16,10 +16,10 @@ public class BankSystem {
 		this.accounts = new ArrayList();
 	}
 
-	public BankSystem(ArrayList users, ArrayList accounts) {
+	public BankSystem(ArrayList us, ArrayList as) {
 		super();
-		this.users = users;
-		this.accounts = accounts;
+		this.users = us;
+		this.accounts = as;
 	}
 	
 	public void addUser(User u) {
@@ -55,7 +55,7 @@ public class BankSystem {
 
 			a.setBalance(a.getBalance()-m);
 			System.out.println("Issueing: " + m + " dollars");
-			System.out.println("Balance: " + a.getBalance());
+			System.out.println("Balance after withdrawal: " + a.getBalance());
 		}
 		else {
 
@@ -160,13 +160,40 @@ public class BankSystem {
 	
 	public Account findAcct(String email) {
 		Iterator i = accounts.iterator();
+		int count = 0;
 		while(i.hasNext()) {
-			if(i.next().equals(email)) {
-				return (Account) i.next();
+			Account a = (Account) i.next();
+			System.out.println(count);
+			if(a.getAccount().equals(email)) {
+				return a;
 			}
 			
 		}
+		System.out.println(count+1);
 		return null;
 	
+	}
+
+	public void print() {
+		
+		System.out.println("Printing current array lists");
+		Iterator i = users.iterator();
+		System.out.println("users: ");
+
+		while(i.hasNext()) {
+			User u = (User) i.next();
+			System.out.println("email: "+u.getEmail()+" pw: "+u.getPassword());
+
+			
+		}
+		
+		Iterator j = accounts.iterator();
+		System.out.println("accounts: ");
+		while(j.hasNext()) {
+			Account a = (Account) j.next();
+			System.out.println("email: "+ a.getAccount()+" pw: "+ a.getPassword()+" balance: " + a.getBalance());
+			
+		}
+		
 	}
 }
