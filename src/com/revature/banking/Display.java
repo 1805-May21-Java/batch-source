@@ -113,4 +113,13 @@ public class Display {
         System.out.println("Please select an option and press enter/return.");
         System.out.println("[D]eposit [W]ithdraw [L]ogout [E]xit\n");
     }
+    public static void accountError() throws InterruptedException {
+        System.out.print("Unable to process amount, returning to account menu");
+        System.out.print(".");
+        Thread.sleep(1000);
+        System.out.print(".");
+        Thread.sleep(1000);
+        System.out.print(".");
+        Thread.sleep(1000);
+    }
 }

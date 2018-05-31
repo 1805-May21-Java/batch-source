@@ -113,15 +113,13 @@ public class ProgramDriver {
                     try{
                         d = scanner.nextDouble();
                     }catch(InputMismatchException e){
-                        System.out.print("Unable to process amount, returning to account menu");
-                        System.out.print(".");
-                        Thread.sleep(1000);
-                        System.out.print(".");
-                        Thread.sleep(1000);
-                        System.out.print(".");
-                        Thread.sleep(1000);
+                        Display.accountError();
                         break;
                     }
+                        if (d < 0) {
+                            Display.accountError();
+                            break;
+                        }
                     //a.setuBal(a.getuBal()+d);
 
                     AccountList.getInstance().getaList().get(a.getuName()).setuBal(a.getuBal()+Math.abs(d));
@@ -133,17 +131,15 @@ public class ProgramDriver {
                     try{
                         w = scanner.nextDouble();
                     }catch(InputMismatchException e){
-                        System.out.print("Unable to process amount, returning to account menu");
-                        System.out.print(".");
-                        Thread.sleep(1000);
-                        System.out.print(".");
-                        Thread.sleep(1000);
-                        System.out.print(".");
-                        Thread.sleep(1000);
+                        Display.accountError();
                         break;
                     }
+                        if(w<0){
+                            Display.accountError();
+                            break;
+                        }
+
                     //a.setuBal(a.getuBal()-w);
-                    ;
                     AccountList.getInstance().getaList().get(a.getuName()).setuBal(a.getuBal()-Math.abs(w));
                     AccountList.getInstance().writeAccounts();
                     continue;
@@ -156,7 +152,8 @@ public class ProgramDriver {
                     System.exit(0);
                 default:
                     Bank();
+                }
             }
         }
     }
-}
+
