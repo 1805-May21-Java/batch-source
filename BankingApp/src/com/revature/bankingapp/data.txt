@@ -1,4 +1,4 @@
-Sydney27:123456:335.0
+Sydney27:123456:35.0
 Rachel25:password123:575.0
 John55:password:230.64
 Terry57:qwerty:62.45
