@@ -90,6 +90,7 @@ public class Driver
 							System.out.println("Please enter the amount to deposit");
 							amount = Integer.parseInt(sc.nextLine());
 							user.setBalance(user.getBalance()+amount);
+							System.out.println("You deposited " + amount);
 							break;
 						}
 						//withdraw case
@@ -102,6 +103,7 @@ public class Driver
 							if(user.getBalance() - amount > 0)
 							{
 								user.setBalance(user.getBalance()-amount);
+								System.out.println("You withdrew " + amount);
 							}
 							else
 							{
