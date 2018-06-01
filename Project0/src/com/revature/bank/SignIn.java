@@ -13,14 +13,11 @@ public class SignIn
 	public SignIn()
 	{
 		
-	}
-	
+	}	
 	public static void readFile()	
 	{
-
 		BufferedReader br = null;
 		String path = "src/com/revature/resource/users.txt";
-		
 		try {
 			br = new BufferedReader(new FileReader(path));
 			String line = br.readLine();
@@ -31,7 +28,7 @@ public class SignIn
 				users.add(line);
 				line = br.readLine();
 			}
-			System.out.println(users);
+			//System.out.println(users);
 
 		} catch (IOException e) {
 
@@ -62,22 +59,40 @@ public class SignIn
 		SignIn.users = users;
 	}
 
-
+	public static int findIndexOfMatchName(String str)
+	{
+		for(int i=0; i<users.size(); i++)
+		{
+			if(users.get(i).substring(0, str.length()).equals(str))
+			{
+				return i;
+			}
+		}
+		return -1;
+		
+	}
 	public static boolean logIn()
 	{
+		SignIn.getUsers().clear();
+		SignUp.getUsers().clear();
 		readFile();
 		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter your user name to sign in:");
 		String user = sc.nextLine();
-		System.out.println("~~~~~");
-		System.out.println(SignUp.isDuplicated(user));
+
 		if(SignUp.isDuplicated(user))
 		{
+			
 			System.out.println("Enter your password:");
 			String pwd = sc.nextLine();
-			if(users.contains(user+" "+pwd))
+			String line = users.get(findIndexOfMatchName(user));
+			String[] lineArray = line.split(" ");
+			Account.setBalance(Double.parseDouble(lineArray[2]));
+			if(users.contains(user+" "+pwd+" "+lineArray[2]))
 				{
+					Account.setUser(user);
+					Account.setPassword(pwd);
 					return true;
 				}
 			else {
@@ -89,7 +104,6 @@ public class SignIn
 					Display.welcome();
 				} catch (IOException e)
 				{
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				
@@ -108,7 +122,6 @@ public class SignIn
 				e.printStackTrace();
 			}
 		}
-
 		return false;
 	}
 
