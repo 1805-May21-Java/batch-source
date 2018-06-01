@@ -66,9 +66,20 @@ create or replace function Chinook.getMaxTrack
 return number
 is
 maximum number;
+svar sys_refcursor;
 begin
-    select max(unitprice) into maximum from Chinook.track;
-    return maximum;
+    open svar for
+    select name from Chinook.track
+    where price = (
+        select max(price) from Chinook.track);
+    return svar;
+end;
+/
+declare
+    s sys_refcursor;
+begin
+    s := Chinook.getMaxTrack();
+    dbms_sql.return_result(s);
 end;
 /
 select Chinook.getMaxTrack() from dual;
