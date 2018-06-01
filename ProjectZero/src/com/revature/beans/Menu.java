@@ -1,16 +1,11 @@
 package com.revature.beans;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.util.Scanner;
+import java.io.*;
+import java.util.*;
 
-import com.revature.accountGrouping.Account;
-import com.revature.accountGrouping.AccountList;
+import com.revature.accountGrouping.*;
 import com.revature.errors.DuplicateUserNameException;
+import com.revature.errors.InvalidLoginException;
 
 public class Menu
 {
@@ -111,22 +106,28 @@ public class Menu
 	
 		System.out.print("Enter the username or email associated with the account: ");
 		String userName = scan.nextLine();
-		Account relevantAccount = accounts.retrieveAccount(userName);
 
-		while(relevantAccount == null)
+		while(!accounts.accountExists(userName))
 		{
 			System.out.print("Invalid username.  Please reenter: ");
 			userName = scan.nextLine();
-			relevantAccount = accounts.retrieveAccount(userName);
 		}
 		
 		System.out.print("Enter the password: ");
 		String password = scan.nextLine();
 		
-		while(!relevantAccount.isPassword(password))
+		Account relevantAccount = null;
+		while(relevantAccount == null)
 		{
-			System.out.print("Incorrect password.  Please reenter: ");
-			password = scan.nextLine();
+			try
+			{
+				relevantAccount = accounts.logOn(userName, password);
+			}
+			catch (InvalidLoginException e)
+			{
+				System.out.print("Incorrect password.  Please reenter: ");
+				password = scan.nextLine();
+			}
 		}
 		
 		loggedInAccount = relevantAccount;
@@ -166,6 +167,7 @@ public class Menu
 	
 	public int getChoice()
 	{
+		Scanner sc = new Scanner(System.in);
 	
 		int choice;
 		System.out.print("Enter the number associated with your choice: ");
@@ -189,7 +191,7 @@ public class Menu
 			}
 			return choice;
 		}
-		catch(NumberFormatException e)
+		catch(InputMismatchException e)
 		{
 			System.out.println("Invalid choice.  Please enter an integer between 1 and " + menuOptions.length);
 			return getChoice();

@@ -9,13 +9,13 @@ public class AccountList implements Serializable
 {
 	private static final long serialVersionUID = 2948469512624171335L;
 
-	private ArrayList<Account> accounts = new ArrayList<Account>();
+	private HashMap<LogInCredential, Account> accounts = new HashMap<LogInCredential, Account>();
 
-//	public AccountList()
-//	{
-//		super();
-//	}
-
+	public AccountList()
+	{
+		super();
+	}
+	
 	@Override
 	public int hashCode()
 	{
@@ -45,41 +45,44 @@ public class AccountList implements Serializable
 		return true;
 	}
 	
-	public void createAccount(String userName, String name, String password) throws DuplicateUserNameException
+	public void createAccount(String userName, String name, String password)
 	{
-		for(Account account : accounts)
+		LogInCredential credentials = new LogInCredential(userName, password);
+		accounts.put(credentials, new Account(name));
+	}
+	
+	public Account logOn(String userName, String password) throws InvalidLoginException
+	{
+		LogInCredential creds = new LogInCredential(userName, password);
+		
+		Set credentials = accounts.keySet();
+		for(Object credential : credentials)
 		{
-			//Making sure the provided user name is unique
-			if(account.getUsername().equals(userName))
+			LogInCredential cred = (LogInCredential)credential;
+			if(cred.isValidMatch(userName, password))
 			{
-				throw new DuplicateUserNameException("An account already has this username.  Please select another.");
+				return accounts.get(creds);
 			}
 		}
-		accounts.add(new Account(userName, name, password));
-	}
-	
-	public Account logOn(String userName, String password)
-	{
-		Account account = retrieveAccount(userName);
 		
-		if(!account.isPassword(password))
-		{
-			
-		}
-		return account;
+		throw new InvalidLoginException();
 	}
 	
-	public Account retrieveAccount(String username)
+	public boolean accountExists(String username)
 	{
-		for(Account account : accounts)
+		Set credentials = accounts.keySet();
+		for(Object credential : credentials)
 		{
-			if(username.equals(account.getUsername()))
-				return account;
+			LogInCredential cred = (LogInCredential)credential;
+			if(username.equals(cred.getUserName()))
+			{
+				return true;
+			}
 		}
-		return null;
+		return false;
 	}
 	
-	public ArrayList<Account> getAccounts()
+	public HashMap<LogInCredential, Account> getAccounts()
 	{
 		return accounts;
 	}
