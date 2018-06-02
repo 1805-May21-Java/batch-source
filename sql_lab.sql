@@ -108,29 +108,166 @@ WHERE FIRSTNAME='Robert' AND LASTNAME='Walter';
 -- 3. SQL Functions --
 ----------------------
 
+SET SERVEROUTPUT ON;
+
 -- 3.1 SYSTEM DEFINED FUNCTIONS
 -- Create a function that returns the current time
+CREATE OR REPLACE FUNCTION GET_TIME
+RETURN VARCHAR2
+IS
+BEGIN
+    RETURN TO_CHAR(LOCALTIMESTAMP, 'HH:MI:SS PM');
+END;
+/
+
+BEGIN
+    DBMS_OUTPUT.PUT_LINE(GET_TIME());
+END;
+/
 
 -- Create a function that returns the length of name in MEDIATYPE table
+CREATE OR REPLACE FUNCTION GET_LENGTH(X IN NUMBER)
+RETURN NUMBER
+IS 
+NAME_LENGTH NUMBER(4);
+BEGIN
+    SELECT LENGTH(NAME)
+    INTO NAME_LENGTH
+    FROM CHINOOK.MEDIATYPE
+    WHERE MEDIATYPEID=X;
+    RETURN NAME_LENGTH;
+END;
+/
+
+DECLARE
+    N NUMBER := 5;
+BEGIN
+    DBMS_OUTPUT.PUT_LINE(GET_LENGTH(N));
+END;
+/
 
 
 -- 3.2 System Defined Aggregate Functions
 -- Create a function that returns the average total of all invoices
+CREATE OR REPLACE FUNCTION GET_AVG_INVOICES
+RETURN NUMBER
+IS 
+AVERAGE DECIMAL(5,2);
+BEGIN
+    SELECT AVG(TOTAL) 
+    INTO AVERAGE
+    FROM CHINOOK.INVOICE;
+    RETURN AVERAGE;
+END;
+/
+
+BEGIN
+    DBMS_OUTPUT.PUT_LINE(GET_AVG_INVOICES);
+END;
+/
 
 -- Create a function that returns the most expensive track
 CREATE OR REPLACE FUNCTION MOST_EXPENSIVE
 RETURN VARCHAR2
 IS
+MAX_PRICE DECIMAL(5,2);
+MAX_NAME VARCHAR2(50);
 BEGIN
-    RETURN (SELECT MAX(UNITPRICE) FROM CHINOOK.TRACK;);
+    SELECT MAX(UNITPRICE)
+    INTO MAX_PRICE
+    FROM CHINOOK.TRACK;
+    
+    SELECT NAME
+    INTO MAX_NAME
+    FROM CHINOOK.TRACK
+    WHERE TRACKID IN (SELECT MIN(TRACKID)
+                        FROM CHINOOK.TRACK
+                        WHERE UNITPRICE = MAX_PRICE);
+    RETURN MAX_NAME;
+END;
+/
+
+BEGIN
+    DBMS_OUTPUT.PUT_LINE(MOST_EXPENSIVE());
 END;
 /
 
 
 -- 3.3 User Defined Scalar Functions
 -- Create a function that returns the average price of invoiceline items in the invoiceline table
+CREATE OR REPLACE FUNCTION GET_AVG_PRICE
+RETURN NUMBER
+IS
+AVERAGE DECIMAL(5,2);
+BEGIN
+    SELECT AVG(UNITPRICE)
+    INTO AVERAGE
+    FROM CHINOOK.INVOICELINE;
+    RETURN AVERAGE;
+END;
+/
+
+BEGIN
+    DBMS_OUTPUT.PUT_LINE(GET_AVG_PRICE());
+END;
+/
 
 
 -- 3.4 User Defined Table Valued Functions
 -- Create a function that returns all employees who are born after 1968
+CREATE OR REPLACE FUNCTION POST_BABYBOOMERS
+RETURN SYS_REFCURSOR
+IS
+BOOMERS SYS_REFCURSOR;
+BEGIN
+    OPEN BOOMERS FOR 
+    SELECT FIRSTNAME, LASTNAME
+    FROM CHINOOK.EMPLOYEE
+    WHERE BIRTHDATE > '31-DEC-68';
+    RETURN BOOMERS;
+END;
+/
+
+SELECT POST_BABYBOOMERS FROM DUAL;
+
+DECLARE
+BOOMERS SYS_REFCURSOR;
+FIRSTNAME VARCHAR2(20);
+LASTNAME VARCHAR2(20);
+BEGIN
+    BOOMERS := POST_BABYBOOMERS();
+    LOOP
+        FETCH BOOMERS INTO FIRSTNAME, LASTNAME;
+        EXIT WHEN BOOMERS%NOTFOUND;
+        DBMS_OUTPUT.PUT_LINE(FIRSTNAME || ' ' || LASTNAME);
+    END LOOP;
+END;
+/
+
+
+
+--------------------------
+-- 4. Stored Procedures --
+--------------------------
+
+SET SERVEROUTPUT ON;
+
+-- 4.1 Basic Stored Procedure
+-- Create a stored procedure that selects the first and last names of all the employees
+
+
+-- 4.2 Stored Procedure Input Parameters
+-- Create a stored procedure that updates the personal information of an employee
+
+-- Create a stored procedure that returns the managers of an employee
+
+
+-- 4.3 Stored Procedure Output Parameters
+-- Create a stored procedure that returns the name and company of a customer
+
+
+
+---------------------
+-- 5. Transactions --
+---------------------
 
