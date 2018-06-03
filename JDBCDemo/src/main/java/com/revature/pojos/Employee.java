@@ -8,46 +8,35 @@ public class Employee {
 	private String name;
 	private Date birthday;
 	private int monthlySalary;
-	//private Department department;
-	private int departmentId;
+	private Department department;
+	//private int departmentId;
 	private Date hireDate;
 	private String position;
 	private int managerId;
-	//private Location location;
-	private int locationId;
+	private Location location;
+	//private int locationId;
 	
 	public Employee() {
 		super();
 	}
 
-	public Employee(int id, String name, Date birthday, int monthlySalary, int departmentId, Date hireDate,
-			String position, int managerId, int locationId) {
+	
+
+	public Employee(int id, String name, Date birthday, int monthlySalary, Department department, Date hireDate,
+			String position, int managerId, Location location) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.birthday = birthday;
 		this.monthlySalary = monthlySalary;
-		this.departmentId = departmentId;
+		this.department = department;
 		this.hireDate = hireDate;
 		this.position = position;
 		this.managerId = managerId;
-		this.locationId = locationId;
+		this.location = location;
 	}
 
 
-
-	public Employee(String name, Date birthday, int monthlySalary, int departmentId, Date hireDate, String position,
-			int managerId, int locationId) {
-		super();
-		this.name = name;
-		this.birthday = birthday;
-		this.monthlySalary = monthlySalary;
-		this.departmentId = departmentId;
-		this.hireDate = hireDate;
-		this.position = position;
-		this.managerId = managerId;
-		this.locationId = locationId;
-	}
 
 	public int getId() {
 		return id;
@@ -105,39 +94,50 @@ public class Employee {
 	public void setManagerId(int managerId) {
 		this.managerId = managerId;
 	}
-	
 
-	public int getDepartmentId() {
-		return departmentId;
+
+
+	public Department getDepartment() {
+		return department;
 	}
 
-	public void setDepartmentId(int departmentId) {
-		this.departmentId = departmentId;
+
+
+	public void setDepartment(Department department) {
+		this.department = department;
 	}
 
-	public int getLocationId() {
-		return locationId;
+
+
+	public Location getLocation() {
+		return location;
 	}
 
-	public void setLocationId(int locationId) {
-		this.locationId = locationId;
+
+
+	public void setLocation(Location location) {
+		this.location = location;
 	}
+
+
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((birthday == null) ? 0 : birthday.hashCode());
-		result = prime * result + departmentId;
+		result = prime * result + ((department == null) ? 0 : department.hashCode());
 		result = prime * result + ((hireDate == null) ? 0 : hireDate.hashCode());
 		result = prime * result + id;
-		result = prime * result + locationId;
+		result = prime * result + ((location == null) ? 0 : location.hashCode());
 		result = prime * result + managerId;
 		result = prime * result + monthlySalary;
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((position == null) ? 0 : position.hashCode());
 		return result;
 	}
+
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -153,7 +153,10 @@ public class Employee {
 				return false;
 		} else if (!birthday.equals(other.birthday))
 			return false;
-		if (departmentId != other.departmentId)
+		if (department == null) {
+			if (other.department != null)
+				return false;
+		} else if (!department.equals(other.department))
 			return false;
 		if (hireDate == null) {
 			if (other.hireDate != null)
@@ -162,7 +165,10 @@ public class Employee {
 			return false;
 		if (id != other.id)
 			return false;
-		if (locationId != other.locationId)
+		if (location == null) {
+			if (other.location != null)
+				return false;
+		} else if (!location.equals(other.location))
 			return false;
 		if (managerId != other.managerId)
 			return false;
@@ -181,12 +187,16 @@ public class Employee {
 		return true;
 	}
 
+
+
 	@Override
 	public String toString() {
 		return "Employee [id=" + id + ", name=" + name + ", birthday=" + birthday + ", monthlySalary=" + monthlySalary
-				+ ", departmentId=" + departmentId + ", hireDate=" + hireDate + ", position=" + position + ", managerId="
-				+ managerId + ", locationId=" + locationId + "]";
+				+ ", department=" + department + ", hireDate=" + hireDate + ", position=" + position + ", managerId="
+				+ managerId + ", location=" + location + "]";
 	}
+	
 
+	
 	
 }

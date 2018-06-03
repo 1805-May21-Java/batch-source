@@ -10,7 +10,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.revature.pojos.Department;
 import com.revature.pojos.Employee;
+import com.revature.pojos.Location;
 import com.revature.util.ConnectionUtil;
 
 public class EmployeeDaoImpl implements EmployeeDao {
@@ -30,12 +32,20 @@ public class EmployeeDaoImpl implements EmployeeDao {
 				String name = rs.getString("EMP_NAME");
 				Date birthday = rs.getDate("BIRTHDAY");
 				int monthlySalary = rs.getInt("MONTHLY_SALARY");
+				
 				int departmentId = rs.getInt("DEPT_ID");
+				DepartmentDaoImpl ddi = new DepartmentDaoImpl();
+				Department department = ddi.getDepartmentById(departmentId);
+				
 				Date hireDate = rs.getDate("HIRE_DATE");
 				String position = rs.getString("POSITION");
 				int managerId = rs.getInt("MANAGER_ID");
+				
 				int locationId = rs.getInt("EMP_LOCATION");
-				employeeList.add( new Employee(employeeId, name, birthday, monthlySalary, departmentId, hireDate, position, managerId, locationId));
+				LocationDaoImpl ldi = new LocationDaoImpl();
+				Location location = ldi.getLocationById(locationId);
+				
+				employeeList.add( new Employee(employeeId, name, birthday, monthlySalary, department, hireDate, position, managerId, location));
 			}
 			
 			con.close();
@@ -65,12 +75,20 @@ public class EmployeeDaoImpl implements EmployeeDao {
 				String name = rs.getString("EMP_NAME");
 				Date birthday = rs.getDate("BIRTHDAY");
 				int monthlySalary = rs.getInt("MONTHLY_SALARY");
+
 				int departmentId = rs.getInt("DEPT_ID");
+				DepartmentDaoImpl ddi = new DepartmentDaoImpl();
+				Department department = ddi.getDepartmentById(departmentId);
+				
 				Date hireDate = rs.getDate("HIRE_DATE");
 				String position = rs.getString("POSITION");
 				int managerId = rs.getInt("MANAGER_ID");
+
 				int locationId = rs.getInt("EMP_LOCATION");
-				e = new Employee(employeeId, name, birthday, monthlySalary, departmentId, hireDate, position, managerId, locationId);
+				LocationDaoImpl ldi = new LocationDaoImpl();
+				Location location = ldi.getLocationById(locationId);
+				
+				e = new Employee(employeeId, name, birthday, monthlySalary, department, hireDate, position, managerId, location);
 			}
 			
 			con.close();
@@ -97,11 +115,11 @@ public class EmployeeDaoImpl implements EmployeeDao {
 			ps.setString(1, employee.getName());
 			ps.setDate(2, employee.getBirthday());
 			ps.setInt(3, employee.getMonthlySalary());
-			ps.setInt(4, employee.getDepartmentId());
+			ps.setInt(4, employee.getDepartment().getId());
 			ps.setDate(5, employee.getHireDate());
 			ps.setString(6, employee.getPosition());
 			ps.setInt(7, employee.getManagerId());
-			ps.setInt(8, employee.getLocationId());
+			ps.setInt(8, employee.getLocation().getId());
 			employeeCreated = ps.executeUpdate();
 			con.close();
 		} catch (IOException e) {
@@ -134,11 +152,11 @@ public class EmployeeDaoImpl implements EmployeeDao {
 			pstatement.setString(1, employee.getName());
 			pstatement.setDate(2, employee.getBirthday());
 			pstatement.setInt(3, employee.getMonthlySalary());
-			pstatement.setInt(4, employee.getDepartmentId());
+			pstatement.setInt(4, employee.getDepartment().getId());
 			pstatement.setDate(5, employee.getHireDate());
 			pstatement.setString(6, employee.getPosition());
 			pstatement.setInt(7, employee.getManagerId());
-			pstatement.setInt(8, employee.getLocationId());
+			pstatement.setInt(8, employee.getLocation().getId());
 			pstatement.setInt(9, employee.getId());
 			employeesUpdated = pstatement.executeUpdate();
 			con.commit();

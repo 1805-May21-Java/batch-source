@@ -28,10 +28,11 @@ public class Driver {
 //		}
 		
 		EmployeeDaoImpl edi = new EmployeeDaoImpl();
-//		List<Employee> allEmployees = edi.getEmployees();
-//		for(Employee e: allEmployees) {
-//			System.out.println(e);
-//		}
+		List<Employee> allEmployees = edi.getEmployees();
+		for(Employee e: allEmployees) {
+			System.out.println(e);
+		}
+		
 		
 //		System.out.println(edi.getEmployeeById(4));
 		
@@ -65,10 +66,10 @@ public class Driver {
 //		l.setZipcode(85749);
 //		ldi.updateLocation(l);
 		//ldi.deleteLocationById(5);
-		List<Location> allLocations = ldi.getLocations();
-		for(Location l: allLocations) {
-			System.out.println(l);
-		}
+//		List<Location> allLocations = ldi.getLocations();
+//		for(Location l: allLocations) {
+//			System.out.println(l);
+//		}
 		
 	}
 
