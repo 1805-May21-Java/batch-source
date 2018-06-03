@@ -60,7 +60,7 @@ public class Main {
 			}
 			login();
 		}
-		promptPassword();
+		if(curAcct!=null) promptPassword();
 		
 	}
 	public static void promptPassword() {
@@ -74,11 +74,12 @@ public class Main {
 				System.out.println("Too many failed attempts");
 				promptLogin();
 			}
-			promptPassword();
+			if(curAcct!=null) promptPassword();
+		} if(curAcct!=null) {
+			System.out.println("Welcome "+curAcct.getOwner()+".  What would you like to do?");
+			curAcct.setLoggedIn(true);
+			displayMenu();
 		}
-		System.out.println("Welcome "+curAcct.getOwner()+".  What would you like to do?");
-		curAcct.setLoggedIn(true);
-		displayMenu();
 	}
 	public static void displayMenu() {
 		System.out.println("1: Display Current Balance");
