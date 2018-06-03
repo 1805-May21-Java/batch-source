@@ -45,6 +45,35 @@ public class AccountDaoImpl implements AccountDao{
 		}
 		return accountList;
 	}
+	
+	public List<Account> getAccountsByUser(int userId) {
+		List<Account> accountList = new ArrayList<Account>();
+		try {
+			Connection conn = ConnectionUtil.getConnection();
+			String sql = "SELECT A.ACCTNUMBER, A.ACCTBALANCE FROM BANKACCOUNT A LEFT JOIN BANKUSER_BANKACCOUNT B ON A.ACCTNUMBER = B.ACCTNUMBER WHERE B.USERID = " + userId;
+			Statement s = conn.createStatement();
+			ResultSet rs = s.executeQuery(sql);
+			while(rs.next()) {
+				Long accountNumber = rs.getLong("ACCTNUMBER");
+				double balance = rs.getDouble("ACCTBALANCE");
+				List<Integer> jointUsers = new ArrayList<Integer>();
+				
+				String s2 = "SELECT USERID FROM BANKUSER_BANKACCOUNT WHERE ACCTNUMBER = ?";
+				PreparedStatement ps = conn.prepareStatement(s2);
+				ps.setLong(1, accountNumber);
+				ResultSet rs2 = ps.executeQuery();
+				while (rs2.next()) {
+					jointUsers.add(rs2.getInt("USERID"));
+				}
+				accountList.add(new Account(accountNumber, balance, jointUsers));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return accountList;
+	}
 
 	public Account getAccountByNumber(long accountNumber) {
 		Account a = null;

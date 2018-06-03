@@ -26,6 +26,13 @@ public class User {
 		this.password = password;
 		this.linkedAccounts = linkedAccounts;
 	}
+	public User(String username, String email, String password) {
+		super();
+		this.username = username;
+		this.email = email;
+		this.password = password;
+		this.linkedAccounts = new ArrayList<Long>();
+	}
 	public int getUserId() {
 		return userId;
 	}

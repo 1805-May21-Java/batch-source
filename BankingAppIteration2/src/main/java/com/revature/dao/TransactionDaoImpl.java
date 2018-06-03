@@ -39,7 +39,7 @@ public class TransactionDaoImpl implements TransactionDao{
 		return transactionList;
 	}
 
-	public List<Transaction> getAccountTransactions(int acctNumber) {
+	public List<Transaction> getAccountTransactions(long acctNumber) {
 		List<Transaction> transactionList = new ArrayList<Transaction>();
 		try {
 			Connection conn = ConnectionUtil.getConnection();
@@ -63,7 +63,7 @@ public class TransactionDaoImpl implements TransactionDao{
 		return transactionList;
 	}
 
-	public List<Transaction> getAccountTransactions(int acctNumber, int max) {
+	public List<Transaction> getAccountTransactions(long acctNumber, int max) {
 		List<Transaction> transactionList = new ArrayList<Transaction>();
 		try {
 			Connection conn = ConnectionUtil.getConnection();

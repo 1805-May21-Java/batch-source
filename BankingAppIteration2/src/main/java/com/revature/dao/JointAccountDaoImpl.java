@@ -24,6 +24,5 @@ public class JointAccountDaoImpl implements JointAccountDao{
 			e.printStackTrace();
 		}
 		return joinedUser;
-	}
-	
+	}	
 }

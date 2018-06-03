@@ -1,15 +1,14 @@
 package com.revature.main;
 
-
-import com.revature.pojos.Bank;
+import com.revature.actors.Teller;
 
 public class Driver {
 
 	public static void main(String[] args) {
-		Bank myBank = Bank.getInstance();
+		Teller myTeller = new Teller();
+		myTeller.open();
 		
-		Bank.updateBankObject();
 		
-		System.out.println(myBank);
+		
 	}
 }
