@@ -66,7 +66,7 @@ public class Account implements Serializable{
 			return -1;
 		}
 		balance-=amount;
-		System.out.println("You have $"+balance+" remaining.");
+		System.out.printf("You have $%.2f remaining.\n",balance);
 		return 1;
 	}
 	
@@ -78,7 +78,7 @@ public class Account implements Serializable{
 		}
 		if(amount<=0) return -1;
 		balance+=amount;
-		System.out.println("Your balance is now: $"+balance);
+		System.out.printf("Your balance is now: $%.2f\n",balance);
 		return 1;
 	}
 	

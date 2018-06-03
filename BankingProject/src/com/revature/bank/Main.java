@@ -1,19 +1,19 @@
 package com.revature.bank;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+
+import com.revature.dao.AccountDaoImpl;
 
 
 public class Main {
 
 	private static Scanner scanner = new Scanner(System.in);
 	private static Account curAcct;
+	private static AccountDaoImpl adi = new AccountDaoImpl();
+	private static int failedPWNum=0, failedUNNum=0;
+
 	public static void main(String[] args) {
 		//Store data in username.txt
 		//Prompt Login or Create Account
@@ -47,34 +47,30 @@ public class Main {
 	
 	public static void login() {
 		String username;
-		System.out.println("Please Enter your Username");
+		System.out.println("Please Enter your Username:");
 		username = scanner.nextLine();
-		try {
-			FileInputStream fileInputStream= new FileInputStream("src/com/revature/bank/"+username+".ser");
-			ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-			curAcct = (Account) objectInputStream.readObject();
-			objectInputStream.close();
-			promptPassword();
-		} catch (FileNotFoundException e) {
-			System.out.println("Invalid Username");
+		curAcct = adi.getAccountById(username);
+		if(curAcct==null) {
+			System.out.println("Username does not exist.");
+			failedUNNum++;
+			if(failedUNNum==3) {
+				failedUNNum=0;
+				System.out.println("Too many failed attempts");
+				promptLogin();
+			}
 			login();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
+		promptPassword();
 		
 	}
 	public static void promptPassword() {
 		System.out.println("Please enter your password:");
 		String password = scanner.nextLine();
-		int failedNum=0;
 		if(!password.equals(curAcct.getPassword())) {
-			failedNum++;
+			failedPWNum++;
 			System.out.println("Incorrect Password");
-			if(failedNum==3) {
+			if(failedPWNum==3) {
+				failedPWNum=0;
 				System.out.println("Too many failed attempts");
 				promptLogin();
 			}
@@ -93,7 +89,7 @@ public class Main {
 		switch (in2) {
 			case "1":
 				//display balance
-				System.out.println("You have $"+curAcct.getBalance()+" remaining");
+				System.out.printf("You have $%.2f remaining\n",curAcct.getBalance());
 				displayMenu();
 				break;
 			case "2":
@@ -106,16 +102,8 @@ public class Main {
 			case "0":
 				//logout
 				System.out.println("Thank you for Banking with us!");
-				try {
-					FileOutputStream fileOutputStream = new FileOutputStream("src/com/revature/bank/"+curAcct.getUsername()+".ser");
-					ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-					objectOutputStream.writeObject(curAcct);
-					objectOutputStream.close();
-					fileOutputStream.close();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				adi.updateAccount(curAcct);
+				
 				curAcct = null;
 				promptLogin();
 				break;
@@ -176,18 +164,21 @@ public class Main {
 		username = getUsername();
 		password =  getPassword();
 		curAcct = new Account(owner, username, password, 0, true);
+		adi.CreateAccount(curAcct);
 		displayMenu();
 
 	}
 	public static String getUsername() {
 		String un="";
 		System.out.println("Please enter a unique username: ");
-
+		List<Account> accts = new ArrayList<>();
+		accts = adi.getAllAccounts();
 		un = scanner.nextLine();
-		File file = new File("src/com/revature/bank/"+un+".ser");
-		if(file.exists()) {
-			System.out.println("Username is already taken.");
-			return getUsername();
+		for(Account a : accts) {
+			if(un.equals(a.getUsername())) {
+				System.out.println("That username is already taken.");
+				getUsername();
+			}
 		}
 		
 		return un;
