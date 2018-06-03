@@ -21,7 +21,15 @@ public class Location {
 		this.state = state;
 		this.zipcode = zipcode;
 	}
-
+	
+	public Location(String street, String city, String state, int zipcode) {
+		super();
+		this.street = street;
+		this.city = city;
+		this.state = state;
+		this.zipcode = zipcode;
+	}
+	
 	public int getId() {
 		return id;
 	}
