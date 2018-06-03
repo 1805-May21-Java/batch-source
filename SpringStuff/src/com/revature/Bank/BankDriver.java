@@ -133,7 +133,7 @@ public class BankDriver {
 					System.out.println("Requested amount not avaliable for withdrawl");
 				}
 				else {
-					System.out.println("Money being deposited below");
+					System.out.println("Money being deposited");
 				}
 			}
 			else if(decision.equalsIgnoreCase("3")) {
