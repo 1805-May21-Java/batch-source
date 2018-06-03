@@ -1,7 +1,5 @@
 package com.revature.htulipan.banking.project0;
 
-import com.sun.xml.internal.ws.util.StringUtils;
-
 public class BankingSession {
 	private final int BASE_MENU = 0;
 	private final int CREATE_USERNAME = 1;
@@ -27,7 +25,6 @@ public class BankingSession {
 	public boolean getExitStatus() {
 		return exitStatus;
 	}
-	
 	
 	public String getDisplayText() {
 		StringBuilder result = new StringBuilder();
