@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c0e8a40f-92f1-4aa2-8e1f-637e9c54b6e2" name="Default" comment="" />
+    <list default="true" id="c0e8a40f-92f1-4aa2-8e1f-637e9c54b6e2" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SQL Lab/5_Transactions.md" beforeDir="false" afterPath="$PROJECT_DIR$/SQL Lab/5_Transactions.md" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -420,7 +423,7 @@
       <workItem from="1527876286968" duration="957000" />
       <workItem from="1527878126712" duration="138000" />
       <workItem from="1527878293737" duration="41000" />
-      <workItem from="1527878372026" duration="1663000" />
+      <workItem from="1527878372026" duration="3388000" />
     </task>
     <task id="LOCAL-00001" summary="Project 0 Banking Application">
       <created>1527555793589</created>
@@ -447,10 +450,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="129389000" />
+    <option name="totallyTimeSpent" value="131114000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1536" height="864" extended-state="7" />
+    <frame x="0" y="0" width="1536" height="864" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />

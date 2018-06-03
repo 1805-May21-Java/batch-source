@@ -17,4 +17,4 @@
 * Week 6: Spring
 * Week 7: Web Services & Microservices
 * Week 8-10: Project 3, Panels (Quality) Project Showcase
-* Week 12+: OCA
+* Week 11+: OCA
