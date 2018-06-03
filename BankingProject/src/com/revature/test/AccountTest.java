@@ -36,4 +36,15 @@ public class AccountTest {
 		account.withdraw(amount);
 		assertEquals(0, account.getBalance(),.5f);
 	}
+	
+	@Test
+	public void testOverdraw() {
+		account.setBalance(10);
+		assertEquals(-1, account.withdraw(20));
+	}
+	
+	@Test
+	public void testNegativeDeposit() {
+		assertEquals(-1, account.deposit(-10));
+	}
 }
