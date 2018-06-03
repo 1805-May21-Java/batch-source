@@ -1,0 +1,261 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="C512FB33-3D85-4CEE-4594-F5AF00963F09" schemaObject="83395CDB-6E57-D94E-B292-10D417A9D843" name="CUSTOMER">
+<sourceConnName>myDB</sourceConnName>
+<sourceObjSchema>CHINOOK</sourceObjSchema>
+<sourceObjName>CUSTOMER</sourceObjName>
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<importedID>907E2A0F-2745-E34B-8FC0-EB52A2354D6B</importedID>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="CUSTOMERID" id="EDB7A093-6CCC-74A2-676D-950892CCDAC3">
+<sourceConnName>myDB</sourceConnName>
+<sourceObjSchema>CUSTOMER</sourceObjSchema>
+<sourceObjName>CUSTOMERID</sourceObjName>
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<importedID>96B7C4C1-94C5-A9F7-BEE7-26B55206CB05</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FIRSTNAME" id="4DB524B9-1C39-B1BE-CD91-7B1165E747E9">
+<sourceConnName>myDB</sourceConnName>
+<sourceObjSchema>CUSTOMER</sourceObjSchema>
+<sourceObjName>FIRSTNAME</sourceObjName>
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<importedID>BC977151-F7A6-C64D-8BDA-6AEA000BCB5F</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>40 BYTE</dataTypeSize>
+<ownDataTypeParameters>40 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="LASTNAME" id="2CCBB4A9-3B46-EEDE-AC02-033E64FF21E9">
+<sourceConnName>myDB</sourceConnName>
+<sourceObjSchema>CUSTOMER</sourceObjSchema>
+<sourceObjName>LASTNAME</sourceObjName>
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<importedID>1D00D4EB-8CF5-90A7-73FE-8A5701CB3350</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 BYTE</dataTypeSize>
+<ownDataTypeParameters>20 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="COMPANY" id="75A64B13-A76C-0879-FAFD-DCD27571614E">
+<sourceConnName>myDB</sourceConnName>
+<sourceObjSchema>CUSTOMER</sourceObjSchema>
+<sourceObjName>COMPANY</sourceObjName>
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<importedID>5713A844-EE7E-3AAC-B486-C97FFBB6B33C</importedID>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>80 BYTE</dataTypeSize>
+<ownDataTypeParameters>80 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ADDRESS" id="853EEBF3-7CEE-68D2-A675-93A01CE2C1EF">
+<sourceConnName>myDB</sourceConnName>
+<sourceObjSchema>CUSTOMER</sourceObjSchema>
+<sourceObjName>ADDRESS</sourceObjName>
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<importedID>6DB77DD4-5C72-ED32-4471-DE43E25DCCF3</importedID>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>70 BYTE</dataTypeSize>
+<ownDataTypeParameters>70 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CITY" id="3CD7AB9B-FAAB-76BD-2A8E-821C10B778F9">
+<sourceConnName>myDB</sourceConnName>
+<sourceObjSchema>CUSTOMER</sourceObjSchema>
+<sourceObjName>CITY</sourceObjName>
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<importedID>04C78F70-8C43-492E-828D-3392E74D4739</importedID>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>40 BYTE</dataTypeSize>
+<ownDataTypeParameters>40 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="STATE" id="54BAB5A4-3045-6432-F831-B64C2257FD00">
+<sourceConnName>myDB</sourceConnName>
+<sourceObjSchema>CUSTOMER</sourceObjSchema>
+<sourceObjName>STATE</sourceObjName>
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<importedID>683939C5-CCD9-86C4-B4AF-76A18C526BBE</importedID>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>40 BYTE</dataTypeSize>
+<ownDataTypeParameters>40 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="COUNTRY" id="B53CF9B2-9A15-6D7A-77FB-9A732AA04439">
+<sourceConnName>myDB</sourceConnName>
+<sourceObjSchema>CUSTOMER</sourceObjSchema>
+<sourceObjName>COUNTRY</sourceObjName>
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<importedID>CF4B7653-79C5-E669-4D4F-9431EE040A87</importedID>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>40 BYTE</dataTypeSize>
+<ownDataTypeParameters>40 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="POSTALCODE" id="20A03776-7B54-4787-2781-CF3701B044DB">
+<sourceConnName>myDB</sourceConnName>
+<sourceObjSchema>CUSTOMER</sourceObjSchema>
+<sourceObjName>POSTALCODE</sourceObjName>
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<importedID>ECD7980F-6120-22BD-60DA-029AE70169E2</importedID>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10 BYTE</dataTypeSize>
+<ownDataTypeParameters>10 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PHONE" id="7AB0EFF2-CCA1-8196-319E-E08427B6ED0C">
+<sourceConnName>myDB</sourceConnName>
+<sourceObjSchema>CUSTOMER</sourceObjSchema>
+<sourceObjName>PHONE</sourceObjName>
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<importedID>9607B70E-7079-061D-B43C-33E21D27B9D0</importedID>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>24 BYTE</dataTypeSize>
+<ownDataTypeParameters>24 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FAX" id="FC723A76-7FE6-5852-5174-D85215EFFC4A">
+<sourceConnName>myDB</sourceConnName>
+<sourceObjSchema>CUSTOMER</sourceObjSchema>
+<sourceObjName>FAX</sourceObjName>
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<importedID>B341A431-ECA7-2557-4D84-D1D47B9FCDFF</importedID>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>24 BYTE</dataTypeSize>
+<ownDataTypeParameters>24 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="EMAIL" id="5EB111F8-898C-7D76-4374-294B3DED35D2">
+<sourceConnName>myDB</sourceConnName>
+<sourceObjSchema>CUSTOMER</sourceObjSchema>
+<sourceObjName>EMAIL</sourceObjName>
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<importedID>0D230E0A-178B-39F6-E47B-73DA5DDCFF8B</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>60 BYTE</dataTypeSize>
+<ownDataTypeParameters>60 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="SUPPORTREPID" id="AAEB1897-2055-0EE9-F4ED-FC882291A2BE">
+<sourceConnName>myDB</sourceConnName>
+<sourceObjSchema>CUSTOMER</sourceObjSchema>
+<sourceObjName>SUPPORTREPID</sourceObjName>
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<importedID>F0F1E371-CE12-E888-89AA-78C09A50B76E</importedID>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="CB4087EF-E1F5-321D-1810-5A5695F373C9" referredColumn="860CD3F5-9FF0-86A7-3DCC-BA57570B5D3C"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="3B3112D8-1471-C1E9-CF04-94BA2FC953EB" name="PK_CUSTOMER">
+<sourceConnName>myDB</sourceConnName>
+<sourceObjSchema>CHINOOK</sourceObjSchema>
+<sourceObjName>PK_CUSTOMER</sourceObjName>
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<importedID>E2A5EE7F-9154-197B-720E-A715D47E3CD1</importedID>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="EDB7A093-6CCC-74A2-676D-950892CCDAC3"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="BC43BBE8-2BA0-5BF0-7B2F-8D72D66DF7E3" schemaObject="83395CDB-6E57-D94E-B292-10D417A9D843" name="PK_CUSTOMER">
+<sourceConnName>myDB</sourceConnName>
+<sourceObjSchema>CHINOOK</sourceObjSchema>
+<sourceObjName>PK_CUSTOMER</sourceObjName>
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<importedID>38DE3DA2-33C7-8E76-5129-076BE83DE119</importedID>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="EDB7A093-6CCC-74A2-676D-950892CCDAC3"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="478EAA71-FDCF-D98A-E6E5-BB9864959D1E" name="FK_CUSTOMERSUPPORTREPID">
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="AAEB1897-2055-0EE9-F4ED-FC882291A2BE"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

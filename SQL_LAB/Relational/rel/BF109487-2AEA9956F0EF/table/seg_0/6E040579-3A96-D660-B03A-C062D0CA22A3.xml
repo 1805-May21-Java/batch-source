@@ -1,0 +1,219 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="6E040579-3A96-D660-B03A-C062D0CA22A3" schemaObject="83395CDB-6E57-D94E-B292-10D417A9D843" name="TRACK">
+<sourceConnName>myDB</sourceConnName>
+<sourceObjSchema>CHINOOK</sourceObjSchema>
+<sourceObjName>TRACK</sourceObjName>
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<importedID>F5C35397-0EF0-875F-03B6-DCEA8F01BD65</importedID>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="TRACKID" id="D7E21C65-9613-275F-C83B-F1B544931B16">
+<sourceConnName>myDB</sourceConnName>
+<sourceObjSchema>TRACK</sourceObjSchema>
+<sourceObjName>TRACKID</sourceObjName>
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<importedID>15DE585A-9058-C0D0-392B-FFD67D3EED03</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NAME" id="35FA85AB-A2F7-309B-AD2C-884CF9AC2FC3">
+<sourceConnName>myDB</sourceConnName>
+<sourceObjSchema>TRACK</sourceObjSchema>
+<sourceObjName>NAME</sourceObjName>
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<importedID>F55B2E48-3F93-02B6-49E6-E67658F72597</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>200 BYTE</dataTypeSize>
+<ownDataTypeParameters>200 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ALBUMID" id="1821C78D-B73B-F5FC-8CAE-6378A29B2FBB">
+<sourceConnName>myDB</sourceConnName>
+<sourceObjSchema>TRACK</sourceObjSchema>
+<sourceObjName>ALBUMID</sourceObjName>
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<importedID>9D2427B0-F566-B9E7-8B1F-8542F1AC128B</importedID>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="672AC9EB-C13B-0CE4-69E8-5FCFF168BF75" referredColumn="FD122239-8481-6A66-DC49-FAFC80D5A7AA"/>
+</associations>
+</Column>
+<Column name="MEDIATYPEID" id="FAF65795-97AB-D8C0-7544-7254FBC78277">
+<sourceConnName>myDB</sourceConnName>
+<sourceObjSchema>TRACK</sourceObjSchema>
+<sourceObjName>MEDIATYPEID</sourceObjName>
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<importedID>76C55D7B-EA04-3539-AE44-37CBCB9BF005</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="9D327D84-32BB-FA54-A89A-E439A9CD82F4" referredColumn="8E62378A-1F13-7885-005B-46DE285ABE8E"/>
+</associations>
+</Column>
+<Column name="GENREID" id="A5F999A0-C70E-A61A-094A-0235C2CEE621">
+<sourceConnName>myDB</sourceConnName>
+<sourceObjSchema>TRACK</sourceObjSchema>
+<sourceObjName>GENREID</sourceObjName>
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<importedID>2E21348C-8346-366C-696A-A6B64327AA3D</importedID>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="279CCC6C-54AE-746F-0CCE-FFC9EAD80295" referredColumn="F7DD0C43-93D2-BCD9-C679-2C37FF604434"/>
+</associations>
+</Column>
+<Column name="COMPOSER" id="A37DD6EE-0344-B1AE-2FDE-2A2274009803">
+<sourceConnName>myDB</sourceConnName>
+<sourceObjSchema>TRACK</sourceObjSchema>
+<sourceObjName>COMPOSER</sourceObjName>
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<importedID>700D05C3-52CA-7955-AB0A-872724185962</importedID>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>220 BYTE</dataTypeSize>
+<ownDataTypeParameters>220 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="MILLISECONDS" id="A88A235C-FF05-D893-C8BC-319E2E2D6E4F">
+<sourceConnName>myDB</sourceConnName>
+<sourceObjSchema>TRACK</sourceObjSchema>
+<sourceObjName>MILLISECONDS</sourceObjName>
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<importedID>4ABE55A2-CE3A-D510-BBC3-9FAC40CB375D</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="BYTES" id="12203DAC-E1D6-B162-115D-878940812D67">
+<sourceConnName>myDB</sourceConnName>
+<sourceObjSchema>TRACK</sourceObjSchema>
+<sourceObjName>BYTES</sourceObjName>
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<importedID>C0BB27B4-F2AF-CE68-617C-F59FDCAFB8CE</importedID>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="UNITPRICE" id="4C5EC87A-0396-9FD6-93B0-639D1CD696D0">
+<sourceConnName>myDB</sourceConnName>
+<sourceObjSchema>TRACK</sourceObjSchema>
+<sourceObjName>UNITPRICE</sourceObjName>
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<importedID>7DBAA1AB-4E77-B425-7372-F6146D83CD63</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,10,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="F0F619BC-074F-9515-B333-4ED76ADD0D13" name="PK_TRACK">
+<sourceConnName>myDB</sourceConnName>
+<sourceObjSchema>CHINOOK</sourceObjSchema>
+<sourceObjName>PK_TRACK</sourceObjName>
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<importedID>8604C764-12AA-A08E-BE24-C92B7B11A6B6</importedID>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D7E21C65-9613-275F-C83B-F1B544931B16"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="B46749D6-3157-58DF-52AF-53E80136AD78" schemaObject="83395CDB-6E57-D94E-B292-10D417A9D843" name="PK_TRACK">
+<sourceConnName>myDB</sourceConnName>
+<sourceObjSchema>CHINOOK</sourceObjSchema>
+<sourceObjName>PK_TRACK</sourceObjName>
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<importedID>E8745640-B934-4455-691A-F63878530B80</importedID>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D7E21C65-9613-275F-C83B-F1B544931B16"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="B041C28B-0A0B-CD6C-2B89-058FE85BFF29" name="FK_TRACKALBUMID">
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="1821C78D-B73B-F5FC-8CAE-6378A29B2FBB"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="36E0431A-2B05-6886-DCC0-6A77752CA7E8" name="FK_TRACKGENREID">
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A5F999A0-C70E-A61A-094A-0235C2CEE621"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="B80FCFDA-5F69-215F-1934-BD6C1B8302FF" name="FK_TRACKMEDIATYPEID">
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="FAF65795-97AB-D8C0-7544-7254FBC78277"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

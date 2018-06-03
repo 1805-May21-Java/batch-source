@@ -1,0 +1,11 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableSpaceOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.TableSpaceOraclev10g" name="USERS" directorySegmentName="seg_0" id="B35BB509-2331-F684-9EB3-3F81DCA2B8FC">
+<sourceConnName>myDB</sourceConnName>
+<sourceObjSchema>CHINOOK</sourceObjSchema>
+<sourceObjName>USERS</sourceObjName>
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 22:46:24 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<emUniformSize>0</emUniformSize>
+<extentManagement>LOCAL</extentManagement>
+</TableSpaceOraclev10g>

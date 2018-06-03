@@ -1,0 +1,77 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="INVOICELINE" directorySegmentName="seg_0" id="01794DFB-B107-F2CF-A219-EE2E3F9CB1C7">
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 22:46:25 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<schemaObject>83395CDB-6E57-D94E-B292-10D417A9D843</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>1ADE5A6E-0E12-DC7A-40EA-663BFD888DAA</segment>
+<tableSpace>B35BB509-2331-F684-9EB3-3F81DCA2B8FC</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="INVOICEID" id="2AECFADD-D95B-B08A-6569-4E90DE6F2785">
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 22:46:25 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="UNITPRICE" id="3664DC26-8453-49B5-345B-A8C9A6B34BF2">
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 22:46:25 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="INVOICELINEID" id="70E21301-E7E7-7324-2B50-BEFA901BDB69">
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 22:46:25 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="QUANTITY" id="7F6CEB5C-B787-6999-0402-21C6F7F8E84B">
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 22:46:25 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="TRACKID" id="9A4688D7-70B5-4A1F-42A9-9DF8EDD0AD41">
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 22:46:25 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<indexProxies>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="PK_INVOICELINE" id="CD950AAB-B796-6CDB-5812-D1A816447B57">
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 22:46:27 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<schemaObject>83395CDB-6E57-D94E-B292-10D417A9D843</schemaObject>
+<segment>716AAB13-D6CB-5BB8-6B09-088F61E1D022</segment>
+<tableSpace>B35BB509-2331-F684-9EB3-3F81DCA2B8FC</tableSpace>
+</IndexProxy>
+</indexProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="FK_INVOICELINEINVOICEID" id="370ED5F3-E63B-1E80-F6C0-3116C0DC1430">
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 22:46:29 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+</ForeignKey>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="FK_INVOICELINETRACKID" id="B3ADCCF4-0A2D-05E7-485B-89FDC6FA7617">
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 22:46:29 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="PK_INVOICELINE" id="FB44FE31-FFD8-316B-13B8-0412300C20C1">
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 22:46:28 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<segment>716AAB13-D6CB-5BB8-6B09-088F61E1D022</segment>
+<tableSpace>B35BB509-2331-F684-9EB3-3F81DCA2B8FC</tableSpace>
+<existingIndex>CD950AAB-B796-6CDB-5812-D1A816447B57</existingIndex>
+<indexSegment>716AAB13-D6CB-5BB8-6B09-088F61E1D022</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>

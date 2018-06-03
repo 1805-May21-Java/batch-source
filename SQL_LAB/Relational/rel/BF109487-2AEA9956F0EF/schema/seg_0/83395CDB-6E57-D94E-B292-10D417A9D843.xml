@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SchemaObject class="oracle.dbtools.crest.model.design.relational.SchemaObject" name="CHINOOK" directorySegmentName="seg_0" id="83395CDB-6E57-D94E-B292-10D417A9D843">
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<importedID>A10BE419-99AA-7FF0-2253-38BF22A60DA1</importedID>
+</SchemaObject>

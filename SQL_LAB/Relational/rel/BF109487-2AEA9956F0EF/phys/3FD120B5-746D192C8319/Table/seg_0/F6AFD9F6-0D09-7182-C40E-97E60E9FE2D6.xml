@@ -1,0 +1,50 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="PLAYLIST" directorySegmentName="seg_0" id="F6AFD9F6-0D09-7182-C40E-97E60E9FE2D6">
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 22:46:25 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<schemaObject>83395CDB-6E57-D94E-B292-10D417A9D843</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>1ADE5A6E-0E12-DC7A-40EA-663BFD888DAA</segment>
+<tableSpace>B35BB509-2331-F684-9EB3-3F81DCA2B8FC</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="PLAYLISTID" id="8F9EF0F6-08A4-D3BC-7199-8F8DD24AC1D8">
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 22:46:26 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="NAME" id="D88B4999-497E-C7DA-1ED7-AAA7C5569AD0">
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 22:46:26 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<indexProxies>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="PK_PLAYLIST" id="DD750556-8A93-0C1D-D3FF-A4C55DFE2D98">
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 22:46:27 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<schemaObject>83395CDB-6E57-D94E-B292-10D417A9D843</schemaObject>
+<segment>716AAB13-D6CB-5BB8-6B09-088F61E1D022</segment>
+<tableSpace>B35BB509-2331-F684-9EB3-3F81DCA2B8FC</tableSpace>
+</IndexProxy>
+</indexProxies>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="PK_PLAYLIST" id="A310D2F5-79F4-314D-7EF0-ADB4751EE3D1">
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 22:46:28 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<segment>716AAB13-D6CB-5BB8-6B09-088F61E1D022</segment>
+<tableSpace>B35BB509-2331-F684-9EB3-3F81DCA2B8FC</tableSpace>
+<existingIndex>DD750556-8A93-0C1D-D3FF-A4C55DFE2D98</existingIndex>
+<indexSegment>716AAB13-D6CB-5BB8-6B09-088F61E1D022</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>

@@ -1,0 +1,102 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="TRACK" directorySegmentName="seg_0" id="6E040579-3A96-D660-B03A-C062D0CA22A3">
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 22:46:25 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<schemaObject>83395CDB-6E57-D94E-B292-10D417A9D843</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>1ADE5A6E-0E12-DC7A-40EA-663BFD888DAA</segment>
+<tableSpace>B35BB509-2331-F684-9EB3-3F81DCA2B8FC</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="BYTES" id="12203DAC-E1D6-B162-115D-878940812D67">
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 22:46:26 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="ALBUMID" id="1821C78D-B73B-F5FC-8CAE-6378A29B2FBB">
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 22:46:26 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="NAME" id="35FA85AB-A2F7-309B-AD2C-884CF9AC2FC3">
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 22:46:26 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="UNITPRICE" id="4C5EC87A-0396-9FD6-93B0-639D1CD696D0">
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 22:46:26 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="COMPOSER" id="A37DD6EE-0344-B1AE-2FDE-2A2274009803">
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 22:46:26 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="GENREID" id="A5F999A0-C70E-A61A-094A-0235C2CEE621">
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 22:46:26 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="MILLISECONDS" id="A88A235C-FF05-D893-C8BC-319E2E2D6E4F">
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 22:46:26 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="TRACKID" id="D7E21C65-9613-275F-C83B-F1B544931B16">
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 22:46:26 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="MEDIATYPEID" id="FAF65795-97AB-D8C0-7544-7254FBC78277">
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 22:46:26 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<indexProxies>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="PK_TRACK" id="B46749D6-3157-58DF-52AF-53E80136AD78">
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 22:46:27 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<schemaObject>83395CDB-6E57-D94E-B292-10D417A9D843</schemaObject>
+<segment>716AAB13-D6CB-5BB8-6B09-088F61E1D022</segment>
+<tableSpace>B35BB509-2331-F684-9EB3-3F81DCA2B8FC</tableSpace>
+</IndexProxy>
+</indexProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="FK_TRACKGENREID" id="36E0431A-2B05-6886-DCC0-6A77752CA7E8">
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 22:46:29 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+</ForeignKey>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="FK_TRACKALBUMID" id="B041C28B-0A0B-CD6C-2B89-058FE85BFF29">
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 22:46:29 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+</ForeignKey>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="FK_TRACKMEDIATYPEID" id="B80FCFDA-5F69-215F-1934-BD6C1B8302FF">
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 22:46:29 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="PK_TRACK" id="F0F619BC-074F-9515-B333-4ED76ADD0D13">
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 22:46:28 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<segment>716AAB13-D6CB-5BB8-6B09-088F61E1D022</segment>
+<tableSpace>B35BB509-2331-F684-9EB3-3F81DCA2B8FC</tableSpace>
+<existingIndex>B46749D6-3157-58DF-52AF-53E80136AD78</existingIndex>
+<indexSegment>716AAB13-D6CB-5BB8-6B09-088F61E1D022</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>

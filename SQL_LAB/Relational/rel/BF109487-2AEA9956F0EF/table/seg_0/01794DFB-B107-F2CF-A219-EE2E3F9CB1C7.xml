@@ -1,0 +1,144 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="01794DFB-B107-F2CF-A219-EE2E3F9CB1C7" schemaObject="83395CDB-6E57-D94E-B292-10D417A9D843" name="INVOICELINE">
+<sourceConnName>myDB</sourceConnName>
+<sourceObjSchema>CHINOOK</sourceObjSchema>
+<sourceObjName>INVOICELINE</sourceObjName>
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<importedID>34D372C2-5B7F-8677-10CC-B633412A0421</importedID>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="INVOICELINEID" id="70E21301-E7E7-7324-2B50-BEFA901BDB69">
+<sourceConnName>myDB</sourceConnName>
+<sourceObjSchema>INVOICELINE</sourceObjSchema>
+<sourceObjName>INVOICELINEID</sourceObjName>
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<importedID>93BC7719-C6B4-B0DA-A7E5-A711AB4EA2A6</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="INVOICEID" id="2AECFADD-D95B-B08A-6569-4E90DE6F2785">
+<sourceConnName>myDB</sourceConnName>
+<sourceObjSchema>INVOICELINE</sourceObjSchema>
+<sourceObjName>INVOICEID</sourceObjName>
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<importedID>3DBBB449-E365-CA47-AE2A-1E85470F05DB</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="CC4A8F83-1FFD-C93D-F92B-4D314F9E9E85" referredColumn="4F6BD940-B3AD-DEDA-A644-0001316D3DAF"/>
+</associations>
+</Column>
+<Column name="TRACKID" id="9A4688D7-70B5-4A1F-42A9-9DF8EDD0AD41">
+<sourceConnName>myDB</sourceConnName>
+<sourceObjSchema>INVOICELINE</sourceObjSchema>
+<sourceObjName>TRACKID</sourceObjName>
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<importedID>816E2D4A-3619-3AAE-6C73-2152B705BBBA</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="72BA4E1C-8A73-D451-F888-CFA66D637F57" referredColumn="D7E21C65-9613-275F-C83B-F1B544931B16"/>
+</associations>
+</Column>
+<Column name="UNITPRICE" id="3664DC26-8453-49B5-345B-A8C9A6B34BF2">
+<sourceConnName>myDB</sourceConnName>
+<sourceObjSchema>INVOICELINE</sourceObjSchema>
+<sourceObjName>UNITPRICE</sourceObjName>
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<importedID>33EFAA62-4BC2-3500-2149-F8BAA156CA8E</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,10,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="QUANTITY" id="7F6CEB5C-B787-6999-0402-21C6F7F8E84B">
+<sourceConnName>myDB</sourceConnName>
+<sourceObjSchema>INVOICELINE</sourceObjSchema>
+<sourceObjName>QUANTITY</sourceObjName>
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<importedID>1C337455-35E9-72FE-A52E-DBFD336AEED6</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="FB44FE31-FFD8-316B-13B8-0412300C20C1" name="PK_INVOICELINE">
+<sourceConnName>myDB</sourceConnName>
+<sourceObjSchema>CHINOOK</sourceObjSchema>
+<sourceObjName>PK_INVOICELINE</sourceObjName>
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<importedID>92118BE3-4A8D-C1A9-475F-C9F445B6B860</importedID>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="70E21301-E7E7-7324-2B50-BEFA901BDB69"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="CD950AAB-B796-6CDB-5812-D1A816447B57" schemaObject="83395CDB-6E57-D94E-B292-10D417A9D843" name="PK_INVOICELINE">
+<sourceConnName>myDB</sourceConnName>
+<sourceObjSchema>CHINOOK</sourceObjSchema>
+<sourceObjName>PK_INVOICELINE</sourceObjName>
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<importedID>F17D39C6-91E1-B1EB-CE12-B62DF2B8D5EE</importedID>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="70E21301-E7E7-7324-2B50-BEFA901BDB69"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="370ED5F3-E63B-1E80-F6C0-3116C0DC1430" name="FK_INVOICELINEINVOICEID">
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2AECFADD-D95B-B08A-6569-4E90DE6F2785"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="B3ADCCF4-0A2D-05E7-485B-89FDC6FA7617" name="FK_INVOICELINETRACKID">
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="9A4688D7-70B5-4A1F-42A9-9DF8EDD0AD41"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

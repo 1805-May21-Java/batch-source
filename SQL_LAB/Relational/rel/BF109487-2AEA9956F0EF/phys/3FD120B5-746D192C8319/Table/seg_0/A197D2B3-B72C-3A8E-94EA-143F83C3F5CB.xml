@@ -1,0 +1,92 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="INVOICE" directorySegmentName="seg_0" id="A197D2B3-B72C-3A8E-94EA-143F83C3F5CB">
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 22:46:24 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<schemaObject>83395CDB-6E57-D94E-B292-10D417A9D843</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>1ADE5A6E-0E12-DC7A-40EA-663BFD888DAA</segment>
+<tableSpace>B35BB509-2331-F684-9EB3-3F81DCA2B8FC</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="BILLINGCITY" id="03BF7E12-CAB8-60D4-EEF7-8FAE059E14BC">
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 22:46:25 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="CUSTOMERID" id="043B6DFF-A3AB-AEFB-1214-2D25FB089271">
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 22:46:25 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="INVOICEDATE" id="183196D2-6F93-1769-A10F-9D9C7728DC35">
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 22:46:25 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="BILLINGSTATE" id="3E284AF1-BF58-C2A5-07A9-8CA31D6D36A7">
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 22:46:25 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="INVOICEID" id="4F6BD940-B3AD-DEDA-A644-0001316D3DAF">
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 22:46:25 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="TOTAL" id="65419039-8600-0C03-06D0-990831ABD4A7">
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 22:46:25 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="BILLINGPOSTALCODE" id="A22F459F-B05C-09B1-1E78-80C8B90E70F7">
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 22:46:25 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="BILLINGADDRESS" id="EA8B8612-35B3-65F3-DC64-238DC4800410">
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 22:46:25 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="BILLINGCOUNTRY" id="EE692B45-FA85-3C63-AA65-8A847725F37F">
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 22:46:25 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<indexProxies>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="PK_INVOICE" id="89733E4A-F4D1-44A1-7718-2966B5E60826">
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 22:46:26 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<schemaObject>83395CDB-6E57-D94E-B292-10D417A9D843</schemaObject>
+<segment>716AAB13-D6CB-5BB8-6B09-088F61E1D022</segment>
+<tableSpace>B35BB509-2331-F684-9EB3-3F81DCA2B8FC</tableSpace>
+</IndexProxy>
+</indexProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="FK_INVOICECUSTOMERID" id="467E7364-AF94-AB95-68D8-DA37B478D2AD">
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 22:46:29 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="PK_INVOICE" id="67A03509-C622-8488-3AC6-655A99121524">
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 22:46:28 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<segment>716AAB13-D6CB-5BB8-6B09-088F61E1D022</segment>
+<tableSpace>B35BB509-2331-F684-9EB3-3F81DCA2B8FC</tableSpace>
+<existingIndex>89733E4A-F4D1-44A1-7718-2966B5E60826</existingIndex>
+<indexSegment>716AAB13-D6CB-5BB8-6B09-088F61E1D022</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>

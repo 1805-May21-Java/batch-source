@@ -1,0 +1,198 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="A197D2B3-B72C-3A8E-94EA-143F83C3F5CB" schemaObject="83395CDB-6E57-D94E-B292-10D417A9D843" name="INVOICE">
+<sourceConnName>myDB</sourceConnName>
+<sourceObjSchema>CHINOOK</sourceObjSchema>
+<sourceObjName>INVOICE</sourceObjName>
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<importedID>CD1DA59A-E46E-91FD-87EE-D89DEF2CDC8B</importedID>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="INVOICEID" id="4F6BD940-B3AD-DEDA-A644-0001316D3DAF">
+<sourceConnName>myDB</sourceConnName>
+<sourceObjSchema>INVOICE</sourceObjSchema>
+<sourceObjName>INVOICEID</sourceObjName>
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<importedID>C20B7F80-FCC2-BBDE-DB93-998D2D8C69A2</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CUSTOMERID" id="043B6DFF-A3AB-AEFB-1214-2D25FB089271">
+<sourceConnName>myDB</sourceConnName>
+<sourceObjSchema>INVOICE</sourceObjSchema>
+<sourceObjName>CUSTOMERID</sourceObjName>
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<importedID>5809E628-904C-F976-3C0B-86CD4DC5187E</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="56A6AD59-B1F5-5E77-7195-53C8BD778CF4" referredColumn="EDB7A093-6CCC-74A2-676D-950892CCDAC3"/>
+</associations>
+</Column>
+<Column name="INVOICEDATE" id="183196D2-6F93-1769-A10F-9D9C7728DC35">
+<sourceConnName>myDB</sourceConnName>
+<sourceObjSchema>INVOICE</sourceObjSchema>
+<sourceObjName>INVOICEDATE</sourceObjName>
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<importedID>2C554A2B-530D-8934-D4C5-34B7EB1A4401</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<dataTypeSize>7</dataTypeSize>
+<ownDataTypeParameters>7,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="BILLINGADDRESS" id="EA8B8612-35B3-65F3-DC64-238DC4800410">
+<sourceConnName>myDB</sourceConnName>
+<sourceObjSchema>INVOICE</sourceObjSchema>
+<sourceObjName>BILLINGADDRESS</sourceObjName>
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<importedID>B91B0191-0038-F8B1-098F-7B639E6ED4CA</importedID>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>70 BYTE</dataTypeSize>
+<ownDataTypeParameters>70 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="BILLINGCITY" id="03BF7E12-CAB8-60D4-EEF7-8FAE059E14BC">
+<sourceConnName>myDB</sourceConnName>
+<sourceObjSchema>INVOICE</sourceObjSchema>
+<sourceObjName>BILLINGCITY</sourceObjName>
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<importedID>C7120F9F-6556-9936-B5EE-40CC24F67962</importedID>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>40 BYTE</dataTypeSize>
+<ownDataTypeParameters>40 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="BILLINGSTATE" id="3E284AF1-BF58-C2A5-07A9-8CA31D6D36A7">
+<sourceConnName>myDB</sourceConnName>
+<sourceObjSchema>INVOICE</sourceObjSchema>
+<sourceObjName>BILLINGSTATE</sourceObjName>
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<importedID>1D10797E-5C36-1443-3627-073061ACBC68</importedID>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>40 BYTE</dataTypeSize>
+<ownDataTypeParameters>40 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="BILLINGCOUNTRY" id="EE692B45-FA85-3C63-AA65-8A847725F37F">
+<sourceConnName>myDB</sourceConnName>
+<sourceObjSchema>INVOICE</sourceObjSchema>
+<sourceObjName>BILLINGCOUNTRY</sourceObjName>
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<importedID>7D8AB65E-D778-893B-C498-58BFE8571E02</importedID>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>40 BYTE</dataTypeSize>
+<ownDataTypeParameters>40 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="BILLINGPOSTALCODE" id="A22F459F-B05C-09B1-1E78-80C8B90E70F7">
+<sourceConnName>myDB</sourceConnName>
+<sourceObjSchema>INVOICE</sourceObjSchema>
+<sourceObjName>BILLINGPOSTALCODE</sourceObjName>
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<importedID>D49CA6AC-AF70-2FAA-CD3F-C74D8F80410A</importedID>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10 BYTE</dataTypeSize>
+<ownDataTypeParameters>10 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="TOTAL" id="65419039-8600-0C03-06D0-990831ABD4A7">
+<sourceConnName>myDB</sourceConnName>
+<sourceObjSchema>INVOICE</sourceObjSchema>
+<sourceObjName>TOTAL</sourceObjName>
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<importedID>9253C84D-7564-D315-6B60-A69FDDCF5C2E</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,10,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="67A03509-C622-8488-3AC6-655A99121524" name="PK_INVOICE">
+<sourceConnName>myDB</sourceConnName>
+<sourceObjSchema>CHINOOK</sourceObjSchema>
+<sourceObjName>PK_INVOICE</sourceObjName>
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<importedID>F95AE8B8-AC70-D28C-F8B1-AD45CABA7799</importedID>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4F6BD940-B3AD-DEDA-A644-0001316D3DAF"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="89733E4A-F4D1-44A1-7718-2966B5E60826" schemaObject="83395CDB-6E57-D94E-B292-10D417A9D843" name="PK_INVOICE">
+<sourceConnName>myDB</sourceConnName>
+<sourceObjSchema>CHINOOK</sourceObjSchema>
+<sourceObjName>PK_INVOICE</sourceObjName>
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<importedID>69DC5EAB-2067-0409-FA3C-850601AE4F54</importedID>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4F6BD940-B3AD-DEDA-A644-0001316D3DAF"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="467E7364-AF94-AB95-68D8-DA37B478D2AD" name="FK_INVOICECUSTOMERID">
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="043B6DFF-A3AB-AEFB-1214-2D25FB089271"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

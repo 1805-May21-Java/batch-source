@@ -1,0 +1,76 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="175F65A7-35B3-4F0A-E24C-8EBF47038DE1" schemaObject="83395CDB-6E57-D94E-B292-10D417A9D843" name="ARTIST">
+<sourceConnName>myDB</sourceConnName>
+<sourceObjSchema>CHINOOK</sourceObjSchema>
+<sourceObjName>ARTIST</sourceObjName>
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<importedID>4629AE68-45B0-0C8C-71F3-B8E503D50FCA</importedID>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ARTISTID" id="EDB893CE-4829-2E33-C50A-917651BED8FF">
+<sourceConnName>myDB</sourceConnName>
+<sourceObjSchema>ARTIST</sourceObjSchema>
+<sourceObjName>ARTISTID</sourceObjName>
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<importedID>47A7D44F-4464-4FB8-62B4-E0E5EADBC41B</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NAME" id="7EDE27DF-7D6A-A098-1929-EDCF33A9898D">
+<sourceConnName>myDB</sourceConnName>
+<sourceObjSchema>ARTIST</sourceObjSchema>
+<sourceObjName>NAME</sourceObjName>
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<importedID>4A5EB741-B227-E8A3-3593-C0E8366CD40B</importedID>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>120 BYTE</dataTypeSize>
+<ownDataTypeParameters>120 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="76EF8ADA-2C0F-D034-15F0-8B0CF02C147C" name="PK_ARTIST">
+<sourceConnName>myDB</sourceConnName>
+<sourceObjSchema>CHINOOK</sourceObjSchema>
+<sourceObjName>PK_ARTIST</sourceObjName>
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<importedID>B33C9213-4B0D-0D62-A6CF-0B2B6606F788</importedID>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="EDB893CE-4829-2E33-C50A-917651BED8FF"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="4619A92B-5A26-1791-60B2-F89A00856124" schemaObject="83395CDB-6E57-D94E-B292-10D417A9D843" name="PK_ARTIST">
+<sourceConnName>myDB</sourceConnName>
+<sourceObjSchema>CHINOOK</sourceObjSchema>
+<sourceObjName>PK_ARTIST</sourceObjName>
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<importedID>CD50142A-579C-B156-45C2-1F2F0C8EC9B6</importedID>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="EDB893CE-4829-2E33-C50A-917651BED8FF"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

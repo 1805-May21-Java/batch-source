@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="279CCC6C-54AE-746F-0CCE-FFC9EAD80295" containerWithKeyObject="6E040579-3A96-D660-B03A-C062D0CA22A3" localFKIndex="36E0431A-2B05-6886-DCC0-6A77752CA7E8" name="FK_TRACKGENREID">
+<sourceConnName>myDB</sourceConnName>
+<sourceObjSchema>CHINOOK</sourceObjSchema>
+<sourceObjName>FK_TRACKGENREID</sourceObjName>
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<importedID>56BAB025-8F36-D146-B10E-65799CD2D24A</importedID>
+<referredTableLongName>CHINOOK.GENRE</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>741057EB-70C8-5F88-722D-1E140B22F129</referredTableID>
+<keyObject>8F4C2E2B-097D-EC6E-323A-671347DAC2B7</keyObject>
+<referredKeyID>8F4C2E2B-097D-EC6E-323A-671347DAC2B7</referredKeyID>
+<mandatory>false</mandatory>
+<refColNames>GENREID</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

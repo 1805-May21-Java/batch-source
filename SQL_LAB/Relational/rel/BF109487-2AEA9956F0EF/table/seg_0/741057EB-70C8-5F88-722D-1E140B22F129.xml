@@ -1,0 +1,76 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="741057EB-70C8-5F88-722D-1E140B22F129" schemaObject="83395CDB-6E57-D94E-B292-10D417A9D843" name="GENRE">
+<sourceConnName>myDB</sourceConnName>
+<sourceObjSchema>CHINOOK</sourceObjSchema>
+<sourceObjName>GENRE</sourceObjName>
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<importedID>539E3C0E-70C0-96FC-E45C-8AB93C52DD40</importedID>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="GENREID" id="F7DD0C43-93D2-BCD9-C679-2C37FF604434">
+<sourceConnName>myDB</sourceConnName>
+<sourceObjSchema>GENRE</sourceObjSchema>
+<sourceObjName>GENREID</sourceObjName>
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<importedID>C9D5050C-1A3C-7EC7-ED8D-A146E470E12A</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NAME" id="8B128ED5-FD82-B2F0-C73A-5D3DCEF016A9">
+<sourceConnName>myDB</sourceConnName>
+<sourceObjSchema>GENRE</sourceObjSchema>
+<sourceObjName>NAME</sourceObjName>
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<importedID>FBDB7FF4-04F9-3498-B973-5685B66C9BEE</importedID>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>120 BYTE</dataTypeSize>
+<ownDataTypeParameters>120 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="8F4C2E2B-097D-EC6E-323A-671347DAC2B7" name="PK_GENRE">
+<sourceConnName>myDB</sourceConnName>
+<sourceObjSchema>CHINOOK</sourceObjSchema>
+<sourceObjName>PK_GENRE</sourceObjName>
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<importedID>F43FCB92-51F4-382B-AD53-D44C7B04F3DB</importedID>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F7DD0C43-93D2-BCD9-C679-2C37FF604434"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="D181553B-8584-EEB4-C289-474B4A0CCF92" schemaObject="83395CDB-6E57-D94E-B292-10D417A9D843" name="PK_GENRE">
+<sourceConnName>myDB</sourceConnName>
+<sourceObjSchema>CHINOOK</sourceObjSchema>
+<sourceObjName>PK_GENRE</sourceObjName>
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<importedID>91EA4248-9708-2692-8E63-3A028D0EE462</importedID>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F7DD0C43-93D2-BCD9-C679-2C37FF604434"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

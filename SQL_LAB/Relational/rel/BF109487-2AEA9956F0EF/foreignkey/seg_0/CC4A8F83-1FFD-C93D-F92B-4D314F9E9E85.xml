@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="CC4A8F83-1FFD-C93D-F92B-4D314F9E9E85" containerWithKeyObject="01794DFB-B107-F2CF-A219-EE2E3F9CB1C7" localFKIndex="370ED5F3-E63B-1E80-F6C0-3116C0DC1430" name="FK_INVOICELINEINVOICEID">
+<sourceConnName>myDB</sourceConnName>
+<sourceObjSchema>CHINOOK</sourceObjSchema>
+<sourceObjName>FK_INVOICELINEINVOICEID</sourceObjName>
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<importedID>5FFB0130-59F1-4CE4-2A41-1683FBD14415</importedID>
+<referredTableLongName>CHINOOK.INVOICE</referredTableLongName>
+<deleteRule>CASCADE</deleteRule>
+<referredTableID>A197D2B3-B72C-3A8E-94EA-143F83C3F5CB</referredTableID>
+<keyObject>67A03509-C622-8488-3AC6-655A99121524</keyObject>
+<referredKeyID>67A03509-C622-8488-3AC6-655A99121524</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>INVOICEID</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

@@ -1,0 +1,102 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="EB8F579E-26A0-C91E-F1E6-DED7CEB6EB14" schemaObject="83395CDB-6E57-D94E-B292-10D417A9D843" name="PLAYLISTTRACK">
+<sourceConnName>myDB</sourceConnName>
+<sourceObjSchema>CHINOOK</sourceObjSchema>
+<sourceObjName>PLAYLISTTRACK</sourceObjName>
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<importedID>0681B9A9-06F1-336A-8226-ADDB8788A9D5</importedID>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="PLAYLISTID" id="B09FD718-8E30-3FE0-5AE6-DD6C92BC1286">
+<sourceConnName>myDB</sourceConnName>
+<sourceObjSchema>PLAYLISTTRACK</sourceObjSchema>
+<sourceObjName>PLAYLISTID</sourceObjName>
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<importedID>96EFA7E1-77D1-112D-EE20-15B473301399</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="E988AF40-F6DF-F711-9D9A-1574A81AB9B6" referredColumn="8F9EF0F6-08A4-D3BC-7199-8F8DD24AC1D8"/>
+</associations>
+</Column>
+<Column name="TRACKID" id="5082CD62-DAB1-E887-ED3E-B766881402FB">
+<sourceConnName>myDB</sourceConnName>
+<sourceObjSchema>PLAYLISTTRACK</sourceObjSchema>
+<sourceObjName>TRACKID</sourceObjName>
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<importedID>CEFC2DAD-D4B3-436F-D063-FAD2A958F87F</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="61E8B5F4-3B4A-3E24-5E38-6392F27B823C" referredColumn="D7E21C65-9613-275F-C83B-F1B544931B16"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="1679772A-A30D-1D04-1C6E-67762467E72B" name="PK_PLAYLISTTRACK">
+<sourceConnName>myDB</sourceConnName>
+<sourceObjSchema>CHINOOK</sourceObjSchema>
+<sourceObjName>PK_PLAYLISTTRACK</sourceObjName>
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<importedID>713BB67C-D9A8-06A2-00B5-F377D66A209C</importedID>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B09FD718-8E30-3FE0-5AE6-DD6C92BC1286"/>
+<colUsage columnID="5082CD62-DAB1-E887-ED3E-B766881402FB"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="55756FFB-393C-E34B-FF89-F6F70462AB94" schemaObject="83395CDB-6E57-D94E-B292-10D417A9D843" name="PK_PLAYLISTTRACK">
+<sourceConnName>myDB</sourceConnName>
+<sourceObjSchema>CHINOOK</sourceObjSchema>
+<sourceObjName>PK_PLAYLISTTRACK</sourceObjName>
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<importedID>5E6FAF64-9B67-EE03-7DAC-B0DD48A9059B</importedID>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B09FD718-8E30-3FE0-5AE6-DD6C92BC1286"/>
+<colUsage columnID="5082CD62-DAB1-E887-ED3E-B766881402FB"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="D9B5E548-80F4-0965-138F-C655A3B858CD" name="FK_PLAYLISTTRACKPLAYLISTID">
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B09FD718-8E30-3FE0-5AE6-DD6C92BC1286"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="A5E8F697-E2C0-F7B6-05D4-80C00B10DE75" name="FK_PLAYLISTTRACKTRACKID">
+<createdBy>Owner</createdBy>
+<createdTime>2018-05-30 19:32:33 UTC</createdTime>
+<ownerDesignName>Relational</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="5082CD62-DAB1-E887-ED3E-B766881402FB"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
