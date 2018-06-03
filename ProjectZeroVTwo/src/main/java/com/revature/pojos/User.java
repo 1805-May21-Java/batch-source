@@ -1,40 +1,30 @@
 package com.revature.pojos;
 
-public class Account
+public class User
 {
 	private String username;
 	private String password;
-	private double balance;
 	
-	public Account()
+	public User()
 	{
 		super();
 	}
 
-	public Account(String username, String password, double balance)
+	public User(String username, String password)
 	{
 		super();
 		this.username = username;
 		this.password = password;
-		this.balance = balance;
 	}
-
-	//Default balance will be 0
-	public Account(String username, String password)
+	
+	public User(String username)
 	{
 		super();
 		this.username = username;
-		this.password = password;
-		this.balance = 0;
+		this.password = "";
 	}
 
-	public Account(String username, double balance)
-	{
-		this.username = username;
-		this.password = "Undefined";
-		this.balance = balance;
-	}
-	
+
 	public String getUsername()
 	{
 		return username;
@@ -55,24 +45,11 @@ public class Account
 		this.password = password;
 	}
 
-	public double getBalnce()
-	{
-		return balance;
-	}
-
-	public void setBalnce(double balnce)
-	{
-		this.balance = balnce;
-	}
-
 	@Override
 	public int hashCode()
 	{
 		final int prime = 31;
 		int result = 1;
-		long temp;
-		temp = Double.doubleToLongBits(balance);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		return result;
@@ -87,9 +64,7 @@ public class Account
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Account other = (Account) obj;
-		if (Double.doubleToLongBits(balance) != Double.doubleToLongBits(other.balance))
-			return false;
+		User other = (User) obj;
 		if (password == null)
 		{
 			if (other.password != null)
@@ -110,6 +85,6 @@ public class Account
 	@Override
 	public String toString()
 	{
-		return username + "'s account has a balance of " + balance;
+		return "Username=" + username + ", password=" + password + "]";
 	}
 }

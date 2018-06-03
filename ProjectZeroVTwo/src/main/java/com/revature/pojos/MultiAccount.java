@@ -1,40 +1,29 @@
 package com.revature.pojos;
 
-public class Account
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+
+public class MultiAccount
 {
+	NumberFormat formatter = new DecimalFormat("#0.00");
+	
 	private String username;
-	private String password;
+	private String accountType;
 	private double balance;
 	
-	public Account()
+	public MultiAccount()
 	{
 		super();
 	}
 
-	public Account(String username, String password, double balance)
+	public MultiAccount(String username, String accountType, double balance)
 	{
 		super();
 		this.username = username;
-		this.password = password;
+		this.accountType = accountType;
 		this.balance = balance;
 	}
 
-	//Default balance will be 0
-	public Account(String username, String password)
-	{
-		super();
-		this.username = username;
-		this.password = password;
-		this.balance = 0;
-	}
-
-	public Account(String username, double balance)
-	{
-		this.username = username;
-		this.password = "Undefined";
-		this.balance = balance;
-	}
-	
 	public String getUsername()
 	{
 		return username;
@@ -45,24 +34,24 @@ public class Account
 		this.username = username;
 	}
 
-	public String getPassword()
+	public String getAccountType()
 	{
-		return password;
+		return accountType;
 	}
 
-	public void setPassword(String password)
+	public void setAccountType(String accountType)
 	{
-		this.password = password;
+		this.accountType = accountType;
 	}
 
-	public double getBalnce()
+	public double getBalance()
 	{
 		return balance;
 	}
 
-	public void setBalnce(double balnce)
+	public void setBalance(double balance)
 	{
-		this.balance = balnce;
+		this.balance = balance;
 	}
 
 	@Override
@@ -70,10 +59,10 @@ public class Account
 	{
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((accountType == null) ? 0 : accountType.hashCode());
 		long temp;
 		temp = Double.doubleToLongBits(balance);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		return result;
 	}
@@ -87,15 +76,15 @@ public class Account
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Account other = (Account) obj;
-		if (Double.doubleToLongBits(balance) != Double.doubleToLongBits(other.balance))
-			return false;
-		if (password == null)
+		MultiAccount other = (MultiAccount) obj;
+		if (accountType == null)
 		{
-			if (other.password != null)
+			if (other.accountType != null)
 				return false;
 		}
-		else if (!password.equals(other.password))
+		else if (!accountType.equals(other.accountType))
+			return false;
+		if (Double.doubleToLongBits(balance) != Double.doubleToLongBits(other.balance))
 			return false;
 		if (username == null)
 		{
@@ -110,6 +99,6 @@ public class Account
 	@Override
 	public String toString()
 	{
-		return username + "'s account has a balance of " + balance;
+		return accountType + " account has a balance of $" + formatter.format(balance);
 	}
 }

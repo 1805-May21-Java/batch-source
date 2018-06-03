@@ -11,7 +11,7 @@ import com.revature.menus.*;
 import com.revature.pojos.Account;
 import com.revature.util.*;
 
-public class Driver
+public class AcctPerUserDriver
 {
 	public static void main(String[] args)
 	{
