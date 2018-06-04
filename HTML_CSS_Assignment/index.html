@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Index </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="./styles/main.css" />
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <ul>
+        <li><a class="active" href="./index.html">Home</a></li>
+        <li><a href="./dogs.html">Dogs</a></li>
+        <li><a href="./cats.html">Cats</a></li>
+        <li><a href="./wolves.html">Wolves</a></li>
+        <li><a href="./elephants.html">Elephants</a></li>
+      </ul>
+    </div>
+  </header>
+  <h1>Welcome!</h1>
+
+  <p>Click the links above to see some cute animals!</p>
+
+  <p>Send us a message about what other kind of cute animals you want to see.</p>
+
+  <form>
+    <ul class="form">
+      <li>
+        <label>Full Name <span class="required">*</span></label>
+        <input type="text" class="field-short" placeholder="First Name" />&nbsp;<input type="text" class="field-short" placeholder="Last Name"/></li>
+      <li>
+        <label>Email <span class="required">*</span>
+          <input type="email"class="field-long"/>
+        </label>
+      </li>
+      <li>
+        <label>Favorite Animal
+          <select class="field-select">
+            <option>Dog</option>
+            <option>Cat</option>
+            <option>Elephants</option>
+          </select>
+        </label>
+      </li>
+      <li>
+        <label>Your Message <span class="required">*</span>
+          <textarea class="field-long field-textarea"></textarea>
+        </label>
+      </li>
+      <li>
+        <input type="submit" value="Submit" />
+      </li>
+    </ul>
+  </form>
+
+</body>
+</html>
