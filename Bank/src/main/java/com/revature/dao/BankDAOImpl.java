@@ -165,7 +165,8 @@ public class BankDAOImpl implements BankDAO {
 					users.add(rs2.getString("USER_NAME"));
 				}
 				
-				sql = "SELECT * FROM BANK_TRANSACTION WHERE ACCOUNT_ID = ?";
+				sql = "SELECT * FROM BANK_TRANSACTION WHERE ACCOUNT_ID = ? " +
+						"ORDER BY TRANSACTION_ID DESC";
 				ps = con.prepareStatement(sql);
 				ps.setInt(1, id);
 				ResultSet rs3 = ps.executeQuery();
@@ -267,6 +268,55 @@ public class BankDAOImpl implements BankDAO {
 		return transactionsCreated;
 	}
 
+	public int createLink(String username, int accountID) {
+		int linksCreated = 0;
+		
+		try {
+			Connection con = ConnectionUtil.getConnection();
+			String sql = "INSERT INTO BANK_LINK VALUES(?, ?)";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, username);
+			ps.setInt(2, accountID);
+			linksCreated = ps.executeUpdate();
+			
+			con.close();
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return linksCreated;
+	}
+
+	public int updateUser(User user) {
+		int usersUpdated = 0;
+		
+		try {
+			Connection con = ConnectionUtil.getConnection();
+			con.setAutoCommit(false);
+			String sql = "UPDATE BANK_USER "
+					+ "SET PASS = ? "
+					+ "WHERE NAME = ?";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, user.getPass());
+			ps.setString(2, user.getUser());
+			usersUpdated = ps.executeUpdate();
+			
+			con.commit();
+			con.close();
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return usersUpdated;
+	}
+
+	
 	public int updateAccount(Account account) {
 		int accountsUpdated = 0;
 		
@@ -275,7 +325,7 @@ public class BankDAOImpl implements BankDAO {
 			con.setAutoCommit(false);
 			String sql = "UPDATE BANK_ACCOUNT "
 					+ "SET BALANCE = ?, "
-					+ "NICKNAME = ?, "
+					+ "NICKNAME = ? "
 					+ "WHERE ACCOUNT_ID = ?";
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setDouble(1, account.getBalance());

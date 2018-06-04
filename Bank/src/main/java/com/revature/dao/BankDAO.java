@@ -16,7 +16,9 @@ public interface BankDAO {
 	public int createUser(User user);
 	public int createAccount(Account account);
 	public int createTransaction(Transaction transaction, int accountID);
+	public int createLink(String username, int accountID);
 	
+	public int updateUser(User user);
 	public int updateAccount(Account account);
 	
 	public int deleteUserByName(String name);

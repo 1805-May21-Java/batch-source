@@ -19,6 +19,15 @@ public class Account {
 		transactions = new LinkedList<Transaction>();
 	}
 	
+	public Account(int id, double balance, String nickname) {
+		super();
+		this.id = id;
+		this.balance = balance;
+		this.nickname = nickname;
+		users = new ArrayList<String>();
+		transactions = new LinkedList<Transaction>();
+	}
+	
 	public Account(int id, double balance, String nickname, ArrayList<String> users, LinkedList<Transaction> transactions) {
 		super();
 		this.id = id;

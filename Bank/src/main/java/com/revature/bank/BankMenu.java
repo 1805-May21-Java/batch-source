@@ -3,8 +3,7 @@ package com.revature.bank;
 import java.sql.Date;
 import java.text.DecimalFormat;
 import java.time.LocalDate;
-import java.util.ListIterator;
-import java.util.Scanner;
+import java.util.*;
 
 import com.revature.dao.BankDAOImpl;
 
@@ -189,6 +188,126 @@ public class BankMenu {
 	}
 	
 	/*
+	 * Opens new bank account with the user information provided
+	 * 
+	 * Persists the new account information, along with the link to the user,
+	 * in the SQL database
+	 */
+	public void openNewAccount() {
+		Random r = new Random();
+		
+		System.out.println("\nThank you for placing your trust in Boulos Bank!");
+		
+		System.out.println("\nYou may specify a nickname for this new account.");
+		System.out.println("(Press Enter to skip this step)");
+		System.out.print("\nNickname: ");
+		
+		String nickname = input.nextLine();
+		
+		if(nickname.equals(""))
+			nickname = null;
+		
+		int accountID = r.nextInt(90000) + 10000;
+		while(dao.getAccountByID(accountID) != null)
+			accountID = r.nextInt(90000) + 10000;
+		
+		System.out.println("\nPlease confirm this account creation.");
+		System.out.println("New Account #" + accountID);
+		if(!nickname.equals(null))
+			System.out.println("Nickname - " + nickname);
+		boolean confirm = false;
+		
+		do {
+			System.out.print("\nIs this correct? (Y / N) - ");
+			String confirmation = input.nextLine();
+						
+			if(confirmation.length() != 1)
+				System.out.println("\nPlease enter Y or N.");
+			else if(Character.toUpperCase(confirmation.charAt(0)) == 'N') {
+				break;
+			}
+			else if(Character.toUpperCase(confirmation.charAt(0)) == 'Y') {
+				confirm = true;
+				break;
+			}
+			else
+				System.out.println("\nPlease enter Y or N.");
+		} while(true);
+		
+		if(confirm) {
+			Account acc = new Account(accountID, 0, nickname);
+			dao.createAccount(acc);
+			dao.createLink(bankInfo.getUser().getUser(), accountID);
+			
+			dao.createTransaction(new Transaction("Open", bankInfo.getUser().getUser(), 0,
+					acc.getBalance(), Date.valueOf(LocalDate.now()), acc.getId()), acc.getId());
+			
+			System.out.println("\nSuccessfully opened new Account #" + accountID);
+			System.out.println("You may now access the Account menu for this account.");
+		}
+		else
+			System.out.println("\nAccount opening cancelled.");
+		
+		printUserScreen(dao.getUserByName(bankInfo.getUser().getUser()));
+	}
+	
+	/*
+	 * Opens new bank account with the user information provided
+	 * 
+	 * Persists the new account information, along with the link to the user,
+	 * in the SQL database
+	 */
+	public void changePassword() {
+		System.out.print("\nPassword - ");
+		String newPass = input.nextLine();
+		
+		System.out.print("Repeat Password - ");
+		String newPass2 = input.nextLine();
+		
+		if(!newPass.equals("") && !newPass2.equals("")) {
+			while(!newPass.equals(newPass2)) {
+				System.out.println("\nPasswords do not match.\n");
+				
+				System.out.print("Password - ");
+				newPass = input.nextLine();
+				
+				System.out.print("Repeat Password - ");
+				newPass2 = input.nextLine();
+			}
+			
+			boolean confirm = false;
+			do {
+				System.out.print("\nIs this correct? (Y / N) - ");
+				String confirmation = input.nextLine();
+							
+				if(confirmation.length() != 1)
+					System.out.println("\nPlease enter Y or N.");
+				else if(Character.toUpperCase(confirmation.charAt(0)) == 'N') {
+					break;
+				}
+				else if(Character.toUpperCase(confirmation.charAt(0)) == 'Y') {
+					confirm = true;
+					break;
+				}
+				else
+					System.out.println("\nPlease enter Y or N.");
+			} while(true);
+			
+			if(confirm) {
+				User newUser = bankInfo.getUser();
+				newUser.setPass(newPass);
+				dao.updateUser(newUser);
+				
+				System.out.println("\nPassword successfully updated. For security purposes, you must log in again");
+				logIn();
+			}
+			else
+				System.out.println("\nPassword update cancelled.");
+		}
+		
+		printUserScreen(dao.getUserByName(bankInfo.getUser().getUser()));
+	}
+	/*
 	 * Prints the user information screen, along with all possible options for the user
 	 *
 	 * Methods called by this method usually end with a print[something]() call
@@ -211,7 +330,7 @@ public class BankMenu {
 				else
 					System.out.print("Account #" + acc_i.getId());
 				
-				System.out.println(" | $" + acc_i.getBalance());
+				System.out.println(" | $" + df.format(acc_i.getBalance()));
 				
 				if(i == user.getAccounts().size() - 1)
 					System.out.println();
@@ -254,10 +373,10 @@ public class BankMenu {
 				
 				switch(Character.toUpperCase(option.charAt(0))) {
 				case 'A':
-//					openNewAccount();
+					openNewAccount();
 					break;
 				case 'P':
-//					changePassword();
+					changePassword();
 					break;
 				case 'L':
 					System.out.println("\nLogging out...");
@@ -380,15 +499,14 @@ public class BankMenu {
 				System.out.println("\nInsufficient funds.");
 				amount = account.getBalance();
 			}
-			
-			if(amount < 0.01)
+			else if(amount < 0.01)
 				System.out.println("\nInvalid withdrawal amount.");
 			else {
 				account = dao.getAccountByID(account.getId());
 				account.setBalance(account.getBalance() - amount);
 				dao.updateAccount(account);
 				dao.createTransaction(new Transaction("Withdrawal", bankInfo.getUser().getUser(), amount,
-						account.getBalance(), Date.valueOf(LocalDate.now()), -1), account.getId());
+						account.getBalance(), Date.valueOf(LocalDate.now()), account.getId()), account.getId());
 				
 				System.out.println("\nSuccessfully withdrew $" + df.format(amount));
 				System.out.println("Remaining balance: $" + df.format(account.getBalance()));
@@ -423,7 +541,7 @@ public class BankMenu {
 				account.setBalance(account.getBalance() + amount);
 				dao.updateAccount(account);
 				dao.createTransaction(new Transaction("Deposit", bankInfo.getUser().getUser(), amount,
-						account.getBalance(), Date.valueOf(LocalDate.now()), -1), account.getId());
+						account.getBalance(), Date.valueOf(LocalDate.now()), account.getId()), account.getId());
 				
 				System.out.println("\nSuccessfully deposited $" + df.format(amount));
 				System.out.println("New balance: $" + df.format(account.getBalance()));
@@ -507,6 +625,10 @@ public class BankMenu {
 					
 					account.setBalance(account.getBalance() - amount);
 					otherAccount.setBalance(otherAccount.getBalance() + amount);
+					
+					dao.updateAccount(account);
+					dao.updateAccount(otherAccount);
+					
 					dao.createTransaction(new Transaction("TransferTo", bankInfo.getUser().getUser(), amount,
 							account.getBalance(), Date.valueOf(LocalDate.now()), otherAccount.getId()), account.getId());
 					dao.createTransaction(new Transaction("TransferFrom", bankInfo.getUser().getUser(), amount,
