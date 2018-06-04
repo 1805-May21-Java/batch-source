@@ -1,2 +1,0 @@
-adora_smith password 10.0
-username password 50.95
