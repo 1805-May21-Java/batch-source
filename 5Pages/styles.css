@@ -1,0 +1,15 @@
+body{
+    background-color: rgb(51, 34, 114)
+}
+div{
+    width: 50%;
+    margin: 0 auto;
+    background-color: aqua;
+    text-align: center;
+    padding: 10px
+}
+#Vote{
+    text-align: left;
+    font-size: 25px;
+    padding: 10px
+}
