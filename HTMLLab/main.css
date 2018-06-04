@@ -1,0 +1,48 @@
+body {
+    background-color: #e1f5ed;
+    font-family: "courier new";
+}
+
+.header {
+    text-align: center;
+    float: left;
+    width: 100%;
+}
+
+.footer {
+    text-align: center;
+    float: left;
+    width: 100%;
+}
+
+.content {
+    padding-top: 2%;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.catPics {
+    float: left;
+    width: 33%;
+}
+
+#nokogiriyama {
+    float: left;
+    width: 40%;
+}
+
+#buddha {
+   width: 100%;
+}
+
+#poem {
+    float: left;
+    width: 50%;
+    margin-left:5%;
+    margin-top:2%;
+}
+
+#boik {
+    font-size: 20px;
+    font-family: "courier new";
+}

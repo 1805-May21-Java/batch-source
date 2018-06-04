@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Questionnaire</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+</head>
+
+<body>
+    <div class="header">
+        <h1>
+            Title
+        </h1>
+    </div>
+    <div class="content">
+        <form method="POST" action="confirmation.html">
+            <p>Name</p>
+            <input type="text">
+            <p>Of these apples, which is your favorite kind?</p>
+            <select name="Apples">
+                <option value="fuji">Fuji</option>
+                <option vaule="grannysmith">Granny Smith</option>
+                <option vaule="honeycrisp">Honeycrisp</option>
+                <option value="jonathan">Jonathan</option>
+                <option value="jazz">Jazz</option>
+                <option value="goldendelicious">Golden Delicious</option>
+                <option value="wolfriver">Wolf River</option>
+            </select>
+            <br>
+            <p>How are you feeling today?</p>
+            <textarea rows="6" cols="100">You doing good?</textarea>
+            <br>
+            <p>Favorite Meal?</p>
+            <input type="radio" name="Meal" value="breakfast" checked>Breakfast</input>
+			<br>
+			<input type="radio" name="Meal" value="lunch">Lunch</input>
+			<br>
+            <input type="radio" name="Meal" value="dinner">Dinner</input>
+            <br>
+            <p>Discuss Gertrude Stein's "If I Told Him, a Complete Portrait of Picasso" 
+                in reference to Picasso's work and the Modernist era as a whole.
+                <a href="https://www.poetryfoundation.org/poems/55215/if-i-told-him-a-completed-portrait-of-picasso">Link</a>
+            </p>
+            <textarea rows="20" cols="100">Something about cubism</textarea>
+            <br>
+            <br>
+            <input type="submit" value="submit"></input>
+        </form>
+    </div>
+    <div class="footer">
+        <p>
+            <a href="./index.html">Back</a>
+        </p>
+    </div>
+</body>
+
+</html>

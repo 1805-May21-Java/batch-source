@@ -100,15 +100,27 @@ public class LoginMenu implements Menu{
 		boolean associated;
 		do {
 			System.out.println("Please enter your email: ");
-			email = this.scan.next();
+			do {
+				email = this.scan.next();
+			} while (!email.equals("") && !email.equals(" "));
 			associated = false;
 			if(myUsers.isEmpty()) {
 				break;
 			}
 			
 			for(User u : myUsers) {
+				if(email.contains(" ")) {
+					System.out.println("Sorry, an email shouldn't have a space in it.");
+					associated = true;
+					boolean cont = GeneralConfirmation.check("Would you like to try another email?");
+					if(cont == false) {
+						return false;
+					}
+					break;
+				}
+				
 				if(email.toUpperCase().equals(u.getEmail())) {
-					System.out.println("Sorry that email is already asscoiated with an account");
+					System.out.println("Sorry, that email is already asscoiated with an account");
 					associated = true;
 					boolean cont = GeneralConfirmation.check("Would you like to try another email?");
 					if(cont == false) {
@@ -122,13 +134,24 @@ public class LoginMenu implements Menu{
 		boolean used;
 		do {
 			System.out.println("Please enter a username: ");
-			username = this.scan.next();
+			do {
+				username = this.scan.next();
+			} while (!username.equals("") && !username.equals(" "));
 			used = false;
 			if(myUsers.isEmpty()) {
 				break;
 			}
 			
 			for(User u : myUsers) {
+				if(username.contains(" ")) {
+					System.out.println("Sorry, a username shouldn't have a space in it.");
+					used = true;
+					boolean cont = GeneralConfirmation.check("Would you like to try another username?");
+					if(cont == false) {
+						return false;
+					}
+					break;
+				}
 				if(username.toUpperCase().equals(u.getUsername())) {
 					System.out.println("Sorry that username is taken.");
 					used = true;
@@ -141,12 +164,26 @@ public class LoginMenu implements Menu{
 			}
 		} while (used);
 		
-		boolean validPassword;
+		boolean validPassword = false;
 		do {
 			System.out.println("Please enter a password: ");
+			do {
 			password = this.scan.next();
+			} while (!password.equals("") && !password.equals(" "));
+			if(password.contains(" ")) {
+				System.out.println("Sorry, a password shouldn't contain spaces.");
+				boolean cont = GeneralConfirmation.check("Would you like to try another password?");
+				if(cont == false) {
+					return false;
+				}
+				continue;
+			}
+			
 			System.out.println("Confirm your password: ");
-			passwordConfirmation = this.scan.next();
+			do {
+				passwordConfirmation = this.scan.next();
+			} while (!passwordConfirmation.equals("") && !passwordConfirmation.equals(" "));
+			
 			if(passwordConfirmation.equals(password)) {
 				validPassword = true;
 			} else {

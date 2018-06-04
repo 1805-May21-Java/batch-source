@@ -87,6 +87,7 @@ public class Bank {
 	public Object clone() throws CloneNotSupportedException {
 		throw new CloneNotSupportedException();
 	}
+	
 	public static Bank updateBankObject() {
 		// since Bank is a singleton, the update will be the same through all references to it.
 		myBank = Bank.getInstance();
