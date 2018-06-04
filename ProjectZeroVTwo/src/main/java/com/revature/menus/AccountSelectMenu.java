@@ -71,7 +71,7 @@ public class AccountSelectMenu extends MMenu
 		Scanner sc = new Scanner(System.in);
 		System.out.print("Enter the type of the new account: ");
 		String type = sc.nextLine();
-		while(!madi.isValidType(type, currentAccount.getUsername()))
+		while(!madi.isValidType(type, currentUser.getUsername()))
 		{
 			System.out.println("An account of this type already exists.  Please choose another.");
 			createAccount();
@@ -92,7 +92,7 @@ public class AccountSelectMenu extends MMenu
 
 	private void chooseAccount()
 	{
-		if(!madi.acctsExits())
+		if(!madi.acctsExits(currentUser.getUsername()))
 		{
 			System.out.println("No accounts to select from.  Please make another choice.");
 			return;

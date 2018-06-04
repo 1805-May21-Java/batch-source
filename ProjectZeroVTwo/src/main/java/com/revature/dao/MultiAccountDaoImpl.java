@@ -117,14 +117,15 @@ public class MultiAccountDaoImpl implements MultiAccountDao
 		}
 	}
 
-	public boolean acctsExits()
+	public boolean acctsExits(String username)
 	{
 		try
 		{
 			Connection con = ConnectionUtil.getConnection();
-			String sql = "SELECT * FROM MULTI_ACCOUNT";
-			Statement s = con.createStatement();
-			ResultSet rs = s.executeQuery(sql);
+			String sql = "SELECT * FROM MULTI_ACCOUNT WHERE USERNAME=?";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, username);
+			ResultSet rs = ps.executeQuery();
 			
 			while(rs.next())
 			{
