@@ -410,26 +410,45 @@ END;
 /
 
 
+
 --------------
 -- 7. Joins --
 --------------
 
 -- 7.1 INNER
 -- Create an inner join that joins customers and orders and specifies the name of the customer and the invoiceid
+SELECT C.FIRSTNAME || ' ' || C.LASTNAME AS FULLNAME, I.INVOICEID
+FROM CHINOOK.CUSTOMER C
+INNER JOIN CHINOOK.INVOICE I ON C.CUSTOMERID = I.CUSTOMERID;
 
 
 -- 7.2 OUTER
--- Create an outer join that joins the customer and invoice table, specifying the customerid, firstname, lastname, and total
+-- Create an outer join that joins the customer and invoice table, specifying the customerid, firstname, lastname, invoiceid and total
+SELECT C.CUSTOMERID, C.FIRSTNAME, C.LASTNAME, I.INVOICEID, I.TOTAL
+FROM CHINOOK.CUSTOMER C
+FULL JOIN chinook.invoice i
+ON c.customerid = i.customerid;
 
 
 -- 7.3 RIGHT
 -- Create a right join that joins album and artist specifying artist name and title
+SELECT AR.NAME, AL.TITLE
+FROM CHINOOK.ALBUM AL
+RIGHT JOIN CHINOOK.ARTIST AR
+ON AL.ARTISTID = AR.ARTISTID;
 
 
 -- 7.4 CROSS
 -- Create a cross join that joins album and artist and sorts by artist name in ascending order
+SELECT *
+FROM CHINOOK.ALBUM
+CROSS JOIN CHINOOK.ARTIST
+ORDER BY NAME;
 
 
 -- 7.5 SELF
 -- Perform a self-join on the employee table, joining on the reportsto column
-
+SELECT E1.EMPLOYEEID, E1.FIRSTNAME || ' ' || E1.LASTNAME AS FIRST_EMPLOYEE, 
+    E2.EMPLOYEEID, E2.FIRSTNAME || ' ' || E2.LASTNAME AS SECOND_EMPLOYEE, E1.REPORTSTO
+FROM CHINOOK.EMPLOYEE E1, CHINOOK.EMPLOYEE E2
+WHERE E1.REPORTSTO = E2.REPORTSTO;
