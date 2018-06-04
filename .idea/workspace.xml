@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c0e8a40f-92f1-4aa2-8e1f-637e9c54b6e2" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SQL Lab/5_Transactions.md" beforeDir="false" afterPath="$PROJECT_DIR$/SQL Lab/5_Transactions.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -216,8 +215,8 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
-    <option name="width" value="1539" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="width" value="1540" />
     <option name="height" value="865" />
   </component>
   <component name="ProjectView">
@@ -225,6 +224,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -243,20 +245,10 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="revature" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="batch-source" type="b2602c69:ProjectViewProjectNode" />
-              <item name="batch-source" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="revature" type="462c0819:PsiDirectoryNode" />
-              <item name="banking" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -423,7 +415,9 @@
       <workItem from="1527876286968" duration="957000" />
       <workItem from="1527878126712" duration="138000" />
       <workItem from="1527878293737" duration="41000" />
-      <workItem from="1527878372026" duration="3388000" />
+      <workItem from="1527878372026" duration="4077000" />
+      <workItem from="1528047355104" duration="243000" />
+      <workItem from="1528072409843" duration="63000" />
     </task>
     <task id="LOCAL-00001" summary="Project 0 Banking Application">
       <created>1527555793589</created>
@@ -450,11 +444,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="131114000" />
+    <option name="totallyTimeSpent" value="132109000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1536" height="864" extended-state="6" />
-    <editor active="true" />
+    <frame x="60" y="-7" width="1483" height="878" extended-state="6" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -464,19 +457,19 @@
       <window_info anchor="bottom" auto_hide="true" id="Event Log" order="9" sideWeight="0.092447914" side_tool="true" weight="0.34401974" />
       <window_info anchor="right" id="Maven Projects" order="7" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="10" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.90755206" weight="0.34401974" />
+      <window_info anchor="bottom" id="Version Control" order="10" />
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info id="Capture Tool" order="6" />
       <window_info id="Designer" order="3" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1751302" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18311776" />
       <window_info anchor="right" id="Database" order="6" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="4" />
       <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info id="Favorites" order="5" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info id="Favorites" order="5" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Messages" order="11" sideWeight="0.9082031" weight="0.33168927" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
