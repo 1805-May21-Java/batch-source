@@ -1,0 +1,261 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="53335E76-2601-6BD4-FC32-384473767FA4" schemaObject="CD2F05E7-15E4-89E2-06E2-F75B110CA068" name="CUSTOMER">
+<sourceConnName>testdb</sourceConnName>
+<sourceObjSchema>CHINOOK</sourceObjSchema>
+<sourceObjName>CUSTOMER</sourceObjName>
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 19:33:18 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+<importedID>AAB75BE2-21D9-3C39-73D8-3A1D45808B50</importedID>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="CUSTOMERID" id="0F6B8DF7-9F71-111F-139D-9D33034A020D">
+<sourceConnName>testdb</sourceConnName>
+<sourceObjSchema>CUSTOMER</sourceObjSchema>
+<sourceObjName>CUSTOMERID</sourceObjName>
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 19:33:18 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+<importedID>364199C8-0158-7C95-48E5-89C74B572748</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FIRSTNAME" id="F630E1F6-EF92-C7FB-C934-A1711E4B1A83">
+<sourceConnName>testdb</sourceConnName>
+<sourceObjSchema>CUSTOMER</sourceObjSchema>
+<sourceObjName>FIRSTNAME</sourceObjName>
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 19:33:18 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+<importedID>C68AE060-BDF2-5970-46C8-56E9F64B1A41</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>40 BYTE</dataTypeSize>
+<ownDataTypeParameters>40 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="LASTNAME" id="B69CC788-19B5-0DCB-F662-AB0A0952B0EF">
+<sourceConnName>testdb</sourceConnName>
+<sourceObjSchema>CUSTOMER</sourceObjSchema>
+<sourceObjName>LASTNAME</sourceObjName>
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 19:33:18 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+<importedID>ECE259E6-E89B-7EC4-A704-19F0BF8FC9C0</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 BYTE</dataTypeSize>
+<ownDataTypeParameters>20 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="COMPANY" id="8ABB5CF0-20ED-06D2-F225-5A4DB1661877">
+<sourceConnName>testdb</sourceConnName>
+<sourceObjSchema>CUSTOMER</sourceObjSchema>
+<sourceObjName>COMPANY</sourceObjName>
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 19:33:18 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+<importedID>586258DA-392A-5D20-E432-C4170981C007</importedID>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>80 BYTE</dataTypeSize>
+<ownDataTypeParameters>80 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ADDRESS" id="575CA201-D47D-B782-000B-B25B6A367D8D">
+<sourceConnName>testdb</sourceConnName>
+<sourceObjSchema>CUSTOMER</sourceObjSchema>
+<sourceObjName>ADDRESS</sourceObjName>
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 19:33:18 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+<importedID>546D3F32-418A-7112-8460-F318143F0F1D</importedID>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>70 BYTE</dataTypeSize>
+<ownDataTypeParameters>70 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CITY" id="03C17265-C9F8-C625-7630-951FD726E38E">
+<sourceConnName>testdb</sourceConnName>
+<sourceObjSchema>CUSTOMER</sourceObjSchema>
+<sourceObjName>CITY</sourceObjName>
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 19:33:18 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+<importedID>695F9358-D7E8-65E6-C997-4C59E94DD272</importedID>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>40 BYTE</dataTypeSize>
+<ownDataTypeParameters>40 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="STATE" id="64B52E9E-DF49-6C20-B57F-72F1B5D057E7">
+<sourceConnName>testdb</sourceConnName>
+<sourceObjSchema>CUSTOMER</sourceObjSchema>
+<sourceObjName>STATE</sourceObjName>
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 19:33:18 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+<importedID>D1F51CB5-8AF1-6608-350D-5717EA4F85EB</importedID>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>40 BYTE</dataTypeSize>
+<ownDataTypeParameters>40 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="COUNTRY" id="A889FCBB-6EAA-AB60-0798-3748B1797A4B">
+<sourceConnName>testdb</sourceConnName>
+<sourceObjSchema>CUSTOMER</sourceObjSchema>
+<sourceObjName>COUNTRY</sourceObjName>
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 19:33:18 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+<importedID>F991B9E8-0835-25B5-80C3-6A3C8CB0E508</importedID>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>40 BYTE</dataTypeSize>
+<ownDataTypeParameters>40 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="POSTALCODE" id="9DC3E7BC-BA66-DD2A-467F-3FEEA2FB1F00">
+<sourceConnName>testdb</sourceConnName>
+<sourceObjSchema>CUSTOMER</sourceObjSchema>
+<sourceObjName>POSTALCODE</sourceObjName>
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 19:33:18 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+<importedID>06AB8456-F5BE-3FB4-6B60-61473D24980B</importedID>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10 BYTE</dataTypeSize>
+<ownDataTypeParameters>10 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PHONE" id="765824CD-0F6E-37C7-BC6F-0D9778095A18">
+<sourceConnName>testdb</sourceConnName>
+<sourceObjSchema>CUSTOMER</sourceObjSchema>
+<sourceObjName>PHONE</sourceObjName>
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 19:33:18 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+<importedID>09FFBF95-1560-55E8-D0A7-F17A7332DAE3</importedID>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>24 BYTE</dataTypeSize>
+<ownDataTypeParameters>24 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FAX" id="17B8BFE1-C609-F5F8-B546-EAA81990BA4F">
+<sourceConnName>testdb</sourceConnName>
+<sourceObjSchema>CUSTOMER</sourceObjSchema>
+<sourceObjName>FAX</sourceObjName>
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 19:33:18 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+<importedID>1817284F-F501-5097-4F83-2CA1D42EEE2F</importedID>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>24 BYTE</dataTypeSize>
+<ownDataTypeParameters>24 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="EMAIL" id="648C868B-3DB4-7226-89EC-85E3C1EFB38D">
+<sourceConnName>testdb</sourceConnName>
+<sourceObjSchema>CUSTOMER</sourceObjSchema>
+<sourceObjName>EMAIL</sourceObjName>
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 19:33:18 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+<importedID>B392C79C-6CFF-48DE-2D66-1F390218B7D9</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>60 BYTE</dataTypeSize>
+<ownDataTypeParameters>60 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="SUPPORTREPID" id="4CFA087A-1CE5-B682-D86D-DF62A3A0A669">
+<sourceConnName>testdb</sourceConnName>
+<sourceObjSchema>CUSTOMER</sourceObjSchema>
+<sourceObjName>SUPPORTREPID</sourceObjName>
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 19:33:18 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+<importedID>8A5ED12D-CA18-FC0F-4CA5-5D4873A41774</importedID>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="592F2723-7405-15AB-4A65-A0DE3BC89D00" referredColumn="202FEB97-2CF1-9D7C-BD51-86010A1E5766"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="9F753DA6-B851-19E6-3442-AAF56C682E1A" name="PK_CUSTOMER">
+<sourceConnName>testdb</sourceConnName>
+<sourceObjSchema>CHINOOK</sourceObjSchema>
+<sourceObjName>PK_CUSTOMER</sourceObjName>
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 19:33:18 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+<importedID>60273BF2-FACF-3DC1-3FB6-E9C9DE20F388</importedID>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0F6B8DF7-9F71-111F-139D-9D33034A020D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="7B85260B-E2E2-6DA9-B568-1F969EC625A5" schemaObject="CD2F05E7-15E4-89E2-06E2-F75B110CA068" name="PK_CUSTOMER">
+<sourceConnName>testdb</sourceConnName>
+<sourceObjSchema>CHINOOK</sourceObjSchema>
+<sourceObjName>PK_CUSTOMER</sourceObjName>
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 19:33:18 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+<importedID>ED171A94-8170-B591-408C-BA0B174A4170</importedID>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0F6B8DF7-9F71-111F-139D-9D33034A020D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="A766E6A0-35B9-10F7-940D-EE51D21C6965" name="FK_CUSTOMERSUPPORTREPID">
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 19:33:18 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4CFA087A-1CE5-B682-D86D-DF62A3A0A669"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

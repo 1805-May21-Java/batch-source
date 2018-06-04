@@ -1,0 +1,50 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="MEDIATYPE" directorySegmentName="seg_0" id="20FC60CB-A835-3DAE-EC07-E271AEA1F894">
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 19:33:09 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+<schemaObject>CD2F05E7-15E4-89E2-06E2-F75B110CA068</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>E0B8C9FF-79B9-D6BE-BDCA-EF7F07D9E533</segment>
+<tableSpace>5CE53BEE-0278-B860-8CF5-48E7744EF1E6</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="MEDIATYPEID" id="87093779-B3A2-42FD-3FE0-B9E4F70D8BB9">
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 19:33:10 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="NAME" id="BCCE8C42-4AB7-BE1B-210D-9E15A954B315">
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 19:33:10 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<indexProxies>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="PK_MEDIATYPE" id="8592B215-C9F0-6EB1-799C-871E9333AF13">
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 19:33:11 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+<schemaObject>CD2F05E7-15E4-89E2-06E2-F75B110CA068</schemaObject>
+<segment>F28B7E03-2A15-4CAA-47B6-88F8AFF0E302</segment>
+<tableSpace>5CE53BEE-0278-B860-8CF5-48E7744EF1E6</tableSpace>
+</IndexProxy>
+</indexProxies>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="PK_MEDIATYPE" id="0CD037E2-4AE7-FF2D-6CE7-65E34CA4B587">
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 19:33:12 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+<segment>F28B7E03-2A15-4CAA-47B6-88F8AFF0E302</segment>
+<tableSpace>5CE53BEE-0278-B860-8CF5-48E7744EF1E6</tableSpace>
+<existingIndex>8592B215-C9F0-6EB1-799C-871E9333AF13</existingIndex>
+<indexSegment>F28B7E03-2A15-4CAA-47B6-88F8AFF0E302</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>

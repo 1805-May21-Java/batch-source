@@ -1,0 +1,13 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="sqlchinook" id="E6BBB7A3-EB27-6239-FC76-9058F38BF7CD" version="3.5">
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 18:45:02 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>E6BBB7A3-EB27-6239-FC76-9058F38BF7CD</designId>
+<usedDesignStorageDescriptors>
+<designDescr class="oracle.dbtools.crest.model.design.Design$DesignStorageDesc" id="F021AB70-B2A7-90D9-1D21-BD36CA17AE51">
+<designStoragePath>/</designStoragePath>
+</designDescr>
+</usedDesignStorageDescriptors>
+</OSDM_Design>

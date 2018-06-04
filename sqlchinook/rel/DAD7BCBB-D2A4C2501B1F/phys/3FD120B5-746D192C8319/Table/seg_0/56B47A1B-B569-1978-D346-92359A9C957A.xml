@@ -1,0 +1,62 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="ALBUM" directorySegmentName="seg_0" id="56B47A1B-B569-1978-D346-92359A9C957A">
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 19:33:08 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+<schemaObject>CD2F05E7-15E4-89E2-06E2-F75B110CA068</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>E0B8C9FF-79B9-D6BE-BDCA-EF7F07D9E533</segment>
+<tableSpace>5CE53BEE-0278-B860-8CF5-48E7744EF1E6</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="ALBUMID" id="0C931C89-7C63-531B-3AE5-0D459D94769F">
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 19:33:09 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="ARTISTID" id="3F76BB1E-E94C-FE72-A5E4-03C00D9D3CCA">
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 19:33:09 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="TITLE" id="518D6ABB-5342-CE52-C53A-F62DC22C82D9">
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 19:33:09 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<indexProxies>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="PK_ALBUM" id="CC8D2CA7-4A1B-7ABD-6E69-3001DE429B66">
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 19:33:10 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+<schemaObject>CD2F05E7-15E4-89E2-06E2-F75B110CA068</schemaObject>
+<segment>F28B7E03-2A15-4CAA-47B6-88F8AFF0E302</segment>
+<tableSpace>5CE53BEE-0278-B860-8CF5-48E7744EF1E6</tableSpace>
+</IndexProxy>
+</indexProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="FK_ALBUMARTISTID" id="1BF8AAEE-4A1C-1E5B-0498-6279786CF0AB">
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 19:33:13 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="PK_ALBUM" id="38E70E96-3F3B-98D6-FC92-433A8E27BC63">
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 19:33:12 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+<segment>F28B7E03-2A15-4CAA-47B6-88F8AFF0E302</segment>
+<tableSpace>5CE53BEE-0278-B860-8CF5-48E7744EF1E6</tableSpace>
+<existingIndex>CC8D2CA7-4A1B-7ABD-6E69-3001DE429B66</existingIndex>
+<indexSegment>F28B7E03-2A15-4CAA-47B6-88F8AFF0E302</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>

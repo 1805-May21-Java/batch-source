@@ -1,0 +1,102 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="TRACK" directorySegmentName="seg_0" id="8C9573A3-5352-97CA-1C6B-48E628B85F88">
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 19:33:09 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+<schemaObject>CD2F05E7-15E4-89E2-06E2-F75B110CA068</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>E0B8C9FF-79B9-D6BE-BDCA-EF7F07D9E533</segment>
+<tableSpace>5CE53BEE-0278-B860-8CF5-48E7744EF1E6</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="ALBUMID" id="0BE43024-D986-1FF5-0F1E-4C763E2FB35C">
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 19:33:10 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="GENREID" id="188AEBD0-A39C-B9FC-7874-5624D6F8DE17">
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 19:33:10 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="NAME" id="1C56333D-31DD-CCF8-D650-8C4EE4D48B01">
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 19:33:10 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="UNITPRICE" id="2F12B48C-B5EA-3987-4CA3-CB9BC757FACB">
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 19:33:10 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="BYTES" id="3AB87EC2-0535-128F-4147-F1B05743109E">
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 19:33:10 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="MILLISECONDS" id="5A5422F1-11A5-AF63-4A1A-9ACED6AEACF7">
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 19:33:10 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="TRACKID" id="6743006E-227C-2F91-4D7C-7C4753620C09">
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 19:33:10 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="MEDIATYPEID" id="93407FB7-6B70-0E24-8A13-38B637E2142F">
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 19:33:10 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="COMPOSER" id="EECDF824-8723-1E8A-1762-5D12C1B476E3">
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 19:33:10 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<indexProxies>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="PK_TRACK" id="6A5E263B-C348-1E0A-247E-8193E96570C2">
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 19:33:11 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+<schemaObject>CD2F05E7-15E4-89E2-06E2-F75B110CA068</schemaObject>
+<segment>F28B7E03-2A15-4CAA-47B6-88F8AFF0E302</segment>
+<tableSpace>5CE53BEE-0278-B860-8CF5-48E7744EF1E6</tableSpace>
+</IndexProxy>
+</indexProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="FK_TRACKGENREID" id="00DCDDD3-5382-74D5-8135-FC475A1C8ADB">
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 19:33:13 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+</ForeignKey>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="FK_TRACKMEDIATYPEID" id="7C247096-6A5C-3001-9C38-23EEBB8F2DC2">
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 19:33:13 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+</ForeignKey>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="FK_TRACKALBUMID" id="D65F69AD-1A51-3B3A-1848-D6C61AD8F20D">
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 19:33:13 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="PK_TRACK" id="D28DF1DB-288A-F8BD-7FC9-5AA67AB65047">
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 19:33:12 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+<segment>F28B7E03-2A15-4CAA-47B6-88F8AFF0E302</segment>
+<tableSpace>5CE53BEE-0278-B860-8CF5-48E7744EF1E6</tableSpace>
+<existingIndex>6A5E263B-C348-1E0A-247E-8193E96570C2</existingIndex>
+<indexSegment>F28B7E03-2A15-4CAA-47B6-88F8AFF0E302</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>

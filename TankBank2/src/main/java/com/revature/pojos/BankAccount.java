@@ -1,62 +1,58 @@
-package com.revature;
+package com.revature.pojos;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class BankAccount implements Serializable{
 
 	private static final long serialVersionUID = 6137519972665705247L;
 	private double balence;
 	private String accountName;
+	private int bankId;
+	//multiple clients can own an account, but this refers to the account accessing at this time
+	private Client client;
 
 	public BankAccount() {
 		super();
 	}
-
-	public BankAccount(double balence, String accountName){
+	public BankAccount(double balence, String accountName, int bankId, Client client){
 		super();
 		this.balence = balence;
 		this.accountName = accountName;
+		this.bankId = bankId;
+		this.client = client;
 	}
 
 	//withdraws amount entered to total amount
-	public void withdraw(double amountToWithdraw) {
+	public boolean withdraw(double amountToWithdraw) {
 		if(this.balence - amountToWithdraw < 0) {
 			System.out.println("You don't have that much money!");
-			return;
-		}else if(amountToWithdraw < 0) {
-			System.out.println("Cannot withdraw negative money!");
-			return;
+			return false;
 		}else {
-			//This will later involve writing to a database, which is computationally expensive
-			//So this method is being implemented as a separate thread
-			Thread thread = new Thread(new Runnable() {
-				
-				@Override
-				public void run() {
-					balence -= amountToWithdraw;
-				}
-			});
-			thread.start();
-
+			balence -= amountToWithdraw;
+			return true;
 		}
 	}
 	
 	//adds amount entered to total amount
 	public void deposit(double amountToDeposit) {
-		if(amountToDeposit < 0) {
-			System.out.println("Cannot depsoit negative money!");
-			return;
-		}
-		//This will later involve writing to a database, which is computationally expensive
-		//So this method is being implemented as a separate thread
-		Thread thread = new Thread(new Runnable() {
-			
-			@Override
-			public void run() {
-				balence += amountToDeposit;
-			}
-		});
-		thread.start();
+		balence += amountToDeposit;
+	}
+	
+	public int getBankId() {
+		return bankId;
+	}
+
+	public void setBankId(int bankId) {
+		this.bankId = bankId;
+	}
+
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
 	}
 	
 	public String getAccountName() {
@@ -74,6 +70,7 @@ public class BankAccount implements Serializable{
 	public void setBalence(double balence) {
 		this.balence = balence;
 	}
+	
 
 	@Override
 	public String toString() {
@@ -103,6 +100,7 @@ public class BankAccount implements Serializable{
 			return false;
 		return true;
 	}
+
 	
 
 }

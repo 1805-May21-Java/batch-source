@@ -1,0 +1,9 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<UserOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.UserOraclev10g" name="FALENAS108" directorySegmentName="seg_0" id="C51183DD-7C78-81BB-35AD-03670D74D394">
+<sourceConnName>testdb</sourceConnName>
+<sourceObjName>FALENAS108</sourceObjName>
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 18:45:50 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+<schemaObject>98A79839-E159-6719-762F-5C7C8476F02C</schemaObject>
+</UserOraclev10g>

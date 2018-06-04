@@ -1,0 +1,102 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="56B47A1B-B569-1978-D346-92359A9C957A" schemaObject="CD2F05E7-15E4-89E2-06E2-F75B110CA068" name="ALBUM">
+<sourceConnName>testdb</sourceConnName>
+<sourceObjSchema>CHINOOK</sourceObjSchema>
+<sourceObjName>ALBUM</sourceObjName>
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 19:33:18 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+<importedID>D8538136-9CB7-2557-49BA-384D804934C7</importedID>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ALBUMID" id="0C931C89-7C63-531B-3AE5-0D459D94769F">
+<sourceConnName>testdb</sourceConnName>
+<sourceObjSchema>ALBUM</sourceObjSchema>
+<sourceObjName>ALBUMID</sourceObjName>
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 19:33:18 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+<importedID>73C6A059-6698-7966-C33B-3D36A9792440</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="TITLE" id="518D6ABB-5342-CE52-C53A-F62DC22C82D9">
+<sourceConnName>testdb</sourceConnName>
+<sourceObjSchema>ALBUM</sourceObjSchema>
+<sourceObjName>TITLE</sourceObjName>
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 19:33:18 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+<importedID>119FCE67-5E37-343B-2E0F-648D4545ACBE</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>160 BYTE</dataTypeSize>
+<ownDataTypeParameters>160 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ARTISTID" id="3F76BB1E-E94C-FE72-A5E4-03C00D9D3CCA">
+<sourceConnName>testdb</sourceConnName>
+<sourceObjSchema>ALBUM</sourceObjSchema>
+<sourceObjName>ARTISTID</sourceObjName>
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 19:33:18 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+<importedID>0B8FBD3D-F4B5-3C4B-D78B-4F8CA233654F</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="2C726F60-D2F3-FC89-49CD-70F243EA2F6B" referredColumn="21DC1B97-9E81-99BD-33FA-5C8D2539DBA6"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="38E70E96-3F3B-98D6-FC92-433A8E27BC63" name="PK_ALBUM">
+<sourceConnName>testdb</sourceConnName>
+<sourceObjSchema>CHINOOK</sourceObjSchema>
+<sourceObjName>PK_ALBUM</sourceObjName>
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 19:33:18 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+<importedID>0554E387-D09A-143B-9124-E8E49BB9A533</importedID>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0C931C89-7C63-531B-3AE5-0D459D94769F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="CC8D2CA7-4A1B-7ABD-6E69-3001DE429B66" schemaObject="CD2F05E7-15E4-89E2-06E2-F75B110CA068" name="PK_ALBUM">
+<sourceConnName>testdb</sourceConnName>
+<sourceObjSchema>CHINOOK</sourceObjSchema>
+<sourceObjName>PK_ALBUM</sourceObjName>
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 19:33:18 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+<importedID>0E2C1CE2-1ED9-DF56-253E-1C55E1849A50</importedID>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0C931C89-7C63-531B-3AE5-0D459D94769F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="1BF8AAEE-4A1C-1E5B-0498-6279786CF0AB" name="FK_ALBUMARTISTID">
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 19:33:18 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="3F76BB1E-E94C-FE72-A5E4-03C00D9D3CCA"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

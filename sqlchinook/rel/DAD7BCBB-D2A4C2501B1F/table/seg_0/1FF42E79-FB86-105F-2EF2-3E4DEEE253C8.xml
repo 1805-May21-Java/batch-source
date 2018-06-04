@@ -1,0 +1,119 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="1FF42E79-FB86-105F-2EF2-3E4DEEE253C8" schemaObject="98A79839-E159-6719-762F-5C7C8476F02C" name="LOCATIONS">
+<sourceConnName>testdb</sourceConnName>
+<sourceObjSchema>FALENAS108</sourceObjSchema>
+<sourceObjName>LOCATIONS</sourceObjName>
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 18:45:51 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="LOCATION_ID" id="ED010C7F-6682-3458-B79D-2FFD27CD8434">
+<sourceConnName>testdb</sourceConnName>
+<sourceObjSchema>LOCATIONS</sourceObjSchema>
+<sourceObjName>LOCATION_ID</sourceObjName>
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 18:45:51 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,5,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="STREET" id="B9810CC9-EA05-7CCB-CC50-DC6489894ED7">
+<sourceConnName>testdb</sourceConnName>
+<sourceObjSchema>LOCATIONS</sourceObjSchema>
+<sourceObjName>STREET</sourceObjName>
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 18:45:51 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>25 BYTE</dataTypeSize>
+<ownDataTypeParameters>25 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CITY" id="976BE9F1-8CAD-9838-64D6-77C6394B7B09">
+<sourceConnName>testdb</sourceConnName>
+<sourceObjSchema>LOCATIONS</sourceObjSchema>
+<sourceObjName>CITY</sourceObjName>
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 18:45:51 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>25 BYTE</dataTypeSize>
+<ownDataTypeParameters>25 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="STATE" id="D84B3B0B-DCBD-2D92-4D32-C7C4183CA661">
+<sourceConnName>testdb</sourceConnName>
+<sourceObjSchema>LOCATIONS</sourceObjSchema>
+<sourceObjName>STATE</sourceObjName>
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 18:45:51 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>2 BYTE</dataTypeSize>
+<ownDataTypeParameters>2 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ZIPCODE" id="4FD440E6-F325-65EA-D209-C5A82E811D4B">
+<sourceConnName>testdb</sourceConnName>
+<sourceObjSchema>LOCATIONS</sourceObjSchema>
+<sourceObjName>ZIPCODE</sourceObjName>
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 18:45:51 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,5,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="0DB5E57F-2EB2-C91A-FA78-598284F4D2D9" name="PK_LOCATIONS">
+<sourceConnName>testdb</sourceConnName>
+<sourceObjSchema>FALENAS108</sourceObjSchema>
+<sourceObjName>PK_LOCATIONS</sourceObjName>
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 18:45:53 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="ED010C7F-6682-3458-B79D-2FFD27CD8434"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="5D0C89E9-43FA-DE42-136F-6FF8A287CA5F" schemaObject="98A79839-E159-6719-762F-5C7C8476F02C" name="PK_LOCATIONS">
+<sourceConnName>testdb</sourceConnName>
+<sourceObjSchema>FALENAS108</sourceObjSchema>
+<sourceObjName>PK_LOCATIONS</sourceObjName>
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 18:45:52 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="ED010C7F-6682-3458-B79D-2FFD27CD8434"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,112 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="CUSTOMER" directorySegmentName="seg_0" id="53335E76-2601-6BD4-FC32-384473767FA4">
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 19:33:08 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+<schemaObject>CD2F05E7-15E4-89E2-06E2-F75B110CA068</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>E0B8C9FF-79B9-D6BE-BDCA-EF7F07D9E533</segment>
+<tableSpace>5CE53BEE-0278-B860-8CF5-48E7744EF1E6</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="CITY" id="03C17265-C9F8-C625-7630-951FD726E38E">
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 19:33:09 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="CUSTOMERID" id="0F6B8DF7-9F71-111F-139D-9D33034A020D">
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 19:33:09 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="FAX" id="17B8BFE1-C609-F5F8-B546-EAA81990BA4F">
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 19:33:09 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="SUPPORTREPID" id="4CFA087A-1CE5-B682-D86D-DF62A3A0A669">
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 19:33:09 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="ADDRESS" id="575CA201-D47D-B782-000B-B25B6A367D8D">
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 19:33:09 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="EMAIL" id="648C868B-3DB4-7226-89EC-85E3C1EFB38D">
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 19:33:09 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="STATE" id="64B52E9E-DF49-6C20-B57F-72F1B5D057E7">
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 19:33:09 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="PHONE" id="765824CD-0F6E-37C7-BC6F-0D9778095A18">
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 19:33:09 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="COMPANY" id="8ABB5CF0-20ED-06D2-F225-5A4DB1661877">
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 19:33:09 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="POSTALCODE" id="9DC3E7BC-BA66-DD2A-467F-3FEEA2FB1F00">
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 19:33:09 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="COUNTRY" id="A889FCBB-6EAA-AB60-0798-3748B1797A4B">
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 19:33:09 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="LASTNAME" id="B69CC788-19B5-0DCB-F662-AB0A0952B0EF">
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 19:33:09 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="FIRSTNAME" id="F630E1F6-EF92-C7FB-C934-A1711E4B1A83">
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 19:33:09 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<indexProxies>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="PK_CUSTOMER" id="7B85260B-E2E2-6DA9-B568-1F969EC625A5">
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 19:33:10 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+<schemaObject>CD2F05E7-15E4-89E2-06E2-F75B110CA068</schemaObject>
+<segment>F28B7E03-2A15-4CAA-47B6-88F8AFF0E302</segment>
+<tableSpace>5CE53BEE-0278-B860-8CF5-48E7744EF1E6</tableSpace>
+</IndexProxy>
+</indexProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="FK_CUSTOMERSUPPORTREPID" id="A766E6A0-35B9-10F7-940D-EE51D21C6965">
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 19:33:13 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="PK_CUSTOMER" id="9F753DA6-B851-19E6-3442-AAF56C682E1A">
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 19:33:12 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+<segment>F28B7E03-2A15-4CAA-47B6-88F8AFF0E302</segment>
+<tableSpace>5CE53BEE-0278-B860-8CF5-48E7744EF1E6</tableSpace>
+<existingIndex>7B85260B-E2E2-6DA9-B568-1F969EC625A5</existingIndex>
+<indexSegment>F28B7E03-2A15-4CAA-47B6-88F8AFF0E302</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>

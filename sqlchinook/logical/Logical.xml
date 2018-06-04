@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<LogicalDesign class="oracle.dbtools.crest.model.design.logical.LogicalDesign" name="Logical" id="85B18A9A-2FF4-D4BC-BD32-E1B5F27265F2" mainViewID="65B614F8-9CF0-19D4-92AB-66399C0E571D">
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 18:45:02 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+</LogicalDesign>

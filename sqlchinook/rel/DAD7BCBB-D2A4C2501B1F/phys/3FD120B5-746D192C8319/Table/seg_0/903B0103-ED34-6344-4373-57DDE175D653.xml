@@ -1,0 +1,55 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="DEPARTMENT" directorySegmentName="seg_0" id="903B0103-ED34-6344-4373-57DDE175D653">
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 18:45:51 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+<schemaObject>98A79839-E159-6719-762F-5C7C8476F02C</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>E0B8C9FF-79B9-D6BE-BDCA-EF7F07D9E533</segment>
+<tableSpace>5CE53BEE-0278-B860-8CF5-48E7744EF1E6</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="DEPT_NAME" id="148DA2F9-7AD6-38FF-D66F-17D446D5F6E8">
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 18:45:51 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="MONTHLY_BUDGET" id="2FAC15A6-8AC0-C08D-7D86-84598ED77457">
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 18:45:51 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="DEPT_ID" id="3328579E-B6C8-B80F-4F52-BD5DCD3B95BF">
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 18:45:51 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<indexProxies>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="PK_DEPT" id="23D0E874-19C9-EDCA-A487-BDCA49EF780A">
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 18:45:52 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+<schemaObject>98A79839-E159-6719-762F-5C7C8476F02C</schemaObject>
+<segment>F28B7E03-2A15-4CAA-47B6-88F8AFF0E302</segment>
+<tableSpace>5CE53BEE-0278-B860-8CF5-48E7744EF1E6</tableSpace>
+</IndexProxy>
+</indexProxies>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="PK_DEPT" id="638DFD79-C025-A97A-50BC-6174CCB87BCF">
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 18:45:52 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+<segment>F28B7E03-2A15-4CAA-47B6-88F8AFF0E302</segment>
+<tableSpace>5CE53BEE-0278-B860-8CF5-48E7744EF1E6</tableSpace>
+<existingIndex>23D0E874-19C9-EDCA-A487-BDCA49EF780A</existingIndex>
+<indexSegment>F28B7E03-2A15-4CAA-47B6-88F8AFF0E302</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>

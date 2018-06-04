@@ -1,0 +1,207 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="5F3EF420-353B-7169-7994-D5915C74FC8A" schemaObject="98A79839-E159-6719-762F-5C7C8476F02C" name="EMPLOYEE">
+<sourceConnName>testdb</sourceConnName>
+<sourceObjSchema>FALENAS108</sourceObjSchema>
+<sourceObjName>EMPLOYEE</sourceObjName>
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 18:45:51 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="EMP_ID" id="74058750-460A-A18C-BC7F-BCD5CD0BA1A7">
+<sourceConnName>testdb</sourceConnName>
+<sourceObjSchema>EMPLOYEE</sourceObjSchema>
+<sourceObjName>EMP_ID</sourceObjName>
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 18:45:51 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,5,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="EMP_NAME" id="6556F2D6-8D84-2BE2-8B48-FF8B86DC627B">
+<sourceConnName>testdb</sourceConnName>
+<sourceObjSchema>EMPLOYEE</sourceObjSchema>
+<sourceObjName>EMP_NAME</sourceObjName>
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 18:45:51 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 BYTE</dataTypeSize>
+<ownDataTypeParameters>50 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="BIRTHDAY" id="A717AD10-EC38-7172-DE22-3B88EABE45FE">
+<sourceConnName>testdb</sourceConnName>
+<sourceObjSchema>EMPLOYEE</sourceObjSchema>
+<sourceObjName>BIRTHDAY</sourceObjName>
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 18:45:51 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<dataTypeSize>7</dataTypeSize>
+<ownDataTypeParameters>7,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="MONTHLY_SALARY" id="0DD95EFC-B8D2-E46C-FCCC-5B4BAB2879FA">
+<sourceConnName>testdb</sourceConnName>
+<sourceObjSchema>EMPLOYEE</sourceObjSchema>
+<sourceObjName>MONTHLY_SALARY</sourceObjName>
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 18:45:51 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>7</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,7,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DEPT_ID" id="E301F5DB-57CB-65B2-52AC-0A256A63D502">
+<sourceConnName>testdb</sourceConnName>
+<sourceObjSchema>EMPLOYEE</sourceObjSchema>
+<sourceObjName>DEPT_ID</sourceObjName>
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 18:45:51 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,5,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="ED5DA695-AFF4-6C3F-41EB-4DBFD52CE3EE" referredColumn="3328579E-B6C8-B80F-4F52-BD5DCD3B95BF"/>
+</associations>
+</Column>
+<Column name="HIRE_DATE" id="FD6D6048-2D6C-6D23-5BC0-7539187406FB">
+<sourceConnName>testdb</sourceConnName>
+<sourceObjSchema>EMPLOYEE</sourceObjSchema>
+<sourceObjName>HIRE_DATE</sourceObjName>
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 18:45:51 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<dataTypeSize>7</dataTypeSize>
+<ownDataTypeParameters>7,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="POSITION" id="A4703437-F404-F6D6-31B7-292034E9BE84">
+<sourceConnName>testdb</sourceConnName>
+<sourceObjSchema>EMPLOYEE</sourceObjSchema>
+<sourceObjName>POSITION</sourceObjName>
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 18:45:51 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 BYTE</dataTypeSize>
+<ownDataTypeParameters>50 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="MANAGER_ID" id="548589A0-FE02-753C-155D-61C0CBF039BA">
+<sourceConnName>testdb</sourceConnName>
+<sourceObjSchema>EMPLOYEE</sourceObjSchema>
+<sourceObjName>MANAGER_ID</sourceObjName>
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 18:45:51 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,5,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="EMP_LOCATION" id="0A3F86D9-ACF5-A510-01DD-EADC2930F46C">
+<sourceConnName>testdb</sourceConnName>
+<sourceObjSchema>EMPLOYEE</sourceObjSchema>
+<sourceObjName>EMP_LOCATION</sourceObjName>
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 18:45:51 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,5,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="52C6FA2F-63DA-43FC-7DA3-FD9BFC9969F7" referredColumn="ED010C7F-6682-3458-B79D-2FFD27CD8434"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="1F4A1234-C599-A4CB-7608-EEDFCA120674" name="PK_EMP">
+<sourceConnName>testdb</sourceConnName>
+<sourceObjSchema>FALENAS108</sourceObjSchema>
+<sourceObjName>PK_EMP</sourceObjName>
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 18:45:52 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="74058750-460A-A18C-BC7F-BCD5CD0BA1A7"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="EAE0B88C-C37D-1B91-8197-61CEF3FABA38" schemaObject="98A79839-E159-6719-762F-5C7C8476F02C" name="PK_EMP">
+<sourceConnName>testdb</sourceConnName>
+<sourceObjSchema>FALENAS108</sourceObjSchema>
+<sourceObjName>PK_EMP</sourceObjName>
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 18:45:52 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="74058750-460A-A18C-BC7F-BCD5CD0BA1A7"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="D5C45AB7-8753-1130-E9C5-9AFC42C5E18A" name="FK_EMP_DEPT">
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 18:45:53 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E301F5DB-57CB-65B2-52AC-0A256A63D502"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="660CAD91-8E51-C84B-93BC-5A6EA6DF56D1" name="FK_EMP_LOCATION">
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 18:45:53 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0A3F86D9-ACF5-A510-01DD-EADC2930F46C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

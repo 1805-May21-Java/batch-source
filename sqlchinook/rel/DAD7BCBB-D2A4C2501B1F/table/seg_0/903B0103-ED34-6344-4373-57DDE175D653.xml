@@ -1,0 +1,89 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="903B0103-ED34-6344-4373-57DDE175D653" schemaObject="98A79839-E159-6719-762F-5C7C8476F02C" name="DEPARTMENT">
+<sourceConnName>testdb</sourceConnName>
+<sourceObjSchema>FALENAS108</sourceObjSchema>
+<sourceObjName>DEPARTMENT</sourceObjName>
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 18:45:51 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="DEPT_ID" id="3328579E-B6C8-B80F-4F52-BD5DCD3B95BF">
+<sourceConnName>testdb</sourceConnName>
+<sourceObjSchema>DEPARTMENT</sourceObjSchema>
+<sourceObjName>DEPT_ID</sourceObjName>
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 18:45:51 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,5,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DEPT_NAME" id="148DA2F9-7AD6-38FF-D66F-17D446D5F6E8">
+<sourceConnName>testdb</sourceConnName>
+<sourceObjSchema>DEPARTMENT</sourceObjSchema>
+<sourceObjName>DEPT_NAME</sourceObjName>
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 18:45:51 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 BYTE</dataTypeSize>
+<ownDataTypeParameters>50 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="MONTHLY_BUDGET" id="2FAC15A6-8AC0-C08D-7D86-84598ED77457">
+<sourceConnName>testdb</sourceConnName>
+<sourceObjSchema>DEPARTMENT</sourceObjSchema>
+<sourceObjName>MONTHLY_BUDGET</sourceObjName>
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 18:45:51 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>9</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,9,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="638DFD79-C025-A97A-50BC-6174CCB87BCF" name="PK_DEPT">
+<sourceConnName>testdb</sourceConnName>
+<sourceObjSchema>FALENAS108</sourceObjSchema>
+<sourceObjName>PK_DEPT</sourceObjName>
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 18:45:52 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="3328579E-B6C8-B80F-4F52-BD5DCD3B95BF"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="23D0E874-19C9-EDCA-A487-BDCA49EF780A" schemaObject="98A79839-E159-6719-762F-5C7C8476F02C" name="PK_DEPT">
+<sourceConnName>testdb</sourceConnName>
+<sourceObjSchema>FALENAS108</sourceObjSchema>
+<sourceObjName>PK_DEPT</sourceObjName>
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 18:45:52 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="3328579E-B6C8-B80F-4F52-BD5DCD3B95BF"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

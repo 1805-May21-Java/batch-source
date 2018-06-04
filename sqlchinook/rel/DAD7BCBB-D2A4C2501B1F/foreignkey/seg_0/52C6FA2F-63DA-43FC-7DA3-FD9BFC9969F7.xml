@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="52C6FA2F-63DA-43FC-7DA3-FD9BFC9969F7" containerWithKeyObject="5F3EF420-353B-7169-7994-D5915C74FC8A" localFKIndex="660CAD91-8E51-C84B-93BC-5A6EA6DF56D1" name="FK_EMP_LOCATION">
+<sourceConnName>testdb</sourceConnName>
+<sourceObjSchema>FALENAS108</sourceObjSchema>
+<sourceObjName>FK_EMP_LOCATION</sourceObjName>
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 18:45:53 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+<referredTableLongName>FALENAS108.LOCATIONS</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>1FF42E79-FB86-105F-2EF2-3E4DEEE253C8</referredTableID>
+<keyObject>0DB5E57F-2EB2-C91A-FA78-598284F4D2D9</keyObject>
+<referredKeyID>0DB5E57F-2EB2-C91A-FA78-598284F4D2D9</referredKeyID>
+<mandatory>false</mandatory>
+<refColNames>LOCATION_ID</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

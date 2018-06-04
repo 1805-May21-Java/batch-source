@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="ED5DA695-AFF4-6C3F-41EB-4DBFD52CE3EE" containerWithKeyObject="5F3EF420-353B-7169-7994-D5915C74FC8A" localFKIndex="D5C45AB7-8753-1130-E9C5-9AFC42C5E18A" name="FK_EMP_DEPT">
+<sourceConnName>testdb</sourceConnName>
+<sourceObjSchema>FALENAS108</sourceObjSchema>
+<sourceObjName>FK_EMP_DEPT</sourceObjName>
+<createdBy>jayfman</createdBy>
+<createdTime>2018-05-30 18:45:53 UTC</createdTime>
+<ownerDesignName>sqlchinook</ownerDesignName>
+<referredTableLongName>FALENAS108.DEPARTMENT</referredTableLongName>
+<deleteRule>CASCADE</deleteRule>
+<referredTableID>903B0103-ED34-6344-4373-57DDE175D653</referredTableID>
+<keyObject>638DFD79-C025-A97A-50BC-6174CCB87BCF</keyObject>
+<referredKeyID>638DFD79-C025-A97A-50BC-6174CCB87BCF</referredKeyID>
+<mandatory>false</mandatory>
+<refColNames>DEPT_ID</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>
