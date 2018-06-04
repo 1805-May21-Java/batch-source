@@ -5,8 +5,14 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+
+import com.revature.dao.AccountDaoImpl;
+import com.revature.util.ConnectionUtil;
 
 public class Driver {
 	
@@ -16,29 +22,48 @@ public class Driver {
 
 	public static void main(String[] args) {
 		
-		accounts = new ArrayList<Account>();
-		
-		// Read in data file with account info
-		String path = "src/com/revature/bankingapp/data.txt";
-		
-		BufferedReader br;
 		try {
-			br = new BufferedReader(new FileReader(path));
-			String line = br.readLine();
-			
-			// read data file
-			while (line != null) {
-				String[] arr = line.split(":"); // split lines on colon
-				Account user = new Account(arr[0], arr[1], Double.parseDouble(arr[2]));
-				accounts.add(user);
-				line = br.readLine();
-			}
-			br.close();
-		} catch (IOException e) {
+			Connection con = ConnectionUtil.getHardcodedConnection();
+			//System.out.println(con.getMetaData().getDriverName());
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
-		mainPage(); // start bank program
+		
+		
+		AccountDaoImpl adi = new AccountDaoImpl();
+		
+		Account acc = new Account("Rachel25", "password123");
+		adi.createAccount(acc);
+		
+		List<Account> allAccounts = adi.getAccounts();
+		for (Account a : allAccounts) {
+			System.out.println(a);
+		}
+		
+//		accounts = new ArrayList<Account>();
+//		
+//		// TODO: get data from database
+//		// Read in data file with account info
+//		String path = "src/com/revature/bankingapp/data.txt";
+//		
+//		BufferedReader br;
+//		try {
+//			br = new BufferedReader(new FileReader(path));
+//			String line = br.readLine();
+//			
+//			// read data file
+//			while (line != null) {
+//				String[] arr = line.split(":"); // split lines on colon
+//				Account user = new Account(arr[0], arr[1], Double.parseDouble(arr[2]));
+//				accounts.add(user);
+//				line = br.readLine();
+//			}
+//			br.close();
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//
+//		mainPage(); // start bank program
 		
 	}
 	
