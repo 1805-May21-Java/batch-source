@@ -383,11 +383,31 @@ END;
 
 -- 6.1 AFTER/FOR
 -- Create an after insert trigger on the emplyee table fired after a new record is inserted into the table
+CREATE OR REPLACE TRIGGER CHINOOK.TR_INSERT_EMPLOYEE
+AFTER INSERT ON CHINOOK.EMPLOYEE
+FOR EACH ROW
+BEGIN
+    DBMS_OUTPUT.PUT_LINE('INSERT COMPLETE');
+END;
+/
 
 -- Create an after update trigger on the album table that fires after a row is inserted in the table
+CREATE OR REPLACE TRIGGER CHINOOK.TR_UPDATE_ALBUM
+AFTER UPDATE ON CHINOOK.ALBUM
+FOR EACH ROW
+BEGIN
+    DBMS_OUTPUT.PUT_LINE('NEW ENTRY IN ALBUM');
+END;
+/
 
 -- Create an after delete trigger on the customer table that fires after a row is deleted from the table
-
+CREATE OR REPLACE TRIGGER CHINOOK.TR_DELETE_CUSTOMER
+AFTER DELETE ON CHINOOK.CUSTOMER
+FOR EACH ROW
+BEGIN
+    DBMS_OUTPUT.PUT_LINE('CUSTOMER DELETED! BUH-BYE!');
+END;
+/
 
 
 --------------
