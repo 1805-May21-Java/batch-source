@@ -6,17 +6,16 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Scanner;
 
-import com.revature.util.BankAccounts;
 import com.revature.util.ConnectionUtil;
-import com.revature.util.UpdateData;
 import com.revature.dao.AccountDaoImpl;
 import com.revature.pojos.Account;
 
 public class AppDriver {
 	
 	//Remember to open connection at start of main and close it at the end of it.
-	public static void main (String[] args){ //throws IOException {
+	public static void main (String[] args){
 		
+		//Try/Catch block used to catch any possible IOException or SQLException
 		try {
 			//Opens up connection to Sql Database
 			Connection con = ConnectionUtil.getConnection();
@@ -27,9 +26,9 @@ public class AppDriver {
 			//and put in a HashMap
 			HashMap<String, Account> accountsList = ad1.getAccounts();
 			
-			for(Account acc : accountsList.values()) {
-				System.out.println(acc);
-			}
+			//for(Account acc : accountsList.values()) {
+			//	System.out.println(acc);
+			//}
 			
 			//Scanner object to allow user to use and/or create bank account
 			Scanner userInput = new Scanner(System.in);
@@ -40,8 +39,8 @@ public class AppDriver {
 			//String username will be used to retrieve the specific Account
 			//from the accounstList HashMap
 			String username = "";
-			//newAccount will be used when creating a new Account in the first
-			//while loop
+			//currentAccount will be used when creating a new Account in the first
+			//while loop and will serve as a local copy of the logged on account
 			Account currentAccount = null;
 			
 			System.out.println("Welcome to the bank, please log in with your usersame.");
@@ -81,13 +80,14 @@ public class AppDriver {
 					}
 					//If username exist in accountsList, then Account object is
 					//retrieved using username as the key.
-					//Account object is also set to true.
+					//Account object's isLoggedOn boolean is also set to true.
 				}else if(accountsList.containsKey(accountLine)) {
 					String currentUsername = accountLine;
-					//username = accountLine;
 					System.out.println("Valid username entered, please type in password:");
 					accountLine = userInput.nextLine();
 					if((accountsList.get(currentUsername).getPassword()).equals(accountLine)) {
+						//currentAccount is now populated with object from HashMap accountList
+						//where the object's username String matches the String variable currentUsername
 						currentAccount = accountsList.get(currentUsername);
 						currentAccount.logOn();
 						username = currentUsername;
@@ -104,7 +104,6 @@ public class AppDriver {
 				}
 				
 			}
-			
 			
 			//Handles banking transaction options
 			//while loop checks that Account having username in accountsList
@@ -170,6 +169,7 @@ public class AppDriver {
 					ad1.deleteAccountByUsername(currentAccount.getUsername());
 					//Local copy is logged off to exit the loop
 					currentAccount.logOff();
+					System.out.println("Account has been deleted.");
 					
 				}else {
 					System.out.println("Error in option input, please try again");
@@ -182,7 +182,6 @@ public class AppDriver {
 			userInput.close();
 			
 		} catch (SQLException | IOException e) {
-			
 			e.printStackTrace();
 		}
 		

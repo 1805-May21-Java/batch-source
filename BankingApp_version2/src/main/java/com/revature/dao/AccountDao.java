@@ -4,6 +4,9 @@ import java.util.HashMap;
 
 import com.revature.pojos.Account;
 
+//Interface AccountDao is used to ensure that Account DAO Implementation
+//will carry out all necessary actions, main retrieving from and writing 
+//to the database.
 public interface AccountDao {
 	
 	public HashMap<String, Account> getAccounts();

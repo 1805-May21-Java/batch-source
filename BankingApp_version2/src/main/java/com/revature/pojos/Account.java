@@ -101,14 +101,25 @@ public class Account implements AccountActions{
 			return;
 		}
 		
+		
 		//if and else if checks if String checkingOrSavings is equal to
 		//"Savings or "Checking" ignoring String case.
 		if(checkingOrSavings.equalsIgnoreCase("Savings")) {
+			//Checks if withdrawal will result in a negative balance, returns if true.
+			if((this.getSavings() - amount) < 0) {
+				System.out.println("Withdrawal denied. Can only withdraw available amount in Savings.");
+				return;
+			}
 			//subtracts amount from savings variable and prints a statement
 			//of the withdrawal.
 			this.savings -= amount;
 			System.out.println("Withdrew $" + amount + " from Savings.");
 		}else if(checkingOrSavings.equalsIgnoreCase("Checking")) {
+			//Checks if withdrawal will result in a negative balance, returns if true.
+			if((this.getChecking() - amount) < 0 ) {
+				System.out.println("Withdrawal denied. Can only withdraw available amount in Checking.");
+				return;
+			}
 			//subtracts amount from checking variable and prints a statement
 			//of the withdrawal.
 			this.checking -= amount;
