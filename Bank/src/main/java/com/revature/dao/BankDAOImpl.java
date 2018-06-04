@@ -28,7 +28,7 @@ public class BankDAOImpl implements BankDAO {
 				sql = "SELECT ACCOUNT_ID FROM BANK_LINK WHERE USER_NAME = ?";
 				ps = con.prepareStatement(sql);
 				ps.setString(1, name);
-				ResultSet rs2 = ps.executeQuery(sql);
+				ResultSet rs2 = ps.executeQuery();
 				
 				while(rs2.next()) {
 					accounts.add(rs2.getInt("ACCOUNT_ID"));
@@ -54,7 +54,7 @@ public class BankDAOImpl implements BankDAO {
 			Connection con = ConnectionUtil.getConnection();
 			String sql = "SELECT * FROM BANK_ACCOUNT";
 			PreparedStatement ps = con.prepareStatement(sql);
-			ResultSet rs = ps.executeQuery(sql);
+			ResultSet rs = ps.executeQuery();
 			
 			while(rs.next()) {
 				ArrayList<String> users = new ArrayList<String>();
@@ -67,7 +67,7 @@ public class BankDAOImpl implements BankDAO {
 				sql = "SELECT USER_NAME FROM BANK_LINK WHERE ACCOUNT_ID = ?";
 				ps = con.prepareStatement(sql);
 				ps.setInt(1, id);
-				ResultSet rs2 = ps.executeQuery(sql);
+				ResultSet rs2 = ps.executeQuery();
 				
 				while(rs2.next()) {
 					users.add(rs2.getString("USER_NAME"));
@@ -76,7 +76,7 @@ public class BankDAOImpl implements BankDAO {
 				sql = "SELECT * FROM BANK_TRANSACTION WHERE ACCOUNT_ID = ?";
 				ps = con.prepareStatement(sql);
 				ps.setInt(1, id);
-				ResultSet rs3 = ps.executeQuery(sql);
+				ResultSet rs3 = ps.executeQuery();
 				
 				while(rs3.next()) {
 					String type = rs3.getString("TYPE");
@@ -110,7 +110,7 @@ public class BankDAOImpl implements BankDAO {
 			String sql = "SELECT * FROM BANK_USER WHERE NAME = ?";
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, name);
-			ResultSet rs = ps.executeQuery(sql);
+			ResultSet rs = ps.executeQuery();
 			
 			while(rs.next()) {
 				ArrayList<Integer> accounts = new ArrayList<Integer>();
@@ -120,7 +120,7 @@ public class BankDAOImpl implements BankDAO {
 				sql = "SELECT ACCOUNT_ID FROM BANK_LINK WHERE USER_NAME = ?";
 				ps = con.prepareStatement(sql);
 				ps.setString(1, name);
-				ResultSet rs2 = ps.executeQuery(sql);
+				ResultSet rs2 = ps.executeQuery();
 				
 				while(rs2.next()) {
 					accounts.add(rs2.getInt("ACCOUNT_ID"));
@@ -147,7 +147,7 @@ public class BankDAOImpl implements BankDAO {
 			String sql = "SELECT * FROM BANK_ACCOUNT WHERE ACCOUNT_ID = ?";
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1, id);
-			ResultSet rs = ps.executeQuery(sql);
+			ResultSet rs = ps.executeQuery();
 			
 			while(rs.next()) {
 				ArrayList<String> users = new ArrayList<String>();
@@ -159,7 +159,7 @@ public class BankDAOImpl implements BankDAO {
 				sql = "SELECT USER_NAME FROM BANK_LINK WHERE ACCOUNT_ID = ?";
 				ps = con.prepareStatement(sql);
 				ps.setInt(1, id);
-				ResultSet rs2 = ps.executeQuery(sql);
+				ResultSet rs2 = ps.executeQuery();
 				
 				while(rs2.next()) {
 					users.add(rs2.getString("USER_NAME"));
@@ -168,15 +168,15 @@ public class BankDAOImpl implements BankDAO {
 				sql = "SELECT * FROM BANK_TRANSACTION WHERE ACCOUNT_ID = ?";
 				ps = con.prepareStatement(sql);
 				ps.setInt(1, id);
-				ResultSet rs4 = ps.executeQuery(sql);
+				ResultSet rs3 = ps.executeQuery();
 				
-				while(rs4.next()) {
-					String type = rs4.getString("TYPE");
-					String user = rs4.getString("USERNAME");
-					double amount = rs4.getDouble("AMOUNT");
-					double transactionBalance = rs4.getDouble("BALANCE");
-					Date date = rs4.getDate("DATE_MADE");
-					int other = rs4.getInt("OTHER_ACCOUNT_ID");
+				while(rs3.next()) {
+					String type = rs3.getString("TYPE");
+					String user = rs3.getString("USERNAME");
+					double amount = rs3.getDouble("AMOUNT");
+					double transactionBalance = rs3.getDouble("BALANCE");
+					Date date = rs3.getDate("DATE_MADE");
+					int other = rs3.getInt("OTHER_ACCOUNT_ID");
 					transactions.add(new Transaction(type, user, amount, transactionBalance, date, other));
 				}
 				
@@ -203,7 +203,7 @@ public class BankDAOImpl implements BankDAO {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, user.getUser());
 			ps.setString(2, user.getPass());
-			usersCreated = ps.executeUpdate(sql);
+			usersCreated = ps.executeUpdate();
 			
 			con.close();
 			
@@ -226,7 +226,7 @@ public class BankDAOImpl implements BankDAO {
 			ps.setInt(1, account.getId());
 			ps.setDouble(2, account.getBalance());
 			ps.setString(3, account.getNickname());
-			accountsCreated = ps.executeUpdate(sql);
+			accountsCreated = ps.executeUpdate();
 			
 			con.close();
 			
@@ -254,7 +254,7 @@ public class BankDAOImpl implements BankDAO {
 			ps.setDouble(5, transaction.getBalance());
 			ps.setDate(6, transaction.getDate());
 			ps.setInt(7, transaction.getOtherAccount());
-			transactionsCreated = ps.executeUpdate(sql);
+			transactionsCreated = ps.executeUpdate();
 			
 			con.close();
 			
@@ -281,7 +281,7 @@ public class BankDAOImpl implements BankDAO {
 			ps.setDouble(1, account.getBalance());
 			ps.setString(2, account.getNickname());
 			ps.setInt(3, account.getId());
-			accountsUpdated = ps.executeUpdate(sql);
+			accountsUpdated = ps.executeUpdate();
 			
 			con.commit();
 			con.close();
@@ -304,7 +304,7 @@ public class BankDAOImpl implements BankDAO {
 			String sql = "DELETE FROM BANK_USER WHERE NAME = ?";
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, name);
-			rowsUpdated = ps.executeUpdate(sql);
+			rowsUpdated = ps.executeUpdate();
 			
 			con.commit();
 			con.close();
@@ -327,7 +327,7 @@ public class BankDAOImpl implements BankDAO {
 			String sql = "DELETE FROM BANK_ACCOUNT WHERE ACCOUNT_ID = ?";
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1, accountID);
-			rowsUpdated = ps.executeUpdate(sql);
+			rowsUpdated = ps.executeUpdate();
 			
 			con.commit();
 			con.close();

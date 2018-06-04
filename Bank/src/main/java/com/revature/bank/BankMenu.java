@@ -128,7 +128,7 @@ public class BankMenu {
 			else if(user == null) {
 				System.out.println("\nUsername / email is not linked to an account. Please try again.");
 			}
-			else if(user.getPass() != loginPass) {
+			else if(!user.getPass().equals(loginPass)) {
 				System.out.println("\nPassword is incorrect. Please try again.");
 			}
 			else {
@@ -308,6 +308,9 @@ public class BankMenu {
 					break;
 				case 'R':
 //					removeUser(account);
+					break;
+				case 'N':
+//					changeNickname(account);
 					break;
 				case 'W':
 					withdraw(dao.getAccountByID(account.getId()));
