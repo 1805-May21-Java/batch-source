@@ -1,0 +1,47 @@
+body{
+	background-color: rgb(255, 216, 255);
+	border-style: groove;
+}
+
+h1{
+	font-family: "courier";
+	border:5px solid Violet;
+	margin-right: 1000px;
+	text-align: center;
+	text-decoration: underline;
+	text-shadow: 3px 2px hotpink;
+}
+h2{
+	font-family: "tahoma";
+	color: hotpink;
+}
+.firstone{
+	font-family: "arial";
+	border:2px dashed white;
+	text-align: center;
+	color: green;
+}
+.secondone{
+	font-family: "arial";
+	border:2px dashed blue;
+	text-align: center;
+	color: red;
+}
+.thirdone{
+	font-family: "arial";
+	border:2px dashed yellow;
+	text-align: center;
+	color: gray;
+}
+.fourthone{
+	font-family: "arial";
+	border:2px dashed cyan;
+	text-align: center;
+	color: black;
+}
+.fifthone{
+	font-family: "arial";
+	border:2px dashed red;
+	text-align: center;
+	color: brown;
+}
