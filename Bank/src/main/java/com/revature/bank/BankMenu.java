@@ -45,19 +45,6 @@ public class BankMenu {
 		return false;
 	}
 	
-	// searches through the accounts for the String argument user
-	// returns the index of the Account with username user, -1 if not found
-	/* private int findAccount(String user) {
-		int acc = -1;
-		for(int i = 0; i < bankInfo.getAccounts().size(); i++) {
-			if(user.equals(bankInfo.getAccounts().get(i).getUser())) {
-				acc = i;
-				break;
-			}
-		}
-		return acc;
-	} */
-	
 	/* Creates a User object with the information given by the user
 	 * then persists the data in the SQL database
 	 * 
@@ -97,6 +84,8 @@ public class BankMenu {
 			dao.createUser(r);
 			System.out.println("\nYour account has been created. Thank you for joining Boulos Bank!");
 		}
+		else
+			System.out.println("\nReturning to Home menu...");
 		
 		printHome();
 	}
@@ -121,6 +110,7 @@ public class BankMenu {
 			User user = dao.getUserByName(loginUser);
 						
 			if(loginUser.equals("") || loginPass.equals("")) {
+				System.out.println("\nReturning to Home menu...");
 				printHome();
 				break;
 			}
@@ -212,16 +202,13 @@ public class BankMenu {
 		
 		String nickname = input.nextLine();
 		
-		if(nickname.equals(""))
-			nickname = null;
-		
 		int accountID = r.nextInt(90000) + 10000;
 		while(dao.getAccountByID(accountID) != null)
 			accountID = r.nextInt(90000) + 10000;
 		
 		System.out.println("\nPlease confirm this account creation.");
 		System.out.println("New Account #" + accountID);
-		if(!nickname.equals(null))
+		if(!nickname.equals(""))
 			System.out.println("Nickname - " + nickname);
 		boolean confirm = false;
 		
@@ -315,8 +302,10 @@ public class BankMenu {
 			}
 		}
 		else
+			System.out.println("\nReturning to User menu...");
 			printUserScreen(dao.getUserByName(bankInfo.getUser().getUser()));
 	}
+	
 	/*
 	 * Prints the user information screen, along with all possible options for the user
 	 *
@@ -335,10 +324,10 @@ public class BankMenu {
 				Account acc_i = dao.getAccountByID(user.getAccounts().get(i));
 				System.out.print("[" + (i + 1) + "] - ");
 				
-				if(acc_i.getNickname() != "")
+				if(acc_i.getNickname() != null)
 					System.out.print(acc_i.getNickname());
 				else
-					System.out.print("Account #" + acc_i.getId());
+					System.out.print("Account #***" + (acc_i.getId()/10)%10 + acc_i.getId()%10);
 				
 				System.out.println(" | $" + df.format(acc_i.getBalance()));
 				
@@ -407,7 +396,7 @@ public class BankMenu {
 		System.out.print("\nUsername / email: ");
 		String newUser = input.nextLine();
 		
-		if(newUser != "") {
+		if(!newUser.equals("")) {
 			while(true) {
 				if(dao.getUserByName(newUser) == null) {
 					System.out.println("\nUsername / email is not linked to an account. Please try again.");
@@ -426,35 +415,40 @@ public class BankMenu {
 				else
 					break;
 			}
-			
-			boolean confirm = false;
-			do {
-				System.out.print("\nIs this correct? (Y / N) - ");
-				String confirmation = input.nextLine();
-							
-				if(confirmation.length() != 1)
-					System.out.println("\nPlease enter Y or N.");
-				else if(Character.toUpperCase(confirmation.charAt(0)) == 'N') {
-					break;
-				}
-				else if(Character.toUpperCase(confirmation.charAt(0)) == 'Y') {
-					confirm = true;
-					break;
+			if(!newUser.equals("")) {
+				boolean confirm = false;
+				do {
+					System.out.print("\nIs this correct? (Y / N) - ");
+					String confirmation = input.nextLine();
+								
+					if(confirmation.length() != 1)
+						System.out.println("\nPlease enter Y or N.");
+					else if(Character.toUpperCase(confirmation.charAt(0)) == 'N') {
+						break;
+					}
+					else if(Character.toUpperCase(confirmation.charAt(0)) == 'Y') {
+						confirm = true;
+						break;
+					}
+					else
+						System.out.println("\nPlease enter Y or N.");
+				} while(true);
+				
+				if(confirm) {
+					dao.createLink(newUser, account.getId());
+					dao.createTransaction(new Transaction("Add", newUser, 0, 0,
+							Date.valueOf(LocalDate.now()), account.getId()), account.getId());
+					
+					System.out.println("\nSuccessfully added " + newUser + " to the account!");
 				}
 				else
-					System.out.println("\nPlease enter Y or N.");
-			} while(true);
-			
-			if(confirm) {
-				dao.createLink(newUser, account.getId());
-				dao.createTransaction(new Transaction("Add", newUser, 0, 0,
-						Date.valueOf(LocalDate.now()), account.getId()), account.getId());
-				
-				System.out.println("\nSuccessfully added " + newUser + " to the account!");
+					System.out.println("\nCancelled user adding process.");
 			}
 			else
-				System.out.println("\nCancelled user adding process.");
+				System.out.println("\nReturning to Account menu...");
 		}
+		else
+			System.out.println("\nReturning to Account menu...");
 		
 		printAccountScreen(dao.getAccountByID(account.getId()));
 	}
@@ -465,25 +459,25 @@ public class BankMenu {
 		System.out.print("\nUsername / email: ");
 		String newUser = input.nextLine();
 		
-		if(newUser != "") {
+		if(!newUser.equals("")) {
 			while(true) {
 				if(dao.getUserByName(newUser) == null) {
 					System.out.println("\nUsername / email is not linked to an account. Please try again.");
-					System.out.println("\nWhich user would you like to add to the account?");
+					System.out.println("\nWhich user would you like to remove from the account?");
 					
 					System.out.print("\nUsername / email: ");
 					newUser = input.nextLine();
 				}
 				else if	(!account.getUsers().contains(newUser)) {
 					System.out.println("\nUsername / email is not linked to this account. Please try again.");
-					System.out.println("\nWhich user would you like to add to the account?");
+					System.out.println("\nWhich user would you like to remove from the account?");
 					
 					System.out.print("\nUsername / email: ");
 					newUser = input.nextLine();
 				}
 				else if(newUser.equals(bankInfo.getUser().getUser())) {
 					System.out.println("\nYou cannot remove yourself from the account. Please try again.");
-					System.out.println("\nWhich user would you like to add to the account?");
+					System.out.println("\nWhich user would you like to remove from the account?");
 					
 					System.out.print("\nUsername / email: ");
 					newUser = input.nextLine();
@@ -492,34 +486,40 @@ public class BankMenu {
 					break;
 			}
 			
-			boolean confirm = false;
-			do {
-				System.out.print("\nIs this correct? (Y / N) - ");
-				String confirmation = input.nextLine();
-							
-				if(confirmation.length() != 1)
-					System.out.println("\nPlease enter Y or N.");
-				else if(Character.toUpperCase(confirmation.charAt(0)) == 'N') {
-					break;
-				}
-				else if(Character.toUpperCase(confirmation.charAt(0)) == 'Y') {
-					confirm = true;
-					break;
+			if(!newUser.equals("")) {
+				boolean confirm = false;
+				do {
+					System.out.print("\nIs this correct? (Y / N) - ");
+					String confirmation = input.nextLine();
+								
+					if(confirmation.length() != 1)
+						System.out.println("\nPlease enter Y or N.");
+					else if(Character.toUpperCase(confirmation.charAt(0)) == 'N') {
+						break;
+					}
+					else if(Character.toUpperCase(confirmation.charAt(0)) == 'Y') {
+						confirm = true;
+						break;
+					}
+					else
+						System.out.println("\nPlease enter Y or N.");
+				} while(true);
+				
+				if(confirm) {
+					dao.deleteLink(newUser, account.getId());
+					dao.createTransaction(new Transaction("Remove", newUser, 0, 0,
+							Date.valueOf(LocalDate.now()), account.getId()), account.getId());
+					
+					System.out.println("\nSuccessfully deleted " + newUser + " from the account.");
 				}
 				else
-					System.out.println("\nPlease enter Y or N.");
-			} while(true);
-			
-			if(confirm) {
-				dao.deleteLink(newUser, account.getId());
-				dao.createTransaction(new Transaction("Remove", newUser, 0, 0,
-						Date.valueOf(LocalDate.now()), account.getId()), account.getId());
-				
-				System.out.println("\nSuccessfully deleted " + newUser + " from the account.");
+					System.out.println("\nCancelled user removal process.");
 			}
 			else
-				System.out.println("\nCancelled user removal process.");
+				System.out.println("\nReturning to Account menu...");
 		}
+		else
+			System.out.println("\nReturning to Account menu...");
 		
 		printAccountScreen(dao.getAccountByID(account.getId()));
 	}
@@ -535,12 +535,14 @@ public class BankMenu {
 			
 			System.out.println("Successfully changed account nickname to " + newNickname);
 		}
+		else
+			System.out.println("\nReturning to Account menu...");
 		
 		printAccountScreen(dao.getAccountByID(account.getId()));
 	}
 	
 	public void printAccountScreen(Account account) {
-		System.out.println("\nAccount #" + account.getId() + "\n");
+		System.out.println("\nAccount #***" + (account.getId()/10)%10 + account.getId()%10 + "\n");
 		
 		System.out.println("[A] - Add user to account");
 		System.out.println("[R] - Remove user from account");
@@ -632,7 +634,7 @@ public class BankMenu {
 	 */
 	public void showBankAccountInfo(Account account) {
 		System.out.println("\nAccount #" + account.getId());
-		System.out.println("Account holders - ");
+		System.out.print("Account holders - ");
 		
 		for(int i = 0; i < account.getUsers().size(); i++) {
 			if(i != 0)
@@ -678,7 +680,7 @@ public class BankMenu {
 				System.out.println("Remaining balance: $" + df.format(account.getBalance()));
 			}
 		} catch (NumberFormatException e) {
-			System.out.println("\nInvalid input. Returning to main menu...");
+			System.out.println("\nInvalid input. Returning to Account menu...");
 		} finally {
 			printAccountScreen(dao.getAccountByID(account.getId()));
 		}
@@ -713,7 +715,7 @@ public class BankMenu {
 				System.out.println("New balance: $" + df.format(account.getBalance()));
 			}
 		} catch(NumberFormatException e) {
-			System.out.println("\nInvalid input. Returning to main menu...");
+			System.out.println("\nInvalid input. Returning to Account menu...");
 		} finally {
 			printAccountScreen(dao.getAccountByID(account.getId()));
 		}
@@ -740,8 +742,9 @@ public class BankMenu {
 				transferAccount = Integer.parseInt(transferInput);
 							
 				if(transferInput.equals("")) {
-					printAccountScreen(account);
-					break;
+					System.out.println("\nReturning to Account menu...");
+					printAccountScreen(dao.getAccountByID(account.getId()));
+					return;
 				}
 				else if(dao.getAccountByID(transferAccount) == null) {
 					System.out.println("\nAccount # is not linked to an account. Please try again.");
@@ -807,7 +810,7 @@ public class BankMenu {
 					System.out.println("\nTransfer cancelled.");
 			}
 		} catch(NumberFormatException e) {
-			System.out.println("\nInvalid input. Returning to main menu...");
+			System.out.println("\nInvalid input. Returning to Account menu...");
 		} finally {
 			printAccountScreen(dao.getAccountByID(account.getId()));
 		}
@@ -865,7 +868,7 @@ public class BankMenu {
 					System.out.print("\nOption: ");
 					String confirmation = input.nextLine();
 					
-					if(!confirmation.equals(null) || !confirmation.equals(""))
+					if(!confirmation.equals(null) && !confirmation.equals(""))
 						option = Character.toUpperCase(confirmation.charAt(0));
 								
 					if(confirmation.length() != 1)
