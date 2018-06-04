@@ -1,7 +1,6 @@
 package com.revature.dao;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 
 import com.revature.bank.*;
 import com.revature.bank.User;
