@@ -228,8 +228,6 @@ BEGIN
 END;
 /
 
-SELECT POST_BABYBOOMERS FROM DUAL;
-
 DECLARE
 BOOMERS SYS_REFCURSOR;
 FIRSTNAME VARCHAR2(20);
@@ -254,20 +252,142 @@ SET SERVEROUTPUT ON;
 
 -- 4.1 Basic Stored Procedure
 -- Create a stored procedure that selects the first and last names of all the employees
+CREATE OR REPLACE PROCEDURE FULL_NAMES (EMPLOYEE_NAMES OUT SYS_REFCURSOR)
+AS
+BEGIN
+    OPEN EMPLOYEE_NAMES FOR
+    SELECT FIRSTNAME, LASTNAME
+    FROM CHINOOK.EMPLOYEE;
+END;
+/
+
+DECLARE
+    EMPLOYEE_NAMES SYS_REFCURSOR;
+    FIRSTNAME CHINOOK.EMPLOYEE.FIRSTNAME%TYPE;
+    LASTNAME CHINOOK.EMPLOYEE.LASTNAME%TYPE;
+BEGIN
+    FULL_NAMES(EMPLOYEE_NAMES);
+    LOOP
+        FETCH EMPLOYEE_NAMES INTO FIRSTNAME, LASTNAME;
+        EXIT WHEN EMPLOYEE_NAMES%NOTFOUND;
+        DBMS_OUTPUT.PUT_LINE(FIRSTNAME || ' ' || LASTNAME);
+    END LOOP;
+    CLOSE EMPLOYEE_NAMES;
+END;
+/
 
 
 -- 4.2 Stored Procedure Input Parameters
 -- Create a stored procedure that updates the personal information of an employee
+CREATE OR REPLACE PROCEDURE UPDATE_EMPLOYEE (EMPID IN NUMBER, LNAME IN VARCHAR2, FNAME IN VARCHAR2,
+      TITLE IN VARCHAR, REPORTSTO IN NUMBER, DOB IN DATE, DATEHIRED IN DATE, EMPADDRESS IN VARCHAR2,
+      EMPCITY IN VARCHAR2, EMPSTATE IN VARCHAR2, EMPCOUNTRY IN VARCHAR2, EMPZIP IN VARCHAR2,
+      EMPPHONE IN VARCHAR2, EMPFAX IN VARCHAR2, EMPEMAIL IN VARCHAR2)
+IS
+BEGIN
+    UPDATE CHINOOK.EMPLOYEE
+    SET EMPLOYEEID = EMPID, LASTNAME = LNAME, FIRSTNAME = FNAME, TITLE = TITLE, REPORTSTO = REPORTSTO,
+        BIRTHDATE = DOB, HIREDATE = DATEHIRED, ADDRESS = EMPADDRESS, CITY = EMPCITY, STATE = EMPSTATE,
+        COUNTRY = EMPCOUNTRY, POSTALCODE = EMPZIP, PHONE = EMPPHONE, FAX = EMPFAX, EMAIL = EMPEMAIL
+    WHERE EMPLOYEEID = EMPID;
+END;
+/
+
+BEGIN
+    UPDATE_EMPLOYEE(8, 'Callahan', 'Laura', 'IT Manager', 1, '09-JAN-68', '04-MAR-04', '923 7 ST NW	Lethbridge',
+        'AB', 'Canada', 'T1H 1Y8', '+1 (403) 467-3351', '+1 (403) 467-8772', 'laura@chinookcorp.com');
+END;
+/
 
 -- Create a stored procedure that returns the managers of an employee
+CREATE OR REPLACE PROCEDURE GET_MANAGER(EMPID IN NUMBER)
+IS
+FNAME VARCHAR2(20);
+LNAME VARCHAR2(20);
+BEGIN
+    SELECT FIRSTNAME, LASTNAME
+    INTO FNAME, LNAME
+    FROM CHINOOK.EMPLOYEE
+    WHERE EMPLOYEEID = (SELECT REPORTSTO
+                        FROM CHINOOK.EMPLOYEE
+                        WHERE EMPLOYEEID = EMPID);
+    DBMS_OUTPUT.PUT_LINE(FNAME || ' ' || LNAME);
+END;
+/
+
+BEGIN
+    GET_MANAGER(5);
+END;
+/
 
 
 -- 4.3 Stored Procedure Output Parameters
 -- Create a stored procedure that returns the name and company of a customer
+CREATE OR REPLACE PROCEDURE GET_CUSTOMER(CUSID IN NUMBER, CUSTOMER_FNAME OUT CHINOOK.CUSTOMER.FIRSTNAME%TYPE,
+    CUSTOMER_LNAME OUT CHINOOK.CUSTOMER.LASTNAME%TYPE, CUSTOMER_COMPANY OUT CHINOOK.CUSTOMER.COMPANY%TYPE)
+IS
+BEGIN
+    SELECT FIRSTNAME, LASTNAME, COMPANY
+    INTO CUSTOMER_FNAME, CUSTOMER_LNAME, CUSTOMER_COMPANY
+    FROM CHINOOK.CUSTOMER
+    WHERE CUSTOMERID = CUSID;
+END;
+/
 
+DECLARE
+FNAME CHINOOK.CUSTOMER.FIRSTNAME%TYPE;
+LNAME CHINOOK.CUSTOMER.LASTNAME%TYPE;
+COMPANY CHINOOK.CUSTOMER.COMPANY%TYPE;
+BEGIN
+    GET_CUSTOMER(10, FNAME, LNAME, COMPANY);
+    DBMS_OUTPUT.PUT_LINE(FNAME || ' ' || LNAME || ' - ' || COMPANY);
+END;
+/
 
 
 ---------------------
 -- 5. Transactions --
 ---------------------
+
+-- Create a transaction that given an invoiceid will delete that invoice
+
+-- Create a transaction nested within a stored procedure that inserts a new record in the Customer table
+
+
+
+-----------------
+-- 6. Triggers --
+-----------------
+
+-- 6.1 AFTER/FOR
+-- Create an after insert trigger on the emplyee table fired after a new record is inserted into the table
+
+-- Create an after update trigger on the album table that fires after a row is inserted in the table
+
+-- Create an after delete trigger on the customer table that fires after a row is deleted from the table
+
+
+
+--------------
+-- 7. Joins --
+--------------
+
+-- 7.1 INNER
+-- Create an inner join that joins customers and orders and specifies the name of the customer and the invoiceid
+
+
+-- 7.2 OUTER
+-- Create an outer join that joins the customer and invoice table, specifying the customerid, firstname, lastname, and total
+
+
+-- 7.3 RIGHT
+-- Create a right join that joins album and artist specifying artist name and title
+
+
+-- 7.4 CROSS
+-- Create a cross join that joins album and artist and sorts by artist name in ascending order
+
+
+-- 7.5 SELF
+-- Perform a self-join on the employee table, joining on the reportsto column
 
