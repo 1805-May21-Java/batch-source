@@ -9,6 +9,12 @@ import java.util.LinkedList;
 import com.revature.bank.*;
 import com.revature.util.ConnectionUtil;
 
+/*
+ * Implementation class for Data Access Object
+ * 
+ * Contains definitions for BankDAO methods specifically made to return data
+ * to the BankMenu object for access, manipulation, and creation
+ */
 public class BankDAOImpl implements BankDAO {
 
 	public ArrayList<User> getUsers() {

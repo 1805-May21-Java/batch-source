@@ -10,7 +10,7 @@ import com.revature.dao.BankDAOImpl;
 /*
  * Bank Menu class for all interactive functionality
  * 
- * Handles information stored in a BankInfo object and prints prompts to the user
+ * Handles information stored in the SQL database and prints prompts to the user
  */
 
 public class BankMenu {
@@ -247,10 +247,9 @@ public class BankMenu {
 	}
 	
 	/*
-	 * Opens new bank account with the user information provided
+	 * User input driven method to change the user's password in the SQL database
 	 * 
-	 * Persists the new account information, along with the link to the user,
-	 * in the SQL database
+	 * Persists the new password change in the SQL database
 	 */
 	public void changePassword() {
 		System.out.print("\nPassword - ");
@@ -390,6 +389,12 @@ public class BankMenu {
 		}
 	}
 	
+	/*
+	 * User input driven method to add user
+	 * 
+	 * When successful, adds a database link between the input User and the Account
+	 * given in the argument
+	 */
 	public void addUser(Account account) {
 		System.out.println("\nWhich user would you like to add to the account?");
 		
@@ -453,6 +458,12 @@ public class BankMenu {
 		printAccountScreen(dao.getAccountByID(account.getId()));
 	}
 	
+	/*
+	 * User input driven method to remove user
+	 * 
+	 * When successful, removes the database link between the input User and the Account
+	 * given in the argument
+	 */
 	public void removeUser(Account account) {
 		System.out.println("\nWhich user would you like to remove from the account?");
 		
@@ -524,6 +535,12 @@ public class BankMenu {
 		printAccountScreen(dao.getAccountByID(account.getId()));
 	}
 	
+	/*
+	 * User input driven method to change the nickname of the Account
+	 * given in the argument
+	 * 
+	 * Persists changes in the SQL database when successful
+	 */
 	public void changeNickname(Account account){
 		System.out.print("\nPlease enter the new nickname: ");
 		
@@ -541,6 +558,13 @@ public class BankMenu {
 		printAccountScreen(dao.getAccountByID(account.getId()));
 	}
 	
+	/*
+	 * Prints the Account screen for the User
+	 * 
+	 * Navigates to many other options through user input
+	 * 
+	 * Updates account from database on most calls
+	 */
 	public void printAccountScreen(Account account) {
 		System.out.println("\nAccount #***" + (account.getId()/10)%10 + account.getId()%10 + "\n");
 		
@@ -823,8 +847,6 @@ public class BankMenu {
 	 * 
 	 * Returns to account information screen when done
 	 */
-	// 
-	// 
 	public void accountHistory(Account account) {
 		if(account.getTransactions().size() == 0) {
 			System.out.println("\nNo transaction history for Account #" + account.getId());

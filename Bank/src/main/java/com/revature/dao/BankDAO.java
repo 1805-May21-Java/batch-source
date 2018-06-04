@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import com.revature.bank.*;
 import com.revature.bank.User;
 
+/*
+ * Data Access Object interface for interaction with SQL database
+ */
 public interface BankDAO {
 	
 	public ArrayList<User> getUsers();
