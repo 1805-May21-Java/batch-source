@@ -159,6 +159,10 @@ public class BankMenu {
 			if(option.length() != 1) {
 				System.out.println("\nInvalid option.");
 				
+				System.out.println("\n[L] - Log in");
+				System.out.println("[R] - Register");
+				System.out.println("[Q] - Quit");
+				
 				System.out.print("\nOption: ");
 				option = input.nextLine();
 			}
@@ -179,6 +183,10 @@ public class BankMenu {
 				default:
 					optionChosen = false;
 					System.out.println("\nInvalid option.");
+					
+					System.out.println("\n[L] - Log in");
+					System.out.println("[R] - Register");
+					System.out.println("[Q] - Quit");
 					
 					System.out.print("\nOption: ");
 					option = input.nextLine();
@@ -301,11 +309,13 @@ public class BankMenu {
 				System.out.println("\nPassword successfully updated. For security purposes, you must log in again");
 				logIn();
 			}
-			else
+			else {
 				System.out.println("\nPassword update cancelled.");
+				printUserScreen(dao.getUserByName(bankInfo.getUser().getUser()));
+			}
 		}
-		
-		printUserScreen(dao.getUserByName(bankInfo.getUser().getUser()));
+		else
+			printUserScreen(dao.getUserByName(bankInfo.getUser().getUser()));
 	}
 	/*
 	 * Prints the user information screen, along with all possible options for the user
@@ -386,12 +396,147 @@ public class BankMenu {
 				default:
 					optionChosen = false;
 					System.out.println("\nInvalid option.");
-					
-					System.out.print("\nOption: ");
-					option = input.nextLine();
 				}
 			}
 		}
+	}
+	
+	public void addUser(Account account) {
+		System.out.println("\nWhich user would you like to add to the account?");
+		
+		System.out.print("\nUsername / email: ");
+		String newUser = input.nextLine();
+		
+		if(newUser != "") {
+			while(true) {
+				if(dao.getUserByName(newUser) == null) {
+					System.out.println("\nUsername / email is not linked to an account. Please try again.");
+					System.out.println("\nWhich user would you like to add to the account?");
+					
+					System.out.print("\nUsername / email: ");
+					newUser = input.nextLine();
+				}
+				else if	(account.getUsers().contains(newUser)) {
+					System.out.println("\nUsername / email is already linked to this account. Please try again.");
+					System.out.println("\nWhich user would you like to add to the account?");
+					
+					System.out.print("\nUsername / email: ");
+					newUser = input.nextLine();
+				}
+				else
+					break;
+			}
+			
+			boolean confirm = false;
+			do {
+				System.out.print("\nIs this correct? (Y / N) - ");
+				String confirmation = input.nextLine();
+							
+				if(confirmation.length() != 1)
+					System.out.println("\nPlease enter Y or N.");
+				else if(Character.toUpperCase(confirmation.charAt(0)) == 'N') {
+					break;
+				}
+				else if(Character.toUpperCase(confirmation.charAt(0)) == 'Y') {
+					confirm = true;
+					break;
+				}
+				else
+					System.out.println("\nPlease enter Y or N.");
+			} while(true);
+			
+			if(confirm) {
+				dao.createLink(newUser, account.getId());
+				dao.createTransaction(new Transaction("Add", newUser, 0, 0,
+						Date.valueOf(LocalDate.now()), account.getId()), account.getId());
+				
+				System.out.println("\nSuccessfully added " + newUser + " to the account!");
+			}
+			else
+				System.out.println("\nCancelled user adding process.");
+		}
+		
+		printAccountScreen(dao.getAccountByID(account.getId()));
+	}
+	
+	public void removeUser(Account account) {
+		System.out.println("\nWhich user would you like to remove from the account?");
+		
+		System.out.print("\nUsername / email: ");
+		String newUser = input.nextLine();
+		
+		if(newUser != "") {
+			while(true) {
+				if(dao.getUserByName(newUser) == null) {
+					System.out.println("\nUsername / email is not linked to an account. Please try again.");
+					System.out.println("\nWhich user would you like to add to the account?");
+					
+					System.out.print("\nUsername / email: ");
+					newUser = input.nextLine();
+				}
+				else if	(!account.getUsers().contains(newUser)) {
+					System.out.println("\nUsername / email is not linked to this account. Please try again.");
+					System.out.println("\nWhich user would you like to add to the account?");
+					
+					System.out.print("\nUsername / email: ");
+					newUser = input.nextLine();
+				}
+				else if(newUser.equals(bankInfo.getUser().getUser())) {
+					System.out.println("\nYou cannot remove yourself from the account. Please try again.");
+					System.out.println("\nWhich user would you like to add to the account?");
+					
+					System.out.print("\nUsername / email: ");
+					newUser = input.nextLine();
+				}
+				else
+					break;
+			}
+			
+			boolean confirm = false;
+			do {
+				System.out.print("\nIs this correct? (Y / N) - ");
+				String confirmation = input.nextLine();
+							
+				if(confirmation.length() != 1)
+					System.out.println("\nPlease enter Y or N.");
+				else if(Character.toUpperCase(confirmation.charAt(0)) == 'N') {
+					break;
+				}
+				else if(Character.toUpperCase(confirmation.charAt(0)) == 'Y') {
+					confirm = true;
+					break;
+				}
+				else
+					System.out.println("\nPlease enter Y or N.");
+			} while(true);
+			
+			if(confirm) {
+				dao.deleteLink(newUser, account.getId());
+				dao.createTransaction(new Transaction("Remove", newUser, 0, 0,
+						Date.valueOf(LocalDate.now()), account.getId()), account.getId());
+				
+				System.out.println("\nSuccessfully deleted " + newUser + " from the account.");
+			}
+			else
+				System.out.println("\nCancelled user removal process.");
+		}
+		
+		printAccountScreen(dao.getAccountByID(account.getId()));
+	}
+	
+	public void changeNickname(Account account){
+		System.out.print("\nPlease enter the new nickname: ");
+		
+		String newNickname = input.nextLine();
+		
+		if(!newNickname.equals("")) {
+			account.setNickname(newNickname);
+			dao.updateAccount(account);
+			
+			System.out.println("Successfully changed account nickname to " + newNickname);
+		}
+		
+		printAccountScreen(dao.getAccountByID(account.getId()));
 	}
 	
 	public void printAccountScreen(Account account) {
@@ -414,6 +559,16 @@ public class BankMenu {
 		while(!optionChosen) {
 			if(option.length() != 1) {
 				System.out.println("\nInvalid option.");
+
+				System.out.println("\n[A] - Add user to account");
+				System.out.println("[R] - Remove user from account");
+				System.out.println("[N] - Change or set account nickname");
+				System.out.println("[W] - Withdraw money");
+				System.out.println("[D] - Deposit money");
+				System.out.println("[T] - Make a transfer");
+				System.out.println("[I] - Account information");
+				System.out.println("[H] - Show account history");
+				System.out.println("[B] - Back");
 				
 				System.out.print("\nOption: ");
 				option = input.nextLine();
@@ -423,13 +578,13 @@ public class BankMenu {
 				optionChosen = true;
 				switch(Character.toUpperCase(option.charAt(0))) {
 				case 'A':
-//					addUser(account);
+					addUser(dao.getAccountByID(account.getId()));
 					break;
 				case 'R':
-//					removeUser(account);
+					removeUser(dao.getAccountByID(account.getId()));
 					break;
 				case 'N':
-//					changeNickname(account);
+					changeNickname(dao.getAccountByID(account.getId()));
 					break;
 				case 'W':
 					withdraw(dao.getAccountByID(account.getId()));
@@ -441,17 +596,27 @@ public class BankMenu {
 					transfer(dao.getAccountByID(account.getId()));
 					break;
 				case 'I':
-					showBankAccountInfo(account);
+					showBankAccountInfo(dao.getAccountByID(account.getId()));
 					break;
 				case 'H':
-					accountHistory(account);
+					accountHistory(dao.getAccountByID(account.getId()));
 					break;
 				case 'B':
-					printUserScreen(bankInfo.getUser());
+					printUserScreen(dao.getUserByName(bankInfo.getUser().getUser()));
 					break;
 				default:
 					optionChosen = false;
 					System.out.println("\nInvalid option.");
+					
+					System.out.println("\n[A] - Add user to account");
+					System.out.println("[R] - Remove user from account");
+					System.out.println("[N] - Change or set account nickname");
+					System.out.println("[W] - Withdraw money");
+					System.out.println("[D] - Deposit money");
+					System.out.println("[T] - Make a transfer");
+					System.out.println("[I] - Account information");
+					System.out.println("[H] - Show account history");
+					System.out.println("[B] - Back");
 					
 					System.out.print("\nOption: ");
 					option = input.nextLine();
@@ -466,7 +631,8 @@ public class BankMenu {
 	 * Returns to account information screen when done
 	 */
 	public void showBankAccountInfo(Account account) {
-		System.out.println("\nAccount holders - ");
+		System.out.println("\nAccount #" + account.getId());
+		System.out.println("Account holders - ");
 		
 		for(int i = 0; i < account.getUsers().size(); i++) {
 			if(i != 0)

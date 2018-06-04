@@ -23,4 +23,5 @@ public interface BankDAO {
 	
 	public int deleteUserByName(String name);
 	public int deleteAccountByID(int accountID);
+	public int deleteLink(String username, int accountID);
 }

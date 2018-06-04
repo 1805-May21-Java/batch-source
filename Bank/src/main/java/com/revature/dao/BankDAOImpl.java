@@ -391,4 +391,27 @@ public class BankDAOImpl implements BankDAO {
 		return rowsUpdated;
 	}
 
+	public int deleteLink(String username, int accountID) {
+		int rowsUpdated = 0;
+		
+		try {
+			Connection con = ConnectionUtil.getConnection();
+			con.setAutoCommit(false);
+			String sql = "DELETE FROM BANK_LINK WHERE USER_NAME = ? AND ACCOUNT_ID = ?";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, username);
+			ps.setInt(2, accountID);
+			rowsUpdated = ps.executeUpdate();
+			
+			con.commit();
+			con.close();
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return rowsUpdated;
+	}
 }

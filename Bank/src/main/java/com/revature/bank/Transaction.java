@@ -103,6 +103,12 @@ public class Transaction {
 			s += ("\n\n\t+$" + df.format(this.amount));
 			s += ("\n\tBalance: $" + df.format(this.balance));
 		}
+		else if(this.type.equals("Add")) {
+			s += (this.user + " added to the account");
+		}
+		else if(this.type.equals("Remove")) {
+			s += (this.user + " removed from the account");
+		}
 		else if(this.type.equals("Open")) {
 			s += ("Account opened by " + this.user);
 		}
