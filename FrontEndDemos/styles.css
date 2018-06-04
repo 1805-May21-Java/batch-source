@@ -1,0 +1,27 @@
+div {
+    background-color: lightblue
+}
+
+#imagination{
+    background-color: indianred;
+}
+
+#dogRossPic{
+    display: block;
+    margin: 40px;
+    padding: 10px;
+    border-color: gray;
+    border-width: 10px;
+    border-style: solid;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.coolText{
+    color: #006600;
+    font-family: "courier new";
+    text-align: center;
+}
