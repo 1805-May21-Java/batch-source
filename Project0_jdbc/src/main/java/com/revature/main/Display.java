@@ -2,7 +2,6 @@ package com.revature.main;
 
 
 import java.io.IOException;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 
@@ -10,7 +9,7 @@ public class Display {
 	
 	
 	
-	public static void welcome() throws IOException
+	public void welcome() throws IOException
 	{
 		String option;
 		do

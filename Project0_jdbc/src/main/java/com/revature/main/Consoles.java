@@ -1,6 +1,7 @@
 package com.revature.main;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -16,6 +17,7 @@ public class Consoles {
 	public static boolean logIn() throws IOException
 	{
 	
+		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter your username to sign in:");
 		String loginUser = sc.nextLine();
@@ -35,7 +37,7 @@ public class Consoles {
 				try
 				{
 					user=null;
-					Display.welcome();
+					new Display().welcome();
 				} catch (IOException e)
 				{
 					e.printStackTrace();
@@ -50,7 +52,7 @@ public class Consoles {
 			try
 			{
 				user = null;
-				Display.welcome();
+				new Display().welcome();
 			} catch (IOException e)
 			{
 				// TODO Auto-generated catch block
@@ -62,27 +64,29 @@ public class Consoles {
 	
 	public static void withdraw(Double value)
 	{
+		DecimalFormat df = new DecimalFormat("##.##");
 		double balance =  dao.getUserById(user.getUserId()).getBalance();
 		try
 		{
 			if(balance<value || value<0)
 			{
-				throw new IllegalArgumentException("*!!!! Your Withdraw Amount Cannot Be Processed !!!!");
+				throw new IllegalArgumentException("!!!! Your Withdraw Amount Cannot Be Processed, Please Call 1(800) BANK-RUPT !!!!");
 
 			}
 			else if(value>=0)
 			{
+				
 				balance-=value;
 				System.out.println("**************************************");
-				System.out.println("You Have Withdrawed $"+value+" Successfully!");
-				System.out.println("You Current Balance is "+balance);
+				System.out.println("You Have Withdrawed $"+df.format(value)+" Successfully!");
+				System.out.println("You Current Balance is "+df.format(balance));
 				System.out.println("**************************************\n");
 				dao.updateUser(new User(user.getUserId(), user.getUserName(), user.getPassword(), balance));
 				
 			}
 			else
 			{
-				throw new InputMismatchException("Your Withdraw Amount Has To Be Number");
+				throw new InputMismatchException("Your Withdraw Amount Has To Be Valid Number");
 
 			}
 		}
@@ -94,6 +98,7 @@ public class Consoles {
 	}
 	public static void deposit(Double value)  
 	{
+		DecimalFormat df = new DecimalFormat("##.##");
 		
 		double balance = dao.getUserById(user.getUserId()).getBalance();
 		try
@@ -107,15 +112,15 @@ public class Consoles {
 			{
 				balance+=value;
 				System.out.println("**************************************");
-				System.out.println("You Have Deposited $"+value+" Successfully!");
-				System.out.println("You Current Balance is "+balance);
+				System.out.println("You Have Deposited $"+df.format(value)+" Successfully!");
+				System.out.println("You Current Balance is "+df.format(balance));
 				System.out.println("**************************************\n");
 				User myUser = new User(user.getUserId(), user.getUserName(), user.getPassword(), balance);
 				dao.updateUser(myUser);
 			}
 			else
 			{
-				throw new InputMismatchException("Your Deposit Amount Has To Be Number");
+				throw new InputMismatchException("Your Deposit Amount Has To Be Valid Number");
 			}
 		}
 		catch(IllegalArgumentException e)
@@ -132,6 +137,7 @@ public class Consoles {
 	
 	public static void transaction() throws IOException
 	{
+		DecimalFormat df = new DecimalFormat("#.##");
 		String option;
 		Double value;
 		try
@@ -167,12 +173,12 @@ public class Consoles {
 				} 
 				else if(option.equals("3"))
 				{
-					System.out.println("Your balance is "+dao.getUserById(user.getUserId()).getBalance());;
+					System.out.println("Your balance is "+ df.format(dao.getUserById(user.getUserId()).getBalance()));
 				}
 				else if(option.equals("4"))
 				{
 					user= null;
-					Display.welcome();
+					new Display().welcome();
 				}
 				else
 				{
@@ -191,8 +197,10 @@ public class Consoles {
 
 	}
 
-	public static void signUp() {
+	@SuppressWarnings("static-access")
+	public static void signUp() throws IOException {
 		
+		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
 		boolean flag = true;
 		boolean flag2= true;
@@ -201,8 +209,8 @@ public class Consoles {
 		String userName = sc.nextLine();
 		while(dao.isUserNameExist(userName))
 		{
-			System.out.println("That Username Is Taken, Try Another.");
-			userName = sc.nextLine();
+			System.out.println("That Username Is Taken, Try New Option!");
+			new Display().welcome();
 			
 		}
 		
@@ -238,6 +246,7 @@ public class Consoles {
 		rowSize++;
 		User myUser = new User(rowSize.toString(), userName, pwd, 0.0);
 		dao.createUser(myUser);
+		System.out.println("*** You Have Successfully Created Your Account ***");
 		
 	}
 

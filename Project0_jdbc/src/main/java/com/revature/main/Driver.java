@@ -1,19 +1,17 @@
 package com.revature.main;
 import java.io.IOException;
 
-import com.revature.dao.UserDaoImpl;
+
 public class Driver
 {
-
 	public Driver()
 	{
-		
+		super();
 	}
+
 	public static void main(String[] args)
 	{
-		
-
-		try
+	try
 		{
 			while(true)
 			{
@@ -24,9 +22,6 @@ public class Driver
 		{
 			e.printStackTrace();
 		}
-		
-
-		
 	}
 
 }

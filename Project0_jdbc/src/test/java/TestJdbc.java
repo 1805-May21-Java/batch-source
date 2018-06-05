@@ -17,12 +17,13 @@ class TestJdbc
 		users = imp.getUsers();
 		assertTrue(users.size() >0);
 	}	
+	
 	@Test
 	void getUserById()
 	{
 		UserDaoImpl imp = new UserDaoImpl();
 		User newUser = imp.getUserById("2");
-		System.out.println(newUser.toString());
+	//	System.out.println(newUser.toString());
 		assertEquals("password2", newUser.getPassword());
 	}
 
@@ -31,6 +32,7 @@ class TestJdbc
 	void updateUserById()
 	{
 		UserDaoImpl imp = new UserDaoImpl();
+		@SuppressWarnings("unused")
 		List<User> users = imp.getUsers();
 		User newUser = new User("4", "Bondjames", "009", 999.0);
 		imp.updateUser(newUser);
@@ -41,10 +43,10 @@ class TestJdbc
 	void creatUser()
 	{
 		UserDaoImpl imp = new UserDaoImpl();
-		User newUser = new User("5", "james5", "005", 1200.0);
+		User newUser = new User("50", "james5", "005", 1200.0);
 		imp.createUser(newUser);
 	
-		assertEquals("005", imp.getUserById("5").getPassword());
+		assertEquals("005", imp.getUserById("50").getPassword());
 	}
 	
 	
@@ -53,14 +55,9 @@ class TestJdbc
 	{
 		UserDaoImpl imp = new UserDaoImpl();
 		List<User> users = imp.getUsers();
-		imp.deleteUserById("5");
-		assertTrue(imp.getUsers().size()<5);
+		int originalSize= users.size();
+		imp.deleteUserById("50");
+		assertTrue(imp.getUsers().size()<originalSize);
 	}
-	
-	
-	
-	
-	
-	
 
 }

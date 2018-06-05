@@ -273,16 +273,18 @@ public class UserDaoImpl implements UserDao
 	
 	public int callable()
 	{
-		try {
 		int size=0;
+		try {
+		
 		Connection con = ConnectionUtil.getConnection();
 		String sql = "{call ROW_SIZE(?)}";
 		CallableStatement cs = con.prepareCall(sql);
 		cs.setInt(1, size);
 	
 		cs.execute();
+		size= cs.getInt(1);
 		con.close();
-		return size;
+		
 	} catch (IOException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
@@ -290,7 +292,7 @@ public class UserDaoImpl implements UserDao
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
-	return 0;
+		return size;
 	}
 
 }
