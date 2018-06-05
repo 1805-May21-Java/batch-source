@@ -15,7 +15,7 @@ public class UserMenu {
 		User user = null;
 
 		while(flag != true) {
-			System.out.println("Welcome! Enter 1 to create a new account or 2 to log in to an existing account.");
+			System.out.println("Welcome!\nEnter 1 to create a new account or\n2 to log in to an existing account.");
 			
 			operation = sc.nextLine();
 			switch(operation) {

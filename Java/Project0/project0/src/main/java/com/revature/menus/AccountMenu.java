@@ -43,8 +43,8 @@ public class AccountMenu {
 		
 		while(flag != true) {
 			System.out.println();
-			System.out.println("Enter 1 to view balance. Enter 2 to deposit money. Enter 3 to withdraw money. \nEnter 4 to transfer funds to another account. "
-					+ "Enter 5 to view transaction history. Enter 6 to logout and exit.");
+			System.out.println("Enter 1 to view balance. Enter 2 to deposit money. \nEnter 3 to withdraw money. Enter 4 to transfer funds to another account."
+					+ "\nEnter 5 to view transaction history. Enter 6 to logout and exit.");
 			
 			operation = sc.nextLine();
 			switch(operation) {
