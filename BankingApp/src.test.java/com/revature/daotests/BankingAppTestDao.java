@@ -1,11 +1,9 @@
 package com.revature.daotests;
 
-import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.Assert.*;
 
 import java.util.List;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import com.revature.bankingapp.Account;
@@ -44,10 +42,5 @@ public class BankingAppTestDao {
 		adi.updateAccount(a);
 		assert(a.getBalance() == 55);
 	}
-	
-//	public List<Account> getAccounts();
-//	public Account getAccountById(int id);
-//	public int createAccount(Account account);
-//	public int updateAccount(Account account);
 
 }
