@@ -285,8 +285,8 @@ public class Driver {
 			return false;
 		}
 		
-		if (input < 0) {
-			System.out.println("ERROR: Cannot enter a negative amount. Try again.");
+		if (input < 0.01) {
+			System.out.println("ERROR: Invalid amount. Try again.");
 			System.out.println();
 			return false;
 		}
