@@ -1,0 +1,20 @@
+#purpose{
+    text-align: center;
+    text-shadow: 0 3px 5px lightblue;
+    font-size: 30px;
+}
+
+#DogPoint{
+    text-align: center;
+}
+.DogTable{
+    margin-left: auto;
+    margin-right: auto;
+}
+.fix{
+    position: fixed;
+    bottom: 0px;
+}
+table tr{
+    font-size: 20px;
+}

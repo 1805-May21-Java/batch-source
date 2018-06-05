@@ -9,9 +9,9 @@ import java.util.Properties;
 public class ConnectionUtil {
 	private static Connection connection;
 	public static Connection getHardcodedConnection() throws SQLException {
-		String host = "jdbc:oracle:thin:@keandredb.c7c3jiumkydd.us-east-1.rds.amazonaws.com:1521:ORCL";
+		String host = "jdbc:oracle:thin:@ogoexdb.c7c3jiumkydd.us-east-1.rds.amazonaws.com:1521:ORCL";
 		String uName = "ogoextreme";
-		String pass = "password";
+		String pass = "Johndope1";
 		if(connection == null) {
 			connection = DriverManager.getConnection(host, uName, pass);
 		}
