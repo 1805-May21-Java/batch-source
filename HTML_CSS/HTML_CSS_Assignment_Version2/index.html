@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Index </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="./styles/main.css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous"></head>
+<body>
+  <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light rounded">
+      <a class="navbar-brand" href="./index.html">Home</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse-target" aria-controls="navbar-collapse-target" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbar-collapse-target">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="./dogs.html">Dogs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./cats.html">Cats</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./wolves.html">Wolves</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./elephants.html">Elephants</a>
+        </li>
+      </ul>
+    </div>
+   </nav>
+   
+  <div class="jumbotron p-3 p-md-5 text-white text-center rounded bg-dark">
+    <h1 class="display-4">Welcome!</h1>
+    <p class="lead mt-5">Click the images below to see some cute animals!</p>
+  </div>
+
+  <table class="table text-center">
+    <tr>
+      <td>
+        <a href="./dogs.html" class="thumbnail">
+          <img src="https://farm8.staticflickr.com/7114/7678879392_97f1b11ac9.jpg" alt="dog">
+        </a>
+      </td>
+      <td>
+        <a href="./cats.html">
+          <img src="https://images.pexels.com/photos/979247/pexels-photo-979247.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350"
+            alt="cat">
+        </a>
+      </td> 
+      <td>
+        <a href="./wolves.html">
+          <img src="https://farm5.staticflickr.com/4246/35171888106_25d11d934d.jpg" alt="wolf">
+        </a>
+      </td>
+      <td>
+        <a href="./elephants.html">
+          <img src="https://images.pexels.com/photos/1054666/pexels-photo-1054666.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" alt="elephant">
+        </a>
+      </td>
+    </tr>
+</table>
+
+  <h4 class="mt-5 mb-4">Send us a message about what other kind of cute animals you want to see.</h4>
+
+  <form>
+    <div class="form-group">
+      <label for="name">Email address</label>
+      <input type="test" class="form-control" id="name" placeholder="name@example.com">
+    </div>
+    <div class="form-group">
+      <label for="email">Email address</label>
+      <input type="email" class="form-control" id="email" placeholder="name@example.com">
+    </div>
+    <div class="form-group">
+      <label for="select">Select your favorite animal</label>
+      <select class="form-control" id="select">
+          <option>Dog</option>
+          <option>Cat</option>
+          <option>Elephant</option>
+          <option>Wolf</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="message">Your Message</label>
+      <textarea class="form-control" id="message" rows="3"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary mb-2">Send message</button>
+  </form>
+  </div>
+</body>
+</html>

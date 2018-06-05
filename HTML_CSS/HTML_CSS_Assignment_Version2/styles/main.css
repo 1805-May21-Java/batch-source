@@ -1,0 +1,8 @@
+img {
+  height: 500px;
+}
+
+table img {
+  height: 200px;
+  width: 200px;
+}
