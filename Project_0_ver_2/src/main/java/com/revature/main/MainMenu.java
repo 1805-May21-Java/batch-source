@@ -73,7 +73,7 @@ public class MainMenu
 				case "2":
 				{
 					
-					System.out.println("To create an account please enter your userName:");
+					System.out.println("To create an account please enter your user name:");
 					userName = sc.nextLine();
 					//Checking the hash map to make sure the account is unique
 					if(userInfoMap.containsKey(userName)) 
@@ -87,13 +87,15 @@ public class MainMenu
 						System.out.println("Please enter your email:");
 						email = sc.nextLine();
 						
-						System.out.println("Please enter a password:");
+						System.out.println("Please enter your password:");
 						password = sc.nextLine();
 						
-						UserInfo ui = new UserInfo(email, userName, password);
+						UserInfo ui = new UserInfo(userName, email, password);
 						uidi.createUser(ui);
 						System.out.println("Account created.");	
+						userInfoMap = uidi.getUserInfo();
 						break;
+						
 					}
 				}
 				//Exit case

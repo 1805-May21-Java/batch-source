@@ -48,6 +48,7 @@ public class LogInMenu
 					Checking c = new Checking(0, ui.getId());
 					cdi.createChecking(c);
 					System.out.println("Checking account created.");
+					checkingMap = cdi.getChecking();
 					break;
 				}
 				//Creating savings account case, same as above just with saving
@@ -56,6 +57,7 @@ public class LogInMenu
 					Saving s = new Saving(0, ui.getId());
 					sdi.createSaving(s);
 					System.out.println("Savings account created.");
+					savingMap = sdi.getSaving();
 					break;
 				}
 				
@@ -68,97 +70,104 @@ public class LogInMenu
 					Integer i = ui.getId();
 					
 					//First ask the user what account they would like to deposit to
-					System.out.println("Which account would you like to deposit to?");
+					System.out.println("Which account would you like to deposit to? 1 for savings 2 for checking.");
 					input = sc.nextLine();
-					//This checks to make sure the input is correct and that the account has been created
-					if(input.toLowerCase() == "savings" && savingMap.containsKey(i))
+					//This checks that the account has been created
+					switch(input)
 					{
-						//Populating the saving object with the user's savings account
-						s = savingMap.get(i);
-						System.out.println("Enter the ammout you would like to deposit:");
-						input = sc.nextLine();
-						
-						//Checking for a negative or zero deposit amount
-						if(Integer.parseInt(input) <= 0)
+					case "1":
+					{
+						if(savingMap.containsKey(i))
 						{
-							System.out.println("Invalid amount, please enter a number greater than zero.");
+							//Populating the saving object with the user's savings account
+							s = savingMap.get(i);
+							System.out.println("Enter the ammout you would like to deposit:");
+							input = sc.nextLine();
+							
+							//Checking for a negative or zero deposit amount
+							if(Double.parseDouble(input) <= 0)
+							{
+								System.out.println("Invalid amount, please enter a number greater than zero.");
+								break;
+							}
+							else
+							{
+								//Here I call the procedure that I had made in SQL
+								try
+								{
+									Connection con = ConnectionUtil.getConnection();
+									CallableStatement cs = con.prepareCall("CALL DEPOSIT_SAVING(?,?)");
+									//I pass in the user id into my procedure and the input from the user using an Integer object
+									//The user id is the foreign key of the saving table and the checking table
+									//This is so that if we delete some rows and insert some rows that we will deposit to the correct account
+									//This is because the user id is unique to each row in the account tables
+									cs.setInt(1, ui.getId());
+									cs.setDouble(2, Double.parseDouble(input));
+									cs.executeUpdate();
+									System.out.println(input+" deposited into your savings account.");
+									savingMap = sdi.getSaving();
+								}
+								catch (IOException | SQLException e)
+								{
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								}
+								break;
+							}
+							
+						}
+						//If the account does not exist telling the user so
+						else if (!savingMap.containsKey(i))
+						{
+							System.out.println("Your savings account does not exist, please create it.");
 							break;
 						}
-						else
+						break;
+					}
+					case "2":
+					{
+						//Same as the savings account, but with checking
+						if(checkingMap.containsKey(i))
 						{
-							//Here I call the procedure that I had made in SQL
-							try
+							c = checkingMap.get(i);
+							System.out.println("Enter the ammout you would like to deposit:");
+							input = sc.nextLine();
+							
+							if(Double.parseDouble(input) <= 0)
 							{
-								Connection con = ConnectionUtil.getConnection();
-								CallableStatement cs = con.prepareCall("DEPOSIT_SAVING(?,?)");
-								//I pass in the user id into my procedure and the input from the user using an Integer object
-								//The user id is the foreign key of the saving table and the checking table
-								//This is so that if we delete some rows and insert some rows that we will deposit to the correct account
-								//This is because the user id is unique to each row in the account tables
-								cs.setInt(ui.getId(), Integer.parseInt(input) );
-								System.out.println(input+" deposited into your savings account.");
+								System.out.println("Invalid amount, please enter a number greater than zero.");
+								break;
 							}
-							catch (IOException | SQLException e)
+							else
 							{
-								// TODO Auto-generated catch block
-								e.printStackTrace();
+								try
+								{
+									Connection con = ConnectionUtil.getConnection();
+									CallableStatement cs = con.prepareCall("CALL DEPOSIT_CHECKING(?,?)");
+									cs.setInt(1, ui.getId());
+									cs.setDouble(2, Double.parseDouble(input));
+									cs.executeUpdate();
+									System.out.println(input+" deposited into your checking account.");
+									checkingMap = cdi.getChecking();
+									
+								}
+								catch (IOException | SQLException e)
+								{
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								}
+								break;
 							}
+						}
+						else if (!checkingMap.containsKey(i))
+						{
+							System.out.println("Your checking account does not exist, please create it.");
 							break;
 						}
-						
-					}
-					//If the account does not exist telling the user so
-					else if (!savingMap.containsKey(i))
-					{
-						System.out.println("Your savings account does not exist, please create it.");
 						break;
 					}
-					//If the input is incorrect telling the user so
-					else if(input.toLowerCase() != "savings")
-					{
-						System.out.println("Invalid input please enter savings.");
-						break;
 					}
-					
-					//Same as the savings account, but with checking
-					if(input.toLowerCase() == "checking" && checkingMap.containsKey(i))
-					{
-						c = checkingMap.get(i);
-						System.out.println("Enter the ammout you would like to deposit:");
-						input = sc.nextLine();
-						
-						if(Integer.parseInt(input) <= 0)
-						{
-							System.out.println("Invalid amount, please enter a number greater than zero.");
-							break;
-						}
-						else
-						{
-							try
-							{
-								Connection con = ConnectionUtil.getConnection();
-								CallableStatement cs = con.prepareCall("DEPOSIT_CHECKING(?,?)");
-								cs.setInt(ui.getId(), Integer.parseInt(input) );
-								System.out.println(input+" deposited into your checking account.");
-							}
-							catch (IOException | SQLException e)
-							{
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}
-							break;
-						}
-					}
-					else if (!checkingMap.containsKey(i))
-					{
-						System.out.println("Your checking account does not exist, please create it.");
-						break;
-					}
-					else if (input.toLowerCase() != "checking")
-					{
-						System.out.println("Invalid input please enter checking.");
-						break;
-					}
+					break;
 				}
 				//The withdraw case
 				case "4":
@@ -169,89 +178,92 @@ public class LogInMenu
 					Integer i = ui.getId();
 					
 					//Asking what account the user would like to withdraw from
-					System.out.println("Which account would you like to withdraw from?");
+					System.out.println("Which account would you like to withdraw from? 1 for savings 2 for checking.");
 					input = sc.nextLine();
-					//If the input is correct and the account exists
-					if(input.toLowerCase() == "savings" && savingMap.containsKey(i))
+					switch(input)
 					{
-						//Populating the saving object with the user's saving's account
-						s = savingMap.get(i);
-						System.out.println("Enter the ammout you would like to withdraw:");
-						input = sc.nextLine();
-						
-						//Can't withdraw a non zero amount
-						if(Integer.parseInt(input) <= 0)
+					case "1":
+					{
+						//If the account exists
+						if(savingMap.containsKey(i))
 						{
-							System.out.println("Invalid amount, please enter a number greater than zero.");
-							break;
-						}
-						else
-						{
-							//Over draft protection, makes sure you can't withdraw more money than what is within the savings account
-							if(s.getBalance() - Integer.parseInt(input) < 0)
+							//Populating the saving object with the user's saving's account
+							s = savingMap.get(i);
+							System.out.println("Enter the ammout you would like to withdraw:");
+							input = sc.nextLine();
+							
+							//Can't withdraw a non zero amount
+							if(Double.parseDouble(input) <= 0)
 							{
-								System.out.println("Not enough funds.");
+								System.out.println("Invalid amount, please enter a number greater than zero.");
 								break;
 							}
 							else
 							{
-								//Using the saving object's getters and setters to do the calculation.
-								s.setBalance(s.getBalance()- Integer.parseInt(input));
-								System.out.println(input+" withdrawn from your savings account.");
-								break;
+								//Over draft protection, makes sure you can't withdraw more money than what is within the savings account
+								if(s.getBalance() - Double.parseDouble(input) < 0)
+								{
+									System.out.println("Not enough funds.");
+									break;
+								}
+								else
+								{
+									//Using the saving object's getters and setters to do the calculation.
+									s.setBalance(s.getBalance()- Double.parseDouble(input));
+									System.out.println(input+" withdrawn from your savings account.");
+									savingMap = sdi.getSaving();
+									break;
+								}
 							}
+							
 						}
-						
-					}
-					//If the account doesn't exist telling the user so
-					else if (!savingMap.containsKey(i))
-					{
-						System.out.println("Your savings account does not exist, please create it.");
-						break;
-					}
-					//If the input is incorrect telling the user so
-					else if(input.toLowerCase() != "savings")
-					{
-						System.out.println("Invalid input please enter savings.");
-						break;
-					}
-					//Same as the savings account above just with checking
-					if(input.toLowerCase() == "checking" && checkingMap.containsKey(i))
-					{
-						c = checkingMap.get(i);
-						System.out.println("Enter the ammout you would like to withdraw:");
-						input = sc.nextLine();
-						
-						if(Integer.parseInt(input) <= 0)
+						//If the account doesn't exist telling the user so
+						else if (!savingMap.containsKey(i))
 						{
-							System.out.println("Invalid amount, please enter a number greater than zero.");
+							System.out.println("Your savings account does not exist, please create it.");
 							break;
 						}
-						else
+						break;
+					}
+					case"2":
+					{
+						//Same as the savings account above just with checking
+						if(checkingMap.containsKey(i))
 						{
-							if(c.getBalance() - Integer.parseInt(input) < 0)
+							c = checkingMap.get(i);
+							System.out.println("Enter the ammout you would like to withdraw:");
+							input = sc.nextLine();
+							
+							if(Double.parseDouble(input) <= 0)
 							{
-								System.out.println("Not enough funds.");
+								System.out.println("Invalid amount, please enter a number greater than zero.");
 								break;
 							}
 							else
 							{
-								c.setBalance(c.getBalance() - Integer.parseInt(input));
-								System.out.println(input+ " withdrawn from your checking.");
-								break;
+								if(c.getBalance() - Double.parseDouble(input) < 0)
+								{
+									System.out.println("Not enough funds.");
+									break;
+								}
+								else
+								{
+									c.setBalance(c.getBalance() - Double.parseDouble(input));
+									System.out.println(input+ " withdrawn from your checking.");
+									checkingMap = cdi.getChecking();
+									break;
+								}
 							}
 						}
-					}
-					else if (!checkingMap.containsKey(i))
-					{
-						System.out.println("Your checking account does not exist, please create it.");
+						else if (!checkingMap.containsKey(i))
+						{
+							System.out.println("Your checking account does not exist, please create it.");
+							break;
+						}
 						break;
 					}
-					else if (input.toLowerCase() != "checking")
-					{
-						System.out.println("Invalid input please enter checking.");
-						break;
 					}
+					break;
 				}
 				//The check balance case
 				case "5":
@@ -262,46 +274,47 @@ public class LogInMenu
 					Saving s = new Saving();
 					Integer i = ui.getId();
 					
-					System.out.println("Which account's balance would you like to check?");
+					System.out.println("Which account's balance would you like to check? 1 for savings 2 for checking. ");
 					input = sc.nextLine();
 					
-					if(input.toLowerCase() == "savings" && savingMap.containsKey(i))
+					switch(input)
 					{
-						s = savingMap.get(i);
-						//Displaying the balance
-						System.out.println("Your savings account balance is:" + s.getBalance());
-						break;
-					}
-					//If it doesn't exist tell the user to go make it
-					else if(!savingMap.containsKey(i))
+					case"1":
 					{
-						System.out.println("Your savings account does not exist, please create it.");
-						break;
-					}
-					//If the input is incorrect telling the user that it is
-					else if(input.toLowerCase() != "savings")
-					{
-						System.out.println("Invalid input please enter savings.");
+						if(savingMap.containsKey(i))
+						{
+							s = savingMap.get(i);
+							//Displaying the balance
+							System.out.println("Your savings account balance is: " + s.getBalance());
+							break;
+						}
+						//If it doesn't exist tell the user to go make it
+						else if(!savingMap.containsKey(i))
+						{
+							System.out.println("Your savings account does not exist, please create it.");
+							break;
+						}
 						break;
 					}
 					
-					//Same as saving above just with checking
-					if(input.toLowerCase() == "checking" && checkingMap.containsKey(i))
+					case"2":
 					{
-						c = checkingMap.get(i);
-						System.out.println("Your checking account balance is:" + c.getBalance());
+						//Same as saving above just with checking
+						if(checkingMap.containsKey(i))
+						{
+							c = checkingMap.get(i);
+							System.out.println("Your checking account balance is: " + c.getBalance());
+							break;
+						}
+						else if(!checkingMap.containsKey(i))
+						{
+							System.out.println("Your checking account does not exist, please create it.");
+							break;
+						}
 						break;
 					}
-					else if(!checkingMap.containsKey(i))
-					{
-						System.out.println("Your checking account does not exist, please create it.");
-						break;
 					}
-					else if(input.toLowerCase() != "checking")
-					{
-						System.out.println("Invalid input please enter checking.");
-						break;
-					}
+					break;
 				}
 				//The delete case
 				case "6":
@@ -312,118 +325,120 @@ public class LogInMenu
 					Integer i = ui.getId();
 					
 					//I provide an option to delete everything
-					System.out.println("Which account would you like to delete? Type my account for user account");
+					System.out.println("Which account would you like to delete? 1 for savings 2, checking, 3 for my account.");
 					input = sc.nextLine();
 					
-					//Checks to see if user input is correct and the account exists
-					if(input.toLowerCase() == "savings" && savingMap.containsKey(i) )
+					switch(input)
 					{
-						//Making sure the user really wants to delete it
-						System.out.println("Are you sure?");
-						//Deleting the account
-						if(input.toLowerCase() == "yes")
+					case"1":
+					{
+						//Checks to see if the account exists
+						if(savingMap.containsKey(i) )
 						{
-							s = savingMap.get(i);
-							sdi.deleteSaving(s);
-							System.out.println("Savings account deleted.");
-							break;
-						}
-						else
-						{
-							System.out.println("Savings account not deleted.");
-							break;
-						}
-					}
-					//If the account does not exist telling the user so
-					else if(!savingMap.containsKey(i)) 
-					{
-						System.out.println("Savings account doesn't exist.");
-						break;
-					}
-					//If the input is incorrect telling the user so
-					else if(input.toLowerCase() != "savings")
-					{
-						System.out.println("Invalid input, please enter savings");
-						break;
-					}
-					
-					//Same as saving above just with checking
-					if(input.toLowerCase() == "checking" && checkingMap.containsKey(i) )
-					{
-						System.out.println("Are you sure?");
-						if(input.toLowerCase() == "yes")
-						{
-							c = checkingMap.get(i);
-							cdi.deleteChecking(c);
-							System.out.println("Checking account deleted.");
-							break;
-						}
-						else
-						{
-							System.out.println("Checkings account not deleted.");
-							break;
-						}
-					}
-					else if(!checkingMap.containsKey(i)) 
-					{
-						System.out.println("Checking account doesn't exist.");
-						break;
-					}
-					else if(input.toLowerCase() != "checking")
-					{
-						System.out.println("Invalid input, please enter checking");
-						break;
-					}
-					
-					//The delete everything option
-					if(input.toLowerCase() == "my account" && userInfoMap.containsKey(userName) )
-					{
-						//This one deletes everything, the user account, checking, and banking(if they exist)
-						System.out.println("Are you sure? This will delete all of your banking accounts assocciated with this account.");
-						if(input.toLowerCase() == "yes")
-						{
-							s = savingMap.get(i);
-							if(savingMap.containsKey(i)) 
+							//Making sure the user really wants to delete it
+							System.out.println("Are you sure?");
+							//Deleting the account
+							if(input.toLowerCase() == "yes")
 							{
+								s = savingMap.get(i);
 								sdi.deleteSaving(s);
+								System.out.println("Savings account deleted.");
+								savingMap = sdi.getSaving();
+								break;
 							}
 							else
 							{
-								System.out.println("Savings account doesn't exist.");
+								System.out.println("Savings account not deleted.");
+								break;
 							}
-							
-							c = checkingMap.get(i);
-							if(checkingMap.containsKey(i))
-							{
-								cdi.deleteChecking(c);
-							}
-							else
-							{
-								System.out.println("Checking account doesn't exist.");
-							}
-							
-							ui = userInfoMap.get(userName);
-							uidi.deleteUser(ui);
-							System.out.println("User account deleted.");
-							break;
 						}
-						else
+						//If the account does not exist telling the user so
+						else if(!savingMap.containsKey(i)) 
 						{
-							System.out.println("User account not deleted.");
+							System.out.println("Savings account doesn't exist.");
 							break;
 						}
-					}
-					else if(!userInfoMap.containsKey(userName)) 
-					{
-						System.out.println("User account doesn't exist.");
 						break;
 					}
-					else if(input.toLowerCase() != "my account")
+					case"2":
 					{
-						System.out.println("Invalid input, please enter my account");
+						//Same as saving above just with checking
+						if(checkingMap.containsKey(i))
+						{
+							System.out.println("Are you sure?");
+							if(input.toLowerCase() == "yes")
+							{
+								c = checkingMap.get(i);
+								cdi.deleteChecking(c);
+								System.out.println("Checking account deleted.");
+								checkingMap = cdi.getChecking();
+								break;
+							}
+							else
+							{
+								System.out.println("Checkings account not deleted.");
+								break;
+							}
+						}
+						else if(!checkingMap.containsKey(i)) 
+						{
+							System.out.println("Checking account doesn't exist.");
+							break;
+						}
 						break;
 					}
-					
+					case"3":
+					{
+						//The delete everything option
+						if(userInfoMap.containsKey(userName) )
+						{
+							//This one deletes everything, the user account, checking, and banking(if they exist)
+							System.out.println("Are you sure? This will delete all of your banking accounts assocciated with this account.");
+							if(input.toLowerCase() == "yes")
+							{
+								s = savingMap.get(i);
+								if(savingMap.containsKey(i)) 
+								{
+									sdi.deleteSaving(s);
+									savingMap = sdi.getSaving();
+								}
+								else
+								{
+									System.out.println("Savings account doesn't exist.");
+								}
+								
+								c = checkingMap.get(i);
+								if(checkingMap.containsKey(i))
+								{
+									cdi.deleteChecking(c);
+									checkingMap = cdi.getChecking();
+								}
+								else
+								{
+									System.out.println("Checking account doesn't exist.");
+								}
+								
+								ui = userInfoMap.get(userName);
+								uidi.deleteUser(ui);
+								userInfoMap = uidi.getUserInfo();
+								System.out.println("User account deleted.");
+								break;
+							}
+							else
+							{
+								System.out.println("User account not deleted.");
+								break;
+							}
+						}
+						else if(!userInfoMap.containsKey(userName)) 
+						{
+							System.out.println("User account doesn't exist.");
+							break;
+						}
+						break;
+					}
+					}
+					break;
 				}
 				//Exit case
 				case "7":
