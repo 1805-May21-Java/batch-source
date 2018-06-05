@@ -1,0 +1,11 @@
+html {
+    background-image: url("lotus.jpg");
+    background-size: 100%;
+  }
+  
+  div {
+    width: 450px;
+    color: rgb(37, 43, 37);
+    padding: 25px;
+    margin: 25px;
+  }

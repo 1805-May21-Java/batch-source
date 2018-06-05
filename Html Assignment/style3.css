@@ -1,0 +1,11 @@
+html {
+  background-image: url("red\ lycoris.jpg");
+  background-size: 100%;
+}
+
+div {
+  width: 450px;
+  color: green;
+  padding: 25px;
+  margin: 25px;
+}

@@ -1,0 +1,10 @@
+html {
+    background-color: lightgreen;
+}
+  
+div {
+    width: 450px;
+    
+    padding: 25px;
+    margin: 25px;
+}

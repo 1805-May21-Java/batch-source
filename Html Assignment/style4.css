@@ -1,0 +1,11 @@
+html {
+    background-image: url("Devil\'s\ Snare.jpg");
+    background-size: 100%;
+  }
+  
+  div {
+    width: 450px;
+    color: rgb(255, 30, 0);
+    padding: 25px;
+    margin: 25px;
+  }
