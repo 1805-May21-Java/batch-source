@@ -1,32 +1,32 @@
 package com.revature.main;
-
-import java.util.ArrayList;
-import java.util.List;
+import java.io.IOException;
 
 import com.revature.dao.UserDaoImpl;
-import com.revature.pojos.User;
-
 public class Driver
 {
 
 	public Driver()
 	{
-		// TODO Auto-generated constructor stub
+		
 	}
-
 	public static void main(String[] args)
 	{
-		UserDaoImpl imp = new UserDaoImpl();
-		List<User> users = new ArrayList<>();
-		users = imp.getUsers();
-		for(User user: users)
+		
+
+		try
 		{
-			System.out.println(user.toString());
+			while(true)
+			{
+				Display display = new Display();
+				display.welcome();
+			}		
+		} catch (IOException e)
+		{
+			e.printStackTrace();
 		}
-		User user = imp.getUserById("1");
-		System.out.println(user.toString());
-		User newUser = new User("4", "LongBn", "password");
-		imp.updateUser(newUser);
+		
+
+		
 	}
 
 }
