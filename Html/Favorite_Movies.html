@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Nick's Favorite Movies</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+</head>
+<body>
+    <h1>Favorite Movies</h1>
+    <div class="tab">
+        <table class="head">
+            <tr>
+                <th><a href="MyFavoriteThings_Home.html">Home</a></th>
+                <th><a href="Favorite_Movies.html">Movies</a></th>
+                <th><a href="Favorite_Songs.html">Songs</a></th>
+                <th><a href="Favorite_Books.html">Books</a></th>
+            </tr>
+        </table>
+    </div>
+    <br>
+    <br>
+    <img src="Movie.jpg" alt="music" height="300" width="500">
+    <br>
+    <table border="1px solid black">
+        <tr>
+            <th>Rank</th>
+            <th>Title</th>
+            <th>Director</th>
+            <th>Lead</th>
+        </tr>
+        <tr>
+            <td>1.</td>
+            <td><a href="https://www.youtube.com/watch?v=7RYpJAUMo2M">Rocky</a></td>
+            <td>John G. Avildsen</td>
+            <td>Sylvester Stallone</td>
+        </tr>
+        <tr>
+            <td>2.</td>
+            <td><a href="https://www.youtube.com/watch?v=Div0iP65aZo">Logan</a></td>
+            <td>James Mangold</td>
+            <td>Hugh Jackman</td>
+        </tr>
+        <tr>
+            <td>3.</td>
+            <td><a href="https://www.youtube.com/watch?v=LG1PlkURjxE">Monty Python and the Holy Grail</a></td>
+            <td>Terry Gilliam, Terry Jones</td>
+            <td>Graham Chapman</td>
+        </tr>
+        <tr>
+            <td>4.</td>
+            <td><a href="https://www.youtube.com/watch?v=7P7tWqwKqE4">The Legend of Drunken Master</a></td>
+            <td>Lau Kar-leung</td>
+            <td>Jackie Chan</td>
+        </tr>
+        <tr>
+            <td>5.</td>
+            <td><a href="https://www.youtube.com/watch?v=qvsgGtivCgs">Back to the Future</a></td>
+            <td>Robert Zemeckis</td>
+            <td>Michael J. Fox</td>
+        </tr>
+    </table><br>
+
+    <form method="POST" action="Submission.html">
+        <b>Which movies do you like?</b><br>
+        1.<input type="checkbox" name="First">&nbsp;
+        2.<input type="checkbox" name="Second">&nbsp;
+        3.<input type="checkbox" name="First">&nbsp;
+        4.<input type="checkbox" name="Second">&nbsp;
+        5.<input type="checkbox" name="First">&nbsp;
+        <br>
+        <br>
+        <b>What is one of your favorite movies?</b>
+        <input type="text" name="favoriteSong">
+        <br>
+        <br>
+        <b>On a scale of 1 to 5, 5 being the best, how much do you like my favorite movies?</b><br>
+        1<input type="radio" name="oneToFive" value="1">&nbsp;
+        2<input type="radio" name="oneToFive" value="2">&nbsp;
+        3<input type="radio" name="oneToFive" value="3">&nbsp;
+        4<input type="radio" name="oneToFive" value="4">&nbsp;
+        5<input type="radio" name="oneToFive" value="5">&nbsp;
+        <br><br>
+        <input type="submit" name="submit" value="Submit" >
+    </form>
+</body>
+</html>

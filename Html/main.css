@@ -1,0 +1,36 @@
+h1{
+    text-align: center;
+}
+
+body{
+    background-color: dodgerblue;
+}
+p{
+    padding-left: 50px;
+    padding-right: 50px;
+    font-size: 30px;
+    text-align: center;
+}
+
+.tab{
+    font-size: 50px;
+    text-align:center; 
+    margin-left: 350px;
+    margin-right: 350px;
+}
+
+.head{
+    border-spacing: 50px 0;
+}
+
+table{
+    border: 20px;
+}
+
+h3{
+    font-size: 35px;
+}
+
+h4{
+    font-size: 25px;
+}
