@@ -3,24 +3,28 @@ package com.revature.main;
 import java.io.*;
 import java.util.*;
 
+import com.revature.dao.CustomerDaoImpl;
+import com.revature.pojos.Customer;
+
 public class Account {
 	
 	//declaring variables to use later
 	private static String username = "";
-	private static String begBalance = "";
-	private static String currBalance = "0";
+//	private static String begBalance = "";
+//	private static String currBalance = "0";
 	private static Scanner sc = new Scanner(System.in);
 	static BufferedWriter bw = null;
 	static BufferedReader br = null;
-	static String userData = "src/com/revature/main/UserData";
-	static Map<String, ArrayList<String>> users = new HashMap<String, ArrayList<String>>();
+//	static String userData = "src/com/revature/main/UserData";
+//	static Map<String, ArrayList<String>> users = new HashMap<String, ArrayList<String>>();
 
 	//retrieve user information and print menus
 	public static void main(String[] args) {
-		populateList();
+		
+		//populateList();
 		//System.out.println(users);
 		mainMenu();
-		begBalance = users.get(username).get(1);
+		//begBalance = users.get(username).get(1);
 		bankMenu();
 	}
 	
@@ -29,13 +33,17 @@ public class Account {
 	static void deposit() {
 		System.out.println("Please enter an amount to deposit.");
 		int amount = Integer.parseInt(sc.nextLine());
-		int balance = Integer.parseInt(users.get(username).get(1));
-		balance += amount;
-		System.out.println(balance);
 		
-		currBalance = Integer.toString(balance);
-		users.get(username).set(1, Integer.toString(balance));
-		System.out.println("$"+amount+" deposited.");
+		CustomerDaoImpl cdi = new CustomerDaoImpl();
+		int balance = cdi.getBalanceByUsername(username);
+		balance += amount;
+		//System.out.println(balance);
+		
+		Customer c = cdi.getCustomerByUsername(username);
+		c.setBalance(balance);
+		//System.out.println(c);
+		System.out.println("$"+balance+" deposited.");
+		cdi.changeBalance(c);
 		bankMenu();
 	}
 	
@@ -44,107 +52,116 @@ public class Account {
 	static void withdraw() {
 		System.out.println("Please enter an amount to withdraw.");
 		int amount = Integer.parseInt(sc.nextLine());
-		int balance = Integer.parseInt(users.get(username).get(1));
-		if(amount<=balance) {
+		
+		CustomerDaoImpl cdi = new CustomerDaoImpl();
+		int balance = cdi.getBalanceByUsername(username);
+		if(amount<=balance && amount > 0) {
 			balance -= amount;
-			System.out.println(balance);
+			//System.out.println(balance);
 			
-			currBalance = Integer.toString(balance);
-			users.get(username).set(1, Integer.toString(balance));
+			Customer c = cdi.getCustomerByUsername(username);
+			c.setBalance(balance);
 			System.out.println("$"+amount+" withdrawn.");
+			cdi.changeBalance(c);
 			bankMenu();
 		}else {
 			System.out.println("Insufficient Funds, your current balance is "+balance+". Please try again.");
-			withdraw();
+			bankMenu();
 		}
 	}
-	
+//	
 	//retrieves the users current balance from the array
 	static void viewBalance() {
-		int balance = Integer.parseInt(users.get(username).get(1));
+		
+		CustomerDaoImpl cdi = new CustomerDaoImpl();
+		int balance = cdi.getBalanceByUsername(username);
 		System.out.println("Your current balance is: $"+balance);
 		bankMenu();	
 	}
 	
-	//populates the list array with information
-	static void populateList() {
-		
-		try {
-			br = new BufferedReader(new FileReader(userData));
-			String line = br.readLine();
-			
-			//read the file until there are no more lines to read
-			while(line != null) {
-				String[] parts = line.split(",");
-				ArrayList<String> tempArray = new ArrayList<String>();
-				tempArray.add(parts[1]);
-				tempArray.add(parts[2]);
-				users.put(parts[0], tempArray);
-				line = br.readLine();
-			}
-			
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+	//populates the list	 with information
+//	static void populateList() {
+//	
+//		
+//		}
+//	}
 	
 	//registers the user, not allowing a duplicate username
 	//usernames and passwords are case sensitive
 	static void register() {
 		System.out.println("Please enter a username");
 		String tempUsername = sc.nextLine();
+		CustomerDaoImpl cdi = new CustomerDaoImpl();
 		
-		if(users.get(tempUsername)==null) {
-			System.out.println("Please enter your password");
-			String password = sc.nextLine();
-			
-			String userInfo = "\n"+tempUsername+","+password+",0";
-			
-			try {
-				//specifying the file we want to write to
-				File file = new File(userData);
-				//checking first to see if the file exists, creating it if it doesn't
-				if(!file.exists()) {
-					file.createNewFile();
-				}
-				
-				//our Filewriter has an optional argument which specifies whether it will append
-				FileWriter fw = new FileWriter(file, true);
-				bw = new BufferedWriter(fw);
-				
-				bw.write(userInfo);
-				System.out.println("Thank you for registering for the Bank of Java.");
-				
-			
-			} catch (IOException e) {
-				e.printStackTrace();
-			} finally {
-				if(bw != null) {
-					try {
-						bw.close();
-					} catch (IOException e) {
-						e.printStackTrace();
-					}
-				}
-				mainMenu();
-			}
+		System.out.println("Please enter your password");
+		String password = sc.nextLine();
+		
+		if(cdi.getCustomerByUsername(tempUsername)==null) {
+			Customer c = new Customer(tempUsername, password, 0);
+			//System.out.println(c);
+			cdi.createCustomer(c);
+			System.out.println("Account has been created.");
+			mainMenu();
 		}else {
-			System.out.println("Username is taken, please try another.");
+			System.out.println("Username taken. Please try another.");
 			register();
 		}
+		
+//		Customer c = new Customer(tempUsername, password, 0);
+//		System.out.println(c);
+//		cdi.createCustomer(c);
+//		mainMenu();
+		
+		//if(cdi.getCustomerByUsername(tempUsername)==null) {
+			
+			
+			//String userInfo = "\n"+tempUsername+","+password+",0";
+			
+//			try {
+//				//specifying the file we want to write to
+//				File file = new File(userData);
+//				//checking first to see if the file exists, creating it if it doesn't
+//				if(!file.exists()) {
+//					file.createNewFile();
+//				}
+//				
+//				//our Filewriter has an optional argument which specifies whether it will append
+//				FileWriter fw = new FileWriter(file, true);
+//				bw = new BufferedWriter(fw);
+//				
+//				bw.write(userInfo);
+//				System.out.println("Thank you for registering for the Bank of Java.");
+//				
+//			
+//			} catch (IOException e) {
+//				e.printStackTrace();
+//			} finally {
+//				if(bw != null) {
+//					try {
+//						bw.close();
+//					} catch (IOException e) {
+//						e.printStackTrace();
+//					}
+//				}
+//				mainMenu();
+//			}
+//		}else {
+//			System.out.println("Username is taken, please try another.");
+//			register();
+//		}
 	}
 	
 	//log in method, checks the password in the list array
 	static void logIn() {
-		populateList();
+		//populateList();
 		System.out.println("Plese enter your username:");
 		String tempUsername = sc.nextLine();
 		System.out.println("Please enter your password");
 		String password = sc.nextLine();
+		CustomerDaoImpl cdi = new CustomerDaoImpl();
 		
 		
-		if(password.equals(users.get(tempUsername).get(0).trim())) {
+		if(password.equals(cdi.getCustomerByUsername(tempUsername).getPassword())) {
 			System.out.println("Login Successful");
 			username = tempUsername;
 		}else {
@@ -155,42 +172,43 @@ public class Account {
 	
 	//log out writes the changed information back into the text file and returns to main menu
 	static void logOut() {
-		try {
-			//specifying the file we want to write to
-			File file = new File(userData);
-			//checking first to see if the file exists, creating it if it doesn't
-			if(!file.exists()) {
-				file.createNewFile();
-			}
-			
-			//our Filewriter has an optional argument which specifies whether it will append
-			FileWriter fw = new FileWriter(file, true);
-			bw = new BufferedWriter(fw);
-			br = new BufferedReader(new FileReader(userData));
-
-			String line;
-			while ((line = br.readLine()) !=null) {
-				if(line.contains(username)) {
-					//System.out.println(begBalance);
-					//System.out.println(currBalance);
-					String newLine = line.replace(begBalance, currBalance);
-					bw.write("\n"+newLine);
-					//System.out.println(newLine);
-				}
-			}
-			
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			if(bw != null) {
-				try {
-					bw.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-		}
 		main(null);
+//		try {
+//			//specifying the file we want to write to
+//			File file = new File(userData);
+//			//checking first to see if the file exists, creating it if it doesn't
+//			if(!file.exists()) {
+//				file.createNewFile();
+//			}
+//			
+//			//our Filewriter has an optional argument which specifies whether it will append
+//			FileWriter fw = new FileWriter(file, true);
+//			bw = new BufferedWriter(fw);
+//			br = new BufferedReader(new FileReader(userData));
+//
+//			String line;
+//			while ((line = br.readLine()) !=null) {
+//				if(line.contains(username)) {
+//					//System.out.println(begBalance);
+//					//System.out.println(currBalance);
+//					String newLine = line.replace(begBalance, currBalance);
+//					bw.write("\n"+newLine);
+//					//System.out.println(newLine);
+//				}
+//			}
+//			
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		} finally {
+//			if(bw != null) {
+//				try {
+//					bw.close();
+//				} catch (IOException e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		}
+//		main(null);
 	}
 	
 	//prompts the user originally on registering or logging in
@@ -237,7 +255,7 @@ public class Account {
 			break;
 		default:
 			System.out.println("Invalid command, please try again.");
-			mainMenu();
+			bankMenu();
 		}
 	}
 
