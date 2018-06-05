@@ -1,5 +1,6 @@
 TestingEnvironment/*
 JUnit/*
+BankSql/connectionProperties
 
 # Compiled class file
 *.class 
