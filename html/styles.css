@@ -1,0 +1,27 @@
+div {
+    background-color: lightblue;
+}
+
+#imagination{
+    background-color: blueviolet
+}
+
+#dogrosspic{
+    display: block;
+    padding: 40px;
+    margin: 40px;
+    border-color:grey;
+    border-width: 40px;
+    border-style: solid;
+}
+
+table,th,td{
+    border: 2px solid black;
+    border-collapse: collapse;
+}
+
+.coolText{
+    color: #00FF00;
+    text-align: center;
+}
+    
