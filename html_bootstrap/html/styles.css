@@ -1,0 +1,45 @@
+body{
+    background-color: lightsteelblue;
+    padding: 10px;
+    border: 100 px;
+    border-color: red;
+    border-width: 30px; 
+    margin:20px;
+    align-content: center;
+    
+}
+
+h1{
+    color: blue;
+    padding: 100px;
+    border: 100px;
+    
+}
+
+p{
+    color:brown;
+    font-family: sans-serif
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 9px;
+    text-decoration: none;
+}
+
+li:hover {
+    background-color: #111111;
+}
+
+li {
+    align-content: center;
+    float: left;
+    list-style: none;
+    padding: 10px 20px;
+    border-width:5px;
+    border-color: brown;
+    border-style: solid;
+    margin: 5px 10px
+}
