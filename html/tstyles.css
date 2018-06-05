@@ -1,0 +1,29 @@
+#MyColors, th , tr{
+    border: 2px solid black;
+    border-collapse: collapse;
+    background-color: lightblue;
+}
+
+#red{
+    color: red;
+}
+
+#blue{
+    color:darkblue;
+}
+
+#green{
+    color: darkgreen;
+}
+
+#yellow{
+    color: yellow;
+}
+
+html{
+    background-color:lavender;
+}
+
+#ears{
+    border: 5px brown dotted;
+}
