@@ -1,7 +1,6 @@
 package com.revature.pojos;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
 public class BankAccount implements Serializable{
 

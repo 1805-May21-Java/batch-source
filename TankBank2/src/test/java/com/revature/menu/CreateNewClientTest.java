@@ -1,11 +1,9 @@
-package menu;
+package com.revature.menu;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 import org.junit.Test;
-
-import junit.framework.Assert;
 public class CreateNewClientTest {
 
 		

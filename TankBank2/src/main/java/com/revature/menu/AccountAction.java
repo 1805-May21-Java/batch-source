@@ -9,7 +9,8 @@ public class AccountAction extends Menu{
 	public static void accountAction(BankAccount bankAccount, Client client) {
 		//menu to withdraw, deposit, or view balance
 		System.out.println(bankAccount.getAccountName()+" $"+bankAccount.getBalence());
-		System.out.print("Would you like to withdraw (1), deposit (2), Transfer money to another account (3),"
+		System.out.print("Would you like to withdraw (1), deposit (2),"
+				+ " Transfer money to another account (3),"
 				+ " \nview balance (4), select a differnt account(5), "
 				+ "view all transactions (6), logout(7) or exit (8)? ");
 		switch (scan.nextLine()) {
@@ -63,8 +64,7 @@ public class AccountAction extends Menu{
 			System.out.println(lineBreak);
 			//logs user out, then sends to login screen
 			System.out.println("Logged out!");
-			client = GetClient.getClient();
-			SelectAccount.selectAccount(client);
+			WelcomeMenu.Existing(new Client());
 		case "8":
 			//closes resources then exits
 			scan.close();

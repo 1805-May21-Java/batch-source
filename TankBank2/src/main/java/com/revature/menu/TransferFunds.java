@@ -1,8 +1,8 @@
 package com.revature.menu;
 
 import com.revature.pojos.BankAccount;
+
 import com.revature.pojos.Client;
-import com.revature.pojos.Transaction;
 
 public class TransferFunds extends Menu {
 	

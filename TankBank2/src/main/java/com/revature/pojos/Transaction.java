@@ -12,6 +12,7 @@ public class Transaction {
 	public Transaction() {
 		super();
 	}
+	
 	public Transaction(BankAccount bankAccount, String transactionMessage, Date date, String clientUsername) {
 		super();
 		this.bankAccount = bankAccount;

@@ -43,13 +43,12 @@ public class SelectAccount extends Menu{
 					do{
 						//asks user if it is a joint account or solo owner
 						System.out.println("Is this a joint account?");
-						System.out.print("1 for sole owner, 2 for joint: ");
+						System.out.print("(1) for sole owner, (2) for joint: ");
 						switch (scan.nextLine()) {
 						case "1":
 							break;
 						case "2":
-							jointAccount(client,bankAccount);
-							break;
+							return jointAccount(client,bankAccount);
 						default:
 							System.out.println("Please enter 1 or 2!");
 							//prevents loop from reaching the end and makes user enter information again
@@ -91,12 +90,13 @@ public class SelectAccount extends Menu{
 			return false;
 		}
 		
-		private static void jointAccount(Client client,BankAccount bankAccount) {
+		private static BankAccount jointAccount(Client client,BankAccount bankAccount) {
 			//creates a joint account with another user
 			System.out.println("Credentials of the second account owner: ");
 			dImpl.saveNewAccount(bankAccount,client);
+			dImpl.saveAccountClientLink(bankAccount, client);
 			Client client2 = GetClient.getClient();
 			dImpl.saveAccountClientLink(bankAccount, client2);
-			
+			return bankAccount;
 		}
 }

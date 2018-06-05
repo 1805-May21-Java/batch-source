@@ -9,8 +9,8 @@ public class WelcomeMenu extends Menu{
 		System.out.println("Welcome to Tank Bank, where we keep your money safe!");
 		System.out.println(tank);
 		System.out.println("Do you already have an account with us, or would you like to make a new one?");
-		System.out.print("Type 1 for existing account, 2 to create a new one, "
-				+ "3 to exit, or 4 to fire the cannons: ");
+		System.out.print("Type (1) for existing account, (2) to create a new one, "
+				+ "(3) to exit, or (4) to fire the cannons: ");
 		switch (scan.nextLine()) {
 		case "1":
 			//reads an existing client
