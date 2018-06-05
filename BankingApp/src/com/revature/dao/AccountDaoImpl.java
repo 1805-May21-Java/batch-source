@@ -1,6 +1,7 @@
 package com.revature.dao;
 
 import java.io.IOException;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -94,6 +95,52 @@ public class AccountDaoImpl implements AccountDao {
 			e.printStackTrace();
 		}
 		return accountCreated;
+	}
+
+
+	@Override
+	public int updateAccount(Account account) {
+		
+		int accountUpdated = 0;
+		String sql = "UPDATE ACCOUNT SET ACC_BALANCE = ? WHERE ACC_ID = ?";
+		try {
+			Connection con = ConnectionUtil.getConnection();
+			con.setAutoCommit(false);
+			PreparedStatement pstatement = con.prepareStatement(sql);
+			pstatement.setDouble(1, account.getBalance());
+			pstatement.setInt(2, account.getId());
+			accountUpdated = pstatement.executeUpdate();
+			con.commit();
+			con.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return accountUpdated;
+	
+	}
+
+
+	@Override
+	public int deleteAccountById(int id) {
+		
+		int rowsUpdated = 0;
+		
+		try {
+			Connection con = ConnectionUtil.getConnection();
+			con.setAutoCommit(false);
+			String sql = "{call DELETE_ACCOUNT (?)}";
+			CallableStatement cs = con.prepareCall(sql);
+			cs.setInt(1, id);
+			rowsUpdated = cs.executeUpdate();
+			cs.close();
+			con.commit();
+			con.close();	
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return rowsUpdated;
 	}
 
 }

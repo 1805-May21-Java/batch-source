@@ -5,7 +5,7 @@ public class Account {
 	private int id;
 	private String username;
 	private String password;
-	private double balance = 0.00; // new account balance always starts at zero
+	private double balance; // new account balance always starts at zero
 
 	public Account(int id, String username, String password, double balance) {
 		super();
@@ -15,10 +15,11 @@ public class Account {
 		this.balance = balance;
 	}
 	
-	public Account(String username, String password) {
+	public Account(String username, String password, Double balance) {
 		super();
 		this.username = username;
 		this.password = password;
+		this.balance = balance;
 	}
 	
 	public int getId() {

@@ -9,5 +9,7 @@ public interface AccountDao {
 	public List<Account> getAccounts();
 	public Account getAccountById(int id);
 	public int createAccount(Account account);
+	public int updateAccount(Account account);
+	public int deleteAccountById(int id);
 	
 }

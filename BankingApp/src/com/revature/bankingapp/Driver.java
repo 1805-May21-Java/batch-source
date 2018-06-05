@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.SQLDataException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,56 +19,26 @@ public class Driver {
 	
 	private static Scanner sc = new Scanner(System.in);
 	private static Account session;
-	private static ArrayList<Account> accounts;
+	private static List<Account> accounts;
+	private static AccountDaoImpl adi;
 
 	public static void main(String[] args) {
 		
-		try {
-			Connection con = ConnectionUtil.getHardcodedConnection();
-			//System.out.println(con.getMetaData().getDriverName());
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		adi = new AccountDaoImpl(); 
 		
+		accounts = adi.getAccounts(); // pull persisted data from database
 		
-		AccountDaoImpl adi = new AccountDaoImpl();
+		//adi.deleteAccountById(2);
 		
-		Account acc = new Account("Rachel25", "password123");
-		adi.createAccount(acc);
-		
-		List<Account> allAccounts = adi.getAccounts();
-		for (Account a : allAccounts) {
-			System.out.println(a);
-		}
-		
-//		accounts = new ArrayList<Account>();
-//		
-//		// TODO: get data from database
-//		// Read in data file with account info
-//		String path = "src/com/revature/bankingapp/data.txt";
-//		
-//		BufferedReader br;
-//		try {
-//			br = new BufferedReader(new FileReader(path));
-//			String line = br.readLine();
-//			
-//			// read data file
-//			while (line != null) {
-//				String[] arr = line.split(":"); // split lines on colon
-//				Account user = new Account(arr[0], arr[1], Double.parseDouble(arr[2]));
-//				accounts.add(user);
-//				line = br.readLine();
-//			}
-//			br.close();
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-//
-//		mainPage(); // start bank program
+		mainPage(); // start bank program
 		
 	}
 	
-	// Welcome screen
+	/*
+	 * 
+	 * MAIN PAGE
+	 * 
+	 */
 	public static void mainPage() {
 		System.out.println("*******************************");
 		System.out.println("*                             *");
@@ -108,6 +79,11 @@ public class Driver {
 		}
 	}
 	
+	/*
+	 * 
+	 * LOGIN PAGE
+	 * 
+	 */
 	public static void loginPage() {
 		System.out.println("****************");
 		System.out.println("*              *");
@@ -150,6 +126,11 @@ public class Driver {
 		}
 	}
 	
+	/*
+	 * 
+	 * NEW USER PAGE
+	 * 
+	 */
 	public static void newUserPage() {
 		System.out.println("*********************");
 		System.out.println("*                   *");
@@ -182,22 +163,11 @@ public class Driver {
 			if (password.equals("cancel")) {
 				mainPage(); // return to main page
 			} else {
-				Account account = new Account(username, password, 0.00); // set initial balance to zero
+				Account account = new Account(username, password, 0.0); // set initial balance to zero
 				session = account;
 				accounts.add(account); // add new account to system
 				
-				// write new user data to text file
-				String path = "src/com/revature/bankingapp/data.txt";
-				BufferedWriter bw;
-				try {
-					bw = new BufferedWriter(new FileWriter(path, true));
-					bw.write(username + ":" + password + ":0.00");
-					bw.newLine();
-					bw.flush();
-					bw.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+				adi.createAccount(account); // insert new account into database
 				
 				System.out.println("New account " + username + " created!");
 				System.out.println("Logging you in...");
@@ -208,6 +178,11 @@ public class Driver {
 		
 	}
 	
+	/*
+	 * 
+	 * DASHBOARD PAGE
+	 * 
+	 */
 	public static void dashboardPage() {
 		System.out.println("***************");
 		System.out.println("*             *");
@@ -231,32 +206,55 @@ public class Driver {
 		
 		// get user input
 		System.out.print("Select an option: ");
-		System.out.println();
 		String input = sc.nextLine().toLowerCase(); // not case sensitive
 		
 		switch (input) {
 		case "deposit":
-			System.out.print("Enter deposit amount: ");
-			System.out.println();
-			double amount = Double.parseDouble(sc.nextLine());
-			session.setBalance(session.getBalance() + amount); // add deposit amount to balance
-			editValue(); // write value to file
-			System.out.println("Transaction was successful!");
-			System.out.println();
+			
+			double amount = 0;
+			while (true) {
+				System.out.print("Enter deposit amount: ");
+				try {
+					amount = Double.parseDouble(sc.nextLine());
+					if (isValidInput(amount)) {
+						session.setBalance(session.getBalance() + amount); // add deposit to session account
+						adi.updateAccount(session); // update account in database after deposit
+						System.out.println("Transaction was successful!");
+						System.out.println();
+					} 
+					break;
+				} catch (NumberFormatException e) {
+					System.out.println("ERROR: Input was not a valid number. Try again.");
+					System.out.println();
+				} 
+			}
 			dashboardMenu();
 			break;
 		case "withdraw":
-			System.out.print("Enter withdrawal amount: ");
-			System.out.println();
-			double withdrawal = Double.parseDouble(sc.nextLine());
-			if (withdrawal > session.getBalance()) { // check that amount being withdrawn isn't greater than the available balance
-				System.out.println("ERROR: You don't have enough funds! Try again.");
-				System.out.println();
-			} else {
-				session.setBalance(session.getBalance() - withdrawal); // subtract amount from balance
-				editValue(); // write new value to file
-				System.out.println("Transaction was successful!");
-				System.out.println();
+			
+			double withdrawal = 0; 
+			while (true) {
+				System.out.print("Enter withdrawal amount: ");
+				try {
+					withdrawal = Double.parseDouble(sc.nextLine());
+					if (isValidInput(withdrawal)) {
+						if (withdrawal > session.getBalance()) { // check that amount being withdrawn isn't greater than the available balance
+							System.out.println("ERROR: You don't have enough funds! Try again.");
+							System.out.println();
+						} else {
+							session.setBalance(session.getBalance() - withdrawal); // subtract amount from balance
+							
+							adi.updateAccount(session); // update account in database after withdrawal
+							
+							System.out.println("Transaction was successful!");
+							System.out.println();
+						}
+					}
+					break;
+				} catch (NumberFormatException e) {
+					System.out.println("ERROR: Input was not a valid number. Try again.");
+					System.out.println();
+				} 
 			}
 			dashboardMenu();
 			break;
@@ -279,23 +277,21 @@ public class Driver {
 		}
 	}
 	
-	// replace old balance value with new
-	public static void editValue() {
-		String path = "src/com/revature/bankingapp/data.txt";
-		BufferedWriter bw;
-		try {
-			bw = new BufferedWriter(new FileWriter(path));
-
-			// write all accounts into data file
-			// this action clears the file before writing
-			for (Account acc : accounts) {
-				bw.write(acc.getUsername() + ":" + acc.getPassword() + ":" + acc.getBalance());
-				bw.newLine();
-			}
-			bw.close();
-		} catch (IOException e) {
-			e.printStackTrace();
+	// performs various checks on deposits/withdrawals to determine if they are valid
+	public static boolean isValidInput(double input) {
+		if (input > Integer.MAX_VALUE) {
+			System.out.println("ERROR: Amount is too large a number. Try again.");
+			System.out.println();
+			return false;
 		}
+		
+		if (input < 0) {
+			System.out.println("ERROR: Cannot enter a negative amount. Try again.");
+			System.out.println();
+			return false;
+		}
+
+		return true;
 	}
 	
 	public static boolean listContains(String username) {
