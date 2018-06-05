@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import com.revature.dao.AccountDaoImpl;
+import com.revature.dao.TransactionDaoImpl;
 
 
 public class Main {
@@ -12,10 +13,10 @@ public class Main {
 	private static Scanner scanner = new Scanner(System.in);
 	private static Account curAcct;
 	private static AccountDaoImpl adi = new AccountDaoImpl();
+	private static TransactionDaoImpl tdi = new TransactionDaoImpl();
 	private static int failedPWNum=0, failedUNNum=0;
 
 	public static void main(String[] args) {
-		//Store data in username.txt
 		//Prompt Login or Create Account
 		//Prompt a user for their username
 		//if the username does exist, prompt for password - warn if wrong
@@ -85,6 +86,7 @@ public class Main {
 		System.out.println("1: Display Current Balance");
 		System.out.println("2: Deposit Money");
 		System.out.println("3: Withdraw Money");
+		System.out.println("4: View Transaction History");
 		System.out.println("0: Logout");
 		String in2 = scanner.nextLine();
 		switch (in2) {
@@ -100,6 +102,13 @@ public class Main {
 			case "3":
 				//withdraw
 				withdrawMoney();
+				break;
+			case "4":
+				for(Transaction t: tdi.getAllTransactions(curAcct)) {
+					System.out.println(t);
+				}
+				displayMenu();
+				break;
 			case "0":
 				//logout
 				System.out.println("Thank you for Banking with us!");
@@ -128,6 +137,7 @@ public class Main {
 				promptLogin();
 				break;
 			default:
+				adi.updateAccount(curAcct);
 				displayMenu();
 				break;
 			}
@@ -150,6 +160,7 @@ public class Main {
 				promptLogin();
 				break;
 			default:
+				adi.updateAccount(curAcct);
 				displayMenu();
 				break;
 			}
