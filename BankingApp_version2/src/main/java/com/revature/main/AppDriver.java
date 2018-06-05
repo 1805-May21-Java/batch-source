@@ -12,7 +12,6 @@ import com.revature.pojos.Account;
 
 public class AppDriver {
 	
-	//Remember to open connection at start of main and close it at the end of it.
 	public static void main (String[] args){
 		
 		//Try/Catch block used to catch any possible IOException or SQLException
@@ -26,9 +25,10 @@ public class AppDriver {
 			//and put in a HashMap
 			HashMap<String, Account> accountsList = ad1.getAccounts();
 			
-			//for(Account acc : accountsList.values()) {
-			//	System.out.println(acc);
-			//}
+			//This for loop is to only be used during demonstration
+			for(Account acc : accountsList.values()) {
+				System.out.println(acc);
+			}
 			
 			//Scanner object to allow user to use and/or create bank account
 			Scanner userInput = new Scanner(System.in);

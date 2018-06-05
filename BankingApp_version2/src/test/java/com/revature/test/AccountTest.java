@@ -10,7 +10,7 @@ import com.revature.pojos.Account;
 //JUnit that test methods in class Account
 //Only tests methods related to the interface AccountActions
 public class AccountTest {
-
+	
 	@Test
 	public void testDepositFunds() {
 		Account account = new Account("testing1", "password1", 50, 50);

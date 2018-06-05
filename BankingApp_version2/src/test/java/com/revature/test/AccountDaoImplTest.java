@@ -32,6 +32,7 @@ public class AccountDaoImplTest {
 			e.printStackTrace();
 		}
 	}
+
 	
 	@Test
 	public void testGetAccounts() throws IOException, SQLException {
@@ -44,7 +45,7 @@ public class AccountDaoImplTest {
 	@Test
 	public void testGetAccountByUsername() throws IOException, SQLException {
 		AccountDaoImpl ad1 = new AccountDaoImpl();
-		Account account = ad1.getAccountByUsername("lupinThe3rd");
+		Account account = ad1.getAccountByUsername("rojas23");
 		Assert.assertNotNull(account);
 	}
 	
@@ -89,7 +90,6 @@ public class AccountDaoImplTest {
 		ad1.withDrawFunds("test", "SAVINGS", 7);
 		Account account = ad1.getAccountByUsername("test");
 		Assert.assertTrue(account.getSavings() == 3);
-		//ad1.withDrawFunds(test, accountType, amount);
 	}
 	
 	//Closes the Connection after all test methods have been executed
