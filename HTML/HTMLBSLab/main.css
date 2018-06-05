@@ -1,0 +1,17 @@
+#nokogiriyama {
+    float: left;
+    width: 40%;
+}
+
+#buddha {
+   width: 100%;
+}
+
+#poem {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+    float: left;
+    width: 50%;
+    margin-left:5%;
+    margin-top:2%;
+}
