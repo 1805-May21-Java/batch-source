@@ -3,12 +3,20 @@
 
 <head>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+        crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
 </head>
 
 <body>
     <h1>Look at
-        <img src="http://www.scoutmag.ph/wp-content/uploads/look-at-this-bird-1024x768.jpg" alt="this bird" width=450
-            height=300 class="bird">this bird</h1>
+        <img src="http://www.scoutmag.ph/wp-content/uploads/look-at-this-bird-1024x768.jpg" alt="this bird" width=450 height=300
+            class="bird">this bird</h1>
     <p>What is this?
         <select name=bird>
             <option value="Bird">Bird</option>
@@ -53,25 +61,27 @@
     <div id="outer">
         <div class="inner">
             <form action="yes.html">
-                <input type="submit" value="Yes" />
+                <a class="btn btn-success" href=yes.html role="button">Yes</a>
             </form>
         </div>
         <div class="inner">
             <form action="no.html">
-                <input type="submit" value="No" />
+                <a class="btn btn-danger" href=no.html role="button">No</a>
             </form>
         </div>
         <div class="inner">
             <form action="tell_me_more.html">
-                <input type="submit" value="tell_me_more.jpg" />
+                <a class="btn btn-info" href=tell_me_more.html role="button">tell_me_more.jpg</a>
             </form>
         </div>
         <div class="inner">
             <form action="elmo.html">
-                <input type="submit" value="Elmo" />
+                <a class="btn btn-dark" href=elmo.html role="button">elmo</a>
             </form>
         </div>
     </div>
-    <p>Click <a href="https://www.google.com/">here</a> to learn more.</p>
+    <p>Click
+        <a href="https://www.google.com/">here</a> to learn more.</p>
 </body>
+
 </html>
