@@ -7,14 +7,27 @@
 #DogPoint{
     text-align: center;
 }
+
+
+
+.DescriptionBox{
+    border: 1px solid cornflowerblue;
+    background-color: aliceblue;
+}
+
 .DogTable{
     margin-left: auto;
     margin-right: auto;
+    background-color: antiquewhite;
+    border: 2px aliceblue;
 }
+
 .fix{
     position: fixed;
     bottom: 0px;
 }
+
 table tr{
     font-size: 20px;
 }
+
