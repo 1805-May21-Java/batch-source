@@ -1,0 +1,30 @@
+#outer
+{
+    width:100%;
+    text-align: left;
+}
+#elmo
+{
+    background-color: tomato;
+}
+#textbox
+{
+    text-align: center;
+}
+.bird
+{
+    padding: 30px;
+    vertical-align: -150px;
+}
+.inner
+{
+    display: inline-block;
+}
+h1
+{
+    text-align: center;
+    font-size: 100px;
+    font-style: italic;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: firebrick
+}
