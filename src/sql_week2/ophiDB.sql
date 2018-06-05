@@ -242,3 +242,12 @@ select * from Chinook.Album cross join Chinook.artist order by Chinook.artist.na
 
 --7.5
 select * from Chinook.Employee t1, Chinook.Employee t2 where t1.reportsTo = t2.EmployeeID;
+
+CREATE OR REPLACE PROCEDURE INTEREST(ACCOUNTID IN NUMBER, VAL IN NUMBER)
+IS
+BEGIN
+    UPDATE ACCOUNT
+    SET BALANCE = BALANCE + VAL
+    WHERE ACCOUNTID = ACCOUNTID;
+
+END;
