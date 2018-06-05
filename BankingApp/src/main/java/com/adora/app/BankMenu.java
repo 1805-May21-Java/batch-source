@@ -145,6 +145,7 @@ public class BankMenu {
 			} 
 			
 		}
+		LoginManager.logout();
 	}
 
 	

@@ -49,7 +49,11 @@ public class AccountManager {
 		
 		//update locally and on database
 		currentAccount.setAccountBalance(currentAccount.getAccountBalance() + amount);
-		adi.updateAccount(currentAccount);
+		if(adi.updateAccount(currentAccount) == 0 ) {
+			currentAccount.setAccountBalance(currentAccount.getAccountBalance() - amount);
+			System.out.println("Error: deposit not processed.");
+			return;
+		}
 		
 		System.out.println("Deposit processed.");
 		System.out.println(String.format("New account balance is %.2f.", currentAccount.getAccountBalance()));
@@ -70,7 +74,11 @@ public class AccountManager {
 		
 		// update locally and on database
 		currentAccount.setAccountBalance(currentAccount.getAccountBalance() - amount);
-		adi.updateAccount(currentAccount);
+		if(adi.updateAccount(currentAccount) == 0 ) {
+			currentAccount.setAccountBalance(currentAccount.getAccountBalance() + amount);
+			System.out.println("Error: withdrawal not processed.");
+			return;
+		}
 		
 		System.out.println("Withdrawal processed.");
 		System.out.println(String.format("New account balance is %.2f.", currentAccount.getAccountBalance()));
