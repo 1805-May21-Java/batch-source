@@ -1,6 +1,7 @@
 package com.adora.access;
 
 import java.io.IOException;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -92,11 +93,14 @@ public class UserDaoImpl implements UserDao {
 		
 		
 		try (Connection conn = ConnectionUtil.getConnection()){
-			String sql = "INSERT INTO bankUser (user_name, user_pass) VALUES (?, ?)";
-			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setString(1, user.getUsername());
-			ps.setString(2, user.getPassword());
-			userCreated = ps.executeUpdate();
+			String sql = "{call insert_new_user_account(?, ?)}";
+			CallableStatement cs = conn.prepareCall(sql);
+			//register IN parameters
+			cs.setString(1, user.getUsername());
+			cs.setString(2, user.getPassword());
+			
+			userCreated =  cs.executeUpdate();
+			
 			
 		} catch (IOException | SQLException e) {
 			e.printStackTrace();

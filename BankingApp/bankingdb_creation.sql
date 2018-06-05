@@ -7,7 +7,7 @@ CREATE TABLE bankUser (
 
 CREATE TABLE bankAccount (
     account_id INTEGER,
-    account_type  VARCHAR(10) NOT NULL, 
+    account_type  VARCHAR2(10) NOT NULL, 
     account_balance NUMBER(12, 2)DEFAULT 0,
     PRIMARY KEY (account_id),
     CHECK (account_type IN ('Checking', 'Savings'))
@@ -19,51 +19,48 @@ CREATE TABLE bankUserAccount (
     FOREIGN KEY (user_id) REFERENCES bankUser(user_id),
     FOREIGN KEY (account_id) REFERENCES bankAccount(account_id)
 );
+/
 
-drop table bankaccount;
-
-CREATE SEQUENCE bankuserid_sq
-START WITH 1
-INCREMENT BY 1;
-
-CREATE SEQUENCE bankacctid_sq
-START WITH 1
-INCREMENT BY 1;
-
-CREATE OR REPLACE TRIGGER insert_bank_user_id
-BEFORE INSERT ON bankUser
-FOR EACH ROW
+CREATE OR REPLACE PROCEDURE insert_into_user(userId OUT INTEGER, username IN VARCHAR2, userpass IN VARCHAR2)
+AS
 BEGIN
-    SELECT bankuserid_sq.NEXTVAL INTO :NEW.user_id  FROM dual;
+    select user_id_seq.nextval into userid from dual;
+    insert into bankuser values(userid, username, userpass);
 END;
 /
 
-CREATE OR REPLACE TRIGGER insert_bank_acct_id
-BEFORE INSERT ON bankAccount
-FOR EACH ROW
+CREATE OR REPLACE PROCEDURE add_new_account(userid IN INTEGER, account_type IN VARCHAR2, account_balance IN NUMBER)
+AS
 BEGIN
-    SELECT bankacctid_sq.NEXTVAL INTO :NEW.account_id  FROM dual;
+
+    insert into bankaccount values (acct_id_seq.nextval, account_type, account_balance);
+    insert into bankuseraccount values(userid, acct_id_seq.currentval);
+END;
+
+/
+
+CREATE OR REPLACE PROCEDURE insert_new_user_account(username IN VARCHAR2, userpass IN VARCHAR2)
+AS
+BEGIN
+    -- insert user and get id
+    insert into bankuser values((user_id_seq.nextval), username, userpass);
+    
+    --insert account and get id
+    insert into bankaccount values ( (acct_id_seq.nextval ), 'Checking', 0);
+
+    insert into bankuseraccount values(user_id_seq.currval, acct_id_seq.currval);
 END;
 /
 
--- Dummy Data
+CREATE SEQUENCE USER_ID_SEQ
+START WITH 1
+INCREMENT BY 1;
+/
 
-insert into bankuser values(1, 'adorasmith', 'password');
-insert into bankuser values(2, 'mrmoneybags', 'password');
+CREATE SEQUENCE ACCT_ID_SEQ
+START WITH 1
+INCREMENT BY 1;
 
-insert into bankaccount values(1, 'Checking', '213.45');
-insert into bankaccount values(2, 'Savings', '3.50');
-insert into bankaccount values(3, 'Checking', '4589.89');
-insert into bankaccount values(4, 'Savings', 345789.90);
 
-insert into bankuseraccount values (1,1);
-insert into bankuseraccount values (1,2);
-insert into bankuseraccount values (2,3);
-insert into bankuseraccount values (2,4);
-
-select user_name, account_type, account_balance
-from bankuser u
-join bankuseraccount ua on u.user_id = ua.user_id
-join bankaccount a on ua.account_id = a.account_id;
-
-SELECT * FROM bankUser;
+/
+insert into bankuser values(null, 'adora', 'test');

@@ -2,12 +2,13 @@ package com.adora.app;
 
 import java.util.List;
 
+import com.adora.access.UserDao;
 import com.adora.access.UserDaoImpl;
 import com.adora.object.User;
 
 public class LoginManager {
 
-	private static UserDaoImpl udi = new UserDaoImpl();
+	private static UserDao udi = new UserDaoImpl();
 	private static List<String> userNames;
 	private static User currentUser;
 	
@@ -30,6 +31,7 @@ public class LoginManager {
 			System.out.println("That username is already in use.");
 			return false;
 		}
+			
 		
 		return true;
 		
@@ -73,9 +75,14 @@ public class LoginManager {
 	static void login (String username, String password) {
 		currentUser = udi.getUserByCredentials(new User(username, password));
 	}
-	
-	static int getCurrentUser() {
-		return currentUser.getUserId();
+	static void logout () {
+		currentUser = null;
+		userNames = null;
+		
+		AccountManager.clearAccount();
+	}
+	static User getCurrentUser() {
+		return currentUser;
 	}
 	
 	static boolean isLoggedIn() {

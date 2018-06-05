@@ -1,4 +1,4 @@
-package accessTest;
+package com.adora.access;
 
 import static org.junit.Assert.*;
 
@@ -12,17 +12,17 @@ import com.adora.object.User;
 
 public class TestUserDao {
 
-	private User u;
 	private List<User> userList;
 	private List<String> userNameList;
 	private UserDaoImpl udi = new UserDaoImpl();
 	
 
-//	@Test
-//	public void testCreateUser() {
-//		int success = udi.createUser(new User("createname", "createpass"));
-//		assertEquals(success, 1);
-//	}
+	@Test
+	public void testCreateUser() {
+		int success = udi.createUser(new User("blahblahblah6", "passpass"));
+		System.out.println(success);
+		assert(success != 0);
+	}
 
 	
 	@Before 

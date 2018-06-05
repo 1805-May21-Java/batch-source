@@ -1,4 +1,5 @@
 package com.adora.app;
+import java.util.List;
 import java.util.Scanner;
 
 public class BankMenu {
@@ -86,9 +87,8 @@ public class BankMenu {
 			LoginManager.login(username, password);
 			
 			if(LoginManager.isLoggedIn()) {
-				//go to account menu
-				System.out.println("you are logged in.");
-				
+				chooseAccountMenu();
+				return;
 			} else {
 				tries++;
 				if(tries >= 3) {
@@ -104,49 +104,118 @@ public class BankMenu {
 	
 
 	
-//	private static void accountMenu(BankAccount account) {
-//		int option;
-//		boolean loggedIn = true;
-//		
-//		System.out.println();
-//		System.out.println();
-//		System.out.println(border);
-//		System.out.println("*       Account Menu       *");
-//		System.out.println(border);
-//		System.out.println("Please choose one of the following options");
-//		
-//		while (loggedIn) {
-//			
-//		String accountMenu = String.format("[1] View balance\n[2] Deposit money\n[3] Withdraw money\n[4] Logout");
-//		System.out.println(accountMenu);
-//			try {
-//				option = Integer.parseInt(sc.nextLine());
-//				
-//				switch(option) {
-//					case 1: 
-//						account.viewBalance();
-//						break;
-//					case 2:
-//						account.depositMoney();
-//						break;
-//					case 3: 
-//						account.withdrawMoney();
-//						break;
-//					case 4:
-//						AccountRetriever.update(account);
-//						loggedIn = false;
-//						break;
-//					default: 
-//						System.out.println("That is not a valid menu option.");
-//				}
-//				
-//				
-//			} catch (NumberFormatException e) {
-//				System.out.println("Please enter one of the menu options");
-//			} 
-//		}
-//	}
+	private static void chooseAccountMenu() {
 
+		System.out.println();
+		System.out.println();
+		System.out.println(border);
+		System.out.println("*         Account Menu         *");
+		System.out.println(border);
+		
+		
+		List<String> accounts = AccountManager.getAccountList();
+		
+		//choosing an account menu
+		
+		int accountIndex = -1;
+		boolean loggedIn =  true;
+		
+		while (loggedIn) {
+			int i = 1;
+			System.out.println("Please choose an account: ");
+			for(String account : accounts) {
+				System.out.println(String.format("[%02d] %s", i, account));
+				i++;
+			}
+			
+			System.out.println(String.format("[%02d] Logout", i));
+			try {
+				accountIndex = Integer.parseInt(sc.nextLine());
+				if(accountIndex > 0 && accountIndex  <= accounts.size()) {
+					AccountManager.setCurrentAccount(accountIndex - 1);
+					loggedIn = accessAccountMenu();
+				} else if (accountIndex == (accounts.size() + 1)){
+					LoginManager.logout();
+					return;
+				} else
+					System.out.println("That was not a valid option. Please try again.\n");
+				
+			} catch (NumberFormatException e) {
+				System.out.println("That was not a valid option. Please try again.\n");
+			} 
+			
+		}
+	}
+
+	
+
+	private static boolean accessAccountMenu() {
+		
+		boolean loggedIn = true;
+		
+		System.out.println();
+		System.out.println();
+		System.out.println(border);
+		System.out.println("*     Account Actions    *");
+		System.out.println(border);
+		
+		while(loggedIn) {
+		
+			
+			
+			System.out.println("Please choose a menu option.");
+			System.out.println("[1] View balance");
+			System.out.println("[2] Deposit money");
+			System.out.println("[3] Withdraw money");
+			System.out.println("[4] Swith accounts");
+			System.out.println("[5] Log out");
+			
+			try {
+				int option = Integer.parseInt(sc.nextLine());
+				
+				switch(option) {
+				case 1: 
+					System.out.println(String.format("The current balance is $%.2f\n", AccountManager.getBalance()));
+					break;
+				case 2:
+					System.out.println("How much would you like to deposit?");
+					try {
+						double amount = Double.parseDouble(sc.nextLine());
+						AccountManager.deposit(amount);
+					} catch (NumberFormatException e) {
+						System.out.println("That was not a valid number. Withdrawal not processed.\n");
+					}
+					break;
+				case 3:
+					System.out.println("How much would you like to withdraw?");
+					try {
+						double amount = Double.parseDouble(sc.nextLine());
+						AccountManager.withdraw(amount);
+					} catch (NumberFormatException e) {
+						System.out.println("That was not a valid number. Withdrawal not processed.\n");
+					}
+				break;
+				case 4: 
+					return true;
+				case 5:
+					return false;
+				default:
+					System.out.println("You did not enter a valid option.");
+					break;
+				}
+				
+			} catch (NumberFormatException e) {
+				System.out.println("That was not a valid option. Please try again.");
+			} finally {
+				
+			}
+		}
+		
+		
+		
+		return false;
+	}
+	
 	/**
 	 * This method contains the logic for the menu loop for creating a new account
 	 */
