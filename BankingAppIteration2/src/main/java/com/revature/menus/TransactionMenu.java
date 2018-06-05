@@ -120,7 +120,7 @@ public class TransactionMenu implements Menu{
 					this.currentAccount.setBalance(this.currentAccount.getBalance() - amount);
 					this.adi.updateAccount(this.currentAccount);
 					this.tdi.createTransaction(new Transaction(this.currentAccount.getAccountNumber(), 
-															  "$" + FormatMoney.print(amount) + " withdrawn by" + this.currentUser.getUsername()));
+															  "$" + FormatMoney.print(amount) + " withdrawn by " + this.currentUser.getUsername()));
 					System.out.println("$" + FormatMoney.print(amount) + " withdrawn.");
 					viewBalance();
 					validWithdrawl = true;
@@ -287,10 +287,11 @@ public class TransactionMenu implements Menu{
 			transactionList = tdi.getAccountTransactions(this.currentAccount.getAccountNumber(), limit);
 		}
 		
-		System.out.println("Accout #" + this.currentAccount.getAccountNumber() + "\'s Transaction History");
+		System.out.println("\nAccout #" + this.currentAccount.getAccountNumber() + "\'s Transaction History: \n");
 		for(Transaction t : transactionList) {
-			System.out.println(t.gettransactionDate() + " | " + t.getDescription() + "\n");
+			System.out.println(t.gettransactionDate() + " | " + t.getDescription());
 		}
+		System.out.println("\n");
 		
 		return true;
 	}

@@ -41,7 +41,7 @@ public class Teller {
 					}
 				} while (keepGoing);
 			}
-			System.out.println("Thank you for banking with us!");
+			System.out.println("Thank you for banking with us!\n");
 			keepGoing = GeneralConfirmation.check("Do you wish to start a new session?");
 		} while (keepGoing);
 		

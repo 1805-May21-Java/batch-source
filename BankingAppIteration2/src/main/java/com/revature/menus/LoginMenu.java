@@ -27,8 +27,8 @@ public class LoginMenu implements Menu{
 		boolean finishedWithMenu = false;
 		do {
 			System.out.println("Would you like to login or create a new user account?\n"
-							 + "	(1)Login\n"
-							 + "	(2)Create New User"
+							 + "    (1)Login\n"
+							 + "    (2)Create New User\n"
 							 + "Enter 1, or 2. Enter 0 to exit.");
 			String option = this.scan.next();
 			try {
@@ -69,7 +69,9 @@ public class LoginMenu implements Menu{
 		boolean match = false;
 		do {
 			System.out.println("Enter your username or email: ");
-			username = this.scan.next().toUpperCase();
+			do {
+				username = this.scan.next().toUpperCase();
+			} while (username.isEmpty());
 			System.out.println("Enter your password: ");
 			password = this.scan.next();
 			for(User u: myUsers) {
@@ -100,9 +102,7 @@ public class LoginMenu implements Menu{
 		boolean associated;
 		do {
 			System.out.println("Please enter your email: ");
-			do {
-				email = this.scan.next();
-			} while (!email.equals("") && !email.equals(" "));
+			email = this.scan.next();
 			associated = false;
 			if(myUsers.isEmpty()) {
 				break;
@@ -134,9 +134,7 @@ public class LoginMenu implements Menu{
 		boolean used;
 		do {
 			System.out.println("Please enter a username: ");
-			do {
-				username = this.scan.next();
-			} while (!username.equals("") && !username.equals(" "));
+			username = this.scan.next();
 			used = false;
 			if(myUsers.isEmpty()) {
 				break;
@@ -167,9 +165,7 @@ public class LoginMenu implements Menu{
 		boolean validPassword = false;
 		do {
 			System.out.println("Please enter a password: ");
-			do {
 			password = this.scan.next();
-			} while (!password.equals("") && !password.equals(" "));
 			if(password.contains(" ")) {
 				System.out.println("Sorry, a password shouldn't contain spaces.");
 				boolean cont = GeneralConfirmation.check("Would you like to try another password?");
@@ -180,9 +176,7 @@ public class LoginMenu implements Menu{
 			}
 			
 			System.out.println("Confirm your password: ");
-			do {
-				passwordConfirmation = this.scan.next();
-			} while (!passwordConfirmation.equals("") && !passwordConfirmation.equals(" "));
+			passwordConfirmation = this.scan.next();
 			
 			if(passwordConfirmation.equals(password)) {
 				validPassword = true;

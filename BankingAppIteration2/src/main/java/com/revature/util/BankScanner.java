@@ -20,6 +20,11 @@ public class BankScanner {
 		throw new CloneNotSupportedException();
 	}
 	public String next() {
-		return sc.nextLine();
+		String s;
+		do {
+			s = sc.nextLine();
+			//if user enters an empty line or a line that starts with a space, keep trying
+		} while (s.isEmpty() || s.substring(0, 1).equals(" "));
+		return s;
 	}
 }
