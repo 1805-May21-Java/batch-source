@@ -146,7 +146,7 @@ public class Driver {
 		System.out.println("1. View current balance"); //for convenience, an impatient user isn't gonna accidentally screw up a transaction in a weird way
 		System.out.println("2. Deposit money");
 		System.out.println("3. Withdraw money");
-		//System.out.println("4. Delete account"); //attempted to do this if a user was going to delete their account, but figured out that this isn't required for the project
+		System.out.println("4. Delete account"); //attempted to do this if a user was going to delete their account, but figured out that this isn't required for the project
 		System.out.println("Press 0 to log out");
 		String choice = sc.nextLine();
 		switch (choice) {
@@ -161,7 +161,7 @@ public class Driver {
 			case "3":
 				withdraw();
 				break;
-			/*case "4":
+			case "4":
 				System.out.println("Are you sure you wish to delete your account?");
 				System.out.println("Press 1 to delete your account");
 				System.out.println("Press any other number to cancel");
@@ -169,11 +169,12 @@ public class Driver {
 				if (confirm == 1) {
 					adi.deleteAccount(currentAc.getUsername());
 					System.out.println(currentAc.getUsername() + " has been removed from the system.");
+					loginMenu();
 					break;
 				}
 				else
 					transactionMenu();
-					break;*/
+					break;
 			case "0":
 				System.out.println("You have successfully logged out");
 				System.out.println();

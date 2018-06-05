@@ -101,13 +101,14 @@ public class AccountDAOImpl implements AccountDAO {
 	@Override
 	public int deleteAccount(String username) { //one last time, for delete
 		int acctDelete = 0; //deleting updates our rows
-		String sql = "DELETE FROM BANK_ACCOUNT WHERE USERNAME = ?";
+		String sql = "{call DELETE_ACCOUNT (?)}";
 		try { //deleteAccount by the way takes in the username as a parameter
 			Connection con = ConnectionUtil.getConnection();
 			con.setAutoCommit(false);
-			PreparedStatement ps = con.prepareStatement(sql); // this is DEFINITELY what we need during a delete statement!
-			ps.setString(1, username);	
-			acctDelete = ps.executeUpdate();
+			CallableStatement cs = con.prepareCall(sql);	
+			cs.setString(1, username);
+			acctDelete = cs.executeUpdate();
+			cs.close();
 			con.commit(); //also a commit
 			con.close();
 		} catch (IOException | SQLException e) {
