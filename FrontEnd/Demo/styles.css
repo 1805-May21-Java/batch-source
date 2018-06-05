@@ -1,0 +1,27 @@
+div {
+	background-color: lightblue;
+}
+
+#happyMountain {
+	background-color: indianred;
+}
+
+#dogRossPic {
+	display: block;
+	margin: 5px;
+	padding: 10px;
+	border-color: #A2D;
+	border-width: 10px;
+	border-style: solid;
+}
+
+table, th, td {
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+.coolText {
+	color: #060;
+	font-family: "courier new";
+	text-align: center;
+}
