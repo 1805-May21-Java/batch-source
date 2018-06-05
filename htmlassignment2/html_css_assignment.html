@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>HTML/CSS ASSIGNMENT</title>
+	<meta name="viewport" content="width-device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" media="screen" href="styles.css"/>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+	<style>
+		table, th, td {
+			border: 3px double black;
+			color: purple;
+		}
+		body{
+			background-color: rgb(255, 216, 255);
+			border-style: groove;
+		}
+		h2 {
+			font-family: "tahoma";
+			color: hotpink;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="jumbotron">
+		<h1>HTML/CSS ASSIGNMENT</h1>
+	</div>
+	</div>
+	<div>
+		<h2>Nathaniel Everett</h2>
+	</div>
+	<div>
+		<table style="width:27%" class="container table table-hover table-condensed">
+			<tr>
+				<td>HTML/CSS Assignment</td>
+			</tr>
+			<tr>
+				<td>Create a static website of your choice (work appropriate)</td>
+			</tr>
+			<tr>
+				<td>The website should include:</td>
+			</tr>
+			<tr>
+				<td>-- At least 5 pages with simple navigability between them</td>
+			</tr>
+			<tr>
+				<td>-- A form with a variety of input types</td>
+			</tr>
+			<tr>
+				<td>-- Images</td>
+			</tr>
+			<tr>
+				<td>-- External style sheets (make it pretty)</td>
+			</tr>
+			<tr>
+				<td>When Refactoring to Bootstrap</td>
+			</tr>
+			<tr>
+			<td>Use both Bootstrap and custom styling</td>
+			</tr>
+			<tr>
+				<td>Include a table </td>
+			</tr>
+			<tr>
+				<td>Also, include one additional Bootstrap feature (accordion, jumbotron, etc.)</td>
+			</tr>
+		</table>
+	</div>
+	<div>
+		<pre id="Sppara">
+		This version of the assignment includes some audio files in the results page!
+		These can be played and paused, but only if your browser supports them.
+		These files are MP3 format, retrieved from converted MIDI files on my PC.
+		Each results page has a different audio file to playback.
+		Note that the results pages are done in HTML and not Bootstrap</pre>
+	</div>
+	<hr>
+	<div>
+		<p>Example audio: Window</p>
+		<audio controls>
+  			<source src="Window.mp3" type="audio/mpeg">
+			Your browser does not support the audio element.
+		</audio>
+	</div>
+	<div>
+		<hr>
+		<img class="img-responsive" src="https://upload.wikimedia.org/wikipedia/commons/8/80/WHATWG_JavaScript_logo.svg" alt="JavaScript logo" width="120" height="120">
+		<form method="POST" action="Page1.html">
+			Input "let's do JavaScript tomorrow" in the box below: 
+			<input type="text" class="form-control" value="let's do JavaScript tomorrow">
+			<br>
+			<input type="submit" class="btn btn-success" value="SUBMIT"/>
+			<input type="reset" class="btn btn-muted">
+		</form>
+		<hr>
+		<img class="img-responsive" src="https://stournament.com/wp-content/uploads/2017/08/50000.png" alt="fifty thousand" width="120" height="120">
+		<form method="POST" action="Page2.html">
+			Input the number 50000 into the box below:
+			<input type="number" class="form-control" value="50000">
+			<br>
+			<input type="submit" class="btn btn-danger" value="SUBMIT"/>
+			<input type="reset" class="btn btn-muted">
+		</form>
+		<hr>
+		<img class="img-responsive" src="https://ih1.redbubble.net/image.375061208.8698/flat,800x800,070,f.u1.jpg" alt="sailor moon poster" width="120" height="120">
+		<form method="POST" action="Page3.html">
+			Select a Sailor Moon character from the list below
+			<select name="moon" class="form-control">
+				<option value="usagi">Usagi Tsukino</option>
+				<option value="rei">Rei Hino</option>
+				<option value="ami">Ami Mizuno</option>
+				<option value="minako">Minako Aino</option>
+				<option value="makoto">Makoto Kino</option>
+			</select>
+			<br>
+			<input type="submit" class="btn btn-warning" value="SUBMIT"/>
+			<input type="reset" class="btn btn-muted">
+		</form>
+		<hr>
+		<img class="img-responsive" src="https://www.wiiplaygames.com/wp-content/uploads/2013/06/console_generation_8-624x389.jpg" alt="eighth gen consoles" witdh="120" height="74">
+		<form method="POST" action="Page4.html">
+			Select your favorite video game console.
+			<br>
+			<label class="radio-inline">
+			<input type="radio" name="console" value="playstation" checked>Playstation 4</input>
+			</label>
+			<label class="radio-inline">
+			<input type="radio" name="console" value="xbone">Xbox One</input>
+			</label>
+			<label class="radio-inline">
+			<input type="radio" name="console" value="wiiu">Wii U</input>
+			</label>
+			<br>
+			<input type="submit" class="btn btn-primary" value="SUBMIT"/>
+			<input type="reset" class="btn btn-muted">
+		</form>
+		<hr>
+		<p>Select a Skywalker</p>
+		<a href="Page5.html">
+			<img class="img-responsive" src="https://upload.wikimedia.org/wikipedia/en/7/74/Anakin-Jedi.jpg" alt="Anakin"></a>
+		<br>
+		<br>
+		<a href="Page5.html">
+			<img class="img-responsive" src="https://i1.wp.com/www.tor.com/wp-content/uploads/2018/01/tlj-luke-skywalker4.jpg?resize=740%2C502&type=vertical&ssl=1" alt="Luke" style="width:316px;height:214px"></a>
+	</div>
+</body>
+</html>

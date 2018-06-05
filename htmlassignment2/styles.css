@@ -1,0 +1,55 @@
+body{
+	background-color: rgb(255, 216, 255);
+	border-style: groove;
+}
+
+h1{
+	font-family: "courier";
+	border:5px solid Violet;
+	border-radius: 5px;
+	text-align: center;
+	text-decoration: underline;
+	text-shadow: 3px 0 5px hotpink;
+	letter-spacing: 10px;
+}
+h2{
+	font-family: "tahoma";
+	color: hotpink;
+	text-align: center;
+}
+.firstone{
+	font-family: "arial";
+	border:2px dashed white;
+	text-align: center;
+	color: green;
+}
+.secondone{
+	font-family: "arial";
+	border:2px dashed blue;
+	text-align: center;
+	color: red;
+}
+.thirdone{
+	font-family: "arial";
+	border:2px dashed yellow;
+	text-align: center;
+	color: gray;
+}
+.fourthone{
+	font-family: "arial";
+	border:2px dashed cyan;
+	text-align: center;
+	color: black;
+}
+.fifthone{
+	font-family: "arial";
+	border:2px dashed red;
+	text-align: center;
+	color: brown;
+}
+#Sppara {
+	font-family: "Lucida Sans Unicode";
+	font-variant: small-caps;
+	text-align: center;
+	color: mediumblue;
+}
