@@ -14,6 +14,8 @@ public interface AccountActions {
 	public void logOn();
 	
 	public void logOff();
+	
+	public void transferFunds(String fromAccount, String toAccount, double amount);
 
 	
 

@@ -12,7 +12,7 @@ import com.revature.pojos.Account;
 public class AccountTest {
 	
 	@Test
-	public void testDepositFunds() {
+	public void DepositFundsTest() {
 		Account account = new Account("testing1", "password1", 50, 50);
 		account.depositFunds(50, "Savings");
 		Assert.assertTrue(account.getSavings() == 100);
@@ -42,6 +42,15 @@ public class AccountTest {
 		account.logOn();
 		account.logOff();
 		Assert.assertFalse(account.isUserLoggedOn());
+	}
+	
+	@Test
+	public void transferFundsTest() {
+		Account account = new Account("testing5", "password5", 5, 20);
+		account.transferFunds("savings", "checking", 25);
+		Assert.assertTrue((account.getChecking() == 5) && (account.getSavings() == 20));
+		account.transferFunds("checking", "Savings", 5);
+		Assert.assertTrue((account.getChecking() == 0) && (account.getSavings() == 25));
 	}
 
 }

@@ -200,6 +200,49 @@ public class Account implements AccountActions{
 		return true;
 	}
 
+	//Added a transfer funds functionality between Checking and Savings account
+	@Override
+	public void transferFunds(String fromAccount, String toAccount, double amount) {
+		if((fromAccount.equalsIgnoreCase("Checking") == false) && 
+				(fromAccount.equalsIgnoreCase("Savings") == false)){
+			System.out.println("Error, you did not specify the correct from account");
+			return;
+		}
+		if((toAccount.equalsIgnoreCase("Checking") == false) && 
+				(toAccount.equalsIgnoreCase("Savings") == false)) {
+			System.out.println("Error, you did not specify the correct from account");
+			return;
+		}
+		if(fromAccount.equalsIgnoreCase("Checking") && toAccount.equalsIgnoreCase("Savings")) {
+			double remainder = this.getChecking() - amount;
+			if(remainder < 0) {
+				System.out.println("Do not have enough funds in Checking for transfer.");
+				System.out.println("Transfer canceled.");
+				return;
+			}else {
+				this.checking -= amount;
+				this.savings += amount;
+				System.out.println("Transferred $" + amount + " from Checking into Savings.");
+			}
+		}else if(fromAccount.equalsIgnoreCase("Savings") && toAccount.equalsIgnoreCase("Checking")) {
+			double remainder = this.getSavings() - amount;
+			if(remainder < 0) {
+				System.out.println("Do not have enough funds in Savings for transfer.");
+				System.out.println("Transfer canceled.");
+				
+			}else {
+				this.savings -= amount;
+				this.checking += amount;
+				System.out.println("Transferred $" + amount + " from Savings into Checking.");
+			}
+		}else {
+			System.out.println("Error, you did not specify the correct account type.");
+		}
+		
+	}
+	
+	
+
 	
 
 }

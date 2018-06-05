@@ -114,8 +114,9 @@ public class AppDriver {
 				System.out.println("A: View Balance");
 				System.out.println("B: Deposit Funds");
 				System.out.println("C: Withdraw Funds");
-				System.out.println("D: Log off account");
-				System.out.println("E: Delete account");
+				System.out.println("D: Transfer Funds");
+				System.out.println("E: Log off account");
+				System.out.println("F: Delete account");
 				transactLine = userInput.nextLine();
 				
 				//This prints user's Checking and Saving's account information.
@@ -160,11 +161,25 @@ public class AppDriver {
 					
 					//This logs the user out and exits the while loop.
 				}else if(transactLine.equalsIgnoreCase("D")) {
+					System.out.println("Transfer funds");
+					//user can specify between Checking or Savings
+					System.out.println("Decide which account to transfer from:");
+					String fromAccount = userInput.nextLine().toUpperCase();
+					System.out.println("Decide which account to transfer to:");
+					String toAccount = userInput.nextLine().toUpperCase();
+					System.out.println("Please give amount to transfer:");
+					//gets Double from read String
+					double transferAmount = Double.parseDouble(userInput.nextLine());
+					currentAccount.transferFunds(fromAccount, toAccount, transferAmount);
+					//Updates database Account
+					ad1.updateAccount(currentAccount);
+					System.out.println();
+				}else if(transactLine.equalsIgnoreCase("E")) {
 					currentAccount.logOff();	
 					//Any other input from options, then print statement will
 					//let the reader now to type another option again.
 					System.out.println(username + " has logged off.");
-				}else if(transactLine.equalsIgnoreCase("E")) {
+				}else if(transactLine.equalsIgnoreCase("F")) {
 					//Account with matching username is deleted from the database
 					ad1.deleteAccountByUsername(currentAccount.getUsername());
 					//Local copy is logged off to exit the loop
