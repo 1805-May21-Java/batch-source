@@ -1,4 +1,3 @@
-
 -- 2.1 SELECT
 -- Task – Select all records from the Employee table.
 SELECT *
