@@ -1,0 +1,13 @@
+html {
+    background-image: url("cute orange cat.jpg"); 
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-color: slategrey;
+  }
+  
+  div {
+    width: 450px;
+    color: rgb(37, 43, 37);
+    padding: 25px;
+    margin: 25px;
+  }

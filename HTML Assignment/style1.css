@@ -1,0 +1,10 @@
+html {
+    background-color: lightblue;
+}
+  
+div {
+    width: 450px;
+    
+    padding: 25px;
+    margin: 25px;
+}
