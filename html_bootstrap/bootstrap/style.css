@@ -1,0 +1,52 @@
+/*
+.container{
+    background-color: rebeccapurple;
+    height:5rem;
+}
+
+.container-fluid{
+    background-color: rebeccapurple;
+    height:5rem;
+}
+
+.row{
+    background-color: cadetblue;
+    height:4.45rem;
+}
+*/
+
+.card
+{
+    margin: auto;
+    width: 70%;
+    border: 3px solid green;
+    padding: 20px;
+    background-color:lightgoldenrodyellow;
+}
+.table{
+    background-color: darkseagreen
+}
+[class*="col-"]{
+    background-color:palegoldenrod;
+    padding: 10px;
+    border: 0.02px solid rgba(192,211,9,3);
+}
+
+body.sign-body{
+   
+}
+
+.container.signin-container{
+    margin-top:10%;
+    text-align: center;
+    
+  
+}
+
+.card.sign-card{
+    padding: 50px 0px 20px;
+    background-color: antiquewhite;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
