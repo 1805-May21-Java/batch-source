@@ -1,0 +1,16 @@
+.center{
+    text-align: center
+}
+
+#pageBody{
+    background-color: #ebebe0;
+}
+
+figcaption {
+    text-align: center;
+}
+
+figure {
+    display: inline-block;
+    margin: 20px;
+}
