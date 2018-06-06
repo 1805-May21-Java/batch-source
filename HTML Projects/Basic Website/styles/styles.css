@@ -2,6 +2,14 @@ body {
     background-color: tan;
 }
 
+fieldset {
+    padding: 0px 25px 0px 25px;
+}
+
+form {
+    padding: 25px;
+}
+
 h1, h2, h3, h4, h5, h6 {
     text-align: center;
 }
@@ -18,22 +26,23 @@ p {
     padding: 10px 20px 10px 20px;
 }
 
-.page-title {
-    padding: 20px;
-}
-
-.facts {
-    padding: 20px 20px 20px 20px;
+.jumbotron {
+    background-color: darkgoldenrod;
 }
 
 .lead {
     text-align: center;
 }
 
+.list-group {
+    padding: 25px;
+}
+
 .main-page {
     text-align: center;
 }
 
-.jumbotron {
-    background-color: darkgoldenrod;
+.page-title {
+    padding: 20px;
 }
+
