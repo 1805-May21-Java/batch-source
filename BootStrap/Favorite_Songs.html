@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Nick's Favorite Songs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="main.css"/>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
+<body>
+    <h1>Favorite Songs</h1>
+    <br>
+    <ul class="nav nav-tabs justify-content-end">
+        <li class="nav item">
+            <a class="nav-link" href="MyFavoriteThings_Home.html">Home</a>
+        </li>
+        <li class="nav item">
+            <a class="nav-link" href="Favorite_Movies.html">Movies</a>
+        </li>
+        <li class="nav item">
+            <a class="nav-link" href="Favorite_Books.html">Books</a>
+        </li>
+        <li class="nav item">
+            <a class="nav-link active" href="#">Songs</a>
+        </li>
+    </ul>
+    <br>
+    <br>
+    <div class="jumbotron">
+        <img src="music.png" alt="music" height="300" width="500" class="center">
+        <br>
+        <table class="table table-dark table-striped">
+            <tr>
+                <th>Rank</th>
+                <th>Title</th>
+                <th>Band</th>
+                <th>Album</th>
+            </tr>
+            <tr>
+                <td>1.</td>
+                <td><a href="https://www.youtube.com/watch?v=h_L4Rixya64">The Best of You</a></td>
+                <td>Foo Fighters</td>
+                <td>In Your Honor</td>
+            </tr>
+            <tr>
+                <td>2.</td>
+                <td><a href="https://www.youtube.com/watch?v=gh1m0eC1004">Riding with Private Malone</a></td>
+                <td>David Ball</td>
+                <td>Amigo</td>
+            </tr>
+            <tr>
+                <td>3.</td>
+                <td><a href="https://www.youtube.com/watch?v=FywSzjRq0e4">Hurt</a></td>
+                <td>Johnny Cash</td>
+                <td>American IV: The Man Comes Around</td>
+            </tr>
+            <tr>
+                <td>4.</td>
+                <td><a href="https://www.youtube.com/watch?v=zcEG72N5No8">Sweet Serendipity</a></td>
+                <td>Lee DeWyze</td>
+                <td>Live It Up</td>
+            </tr>
+            <tr>
+                <td>5.</td>
+                <td><a href="https://www.youtube.com/watch?v=4N1iwQxiHrs">Your Love</a></td>
+                <td>The Outfield</td>
+                <td>Play Deep</td>
+            </tr>
+        </table><br>
+    
+        <form method="POST" action="Submission.html">
+            <b>Which songs do you like?</b><br>
+            1.<input type="checkbox" name="First">&nbsp;
+            2.<input type="checkbox" name="Second">&nbsp;
+            3.<input type="checkbox" name="First">&nbsp;
+            4.<input type="checkbox" name="Second">&nbsp;
+            5.<input type="checkbox" name="First">&nbsp;
+            <br>
+            <br>
+            <b>What is one of your favorite songs?</b>
+            <input type="text" name="favoriteSong">
+            <br>
+            <br>
+            <b>On a scale of 1 to 5, 5 being the best, how much do you like my favorite songs?</b><br>
+            1<input type="radio" name="oneToFive" value="1">&nbsp;
+            2<input type="radio" name="oneToFive" value="2">&nbsp;
+            3<input type="radio" name="oneToFive" value="3">&nbsp;
+            4<input type="radio" name="oneToFive" value="4">&nbsp;
+            5<input type="radio" name="oneToFive" value="5">&nbsp;
+            <br><br>
+            <input type="submit" name="submit" value="Submit" >
+        </form>
+    </div>
+   
+</body>
+</html>

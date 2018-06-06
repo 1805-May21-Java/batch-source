@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Nick's Favorite Books</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="main.css"/>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
+<body>
+    <h1>Favorite Books</h1>
+    <ul class="nav nav-tabs justify-content-end">
+        <li class="nav item">
+            <a class="nav-link" href="MyFavoriteThings_Home.html">Home</a>
+        </li>
+        <li class="nav item">
+            <a class="nav-link" href="Favorite_Movies.html">Movies</a>
+        </li>
+        <li class="nav item">
+            <a class="nav-link active" href="#">Books</a>
+        </li>
+        <li class="nav item">
+            <a class="nav-link" href="Favorite_Songs.html">Songs</a>
+        </li>
+    </ul>
+    <br>
+    <br>
+    <div class="jumbotron">
+        <img src="open_book.jpg" alt="book" height="350" width="500" class="center">
+    <br>
+    <table class="table table-dark table-striped">
+        <tr>
+            <th>Rank</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>ISBN</th>
+        </tr>
+        <tr>
+            <td>1.</td>
+            <td><a href="https://en.wikipedia.org/wiki/The_Time_Machine">The Time Machine</a></td>
+            <td>H.G. Wells</td>
+            <td>9781843794158</td>
+        </tr>
+        <tr>
+            <td>2.</td>
+            <td><a href="https://en.wikipedia.org/wiki/The_Invisible_Man">The Invisible Man</a></td>
+            <td>H.G. Wells</td>
+            <td>9780679600152</td>
+        </tr>
+        <tr>
+            <td>3.</td>
+            <td><a href="https://www.pamelasturner.com/books/bk_samurai.html">Samurai Rising: The Epic Life of Minamoto Yoshitsune</a></td>
+            <td>Pamela S. Turner</td>
+            <td>9781501936791</td>
+        </tr>
+        <tr>
+            <td>4.</td>
+            <td><a href="https://en.wikipedia.org/wiki/Way_of_the_Peaceful_Warrior">Way of the Peacful Warrior</a></td>
+            <td>Dan Millman</td>
+            <td>9781932073201</td>
+        </tr>
+        <tr>
+            <td>5.</td>
+            <td><a href="https://en.wikipedia.org/wiki/A_Study_in_Scarlet">A Study in Scarlet</a></td>
+            <td>Arthur Conan Doyle</td>
+            <td>9781512168259</td>
+        </tr>
+    </table><br>
+
+    <form method="POST" action="Submission.html">
+        <b>Which books do you like?</b><br>
+        1.<input type="checkbox" name="First">&nbsp;
+        2.<input type="checkbox" name="Second">&nbsp;
+        3.<input type="checkbox" name="First">&nbsp;
+        4.<input type="checkbox" name="Second">&nbsp;
+        5.<input type="checkbox" name="First">&nbsp;
+        <br>
+        <br>
+        <b>What is one of your favorite books?</b>
+        <input type="text" name="favoriteSong">
+        <br>
+        <br>
+        <b>On a scale of 1 to 5, 5 being the best, how much do you like my favorite books?</b><br>
+        1<input type="radio" name="oneToFive" value="1">&nbsp;
+        2<input type="radio" name="oneToFive" value="2">&nbsp;
+        3<input type="radio" name="oneToFive" value="3">&nbsp;
+        4<input type="radio" name="oneToFive" value="4">&nbsp;
+        5<input type="radio" name="oneToFive" value="5">&nbsp;
+        <br><br>
+        <input type="submit" name="submit" value="Submit" >
+    </form>
+    </div>
+    
+</body>
+</html>

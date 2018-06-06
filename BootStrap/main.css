@@ -1,0 +1,24 @@
+/* .container{
+    background-color: blanchedalmond;
+    width: 1500px;
+    height: 570px;
+}
+ */
+
+ .container{
+     width: 100%;
+     /*background-color: blue;*/
+     display:flex;
+     /*align-items: center;*/
+ }
+
+ form{
+     text-align:left;
+ }
+
+ .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
