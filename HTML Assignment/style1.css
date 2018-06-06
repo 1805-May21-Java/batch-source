@@ -1,10 +1,10 @@
-html {
+.pageBody{
     background-color: lightblue;
 }
-  
-div {
-    width: 450px;
-    
-    padding: 25px;
-    margin: 25px;
+
+.carouselResize
+{
+    width: auto;
+    height: 500px;
+    max-height: 500px;
 }
