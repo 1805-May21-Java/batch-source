@@ -1,0 +1,9 @@
+body{
+    padding: 3%;
+    background-color: #66ccff;
+}
+
+table, td{
+    border: 2px solid black;
+}
+
