@@ -1,0 +1,32 @@
+#galleryphotos {
+    margin: 0;
+    padding: 0;
+ }
+ .displayphoto {
+    display: block;
+    position: relative;
+    width: 100%;
+    border:none;
+ }
+ .Info{
+    color:whitesmoke;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: left;
+ }
+
+ table, th, td{
+     background-color:cyan;
+     border: 1px red;
+     border-collapse: collapse;
+ }
+
+ div{
+     background-color:black
+ }
+ .coolText{
+     color:whitesmoke;
+     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+     text-align: center;
+ }
+
+ 
