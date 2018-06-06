@@ -51,6 +51,7 @@ public class BankInfoDaoImpl implements BankInfoDao{
 		//start a null OBankInfo class
 		try {
 			Connection con = ConnectionUtils.getConnection();
+			
 			String sql = "SELECT * FROM BANKINFO WHERE (USERNAME =? OR EMAIL=?) AND BANK_PASSWORD =?";
 			//after getting connection, set the statement up where input username/email and passowrd to access
 			//the bank account of said user
@@ -87,9 +88,11 @@ public class BankInfoDaoImpl implements BankInfoDao{
 		//set a int to show how many row/account has been created
 		int bankAccountCreated = 0;
 		Connection con;
+		
 		try {
 			//similar set up, use ps to avoid injection, and ? represents input
 			con = ConnectionUtils.getConnection();
+			
 			String sql = "INSERT INTO BANKINFO (USERNAME, EMAIL, BANK_PASSWORD, C_BANK_AMOUNT, S_BANK_AMOUNT) VALUES (?,?,?,0,0)";
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, bankInfo.getUsername());
@@ -162,6 +165,7 @@ public class BankInfoDaoImpl implements BankInfoDao{
 			cs.setInt(1, uid);
 			cs.setDouble(2, value);
 			cs.execute();
+			
 			//con.close();
 			
 		} catch (IOException | SQLException e) {
@@ -181,6 +185,7 @@ public class BankInfoDaoImpl implements BankInfoDao{
 			cs.setInt(1, uid);
 			cs.setDouble(2, value);
 			cs.execute();
+			
 			//con.close();
 			
 		} catch (IOException | SQLException e) {
@@ -200,6 +205,7 @@ public class BankInfoDaoImpl implements BankInfoDao{
 			cs.setInt(1, uid);
 			cs.setDouble(2, value);
 			cs.execute();
+			
 			//con.close();
 			
 		} catch (IOException | SQLException e) {
@@ -219,6 +225,7 @@ public class BankInfoDaoImpl implements BankInfoDao{
 			cs.setInt(1, uid);
 			cs.setDouble(2, value);
 			cs.execute();
+			
 			//con.close();
 			
 		} catch (IOException | SQLException e) {
@@ -227,6 +234,103 @@ public class BankInfoDaoImpl implements BankInfoDao{
 		}
 		
 	}
+	
+	//Make sure username and email are not the same as the previous bank accounts
+	@Override
+	public boolean checkEqualUser(String user) {
+		
+		try {
+			Connection con = ConnectionUtils.getConnection();
+			//using statements because there is need to input parameters like from prepared statements
+			String sql = "SELECT USERNAME FROM BANKINFO";
+			Statement s = con.createStatement();
+			ResultSet rs = s.executeQuery(sql);
+			while (rs.next()) {
+				//with in the loop for the next value of rs, compare them to user inputed username
+				String username = rs.getString("USERNAME");
+				if(username.equals(user)) {
+					return true;
+				}
+			}
+
+			//con.close();
+		} catch (IOException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	@Override
+	public boolean checkEqualEmail(String email) {
+		try {
+			//similar to username, but this time for email
+			Connection con = ConnectionUtils.getConnection();
+			String sql = "SELECT EMAIL FROM BANKINFO";
+			Statement s = con.createStatement();
+			ResultSet rs = s.executeQuery(sql);
+			while (rs.next()) {
+				String emails = rs.getString("EMAIL");
+				if(emails.equals(email)) {
+					return true;
+				}
+			}
+			
+			//con.close();
+		} catch (IOException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
+//	public void createTranHistory(String user) {
+//		try {
+//			user = user.toUpperCase();
+//			Connection con = ConnectionUtils.getConnection();
+//			String sql = "CREATE TABLE "+ user +"HISTORY (TRANSACTION_ID NUMBER PRIMARY KEY,"
+//					+ " CHECKINGAMOUNT NUMBER, CHECKINGCHANGE VARCHAR2(50), SAVINGAMOUNT NUMBER, SAVINGCHANGE VARCHAR2(50))";
+//			Statement s = con.createStatement();
+//			s.executeQuery(sql); 
+//			
+//			//con.close();
+//		} catch (IOException | SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
+//	
+//	public void createTranSequence(String user) {
+//		try {
+//			user = user.toUpperCase();
+//			Connection con = ConnectionUtils.getConnection();
+//			String sql = "CREATE SEQUENCE "+ user +"SQ_HISTORY_ID START WITH 1 INCREMENT BY 1";
+//			Statement s = con.createStatement();
+//			s.executeQuery(sql); 
+//			
+//			//con.close();
+//		} catch (IOException | SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
+//	
+//	public void createTranTrigger(String user) {
+//		try {
+//			user = user.toUpperCase();
+//			Connection con = ConnectionUtils.getConnection();
+//			String sql = "CREATE OR REPLACE TRIGGER "+ user +"TR_INSERT_ID BEFORE INSERT ON "+user+"HISTORY FOR EACH ROW BEGIN"
+//					+ " SELECT "+user+"SQ_HISTORY_ID.NEXTVAL INTO :NEW.TRANSACTION_ID FROM DUAL";
+//			Statement s = con.createStatement();
+//			s.executeQuery(sql); 
+//			
+//			//con.close();
+//		} catch (IOException | SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
+	
 	//close the connection after exiting the program
 	public void closeConnection() {
 		try {

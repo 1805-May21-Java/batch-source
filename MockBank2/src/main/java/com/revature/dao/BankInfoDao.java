@@ -14,5 +14,6 @@ public interface BankInfoDao {
 	public void decreaseChecking(int uid, double value);
 	public void increaseSaving(int uid, double value);
 	public void decreaseSaving(int uid, double value);
-	
+	public boolean checkEqualUser(String user);
+	public boolean checkEqualEmail(String email);
 }

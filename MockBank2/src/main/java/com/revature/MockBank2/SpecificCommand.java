@@ -1,8 +1,10 @@
 package com.revature.MockBank2;
 import java.util.Scanner;
 
-public class SpecificCommand {
+import com.revature.dao.BankInfoDaoImpl;
 
+public class SpecificCommand {
+	BankInfoDaoImpl bidi = new BankInfoDaoImpl();
 	private Scanner scan = new Scanner(System.in);
 	
 	
@@ -12,26 +14,33 @@ public class SpecificCommand {
 		System.out.println("Customer, please enter your username: ");
 		//set local username = next entry
 		username = scan.nextLine();
-		if(username != null) {
-			//if entry isn't null, ask user if what he entered is what he wants
-			System.out.println("Is this your intended username: " + username);
-			System.out.println("Enter y for yes, and n for no: ");
-			yorn = scan.nextLine().toLowerCase();
-			//confirmation
-			while(!yorn.equals("y") && !yorn.equals("n")){
-				System.out.println("Invalid Command, please re-enter your command");
+		//make sure there are no two usernames that are the same
+		if(bidi.checkEqualUser(username) == false) {
+			if(username != null) {
+				//if entry isn't null, ask user if what he entered is what he wants
+				System.out.println("Is this your intended username: " + username);
 				System.out.println("Enter y for yes, and n for no: ");
 				yorn = scan.nextLine().toLowerCase();
+				//confirmation
+				while(!yorn.equals("y") && !yorn.equals("n")){
+					System.out.println("Invalid Command, please re-enter your command");
+					System.out.println("Enter y for yes, and n for no: ");
+					yorn = scan.nextLine().toLowerCase();
+				}
+				if(yorn.equals("y")) {
+					//if user agrees, return username entered out to signup
+					return username;
+				} else if (yorn.equals("n")) {
+					//if not, re do the whole function again to ask username
+					username();
+				}
 			}
-			if(yorn.equals("y")) {
-				//if user agrees, return username entered out to signup
-				return username;
-			} else if (yorn.equals("n")) {
-				//if not, re do the whole function again to ask username
-				username();
-			}
+			return username();
 		}
-		return username();
+		else {
+			System.out.println("Sorry, already taken username, please try again");
+			return username();
+		}
 	}
 	
 	protected String email() {
@@ -40,22 +49,28 @@ public class SpecificCommand {
 		//similar process for email as well
 		System.out.println("Customer, please enter your email: ");
 		email = scan.nextLine();
-		if(email != null) {
-			System.out.println("Is this your intended email: " + email);
-			System.out.println("Enter y for yes, and n for no: ");
-			yorn = scan.nextLine().toLowerCase();
-			while(!yorn.equals("y") && !yorn.equals("n")){
-				System.out.println("Invalid Command, please re-enter your command");
+		if (bidi.checkEqualEmail(email) == false) {
+			if(email != null) {
+				System.out.println("Is this your intended email: " + email);
 				System.out.println("Enter y for yes, and n for no: ");
 				yorn = scan.nextLine().toLowerCase();
+				while(!yorn.equals("y") && !yorn.equals("n")){
+					System.out.println("Invalid Command, please re-enter your command");
+					System.out.println("Enter y for yes, and n for no: ");
+					yorn = scan.nextLine().toLowerCase();
+				}
+				if(yorn.equals("y")) {
+					return email;
+				} else if (yorn.equals("n")) {
+					email();
+				}
 			}
-			if(yorn.equals("y")) {
-				return email;
-			} else if (yorn.equals("n")) {
-				email();
-			}
+			return email();
 		}
-		return email();
+		else {
+			System.out.println("Sorry, already taken email, please try again");
+			return email();
+		}
 	}
 	
 	protected String password() {

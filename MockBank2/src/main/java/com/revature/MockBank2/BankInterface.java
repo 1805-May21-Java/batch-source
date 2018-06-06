@@ -1,15 +1,14 @@
 package com.revature.MockBank2;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.lang.*;
+import java.util.LinkedList;
 import java.util.Scanner;
+
 import com.revature.dao.BankInfoDaoImpl;
 
 import com.revature.pojos.OBankInfo;
@@ -23,6 +22,9 @@ public class BankInterface extends SpecificCommand implements Command {
 	private Scanner scan = new Scanner(System.in);
 	private OBankInfo obi = new OBankInfo();
 	private LinkedList<OBankInfo> tempInfo = new LinkedList<OBankInfo>();
+	BufferedReader br = null;
+	BufferedWriter bw = null;
+	String path = "C:\\Users\\julia\\Documents\\workspaceSTS\\MockBank2\\src\\main\\java\\com\\revature\\MockBank2\\";
 	
 	public void bankInterface() {
 		// start the bank interface for customer, who choose one of the 3 options
@@ -107,7 +109,7 @@ public class BankInterface extends SpecificCommand implements Command {
 		double amount;
 		String yorn;
 		System.out.println("Hello, customer: " + obi.getUsername());
-		System.out.println("What would you like to do? Our options are 1 for deposit, 2 for withdraw, 3 for bankbalance, 4 for exit, 5 for transfer");
+		System.out.println("What would you like to do? Our options are 1 for deposit, 2 for withdraw, 3 for bankbalance, 4 for exit, 5 for transfer,  6 for view transfer history");
 		comm3 = scan.nextLine();
 		switch(comm3) {
 		case "1":
@@ -115,6 +117,7 @@ public class BankInterface extends SpecificCommand implements Command {
 			bidi.increaseChecking(obi.getUserId(), amount);
 			//after deposit/changing the amount in database, make sure to set it up correctly for the arraylist in java as well
 			obi.setCheckingAmount(obi.getCheckingAmount()+amount);
+			writeData(obi.getCheckingAmount()+":"+amount+":"+obi.getSavingAmount()+":0");
 			System.out.println("Deposit finished, your current Checkings Account have: " + obi.getCheckingAmount() + " Dollars!");
 			break;
 		case "2":
@@ -123,6 +126,7 @@ public class BankInterface extends SpecificCommand implements Command {
 			if(amount <= obi.getCheckingAmount()) {
 				bidi.decreaseChecking(obi.getUserId(), amount);
 				obi.setCheckingAmount(obi.getCheckingAmount()-amount);
+				writeData(obi.getCheckingAmount()+":-"+amount+":"+obi.getSavingAmount()+":0");
 				System.out.println("Withdraw finished, your current Checkings Account have: " + obi.getCheckingAmount() + " Dollars!");
 			}
 			else {
@@ -144,12 +148,18 @@ public class BankInterface extends SpecificCommand implements Command {
 			if(amount <= obi.getCheckingAmount()) {
 				bidi.increaseSaving(obi.getUserId(), amount);
 				bidi.decreaseChecking(obi.getUserId(), amount);
+				obi.setCheckingAmount(obi.getCheckingAmount()-amount);
+				obi.setSavingAmount(obi.getSavingAmount()+amount);
+				writeData(obi.getCheckingAmount()+":-"+amount+":"+obi.getSavingAmount()+":"+amount);
 				System.out.println("Amount transfered is " + amount + " from Checking to Savings");
 			}
 			else {
 				System.out.println("Error, not enough money in the account!");
 				bankInterfaceC(obi);
 			}
+			break;
+		case "6":
+			readData();
 			break;
 		default:
 			System.out.println("Error, please choose avaliable options, or 4 to exit");
@@ -176,13 +186,14 @@ public class BankInterface extends SpecificCommand implements Command {
 		double amount;
 		String yorn;
 		System.out.println("Hello, customer: " + obi.getUsername());
-		System.out.println("What would you like to do? Our options are 1 for deposit, 2 for withdraw, 3 for bankbalance, 4 for exit, 5 for transfer");
+		System.out.println("What would you like to do? Our options are 1 for deposit, 2 for withdraw, 3 for bankbalance, 4 for exit, 5 for transfer, 6 for view transfer history");
 		comm4 = scan.nextLine();
 		switch(comm4) {
 		case "1":
 			amount = deposit();
 			bidi.increaseSaving(obi.getUserId(), amount);
 			obi.setSavingAmount(obi.getSavingAmount()+amount);
+			writeData(obi.getCheckingAmount()+":0:"+obi.getSavingAmount()+":"+amount);
 			System.out.println("Deposit finished, your current Savings Account have: " + obi.getSavingAmount() + " Dollars!");
 			break;
 		case "2":
@@ -190,6 +201,7 @@ public class BankInterface extends SpecificCommand implements Command {
 			if(amount <= obi.getSavingAmount()) {
 				bidi.decreaseSaving(obi.getUserId(), amount);
 				obi.setSavingAmount(obi.getSavingAmount()-amount);
+				writeData(obi.getCheckingAmount()+":0:"+obi.getSavingAmount()+":-"+amount);
 				System.out.println("Withdraw finished, your current Savings Account have: " + obi.getSavingAmount() + " Dollars!");
 			}
 			else {
@@ -208,12 +220,18 @@ public class BankInterface extends SpecificCommand implements Command {
 			if(amount <= obi.getSavingAmount()) {
 				bidi.increaseChecking(obi.getUserId(), transfer());
 				bidi.decreaseSaving(obi.getUserId(), transfer());
+				obi.setCheckingAmount(obi.getCheckingAmount()+amount);
+				obi.setSavingAmount(obi.getSavingAmount()-amount);
+				writeData(obi.getCheckingAmount()+":"+amount+":"+obi.getSavingAmount()+":"+amount);
 				System.out.println("Amount transfered is " + amount + " from Checking to Savings");
 			}
 			else {
 				System.out.println("Error, not enough money in the account!");
 				bankInterfaceC(obi);
 			}
+			break;
+		case "6":
+			readData();
 			break;
 		default:
 			System.out.println("Error, please choose avaliable options, or 4 to exit");
@@ -248,6 +266,8 @@ public class BankInterface extends SpecificCommand implements Command {
 		tempInfo.add(new OBankInfo(username, password, email, 0, 0));
 		//add it to the database
 		bidi.createBankAccount(new OBankInfo(username, password, email, 0, 0));
+		path = "C:\\Users\\julia\\Documents\\workspaceSTS\\MockBank2\\src\\main\\java\\com\\revature\\MockBank2\\"+username+"History";
+		writeData("0:0:0:0");
 		//remove the info from linked list so it doesn't stay on the program
 		tempInfo.removeFirst();
 		System.out.println("Would you like to automatically go to login: ");
@@ -272,6 +292,9 @@ public class BankInterface extends SpecificCommand implements Command {
 		password = logPassword();
 		//get the user info by the username and passowrd
 		obi = bidi.getOBankInfoByUserPass(username, password);
+		path = "C:\\Users\\julia\\Documents\\workspaceSTS\\MockBank2\\src\\main\\java\\com\\revature\\MockBank2\\"+username+"History";
+		
+		
 		//if nothing is found
 		if(obi == null) {
 			System.out.println("We are sorry, but the username and password you provided doesn't match,");
@@ -366,6 +389,55 @@ public class BankInterface extends SpecificCommand implements Command {
 			return withdraw();
 		}
 		return amount;
+	}
+	
+	public void readData() {		
+		try {
+			br = new BufferedReader(new FileReader(path));
+			String line = br.readLine();
+			String[] datalist;
+			//check if this line is null
+			while(line != null) {
+				//split the function into 4 parts based on the tostring i changed in bankinfo class
+				datalist = line.split(":", 4);
+				System.out.println("Checking Amount: "+datalist[0]+"   Checking Difference: "+datalist[1]+
+						"   Saving Amount: "+datalist[2]+"   Saving Difference: "+datalist[3]);
+				//keep reading from the file until its done
+				line = br.readLine();
+			}
+			//close it
+			br.close();
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void writeData(String s) {
+		try {
+			//create a new file if it doesn't exist
+			File file = new File(path);
+			if(!file.exists()) {
+				file.createNewFile();
+			}
+			
+			FileWriter fw = new FileWriter(file, true);
+			bw = new BufferedWriter(fw);
+			//write the file in the form i decided 
+			bw.write(s);
+			bw.newLine();
+			
+		}catch(IOException e) {
+			e.printStackTrace();
+		}finally {
+			if(bw != null) {
+				try {
+					bw.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
 	}
 	
 	@Override
