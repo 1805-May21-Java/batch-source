@@ -5,3 +5,35 @@ body {
 h1, h2, h3, h4, h5, h6 {
     text-align: center;
 }
+
+img {
+    height: auto;
+    width: auto;
+    max-width: 500px;
+    max-height: 500px;
+    padding: 25px 25px 25px 25px;
+}
+
+p {
+    padding: 10px 20px 10px 20px;
+}
+
+.page-title {
+    padding: 20px;
+}
+
+.facts {
+    padding: 20px 20px 20px 20px;
+}
+
+.lead {
+    text-align: center;
+}
+
+.main-page {
+    text-align: center;
+}
+
+.jumbotron {
+    background-color: darkgoldenrod;
+}

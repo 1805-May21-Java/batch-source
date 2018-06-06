@@ -3,22 +3,34 @@
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <link rel="stylesheet" href="styles/styles.css">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 </head>
 <body>
     <title>Australia, why?</title>
-    <div class="container">
-        <h1>Why are you like this Australia?</h1>
+    <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+              <h1 class="display-4">Why are you like this Australia?</h1>
+              <p class="lead">The animals in Australia are simultaneously terrifying and confusing. Just, why?</p>
+            </div>
+    </div>
+    <div class="container main-page">
         <img src="img/drunk_pig.jpg"/>
-
-        <p>Seriously, the animals in Australia are simultaneously terrifying and confusing. They don't behave like animals on any other contient. Just, why? </p>
 
         <p>Check out some of the weirder specimens from the menu, if you must.</p>
 
-        <a href="platypus.html">Platypus</a>
-        <a href="swoopingmagpies.html">Swooping Magpie</a>
-        <a href="quokka.html">Quokka</a>
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Choose an animal
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="swoopingmagpies.html">Australian Magpies</a>
+              <a class="dropdown-item" href="platypus.html">Platypus</a>
+              <a class="dropdown-item" href="quokka.html">Quokka</a>
+            </div>
+        </div>
     </div>
-
-
 </body>
 </html>
