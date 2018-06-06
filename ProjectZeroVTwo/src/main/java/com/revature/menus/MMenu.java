@@ -8,8 +8,8 @@ import com.revature.pojos.*;
 public abstract class MMenu
 {
 	protected ArrayList<String> options;
-	protected MultiAccountDaoImpl madi = new MultiAccountDaoImpl();
-	protected UserDaoImpl udi = new UserDaoImpl();
+	protected MultiAccountDaoImpl madi;
+	protected UserDaoImpl udi;
 	protected MultiAccount currentAccount;
 	protected User currentUser;
 	

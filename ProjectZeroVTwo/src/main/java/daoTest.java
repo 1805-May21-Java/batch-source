@@ -31,22 +31,20 @@ public class daoTest
 		}
 	}
 
-	/*
 	@Test
 	public void testUsersExistEmpty()
 	{
 		assert udi.usersExist() == false;
 	}
-	*/
 	
 	@Test
 	public void testUsersExistTrue()
 	{
-		//udi.createUser("Jentoft");
+		udi.createUser("Jentoft");
 		assert udi.usersExist() == true;
 	}
 	
-	/*
+	
 	@Test
 	public void testGetAccountsByUser()
 	{
@@ -56,7 +54,7 @@ public class daoTest
 		
 		assert udi.getAccountsByUser("Jentoft").size() == accountNumber+1;
 	}
-	*/
+	
 	
 	@Test
 	public void nameExistsTest()
@@ -76,8 +74,8 @@ public class daoTest
 	@Test
 	public void hasPasswordTest()
 	{
-//		assert !udi.hasPassword("Jentoft");
-//		assert udi.logIn("Jentoft") != null;
+		assert !udi.hasPassword("Jentoft");
+		assert udi.logIn("Jentoft") != null;
 		
 		udi.changePassword("sj", "Jentoft");
 		
@@ -91,7 +89,7 @@ public class daoTest
 	{
 		assert udi.hasAccounts("Jentoft");
 		
-		//udi.createUser("Tony");
+		udi.createUser("Tony");
 		assert !udi.hasAccounts("Tony");
 	}
 	

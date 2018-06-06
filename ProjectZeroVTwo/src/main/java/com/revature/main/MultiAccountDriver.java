@@ -15,6 +15,7 @@ public class MultiAccountDriver
 		UserDaoImpl udi = new UserDaoImpl();
 		MMenu currentMenu = new MUserCreationMenu(madi, udi);
 		
+		System.out.println("Project 0 v2 Banking application");
 		while(true)
 		{
 			while(currentMenu.continueRunning())
