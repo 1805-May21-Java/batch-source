@@ -1,0 +1,21 @@
+body{
+	font-size: 1.2em;
+}
+
+.jumbotron{
+	font-size: 45px;
+}
+.row {
+	margin-bottom: 20px;
+}
+
+.firstSect{
+	background-color: skyblue;
+}
+.secondSect{
+	background-color: black;
+	color: white;
+}
+#pop{
+	font-size: 30px;
+}
