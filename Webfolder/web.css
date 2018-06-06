@@ -1,0 +1,35 @@
+ h1{
+ 	color: red;
+ 	font-family: Aerial;
+ 	font-size: 30px;
+
+ }
+ .Beauty{
+ 	border: 5px solid FF5733;
+
+ }
+ .Beauty:hover{
+ 	border: 5px solid red;
+ 	}
+
+ 	#heading2{
+ 		background-color: #00ff40;
+ 		padding:10px;
+ 		font-size: 16px;
+ 		color:blue;
+ 		text-transform:  uppercase;
+ 	}
+ 	.Lists h3{
+ 		
+ 			color:blue;
+ 		
+ 	}
+ 	.paragraphone{
+ 		background-color: yellow;
+ 		color:#fffff;
+ 		padding: 10px;
+
+ 	}
+ 	.Img{
+ 		margin: 50px 20px 5px 60px;
+ 	}
