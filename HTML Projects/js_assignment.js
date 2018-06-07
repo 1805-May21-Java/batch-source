@@ -103,8 +103,11 @@ function printShape(shape, height, character) {
             break;
         case "Diamond":
             for (let i=0; i<height; i+=2) {
-                var str = "";
-                str = str + " ".repeat(Math.floor(height/2-i)) + character.repeat(i+1) + " ".repeat(Math.floor(height/2-i));
+                var str = " ".repeat(Math.floor(height/2-i/2)) + character.repeat(i+1) + " ".repeat(Math.floor(height/2-i/2));
+                console.log(str);
+            }
+            for (let i=height-1; i>0; i-=2) {
+                str = " ".repeat(Math.round(height/2-i/2)) + character.repeat(i-1) + " ".repeat(Math.round(height/2-i/2));
                 console.log(str);
             }
             break;
