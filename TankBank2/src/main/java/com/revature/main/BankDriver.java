@@ -9,6 +9,8 @@ public class BankDriver {
 	public static void main(String[] args) {
 		//brings user to a menu asking if they already have an account
 		//this leads the user through the entire menu system
+
 		WelcomeMenu.Existing(new Client());
+		
 	}
-}	 
+}
