@@ -164,13 +164,62 @@ function letTest(){
 //     return counter;
 // }
 
-let add = (function(){
+let add = function(){
     let counter = 0;
     return function(){ 
         return counter+=1;
     }
-})();
+}();
 
 console.log(add())
 console.log(add())
 console.log(add())
+
+
+function createCounter(){
+    let counter = 0;
+    const myFunction = function(){
+        counter = counter+1;
+        return counter;
+    }
+    return myFunction;
+}
+const increment = createCounter()
+const c1 = increment()
+const c2 = increment()
+const c3 = increment()
+console.log(`${c1},${c2},${c3}`)
+
+let createCounter1 = function(){
+    let counter = 0;
+    const myFunction = function(){
+        counter = counter+1;
+        return counter;
+    }
+    return myFunction;
+}();
+
+console.log(createCounter1());
+
+//callback functions
+/*
+function apply2(fun){
+    return fun(2);
+}
+
+function add5(param){
+    return param+5;
+}
+
+console.log(apply2(add5));
+
+apply2((param) => {
+    console.log(param + 1000);
+})
+
+let alsoAdd5 = (param) => {
+    console.log(param + 1000);
+}
+
+apply2(alsoAdd5)
+*/
