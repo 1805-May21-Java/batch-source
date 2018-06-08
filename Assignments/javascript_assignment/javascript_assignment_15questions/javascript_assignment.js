@@ -83,6 +83,7 @@ var removeChar = function(string, index)
     }
 
 //8
+var myNumArray = [1,34,2, 4,65, 7];
 var bubbleSort = function(numArray)
     {
         var temp=0;
@@ -90,12 +91,163 @@ var bubbleSort = function(numArray)
         {
             for(j=0; j<numArray.length-1;j++)
             {
-                if(numArray[i]>numArray[j])
+                var temp =numArray[j];
+                if(numArray[j]>numArray[j+1])
                     {
-                        temp=numArray[j];
-                        numArray[j]=numArray[i];
-                        numArray[i]=temp;
+                    
+                        numArray[j]=numArray[j+1];
+                        numArray[j+1]=temp;
                     }
             }
         }
+        return numArray;
+    }
+
+    //9
+var isEven = function(someNum)
+    {
+        if(someNum&1==1)
+        {
+            return false;
+        }
+            
+        return true;
+    }
+
+    //10
+var isPalindrome = function (someStr)
+    {
+        for(i=0, j=someStr.length-1; i<someStr.length/2;i++, j--)
+        {
+            if(someStr.charAt(i)!=someStr.charAt(j)) return false;
+        }
+        return true;
+    }
+
+
+    //11
+function printShape(shape, height, sym)
+{
+    
+    if(shape=="square")
+    {
+        for(i=1; i<=height; i++)
+        {
+            string = "";
+            for(j=1; j<=height; j++)
+            {
+                string+=sym;
+               
+            }
+            console.log(string);
+        }
+    }
+    else if(shape=="triangle")
+        {
+            for(i=1; i<=height; i++)
+            {
+                string = "";
+                for(j=1; j<=i; j++)
+                {
+                    string+=sym;
+                }
+                console.log(string);
+            }
+        }
+    else if(shape=="diamond")
+        {
+            var key1=(height+1)/2;
+            var key2=(height+1)/2;
+            var string = "";
+            for(i=1; i<=height;i++)
+                {
+                    string ="";
+                    for(j=1;j<=height;j++)
+                    {
+                        if(key1<=j && key2>=j)
+                            {
+                                string+=sym;
+                            }
+                            else
+                            {
+                                string +=" ";
+                            } 
+                    }
+                    if(i<(height+1)/2)
+                    {
+                        key1--;
+                        key2++;
+                    }
+                    else if(i>=(height+1)/2)
+                    {
+                        key1++;
+                        key2--;
+                    }
+                    console.log(string);
+                }
+                
+        }
+    
+
+    }
+
+    //12
+    function rotate(array, n)
+    {
+        var number = n%array.length;
+        for(i =0; i<number; i++)
+        {
+            var shift = array.shift();
+            array.push(shift);
+        }
+        return array;
+    }
+
+    
+    //13
+    function balanced(string)
+    {
+        
+        var array = string.split("");
+        var stack = [];
+        for(i=0; i<array.length;i++)
+        {
+            var currentSign = array[i];
+            if(currentSign=="(" || currentSign=="{" || currentSign=="[")
+            {
+                stack.push(currentSign);
+
+            }
+            if(currentSign=="}" || currentSign==")" || currentSign=="]")
+            {
+                if(stack.length==0)
+                {
+                    return false;
+                }
+                
+                peak = stack.pop();
+                stack.push(peak);
+                if(currentSign=="}" && peak=="{")
+                    {
+                        stack.pop();
+                    } 
+                else if(currentSign=="]" && peak=="[")
+                {
+                    stack.pop();
+                }       
+                else if(currentSign==")" && peak=="(")
+                {
+                    stack.pop();
+                } 
+                else
+                {
+                    return false;
+                }
+            }
+        }
+        if(stack.length==0)
+        {
+            return true;
+        }
+            return false;
     }
