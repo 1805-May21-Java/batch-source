@@ -1,0 +1,109 @@
+
+// 1. Longest String.
+function maxLength(str) {
+    str = str.split(' ');
+    var max = 0;
+  
+    for(var i = 0; i < str.length; i++) {
+       if(str[i].length >=  max) {
+         max = str[i].length;
+          } 
+       }
+    return max;
+  }
+  console.log(maxLength);
+
+
+//2. reverse strin
+   function reverseArray(arr){
+       return arr.reverse();
+   }
+   console.log(reverseArray);
+
+
+// 3.function to count vowel
+ function countVowel(str){
+     return str.replace(/[^aeiou]/g, "").length;
+ }
+ console.log(countVowel);
+
+// 4. function to remove script
+function removeScript(str){
+    while(str.includes('script')){
+        str = str.replace('script');
+    }
+     return str;
+    
+}
+console.log(removeScript);
+
+// 5. lear year
+ function leapYear(year){
+ 
+     if((year %100 ==0)|| (year %4 ==0) &&(year %100 !=0)){
+     return true;
+     } else{
+     return false;
+     }
+     
+ }
+ console.log(leapyear);
+
+ //6. email validation
+ function isValidEmail(email){
+    var re = /\S+@\S+/;
+    return re.test(email);
+ }
+ console.log(isValidEmail);
+ 
+ // 7.removechar
+ function removeChar(str, index){
+      var x, y;
+      x = str.substring(0,index);
+      y = str.substring(index +1, str.length);
+      return x+y;
+ }
+ console.log(removeChar);
+
+ // 8.bubble sort
+ function bubbleSort(arr){
+     let length = arr.length;
+     let i,j, temp;
+     for(i = length; i>0; i--){
+         for( j = 0;j<i;j++){
+             if(arr[i] < arr[j]){
+                 temp = arr[i];
+                 arr[i] = arr[j];
+                 arr[j]  =temp;
+             
+             }
+            } 
+     }
+     return arr;
+ }
+ console.log(bubbleSort);
+
+ 
+ // 9.odd or even
+ function isEven(num) {
+    return isNaN(num) && num !== false && num !== true ? false : num % 2 == 0;
+  }
+  console.log(isEven);
+
+  // 10. palindrome check
+    
+    function isPalindrome(str) {
+          var reg = /[\W_]/g;// regular expression
+    
+          var reversed = str.split("").reverse().join("");
+           if(reversed == str)
+               return true;
+               return false;
+           
+    }
+    console.log(isPalindrome);
+
+    // 11.
+  
+ // 13. balanced parenthesis
+
