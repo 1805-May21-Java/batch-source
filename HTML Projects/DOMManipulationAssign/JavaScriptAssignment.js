@@ -34,7 +34,32 @@ function alienText(params) {
 document.getElementById("form-sub").addEventListener("click", add);
 
 function add() {
-    
+    let firstname = document.getElementById("firstname").value;
+    let lastname = document.getElementById("lastname").value;
+
+    console.log(firstname + " " + lastname);
+
+    // if ((name && major) != "") {
+    //     // create table row
+    //     let row = document.createElement("tr");
+
+    //     // create cells for the row
+    //     let cell1 = document.createElement("td");
+    //     let cell2 = document.createElement("td");
+    //     let cell3 = document.createElement("td");
+
+    //     row.appendChild(cell1);
+    //     row.appendChild(cell2);
+    //     row.appendChild(cell3);
+
+    //     // add input info into cells
+    //     cell1.innerHTML = idCount++;
+    //     cell2.innerHTML = name;
+    //     cell3.innerHTML = major;
+
+    //     // find table and add row
+    //     document.getElementById("students").appendChild(row);
+    // } 
 }
 
 // 6. concatenate inner HTML
