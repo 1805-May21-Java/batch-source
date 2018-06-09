@@ -12,7 +12,7 @@ planets[planets.length - 1].setAttribute("disabled", true);
 
 //Question 3
 function alienText() {
-    console.log(document.getElementById("planet").value);
+    //console.log(document.getElementById("planet").value);
     if (document.getElementById("planet").value !== "Earth") {
         // if not earth, reveal text
         document.getElementsByTagName("p")[5].removeAttribute("hidden");
@@ -30,16 +30,19 @@ function addRow() {
     let firstname = document.getElementById("firstname").value;
     //console.log(firstname);
     if(firstname.length < 2) {
+        window.alert("Document must be completed before submission");
         return;
     }
     let lastname = document.getElementById("lastname").value;
     //console.log(lastname);
     if(lastname.length < 2) {
+        window.alert("Document must be completed before submission");
         return;
     }
     let email = document.getElementById("email").value;
     //console.log(email);
-    if(!isValidEmail(email)) {
+    if(!isValidEmail(email) && email.length > 0) {
+        window.alert("Document must be completed before submission");
         return;
     }
 
@@ -47,12 +50,14 @@ function addRow() {
     //console.log(phone);
     //this assumes a 7 digit number with 3 digit area code
     if(isNaN(phone) || phone.length !== 10) {
+        window.alert("Document must be completed before submission");
         return;
     }
 
     let birthday = document.getElementById("bday").value;
     //console.log(birthday);
     if(bday === "") {
+        window.alert("Document must be completed before submission");
         return;
     }
     let planet = document.getElementById("planet").value;
@@ -60,20 +65,21 @@ function addRow() {
     //there is a default, not check
 
     let gender = $("input[name='gender']:checked").val();
-    console.log(gender);
+   // console.log(gender);
     if(gender === undefined) {
+        window.alert("Document must be completed before submission");
         return;
     }
 
     let favoriteColor = document.getElementById("color").value;
-    console.log(favoriteColor);
+    //console.log(favoriteColor);
     //there is a default no check
     
     let activities = document.getElementsByClassName("activity");
     let chosenActivities = [];
     for(i = 0; i < activities.length; i++) {
         if(activities[i].checked) {
-            chosenActivities.push(activities[i].value);
+            chosenActivities.push(activities[i].nextSibling.nodeValue);
         }
     }
 
@@ -93,14 +99,13 @@ function addRow() {
     let col6 = document.createElement("td");
     col6.innerHTML = gender;
     let col7 = document.createElement("td");
-    col7.innerHTML = "<ul>"
-
-    //let actList = document.createElement(ul);
+    let list = document.createElement("ul");
     for(i = 0; i < chosenActivities.length; i++) {
-        col7.innerHTML += "<li>" +chosenActivities[i] + "</li>";
+        let item = document.createElement("li");
+        item.innerHTML = chosenActivities[i];
+        list.appendChild(item);
     }
-    col7.innerHTML += "</ul>";
-
+    col7.appendChild(list);
 
     row.appendChild(col1);
     row.appendChild(col2);
@@ -230,9 +235,9 @@ function changeColorInThreeSeconds() {
 document.getElementsByTagName("h1")[0].addEventListener("click", changeColorInThreeSeconds);
 
 function changeColor() {
-    let r = doubleDigits((Math.round(Math.random() * 150)).toString(16));
-    let g = doubleDigits((Math.round(Math.random() * 150)).toString(16));
-    let b = doubleDigits((Math.round(Math.random() * 150)).toString(16));
+    let r = doubleDigits((150+Math.round(Math.random() * 100)).toString(16));
+    let g = doubleDigits((150+Math.round(Math.random() * 100)).toString(16));
+    let b = doubleDigits((150+Math.round(Math.random() * 100)).toString(16));
     let myColor = "#" + r + g + b;
     console.log(myColor);
     document.getElementsByTagName("body")[0].style.backgroundColor = myColor;
@@ -297,7 +302,7 @@ function walkTheDom(node, func) {
 }
 
 function printNode(node){
-    console.log(node);
+    console.log(node.nodeName);
 }
 
 // call walkTheDom(document, printNode) to see the traversal
