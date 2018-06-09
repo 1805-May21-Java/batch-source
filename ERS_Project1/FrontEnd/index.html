@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Expense Reimbursment Request</title>
+    <title>Expense Reimbursment System</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- BootStrap CDN -->
@@ -21,11 +21,117 @@
 </head>
 
 <body>
-    <div class="container">
+
+
+
+    <nav class="navbar navbar-expand-lg" id="myNavigation">
+        <div class="container">
+            <a class="navbar-brand myBrand" href="#">ERS</a>
+            <button class="navbar-toggler myButton" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">menu</button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                <ul class="navbar-nav mr-auto ">
+                    <li class="nav-item">
+                        <a class="nav-link myLink" href="#" id="goToProfile">My Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link myLink" href="#" id="goToMakeRequest">Make Request</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link myLink" href="#" id="goToViewRequests">View Requests</a>
+                    </li>
+                </ul>
+
+                <form class="form-inline my-2 my-lg-0">
+
+                    <button class="btn myButton" id="credentials">Login/Signup</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container" align=center>
+        <br>
+        <h1 id="currentTitle">Expense Reimbursment System</h1>
+
+        <div id="signinMenu" class="myCredentialsMenu">
+            <div class="jumbotron myJumbotron">
+                <form class="form-group">
+                    <label>Email</label>
+                    <input class="form-control" type="text" id="email">
+                    <br>
+                    <label>Password</label>
+                    <input class="form-control" type="text" id="password">
+                    <br>
+                    <button class="btn myButton" id="login">Login</button>
+                </form>
+
+                <hr class="my-4">
+
+                <p class="minor">Don't have an account with us?
+                    <button class="btn myButton" id="goToCreate">Create an Account</button>
+                </p>
+            </div>
+        </div>
+
+        <div id="signupMenu" class="myCredentialsMenu">
+            <div class="jumbotron myJumbotron">
+                <form class="form-group">
+
+                    <label>First Name</label>
+                    <input class="form-control" type="text" id="firstname">
+                    <br>
+                    <label>Last Name</label>
+                    <input class="form-control" type="text" if="lastname">
+                    <br>
+                    <label>Email</label>
+                    <input class="form-control" type="text" id="newEmail">
+                    <br>
+                    <label>Password</label>
+                    <input class="form-control" type="text" id="createPassword">
+                    <br>
+                    <label>Confirm Password</label>
+                    <input class="form-control" type="text" id="confirmPassword">
+                    <br>
+                    <button class="btn myButton" id="create">Create Account</button>
+                </form>
+
+                <hr class="my-4">
+
+                <p class="minor">Already have an account with us?
+                    <button class="btn myButton" id="goToLogin">Login</button>
+                </p>
+            </div>
+        </div>
+
+        <div id="profileMenu">
+            <div class="jumbotron myJumbotron" id="profileContent">
+                <!--This gets populated in ./content.js-->
+                <p>This is the profile menu</p>
+            </div>
+        </div>
+
+        <div id="makeRequestMenu">
+            <div class="jumbotron myJumbotron" id="makeRequestContent">
+                <!--This gets populated in ./content.js-->
+                <p>This is the make request menu</p>
+            </div>
+        </div>
+
+        <div id="viewRequestsMenu">
+            <div class="jumbotron myJumbotron" id="viewRequestsContent">
+                <!--This gets populated in ./content.js-->
+                <p>This is the view requests menu</p>
+            </div>
+        </div>
 
     </div>
 
-    <script src="main.js"></script>
+
+
+    <script src="./navigation.js"></script>
+    <script src="./content.js"></script>
 </body>
 
 </html>

@@ -1,11 +1,57 @@
 :root {
-    --color-c1 : #D5BFc3;
-    --color-c2 : #FFFFFF;
-    --color-c3 : #3F292D;
-    --color-c4 : #3B000A;
-    /*var(--color-c1);*/
+    /*Here are colors that can be changed to fit the theme you want your site to have*/
+    --color-c1 : #FFFFFF; /*Background Color*/
+    --color-c2 : #D5BFc3; /*Menu Color*/
+    --color-c3 : #8d8587; /*Minor Text*/
+    --color-c4 : #3B000A; /*Main Text and Button Highlight Color*/
 }
 
 body {
     background-color: var(--color-c1);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: var(--color-c4);
+}
+
+.minor {
+    color: var(--color-c3);
+}
+
+#myNavigation {
+    background-color: var(--color-c2);
+}
+
+.myBrand {
+    color: var(--color-c4);
+    font-size: 25px;
+}
+.myBrand:hover {
+    color: var(--color-c4);
+}
+a.myLink {
+    color: var(--color-c4);
+}
+a.myLink:hover {
+    color: var(--color-c1);
+}
+
+button.myButton {
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    background-color: var(--color-c2);
+    border: 2px solid var(--color-c4);
+    color: var(--color-c4);
+}
+
+button.myButton:hover {
+    background-color: var(--color-c4);
+    color: var(--color-c2);
+}
+
+
+.myJumbotron {
+    background-color: var(--color-c2);
+}
+
+.myCredentialsMenu {
+    max-width: 550px;
 }
