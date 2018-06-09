@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <title>Star Wars App</title>
+    <link rel="icon" href="http://www.pixempire.com/images/preview/starwars-rebel-symbol-icon.jpg">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+	</head>
+    <body>
+        <div class="container text-center">
+            <div class="jumbotron">
+                <h1>Star Wars</h1>
+                <p>Input a character's name</p>
+                <div class="form-control">
+                    <input type="text" id="name" class="form-control" placeholder="People">
+                    <button onclick="searchPerson()" class="btn btn-default btn-center">Submit</button>
+                    <div class="text-warning" id="alert"></div>
+                    <div class="container">
+                        <h2 id="charName"></h2>
+                        <h4 id="height"></h4>
+                        <h4 id="mass"></h4>
+                        <h4 id="hair_color"></h4>
+                        <h4 id="skin_color"></h4>
+                        <h4 id="eye_color"></h4>
+                        <h4 id="birth_year"></h4>
+                        <h4 id="gender"></h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container text-center">
+            <div class="jumbotron">
+                <h1>Planets</h1>
+                <p>Input a planet's name</p>
+                <div class="form-control">
+                    <input type="text" id="p_name" class="form-control" placeholder="Planet">
+                    <button onclick="searchPlanet()" class="btn btn-default btn-center">Submit</button>
+                    <div class="text-warning" id="alert"></div>
+                    <div class="container">
+                        <h2 id="planName"></h2>
+                        <h4 id="rotPeriod"></h4>
+                        <h4 id="orbPeriod"></h4>
+                        <h4 id="diameter"></h4>
+                        <h4 id="climate"></h4>
+                        <h4 id="gravity"></h4>
+                        <h4 id="terrain"></h4>
+                        <h4 id="surWater"></h4>
+                        <h4 id="population"></h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container text-center">
+            <div class="jumbotron">
+                <h1>Starships</h1>
+                <p>Input a starship's name</p>
+                <div class="form-control">
+                    <input type="text" id="s_name" class="form-control" placeholder="Starship">
+                    <button onclick="searchStarship()" class="btn btn-default btn-center">Submit</button>
+                    <div class="text-warning" id="alert"></div>
+                    <div class="container">
+                        <h2 id="starName"></h2>
+                        <h4 id="model"></h4>
+                        <h4 id="manu"></h4>
+                        <h4 id="cost"></h4>
+                        <h4 id="length"></h4>
+                        <h4 id="atmoSpeed"></h4>
+                        <h4 id="crew"></h4>
+                        <h4 id="passengers"></h4>
+                        <h4 id="cargo"></h4>
+                        <h4 id="consumables"></h4>
+                        <h4 id="hyperdrive"></h4>
+                        <h4 id="mglt"></h4>
+                        <h4 id="starshipClass"></h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="SWController.js"></script>
+    </body>
+    </html>
