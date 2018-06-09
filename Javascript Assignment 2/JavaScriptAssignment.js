@@ -72,13 +72,13 @@ function newRow(){
     	cell1.innerHTML = fname;
     	cell2.innerHTML = email;
     	cell3.innerHTML = phone;
-    	cell4.innerHTML = bday;
+    	cell4.innerHTML = bday; //format isn't the same as examples
     	cell5.innerHTML = color;
         cell6.innerHTML = gender;
         cell7.innerHTML = "<ul>"; //this one needs to be made into a list
         for(var i = 0; i < pickedActs.length; i++){
             cell7.innerHTML += "<li>" + pickedActs[i] + "</li>";
-        }
+        } //gender and activities are not fully accurate but work
         cell7.innerHTML += "</ul>";
     	document.getElementById("submission").appendChild(row);
     			}
@@ -98,11 +98,11 @@ function isValidEmail(string){ //reusing my old isValidEmail function, as it wor
 //The details should be hidden when the mouse is removed
 //from the summary.
 function openDetails(){
-	var x = document.getElementById("myDetails");
+	var x = document.getElementById("details");
 	x.open = true;
 } // this one really is easier with two functions, one for opening and one for closing
 function closeDetails(){
-	var x = document.getElementById("myDetails");
+	var x = document.getElementById("details");
 	x.open = false;
 }
 //6. Create a function that concatenates the inner HTML of all
@@ -133,7 +133,7 @@ document.getElementById("earth_time_check").addEventListener("click", displayEar
 // b. (try http://www.astropical.space/astrodb/apiref.php)
 //Provide an implementation for getting this value using
 //both AJAX and the fetch API.
-function sendAjaxGet(url, func){
+function sendAjaxGet(url, func){ //copied from examples in class
     let xhr = (new XMLHttpRequest() || new ActiveXObject("Microsoft.HTTPRequest"));
     xhr.onreadystatechange = function(){
         if(this.status == 200 && this.readyState == 4){
@@ -153,7 +153,7 @@ function marsTime(){
     let marsTime = String(1970+days/687).split("."); //this one definitely required a lookup
     let marsYear = marsTime[0];
     let marsDay = String(Number("0." + marsTime[1]) * 687).split(".")[0];
-    document.getElementById("mars_time").innerHTML = marsDay + " : " + marsYear;
+    document.getElementById("mars_time").innerHTML = "Day: " + marsDay + " : Year: " + marsYear;
 }
 document.getElementById("mars_time_check").addEventListener("click", marsTime)
 function setCentauriTime(){
@@ -173,7 +173,7 @@ function getCentauriTime(xhr){
     let centauriTime = String(1970+days/period).split(".");
     let centauriYear = centauriTime[0];
     let centauriDay = String(Number("0." + centauriTime[1]) * period).split(".")[0];
-    document.getElementById("acb_time").innerHTML = centauriDay + " : " + centauriYear
+    document.getElementById("acb_time").innerHTML = "Day: " + centauriDay + " : Year: " + centauriYear
 }
 document.getElementById("acb_time_check").addEventListener("click", setCentauriTime);
 //9. Three seconds after a user clicks on the
@@ -195,64 +195,52 @@ function backgroundChange(){
 //10. When inputs with id n1 and n2 have valid numerical input,
 //perform the operation specified in the select.
 //Display the result in the element with id result.
-document.addEventListener("change", validNumerical);
 function validNumerical() {
-    var n1 = document.getElementById("n1");
-    var n2 = document.getElementById("n2");
-    if(!isNaN(n1) && !isNaN(n2) && n1 !== "" && n2 !== ""){
-        switch(document.getElementById("operation").value){
-            case "Add":
-                document.getElementById("result").innerHTML = Number(n1)+Number(n2);
-                break;
-            case "Subtract":
-                document.getElementById("result").innerHTML = Number(n1)-Number(n2);
-                break;
-            case "Divide":
-                if(Number(n2) === 0) {
-                    document.getElementById("result").innerHTML = "ERR: DIVIDE BY ZERO";
-                } else {
-                document.getElementById("result").innerHTML = Number(n1)/Number(n2);
-                }
-                break;
-            case "Multiply":
-                document.getElementById("result").innerHTML = Number(n1)*Number(n2);
-                break;
-            default:
-        }
-    } else {
-        document.getElementById("result").innerHTML = "";
+    let n1 = document.getElementById("n1");
+    let n2 = document.getElementById("n2"); //this turned out easier with lets
+    let operation = document.getElementById("operation").value;
+    let result = document.getElementById("result"); //also with making some temp variables
+    switch(operation){
+        case("Add"):
+            result.innerHTML = Number(n1.value) + Number(n2.value);
+            break;
+        case("Subtract"): //rest is copy-paste and change operation
+            result.innerHTML = Number(n1.value) - Number(n2.value);
+            break;
+        case("Divide"): //except this
+            if (Number(n2.value) === 0){
+                break; //simply doesn't compute this value
+            }
+            result.innerHTML = Number(n1.value) / Number(n2.value);
+            break;
+        case("Multiply"):
+            result.innerHTML = Number(n1.value) * Number(n2.value);
+            break;
     }
-    window.setTimeout(validNumerical, 1000);
 }
+document.getElementById("operation").addEventListener("change", validNumerical);
 //11. Define function walkTheDom(node, func)
 //This function should traverse every node in the DOM. 
 //Use recursion. On each node, call func(node).
 function walkTheDom(node, func){
-    console.log(node.nodeName);
-    if(node.firstElementChild !== undefined){
-        if(node.firstElementChild !== null){
-            func(node.firstElementChild); // another recursive call?
+    func(node); //first recursive call
+    node = node.firstElementChild; //node points to first element child
+    //function executed on node, then points to next element sibling node
+    while(node !== undefined){
+        if(node === null){
+            return; //make sure nothing's undefined, and simply return if null
         }
+        walkTheDom(node, dFunc); //recursive call, yet again
+        node = node.nextElementSibling;
     }
 }
-var nodes = document.getElementsByTagName("html")[0]; // setup
-checkFirstChild = false; // higher scope variable for checking first child
-function func(node){
-    //obviously need this function
-    //first check for falsys
-    if(node.firstElementChild !== undefined && node.firstElementChild !== null && checkFirstChild === false){
-        console.log(node.nodeName); //print them
-        func(node.firstElementChild); //keep it recursively going
-    } // next chck sibling nodes when done with child nodes
-    if(node.nextElementSibling !== undefined && node.nextElementSibling !== null){
-        if(checkFirstChild === false){ //yes, another check
-            console.log(node.nodeName);
-        }//checkFirstChild is now false after this, on sibling
-        checkFirstChild = false;
-        func(node.nextElementSibling); //more recursive calls
-        //otherwise go back to parent
-    } else {
-        checkFirstChild = true; // make this true
-        func(node.parentNode); //another recursive call
-    }
+//need to make a dFunc function though, as well as a counter
+let count = 0;
+function dFunc(node){ //print to console, how many times walking the DOM is happening
+    count++;
+    console.log(count);
+    console.log(node);
+}
+window.onload = function(){ //starts walkTheDom on page load
+    walkTheDom(document.getElementsByTagName("*")[0], dFunc); // * goes through every node
 }
