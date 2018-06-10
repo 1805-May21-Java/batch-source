@@ -97,12 +97,17 @@
     </employee>
 </employees> 
 ``` 
+
 <br>
+
 #### Parsing XML
+
 <hr>
 
 **JAXP - Java API for XML Processing** 
+
 <br>
+
 | Document Object Model (DOM) | Simple API for XML Parsing |
 | --------------------- | ------------------ |
 | <ul><li>loads full xml file into memory and creates a tree representation of it</li><li>much faster for small/medium sized files because of in-memory retrieval</li><li>can get very expensive (memory-wise) for larger files</li></ul>|<ul><li>read only</li><li>event based - "streams" XML data without loading all of it into memory</li></ul> |
