@@ -32,7 +32,8 @@ window.onload = function () {
     // (try http://www.astropical.space/astrodb/apiref.php) Provide an implementation for getting this 
     // value using both AJAX and the fetch API.
     displayMarsTime();
-    displayAlphaCentauriBTime();
+    displayAlphaCentauriBTime(); // uses AJAX
+    displayAlphaCentauriBTime2(); // usses fetch API
 
     // 9. Three seconds after a user clicks on the “Intergalactic Directory” heading, the background 
     // color should change to a random color. Make sure this color is never black so we can still read
@@ -237,7 +238,7 @@ function displayMarsTime() {
         var numEarthDays = timestamp / 1000 / 60 / 60/ 24;
         var numMarsYears = Math.floor(numEarthDays / 687);
         var numMarsDays = Math.floor(numEarthDays % 687);
-        document.getElementById('mars_time').innerHTML = `${numMarsYears} years, ${numMarsDays} days, ${timeString}`;
+        document.getElementById('mars_time').innerHTML = `${numMarsYears} Mars years, ${numMarsDays} days, ${timeString}`;
     });
 }
 
@@ -253,25 +254,56 @@ function displayAlphaCentauriBTime() {
 
                 let timestamp = Date.now();; 
                 let numEarthDays = timestamp / 1000 / 60 / 60/ 24;
-                let numACBYears = numEarthDays /period;
+                let numACBYears = Math.floor(numEarthDays /period);
                 console.log(numEarthDays);
                 console.log(numEarthDays / period);
                 let numACBDays = Math.floor(numEarthDays % period);
-                let numACBHours = numEarthDays % period % 1 * 24 ;
+                let numACBHours = Math.floor(numEarthDays % period % 1 * 24);
+                let numACBMinutes = Math.floor(numEarthDays % period % 1 * 24 % 1 * 60);
 
-                
-                document.getElementById('acb_time').innerHTML = `${numACBYears} Alpha Centaruri Bb years`
+                document.getElementById('acb_time').innerHTML = `${numACBYears} ACB years, ${numACBDays} days ${numACBHours}:${'00'.substring(0, 2 - numACBMinutes.toString().length) + numACBMinutes}`;
             } 
         }
 
         xhr.open('GET', 'http://www.astropical.space/astrodb/api-exo.php?which=distance&limit=2&format=json');
         xhr.send();
 
-        console.log('request sent');
-
-        
+        console.log('request sent');     
     })
 }
+
+function displayAlphaCentauriBTime2() {
+    document.getElementById('acb_time_check').addEventListener('click', function() {
+
+        let request = new Request('http://www.astropical.space/astrodb/api-exo.php?which=distance&limit=2&format=json');
+
+        
+        fetch(request)
+            .then (function(response) {
+                if(response.status == 200)
+                    return response.json();
+            })
+            .
+            then (function (results) { 
+        
+            console.log(results);
+            let period = results.exoplanets[1].per;
+
+            let timestamp = Date.now();; 
+                let numEarthDays = timestamp / 1000 / 60 / 60/ 24;
+                let numACBYears = Math.floor(numEarthDays /period);
+                console.log(numEarthDays);
+                console.log(numEarthDays / period);
+                let numACBDays = Math.floor(numEarthDays % period);
+                let numACBHours = Math.floor(numEarthDays % period % 1 * 24);
+                let numACBMinutes = Math.floor(numEarthDays % period % 1 * 24 % 1 * 60);
+
+                document.getElementById('acb_time').innerHTML = `${numACBYears} ACB years, ${numACBDays} days ${numACBHours}:${'00'.substring(0, 2 - numACBMinutes.toString().length) + numACBMinutes}`;
+        });
+        console.log('request sent');     
+    })
+}
+
 
 function intergalacticColors() {
 
