@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Super PokeDex</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+
+</head>
+
+<body>
+    <div id="header" class="container-fluid ">
+        <div class="row">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-4 text-center"><h1>Pokedex</h1></div>
+            <div class="col-lg-4"></div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-4">
+                <form class="text-left">
+                    <form>
+                        <div>
+                            <label>Pokemon name</label>
+                            <input type="text" class="form-control" id="pokemon-name">
+                        </div>
+                        <button id="submit-btn" type="button" class="btn btn-primary">WHO'S THAT POKEMON?!</button>
+                        <div class="text-warning" id="alert"></div>
+                    </form>
+            </div>
+            <div class="col-lg-4"></div>
+        </div>
+    </div>
+    <div class="container text-center">
+        <h2>
+            <span id="poke-id"></span>
+            <span id="poke-name"></span>
+        </h2>
+        <div id="types"></div>
+        <img id="default-sprite">
+        <img id="shiny-sprite">
+    </div>
+    <script src="main.js"></script>
+    <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script> -->
+</body>
+
+</html>
