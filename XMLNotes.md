@@ -1,4 +1,4 @@
-#XML - eXtensible Markup Language 
+# XML - eXtensible Markup Language 
 * like HTML, not a programming language but a markup language
 * designed to transport and store data in a way that is both human and machine readable
 * language agnostic
@@ -40,14 +40,14 @@
 
 
 <br>
-####Well-Formed vs. Valid XML
+#### Well-Formed vs. Valid XML
 <hr>
 | Well Formed XML | Valid XML |
 | --------------- | --------- |
 | Follows basic syntactic rules <ul><li>begins with XML declaration</li><li>unique root element</li><li>starting and ending tag must match</li><li>elements are case sensitive</li><li>elements must be properly nested</li></ul> Well formed document is not necessarily valid | XML which follows a predefined structure  <ul><li>Document Type Definition</li><li>XML Schema Definition</li></ul> Valid XML will also be well formed | 
 
 <br>
-####Document Type Definition (DTD)
+#### Document Type Definition (DTD)
 <hr>
 
 - written in its own DTD syntax
@@ -58,7 +58,7 @@
     - CDATA is text that will not be parsed by a parser. Tags inside the text will not be treated as markup and entities will not be expanded.
 - cant be more specific with types
     
-####XML Schema Definition (XSD)
+#### XML Schema Definition (XSD)
 <hr>
 
 - written in XML
@@ -66,7 +66,7 @@
 - can declare number and order of child elements
 - can declare default and fixed values for elements and attributes 
 
-####XML Namespace
+#### XML Namespace
 <hr>
 
 - anyone can create their own markup with their own tags
@@ -91,7 +91,7 @@
 </employees> 
 ``` 
 <br>
-####Parsing XML
+#### Parsing XML
 <hr>
 
 **JAXP - Java API for XML Processing** 
