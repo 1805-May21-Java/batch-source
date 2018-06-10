@@ -6,8 +6,10 @@ document.getElementsByName("slack")[0].setAttribute("href", "https://slack.com")
 document.getElementsByName("javadocs")[0].setAttribute("href", "https://javadocs.com");
 
 
+
 // 2. disable Pluto as a planet option
 document.getElementById("planet")[3].disabled = true;
+
 
 
 // 3. shows alien message if planet other than Earth is picked
@@ -19,6 +21,7 @@ function alienText(params) {
         hiddenElem[0].removeAttribute("hidden");
     } 
 }
+
 
 
 // 4. get input values from form and add to table
@@ -110,6 +113,7 @@ function add() {
 }
 
 
+
 // 5. open the details element on mouseover
 document.getElementsByTagName("summary")[0].addEventListener("mouseover", openDetails); // when summary is moused over
 document.getElementsByTagName("summary")[0].addEventListener("mouseout", closeDetails); // when mouse is removed from summary
@@ -123,6 +127,7 @@ function closeDetails() {
 }
 
 
+
 // 6. concatenate inner HTML
 var spans = document.getElementsByTagName("span");
 var str = "";
@@ -130,6 +135,7 @@ for (let i=0; i<spans.length; i++) {
     str += spans[i].innerHTML;
 }
 console.log(str);
+
 
 
 // 7. display Earth time
@@ -141,7 +147,59 @@ function displayEarthTime() {
 }
 
 
+
 // 8. Mars and Alpha Centauri Bb times
+let baseURL = "http://www.astropical.space/astrodb/api-exo.php?format=json"; // for API call
+
+document.getElementById("mars_time_check").addEventListener("click", displayMarsTime);
+document.getElementById("acb_time_check").addEventListener("click", getACBTime);
+
+function displayMarsTime() {
+    let years = 31536000000; // miliseconds
+    let time = new Date().getTime();
+
+    var earthYears = time / years;
+    var marsYears = (earthYears * 365) / 687; // Mars has 687 day orbital period
+    document.getElementById("mars_time").innerHTML = marsYears.toFixed(2) + " years";
+}
+
+function getACBTime() {
+    sendAjaxGet(baseURL, displayACBTime);
+}
+
+function sendAjaxGet(url, func){
+    let xhr = (new XMLHttpRequest() || new ActiveXObject("Microsoft.HTTPRequest"));
+    xhr.onreadystatechange = function(){
+        //console.log(xhr.readyState);
+        if(this.status == 200 && this.readyState == 4){
+            func(this);
+        }
+    }
+    xhr.open("GET", url);
+    xhr.send();
+}
+
+function displayACBTime(xhr) {
+    let response = xhr.response;
+    let exoplanets = JSON.parse(response).exoplanets;
+    var acbTime;
+
+    // get Alpha Centauri Bb time from JSON
+    for (var planet in exoplanets) {
+        if (exoplanets[planet].name == "alf Cen B b") {
+            acbTime = exoplanets[planet].per;
+            break;
+        }
+    }
+
+    let years = 31536000000; // miliseconds
+    let time = new Date().getTime();
+
+    var earthYears = time / years;
+    var acbYears = (earthYears * 365) / acbTime;
+    document.getElementById("acb_time").innerHTML = acbYears.toFixed(2) + " years";
+}
+
 
 
 // 9. set random background color
@@ -156,6 +214,7 @@ function changeColor() {
     // toString(16) converts number to hex
     document.getElementsByTagName("body")[0].setAttribute("style","background-color:" + color);
 }
+
 
 
 // 10. perform calculator operations
@@ -185,6 +244,7 @@ function setOperation() {
         }
     }
 }
+
 
 
 // 11. traverse every node in the DOM
