@@ -206,7 +206,7 @@ function acbDate(xhr){
         var acb = JSON.parse(xhr.responseText);
         var acb_year = Number(acb.exoplanets[0].per);
 
-        var totalDays = Math.floor(now/1000/60/60/24);
+        var totalDays = now/1000/60/60/24;
         var years = Math.floor(totalDays/acb_year);
         var days = totalDays%acb_year;
 
