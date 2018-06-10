@@ -40,14 +40,19 @@
 
 
 <br>
+
 #### Well-Formed vs. Valid XML
+
 <hr>
+
 | Well Formed XML | Valid XML |
 | --------------- | --------- |
 | Follows basic syntactic rules <ul><li>begins with XML declaration</li><li>unique root element</li><li>starting and ending tag must match</li><li>elements are case sensitive</li><li>elements must be properly nested</li></ul> Well formed document is not necessarily valid | XML which follows a predefined structure  <ul><li>Document Type Definition</li><li>XML Schema Definition</li></ul> Valid XML will also be well formed | 
 
 <br>
+
 #### Document Type Definition (DTD)
+
 <hr>
 
 - written in its own DTD syntax
@@ -59,6 +64,7 @@
 - cant be more specific with types
     
 #### XML Schema Definition (XSD)
+
 <hr>
 
 - written in XML
@@ -67,6 +73,7 @@
 - can declare default and fixed values for elements and attributes 
 
 #### XML Namespace
+
 <hr>
 
 - anyone can create their own markup with their own tags
