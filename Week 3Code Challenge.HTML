@@ -14,24 +14,29 @@
     <title>Week 3 Code Challenge</title>
   </head>
   <body>
-    <div class="conatiner">
-      <center><button id="get-Users" class="btn btn-outline-primary">Submit</button></center>
-      <center><button id="populate-Table" class="btn btn-outline-primary">Generate Table</button></center>
+	<h1><center>Week 3 Code Assigment</center></h1>
+	<br>
+    <div class="conatiner-fluid">
+		<nav class="navbar navbar-expand-lg navbar-light bg-secondary">
+		  <button id="get-Users" class="btn btn-primary">Get Users</button>
+		  <button id="populate-Table" class="btn btn-primary">Generate Table</button>
+		</nav><
     </div>
 
     <script>
       let baseUrl = 'https://randomuser.me/api/'
       let urlNotFound = '';
-      var email;
-      var firstName;
-      var lastName;
-      var title;
-      var phone;
-      document.getElementById('populate-Table').addEventListener('click',generateTable);
-      document.getElementById('get-Users').addEventListener('click',getRandomUser);
+	  let email = [];
+	  let firstName = [];
+	  let lastName=[];
+	  let title=[];
+	  let phone=[];
+
+      document.getElementById('populate-Table').addEventListener('click',generateTable)
+      document.getElementById('get-Users').addEventListener('click',getRandomUser)
       function getRandomUser()
       {
-        sendAjaxGet(baseUrl+ '?inc=name,phone,email',userInfo);
+        sendAjaxGet(baseUrl+ '?results=20&inc=name,phone,email',userInfo);
       }
 
       function sendAjaxGet(url, func)
@@ -52,20 +57,25 @@
         let response = xhr.response;
         let parse = JSON.parse(response);
         let info = parse.results;
-        for(i = 0; i<parse.length; i++)
+		
+        for(i = 0; i<info.length; i++)
         {
-          email = info.results[i].email;
-          firstName = info.results[i].name.first;
-          lastName = info.results[i].name.last;
-          title =info.results[i].name.title;
-          phone = info.results[i].phone;
+          email[i] = info[i].email;
+          firstName[i] = info[i].name.first;
+          lastName[i] = info[i].name.last;
+          title[i] =info[i].name.title;
+          phone[i] = info[i].phone;
         }
 
       }
 
       function generateTable()
       {
-        let info = userInfo();
+		let div = document.getElementById('table-div');
+		if(div.hasChildNodes())
+		{
+			div.removeChild(div.childNodes[0]);
+		}
         let table = document.createElement('table');
         let head = document.createElement('thead');
         let headRow = document.createElement('tr');
@@ -96,7 +106,7 @@
         th3.innerHTML = 'Last';
         th4.innerHTML = 'Email';
         th5.innerHTML = 'phone';
-
+;
 
         for(i =0; i<email.length; i++)
         {
@@ -133,12 +143,13 @@
 
         }
 
-        document.getElementById('table-div').appendChild(table);
+        div.appendChild(table);
 
       }
 
     </script>
-    <div class='containter' id ="table-div">
+	<br>
+    <div class='containter-fluid' id ="table-div">
     </div>
   </body>
 </html>
