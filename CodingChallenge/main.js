@@ -4,23 +4,7 @@ let submitButton = document.getElementById("submitButton");
 let fieldArr = [];
 //Add an event listiner that gathers data when user hits submit
 submitButton.addEventListener("click", function () {
-    //adds all the fields to the array
-    fieldArr.push(document.getElementById("firstNameField").value);
-    fieldArr.push(document.getElementById("lastNameField").value);
-    fieldArr.push(document.getElementById("email").value);
-    fieldArr.push(document.getElementById("phone").value);
-    fieldArr.push(document.getElementById("maidenName").value)
-
-    //creates row to add to table
-    let row = document.createElement("tr");
-    //puts all the field elements as td's, then appends it to the newly created tr
-    for (field of fieldArr) {
-        let cell = document.createElement("td");
-        cell.innerHTML = field;
-        row.appendChild(cell);
-    }
-    //appends tr to the table
-    document.getElementById("tableBody").appendChild(row);
+    sendAjax(url, fillOneTable, 1);
 });
 
 //populates table with random info when button clicked
@@ -67,6 +51,25 @@ function fillTable(xhr, numRows) {
         }
         document.getElementById("otherTable").appendChild(row);
     }
+}
 
+function fillOneTable(xhr) {
+    response = (JSON.parse(xhr.response)).results[0][0];
+
+    //adds all the fields to the array
+    first = document.getElementById("firstNameField");
+    first.value = response.first
+
+    last = document.getElementById("lastNameField");
+    last.value = response.last
+
+    email = document.getElementById("email");
+    email.value = response.email
+
+    address = document.getElementById("address");
+    address.value = response.address;
+
+    money = document.getElementById("money");
+    money.value = response.balance;
 
 }
