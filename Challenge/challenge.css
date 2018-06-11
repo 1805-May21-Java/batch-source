@@ -1,0 +1,17 @@
+.container{
+    float:left;
+    padding-bottom:50px;
+}
+
+select{
+    max-width:60px;
+}
+
+.table th {
+    text-align: center;   
+ }
+
+ td{
+     text-align: center;
+ }
+

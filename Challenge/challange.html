@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Code Challange</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="challenge.css">
+    </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <h1 align="center">Coding Chanllange</h1>
+
+    <div class="container-fluid">
+        <br>
+        <br>
+        <h3 align="center">Single Employee</h3>
+        <table class="table table-striped">
+            <tr>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Email</th>
+            </tr>
+            <tr>
+                <td id="name"></td>
+                <td id="phone"></td>
+                <td id="email"></td>
+            </tr>
+        </table>
+        <input type="submit" value="Submit" id="submit_1" />
+
+
+        <br>
+        <br>
+
+        <h3 align="center">Multiple Employee's</h3>
+        <br>
+        <label>How many?</label>
+        <select class="custom-select">
+            <option>10</option>
+            <option>20</option>
+            <option>50</option>
+        </select>
+        <input type="submit" value="Submit" id="submit_2">
+        <br>
+        <br>
+        <br>
+        <table class="table table-striped" id="mul">
+            <tr>
+                <th>No.</th>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Email</th>
+            </tr>
+            <tbody id="populate">
+
+            </tbody>
+        </table>
+
+
+
+        <script src="challange.js"></script>
+    </div>
+
+</body>
+
+</html>
