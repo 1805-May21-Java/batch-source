@@ -1,7 +1,7 @@
 let baseUrl = "https://randomuser.me/api/?results=";
 function submit() {
     let uname = document.getElementById("nameuser").value;
-    let usernum = parseInt(document.getElementById("cnumber").value);
+    let usernum = document.getElementById("cnumber").value;
     let uemail = document.getElementById("email").value;
     if((uname&&usernum&&uemail) !== ""){
             let nrow = document.createElement("tr");
@@ -30,9 +30,10 @@ function findEmployees() {
 
 function listEmployees(xhr) {
     let response = xhr.response;
-    let employees = JSON.parse(response).response[0];
+    let employees = JSON.parse(response);
     console.log(employees);
     let listnum = document.getElementById("employeenum").value;
+    for(i = 0; i<listnum; i++){
     let nrow = document.createElement("tr");
     let row1 = document.createElement("td");
     let row2 = document.createElement("td");
@@ -43,10 +44,10 @@ function listEmployees(xhr) {
     nrow.appendChild(row3);
 
 
-    for(i = 0; i<listnum; i++){
-        row1.innerHTML = response.results[i].name.first;
-        row2.innerHTML = response.results[i].cell;
-        row3.innerHTML = response.results[i].email;
+
+        row1.innerHTML = employees.results[i].name.first;
+        row2.innerHTML = employees.results[i].cell;
+        row3.innerHTML = employees.results[i].email;
         document.getElementById("UserInfo").appendChild(nrow);
     }
 }

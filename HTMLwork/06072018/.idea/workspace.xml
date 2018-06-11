@@ -2,43 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="08858c2a-fe79-4f96-b96f-1fe660fb10c0" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/06072018.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DOM Manipulation/Index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DOM Manipulation/alien.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EventProp.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EventPropScript.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JSQuizDemo/Quiz.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JSQuizDemo/QuizScript.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Student.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Student.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WeatherApp/WeatherApp.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WeatherApp/WeatherController.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WeatherApp/css/bootstrap-theme.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WeatherApp/css/bootstrap-theme.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WeatherApp/css/bootstrap.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WeatherApp/css/bootstrap.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WeatherApp/js/bootstrap.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WeatherApp/js/bootstrap.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/css/bootstrap-theme.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/css/bootstrap-theme.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/css/bootstrap.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/css/bootstrap.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fonts/glyphicons-halflings-regular.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fonts/glyphicons-halflings-regular.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fonts/glyphicons-halflings-regular.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fonts/glyphicons-halflings-regular.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js/bootstrap.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js/bootstrap.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../HTMLAssignment06-04-2018/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../HTMLAssignment06-04-2018/Shiba Inu.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../HTMLAssignment06-04-2018/huskygirl.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../HTMLAssignment06-04-2018/labrador.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../HTMLAssignment06-04-2018/shibaBackGround.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../HTMLAssignment06-04-2018/siberian-husky.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HTMLAssignment06-04-2018/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../HTMLAssignment06-04-2018/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CodeChallange/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../CodeChallange/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CodeChallange/CC3Script.js" beforeDir="false" afterPath="$PROJECT_DIR$/../CodeChallange/CC3Script.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
