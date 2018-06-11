@@ -2,17 +2,25 @@ window.onload = function() {
     // listen for button to generate a single user
     addUserGeneratorLisenter();
 
-
-
 };
 
 function addUserGeneratorLisenter() {
+    // let buttonOneUser = document.getElementById('generateUser');
+    // buttonOneUser.addEventListener('click', makeUserRequest);
+
+    // let buttonMultiUser = document.getElementById('generateMultiUsers');
+    // buttonMultiUser.addEventListener('click', makeUsersRequest);
+
     let buttonOneUser = document.getElementById('generateUser');
-    buttonOneUser.addEventListener('click', makeUserRequest);
+    buttonOneUser.addEventListener('click', fetchUser);
+
     let buttonMultiUser = document.getElementById('generateMultiUsers');
-    buttonMultiUser.addEventListener('click', makeUsersRequest);
+    buttonMultiUser.addEventListener('click', fetchUsers);
+
+    
 
 }
+
 // Request a single user
 function makeUserRequest() {
     let baseUrl = 'https://randomuser.me/api/';
@@ -86,4 +94,60 @@ function makeRequest(url, func) {
     }
     xhr.open('GET', url);
     xhr.send();
+}
+
+/* requests with fetch api */
+
+function fetchUser() {
+    fetch('https://randomuser.me/api/')
+    .then(response => {return response.json()})
+    .then(function(results) {
+        let firstName = results.results[0].name.first;
+        let lastName = results.results[0].name.last;
+        firstName = firstName.charAt(0).toUpperCase() + firstName.substring(1, firstName.length)
+        lastName = lastName.charAt(0).toUpperCase() + lastName.substring(1, lastName.length);  
+        let phoneNumber = results.results[0].phone;
+        let emailAddress =  results.results[0].email;
+        //display the results
+        document.getElementById('userName').innerHTML = `Name: ${firstName} ${lastName}`;
+        document.getElementById('userPhone').innerHTML = `Phone: ${phoneNumber}`;
+        document.getElementById('userEmail').innerHTML = `Email: ${emailAddress}`;
+    })
+}
+
+function fetchUsers() {
+    let numResults = document.getElementById('numberOfRowsSelect').value;
+    fetch('https://randomuser.me/api/?results=' + numResults)
+    .then(response => {return response.json()})
+    .then(function(results){
+        let table = document.getElementById('userTable');
+        table.innerHTML = '';
+        
+        for(var i = 0; i < numResults; i++) {
+           
+            tableRow = document.createElement('tr');
+            tableNum = document.createElement('td');
+            tableName = document.createElement('td');
+            tablePhone = document.createElement('td');
+            tableEmail = document.createElement('td');
+            let firstName = results.results[i].name.first;
+            let lastName = results.results[i].name.last;
+            firstName = firstName.charAt(0).toUpperCase() + firstName.substring(1, firstName.length)
+            lastName = lastName.charAt(0).toUpperCase() + lastName.substring(1, lastName.length);  
+            let phoneNumber = results.results[i].phone;
+            let emailAddress =  results.results[i].email;
+
+            tableNum.innerHTML = i + 1;
+            tableName.innerHTML = `${firstName} ${lastName}`;
+            tablePhone.innerHTML = phoneNumber;
+            tableEmail.innerHTML = emailAddress;
+
+            tableRow.appendChild(tableNum);
+            tableRow.appendChild(tableName);
+            tableRow.appendChild(tablePhone);
+            tableRow.appendChild(tableEmail);
+
+            table.appendChild(tableRow);
+        }
+    })
 }
