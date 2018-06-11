@@ -1,4 +1,5 @@
 let baseUrl = "https://randomuser.me/api/?results=";
+
 function submit() {
     let uname = document.getElementById("nameuser").value;
     let usernum = document.getElementById("cnumber").value;
