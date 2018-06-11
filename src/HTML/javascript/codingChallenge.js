@@ -25,11 +25,6 @@ function getUser(num) {
 function addUser(xhr) {
     let response = xhr.response;
     let info = JSON.parse(response);
-    console.log(info);
-	let name = info.results[0].name.first + " " + info.results[0].name.last;
-	let phone = info.results[0].phone;
-	let email = info.results[0].email;
-	console.log(email);
 	
 	let newRow;
 	
@@ -45,9 +40,17 @@ function addUser(xhr) {
 }
 
 function onClickGenerate(){
-	console.log("hello");
-	getUser(5);
+	clearTable();
+	getUser(select.value);
 };
+
+function clearTable(){
+	if(table.rows.length > 1){
+		for(i = 1; table.rows.length > 1;){
+			table.deleteRow(i);
+		}
+	}
+}
 
 select.addEventListener("change", function(){
 	if(table.rows.length > select.value){
