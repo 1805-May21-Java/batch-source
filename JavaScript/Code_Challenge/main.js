@@ -1,5 +1,4 @@
 document.getElementById("callApi").addEventListener("click", makeApiCall);
-document.getElementById("createTable").addEventListener("click", createTable);
 
 let users; 
 
@@ -34,7 +33,7 @@ function setUpTable(){
 
 function createTable(){
   if(!users) {
-    alert("Must click get user button first.");
+    alert("Error calling API. Please try again.");
   } else {
     setUpTable();
     const tableBody = document.getElementsByTagName("tbody")[0];
@@ -60,6 +59,7 @@ function createTable(){
 
 function getUsers(xhr) {
   users = JSON.parse(xhr.response);
+  createTable();
 }
 
 function makeApiCall() {
