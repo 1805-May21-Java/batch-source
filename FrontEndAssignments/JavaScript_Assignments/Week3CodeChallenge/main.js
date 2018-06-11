@@ -44,7 +44,7 @@ function makeUsersRequest() {
         let results = JSON.parse(xhr.response);
         //get the table element
         let table = document.getElementById('userTable');
-
+        table.innerHTML = '';
         
         for(var i = 0; i < numResults; i++) {
            
