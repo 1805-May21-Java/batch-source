@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Week 3 Code Challenge</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+    <!-- Vendor Styles-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <!-- Custom Styles-->
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+</head>
+<body>
+    <div class="container">
+
+        
+            <h1>Random User Generator</h1>
+
+            <h2>Generate a single user</h2>
+
+        <div class="row">
+            <form>
+                <div class="form-group">
+                    <button type="button" id="generateUser" class="btn btn-primary">Generate User</button>
+                </div>
+            </form>
+        </div>
+        <div class="row">
+            <div id="userInfo">
+                <p id="userName"></p>
+                <p id="userPhone"></p>
+                <p id="userEmail"></p>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <form >
+                <div class="form-group">
+                    <label>Number of Rows:</label>
+                    <select class="form-control" id="numberOfRowsSelect"> 
+                        <option>10</option>
+                        <option selected>20</option>
+                        <option>50</option>
+                    </select>
+                </div>
+                <button type="button" id="generateMultiUsers" class="btn btn-primary">Populate Table</button>
+            </form>
+        </div>
+        <div class="row">
+            <table id="userTable" class="table">
+                <tr>
+                    <th>No.</th>
+                    <th>Name</th>
+                    <th>Phone Number</th>
+                    <th>Adddress</th>
+                </tr>
+            </table>
+        </div>
+    </div>
+    
+    <!-- Vendor Scripts-->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <!-- Custom Scripts-->
+    <script src="main.js"></script>
+</body>
+</html>
