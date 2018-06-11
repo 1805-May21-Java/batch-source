@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Coding Challenge</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+        crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container" align="center">
+        <h1>Example Sign Up</h1>
+        <br>
+        <div class="jumbotron" style="max-width: 500px;">
+            <h2>Sign Up</h2>
+            <form class="form-group">
+                <br>
+                <label>Name</label>
+                <input class="form-control" type="text" id="name">
+                <br>
+                <label>Phone</label>
+                <input class="form-control" type="tel" id="phone">
+                <br>
+                <label>Email</label>
+                <input class="form-control" type="email" id="email">
+
+            </form>
+            <hr class="my-4">
+            <p>We can generate a random user for testing.</p>
+            <button class="btn btn-outline-warning" onclick="getRandomUser()">Random User Info</button>
+            <button class="btn btn-warning" onclick="window.alert('This is just an example')">Sign Up</button>
+        </div>
+
+        <br>
+        <h1>User Table Example</h1>
+        <br>
+        <div class="jumbotron">
+            <div class="inline">
+                <select id="numberRows">
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="50">50</option>
+                </select>
+                <button class="btn btn-warning" onclick="populateTable()">Generate Table</button>
+            </div>
+            <br>
+            <table class="table" id="myTable">
+                <tr>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+
+    </div>
+
+
+
+
+
+
+    <script src="main.js"></script>
+</body>
+
+</html>
