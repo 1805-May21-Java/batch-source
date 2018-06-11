@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Randomizing</title>
+
+    <link rel="icon" href="https://png.icons8.com/metro/1600/settings.png">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="http://code.jquery.com/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+        crossorigin="anonymous">
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container text-center">
+        <div class="jumbotron">
+            <h1>Random Profile</h1>
+            <p></p>
+
+            <div class="form-group form-inline">
+                
+                <button onclick="randomize()" class="btn btn-default btn-center">Randomize Now</button>
+                
+            </div>
+
+
+        </div>
+        <div class="container">
+            <img id="pictures"  />
+            <h2 id="name"></h2>
+            <h4 id="gender"/>
+            <h4 id="email"></h4>
+            <h4 id="phone"></h4>
+        </div>
+    </div>
+
+    <script src="random.js"></script>
+</body>
+</html>
