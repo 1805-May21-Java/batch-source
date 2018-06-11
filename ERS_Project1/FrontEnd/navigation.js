@@ -111,7 +111,7 @@ function showMakeRequest() {
 function showViewRequests() {
     hideAll();
     document.getElementById("viewRequestsMenu").removeAttribute("hidden");
-    document.getElementById("currentTitle").innerHTML = "View Requests";
+    document.getElementById("currentTitle").innerHTML = "Requests";
     $('html,body').scrollTop(0);
     sessionStorage.setItem("currentPage", "viewRequests");
 }

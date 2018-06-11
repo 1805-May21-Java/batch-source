@@ -89,3 +89,7 @@ button.myButton:hover {
 .myCredentialsMenu {
     max-width: 550px;
 }
+
+#makeRequestContent {
+    max-width: 700px;
+}
