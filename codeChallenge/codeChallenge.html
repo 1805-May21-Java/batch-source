@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Populate Users</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" 
+    crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="codeChallengeStyle.css" title="Challenge Style" media="screen">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" 
+    crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" 
+    crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" 
+    crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+    <div class="container text-center">
+        <h1>Welcome to the Random User Generator</h1>
+        <div class="container text-center">
+            <button onclick="getUser()" id="populate" class="btn btn-default btn-center">Populate User Information</button>
+            <button onclick="getUsers()" id="users" class="btn btn-default btn-center">Populate 20 Users</button>
+        </div>
+    </div>
+    <div id="problem1">
+        <table class="table text-center">
+            <tr>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Username</th>
+                <th>Password</th>
+                <th>Date of Birth</th>
+                <th>Phone</th>
+                <th>Email</th>
+            </tr>
+            <tr>
+                <td id="firstName"></td>
+                <td id="lastName"></td>
+                <td id="username"></td>
+                <td id="password"></td>
+                <td id="dob"></td>
+                <td id="phone"></td>
+                <td id="email"></td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="problem2">
+        
+    </div>
+
+    
+    <script src="codeChallengeScript.js"></script>
+</body>
+</html>
