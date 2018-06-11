@@ -1,6 +1,6 @@
 // document.getElementById('form-randomize').onclick = rndmuser;
 
-let url = 'https://randomuser.me/api/';
+let url = 'https://randomuser.me/api/?results=';
 
 function rndmuser() {
     sendAjaxGet(url, getrndmuser);
@@ -43,23 +43,26 @@ function getrndmuser(xhr) {
     }
 }
 
-function submittotable(){
+function submittotable() {
 
     let firstname = document.getElementById('firstname').value;
     let lastname = document.getElementById('lastname').value;
     let email = document.getElementById('email').value;
     let phone = document.getElementById('phone').value;
+    if (!firstname || !lastname || !email || !phone) {
+        return;
+    }
 
     let t = document.getElementsByName('gender');
     let gender = '';
     for (i of t) {
-        if ( i.checked == true) {
+        if (i.checked == true) {
             gender = i.value;
         }
     }
 
     let row = document.createElement('tr');
-    row.setAttribute('scope','row');
+    row.setAttribute('scope', 'row');
 
     let c1 = document.createElement('td');
     let c2 = document.createElement('td');
@@ -70,8 +73,8 @@ function submittotable(){
     c1.innerHTML = firstname;
     c2.innerHTML = lastname;
     c3.innerHTML = email;
-    c4.innerHTML=phone;
-    c5.innerHTML=gender;
+    c4.innerHTML = phone;
+    c5.innerHTML = gender;
 
     row.appendChild(c1);
     row.appendChild(c2);
@@ -84,22 +87,42 @@ function submittotable(){
     clearForm();
 }
 
-function clearForm(){
+function clearForm() {
     document.getElementById('firstname').value = '';
     document.getElementById('lastname').value = '';
     document.getElementById('email').value = '';
     document.getElementById('phone').value = '';
 }
 
-function getrndmnumberusers(){
-    function getandsubmit(xhr){
-        getrndmuser(xhr);
+function getmultiple(xhr) {
+    let resp = xhr.response;
+    let info = JSON.parse(resp);
+
+    info = info.results;
+
+    console.log(info);
+
+    for (let i = 0; i < info.length; i++) {
+        console.log(info[i]);
+        let infot = info[i];
+        let firstname = infot.name.first;
+        let lastname = infot.name.last;
+        let email = infot.email;
+        let phone = infot.phone;
+        let gender = infot.gender;
+
+        document.getElementById('firstname').value = firstname;
+        document.getElementById('lastname').value = lastname;
+        document.getElementById('email').value = email;
+        document.getElementById('phone').value = phone;
+
         submittotable();
     }
+}
+
+function getrndmnumberusers() {
 
     let n = document.getElementById('nusers').value;
     n = Number(n);
-    for ( let i = 0; i < n; i++ ) {
-        sendAjaxGet(url,getandsubmit);
-    }
+    sendAjaxGet('https://randomuser.me/api/?results=10', getmultiple);
 }
