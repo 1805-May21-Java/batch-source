@@ -40,7 +40,7 @@ public class Question19 {
         System.out.println("Array without primes: "+arr.toString());
     }
     private static boolean isPrime(int n) {
-        for(int i=2;i<=n/2;i++) {
+        for(int i=2;i<=n/2;i++) {   
             if(n%i==0)
                 return false;
         }
