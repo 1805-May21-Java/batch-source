@@ -27,7 +27,7 @@ function popTable(xhr){
     let response = xhr.response;
     let person = JSON.parse(response);
 
-    let name = person.results[0].name.first+" "+person.results[0].name.last;
+    let name = cap(person.results[0].name.first)+" "+cap(person.results[0].name.last);
     let phone = person.results[0].phone;
     let email = person.results[0].email;
     let country = person.results[0].nat;
@@ -48,6 +48,12 @@ function popTable(xhr){
     cell2.innerHTML = phone;
     cell3.innerHTML = email;
     cell4.innerHTML = `<img src="http://www.countryflags.io/${country.toLowerCase()}/flat/32.png">`;
-    cell5.innerHTML = city;
+    cell5.innerHTML = cap(city);
 
+}
+
+function cap(str) {
+    return str.replace(/\w\S*/g, function(txt){
+        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    });
 }
