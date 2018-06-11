@@ -22,27 +22,70 @@
 </head>
 <body>
     <div class="container text-center">
-        <div class="jumbotron">
+        <div class="jumbotron"  style="background-image: url(https://thumbs.dreamstime.com/b/light-grey-white-background-random-line-pattern-geometric-lines-abstract-technology-geometric-shapes-tessellation-94727776.jpg)">
             <h1>Random Profile</h1>
             <p></p>
 
             <div class="form-group form-inline">
-                
                 <button onclick="randomize()" class="btn btn-default btn-center">Randomize Now</button>
-                
             </div>
-
-
         </div>
-        <div class="container">
-            <img id="pictures"  />
-            <h2 id="name"></h2>
-            <h4 id="gender"/>
-            <h4 id="email"></h4>
-            <h4 id="phone"></h4>
-        </div>
+
+        <div class="dropdown" id="dropdown" >
+                <div class="form-group">
+                        <label for="sel1">Select The Number to Populate To The Table</label>
+                        <select class="form-control" id="sel1" onchange="randomizeInput(this.value);">
+                          <option value="10">10 Profiles</option>
+                          <option value="30">30 Profiles</option>
+                          <option value="50">50 Profiles</option>
+                          <option value="70">70 Profiles</option>
+                        </select>
+                      </div>
+                </div>
+                <div class="container">
+                        <img id="pictures"/>
+                        <h2 id="name"></h2>
+                        <h4 id="gender"/>
+                        <h4 id="email"></h4>
+                        <h4 id="phone"></h4>
+                </div>
+                <div align="center">
+                        <table class="table table-striped table-hover table-sm">
+                            <thead>
+                                <tr>
+                                    <th scope="col">
+                                        <h4>Picture</h4>
+                                    </th>
+                                    <th scope="col">
+                                        <h4>Name</h4>
+                                    </th>
+                                    <th scope="col">
+                                        <h4>Gender</h4>
+                                    </th>
+                                    <th scope="col">
+                                        <h4>Phone</h4>
+                                    </th>
+                                    <th scope="col">
+                                        <h4>Email</h4>
+                                    </th>
+                                    
+                                </tr>
+                            </thead>
+            
+                            <tbody>
+            
+            
+                            </tbody>
+                     
+            
+                        </table>
+                </div>
+          </div>
+          
+
     </div>
 
+    
     <script src="random.js"></script>
 </body>
 </html>
