@@ -1,6 +1,29 @@
-document.getElementById("callApi").addEventListener("click", makeApiCall);
+document.getElementById("getUser").addEventListener("click", () => {
+  fetch("https://randomuser.me/api/?results=1")
+  .then((response) => {
+    return response.json();
+  })
+  .then((data) => {
+    createTable(data);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+});
 
-let users; 
+document.getElementById("getUsers").addEventListener("click", () => {
+  const number = document.querySelector("option:checked").value;
+  fetch(`https://randomuser.me/api/?results=${number}`)
+  .then((response) => {
+    return response.json();
+  })
+  .then((data) => {
+    createTable(data);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+});
 
 function setUpTable(){
   const oldTable = document.getElementsByTagName("table")[0];
@@ -13,68 +36,51 @@ function setUpTable(){
   const th1 = document.createElement("th");
   th1.innerHTML = "Name";
   const th2 = document.createElement("th");
-  th2.innerHTML = "Phone";
+  th2.innerHTML = "Image";
   const th3 = document.createElement("th");
-  th3.innerHTML = "Email";
+  th3.innerHTML = "Phone";
   const th4 = document.createElement("th");
-  th4.innerHTML = "User Number";
-  headRow.appendChild(th4);
+  th4.innerHTML = "Email";
+  const th5 = document.createElement("th");
+  th5.innerHTML = "User Number";
   headRow.appendChild(th1);
   headRow.appendChild(th2);
   headRow.appendChild(th3);
+  headRow.appendChild(th4);
+  headRow.appendChild(th5);
   head.appendChild(headRow);
   table.appendChild(head);
   const tableBody = document.createElement("tbody");
   table.appendChild(tableBody);
   document.getElementsByTagName("body")[0].appendChild(table);
-
-  table.setAttribute("class", "table");
+  table.setAttribute("class", "table table-hover");
+  head.setAttribute("class", "bg-dark text-white")
 }
 
-function createTable(){
-  if(!users) {
-    alert("Error calling API. Please try again.");
-  } else {
-    setUpTable();
-    const tableBody = document.getElementsByTagName("tbody")[0];
-    for(let i = 0; i < users.results.length; i++) {
-      const user =  users.results[i];
-      const userNumber = document.createElement("td");
-      userNumber.innerHTML = i + 1;
-      const userName = document.createElement("td");
-      userName.innerHTML = `${capitalize(user.name.title)} ${capitalize(user.name.first)} ${capitalize(user.name.last)}`;
-      const userPhone = document.createElement("td");
-      userPhone.innerHTML = user.phone;
-      const userEmail = document.createElement("td");
-      userEmail.innerHTML = user.email;
-      const row = document.createElement("tr");
-      row.appendChild(userNumber);
-      row.appendChild(userName);
-      row.appendChild(userPhone);
-      row.appendChild(userEmail);
-      tableBody.appendChild(row);
-    }
-  }
-}
-
-function getUsers(xhr) {
-  users = JSON.parse(xhr.response);
-  createTable();
-}
-
-function makeApiCall() {
-  const number = document.querySelector("option:checked").value;
-  sendAjaxCall(`https://randomuser.me/api/?results=${number}`, getUsers)
-}
-
-function sendAjaxCall(url, func){
-  const xhr = new XMLHttpRequest();
-  xhr.open("GET", url);
-  xhr.send();
-  xhr.onreadystatechange = function() {
-    if(this.status === 200 && this.readyState === 4) {
-      func(this);
-    }
+function createTable(users){
+  setUpTable();
+  const tableBody = document.getElementsByTagName("tbody")[0];
+  let i = 1;
+  for(let user of users.results){
+    const userNumber = document.createElement("td");
+    userNumber.innerHTML = i++;
+    const userName = document.createElement("td");
+    userName.innerHTML = `${capitalize(user.name.title)} ${capitalize(user.name.first)} ${capitalize(user.name.last)}`;
+    const userImage = document.createElement("td");
+    const image = document.createElement("img");
+    image.setAttribute("src", user.picture.thumbnail);
+    userImage.appendChild(image);
+    const userPhone = document.createElement("td");
+    userPhone.innerHTML = user.phone;
+    const userEmail = document.createElement("td");
+    userEmail.innerHTML = user.email;
+    const row = document.createElement("tr");
+    row.appendChild(userNumber);
+    row.appendChild(userName);
+    row.appendChild(userImage);
+    row.appendChild(userPhone);
+    row.appendChild(userEmail);
+    tableBody.appendChild(row);
   }
 }
 
