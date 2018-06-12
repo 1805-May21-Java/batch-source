@@ -9,9 +9,12 @@ function fillForm () {
 }
 
 function fillTable() {
-    for (let i=0; i<20; i++) {
-        sendAjaxGet(baseURL, processTable);
-    }
+    // for (let i=0; i<20; i++) {
+    //     sendAjaxGet(baseURL, processTable);
+    // }
+    var numResults = 20;
+    var resultsURL = baseURL + "?results=" + numResults;
+    sendAjaxGet(resultsURL, processTable);
 }
 
 
@@ -38,21 +41,32 @@ function processData(xhr) {
 
 function processTable(xhr) {
     let response = xhr.response;
-    let data = JSON.parse(response).results[0];
+    let data = JSON.parse(response).results;
 
-    var row = document.createElement("tr");
-    var cell1 = document.createElement("td");
-    var cell2 = document.createElement("td");
-    var cell3 = document.createElement("td");
+    console.log(data);
 
-    row.appendChild(cell1);
-    row.appendChild(cell2);
-    row.appendChild(cell3);
+    var count = 0;
 
-    cell1.innerHTML = data.name.first + " " + data.name.last;
-    cell2.innerHTML = data.phone;
-    cell3.innerHTML = data.email;
+    for (var person in data) {
 
-    document.getElementsByTagName("table")[0].appendChild(row);
+        var row = document.createElement("tr");
+        count += 1;
+        var cell0 = document.createElement("td");
+        var cell1 = document.createElement("td");
+        var cell2 = document.createElement("td");
+        var cell3 = document.createElement("td");
+
+        row.appendChild(cell0);
+        row.appendChild(cell1);
+        row.appendChild(cell2);
+        row.appendChild(cell3);
+
+        cell0.innerHTML = count;
+        cell1.innerHTML = data[person].name.first + " " + data[person].name.last;
+        cell2.innerHTML = data[person].phone;
+        cell3.innerHTML = data[person].email;
+
+        document.getElementsByTagName("table")[0].appendChild(row);
+    }
 
 }
