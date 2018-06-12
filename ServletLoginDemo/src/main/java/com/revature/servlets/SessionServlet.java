@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 public class SessionServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-		HttpSession session = request.getSession();
+		HttpSession session = request.getSession(false);
 		PrintWriter pw = response.getWriter();
 		response.setContentType("application/json");
 		if (session != null) {

@@ -14,7 +14,7 @@ public class LoginServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		HttpSession session = request.getSession();
-		session.invalidate();
+		//session.invalidate();
 		request.getRequestDispatcher("Login.html").forward(request, response);
 	}
 	
