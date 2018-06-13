@@ -30,3 +30,14 @@ function fillForm(obj) {
     document.getElementById("createPassword").value = person.login.password;
     document.getElementById("confirmPassword").value = person.login.password;
 }
+
+
+function isValidEmail(str) {
+    let a = str.lastIndexOf("@");
+    let d = str.lastIndexOf(".");
+
+    if ((a > -1 && d > -1) && (a<d) && (d-a > 1) && (str.length-d > 1)){
+        return true;
+    }
+    return false;
+}

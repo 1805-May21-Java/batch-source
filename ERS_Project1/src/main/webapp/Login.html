@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Expense Reimbursment System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- BootStrap CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+        crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+        crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" type="text/css" media="screen" href="./styles/Style.css" />
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg" id="myNavigation">
+        <div class="container">
+            <a class="navbar-brand myBrand" href="#" id="refresh">ERS</a>
+            <button class="navbar-toggler myButton" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">menu</button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                <ul class="navbar-nav mr-auto ">
+                    <li class="nav-item" hidden>
+                        <a class="nav-link myLink" href="./Profile.html" id="goToProfile">My Profile</a>
+                    </li>
+                    <li class="nav-item" hidden>
+                        <a class="nav-link myLink" href="./MakeRequest.html" id="goToMakeRequest">Make Request</a>
+                    </li>
+                    <li class="nav-item" hidden>
+                        <a class="nav-link myLink" href="./MyRequests.html" id="goToViewRequests">View Requests</a>
+                    </li>
+                    <li class="nav-item" hidden>
+                        <a class="nav-link myLink" href="./PendingRequests.html" id="goToViewRequests">Manage Requests</a>
+                    </li>
+                </ul>
+
+                <form class="form-inline my-2 my-lg-0" action="./Register">
+                    <button class="btn myButton">Register</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container" align=center>
+        <br>
+        <h1>Login</h1>
+
+        <div class="myCredentialsMenu">
+            <div class="jumbotron myJumbotron">
+                <div class="warning">
+                    <p class="warningMessage"></p>
+                    <hr class="my-4">
+                </div>
+                <form class="form-group" action="Login" method="post">
+                    <label>Email</label>
+                    <input class="form-control" type="email" name="email">
+                    <br>
+                    <label>Password</label>
+                    <input class="form-control" type="password" name="password">
+                    <br>
+                    <button class="btn myButton" type="submit">Login</button>
+                </form>
+
+                <hr class="my-4">
+
+
+                <form action="./Register">
+                    <p class="minor">Don't have an account with us?
+                        <button class="btn myButton">Register</button>
+                    </p>
+                </form>
+
+
+            </div>
+        </div>
+
+
+</body>
+
+</html>

@@ -118,12 +118,17 @@ function showViewRequests() {
 
 function attemptLogin() {
     let failure = false;
+    if (!isValidEmail(document.getElementById("email").value)) {
+        failure = true;
+        showWarnings("Please enter a valid email.")
+    }
+    
     if (document.getElementById("email").value == "" || document.getElementById("password").value == "") {
         failure = true;
         showWarnings("Please provide both email and password to sign in.");
     }
 
-
+    
 
     if (!failure) {
         login();
@@ -146,6 +151,12 @@ function login() {
 
 function attemptCreateAccount() {
     let failure = false;
+
+    if (!isValidEmail(document.getElementById("newEmail").value)) {
+        failure = true;
+        showWarnings("Please enter a valid email.")
+    }
+
     if (document.getElementById("firstName").value == "" ||
         document.getElementById("lastName").value == "" ||
         document.getElementById("newEmail").value == "" ||
@@ -158,7 +169,7 @@ function attemptCreateAccount() {
     if(!failure && document.getElementById("createPassword").value != document.getElementById("confirmPassword").value) {
         failure = true;
         showWarnings("Confirmation didn't match with initial password.");
-    }
+    }    
 
     //TODO: check if email has an account associated already needs ajax call
 
