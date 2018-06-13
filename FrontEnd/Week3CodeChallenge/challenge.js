@@ -7,7 +7,7 @@ function setGetUserListener() {
     let btn = document.getElementById("createInfoButton");
 
     btn.addEventListener("click", function() {
-        getNewRandomUser();
+        getNewRandomUserFetch();
     });
 }
 
@@ -17,16 +17,30 @@ function getNewRandomUser() {
     xhr.onreadystatechange = function() {
         console.log(this.readyState);
         if (this.status == 200 && this.readyState == 4) {
-            setRandomUser(this);
+            singleUserParseJSON(this);
         }
     }
     xhr.open("GET", url);
     xhr.send();
 }
 
-function setRandomUser(xhr) {
+function getNewRandomUserFetch() {
+    let url = 'https://randomuser.me/api';
+
+    fetch(url).then(function(response) {
+        return response.json();
+    }).then(function(json) {
+        setRandomUser(json);
+    });
+}
+
+function singleUserParseJSON(xhr) {
     let response = xhr.response;
     let json = JSON.parse(response);
+    setRandomUser(json);
+}
+
+function setRandomUser(json) {
     document.getElementById("fname").innerHTML = json.results[0].name.first;
     document.getElementById("lname").innerHTML = json.results[0].name.last;
     document.getElementById("phone").innerHTML = json.results[0].phone;
@@ -38,7 +52,7 @@ function setGetTableListener() {
 
     btn.addEventListener("click", function() {
         clearTableContents();
-        getNewRandomUsers(20);
+        getNewRandomUsersFetch(20);
     });
 }
 
@@ -48,16 +62,29 @@ function getNewRandomUsers(num) {
     xhr.onreadystatechange = function() {
         console.log(this.readyState);
         if (this.status == 200 && this.readyState == 4) {
-            setTableContents(this, num);
+            tableParseJSON(this, num);
         }
     }
     xhr.open("GET", url);
     xhr.send();
 }
 
-function setTableContents(xhr, num) {
-    let json = JSON.parse(xhr.response);
+function getNewRandomUsersFetch(num) {
+    let url = `https://randomuser.me/api/?results=${num}`;
+    
+    fetch(url).then(function(response) {
+        return response.json();
+    }).then(function(json) {
+        setTableContents(json, num);
+    });
+}
 
+function tableParseJSON(xhr, num) {
+    let json = JSON.parse(xhr.response);
+    setTableContents(json, num);
+}
+
+function setTableContents(json, num) {
     let table = document.getElementById("randomUserTable");
 
     for (let i = 0; i < num; i++) {
