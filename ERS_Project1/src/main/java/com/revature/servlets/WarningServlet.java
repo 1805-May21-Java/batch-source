@@ -27,7 +27,6 @@ public class WarningServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		PrintWriter pw = response.getWriter();
 		response.setContentType("application/json");
 		if (GateKeeper.getWarning() != "") {

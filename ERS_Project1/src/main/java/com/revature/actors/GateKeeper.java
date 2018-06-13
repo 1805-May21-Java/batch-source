@@ -1,5 +1,10 @@
 package com.revature.actors;
 
+import java.util.List;
+
+import com.revature.dao.EmployeeDaoImpl;
+import com.revature.pojos.Employee;
+
 public class GateKeeper {
 	private static String warning = "";
 	public static String getWarning() {
@@ -19,8 +24,17 @@ public class GateKeeper {
 			warning ="Invalid email";
 			return false;
 		}
-		//TODO : check if credentials are in the db
-		return true;
+		
+		EmployeeDaoImpl edi = new EmployeeDaoImpl();
+		List<Employee> completeList = edi.getEmployees();
+		for(Employee emp : completeList) {
+			if(emp.getEmail().equals(email.toUpperCase()) && emp.getPassword().equals(password)) {
+				return true;
+			}
+		}
+		
+		GateKeeper.warning = "Email and password didn't match any of our clients.";
+		return false;
 	}
 	
 	public static boolean attemptRegistration(

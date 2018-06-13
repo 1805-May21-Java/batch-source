@@ -9,8 +9,8 @@ public class ConnectionUtil {
 	
 	public static Connection getConnection() throws SQLException, IOException {
 		Properties prop = new Properties();
-		InputStream in = new FileInputStream("connection.properties");
-		prop.load(in);
+		ClassLoader loader = Thread.currentThread().getContextClassLoader();
+		prop.load(loader.getResourceAsStream("connection.properties"));
 		
 		String url = prop.getProperty("url");
 		String username = prop.getProperty("username");
@@ -20,6 +20,7 @@ public class ConnectionUtil {
 			connection = DriverManager.getConnection(url, username, password);
 		}
 		
-		return DriverManager.getConnection(url, username, password);
+		
+		return connection;
 	}
 }

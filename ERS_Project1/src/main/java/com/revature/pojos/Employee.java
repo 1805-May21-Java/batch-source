@@ -10,13 +10,13 @@ public class Employee {
 	private String password;
 	private int manager;
 	private List<Integer> staff;
-	private List<Request> requests;
+	private List<Integer> requests;
 	public Employee() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public Employee(int id, String firstName, String lastName, String email, String password, int manager,
-			List<Integer> staff, List<Request> requests) {
+			List<Integer> staff, List<Integer> requests) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
@@ -26,6 +26,16 @@ public class Employee {
 		this.manager = manager;
 		this.staff = staff;
 		this.requests = requests;
+	}
+	
+	public Employee(int id, String firstName, String lastName, String email, String password, int manager) {
+		super();
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.password = password;
+		this.manager = manager;
 	}
 	public int getId() {
 		return id;
@@ -69,10 +79,10 @@ public class Employee {
 	public void setStaff(List<Integer> staff) {
 		this.staff = staff;
 	}
-	public List<Request> getRequests() {
+	public List<Integer> getRequests() {
 		return requests;
 	}
-	public void setRequests(List<Request> requests) {
+	public void setRequests(List<Integer> requests) {
 		this.requests = requests;
 	}
 	@Override
