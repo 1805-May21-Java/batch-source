@@ -17,7 +17,6 @@ public class WarningServlet extends HttpServlet {
      */
     public WarningServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
     
    

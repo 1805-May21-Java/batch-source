@@ -45,7 +45,16 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	}
 
 	public int createEmployee(Employee employee) {
-		// TODO Auto-generated method stub
+		try {
+			Connection conn = ConnectionUtil.getConnection();
+			String sql ="INSERT INTO ERS_EMPLOYEE";
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return 0;
 	}
 
