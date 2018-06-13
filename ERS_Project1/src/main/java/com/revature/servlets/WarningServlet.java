@@ -7,43 +7,45 @@ import javax.servlet.http.*;
 import com.revature.actors.GateKeeper;
 
 /**
- * Servlet implementation class LoginServlet
+ * Servlet implementation class WarningServlet
  */
-public class LoginServlet extends HttpServlet {
+public class WarningServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginServlet() {
+    public WarningServlet() {
         super();
+        // TODO Auto-generated constructor stub
     }
+    
+   
+    
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("Login.html").forward(request, response);
+		
+		PrintWriter pw = response.getWriter();
+		response.setContentType("application/json");
+		if (GateKeeper.getWarning() != "") {
+			pw.write("{\"warning\":\"" + GateKeeper.getWarning()+"\"}");
+		} else {
+			pw.write("{\"warning\": null}");
+		}
+		pw.close();
+		// Clear warning so that it doesn't show up in the next screen
+		GateKeeper.setWarning("");
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String email = request.getParameter("email");
-		String password = request.getParameter("password");
-		
-		
-		HttpSession session = request.getSession();
-		if(GateKeeper.validLogin(email, password)) {
-			//System.out.println("login was successful - correct credentials");
-			session.setAttribute("email", email);
-			response.sendRedirect("./Profile");
-		} else {
-			//System.out.println("login was not successful - please try again");
-			response.sendRedirect("./Login");
-		}
-		
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Expense Reimbursment System</title>
+    <title>Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- BootStrap CDN -->
@@ -56,8 +56,8 @@
 
         <div class="myCredentialsMenu">
             <div class="jumbotron myJumbotron">
-                <div class="warning">
-                    <p class="warningMessage"></p>
+                <div id="warning">
+                    <p id="warningMessage"></p>
                     <hr class="my-4">
                 </div>
                 <form class="form-group" action="Login" method="post">
@@ -72,18 +72,18 @@
 
                 <hr class="my-4">
 
-
                 <form action="./Register">
                     <p class="minor">Don't have an account with us?
                         <button class="btn myButton">Register</button>
                     </p>
                 </form>
-
-
             </div>
         </div>
+    </div>
 
 
+
+    <script src="scripts/Login.js"></script>
 </body>
 
 </html>

@@ -29,7 +29,7 @@ public class SessionServlet extends HttpServlet {
 		if (session != null) {
 			pw.write("{\"email\":\""+session.getAttribute("email")+"\"}");
 		} else {
-			pw.write("{\"username\": null}");
+			pw.write("{\"email\": null}");
 		}
 		pw.close();
 	}

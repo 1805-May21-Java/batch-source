@@ -20,14 +20,12 @@ public class RegisterServlet extends HttpServlet {
      */
     public RegisterServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
 		request.getRequestDispatcher("Register.html").forward(request, response);
 	}
 
@@ -41,6 +39,7 @@ public class RegisterServlet extends HttpServlet {
 		String registration = request.getParameter("registration");
 		String password = request.getParameter("password");
 		String confirmPassword = request.getParameter("confirmPassword");
+		GateKeeper.setWarning("");
 		
 		HttpSession session = request.getSession();
 		if(GateKeeper.attemptRegistration(firstName, lastName, email, registration, password, confirmPassword)) {
@@ -49,7 +48,7 @@ public class RegisterServlet extends HttpServlet {
 			response.sendRedirect("./Profile");
 		} else {
 			//System.out.println("login was not successful - please try again");
-			response.sendRedirect("./Registration");
+			response.sendRedirect("./Register");
 		}
 	}
 

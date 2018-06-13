@@ -49,4 +49,24 @@
     <servlet-name>RegisterServlet</servlet-name>
     <url-pattern>/Register</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>WarningServlet</display-name>
+    <servlet-name>WarningServlet</servlet-name>
+    <servlet-class>com.revature.servlets.WarningServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>WarningServlet</servlet-name>
+    <url-pattern>/Warning</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>LogoutServlet</display-name>
+    <servlet-name>LogoutServlet</servlet-name>
+    <servlet-class>com.revature.servlets.LogoutServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LogoutServlet</servlet-name>
+    <url-pattern>/Logout</url-pattern>
+  </servlet-mapping>
 </web-app>
