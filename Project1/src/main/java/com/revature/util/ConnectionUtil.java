@@ -9,6 +9,11 @@ public class ConnectionUtil {
 	private static Connection connection;
 	
 	public static Connection getHardcodedConnection() throws SQLException {
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
 		String url = "jdbc:oracle:thin:@dboulos.cv36tvcn8gsq.us-east-2.rds.amazonaws.com:1521/ORCL";
 		String username = "mboulos";
 		String password = "lucasking";
@@ -19,8 +24,13 @@ public class ConnectionUtil {
 	}
 	
 	public static Connection getConnection() throws IOException, SQLException {
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
 		Properties prop = new Properties();
-		InputStream in = new FileInputStream("connection.properties");
+		InputStream in = new FileInputStream("C:\\Users\\mboul\\Documents\\Revature\\batch-source\\Project1\\src\\main\\resources\\connection.properties");
 		prop.load(in);
 		String url = prop.getProperty("url");
 		String username = prop.getProperty("username");

@@ -45,17 +45,19 @@
             z-index: 2;
         }
         .form-signin input[type="email"] {
-            margin-bottom: -1px;
             border-bottom-right-radius: 0;
             border-bottom-left-radius: 0;
         }
-        .form-signin input[id="inPassword"] {
+        .form-signin input[id="inPassword"],
+        .form-signin input[id="inPassword2"],
+        .form-signin input[id="inFirst"] {
+            margin-top: -1px;
             border-top-left-radius: 0;
             border-top-right-radius: 0;
             border-bottom-right-radius: 0;
             border-bottom-left-radius: 0;
         }
-        .form-signin input[id="inPassword2"] {
+        .form-signin input[id="inLast"] {
             margin-top: -1px;
             margin-bottom: 10px;
             border-top-left-radius: 0;
@@ -76,6 +78,10 @@
             <input type="password" id ="inPassword" class="form-control" name="password1" placeholder="Password" required>
             <label for="inPassword2" class="sr-only">Repeat Password</label>
             <input type="password" id = "inPassword2" class="form-control" name="password2" placeholder="Repeat Password" required>
+            <label for="inFirst" class="sr-only">First Name</label>
+            <input type="text" id = "inFirst" class="form-control" name="first" placeholder="First Name" required>
+            <label for="inLast" class="sr-only">Last Name</label>
+            <input type="text" id = "inLast" class="form-control" name="last" placeholder="Last Name" required>
             <button type="submit" class="btn btn-lg btn-primary btn-block">Register</button>
         </form>
     </div>

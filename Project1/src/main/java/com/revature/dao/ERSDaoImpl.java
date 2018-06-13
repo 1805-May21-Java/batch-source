@@ -6,6 +6,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.LinkedList;
 
 import com.revature.pojo.Employee;
@@ -50,7 +51,7 @@ public class ERSDaoImpl implements ERSDao {
 	}
 
 	public Employee getEmployeeByEmail(String email) {
-		Employee empl = new Employee();
+		Employee empl = null;
 		
 		try {
 			Connection con = ConnectionUtil.getConnection();
@@ -84,7 +85,7 @@ public class ERSDaoImpl implements ERSDao {
 	}
 
 	public Reimbursement getReimbursementByID(int ID) {
-		Reimbursement reimb = new Reimbursement();
+		Reimbursement reimb = null;
 		
 		try {
 			Connection con = ConnectionUtil.getConnection();
@@ -131,7 +132,10 @@ public class ERSDaoImpl implements ERSDao {
 			ps.setString(5, empl.getLast());
 			ps.setDate(6, empl.getBday());
 			ps.setString(7, empl.getTitle());
-			ps.setInt(8, empl.getManagerID());
+			if(empl.getManagerID() != 0)
+				ps.setInt(8, empl.getManagerID());
+			else
+				ps.setNull(8, Types.INTEGER);
 			emplsCreated = ps.executeUpdate();
 			
 			con.close();

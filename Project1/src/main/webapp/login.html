@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>ERS Login</title>
+    <title>ERS Registration</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--<link rel="stylesheet" type="text/css" media="screen" href="main.css" />-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
@@ -23,7 +23,7 @@
             padding-bottom: 40px;
             background-color:rgb(202, 238, 226);
         }
-        .form-signin, .register-button {
+        .form-signin {
             max-width: 330px;
             padding: 15px;
             margin: 0 auto;
@@ -54,8 +54,15 @@
             border-top-left-radius: 0;
             border-top-right-radius: 0;
         }
-        .register-button button {
+        #registerButton {
             margin-top: -20px;
+            max-width: 300px;
+            margin: 0 auto;
+            position: relative;
+            height: auto;
+            -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                    box-sizing: border-box;
         }
     </style>
 </head>
@@ -69,9 +76,9 @@
             <input type="password" id = "inPassword" class="form-control" name="password" placeholder="Password" required>
             <button type="submit" class="btn btn-lg btn-primary btn-block">Log in</button>
         </form>
-        <form class="register-button" action="register" method="post">
+        <a href="register" style="text-decoration: none;">
             <button id="registerButton" class="btn btn-lg btn-info btn-block">Register</button>
-        </form>
+        </a>
     </div>
     <!--<script src="main.js"></script>-->
 </body>

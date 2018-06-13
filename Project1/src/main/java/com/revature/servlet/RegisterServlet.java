@@ -1,21 +1,56 @@
 package com.revature.servlet;
 
 import java.io.IOException;
+import java.util.Random;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.revature.dao.ERSDaoImpl;
+import com.revature.pojo.Employee;
+
 public class RegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	ERSDaoImpl dao = new ERSDaoImpl();
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		req.getRequestDispatcher("register.html").forward(req, res);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		String user = req.getParameter("username");
+		String pass1 = req.getParameter("password1");
+		String pass2 = req.getParameter("password2");
+		String first = req.getParameter("first");
+		String last = req.getParameter("last");
+		
+		// search user records for username
+		if(dao.getEmployeeByEmail(user) != null) {
+			// message that email exists
+			System.out.println("exists");
+		}
+		if(!Employee.validatePassword(pass1)) {
+			// message about invalid password
+			System.out.println("invalid");
+		}
+		if(!pass1.equals(pass2)) {
+			// message about unmatched passwords
+			System.out.println("unmatched");
+		}
+		if(dao.getEmployeeByEmail(user) == null && Employee.validatePassword(pass1)
+				&& pass1.equals(pass2) && !first.equals("") && !last.equals("")) {
+			Random r = new Random();
+			int ID = r.nextInt(90000000) + 10000000;
+			Employee empl = new Employee(ID, user, pass1, first, last);
+			dao.createEmployee(empl);
+			// message about successful registration
+			res.sendRedirect("login");
+		}
+		else {
+			res.sendRedirect("register");
+		}
 	}
 
 }

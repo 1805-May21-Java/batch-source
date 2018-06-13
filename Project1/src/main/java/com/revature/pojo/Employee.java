@@ -17,6 +17,16 @@ public class Employee {
 		super();
 	}
 
+	public Employee(int ID, String email, String pass, String first, String last) {
+		super();
+		this.ID = ID;
+		this.email = email;
+		this.pass = pass;
+		this.first = first;
+		this.last = last;
+		this.managerID = 0;
+	}
+	
 	public Employee(int ID, String email, String pass, String first,
 			String last, Date bday, String title, int managerID) {
 		super();
