@@ -46,10 +46,10 @@ function listEmployees(xhr) {
 
 
 
-        row1.innerHTML = employees.results[i].name.first;
-        row2.innerHTML = employees.results[i].cell;
-        row3.innerHTML = employees.results[i].email;
-        document.getElementById("UserInfo").appendChild(nrow);
+    row1.innerHTML = employres.results[i].name.first;
+    row2.innerHTML = employees.results[i].cell;
+    row3.innerHTML = employees.results[i].email;
+    document.getElementById("UserInfo").appendChild(nrow);
     }
 }
 function sendAjaxGet(url, func) {
