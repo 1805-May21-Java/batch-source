@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>ERS Registration</title>
+    <title>ERS Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--<link rel="stylesheet" type="text/css" media="screen" href="main.css" />-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
@@ -70,6 +70,9 @@
     <div class="container">
         <form class="form-signin" action="login" method="post">
             <h2 class="form-signin-heading">ERS Login</h2>
+            <div id="messagesAndErrors">
+
+            </div>
             <label for="inEmail" class="sr-only">Email Address</label>
             <input type="email" id="inEmail" class="form-control" name="username" placeholder="Email Address" required autofocus>
             <label for="inPassword" class="sr-only">Password</label>
@@ -80,6 +83,6 @@
             <button id="registerButton" class="btn btn-lg btn-info btn-block">Register</button>
         </a>
     </div>
-    <!--<script src="main.js"></script>-->
+    <script src="forms.js"></script>
 </body>
 </html>

@@ -19,4 +19,14 @@
     <servlet-name>RegisterServlet</servlet-name>
     <url-pattern>/register</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>InfoServlet</display-name>
+    <servlet-name>InfoServlet</servlet-name>
+    <servlet-class>com.revature.servlet.InfoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>InfoServlet</servlet-name>
+    <url-pattern>/info</url-pattern>
+  </servlet-mapping>
 </web-app>

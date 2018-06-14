@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>ERS Login</title>
+    <title>ERS Registration</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--<link rel="stylesheet" type="text/css" media="screen" href="main.css" />-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
@@ -23,7 +23,7 @@
             padding-bottom: 40px;
             background-color:rgb(202, 238, 226);
         }
-        .form-signin, .register-button {
+        .form-signin {
             max-width: 330px;
             padding: 15px;
             margin: 0 auto;
@@ -49,7 +49,7 @@
             border-bottom-left-radius: 0;
         }
         .form-signin input[id="inPassword"],
-        .form-signin input[id="inPassword2"],
+        .form-signin input[id="inLast"],
         .form-signin input[id="inFirst"] {
             margin-top: -1px;
             border-top-left-radius: 0;
@@ -57,14 +57,21 @@
             border-bottom-right-radius: 0;
             border-bottom-left-radius: 0;
         }
-        .form-signin input[id="inLast"] {
+        .form-signin input[id="inPassword2"] {
             margin-top: -1px;
             margin-bottom: 10px;
             border-top-left-radius: 0;
             border-top-right-radius: 0;
         }
-        .register-button button {
+        #backButton {
             margin-top: -20px;
+            max-width: 300px;
+            margin: 0 auto;
+            position: relative;
+            height: auto;
+            -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                    box-sizing: border-box;
         }
     </style>
 </head>
@@ -72,19 +79,33 @@
     <div class="container">
         <form class="form-signin" action="register" method="post">
             <h2 class="form-signin-heading">Registration</h2>
+            <div id="messagesAndErrors">
+
+            </div>
             <label for="inEmail" class="sr-only">Email Address</label>
             <input type="email" id="inEmail" class="form-control" name="username" placeholder="Email Address" required autofocus>
-            <label for="inPassword" class="sr-only">Password</label>
-            <input type="password" id ="inPassword" class="form-control" name="password1" placeholder="Password" required>
-            <label for="inPassword2" class="sr-only">Repeat Password</label>
-            <input type="password" id = "inPassword2" class="form-control" name="password2" placeholder="Repeat Password" required>
             <label for="inFirst" class="sr-only">First Name</label>
             <input type="text" id = "inFirst" class="form-control" name="first" placeholder="First Name" required>
             <label for="inLast" class="sr-only">Last Name</label>
             <input type="text" id = "inLast" class="form-control" name="last" placeholder="Last Name" required>
+            <label for="inPassword" class="sr-only">Password</label>
+            <input type="password" id ="inPassword" class="form-control" name="password1" placeholder="Password" required>
+            <label for="inPassword2" class="sr-only">Repeat Password</label>
+            <input type="password" id = "inPassword2" class="form-control" name="password2" placeholder="Repeat Password" required>
+            <small id="passHelp1" class="form-text text-muted">Password must have:<br>
+                <ul>
+                    <li>At least 6 characters</li>
+                    <li>At least 1 uppercase letter</li>
+                    <li>At least 1 lowercase letter</li>
+                    <li>At least 1 numerical digit (0-9)</li>
+                </ul>
+            </small>
             <button type="submit" class="btn btn-lg btn-primary btn-block">Register</button>
         </form>
+        <a href="login" style="text-decoration: none;">
+            <button id="backButton" class="btn btn-lg btn-info btn-block">Back</button>
+        </a>
     </div>
-    <!--<script src="main.js"></script>-->
+    <script src="forms.js"></script>
 </body>
 </html>
