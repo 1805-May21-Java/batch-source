@@ -25,13 +25,28 @@ public class ConnectionUtil {
 	
 	public static Connection getConnection() throws IOException, SQLException {
 		
+		// added later
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		
 		Properties prop = new Properties();
-		InputStream in = new FileInputStream("connection.properties");
-		prop.load(in);
+		ClassLoader loader = Thread.currentThread().getContextClassLoader(); // added later
+		prop.load(loader.getResourceAsStream("connection.properties")); //added later
+//		InputStream in = new FileInputStream("connection.properties");
+//		prop.load(in);
 		String url = prop.getProperty("url");
 		String username = prop.getProperty("username");
 		String password = prop.getProperty("password");
-		return DriverManager.getConnection(url, username, password);
+		
+		//added later
+		if(connection == null || connection.isClosed()) {
+			connection = DriverManager.getConnection(url, username, password);
+		}
+		//return DriverManager.getConnection(url, username, password);
+		return connection; //added later
 	}
 
 }

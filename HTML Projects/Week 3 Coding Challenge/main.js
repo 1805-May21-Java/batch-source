@@ -1,12 +1,42 @@
-baseURL = "https://randomuser.me/api/";
+var baseURL = "https://randomuser.me/api/";
 
 document.getElementById("fill-form").addEventListener("click", fillForm);
 document.getElementById("fill-table").addEventListener("click", fillTable);
 
-function fillForm () {
-    //console.log("success");
-    sendAjaxGet(baseURL, processData);
+
+// function fillForm () {
+//     //console.log("success");
+//     //sendAjaxGet(baseURL, processData);
+//     fetch();
+// }
+
+function fillForm() {
+    fetch(baseURL)
+    .then((response) => response.json())
+    .then(function(data) {
+        let user = data.results[0];
+        console.log(user);
+        document.getElementById("first").setAttribute("value", user.name.first);
+        document.getElementById("last").setAttribute("value", user.name.last);
+        document.getElementById("phone").setAttribute("value", user.phone);
+        document.getElementById("email").setAttribute("value", user.email);
+    })
+    .catch(function(error) {
+        console.log(error);
+    });
 }
+
+function processData(xhr) {
+    let response = xhr.response;
+    let data = JSON.parse(response).results[0];
+    console.log(data);
+    document.getElementById("first").setAttribute("value", data.name.first);
+    document.getElementById("last").setAttribute("value", data.name.last);
+    document.getElementById("phone").setAttribute("value", data.phone);
+    document.getElementById("email").setAttribute("value", data.email);
+}
+
+
 
 function fillTable() {
     // for (let i=0; i<20; i++) {
@@ -29,15 +59,15 @@ function sendAjaxGet(url, func){
     xhr.send();
 }
 
-function processData(xhr) {
-    let response = xhr.response;
-    let data = JSON.parse(response).results[0];
-    console.log(data);
-    document.getElementById("first").setAttribute("value", data.name.first);
-    document.getElementById("last").setAttribute("value", data.name.last);
-    document.getElementById("phone").setAttribute("value", data.phone);
-    document.getElementById("email").setAttribute("value", data.email);
-}
+// function processData(xhr) {
+//     let response = xhr.response;
+//     let data = JSON.parse(response).results[0];
+//     console.log(data);
+//     document.getElementById("first").setAttribute("value", data.name.first);
+//     document.getElementById("last").setAttribute("value", data.name.last);
+//     document.getElementById("phone").setAttribute("value", data.phone);
+//     document.getElementById("email").setAttribute("value", data.email);
+// }
 
 function processTable(xhr) {
     let response = xhr.response;
