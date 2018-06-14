@@ -20,5 +20,5 @@ function sendAjaxGet(url, func) {
 
     xhr.open("GET", url);
     xhr.send();
-}
+}  
 

@@ -94,3 +94,8 @@ button.myButton:hover {
 #makeRequestContent {
     max-width: 700px;
 }
+
+#profile {
+    max-width: 250px;
+    text-align: left;
+}

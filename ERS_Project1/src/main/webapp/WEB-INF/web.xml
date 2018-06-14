@@ -69,5 +69,14 @@
     <servlet-name>LogoutServlet</servlet-name>
     <url-pattern>/Logout</url-pattern>
   </servlet-mapping>
-  
+  <servlet>
+    <description></description>
+    <display-name>DisplayProfileServlet</display-name>
+    <servlet-name>DisplayProfileServlet</servlet-name>
+    <servlet-class>com.revature.servlets.DisplayProfileServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DisplayProfileServlet</servlet-name>
+    <url-pattern>/DisplayProfile</url-pattern>
+  </servlet-mapping>
 </web-app>

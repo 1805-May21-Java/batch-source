@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.revature.actors.GateKeeper;
 
 /**
  * Servlet implementation class ProfileServlet
@@ -26,7 +25,12 @@ public class ProfileServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("Profile.html").forward(request, response);
+		HttpSession session = request.getSession(false);
+		if(session != null && session.getAttribute("email") != null) {
+			request.getRequestDispatcher("./Profile.html").forward(request, response);
+		} else {
+			response.sendRedirect("./Login");
+		}
 	}
 
 	/**

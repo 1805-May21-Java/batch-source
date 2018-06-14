@@ -53,9 +53,38 @@ public class GateKeeper {
 			warning = "Invalid email";
 			return false;
 		}
-		//TODO : Check if email is taken
-		//TODO : Check for manager id
+		
+		boolean managerAvailable = false;
+		int registrationNumber = -1;
+		try {
+			registrationNumber = Integer.parseInt(registration);
+		} catch (NumberFormatException e) {
+			
+		}
+		EmployeeDaoImpl edi = new EmployeeDaoImpl();
+		List<Employee> completeList = edi.getEmployees();
+		for(Employee emp : completeList) {
+			//TODO : Check if email is taken
+			if(emp.getEmail().equals(email.toUpperCase())) {
+				warning = "That email is already being used for an account";
+				return false;
+			}
+			if(emp.getId() == registrationNumber) {
+				managerAvailable = true;
+				break;
+			}
+		}
+		if(!managerAvailable) {
+			warning = "Invalid Registration Code";
+			return false;
+		}
+		
+		
+		
 		//TODO : if all passes, add user to db
+		Employee newbie = new Employee(firstName.toUpperCase(), lastName.toUpperCase(), email.toUpperCase(), password, registrationNumber);
+		edi.createEmployee(newbie);
+		
 		return true;	
 	}
 	

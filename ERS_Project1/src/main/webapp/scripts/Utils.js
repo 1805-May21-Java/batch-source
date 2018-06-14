@@ -24,9 +24,9 @@ function createRandomUser() {
 function fillForm(obj) {
     let person = obj.results[0];
 
-    document.getElementsByName("firstName").value = person.name.first;
-    document.getElementsByName("lastName").value = person.name.last;
-    document.getElementByName("email").value = person.email;
-    document.getElementByName("password").value = person.login.password;
-    document.getElementByName("confirmPassword").value = person.login.password;
+    document.getElementById("firstName").value = person.name.first;
+    document.getElementById("lastName").value = person.name.last;
+    document.getElementById("email").value = person.email;
+    document.getElementById("password").value = person.login.password;
+    document.getElementById("confirmPassword").value = person.login.password;
 }

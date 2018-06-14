@@ -9,14 +9,14 @@ public class Employee {
 	private String email;
 	private String password;
 	private int manager;
-	private List<Integer> staff;
+	private List<Employee> staff;
 	private List<Integer> requests;
 	public Employee() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public Employee(int id, String firstName, String lastName, String email, String password, int manager,
-			List<Integer> staff, List<Integer> requests) {
+			List<Employee> staff, List<Integer> requests) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
@@ -28,9 +28,30 @@ public class Employee {
 		this.requests = requests;
 	}
 	
+	public Employee(int id, String firstName, String lastName, String email, String password, int manager,
+			List<Employee> staff) {
+		super();
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.password = password;
+		this.manager = manager;
+		this.staff = staff;
+	}
+	
 	public Employee(int id, String firstName, String lastName, String email, String password, int manager) {
 		super();
 		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.password = password;
+		this.manager = manager;
+	}
+	
+	public Employee(String firstName, String lastName, String email, String password, int manager) {
+		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
@@ -73,10 +94,10 @@ public class Employee {
 	public void setManager(int manager) {
 		this.manager = manager;
 	}
-	public List<Integer> getStaff() {
+	public List<Employee> getStaff() {
 		return staff;
 	}
-	public void setStaff(List<Integer> staff) {
+	public void setStaff(List<Employee> staff) {
 		this.staff = staff;
 	}
 	public List<Integer> getRequests() {
