@@ -6,6 +6,7 @@ import java.sql.*;
 import java.util.*;
 
 import com.revature.pojos.Employee;
+import com.revature.pojos.Request;
 import com.revature.utils.ConnectionUtil;
 
 public class EmployeeDaoImpl implements EmployeeDao {
@@ -27,8 +28,11 @@ public class EmployeeDaoImpl implements EmployeeDao {
 				String password = rs.getString("PWD");
 				int managerId = rs.getInt("MANAGER_ID");
 				List<Employee> staff = this.getEmployeesByManager(id);
+				RequestDaoImpl rdi = new RequestDaoImpl();
+				List<Request> requests = rdi.getRequestsByEmployeeId(id);
 				
-				employeeList.add(new Employee(id, firstName, lastName, email, password, managerId, staff));
+				
+				employeeList.add(new Employee(id, firstName, lastName, email, password, managerId, staff, requests));
 				
 			}
 			conn.close();
@@ -53,9 +57,10 @@ public class EmployeeDaoImpl implements EmployeeDao {
 				String firstName = rs.getString("FIRSTNAME");
 				String lastName = rs.getString("LASTNAME");
 				String email = rs.getString("EMAIL");
-				String password = rs.getString("PWD");
+				RequestDaoImpl rdi = new RequestDaoImpl();
+				List<Request> requests = rdi.getRequestsByEmployeeId(id);
 				
-				employeeList.add(new Employee(id, firstName, lastName, email, password, managerId));
+				employeeList.add(new Employee(id, firstName, lastName, email, managerId, requests));
 			}
 			//Don't close because this is being used in the other get methods
 			//conn.close();
@@ -83,8 +88,10 @@ public class EmployeeDaoImpl implements EmployeeDao {
 				String password = rs.getString("PWD");
 				int managerId = rs.getInt("MANAGER_ID");
 				List<Employee> staff = this.getEmployeesByManager(emplId);
+				RequestDaoImpl rdi = new RequestDaoImpl();
+				List<Request> requests = rdi.getRequestsByEmployeeId(emplId);
 				
-				emp = new Employee(emplId, firstName, lastName, email, password, managerId, staff);
+				emp = new Employee(emplId, firstName, lastName, email, password, managerId, staff, requests);
 			}
 			conn.close();
 		} catch (SQLException e) {
@@ -111,8 +118,10 @@ public class EmployeeDaoImpl implements EmployeeDao {
 				String password = rs.getString("PWD");
 				int managerId = rs.getInt("MANAGER_ID");
 				List<Employee> staff = this.getEmployeesByManager(id);
+				RequestDaoImpl rdi = new RequestDaoImpl();
+				List<Request> requests = rdi.getRequestsByEmployeeId(id);
 				
-				emp = new Employee(id, firstName, lastName, email, password, managerId, staff);
+				emp = new Employee(id, firstName, lastName, email, password, managerId, staff, requests);
 			}
 			conn.close();
 		} catch (SQLException e) {

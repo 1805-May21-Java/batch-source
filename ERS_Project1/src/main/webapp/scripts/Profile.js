@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("update").setAttribute("hidden", true);
     sendAjaxGet("http://localhost:8082/ERS_Project1/DisplayProfile", function (xhr) {
         let info = JSON.parse(xhr.response);
         console.log(info);
@@ -9,10 +10,11 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("name").innerHTML = `Welcome, ${firstName} ${lastName}`;
         document.getElementById("emplId").innerHTML = `Employee #${info.id}`;
         document.getElementById("email").innerHTML = `Email: ${info.email.toLowerCase()}`;
+        
         if (info.staff.length > 0) {
             
             let point = document.getElementById("staff");
-            point.innerHTML = "<p>Staff</p>"
+            point.innerHTML = "Staff:"
             let list = document.createElement("ul")
             //point.appendChild(temp);
 
@@ -23,9 +25,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 temp.innerHTML = `${firstName} ${lastName}`
                 list.appendChild(temp);
             }
-
             point.appendChild(list);
+        } else {
+        	document.getElementById("goToManageRequests").setAttribute("hidden", true);
         }
+        document.getElementById("update").removeAttribute("hidden");
     });
 });
 

@@ -10,13 +10,13 @@ public class Employee {
 	private String password;
 	private int manager;
 	private List<Employee> staff;
-	private List<Integer> requests;
+	private List<Request> requests;
 	public Employee() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public Employee(int id, String firstName, String lastName, String email, String password, int manager,
-			List<Employee> staff, List<Integer> requests) {
+			List<Employee> staff, List<Request> requests) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
@@ -48,6 +48,25 @@ public class Employee {
 		this.email = email;
 		this.password = password;
 		this.manager = manager;
+	}
+	
+	public Employee(int id, String firstName, String lastName, String email, int manager) {
+		super();
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.manager = manager;
+	}
+	
+	public Employee(int id, String firstName, String lastName, String email, int manager, List<Request> requests) {
+		super();
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.manager = manager;
+		this.requests = requests;
 	}
 	
 	public Employee(String firstName, String lastName, String email, String password, int manager) {
@@ -100,10 +119,10 @@ public class Employee {
 	public void setStaff(List<Employee> staff) {
 		this.staff = staff;
 	}
-	public List<Integer> getRequests() {
+	public List<Request> getRequests() {
 		return requests;
 	}
-	public void setRequests(List<Integer> requests) {
+	public void setRequests(List<Request> requests) {
 		this.requests = requests;
 	}
 	@Override
