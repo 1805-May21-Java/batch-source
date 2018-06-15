@@ -10,23 +10,29 @@ import { SDirectivesComponent } from './components/s-directives/s-directives.com
 import { FavoriteComponent } from './components/favorite/favorite.component';
 import { ADirectivesComponent } from './components/a-directives/a-directives.component';
 import { PipesDemoComponent } from './components/pipes-demo/pipes-demo.component';
+import { ConvertToSpacesPipe } from './pipes/convert-to-spaces.pipe';
+import { ClickerComponent } from './components/clicker/clicker.component';
 
 
 @NgModule({
-  declarations: [
+  declarations: [ //registering our components and pipes
     AppComponent,
     FirstComponent,
     DatabindComponent,
     SDirectivesComponent,
     FavoriteComponent,
     ADirectivesComponent,
-    PipesDemoComponent
+    PipesDemoComponent,
+    ConvertToSpacesPipe,
+    ClickerComponent
   ],
-  imports: [
+  imports: [ //including any outside modules
     BrowserModule,
     FormsModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [ //registering our services
+
+  ],
+  bootstrap: [AppComponent] //starting component for our application
 })
 export class AppModule { }

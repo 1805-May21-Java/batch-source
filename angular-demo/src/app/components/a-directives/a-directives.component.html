@@ -1,3 +1,19 @@
-<p>
-  a-directives works!
-</p>
+<form>
+  <label>Enable color picker: </label><input type="checkbox" (click)="enabler()">
+  <br>
+  <select #colorSelect [(ngModel)]="selectedColor" name="selectedColor" [disabled]="isDisabled">
+    <option *ngFor="let color of colors" [value]="color">
+      {{ color }}
+    </option>
+  </select> 
+
+  <br>
+  <label>Change format:</label> <br>
+  <select multiple name="styles" (change)="addClass($event)">
+    <option *ngFor="let class of classes" [value]="class">
+      {{class}}
+    </option>
+  </select>
+</form>
+
+<span [ngClass]="selectedClass" [ngStyle]="{'color': selectedColor}">color: {{colorSelect.value}}</span>

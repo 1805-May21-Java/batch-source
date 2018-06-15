@@ -10,6 +10,7 @@ export class PipesDemoComponent implements OnInit {
   str: string = 'HeLlO';
   num: number = 5;
   day: Date = new Date();
+  strArr: string[] = ['string-cheese', 'favorite-color','hello-world'];
 
   constructor() {}
 

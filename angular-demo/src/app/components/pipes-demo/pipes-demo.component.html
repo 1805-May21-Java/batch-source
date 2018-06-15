@@ -7,4 +7,12 @@
 
   <p>{{day}} <br> {{day | date:'EEEE, MMMM d, y'}}
   <br> {{day | date:'EEEE, MMMM d, y' | lowercase}} </p>
+
+  
+  <ul >
+    <li *ngFor="let str of strArr">{{str}}</li>
+  </ul>
+  <ul >
+    <li *ngFor="let str of strArr">{{str | convertToSpaces:'-'}}</li>
+  </ul>
 </div>
