@@ -79,4 +79,54 @@
     <servlet-name>DisplayProfileServlet</servlet-name>
     <url-pattern>/DisplayProfile</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ManageRequestsServlet</display-name>
+    <servlet-name>ManageRequestsServlet</servlet-name>
+    <servlet-class>com.revature.servlets.ManageRequestsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ManageRequestsServlet</servlet-name>
+    <url-pattern>/ManageRequests</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>EmployeeRequestsServlet</display-name>
+    <servlet-name>EmployeeRequestsServlet</servlet-name>
+    <servlet-class>com.revature.servlets.EmployeeRequestsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EmployeeRequestsServlet</servlet-name>
+    <url-pattern>/EmployeeRequests</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MyRequestsServlet</display-name>
+    <servlet-name>MyRequestsServlet</servlet-name>
+    <servlet-class>com.revature.servlets.MyRequestsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MyRequestsServlet</servlet-name>
+    <url-pattern>/MyRequests</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DisplayMyRequestsServlet</display-name>
+    <servlet-name>DisplayMyRequestsServlet</servlet-name>
+    <servlet-class>com.revature.servlets.DisplayMyRequestsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DisplayMyRequestsServlet</servlet-name>
+    <url-pattern>/DisplayMyRequests</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MakeRequestServlet</display-name>
+    <servlet-name>MakeRequestServlet</servlet-name>
+    <servlet-class>com.revature.servlets.MakeRequestServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MakeRequestServlet</servlet-name>
+    <url-pattern>/MakeRequest</url-pattern>
+  </servlet-mapping>
 </web-app>

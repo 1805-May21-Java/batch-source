@@ -33,13 +33,13 @@
                         <a class="nav-link myLink" href="./Profile" id="goToProfile">My Profile</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link myLink" href="./MakeRequest.html" id="goToMakeRequest">Make Request</a>
+                        <a class="nav-link myLink" href="./MakeRequest" id="goToMakeRequest">Make Request</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link myLink" href="./MyRequests.html" id="goToViewRequests">View Requests</a>
+                        <a class="nav-link myLink" href="./MyRequests" id="goToViewRequests">View Requests</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link myLink" href="./PendingRequests.html" id="goToViewRequests">Manage Requests</a>
+                        <a class="nav-link myLink" href="./ManageRequests" id="goToManageRequests">Manage Requests</a>
                     </li>
                 </ul>
 
@@ -56,13 +56,14 @@
         <h1>Make a Request</h1>
         <div>
             <div class="jumbotron myJumbotron" id="makeRequestContent">
-                <form class="form-group">
+                <form class="form-group" action="MakeRequest" method="post">
                     <br>
                     <label>Amount</label>
-                    <input class="form-control" type="number" min="0.01" step="0.01">
+                    <input name="empId" id="empId" hidden>
+                    <input class="form-control" type="number" min="0.01" step="0.01" name="amount">
                     <br>
                     <label>Description</label>
-                    <textarea class="form-control" rows="6" cols="100"></textarea>
+                    <textarea class="form-control" rows="6" cols="100" name="description"></textarea>
                     <br>
                     <label>Relevant Documents</label>
 
@@ -74,7 +75,7 @@
         </div>
     </div>
 
-
+    <script src="scripts/MakeRequest.js"></script>
 </body>
 
 </html>

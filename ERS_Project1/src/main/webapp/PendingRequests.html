@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
+    <title>Manage Requests</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- BootStrap CDN -->
@@ -33,13 +33,13 @@
                         <a class="nav-link myLink" href="./Profile" id="goToProfile">My Profile</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link myLink" href="./MakeRequest.html" id="goToMakeRequest">Make Request</a>
+                        <a class="nav-link myLink" href="./MakeRequest" id="goToMakeRequest">Make Request</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link myLink" href="./MyRequests.html" id="goToViewRequests">View Requests</a>
+                        <a class="nav-link myLink" href="./MyRequests" id="goToViewRequests">View Requests</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link myLink" href="./PendingRequests.html" id="goToViewRequests">Manage Requests</a>
+                        <a class="nav-link myLink" href="./ManageRequests" id="goToManageRequests">Manage Requests</a>
                     </li>
                 </ul>
 
@@ -60,12 +60,14 @@
             <div class="jumbotron myJumbotron" id="viewRequestsContent">
                 <!--This gets populated in ./content.js-->
                 <form class="form-group form-inline">
-                    <select class="form-control">
+                    <select class="form-control" id="selectEmp">
                         <option value="all">All</option>
                     </select>
-                    <button class="btn myButton">Search</button>
+
+                    <button class="btn myButton" onclick="saveOption()">Search</button>
                 </form>
-                <table class="table">
+                <h4>Pending Requests</h4>
+                <table class="table" id="employeeTable">
                     <tr>
                         <th>Name</th>
                         <th>Amount</th>
@@ -73,37 +75,27 @@
                         <th>Date Requested</th>
                         <th>Action</th>
                     </tr>
+                </table>
+
+                <br>
+
+                <h4>Resolved Requests</h4>
+                <table class="table" id="resolvedEmployeeTable">
                     <tr>
-                        <td>John Doe</td>
-                        <td>$100.00</td>
-                        <td>
-                            <details>
-                                <summary>
-                                    Details
-                                </summary>
-                                <p>I just want it I just want it I just want it I just want it I just want it I just want it
-                                    I just want it I just want it I just want it I just want it I just want it I just want
-                                    it I just want it</p>
-                            </details>
-                        </td>
-                        <td>Today</td>
-                        <td>
-                            <form class="form-group form-inline">
-                                <select class="form-control">
-                                    <option value="appprove">approve</option>
-                                    <option value="deny">deny</option>
-                                </select>
-                                <button class="btn myButton" type="submit">Reply</button>
-                            </form>
-                        </td>
+                        <th>Name</th>
+                        <th>Amount</th>
+                        <th>Details</th>
+                        <th>Date Requested</th>
+                        <th>Status</th>
+                        <th>Date Resolved</th>
                     </tr>
                 </table>
             </div>
         </div>
     </div>
 
-    </div>
 
+    <script src="scripts/ManagePendingRequests.js"></script>
 
 </body>
 

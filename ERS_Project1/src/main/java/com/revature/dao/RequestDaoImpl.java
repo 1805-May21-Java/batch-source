@@ -11,6 +11,7 @@ import java.util.List;
 
 import com.revature.pojos.Request;
 import com.revature.utils.ConnectionUtil;
+import com.revature.utils.Constants;
 
 public class RequestDaoImpl implements RequestDao{
 
@@ -48,7 +49,23 @@ public class RequestDaoImpl implements RequestDao{
 	}
 
 	public int createRequest(Request request) {
-		// TODO Auto-generated method stub
-		return 0;
+		int requestsCreated = 0;
+		try {
+			Connection conn = ConnectionUtil.getConnection();
+			String sql = "INSERT INTO ERS_REQUEST (EMPL_ID, AMOUNT, DESCRIPTION, STATUS, DATE_REQUESTED) VALUES (?,?,?,?,LOCALTIMESTAMP)";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, request.getEmplId());
+			ps.setDouble(2, request.getAmount());
+			ps.setString(3,  request.getDescription());
+			ps.setString(4,  Constants.pending);
+			requestsCreated = ps.executeUpdate();
+			
+			conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return requestsCreated;
 	}
 }

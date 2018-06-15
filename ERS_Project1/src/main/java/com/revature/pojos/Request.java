@@ -25,6 +25,13 @@ public class Request {
 		this.dateRequested = dateRequested;
 		this.dateResolved = dateResolved;
 	}
+	
+	public Request(int emplId, double amount, String description) {
+		super();
+		this.emplId = emplId;
+		this.amount = amount;
+		this.description = description;
+	}
 	public int getId() {
 		return id;
 	}

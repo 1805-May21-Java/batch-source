@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("update").setAttribute("hidden", true);
     sendAjaxGet("http://localhost:8082/ERS_Project1/DisplayProfile", function (xhr) {
         let info = JSON.parse(xhr.response);
-        console.log(info);
+        //console.log(info);
 
         let firstName = info.firstName[0] + info.firstName.substr(1).toLowerCase();
         let lastName = info.lastName[0] + info.lastName.substr(1).toLowerCase();
