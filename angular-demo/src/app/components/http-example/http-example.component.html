@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="jumbotron">
+    <h4>HTTP Example</h4>
+    <p> Click this button to get all of our posts </p>
+    <button class="btn btn-outline-primary" (click)="getPosts()">Fire the GET request!</button>
+  </div>
+  <div>
+    <div *ngFor="let post of posts">
+      <h3 [routerLink]="['/posts',post.id]" > ( {{post.id}} ) {{post.title}} </h3>
+    </div>
+  </div>
+</div>

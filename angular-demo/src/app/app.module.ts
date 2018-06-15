@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 
 import { AppComponent } from './app.component';
@@ -12,6 +13,13 @@ import { ADirectivesComponent } from './components/a-directives/a-directives.com
 import { PipesDemoComponent } from './components/pipes-demo/pipes-demo.component';
 import { ConvertToSpacesPipe } from './pipes/convert-to-spaces.pipe';
 import { ClickerComponent } from './components/clicker/clicker.component';
+import { NavComponent } from './components/nav/nav.component';
+import { appRoutes } from './routes';
+import { DirectivesComponent } from './components/directives/directives.component';
+import { HttpExampleComponent } from './components/http-example/http-example.component';
+import { PostService } from './services/post.service';
+import { HttpClientModule } from '@angular/common/http';
+import { PostDetailsComponent } from './components/post-details/post-details.component';
 
 
 @NgModule({
@@ -24,14 +32,20 @@ import { ClickerComponent } from './components/clicker/clicker.component';
     ADirectivesComponent,
     PipesDemoComponent,
     ConvertToSpacesPipe,
-    ClickerComponent
+    ClickerComponent,
+    NavComponent,
+    DirectivesComponent,
+    HttpExampleComponent,
+    PostDetailsComponent
   ],
   imports: [ //including any outside modules
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [ //registering our services
-
+    PostService
   ],
   bootstrap: [AppComponent] //starting component for our application
 })
