@@ -1,14 +1,37 @@
 baseUrl = "https://randomuser.me/api/?format=json";
 
+//Fetch API Example
+/*
+function fetchExample(url){
+    fetch(url)
+        .then(
+            function(response){
+                if(response.status !== 200){
+                    console.log("Problem! Status code: " + response.status);
+                    return;
+                }
 
+                //examin text in response
+                response.json().then(function(data){
+                    console.log(data);
+                });
+            }
+        )
+        .catch(function(err){
+            console.log("Fetch error: " + err);
+        });
+}
+*/
 
 function getUser(){
-    //console.log("Button works");
     sendAjaxGet(baseUrl, displayUser)
+    //fetchExample(baseUrl);//testing Fetch API 
+
 }
 
 //Gets info from Random user generator site
 function sendAjaxGet(url, func){
+    
     let xhr = (new XMLHttpRequest() || new ActiveXObject("Microsoft.HTTPRequest"));
     xhr.onreadystatechange = function(){
         //console.log(xhr.readyState);
@@ -80,6 +103,13 @@ function getUsers(){
     let dob = document.createElement("th");
     let phone = document.createElement("th");
     let email = document.createElement("th");
+    firstname.innerHTML = "First Name";
+    lastname.innerHTML = "Last Name";
+    username.innerHTML = "Username";
+    password.innerHTML = "Password";
+    dob.innerHTML = "Date of Birth";
+    phone.innerHTML = "Phone";
+    email.innerHTML = "Email";
     //table.appendChild(headerRow);
     headerRow.appendChild(firstname);
     headerRow.appendChild(lastname);
@@ -90,7 +120,9 @@ function getUsers(){
     headerRow.appendChild(email);
     table.appendChild(headerRow);
     document.getElementById("problem2").appendChild(table);
-    sendAjaxGet(baseUrl, displayUsers);
+    for(i = 0; i < 20; i++){
+        sendAjaxGet(baseUrl, displayUsers);
+    }
 
 }
 

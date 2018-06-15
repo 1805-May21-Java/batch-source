@@ -1,0 +1,51 @@
+#login{
+    margin-top: 100px;
+}
+
+body{
+    background-color: #9999ff;
+}
+
+#name{
+    width: 300px;
+    margin: 0 auto;
+}
+
+#password{
+    width: 300px;
+    margin: 0 auto;
+}
+
+#submit{
+    margin-top: 20px;
+}
+
+#info_home{
+    margin-top: 40px;
+}
+
+a{
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+.topnav{
+    background-color: lightcyan;
+}
+
+#request{
+    margin-top: 40px;
+}
+
+#pending{
+    margin-top: 40px;
+}
+
+#account{
+    margin-top: 40px;
+}
+
+.project-input{
+    width: 300px;
+    margin: 0 auto;
+}
