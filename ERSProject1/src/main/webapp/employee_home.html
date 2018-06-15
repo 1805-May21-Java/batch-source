@@ -1,0 +1,78 @@
+<nav class="navbar navbar-inverse">
+	<div class="container-fluid">
+	<ul class="nav navbar-nav">
+		<li class="active"><a>Home</a></li>
+		<li><a href="#!/employee_account">My Account</a></li>
+		<li><a href="#!/request">Request Reimbursement</a></li>
+		</ul>
+		<ul class="nav navbar-nav navbar-right">
+			<li><a ng-click="logout()" href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+			<!-- gotta have a logout -->
+		</ul>
+	</div>
+</nav>
+<section >
+<div class="jumbotron" style="width: 80%; margin: auto;">
+	<div class="container">
+		<h3>Welcome back {{user.username}}</h3>
+		<!-- logging back in greets you with a welcome back message -->
+		<br>
+	</div>
+
+	<div class="container">
+	<!-- container to display the pending requests -->
+		<p>Your Pending Requests</p>            
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Amount</th>
+					<th>Type</th>
+					<th>Description</th>
+					<th>Receipt Image</th>
+					<th>Submitted Date</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="request in pendingRequests">
+					<td>{{request.amount | currency}}</td>
+					<td>{{request.type}}</td>
+					<td>{{request.description}}</td>
+					<td><button type="button" class="btn btn-info btn-default" ng-click="getReceipt(request)">View Receipt</button></td>
+					<td>{{request.submitted_date}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div class="container">
+		<p>Your Resolved Requests</p>
+		<!-- resolved requests have a date and a name of the resolver -->            
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Amount</th>
+					<th>Type</th>
+					<th>Description</th>
+					<th>Receipt Image</th>
+					<th>Submitted Date</th>
+					<th>Resolved Date</th>
+					<th>Resolved By</th>
+					<th>Result</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="request in resolvedRequests">
+					<td>{{request.amount | currency}}</td>
+					<td>{{request.type}}</td>
+					<td>{{request.description}}</td>
+					<td><button type="button" class="btn btn-info btn-default" ng-click="getReceipt(request)">View Receipt</button></td>
+					<td>{{request.submitted_date}}</td>
+					<td>{{request.resolved_date}}</td>
+					<td>{{request.resolver_name}}</td>
+					<td>{{request.status}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+</section>

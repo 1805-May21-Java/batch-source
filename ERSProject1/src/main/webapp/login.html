@@ -1,0 +1,29 @@
+<section>
+	<div class="text-center" ng-controller="loginController">
+	<!-- experiment with angular controller -->
+		<div class="jumbotron" style="width: 80%; margin: auto; float: none">
+			<p>Please enter your username and password to log in.</p>
+			<div align="center">
+				<form>
+					<div class="input-group col-xs-6" style="text-align:center;">
+						<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+						<input id="username" type="text" class="form-control" ng-model="username" placeholder="Username" style="margin:0px auto; display:block;"/>
+					</div>
+
+					<div class="input-group col-xs-6" style="text-align:center;">
+						<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+						<input id="password" type="password" class="form-control" ng-model="password" placeholder="Password" style="margin:0px auto; display:block;"/>
+					</div>
+
+					<font color="{{statusColor}}">{{status}}</font><br/>
+					<style>
+						button:hover {
+    					opacity: 0.8;
+						}
+					</style>
+					<button type="submit" class="btn btn-default" style="background-color: #FFF0FF; color: white; cursor: pointer; width: 50%;" ng-click="login(username,password)">LOGIN</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</section>

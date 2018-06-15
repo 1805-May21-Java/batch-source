@@ -1,0 +1,30 @@
+--testing some things in this script file
+INSERT INTO ERS_USER (USERNAME, PWORD, UR_ID) VALUES ('john', 'password', 1);
+INSERT INTO ERS_USER (USERNAME, PWORD, UR_ID) VALUES ('jane', 'pass123', 1);
+INSERT INTO ERS_USER (USERNAME, PWORD, UR_ID) VALUES ('mark', 'p4ssw0rd', 2);
+INSERT INTO REIMBURSEMENT(AMOUNT, SUBMITTED, REQUESTER_ID, REI_TYPE, REI_STATUS) VALUES(300, CURRENT_TIMESTAMP, 2, 3, 1);
+--jane's reimbursement for vacation, pending
+SELECT * FROM REIMBURSEMENT WHERE REQUESTER_ID = 2 AND REI_STATUS = 2;
+--for now, the above doesn't show anything, since jane has no denied requests
+SELECT R.AMOUNT, R.SUBMITTED, ERS_USER.USERNAME, REI_TYPE, REI_STATUS FROM REIMBURSEMENT R
+    INNER JOIN ERS_USER ON R.REQUESTER_ID = ERS_USER.USER_ID;
+--inner join two tables, shows submitted timestamp for jane's vacation reimbursement, $300 pending
+SELECT R.AMOUNT, R.SUBMITTED, U.USERNAME, S.REI_STATUS_ID, T.REI_TYPE_ID FROM REIMBURSEMENT R
+    INNER JOIN ERS_USER U ON R.REQUESTER_ID = U.USER_ID
+    INNER JOIN REIMBURSEMENT_STATUS S ON S.REI_STATUS_ID = R.REI_STATUS
+    INNER JOIN REIMBURSEMENT_TYPE T ON T.REI_TYPE_ID = R.REI_TYPE;
+--a more sophisticated case of inner joins, using lots of aliases
+SELECT REI_ID, AMOUNT, DESCRIPT, RECEIPT, SUBMITTED, RESOLVED,
+U1.USER_ID, U1.USERNAME, U2.USER_ID, U2.USERNAME, REI_TYPE, REI_STATUS
+FROM REIMBURSEMENT
+INNER JOIN ERS_USER U1 ON REQUESTER_ID = U1.USER_ID
+INNER JOIN ERS_USER U2 ON RESOLVER_ID = U2.USER_ID
+WHERE REI_STATUS = 2 OR REI_STATUS = 3;
+--a case where U2 is the manager to resolve a reimbursement request, and U1 is the employee making the request.
+--status is either rejected or approved in this case.
+--initially this query shows nothing.
+SELECT REI_ID, AMOUNT, DESCRIPT, RECEIPT, SUBMITTED, USER_ID, USERNAME, REI_TYPE, REI_STATUS
+FROM REIMBURSEMENT
+INNER JOIN ERS_USER ON REQUESTER_ID = USER_ID
+WHERE REI_STATUS = 1;
+--shows the pending requests

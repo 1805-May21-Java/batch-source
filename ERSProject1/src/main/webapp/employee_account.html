@@ -1,0 +1,70 @@
+<div ng-controller="editAccountController">
+<!-- employee's account menu -->
+<nav class="navbar navbar-inverse">
+	<div class="container-fluid">
+		<ul class="nav navbar-nav">
+			<li><a href="#!/employee">Home</a></li>
+			<li class="active"><a>My Account</a></li>
+			<li><a href="#!/request">Request Reimbursement</a></li>
+		</ul>
+		<ul class="nav navbar-nav navbar-right">
+			<li><a ng-click="logout()" href="#!/"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+		</ul>
+	</div>
+</nav>
+<section>
+	<div class="jumbotron" style="width: 80%; margin: auto;">
+		<table id="user" class="table table-striped table-bordered">
+			<tbody>
+				<tr>
+					<td width="35%">Username: </td>
+					<td width="65%">
+						<span ng-if="editMode">
+							<input type="text" ng-model="user.username"/>
+						</span>
+						<span ng-if="!editMode">
+							{{user.username}}
+						</span>
+					</td>
+				</tr>
+				<tr>
+					<td width="35%">First Name: </td>
+					<td width="65%">
+						<span ng-if="editMode">
+							<input type="text" ng-model="user.firstname"/>
+						</span>
+						<span ng-if="!editMode">
+							{{user.firstname}}
+						</span>
+					</td>
+				</tr>
+				<tr>
+					<td width="35%">Last Name: </td>
+					<td width="65%">
+						<span ng-if="editMode">
+							<input type="text" ng-model="user.lastname"/>
+						</span>
+						<span ng-if="!editMode">
+							{{user.lastname}}
+						</span>
+					</td>
+				</tr>
+				<tr>
+					<td width="35%">Email: </td>
+					<td width="65%">
+						<span ng-if="editMode">
+							<input type="email" ng-model="user.email"/>
+						</span>
+						<span ng-if="!editMode">
+							{{user.email}}
+						</span>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<font color="{{statusColor}}">{{status}}</font><br/>
+		<button type="button" class="btn btn-primary" ng-click="editButton()">{{editButtonName}}</button>
+		<span ng-if="editMode"><button type="button" class="btn btn-primary" ng-click="cancelButton()">CANCEL</button></span>
+	</div>
+</section>
+</div>

@@ -1,0 +1,37 @@
+<!-- manager's menu for receipts -->
+<!-- Home, My Account, Add Employee -->
+<nav class="navbar navbar-inverse">
+	<div ng-if="user_manager">
+		<div class="container-fluid">
+			<ul class="nav navbar-nav">
+				<li><a href="#!/manager">Home</a></li>
+				<li><a href="#!/manager_account">My Account</a></li>
+				<li><a href="#!/manager_create">Add Employee</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a ng-click="logout()" href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+			</ul>
+		</div>
+	</div>
+	<div ng-if="!user_manager">
+	<!-- angular if statement, if the user is NOT a manager -->
+	<!-- Home, My Account, Request Reimbursement -->
+		<div class="container-fluid">
+			<ul class="nav navbar-nav">
+				<li><a href="#!/employee">Home</a></li>
+				<li><a href="#!/employee_account">My Account</a></li>
+				<li><a href="#!/request">Request Reimbursement</a></li>	
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a ng-click="logout()" href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+<section >
+<div class="jumbotron" style="width: 80%; margin: auto;" >
+	<div style="text-align: center;">
+		<img ng-src="{{receipt_url}}"/>
+	</div>
+</div>
+</section>

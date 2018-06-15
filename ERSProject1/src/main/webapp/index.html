@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html ng-app = "myApp">
+<!-- Hooray for Angular! -->
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+		<script src="scripts/ERS.js"></script>
+		<!-- why yes, that is my javascript in the header -->
+		<title>Expense Reimbursement System</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<!-- home page -->
+</head>
+<body>
+	<div class = "page-header">
+		<h1 align="center">Expense Reimbursement System</h1>
+	</div>
+	<ng-view></ng-view>
+	<!-- angular view -->
+	<footer>
+		<p align="center">Expense Reimbursement System, Copyright &copy; 2018</p>
+	</footer>
+</body>
+</html>

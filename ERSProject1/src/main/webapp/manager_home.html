@@ -1,0 +1,93 @@
+<div>
+<nav class="navbar navbar-inverse">
+	<div class="container-fluid">
+	<ul class="nav navbar-nav">
+		<li class="active"><a>Home</a></li>
+		<li><a href="#!/manager_account">My Account</a></li>
+		<li><a href="#!/manager_create">Add Employee</a></li>
+		</ul>
+		<ul class="nav navbar-nav navbar-right">
+			<li><a ng-click="logout()" href="#!"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+		</ul>
+	</div>
+</nav>
+
+<section>
+	<div class="jumbotron" style="width: 80%; margin: auto;">
+	<h3>Welcome back {{user.username}}</h3>
+	<br/>
+<!-- Oh my, is that a selection option? -->
+	<label>Select an employee: &nbsp;</label>
+	<select ng-model="selected_employee">
+		<option value="ALL">All Employees</option>
+		<option ng-repeat="employee in employees" value={{$index}}>{{employee.username}}</option>
+	</select>
+	<br>
+	<div ng-if='selected_employee!="ALL"'>
+		<label>Selected User: &nbsp;</label>{{employees[selected_employee].username}}<br/>
+		<label>First name: &nbsp;</label>{{employees[selected_employee].firstname}}<br/>
+		<label>Last name: &nbsp;</label>{{employees[selected_employee].lastname}}<br/>
+		<label>Email: &nbsp;</label>{{employees[selected_employee].email}}<br/>
+	</div>
+	<br/>
+
+	<div class="container">
+		<p>Pending requests from employees</p>            
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Employee</th>
+					<th>Amount</th>
+					<th>Type</th>
+					<th>Description</th>
+					<th>Receipt Image</th>
+					<th>Submitted Date</th>
+					<th>Approve/Deny</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="request in pendingRequests | filter: {author_id: employees[selected_employee].id}">
+					<td>{{request.author_name}}</td>
+					<td>{{request.amount | currency}}</td>
+					<td>{{request.type}}</td>
+					<td>{{request.description}}</td>
+					<td><button type="button" class="btn btn-info btn-default" ng-click="getReceipt(request)">View Receipt</button></td>
+					<td>{{request.submitted_date}}</td>
+					<td><div class="btn-group"><button type="button" class="btn btn-success btn-sm" ng-click="approve(request.id)">Approve</button><button type="button" class="btn btn-danger btn-sm" ng-click="deny(request.id)">Deny  </button></div></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<p>Resolved reimbursements</p>            
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Employee</th>
+					<th>Amount</th>
+					<th>Type</th>
+					<th>Description</th>
+					<th>Receipt Image</th>
+					<th>Submitted Date</th>
+					<th>Resolved Date</th>
+					<th>Resolver</th>
+					<th>Status</th>
+				</tr>
+			</thead>
+		<tbody>
+			<tr ng-repeat="request in resolvedRequests | filter: {author_id: employees[selected_employee].id}">
+				<td>{{request.author_name}}</td>
+				<td>{{request.amount | currency}}</td>
+				<td>{{request.type}}</td>
+				<td>{{request.description}}</td>
+				<td><button type="button" class="btn btn-info btn-default" ng-click="getReceipt(request)">View Receipt</button></td>
+				<td>{{request.submitted_date}}</td>
+				<td>{{request.resolved_date}}</td>
+				<td>{{request.resolver_name}}</td>
+				<td>{{request.status}}</td>
+			</tr>
+		</tbody>
+	</table>
+	</div>
+</section>
+</div>
