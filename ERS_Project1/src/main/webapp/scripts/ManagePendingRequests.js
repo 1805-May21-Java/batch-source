@@ -51,8 +51,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 temp = document.createElement("td");
                 if (request.status == "PENDING") {
                     temp.innerHTML = `
-                        <form class="form-group form-inline" id="ReqId${request.id}">
-                            <select class="form-control">
+                        <form class="form-group form-inline" action="Resolve" method="post">
+                            <select class="form-control" name="${request.id}">
                                 <option value="appprove">approve</option>
                                 <option value="deny">deny</option>
                             </select>

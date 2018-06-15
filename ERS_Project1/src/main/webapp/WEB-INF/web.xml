@@ -129,4 +129,14 @@
     <servlet-name>MakeRequestServlet</servlet-name>
     <url-pattern>/MakeRequest</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ResolveServlet</display-name>
+    <servlet-name>ResolveServlet</servlet-name>
+    <servlet-class>com.revature.servlets.ResolveServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ResolveServlet</servlet-name>
+    <url-pattern>/Resolve</url-pattern>
+  </servlet-mapping>
 </web-app>
