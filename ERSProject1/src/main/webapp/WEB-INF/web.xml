@@ -19,12 +19,30 @@
     <url-pattern>/register</url-pattern>
   </servlet-mapping>
   <servlet>
+    <description></description>
+    <display-name>EmployeeServlet</display-name>
+    <servlet-name>EmployeeServlet</servlet-name>
+    <servlet-class>com.revature.servlets.EmployeeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EmployeeServlet</servlet-name>
+    <url-pattern>/employee</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>DashboardServlet</servlet-name>
     <servlet-class>com.revature.servlets.DashboardServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>DashboardServlet</servlet-name>
     <url-pattern>/dashboard</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ManagerDashboardServlet</servlet-name>
+    <servlet-class>com.revature.servlets.ManagerDashboardServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ManagerDashboardServlet</servlet-name>
+    <url-pattern>/manager</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>SessionServlet</servlet-name>

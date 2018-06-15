@@ -93,3 +93,8 @@ VALUES ('Renee', 'Montoya', 13, 'det_rmontoya@gcpd.com', '876-987-9876', 'rmonto
 
 commit;
 
+
+SELECT DISTINCT e.emp_id, e.first_name, e.last_name, e.reports_to, e.email, e.phone, e.emp_username, e.emp_password
+FROM employee e, employee m
+WHERE e.emp_id = m.reports_to;
+
