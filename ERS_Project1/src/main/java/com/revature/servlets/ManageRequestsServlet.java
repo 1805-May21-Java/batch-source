@@ -28,7 +28,7 @@ public class ManageRequestsServlet extends HttpServlet {
 		if(session != null) {
 			request.getRequestDispatcher("./PendingRequests.html").forward(request, response);
 		} else {
-			request.getRequestDispatcher("./Login");
+			response.sendRedirect("./Login");
 		}
 	}
 

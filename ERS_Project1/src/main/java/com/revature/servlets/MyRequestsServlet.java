@@ -28,7 +28,7 @@ public class MyRequestsServlet extends HttpServlet {
 		if(session != null) {
 			request.getRequestDispatcher("./MyRequests.html").forward(request, response);
 		} else {
-			request.getRequestDispatcher("./Login");
+			response.sendRedirect("./Login");
 		}
 	}
 

@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 let summary = document.createElement("summary");
                 summary.innerHTML = "Details";
                 let reqInfo = document.createElement("p");
-                summary.innerHTML = request.description;
+                reqInfo.innerHTML = request.description;
                 details.appendChild(summary);
                 details.appendChild(reqInfo);
                 temp.appendChild(details);
@@ -52,8 +52,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (request.status == "PENDING") {
                     temp.innerHTML = `
                         <form class="form-group form-inline" action="Resolve" method="post">
+                            <input name="reqId" value="${request.id}" hidden>
                             <select class="form-control" name="${request.id}">
-                                <option value="appprove">approve</option>
+                                <option value="approve">approve</option>
                                 <option value="deny">deny</option>
                             </select>
                             <button class="btn myButton" type="submit">Reply</button>

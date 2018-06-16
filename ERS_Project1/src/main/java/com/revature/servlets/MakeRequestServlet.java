@@ -32,7 +32,7 @@ public class MakeRequestServlet extends HttpServlet {
 		if(session != null) {
 			request.getRequestDispatcher("./MakeRequest.html").forward(request, response);
 		} else {
-			request.getRequestDispatcher("./Login");
+			response.sendRedirect("./Login");
 		}
 	}
 

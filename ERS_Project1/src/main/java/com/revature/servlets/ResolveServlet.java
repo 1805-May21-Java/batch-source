@@ -5,6 +5,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.revature.dao.RequestDaoImpl;
 
 /**
  * Servlet implementation class ResolveServlet
@@ -17,23 +20,31 @@ public class ResolveServlet extends HttpServlet {
      */
     public ResolveServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		response.sendRedirect("./ManageRequests");
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		Integer requestId = Integer.parseInt(request.getParameter("reqId"));
+		String status = request.getParameter(requestId.toString());
+		
+		HttpSession session = request.getSession(false);
+		if(session != null) {
+			RequestDaoImpl rdi = new RequestDaoImpl();
+			rdi.resolveRequest(requestId, status);
+			
+		} else {
+			//TODO: send message that failed
+		}
+		response.sendRedirect("./ManageRequests");
 	}
 
 }

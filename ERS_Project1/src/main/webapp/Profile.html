@@ -55,17 +55,62 @@
         <br>
         <h1 id="currentTitle">Profile</h1>
 
-        <div id="profileMenu">
-            <div class="jumbotron myJumbotron" id="profileContent">
-                <h3 id="name"></h3>
-                <div id="profile">
-                    <p id="emplId"></p>
-                    <p id="email"></p>
-                    <div id="staff"></div>
+        <div class="myCredentialsMenu" id="profileMenu">
+            <div class="jumbotron myJumbotron">
+                <div id="warning">
+                    <p id="warningMessage"></p>
+                    <hr class="my-4">
                 </div>
-                <form id="update">
-                    <button class="btn myButton" >Update Information</button>
-                </form>
+                <div id="profileContent">
+                    <h3 id="name"></h3>
+                    <div id="profile">
+                        <p id="emplId"></p>
+                        <p id="email"></p>
+                        <div id="staff"></div>
+                    </div>
+
+                    <div id="update">
+                        <hr class="my-4">
+                        <button class="btn myButton" onclick="changeMenu('update')">Update Information</button>
+                        <button class="btn myButton" onclick="changeMenu('password')">Change Password</button>
+                    </div>
+                </div>
+                <div id="updateContent">
+                    <h3>Update</h3>
+                    <form class="form-group">
+                        <br>
+                        <label>First Name</label>
+                        <input class="form-control" type="text" name="firstName" id="firstName">
+                        <br>
+                        <label>Last Name</label>
+                        <input class="form-control" type="text" name="lastName" id="lastName">
+                        <br>
+                        <label>Email</label>
+                        <input class="form-control" type="email" name="email" id="upEmail">
+                        <br>
+                        <button class="btn myButton" type="submit">Update Information</button>
+                    </form>
+                    <hr class="my-4">
+                    <button class="btn myButton" onclick="changeMenu('profile')">Cancel</button>
+                </div>
+                <div id="changePassword">
+                    <h3>Change Password</h3>
+                    <form class="form-group">
+                        <br>
+                        <label>Current Password</label>
+                        <input class="form-control" type="password" name="oldPassword">
+                        <br>
+                        <label>New Password</label>
+                        <input class="form-control" type="password" name="newPassword">
+                        <br>
+                        <label>Confirm Password</label>
+                        <input class="form-control" type="password" name="confirmPassword">
+                        <br>
+                        <button class="btn myButton" type="submit">Change Password</button>
+                    </form>
+                    <hr class="my-4">
+                    <button class="btn myButton" onclick="changeMenu('profile')">Cancel</button>
+                </div>
             </div>
         </div>
     </div>

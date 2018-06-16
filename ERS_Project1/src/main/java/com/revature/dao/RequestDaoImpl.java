@@ -44,8 +44,31 @@ public class RequestDaoImpl implements RequestDao{
 	}
 
 	public int resolveRequest(int requestId, String status) {
-		// TODO Auto-generated method stub
-		return 0;
+		int requestsUpdated = 0;
+		try {
+			Connection conn = ConnectionUtil.getConnection();
+			String sql = "UPDATE ERS_REQUEST "
+					+ "SET STATUS = ?, "
+					+ "DATE_RESOLVED = LOCALTIMESTAMP "
+					+ "WHERE REQ_ID = ?";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			if(status.equals("approve")) {
+				ps.setString(1, Constants.approved);
+			}else if(status.equals("deny")) {
+				ps.setString(1,  Constants.denied);
+			} else {
+				ps.setString(1,  Constants.pending);
+			}
+			ps.setInt(2,  requestId);
+			requestsUpdated = ps.executeUpdate();
+			
+			conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return requestsUpdated;
 	}
 
 	public int createRequest(Request request) {

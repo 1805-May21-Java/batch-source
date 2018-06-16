@@ -1,8 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("goToManageRequests").setAttribute("hidden", true);
     sendAjaxGet("http://localhost:8082/ERS_Project1/DisplayMyRequests", function (xhr) {
         let info = JSON.parse(xhr.response);
-        if(info.staff.length < 1) {
-            document.getElementById("goToManageRequests").setAttribute("hidden", true);
+        if(info.staff.length > 0) {
+            document.getElementById("goToManageRequests").removeAttribute("hidden");
         }
         //console.log(info);
 
