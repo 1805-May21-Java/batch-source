@@ -47,6 +47,7 @@ END;
 /
 
 
+
 ---- CREATE DUMMY DATA
 INSERT INTO employee (first_name, last_name, email, phone, emp_username, emp_password)
 VALUES ('Bruce', 'Wayne', 'iamthenight@aol.com', '123-456-7890', 'theboss', 'batman');
@@ -97,4 +98,26 @@ commit;
 SELECT DISTINCT e.emp_id, e.first_name, e.last_name, e.reports_to, e.email, e.phone, e.emp_username, e.emp_password
 FROM employee e, employee m
 WHERE e.emp_id = m.reports_to;
+
+ALTER TABLE request
+ADD date_created DATE;
+
+ALTER TABLE request
+ADD date_approved DATE;
+/
+
+-- create dummy request data
+INSERT INTO request (emp_id, title, amount, comments, date_created)
+VALUES ( 12, 'Cleaning supplies (various)', 967.60, 'Bat guano doesn''t clean itself Master Wayne.', CURRENT_TIMESTAMP);
+INSERT INTO request (emp_id, title, amount, comments, date_created)
+VALUES ( 11, 'Custom crafted katana (sharpened)', 200.00, 'Don''t worry, I won''t actually kill anyone with it. Maim on the other hand...', CURRENT_TIMESTAMP);
+INSERT INTO request (emp_id, title, amount, comments, date_created)
+VALUES ( 12, 'Travel expenses', 5200.55, 'Planes, trains, and automobiles, plus hotel expenses.', CURRENT_TIMESTAMP);
+INSERT INTO request (emp_id, title, amount, comments, date_created)
+VALUES ( 16, 'Reading body language online course', 85.00, 'The course comes with access codes for up to 10 people. Should be useful.', CURRENT_TIMESTAMP);
+INSERT INTO request (emp_id, title, amount, comments, date_created)
+VALUES ( 6, 'Work laptop', 2500.00, 'The work I am doing requires some pretty heavy processing power.', CURRENT_TIMESTAMP);
+
+COMMIT;
+
 

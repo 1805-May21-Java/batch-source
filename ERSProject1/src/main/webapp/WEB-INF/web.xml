@@ -29,6 +29,16 @@
     <url-pattern>/employee</url-pattern>
   </servlet-mapping>
   <servlet>
+    <description></description>
+    <display-name>RequestServlet</display-name>
+    <servlet-name>RequestServlet</servlet-name>
+    <servlet-class>com.revature.servlets.RequestServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RequestServlet</servlet-name>
+    <url-pattern>/request</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>DashboardServlet</servlet-name>
     <servlet-class>com.revature.servlets.DashboardServlet</servlet-class>
   </servlet>
