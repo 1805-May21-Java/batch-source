@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 import com.revature.pojo.Employee;
@@ -50,6 +51,90 @@ public class ERSDaoImpl implements ERSDao {
 		return reimbs;
 	}
 
+	
+	public LinkedList<Reimbursement> getReimbursementsByManagerID(int empl_id) {
+		LinkedList<Reimbursement> reimbs = new LinkedList<Reimbursement>();
+		
+		try {
+			Connection con = ConnectionUtil.getConnection();
+			String sql = "SELECT * FROM " + 
+					"ERS_REIMBURSEMENT INNER JOIN (SELECT * FROM ERS_EMPLOYEE WHERE REPORTS_TO = ?) TAB2 " +
+					"ON ERS_REIMBURSEMENT.REQ_BY = TAB2.EMPL_ID " +
+					"ORDER BY REIMB_ID ASC";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, empl_id);
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				int ID = rs.getInt("REIMB_ID");
+				String picURL = rs.getString("PIC_URL");
+				double amount = rs.getDouble("AMOUNT_REQ");
+				Date dateReq = rs.getDate("DATE_REQ");
+				String status = rs.getString("STATUS");
+				int approveID = rs.getInt("APPR_BY");
+				Date dateApprove = rs.getDate("DATE_APPR");
+				
+				reimbs.add(new Reimbursement(ID, empl_id, picURL, amount,
+						dateReq, status, approveID, dateApprove));
+			}
+			
+			con.close();
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return reimbs;
+	}
+
+	public Employee getEmployeeByID(int ID) {
+		Employee empl = null;
+		
+		try {
+			Connection con = ConnectionUtil.getConnection();
+			String sql = "SELECT * FROM ERS_EMPLOYEE WHERE EMPL_ID = ?";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, ID);
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				String email = rs.getString("EMAIL");
+				String pass = rs.getString("PASS");
+				String first = rs.getString("FIRST");
+				String last = rs.getString("LAST");
+				Date bday = rs.getDate("BDAY");
+				String title = rs.getString("TITLE");
+				int managerID = rs.getInt("REPORTS_TO");
+				boolean isManager = Boolean.parseBoolean(rs.getString("IS_MANAGER"));
+				
+				ArrayList<Integer> minions = new ArrayList<Integer>();
+				
+				sql = "SELECT * FROM ERS_EMPLOYEE WHERE REPORTS_TO = ?";
+				ps = con.prepareStatement(sql);
+				ps.setInt(1, ID);
+				ResultSet rs2 = ps.executeQuery();
+				
+				while(rs2.next()) {
+					minions.add(rs2.getInt("EMPL_ID"));
+				}
+				
+				empl = new Employee(ID, email, pass, first,
+						last, bday, title, managerID, isManager, minions);
+			}
+			
+			con.close();
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return empl;
+	}
+	
 	public Employee getEmployeeByEmail(String email) {
 		Employee empl = null;
 		
@@ -68,9 +153,20 @@ public class ERSDaoImpl implements ERSDao {
 				Date bday = rs.getDate("BDAY");
 				String title = rs.getString("TITLE");
 				int managerID = rs.getInt("REPORTS_TO");
+				boolean isManager = Boolean.parseBoolean(rs.getString("IS_MANAGER"));
 				
+				ArrayList<Integer> minions = new ArrayList<Integer>();
+				
+				sql = "SELECT * FROM ERS_EMPLOYEE WHERE REPORTS_TO = ?";
+				ps = con.prepareStatement(sql);
+				ps.setInt(1, empl_id);
+				ResultSet rs2 = ps.executeQuery();
+				
+				while(rs2.next()) {
+					minions.add(rs2.getInt("EMPL_ID"));
+				}
 				empl = new Employee(empl_id, email, pass, first,
-						last, bday, title, managerID);
+						last, bday, title, managerID, isManager, minions);
 			}
 			
 			con.close();
@@ -123,7 +219,7 @@ public class ERSDaoImpl implements ERSDao {
 		
 		try {
 			Connection con = ConnectionUtil.getConnection();
-			String sql = "INSERT INTO ERS_EMPLOYEE VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+			String sql = "INSERT INTO ERS_EMPLOYEE VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1, empl.getID());
 			ps.setString(2, empl.getEmail());
@@ -132,10 +228,11 @@ public class ERSDaoImpl implements ERSDao {
 			ps.setString(5, empl.getLast());
 			ps.setDate(6, empl.getBday());
 			ps.setString(7, empl.getTitle());
+			ps.setString(8, Boolean.toString(empl.isManager()));
 			if(empl.getManagerID() != 0)
-				ps.setInt(8, empl.getManagerID());
+				ps.setInt(9, empl.getManagerID());
 			else
-				ps.setNull(8, Types.INTEGER);
+				ps.setNull(9, Types.INTEGER);
 			emplsCreated = ps.executeUpdate();
 			
 			con.close();

@@ -7,7 +7,9 @@ import java.util.LinkedList;
 
 public interface ERSDao {
 	public LinkedList<Reimbursement> getReimbursementsByEmplID(int empl_id);
+	public LinkedList<Reimbursement> getReimbursementsByManagerID(int empl_id);
 	
+	public Employee getEmployeeByID(int ID);
 	public Employee getEmployeeByEmail(String email);
 	public Reimbursement getReimbursementByID(int ID);
 	

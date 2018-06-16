@@ -10,23 +10,35 @@
     <url-pattern>/login</url-pattern>
   </servlet-mapping>
   <servlet>
-    <description></description>
-    <display-name>RegisterServlet</display-name>
-    <servlet-name>RegisterServlet</servlet-name>
+    <servlet-name>Register</servlet-name>
     <servlet-class>com.revature.servlet.RegisterServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>RegisterServlet</servlet-name>
+    <servlet-name>Register</servlet-name>
     <url-pattern>/register</url-pattern>
   </servlet-mapping>
   <servlet>
-    <description></description>
-    <display-name>InfoServlet</display-name>
-    <servlet-name>InfoServlet</servlet-name>
+    <servlet-name>Info</servlet-name>
     <servlet-class>com.revature.servlet.InfoServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>InfoServlet</servlet-name>
+    <servlet-name>Info</servlet-name>
     <url-pattern>/info</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>Profile</servlet-name>
+    <servlet-class>com.revature.servlet.ProfileServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Profile</servlet-name>
+    <url-pattern>/profile</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>Session</servlet-name>
+    <servlet-class>com.revature.servlet.SessionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Session</servlet-name>
+    <url-pattern>/session</url-pattern>
   </servlet-mapping>
 </web-app>

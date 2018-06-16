@@ -36,7 +36,8 @@ public class LoginServlet extends HttpServlet {
 		if(empl != null && pass.equals(empl.getPass())) {
 			System.out.println("success");
 			HttpSession session = req.getSession();
-			session.setAttribute("username", user);
+			SessionServlet.empl = empl;
+			session.setAttribute("id", empl.getID());
 			res.sendRedirect("profile");
 		}
 		else {

@@ -1,6 +1,7 @@
 package com.revature.servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -47,7 +48,7 @@ public class RegisterServlet extends HttpServlet {
 				&& pass1.equals(pass2) && !first.equals("") && !last.equals("")) {
 			Random r = new Random();
 			int ID = r.nextInt(90000000) + 10000000;
-			Employee empl = new Employee(ID, user, pass1, first, last);
+			Employee empl = new Employee(ID, user, pass1, first, last, true, new ArrayList<Integer>());
 			dao.createEmployee(empl);
 			SessionServlet.messages.add(new Info("Successfully created a new account!", true));
 			res.sendRedirect("login");

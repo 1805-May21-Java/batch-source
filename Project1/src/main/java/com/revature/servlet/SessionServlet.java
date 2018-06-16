@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.revature.pojo.Employee;
+
 public class SessionServlet extends HttpServlet{
 	private static final long serialVersionUID = -6426094775000334662L;
 	public static class Info{
@@ -44,15 +47,18 @@ public class SessionServlet extends HttpServlet{
 	}
 	public static ArrayList<Info> messages = new ArrayList<Info>();
 	public static ArrayList<Info> errors = new ArrayList<Info>();
+	public static Employee empl = new Employee();
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		HttpSession session = req.getSession();
 		PrintWriter pw = res.getWriter();
+		res.addHeader("Access-Control-Allow-Origin", "*");
+		ObjectMapper om = new ObjectMapper();
 		res.setContentType("application/json");
 		if(session != null)
-			pw.write("{\"username\":\"" + session.getAttribute("username") + "\"}");
+			om.writeValue(pw, empl);
 		else
-			pw.write("{\"username\": null}");
+			om.writeValue(pw, new Employee());
 		pw.close();
 	}
 	

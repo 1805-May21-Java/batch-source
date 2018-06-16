@@ -6,7 +6,6 @@ window.onload = sendAjaxGet(infoUrl, loadMessagesAndErrors);
 function sendAjaxGet(url, func) {
     let xhr = (new XMLHttpRequest() || new ActiveXObject());
 
-    console.log("hi");
     xhr.onreadystatechange = function(){
         if(xhr.status >= 200 && xhr.status < 300 && xhr.readyState == 4){
             func(xhr, url);
@@ -41,7 +40,6 @@ function loadMessagesAndErrors(xhr, url){
     }
     for(e of errorArr){
         if(e.type){
-            console.log("hello");
             newError = document.createElement("p");
             newError.innerHTML = "<img src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Achtung.svg/220px-Achtung.svg.png\" width=20 height=20> " + e.message;
             messagesAndErrors.appendChild(newError);

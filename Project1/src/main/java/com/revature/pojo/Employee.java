@@ -1,6 +1,7 @@
 package com.revature.pojo;
 
 import java.sql.Date;
+import java.util.ArrayList;
 
 public class Employee {
 
@@ -12,12 +13,14 @@ public class Employee {
 	private Date bday;
 	private String title;
 	private int managerID;
+	private boolean isManager;
+	private ArrayList<Integer> minions;
 	
 	public Employee() {
 		super();
 	}
 
-	public Employee(int ID, String email, String pass, String first, String last) {
+	public Employee(int ID, String email, String pass, String first, String last, boolean isManager, ArrayList<Integer> minions) {
 		super();
 		this.ID = ID;
 		this.email = email;
@@ -25,10 +28,12 @@ public class Employee {
 		this.first = first;
 		this.last = last;
 		this.managerID = 0;
+		this.isManager = isManager;
+		this.minions = minions;
 	}
 	
 	public Employee(int ID, String email, String pass, String first,
-			String last, Date bday, String title, int managerID) {
+			String last, Date bday, String title, int managerID, boolean isManager, ArrayList<Integer> minions) {
 		super();
 		this.ID = ID;
 		this.email = email;
@@ -38,6 +43,8 @@ public class Employee {
 		this.bday = bday;
 		this.title = title;
 		this.managerID = managerID;
+		this.isManager = isManager;
+		this.minions = minions;
 	}
 
 	public int getID() {
@@ -104,6 +111,26 @@ public class Employee {
 		this.managerID = managerID;
 	}
 	
+	public boolean isManager() {
+		return isManager;
+	}
+
+	public void setIsManager(boolean isManager) {
+		this.isManager = isManager;
+	}
+
+	public ArrayList<Integer> getMinions() {
+		return minions;
+	}
+
+	public void setMinions(ArrayList<Integer> minions) {
+		this.minions = minions;
+	}
+	
+	public void addMinion(int empl_id) {
+		this.minions.add(empl_id);
+	}
+
 	public static boolean validatePassword(String s) {
 		if(s.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{6,63}$")) {
 			return true;
