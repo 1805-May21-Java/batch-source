@@ -31,12 +31,13 @@ public class ERSDaoImpl implements ERSDao {
 				int ID = rs.getInt("REIMB_ID");
 				String picURL = rs.getString("PIC_URL");
 				double amount = rs.getDouble("AMOUNT_REQ");
+				String description = rs.getString("DESCRIPTION");
 				Date dateReq = rs.getDate("DATE_REQ");
 				String status = rs.getString("STATUS");
 				int approveID = rs.getInt("APPR_BY");
 				Date dateApprove = rs.getDate("DATE_APPR");
 				
-				reimbs.add(new Reimbursement(ID, empl_id, picURL, amount,
+				reimbs.add(new Reimbursement(ID, empl_id, picURL, amount, description,
 						dateReq, status, approveID, dateApprove));
 			}
 			
@@ -69,12 +70,13 @@ public class ERSDaoImpl implements ERSDao {
 				int ID = rs.getInt("REIMB_ID");
 				String picURL = rs.getString("PIC_URL");
 				double amount = rs.getDouble("AMOUNT_REQ");
+				String description = rs.getString("DESCRIPTION");
 				Date dateReq = rs.getDate("DATE_REQ");
 				String status = rs.getString("STATUS");
 				int approveID = rs.getInt("APPR_BY");
 				Date dateApprove = rs.getDate("DATE_APPR");
 				
-				reimbs.add(new Reimbursement(ID, empl_id, picURL, amount,
+				reimbs.add(new Reimbursement(ID, empl_id, picURL, amount, description,
 						dateReq, status, approveID, dateApprove));
 			}
 			
@@ -194,12 +196,13 @@ public class ERSDaoImpl implements ERSDao {
 				int empl_id = rs.getInt("REQ_BY");
 				String picURL = rs.getString("PIC_URL");
 				double amount = rs.getDouble("AMOUNT_REQ");
+				String description = rs.getString("DESCRIPTION");
 				Date dateReq = rs.getDate("DATE_REQ");
 				String status = rs.getString("STATUS");
 				int approveID = rs.getInt("APPR_BY");
 				Date dateApprove = rs.getDate("DATE_APPR");
 				
-				reimb = new Reimbursement(ID, empl_id, picURL, amount,
+				reimb = new Reimbursement(ID, empl_id, picURL, amount, description,
 						dateReq, status, approveID, dateApprove);
 			}
 			
@@ -251,16 +254,17 @@ public class ERSDaoImpl implements ERSDao {
 		
 		try {
 			Connection con = ConnectionUtil.getConnection();
-			String sql = "INSERT INTO ERS_REIMBURSEMENT VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+			String sql = "INSERT INTO ERS_REIMBURSEMENT VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1, reimb.getID());
 			ps.setInt(2, reimb.getRequestID());
 			ps.setString(3, reimb.getPicURL());
 			ps.setDouble(4, reimb.getAmountRequest());
-			ps.setDate(5, reimb.getDateOfRequest());
-			ps.setString(6, reimb.getStatus());
-			ps.setInt(7, reimb.getApproveID());
-			ps.setDate(8, reimb.getDateOfApprove());
+			ps.setString(5,  reimb.getDescription());
+			ps.setDate(6, reimb.getDateOfRequest());
+			ps.setString(7, reimb.getStatus());
+			ps.setInt(8, reimb.getApproveID());
+			ps.setDate(9, reimb.getDateOfApprove());
 			reimbsCreated = ps.executeUpdate();
 			
 			con.close();
@@ -322,6 +326,7 @@ public class ERSDaoImpl implements ERSDao {
 					"SET REQ_BY = ?, " +
 					"PIC_URL = ?, " +
 					"AMOUNT_REQ = ?, " +
+					"DESCRIPTION = ?, " +
 					"DATE_REQ = ?, " +
 					"STATUS = ?, " +
 					"APPR_BY = ?, " +
@@ -331,11 +336,12 @@ public class ERSDaoImpl implements ERSDao {
 			ps.setInt(1, reimb.getRequestID());
 			ps.setString(2, reimb.getPicURL());
 			ps.setDouble(3, reimb.getAmountRequest());
-			ps.setDate(4, reimb.getDateOfRequest());
-			ps.setString(5, reimb.getStatus());
-			ps.setInt(6, reimb.getApproveID());
-			ps.setDate(7, reimb.getDateOfApprove());
-			ps.setInt(8, reimb.getID());
+			ps.setString(4, reimb.getDescription());
+			ps.setDate(5, reimb.getDateOfRequest());
+			ps.setString(6, reimb.getStatus());
+			ps.setInt(7, reimb.getApproveID());
+			ps.setDate(8, reimb.getDateOfApprove());
+			ps.setInt(9, reimb.getID());
 			reimbsUpdated = ps.executeUpdate();
 			
 			con.commit();
@@ -371,5 +377,28 @@ public class ERSDaoImpl implements ERSDao {
 		}
 		
 		return emplsUpdated;
+	}
+	
+	public int deleteReimbByID(int reimb_id) {
+		int reimbsUpdated = 0;
+		
+		try {
+			Connection con = ConnectionUtil.getConnection();
+			con.setAutoCommit(false);
+			String sql = "DELETE FROM ERS_REIMBURSEMENT WHERE REIMB_ID = ?";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, reimb_id);
+			reimbsUpdated = ps.executeUpdate();
+			
+			con.commit();
+			con.close();
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return reimbsUpdated;
 	}
 }

@@ -20,4 +20,5 @@ public interface ERSDao {
 	public int updateReimbursement(Reimbursement reimb);
 	
 	public int deleteEmployeeByID(int empl_id);
+	public int deleteReimbByID(int reimb_id);
 }

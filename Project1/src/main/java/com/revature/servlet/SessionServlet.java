@@ -50,15 +50,16 @@ public class SessionServlet extends HttpServlet{
 	public static Employee empl = new Employee();
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		HttpSession session = req.getSession();
+		HttpSession session = req.getSession(false);
 		PrintWriter pw = res.getWriter();
 		res.addHeader("Access-Control-Allow-Origin", "*");
 		ObjectMapper om = new ObjectMapper();
 		res.setContentType("application/json");
 		if(session != null)
 			om.writeValue(pw, empl);
-		else
+		else {
 			om.writeValue(pw, new Employee());
+		}
 		pw.close();
 	}
 	

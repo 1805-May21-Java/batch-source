@@ -8,6 +8,7 @@ public class Reimbursement {
 	private int requestID;
 	private String picURL;
 	private double amountRequest;
+	private String description;
 	private Date dateOfRequest;
 	private String status;
 	private int approveID;
@@ -17,13 +18,14 @@ public class Reimbursement {
 		super();
 	}
 
-	public Reimbursement(int ID, int requestID, String picURL, double amountRequest, Date dateOfRequest, String status,
+	public Reimbursement(int ID, int requestID, String picURL, double amountRequest, String description, Date dateOfRequest, String status,
 			int approveID, Date dateOfApprove) {
 		super();
 		this.ID = ID;
 		this.requestID = requestID;
 		this.picURL = picURL;
 		this.amountRequest = amountRequest;
+		this.description = description;
 		this.dateOfRequest = dateOfRequest;
 		this.status = status;
 		this.approveID = approveID;
@@ -60,6 +62,14 @@ public class Reimbursement {
 
 	public void setAmountRequest(double amountRequest) {
 		this.amountRequest = amountRequest;
+	}
+	
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public Date getDateOfRequest() {

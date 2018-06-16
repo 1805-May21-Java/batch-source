@@ -41,4 +41,13 @@
     <servlet-name>Session</servlet-name>
     <url-pattern>/session</url-pattern>
   </servlet-mapping>
+  <servlet>
+
+    <servlet-name>Reimbursement</servlet-name>
+    <servlet-class>com.revature.servlet.ReimbursementServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Reimbursement</servlet-name>
+    <url-pattern>/reimbursement</url-pattern>
+  </servlet-mapping>
 </web-app>

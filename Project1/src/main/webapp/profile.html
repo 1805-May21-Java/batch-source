@@ -41,15 +41,54 @@
     <div style="background-color: rgb(202, 238, 226);"><br></div>
     <nav>
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
-            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Home</a>
+            <a class="nav-item nav-link active" id="nav-reqs-tab" data-toggle="tab" href="#nav-reqs" role="tab" aria-controls="nav-reqs" aria-selected="true">Your Requests</a>
             <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</a>
-            <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</a>
+            <a hidden class="nav-item nav-link" id="nav-manager-tab" data-toggle="tab" href="#nav-manager" role="tab" aria-controls="nav-manager" aria-selected="false">Manager Tab</a>
         </div>
     </nav>
     <div class="tab-content" id="nav-tabContent">
-        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">1</div>
-        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">2</div>
-        <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">3</div>
+        <div class="tab-pane fade show active" id="nav-reqs" role="tabpanel" aria-labelledby="nav-reqs-tab">
+            <button id="showReimbsButton" class="btn btn-large btn-outline-primary" style="margin: 10px">View Reimbursement Requests</button>
+            <button id="reimbFormButton" class="btn btn-large btn-outline-success" style="margin: 10px">Submit a Reimbursement Request</button>
+            <table hidden class="table table-hover" id="myReimbTable">
+                <thead>
+                    <tr>
+                    <th scope="col">Date Requested</th>
+                    <th scope="col">Amount Requested</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Resolved By</th>
+                    <th scope="col">Date Resolved</th>
+                    <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody id="myReimbs">
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td colspan="2">Larry the Bird</td>
+                        <td>@twitter</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+
+        </div>
+        <div class="tab-pane fade" id="nav-manager" role="tabpanel" aria-labelledby="nav-managerS-tab">
+
+        </div>
     </div>
     <script src="profile.js"></script>
 </body>
