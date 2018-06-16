@@ -53,6 +53,7 @@
             <table hidden class="table table-hover" id="myReimbTable">
                 <thead>
                     <tr>
+                    <th scope="col">Reimbursement ID</th>
                     <th scope="col">Date Requested</th>
                     <th scope="col">Amount Requested</th>
                     <th scope="col">Description</th>
@@ -82,6 +83,20 @@
                     </tr>
                 </tbody>
             </table>
+            <img hidden id="myReimbImage">
+            <form hidden id="reimbRequestForm" style="margin: 20px" class="form-signin" action="profile" method="post">
+                <h2 class="form-signin-heading">Reimbursement Request Form</h2>
+                <div id="messagesAndErrors">
+    
+                </div>
+                <label style="font-size: 20px" for="inAmount">Amount</label>
+                <input type="number" style="max-width:200px" id="inAmount" class="form-control" name="amount" placeholder="0.00" required>
+                <label style="font-size: 20px; margin-top:10px" for="inDescription">Description</label>
+                <textarea style="max-width: 500px;" rows="4" id="inDescription" class="form-control" name="description" placeholder="ex: Travel Expenses"></textarea>
+                <label style="font-size: 20px; margin-top:10px" for="inURL">Image URL for Receipt (optional)</label>
+                <input type="text" style="max-width:500px" id="inURL" class="form-control" name="picURL">
+                <button type="submit" style="margin-top:10px; max-width: 200px;" class="btn btn-success btn-block">Submit</button>
+            </form>
         </div>
         <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
 

@@ -263,7 +263,10 @@ public class ERSDaoImpl implements ERSDao {
 			ps.setString(5,  reimb.getDescription());
 			ps.setDate(6, reimb.getDateOfRequest());
 			ps.setString(7, reimb.getStatus());
-			ps.setInt(8, reimb.getApproveID());
+			if(reimb.getApproveID() != 0)
+				ps.setInt(8, reimb.getApproveID());
+			else
+				ps.setNull(8, Types.INTEGER);
 			ps.setDate(9, reimb.getDateOfApprove());
 			reimbsCreated = ps.executeUpdate();
 			
@@ -300,7 +303,10 @@ public class ERSDaoImpl implements ERSDao {
 			ps.setString(4, empl.getLast());
 			ps.setDate(5, empl.getBday());
 			ps.setString(6, empl.getTitle());
-			ps.setInt(7, empl.getManagerID());
+			if(empl.getManagerID() != 0)
+				ps.setInt(7, empl.getManagerID());
+			else
+				ps.setNull(7, Types.INTEGER);
 			ps.setInt(8, empl.getID());
 			emplsUpdated = ps.executeUpdate();
 			
@@ -339,7 +345,10 @@ public class ERSDaoImpl implements ERSDao {
 			ps.setString(4, reimb.getDescription());
 			ps.setDate(5, reimb.getDateOfRequest());
 			ps.setString(6, reimb.getStatus());
-			ps.setInt(7, reimb.getApproveID());
+			if(reimb.getApproveID() != 0)
+				ps.setInt(7, reimb.getApproveID());
+			else
+				ps.setNull(7, Types.INTEGER);
 			ps.setDate(8, reimb.getDateOfApprove());
 			ps.setInt(9, reimb.getID());
 			reimbsUpdated = ps.executeUpdate();
