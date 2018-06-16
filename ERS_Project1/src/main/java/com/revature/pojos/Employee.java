@@ -58,6 +58,13 @@ public class Employee {
 		this.email = email;
 		this.manager = manager;
 	}
+	public Employee(int id, String firstName, String lastName, String email) {
+		super();
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+	}
 	
 	public Employee(int id, String firstName, String lastName, String email, int manager, List<Request> requests) {
 		super();
@@ -77,6 +84,8 @@ public class Employee {
 		this.password = password;
 		this.manager = manager;
 	}
+	
+	
 	public int getId() {
 		return id;
 	}

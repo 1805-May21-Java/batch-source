@@ -88,6 +88,47 @@ public class GateKeeper {
 		return true;	
 	}
 	
+	public static boolean attemptUpdateInfo(Employee emp) {
+		if(emp.getFirstName().equals("") || emp.getLastName().equals("") || emp.getEmail().equals("")) {
+			warning = "No field can be left blank";
+			return false;
+		}
+		if(!isValidEmail(emp.getEmail())) {
+			warning = "Invalid email address";
+			return false;
+		}
+		
+		EmployeeDaoImpl edi = new EmployeeDaoImpl();
+		edi.updateEmployeeInfo(emp);
+		warning = "Update success";
+		return true;
+		
+	}
+	
+	public static boolean attemptPasswordChange(int id, String oldPassword, String newPassword, String confirmPassword) {
+		if(oldPassword.equals("") || newPassword.equals("") || confirmPassword.equals("")) {
+			warning = "All fields must be completed";
+			return false;
+		}
+		
+		EmployeeDaoImpl edi = new EmployeeDaoImpl();
+		Employee emp = edi.getEmployeeById(id);
+		if(!emp.getPassword().equals(oldPassword)) {
+			warning = "Current password incorrectly entered";
+			return false;
+		}
+		
+		if(!newPassword.equals(confirmPassword)) {
+			warning = "New password and confirmation didn't match";
+			return false;
+		}
+		
+		edi.updateEmployeePassword(id, newPassword);
+		warning = "Successful password change";
+		return true;
+		
+	}
+	
 	private static boolean isValidEmail(String str) {
 		int at = str.indexOf('@');
 		int dot = str.lastIndexOf('.');

@@ -154,15 +154,62 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		return employeesCreated;
 	}
 
-	public int updateEmployee(Employee employee) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int updateEmployeeInfo(Employee employee) {
+		int employeesUpdated = 0;
+	
+		try {
+			Connection conn = ConnectionUtil.getConnection();
+			//System.out.println(employee);
+			String sql = "UPDATE ERS_EMPLOYEE "
+					+ "SET FIRSTNAME = ?, "
+					+ "LASTNAME = ?, "
+					+ "EMAIL = ? "
+					+ "WHERE EMPL_ID = ?";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1,  employee.getFirstName().toUpperCase());
+			ps.setString(2,  employee.getLastName().toUpperCase());
+			ps.setString(3, employee.getEmail().toUpperCase());
+			ps.setInt(4,  employee.getId());
+			employeesUpdated = ps.executeUpdate();
+			
+			conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		return employeesUpdated;
+	}
+	
+	public int updateEmployeePassword(int emplId, String password) {
+		int passwordsUpdated = 0;
+		
+		try {
+			Connection conn = ConnectionUtil.getConnection();
+			String sql = "UPDATE ERS_EMPLOYEE "
+					+ "SET PWD = ? "
+					+ "WHERE EMPL_ID = ?";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1,  password);
+			ps.setInt(2, emplId);
+			passwordsUpdated = ps.executeUpdate();
+			
+			conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return passwordsUpdated;
 	}
 
 	public int removeEmployee(int emplId) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	
 
 	
 

@@ -77,7 +77,8 @@
                 </div>
                 <div id="updateContent">
                     <h3>Update</h3>
-                    <form class="form-group">
+                    <form class="form-group" action="UpdateInfo" method="post">
+                        <input type="text" name="id" id="id" hidden>
                         <br>
                         <label>First Name</label>
                         <input class="form-control" type="text" name="firstName" id="firstName">
@@ -95,7 +96,8 @@
                 </div>
                 <div id="changePassword">
                     <h3>Change Password</h3>
-                    <form class="form-group">
+                    <form class="form-group" action="PasswordChange" method="post">
+                        <input type="text" name="pwdId" id="pwdId" hidden>
                         <br>
                         <label>Current Password</label>
                         <input class="form-control" type="password" name="oldPassword">

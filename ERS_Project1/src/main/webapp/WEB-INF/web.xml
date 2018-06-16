@@ -139,4 +139,24 @@
     <servlet-name>ResolveServlet</servlet-name>
     <url-pattern>/Resolve</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UpdateInfoServlet</display-name>
+    <servlet-name>UpdateInfoServlet</servlet-name>
+    <servlet-class>com.revature.servlets.UpdateInfoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateInfoServlet</servlet-name>
+    <url-pattern>/UpdateInfo</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PasswordChangeServlet</display-name>
+    <servlet-name>PasswordChangeServlet</servlet-name>
+    <servlet-class>com.revature.servlets.PasswordChangeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PasswordChangeServlet</servlet-name>
+    <url-pattern>/PasswordChange</url-pattern>
+  </servlet-mapping>
 </web-app>

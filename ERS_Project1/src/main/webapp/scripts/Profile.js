@@ -40,6 +40,8 @@ document.addEventListener("DOMContentLoaded", function () {
         let info = JSON.parse(xhr.response);
         //console.log(info);
 
+        document.getElementById("id").value = info.id;
+        document.getElementById("pwdId").value = info.id;
         let firstName = info.firstName[0] + info.firstName.substr(1).toLowerCase();
         document.getElementById("firstName").value = firstName;
         let lastName = info.lastName[0] + info.lastName.substr(1).toLowerCase();
