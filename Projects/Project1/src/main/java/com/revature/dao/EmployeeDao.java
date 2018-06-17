@@ -15,4 +15,5 @@ public interface EmployeeDao
 	void createEmployee(Employee employee);
 	void updateEmployee(Employee employee);
 	void deleteEmployeeById(int id);
+	List<Integer> getEmployeesUnderManager(List<Employee> employees, int managerId);
 }

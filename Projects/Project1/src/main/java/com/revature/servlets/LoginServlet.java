@@ -34,8 +34,9 @@ public class LoginServlet extends HttpServlet
 		
 		if(dao.isAuthenticated(usr, pwd))
 		{
-			session.setAttribute("username", "admin");
-			resp.sendRedirect("transaction");
+			
+			session.setAttribute("userName", usr);
+			resp.sendRedirect("Reimbursement");
 		}
 		else {
 			resp.sendRedirect("login");

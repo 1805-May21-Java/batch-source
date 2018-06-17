@@ -130,6 +130,7 @@ public class EmployeeDaoImpl implements EmployeeDao
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+		
 		return false;
 	}
 
@@ -224,11 +225,18 @@ public class EmployeeDaoImpl implements EmployeeDao
 		return employee;
 	}
 
-
-
-
-
-
-	
+	@Override
+	public ArrayList<Integer> getEmployeesUnderManager(List<Employee> employees, int managerId)
+	{
+		ArrayList<Integer> result =new ArrayList<>();
+		
+		for(int i=0; i<employees.size(); i++)
+		{
+			if(employees.get(i).getReportTo()==managerId)
+				result.add(i+1);
+		}
+		
+		return result;
+	}
 	
 }

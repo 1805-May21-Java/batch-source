@@ -166,4 +166,19 @@ public class ReimbursementDaoImpl implements ReimbursementDao
 		
 	}
 
+	@Override
+	public List<Reimbursement> getReimbursementsByEmpIds(List<Reimbursement> reimbursements, List<Integer> empIds)
+	{
+		List<Reimbursement> result = new ArrayList<>();
+		for(int i=0; i< empIds.size(); i++)
+		{
+			for(int j=0; j<reimbursements.size(); j++)
+			{
+				if(empIds.get(i)==reimbursements.get(j).getRequestBy())
+					result.add(reimbursements.get(j));
+			}				
+		}
+		return result;
+	}
+
 }

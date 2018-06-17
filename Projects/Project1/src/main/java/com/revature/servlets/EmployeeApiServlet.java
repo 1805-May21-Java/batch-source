@@ -14,10 +14,10 @@ import com.revature.dao.EmployeeDaoImpl;
 import com.revature.pojos.Employee;
 
 
-public class EmployeeServlet extends HttpServlet {
+public class EmployeeApiServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public EmployeeServlet() {
+    public EmployeeApiServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,8 +30,6 @@ public class EmployeeServlet extends HttpServlet {
 		String employeeString;
 		
 		if (idStr != null) {
-//			System.out.println("got a param");
-//			System.out.println(idStr);
 			
 			int id = Integer.valueOf(idStr);
 			Employee e = edi.getEmployeeById(id);

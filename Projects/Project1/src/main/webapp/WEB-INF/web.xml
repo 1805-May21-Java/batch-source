@@ -7,23 +7,15 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>firstServlet</servlet-name>
-    <url-pattern>/hello</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>secondServlet</servlet-name>
-    <servlet-class>com.revature.servlets.LoginServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>firstServlet</servlet-name>
     <url-pattern>/login</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>transactionServlet</servlet-name>
-    <servlet-class>com.revature.servlets.TransactionServlet</servlet-class>
+    <servlet-name>reimbursementServlet</servlet-name>
+    <servlet-class>com.revature.servlets.ReimbursementServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>transactionServlet</servlet-name>
-    <url-pattern>/transaction</url-pattern>
+    <servlet-name>reimbursementServlet</servlet-name>
+    <url-pattern>/Reimbursement</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>logoutServlet</servlet-name>
@@ -35,12 +27,22 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>EmployeeServlet</display-name>
-    <servlet-name>EmployeeServlet</servlet-name>
-    <servlet-class>com.revature.servlets.EmployeeServlet</servlet-class>
+    <display-name>EmployeeApiServlet</display-name>
+    <servlet-name>EmployeeApiServlet</servlet-name>
+    <servlet-class>com.revature.servlets.EmployeeApiServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>EmployeeServlet</servlet-name>
+    <servlet-name>EmployeeApiServlet</servlet-name>
     <url-pattern>/api/employees</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ReimbursementsApiServlet</display-name>
+    <servlet-name>ReimbursementsApiServlet</servlet-name>
+    <servlet-class>com.revature.servlets.ReimbursementsApiServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ReimbursementsApiServlet</servlet-name>
+    <url-pattern>/api/reimbursements</url-pattern>
   </servlet-mapping>
 </web-app>

@@ -12,6 +12,7 @@ import com.revature.dao.ReimbursementDao;
 import com.revature.dao.ReimbursementDaoImpl;
 import com.revature.pojos.Employee;
 import com.revature.pojos.Reimbursement;
+import com.revature.servlets.EmployeeServlet;
 
 
 class DaoImplementsTests
@@ -120,7 +121,35 @@ class DaoImplementsTests
 		dao.updateReimbursement(reimbursement);
 	}
 
-	
+	@Test
+	void listOfReimbursenetByEmpIds()
+	{
+		ReimbursementDao dao = new ReimbursementDaoImpl();
+		List<Reimbursement> reimbursements = dao.getReimbursements();
+		
+		EmployeeDao daoEmp = new EmployeeDaoImpl();
+		List<Employee> employees = daoEmp.getEmployees();
+		
+		for(Employee reimbursement: employees)
+		{
+			System.out.println(reimbursement.getEmpName());
+		}
+		int managerId =2;
+		List<Integer> empIds =  daoEmp.getEmployeesUnderManager(employees, managerId);
+		
+		for(Integer i : empIds)
+		{
+			System.out.println(i);
+		}
+		
+		List<Reimbursement> reimbursements2=dao.getReimbursementsByEmpIds(reimbursements, empIds);
+		
+		for(Reimbursement reimbursement: reimbursements2)
+		{
+			System.out.println(reimbursement.getReimburseId());
+		}
+		
+	}
 
 	
 	

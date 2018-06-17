@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-public class TransactionServlet extends HttpServlet
+public class ReimbursementServlet extends HttpServlet
 {
 
 
@@ -17,13 +17,8 @@ public class TransactionServlet extends HttpServlet
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
 	{
 		HttpSession session = req.getSession(false);
-		System.out.println(session);
-		if(session == null) System.out.println("session is null");
-		else System.out.println("session is not null");
-		if ( session!=null && session.getAttribute("username") != null) {
-			System.out.println(session.getAttribute("username"));
-			System.out.println("transaction running..");
-			req.getRequestDispatcher("Transaction.html").forward(req, resp); 
+		if ( session!=null) {
+			req.getRequestDispatcher("Reimbursement").forward(req, resp); 
 			
 		} else {
 			resp.sendRedirect("login");
