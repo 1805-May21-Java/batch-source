@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>ERS Registration</title>
+    <title>ERS Profile</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--<link rel="stylesheet" type="text/css" media="screen" href="main.css" />-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
@@ -39,6 +39,9 @@
     <div style="background-color: rgb(202, 238, 226);"><br></div>
     <div id="welcome"></div>
     <div style="background-color: rgb(202, 238, 226);"><br></div>
+    <div id="messagesAndErrors">
+
+    </div>
     <nav>
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
             <a class="nav-item nav-link active" id="nav-reqs-tab" data-toggle="tab" href="#nav-reqs" role="tab" aria-controls="nav-reqs" aria-selected="true">Your Requests</a>
@@ -64,31 +67,11 @@
                     </tr>
                 </thead>
                 <tbody id="myReimbs">
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td colspan="2">Larry the Bird</td>
-                        <td>@twitter</td>
-                    </tr>
+
                 </tbody>
             </table>
-            <img hidden id="myReimbImage">
             <form hidden id="reimbRequestForm" style="margin: 20px" class="form-signin" action="profile" method="post">
                 <h2 class="form-signin-heading">Reimbursement Request Form</h2>
-                <div id="messagesAndErrors">
-    
-                </div>
                 <label style="font-size: 20px" for="inAmount">Amount</label>
                 <input type="number" style="max-width:200px" id="inAmount" class="form-control" name="amount" placeholder="0.00" required>
                 <label style="font-size: 20px; margin-top:10px" for="inDescription">Description</label>
@@ -97,12 +80,43 @@
                 <input type="text" style="max-width:500px" id="inURL" class="form-control" name="picURL">
                 <button type="submit" style="margin-top:10px; max-width: 200px;" class="btn btn-success btn-block">Submit</button>
             </form>
+            <div><img hidden id="myReimbImage"></div>
         </div>
         <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-
+            <button id="editInfo" class="btn btn-large btn-outline-primary" style="margin: 10px">Edit Personal Info</button>
+            <form id="personalForm" style="margin: 20px" class="form-signin" action="profile" method="post">
+                <h2 class="form-signin-heading">Personal Info</h2>
+                <div>
+                    <label style="font-size: 20px">Empl ID: </label>
+                    <span id="emplID"></span>
+                </div>
+                <div>
+                    <label style="font-size: 20px" for="inEmplFirst">First Name: </label>
+                    <span id="emplFirst"></span>
+                    <input hidden type="text" style="max-width:200px; display: inline" id="inEmplFirst" class="form-control" name="emplFirst">
+                </div>
+                <div>
+                    <label style="font-size: 20px" for="inEmplLast">Last Name: </label>
+                    <span id="emplLast"></span>
+                    <input hidden type="text" style="max-width:200px; display: inline" id="inEmplLast" class="form-control" name="emplLast">
+                </div>
+                <div>
+                    <label style="font-size: 20px" for="inEmplEmail">Email: </label>
+                    <span id="emplEmail"></span>
+                    <input hidden type="email" style="max-width:200px; display: inline" id="inEmplEmail" class="form-control" name="emplEmail">
+                </div>
+                <div>
+                    <label style="font-size: 20px" for="inEmplBday">Birthday: </label>
+                    <span id="emplBday"></span>
+                    <input hidden type="date" style="max-width:200px; display: inline" id="inEmplBday" class="form-control" name="emplBday">
+                </div>
+                <button hidden id="personalSaveButton" type="submit" style="margin-top:10px; max-width: 200px;" class="btn btn-success btn-block">Save</button>
+            </form>
         </div>
         <div class="tab-pane fade" id="nav-manager" role="tabpanel" aria-labelledby="nav-managerS-tab">
-
+            <button id="showEmplReimbsButton" class="btn btn-large btn-outline-primary" style="margin: 10px">Edit Personal Info</button>
+            <button id="addNewEmplButton" class="btn btn-large btn-outline-primary" style="margin: 10px">Edit Personal Info</button>
+            <button id="addExistingEmplButton" class="btn btn-large btn-outline-primary" style="margin: 10px">Edit Personal Info</button>
         </div>
     </div>
     <script src="profile.js"></script>

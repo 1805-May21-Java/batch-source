@@ -29,6 +29,8 @@ public class ProfileServlet extends HttpServlet {
 	}
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		SessionServlet.clearMessagesAndErrors();
+		
 		if(req.getParameter("amount") != null) {
 			try{
 				System.out.println(req.getParameter("amount"));
@@ -50,6 +52,28 @@ public class ProfileServlet extends HttpServlet {
 				e.printStackTrace();
 				SessionServlet.errors.add(new Info("Invalid amount provided", true));
 			}
+			res.sendRedirect("profile");
+		}
+		else if(req.getParameter("emplBday") != null) {
+			String first = req.getParameter("emplFirst");
+			String email = req.getParameter("emplEmail");
+			String last = req.getParameter("emplLast");
+			Date bday = Date.valueOf(req.getParameter("emplBday"));
+			
+			if(first.equals(""))
+				first = SessionServlet.empl.getFirst();
+			if(last.equals(""))
+				last = SessionServlet.empl.getLast();
+			if(email.equals(""))
+				email = SessionServlet.empl.getEmail();
+			
+			SessionServlet.empl.setFirst(first);
+			SessionServlet.empl.setLast(last);
+			SessionServlet.empl.setEmail(email);
+			SessionServlet.empl.setBday(bday);
+			dao.updateEmployee(SessionServlet.empl);
+			
+			res.sendRedirect("profile");
 		}
 		else {
 			BufferedReader br = req.getReader();
