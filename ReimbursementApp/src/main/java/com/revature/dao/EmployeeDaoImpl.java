@@ -31,7 +31,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 			//rs is iterated over and values are retrieved and stored into
 			//HashMap employeeData
 			while(rs.next()) {
-				int employeeId = rs.getInt("EMPLOYEE_ID");
+				Integer employeeId = rs.getInt("EMPLOYEE_ID");
 				String firstname = rs.getString("FIRSTNAME");
 				String lastname = rs.getString("LASTNAME");
 				String username = rs.getString("USERNAME");
@@ -70,12 +70,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 			//Result set is iterated and data retrieved to create a 
 			//new Account object.
 			while(rs.next()) {
-				//String rowUsername = rs.getString("USERNAME");
-				//String password = rs.getString("PASSWORD");
-				//double checking = rs.getDouble("CHECKING");
-				//double savings = rs.getDouble("SAVINGS");
-				//user = new Account(rowUsername, password, checking, savings);
-				int employeeId = rs.getInt("EMPLOYEE_ID");
+				Integer employeeId = rs.getInt("EMPLOYEE_ID");
 				String firstname = rs.getString("FIRSTNAME");
 				String lastname = rs.getString("LASTNAME");
 				String user_name = rs.getString("USERNAME");
@@ -143,6 +138,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 			pStatement.setString(2, newAccount.getAddress());
 			pStatement.setString(3, newAccount.getEmail());
 			pStatement.setString(4, newAccount.getPhone());
+			pStatement.setString(5, newAccount.getUsername());
 			//PreparedStatment is executed and commited.
 			accountsUpdated = pStatement.executeUpdate();
 			con.commit();
@@ -157,12 +153,13 @@ public class EmployeeDaoImpl implements EmployeeDao{
 		return accountsUpdated;
 	}
 
-	public void viewPendingByUsername(String username) {
+	//return reimbursement rows as a hashmap
+	public void viewPendingById(Integer employeeId) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	public void viewResolvedByUsername(String username) {
+	public void viewResolvedById(Integer employeeId) {
 		// TODO Auto-generated method stub
 		
 	}

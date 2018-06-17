@@ -1,5 +1,6 @@
 package com.revature.servlets;
 
+//url is /logout
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -10,15 +11,15 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class SessionServlet
+ * Servlet implementation class LogoutServlet
  */
-public class SessionServlet extends HttpServlet {
+public class LogoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SessionServlet() {
+    public LogoutServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,33 +28,28 @@ public class SessionServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
+
 		
-		PrintWriter pw = response.getWriter();
-		response.setContentType("application/json");
-		if(session != null) {
-			pw.write("{\"username\":\""+session.getAttribute("username")+"\"}");
-			pw.write("{\"id\":\""+session.getAttribute("id")+"\"}");
-			pw.write("{\"isManager\":\""+session.getAttribute("isManager")+"\"}");
-			pw.write("{\"user\": "+session.getAttribute("user")+"}");
-			pw.write("{\"viewList\": "+session.getAttribute("viewList")+"}");
-			
-		}else {
-			pw.write("{\"username\": null}");
-			pw.write("{\"id\": null}");
-			pw.write("{\"isManager\": null}");
-			pw.write("{\"user\": null}");
-			pw.write("{\"viewList\": null}");
-			
+		//System.out.println("Clicked logout link");
+		HttpSession session = request.getSession(false);	
+		if (session != null ) {
+			session.invalidate();
 		}
+		response.setContentType("text/html");
+		PrintWriter pw = response.getWriter();
+		pw.println("<p> You have been successfully logged out </p>");
+		pw.println("<p> <a href=\"Login.html\">Go Back to Login Page</a> </p>");
 		pw.close();
+		//request.getRequestDispatcher("Login.html").forward(request, response);
+		
 	}
 
-	
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-	
 
 }

@@ -49,3 +49,8 @@ a{
     width: 300px;
     margin: 0 auto;
 }
+
+.radio-input{
+    width: 20px;
+    margin : 0 auto;
+}

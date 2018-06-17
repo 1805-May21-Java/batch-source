@@ -3,11 +3,11 @@ package com.revature.pojos;
 public class Reimbursement {
 	
 	private Integer reimbursement_id;
-	private double money;
-	private int employee_id;
+	private Double money;
+	private Integer employee_id;
 	private String status;
-	private int reviewer_id;
-	public Reimbursement(int reimbursement_id, double money, int employee_id, String status, int reviewer_id) {
+	private Integer reviewer_id;
+	public Reimbursement(Integer reimbursement_id, Double money, Integer employee_id, String status, Integer reviewer_id) {
 		super();
 		this.reimbursement_id = reimbursement_id;
 		this.money = money;
@@ -15,22 +15,22 @@ public class Reimbursement {
 		this.status = status;
 		this.reviewer_id = reviewer_id;
 	}
-	public int getReimbursement_id() {
+	public Integer getReimbursement_id() {
 		return reimbursement_id;
 	}
-	public void setReimbursement_id(int reimbursement_id) {
+	public void setReimbursement_id(Integer reimbursement_id) {
 		this.reimbursement_id = reimbursement_id;
 	}
 	public double getMoney() {
 		return money;
 	}
-	public void setMoney(double money) {
+	public void setMoney(Double money) {
 		this.money = money;
 	}
-	public int getEmployee_id() {
+	public Integer getEmployee_id() {
 		return employee_id;
 	}
-	public void setEmployee_id(int employee_id) {
+	public void setEmployee_id(Integer employee_id) {
 		this.employee_id = employee_id;
 	}
 	public String getStatus() {
@@ -39,10 +39,10 @@ public class Reimbursement {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	public int getReviewer_id() {
+	public Integer getReviewer_id() {
 		return reviewer_id;
 	}
-	public void setReviewer_id(int reviewer_id) {
+	public void setReviewer_id(Integer reviewer_id) {
 		this.reviewer_id = reviewer_id;
 	}
 	@Override

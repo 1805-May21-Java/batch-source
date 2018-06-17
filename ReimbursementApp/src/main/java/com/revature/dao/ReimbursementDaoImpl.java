@@ -6,7 +6,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import com.revature.pojos.Reimbursement;
 import com.revature.util.ConnectionUtil;
@@ -31,10 +33,10 @@ public class ReimbursementDaoImpl implements ReimbursementDao{
 			//HashMap employeeData
 			while(rs.next()) {
 				Integer reimbursementId = rs.getInt("REIMBURSEMENT_ID");
-				double money = rs.getDouble("MONEY");
-				int employeeId = rs.getInt("EMPLOYEE_ID");
+				Double money = rs.getDouble("MONEY");
+				Integer employeeId = rs.getInt("EMPLOYEE_ID");
 				String status = rs.getString("STATUS");
-				int reviewerId = rs.getInt("REVIEWER_ID");
+				Integer reviewerId = rs.getInt("REVIEWER_ID");
 				reimbursementData.put(reimbursementId, new Reimbursement(reimbursementId,
 						money, employeeId, status, reviewerId));
 				
@@ -94,10 +96,11 @@ public class ReimbursementDaoImpl implements ReimbursementDao{
 			//accountExist is created by calling getAccountByUsername
 			//if object remains null, then it does not exist in the table.
 			//else a print statement notifying the user of its existance is given.
-			Reimbursement formExist = getReimbursementById(form.getReimbursement_id());
-			if(formExist == null) {
+			//Reimbursement formExist = getReimbursementById(form.getReimbursement_id());
+			//if(formExist == null) {
 				Connection con = ConnectionUtil.getConnection();
-				String sql = "INSERT INTO REIMBURSEMENTS(MONEY, EMPLOYEE_ID, STATUS) VALUES(?,?,?)";
+				con.setAutoCommit(false);
+				String sql = "INSERT INTO REIMBURSEMENT(MONEY, EMPLOYEE_ID, STATUS) VALUES(?,?,?)";
 				//Uses PreparedStatement to insert all values from newAccount
 				//via the Getter methods.
 				PreparedStatement pStatement = con.prepareStatement(sql);
@@ -106,9 +109,10 @@ public class ReimbursementDaoImpl implements ReimbursementDao{
 				pStatement.setString(3, form.getStatus());
 				//PreparedStatement is then executed
 				reimbursementCreated = pStatement.executeUpdate();
-				}else {
-					System.out.println("Reimbursement already exist in the database");
-					}	
+				con.commit();
+				//}else {
+				//	System.out.println("Reimbursement already exist in the database");
+				//	}	
 			} catch (IOException e) {
 					e.printStackTrace();
 			} catch (SQLException e) {
@@ -171,5 +175,104 @@ public class ReimbursementDaoImpl implements ReimbursementDao{
 		//returns number of rows updated in the database.
 		return reimbursementsUpdated;
 	}
+
+	public List<Reimbursement> getPendingByEmployeeId(Integer employeeId) {
+		
+		List<Reimbursement> viewReimbursements = new ArrayList<Reimbursement>();
+		//try/catch block is used to catch any possible IOException and SQLException
+		try {
+			//Connection con is used to create a Statement instance
+			//using String sql to retrieve all rows from table EMPLOYEE
+			Connection con = ConnectionUtil.getConnection();
+			//String sql = "SELECT REIMBURSEMENT_ID, MONEY, EMPLOYEE_ID, STATUS "
+			//		+"FROM REIMBURSEMENT WHERE EMPLOYEE_ID = ? "
+			//		+ "AND STATUS = 'Pending'";
+			String sql = "SELECT REIMBURSEMENT_ID, MONEY, STATUS "
+					+ "FROM REIMBURSEMENT WHERE EMPLOYEE_ID = ? "
+					+ "AND STATUS = 'Pending'";
+			//Uses PreparedStatement
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, employeeId);
+			//ps.setString(2, status);
+			//ResultSet rs stores result of Statement
+			//use .executeQuery() for PreparedStatments
+			//use .executeQuery(String arg) for Statement
+			ResultSet rs = ps.executeQuery();
+			//rs is iterated over and values are retrieved and stored into
+			//HashMap employeeData
+			while(rs.next()) {
+				Integer reimbursementId = rs.getInt("REIMBURSEMENT_ID");
+				Double money = rs.getDouble("MONEY");
+				//Integer employee_Id = rs.getInt("EMPLOYEE_ID");
+				String status = rs.getString("STATUS");
+				//Integer reviewerId = rs.getInt("REVIEWER_ID");
+				//Integer reviewerId = rs.getInt("REVIEWER_ID");
+				viewReimbursements.add(new Reimbursement(reimbursementId,
+						money, employeeId,status, null));
+				
+			}
+			
+			
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+
+		return viewReimbursements;
+	}
+
+	public List<Reimbursement> getResolvedByEmployeeId(Integer employeeId) {
+		
+		List<Reimbursement> viewReimbursements = new ArrayList<Reimbursement>();
+		//try/catch block is used to catch any possible IOException and SQLException
+		try {
+			//Connection con is used to create a Statement instance
+			//using String sql to retrieve all rows from table EMPLOYEE
+			Connection con = ConnectionUtil.getConnection();
+			//String sql = "SELECT REIMBURSEMENT_ID, MONEY, EMPLOYEE_ID, STATUS "
+			//		+"FROM REIMBURSEMENT WHERE EMPLOYEE_ID = ? "
+			//		+ "AND STATUS = 'Pending'";
+			String sql = "SELECT REIMBURSEMENT_ID, MONEY, STATUS, REVIEWER_ID "
+					+ "FROM REIMBURSEMENT WHERE EMPLOYEE_ID = ? "
+					+ "AND STATUS != 'Pending'";
+			//Uses PreparedStatement
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, employeeId);
+			//ps.setString(2, status);
+			//ResultSet rs stores result of Statement
+			//use .executeQuery() for PreparedStatments
+			//use .executeQuery(String arg) for Statement
+			ResultSet rs = ps.executeQuery();
+			//rs is iterated over and values are retrieved and stored into
+			//HashMap employeeData
+			while(rs.next()) {
+				Integer reimbursementId = rs.getInt("REIMBURSEMENT_ID");
+				Double money = rs.getDouble("MONEY");
+				//Integer employee_Id = rs.getInt("EMPLOYEE_ID");
+				String status = rs.getString("STATUS");
+				Integer reviewerId = rs.getInt("REVIEWER_ID");
+				//Integer reviewerId = rs.getInt("REVIEWER_ID");
+				viewReimbursements.add(new Reimbursement(reimbursementId,
+						money, employeeId, status, reviewerId));
+				
+			}
+			
+			
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+
+		return viewReimbursements;
+	}
+	
+	
+	
 
 }

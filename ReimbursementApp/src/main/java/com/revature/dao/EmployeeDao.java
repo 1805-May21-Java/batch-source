@@ -14,9 +14,9 @@ public interface EmployeeDao {
 	
 	public int updateEmployee(Employee newAccount);
 	
-	public void viewPendingByUsername(String username);
+	public void viewPendingById(Integer employeeId);
 	
-	public void viewResolvedByUsername(String username);
+	public void viewResolvedById(Integer employeeId);
 	
 	public void approveReimbursement(int reimbursementId, String yesOrNo);
 	

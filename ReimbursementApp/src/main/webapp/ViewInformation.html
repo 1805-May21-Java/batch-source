@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="ReimbursementStyle.css" type="text/css" media="screen">
 
 </head>
-<body>
+<body onload="getInformation()">
 
 
     <div class="container text-center">
@@ -27,18 +27,36 @@
         <div class="container topnav">
             <a class="active" href="EmployeeHomepage.html">Home</a>
             <a href="CreateReimbursement.html">Create Reimbursement</a>
-            <a href="ViewReimbursements.html">View Pending</a>
+            <a href="ViewReimbursements.html">View Reimbursements</a>
             <a href="ViewInformation.html">User Information</a>
-            <a href="Login.html">Log Out</a>
+            <a href="logout">Log Out</a>
         </div>
     </div>
 
     <div class="container text-center">
-        <h3 id="account">Account Information</h3>
+        <h3 id="account" class="text-center">Account Information</h3>
         <p>Employee will be able to view and edit their account information</p>
     </div>
+    
+    <div class="container text-center">
+    	<table id="infoTable" class="table text-center">
+    	</table>
+    	<br><br>
+    	
+    	<form class="form-group" id="application" action="viewInformation" method="POST">
+            <label >Password:</label>
+            <input class="form-control text-center project-input" type="text" name="password">
+            <label >Address:</label>
+            <input class="form-control text-center project-input" type="text" name="address">
+            <label >Email:</label>
+            <input class="form-control text-center project-input" type="text" name="email">
+            <label >Phone: #+(###)###-####</label>
+            <input class="form-control text-center project-input" type="text" name="phone">
+            <input id="submit" class="text-center" type="Submit" value="Submit Changes">
+        </form>
+    </div>
 
-
+	<script type="text/javascript" src="ViewInformationScript.js"></script>
     
 </body>
 </html>
