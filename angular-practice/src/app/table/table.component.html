@@ -1,0 +1,18 @@
+<button (click)="reformatTable()">Change Table Format</button>
+<br><br>
+<table [class.table]="isBootstrapTable">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Birthday</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let p of people">
+      <td>{{p.first | uppercase}} {{p.last | uppercase}}</td>
+      <td>{{p.email}}</td>
+      <td>{{p.bday | date:'MM-dd-yyyy'}}</td>
+    </tr>
+  </tbody>
+</table>

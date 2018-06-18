@@ -1,0 +1,7 @@
+<button (click) = "toggleShowUser()">{{showUser ? "Hide Info" : "Show Info"}}</button>
+<ul *ngIf="showUser">
+  <li>First Name: {{firstName}}</li>
+  <li>Last Name: {{lastName}}</li>
+  <li>Username: {{userName}}</li>
+  <li>SSN: {{ssn}}</li>
+</ul>

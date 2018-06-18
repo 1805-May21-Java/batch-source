@@ -1,0 +1,15 @@
+<form>
+  <input type="radio" name="selectStuff" value="animals" (click)="option='animals'"> Animals<br>
+  <input type="radio" name="selectStuff" value="colors" (click)="option='colors'"> Colors<br>
+  <input type="radio" name="selectStuff" value="days" (click)="option='days'"> Days<br>
+</form>
+
+<ul *ngIf="option=='animals'">
+  <li *ngFor="let a of animals">{{a}}</li>
+</ul>
+<ul *ngIf="option=='colors'">
+  <li *ngFor="let c of colors">{{c}}</li>
+</ul>
+<ul *ngIf="option=='days'">
+  <li *ngFor="let d of days">{{d}}</li>
+</ul>
