@@ -1,0 +1,37 @@
+
+<h3>4) Table</h3>
+<button (click)="displayFormat()">Change format</button>
+
+<div *ngIf="!wellFormat">
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Address</th>
+      <th>Email</th>
+      <th>Password</th>
+    </tr>
+    <tr *ngFor="let user of people">
+      <td>{{user.firstname | uppercase}}  {{user.lastname | uppercase}}</td>
+      <td>{{user.address}}</td>
+      <td>{{user.email}}</td>
+      <td>{{user.password}}</td>
+    </tr>
+  </table>
+</div>
+
+<div *ngIf="wellFormat" class="container">
+    <table class="table">
+      <tr>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Email</th>
+        <th>Password</th>
+      </tr>
+      <tr *ngFor="let user of people">
+        <td>{{user.firstname | uppercase}}  {{user.lastname | uppercase}}</td>
+        <td>{{user.address}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.password}}</td>
+      </tr>
+    </table>
+  </div>

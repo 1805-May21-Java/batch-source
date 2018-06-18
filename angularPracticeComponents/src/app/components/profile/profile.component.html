@@ -1,0 +1,24 @@
+<h3>2) Profile</h3>
+<div>
+  <button (click)="toggle()" >Press Button
+  </button>
+</div>
+<div>
+  <br>
+  {{viewStatus}}
+  <br>
+  <br>
+</div>
+
+<div *ngIf="toggleView">
+  <p>
+    User Information <br>
+    {{profileInfo.firstname}}
+      <br>{{profileInfo.lastname}}
+      <br> {{profileInfo.address}}
+      <br> {{profileInfo.email}}
+      <br> {{profileInfo.password}}
+    
+  </p>
+  <br>
+</div>

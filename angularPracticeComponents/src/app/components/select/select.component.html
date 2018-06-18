@@ -1,0 +1,18 @@
+<h3>3) Select</h3>
+<div>
+  <input type="radio" name="array" value="animals" (click)="selectedAnimals()">: Animal <br>
+  <input type="radio" name="array" value="color" (click)="selectedColor()">: Color <br>
+   <input type="radio" name="array" value="days" (click)="selectedDays()">: Days <br>
+  <br>
+</div>
+
+<div *ngIf="display">
+  
+  
+  <ul>
+    <li *ngFor="let item of items">
+      {{ item }}
+    </li>
+  </ul>
+  <br>
+</div>
