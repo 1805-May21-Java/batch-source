@@ -1,3 +1,12 @@
-<p>
-  profile works!
-</p>
+<div>
+  <button (click)="hideProfile()">{{ buttonLabel }}</button>
+</div>
+<div *ngIf="toggle">
+  <h2>{{ user.name | uppercase }} Details</h2>
+  <div>id: {{ user.id }}</div>
+  <div>Birthdate: {{ user.dob | uppercase }}</div>
+</div>
+
+
+
+
