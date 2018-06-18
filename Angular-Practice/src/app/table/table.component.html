@@ -1,0 +1,21 @@
+<h4>Table Component</h4>
+
+<button (click)="toggle()">Change Format</button>
+<div [ngClass] = "styleOn ? 'container jumbotron':''">
+  <table [ngClass]="styleOn ? 'table':''">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Birthday</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let person of people">
+        <td>{{person.name | uppercase}}</td>
+        <td>{{person.email}}</td>
+        <td>{{person.birthday | date:'fullDate'}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

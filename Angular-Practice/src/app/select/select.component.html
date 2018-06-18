@@ -1,0 +1,28 @@
+<h4>Select Component</h4>
+<form>
+  <input type="radio" name="choice" (click)='toggle("animals")'>animals
+  <br>
+  <input type="radio" name="choice" (click)='toggle("colors")'>colors
+  <br>
+  <input type="radio" name="choice" (click)='toggle("days")'>days
+  <br>
+</form>
+
+<div *ngIf="showAnimals">
+  <p>Animals</p>
+  <ul>
+    <li *ngFor="let animal of animals">{{animal}}</li>
+  </ul>
+</div>
+<div *ngIf="showColors">
+  <p>Colors</p>
+  <ul>
+    <li *ngFor="let color of colors">{{color}}</li>
+  </ul>
+</div>
+<div *ngIf="showDays">
+  <p>Days</p>
+  <ul>
+    <li *ngFor="let day of days">{{day}}</li>
+  </ul>
+</div>

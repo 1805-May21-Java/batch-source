@@ -35,11 +35,11 @@ public class ResolveServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Integer requestId = Integer.parseInt(request.getParameter("reqId"));
 		String status = request.getParameter(requestId.toString());
-		
+		String manager = request.getParameter("manager");
 		HttpSession session = request.getSession(false);
 		if(session != null) {
 			RequestDaoImpl rdi = new RequestDaoImpl();
-			rdi.resolveRequest(requestId, status);
+			rdi.resolveRequest(requestId, status, manager);
 			
 		} else {
 			//TODO: send message that failed

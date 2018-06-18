@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     sendAjaxGet("http://localhost:8082/ERS_Project1/EmployeeRequests", function (xhr) {
         let info = JSON.parse(xhr.response);
+        console.log(info);
         //console.log(info);
         let employees = info.staff;
         //console.log(employees);
@@ -53,6 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     temp.innerHTML = `
                         <form class="form-group form-inline" action="Resolve" method="post">
                             <input name="reqId" value="${request.id}" hidden>
+                            <input name="manager" value="${info.firstName} ${info.lastName}" hidden>
                             <select class="form-control" name="${request.id}">
                                 <option value="approve">approve</option>
                                 <option value="deny">deny</option>
@@ -60,15 +62,13 @@ document.addEventListener("DOMContentLoaded", function () {
                             <button class="btn myButton" type="submit">Reply</button>
                         </form>`;
                 } else {
-                    temp.innerHTML = request.status;
+                    date = new Date(request.dateResolved);
+                    temp.innerHTML = date.getMonth() + "-" + date.getDate() + "-" + date.getFullYear() + "<br>" + 
+                    request.status + " BY<br>" + request.resolvedBy;
                 }
                 row.appendChild(temp);
 
                 if (request.status != "PENDING") {
-                    temp = document.createElement("td");
-                    date = new Date(request.dateResolved);
-                    temp.innerHTML = date.getMonth() + "-" + date.getDate() + "-" + date.getFullYear();
-                    row.appendChild(temp);
                     resTable.appendChild(row)
                 } else {
                     table.appendChild(row);

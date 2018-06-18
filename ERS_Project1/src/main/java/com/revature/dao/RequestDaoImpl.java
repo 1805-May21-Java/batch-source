@@ -31,8 +31,9 @@ public class RequestDaoImpl implements RequestDao{
 				String status = rs.getString("STATUS");
 				Date dateRequested = rs.getDate("DATE_REQUESTED");
 				Date dateResolved = rs.getDate("DATE_RESOLVED");
+				String resolvedBy = rs.getString("RESOLVED_BY");
 				
-				requestsList.add(new Request(requestId, id, amount, description, status, dateRequested, dateResolved));
+				requestsList.add(new Request(requestId, id, amount, description, status, dateRequested, dateResolved, resolvedBy));
 			}
 			// Don't close this connection because this is called inside another DAO
 		} catch (SQLException e) {
@@ -43,13 +44,14 @@ public class RequestDaoImpl implements RequestDao{
 		return requestsList;
 	}
 
-	public int resolveRequest(int requestId, String status) {
+	public int resolveRequest(int requestId, String status, String manager) {
 		int requestsUpdated = 0;
 		try {
 			Connection conn = ConnectionUtil.getConnection();
 			String sql = "UPDATE ERS_REQUEST "
 					+ "SET STATUS = ?, "
-					+ "DATE_RESOLVED = LOCALTIMESTAMP "
+					+ "DATE_RESOLVED = LOCALTIMESTAMP, "
+					+ "RESOLVED_BY = ?"
 					+ "WHERE REQ_ID = ?";
 			PreparedStatement ps = conn.prepareStatement(sql);
 			if(status.equals("approve")) {
@@ -59,7 +61,8 @@ public class RequestDaoImpl implements RequestDao{
 			} else {
 				ps.setString(1,  Constants.pending);
 			}
-			ps.setInt(2,  requestId);
+			ps.setString(2, manager);
+			ps.setInt(3,  requestId);
 			requestsUpdated = ps.executeUpdate();
 			
 			conn.close();

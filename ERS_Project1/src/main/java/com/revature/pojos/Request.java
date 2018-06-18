@@ -10,12 +10,14 @@ public class Request {
 	private String status;
 	private Date dateRequested;
 	private Date dateResolved;
+	private String resolvedBy;
+	
 	public Request() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public Request(int id, int emplId, double amount, String description, String status, Date dateRequested,
-			Date dateResolved) {
+			Date dateResolved, String resolvedBy) {
 		super();
 		this.id = id;
 		this.emplId = emplId;
@@ -24,8 +26,8 @@ public class Request {
 		this.status = status;
 		this.dateRequested = dateRequested;
 		this.dateResolved = dateResolved;
+		this.resolvedBy = resolvedBy;
 	}
-	
 	public Request(int emplId, double amount, String description) {
 		super();
 		this.emplId = emplId;
@@ -74,6 +76,12 @@ public class Request {
 	public void setDateResolved(Date dateResolved) {
 		this.dateResolved = dateResolved;
 	}
+	public String getResolvedBy() {
+		return resolvedBy;
+	}
+	public void setResolvedBy(String resolvedBy) {
+		this.resolvedBy = resolvedBy;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -86,6 +94,7 @@ public class Request {
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + emplId;
 		result = prime * result + id;
+		result = prime * result + ((resolvedBy == null) ? 0 : resolvedBy.hashCode());
 		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		return result;
 	}
@@ -119,6 +128,11 @@ public class Request {
 			return false;
 		if (id != other.id)
 			return false;
+		if (resolvedBy == null) {
+			if (other.resolvedBy != null)
+				return false;
+		} else if (!resolvedBy.equals(other.resolvedBy))
+			return false;
 		if (status == null) {
 			if (other.status != null)
 				return false;
@@ -129,8 +143,10 @@ public class Request {
 	@Override
 	public String toString() {
 		return "Request [id=" + id + ", emplId=" + emplId + ", amount=" + amount + ", description=" + description
-				+ ", status=" + status + ", dateRequested=" + dateRequested + ", dateResolved=" + dateResolved + "]";
+				+ ", status=" + status + ", dateRequested=" + dateRequested + ", dateResolved=" + dateResolved
+				+ ", resolvedBy=" + resolvedBy + "]";
 	}
+	
 	
 	
 	
