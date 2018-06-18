@@ -37,7 +37,12 @@
 </head>
 <body>
     <div style="background-color: rgb(202, 238, 226);"><br></div>
-    <div id="welcome"></div>
+    <div id="welcome">
+        <form id="logoutForm" action="profile" method="post">
+            <input hidden id="logoutText" type="text" name="logout">
+            <button type="submit" id="logoutButton" style="float: right; margin-right: 40px" class="btn btn-large btn-danger">Log out</button>
+        </form>
+    </div>
     <div style="background-color: rgb(202, 238, 226);"><br></div>
     <div id="messagesAndErrors">
 
@@ -73,7 +78,7 @@
             <form hidden id="reimbRequestForm" style="margin: 20px" class="form-signin" action="profile" method="post">
                 <h2 class="form-signin-heading">Reimbursement Request Form</h2>
                 <label style="font-size: 20px" for="inAmount">Amount</label>
-                <input type="number" style="max-width:200px" id="inAmount" class="form-control" name="amount" placeholder="0.00" required>
+                <input type="number" style="max-width:200px" id="inAmount" class="form-control" name="amount" step=".01" placeholder="0.00" required>
                 <label style="font-size: 20px; margin-top:10px" for="inDescription">Description</label>
                 <textarea style="max-width: 500px;" rows="4" id="inDescription" class="form-control" name="description" placeholder="ex: Travel Expenses"></textarea>
                 <label style="font-size: 20px; margin-top:10px" for="inURL">Image URL for Receipt (optional)</label>
@@ -120,5 +125,6 @@
         </div>
     </div>
     <script src="profile.js"></script>
+    <script src="forms.js"></script>
 </body>
 </html>

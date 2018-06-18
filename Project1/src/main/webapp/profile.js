@@ -9,6 +9,7 @@ let empl = null;
 window.onload = loadData();
 document.getElementById("showReimbsButton").addEventListener("click", toggleMyReimbTable);
 document.getElementById("reimbFormButton").addEventListener("click", toggleReimbRequestForm);
+document.getElementById("logoutButton").addEventListener("click", logout);
 document.getElementById("editInfo").addEventListener("click", togglePersonalInfo);
 
 function loadData(){
@@ -29,7 +30,7 @@ function sendAjaxGet(url, func){
     xhr.send();
 }
 
-function sendAjaxPost(url, func, contents){
+function sendAjaxPost(url, contents){
     let xhr = (new XMLHttpRequest() || new ActiveXObject());
 
     xhr.open("POST", url);
@@ -40,7 +41,7 @@ function initProfilePage(xhr){
     empl = JSON.parse(xhr.responseText);
     
     let welcome = document.getElementById("welcome");
-    welcome.innerHTML = "Welcome, " + empl.first + " " + empl.last + "!";
+    welcome.innerHTML += "Welcome, " + empl.first + " " + empl.last + "!";
     if(empl.manager){
         document.getElementById("nav-manager-tab").removeAttribute("hidden");
     }
@@ -50,6 +51,8 @@ function initProfilePage(xhr){
     document.getElementById("emplLast").innerHTML = empl.last;
     document.getElementById("emplEmail").innerHTML = empl.email;
     document.getElementById("emplBday").innerHTML = empl.bday;
+
+    document.getElementById("logoutText").value = "";
 }
 
 function toggleMyReimbTable(){
@@ -115,6 +118,7 @@ function togglePersonalInfo(){
         document.getElementById("emplBday").removeAttribute("hidden");
         document.getElementById("personalSaveButton").setAttribute("hidden", "true");
 
+        document.getElementById("inEmplBday").value = null;
         document.getElementById("editInfo").innerHTML = "Edit Personal Info";
     }
 }
@@ -138,9 +142,9 @@ function loadReimbs(xhr){
 
         cell1.setAttribute("scope", "row");
 
-        cell1.innerHTML = r.requestID;
+        cell1.innerHTML = r.id;
         cell2.innerHTML = r.dateOfRequest;
-        cell3.innerHTML = r.amountRequest;
+        cell3.innerHTML = "$" + r.amountRequest.toFixed(2);
         cell4.innerHTML = r.description;
         cell5.innerHTML = r.status;
         if(r.approveID){
@@ -152,18 +156,35 @@ function loadReimbs(xhr){
         
         let viewButton = document.createElement("button");
         let removeButton = document.createElement("button");
+        let hiddenRemoveInput = document.createElement("input");
+        let removeForm = document.createElement("form");
+        let reimbID = r.id;
+        let picURL = r.picURL;
 
         viewButton.setAttribute("class", "btn btn-small btn-primary");
-        viewButton.addEventListener("click", ()=>showReimbImage(r.picURL));
+        viewButton.addEventListener("click", ()=>showReimbImage(picURL));
         viewButton.innerHTML = "View Image";
         viewButton.setAttribute("style", "margin-right: 10px");
 
         removeButton.setAttribute("class", "btn btn-small btn-danger");
-        removeButton.addEventListener("click", ()=>sendAjaxPost(profileUrl, "RemoveReimb " + String(r.requestID)));
+        removeButton.setAttribute("type", "submit");
+        removeButton.setAttribute("id", "remove" + reimbID);
         removeButton.innerHTML = "Remove Request";
 
+        hiddenRemoveInput.setAttribute("id", "removeInput" + reimbID);
+        hiddenRemoveInput.setAttribute("type", "text");
+        hiddenRemoveInput.setAttribute("name", "removeReimb");
+        hiddenRemoveInput.setAttribute("hidden", "true");
+
+        removeForm.setAttribute("id", "removeForm" + reimbID);
+        removeForm.setAttribute("action", "profile");
+        removeForm.setAttribute("method", "post");
+
+        removeForm.appendChild(hiddenRemoveInput);
+        removeForm.appendChild(removeButton);
+
         cell8.appendChild(viewButton);
-        cell8.appendChild(removeButton);
+        cell8.appendChild(removeForm);
 
         newRow.appendChild(cell1);
         newRow.appendChild(cell2);
@@ -175,7 +196,14 @@ function loadReimbs(xhr){
         newRow.appendChild(cell8);
 
         document.getElementById("myReimbs").appendChild(newRow);
+        document.getElementById("remove" + reimbID).addEventListener("click", function(){
+            hiddenRemoveInput.value = reimbID;
+        });
     }
+}
+
+function logout(){
+    document.getElementById("logoutText").value = "logout";
 }
 
 function showReimbImage(URL){

@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.revature.dao.ERSDaoImpl;
+import com.revature.pojo.Employee;
 import com.revature.pojo.Reimbursement;
 import com.revature.servlet.SessionServlet.Info;
 
@@ -58,7 +59,9 @@ public class ProfileServlet extends HttpServlet {
 			String first = req.getParameter("emplFirst");
 			String email = req.getParameter("emplEmail");
 			String last = req.getParameter("emplLast");
-			Date bday = Date.valueOf(req.getParameter("emplBday"));
+			Date bday = null;
+			if(!req.getParameter("emplBday").equals(""))
+				bday = Date.valueOf(req.getParameter("emplBday"));
 			
 			if(first.equals(""))
 				first = SessionServlet.empl.getFirst();
@@ -75,14 +78,27 @@ public class ProfileServlet extends HttpServlet {
 			
 			res.sendRedirect("profile");
 		}
-		else {
-			BufferedReader br = req.getReader();
-			String post = br.readLine();
-			if(post.matches("^RemoveReimb [0-9]{8}$")) {
-				int reimb_id = Integer.parseInt(post.substring(12));
-				dao.deleteReimbByID(reimb_id);
-			}
-			// more possible custom post requests
+		else if(req.getParameter("removeReimb") != null) {
+			dao.deleteReimbByID(Integer.parseInt(req.getParameter("removeReimb")));
+			res.sendRedirect("profile");
 		}
+		else if(req.getParameter("logout") != null) {
+			SessionServlet.empl = new Employee();
+			req.getSession(false).removeAttribute("id");
+			res.sendRedirect("login");
+		}
+//			BufferedReader br = req.getReader();
+//			String post = br.readLine();
+//			if(post.matches("^RemoveReimb [0-9]{8}$")) {
+//				int reimb_id = Integer.parseInt(post.substring(12));
+//				dao.deleteReimbByID(reimb_id);
+//				res.sendRedirect("profile");
+//			}
+//			else if(post.equals("Logout")) {
+//				SessionServlet.empl = new Employee();
+//				req.getSession(false).removeAttribute("id");
+//				res.sendRedirect("login");
+//			}
+			// more possible custom post requests
 	}
 }

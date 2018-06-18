@@ -20,10 +20,10 @@ public class LoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		HttpSession session = req.getSession(false);
 		
-		if(session == null)
-			req.getRequestDispatcher("login.html").forward(req, res);
-		else
+		if(session != null && session.getAttribute("id") != null)
 			res.sendRedirect("profile");
+		else
+			req.getRequestDispatcher("login.html").forward(req, res);
 	}
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
@@ -34,7 +34,6 @@ public class LoginServlet extends HttpServlet {
 		
 		Employee empl = dao.getEmployeeByEmail(user);
 		if(empl != null && pass.equals(empl.getPass())) {
-			System.out.println("success");
 			HttpSession session = req.getSession();
 			SessionServlet.empl = empl;
 			session.setAttribute("id", empl.getID());
@@ -42,7 +41,6 @@ public class LoginServlet extends HttpServlet {
 		}
 		else {
 			SessionServlet.errors.add(new Info("Incorrect email and/or password", true));
-			System.out.println("fail");
 			
 			res.sendRedirect("login");
 		}
