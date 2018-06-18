@@ -1,0 +1,25 @@
+<table *ngIf="toggle2">
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Birthday</th>
+  </tr>
+  <tr *ngFor = "let person of people">
+    <td>{{person.firstname | uppercase}} {{person.lastname | uppercase}}</td>
+    <td>{{person.email}}</td>
+    <td>{{person.birthday | date}}</td>
+  </tr>
+</table>
+<table *ngIf="toggle1" class="table table-hover table-striped table-bordered">
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Birthday</th>
+    </tr>
+    <tr *ngFor = "let person of people">
+      <td>{{person.firstname | uppercase}} {{person.lastname | uppercase}}</td>
+      <td>{{person.email}}</td>
+      <td>{{person.birthday | date}}</td>
+    </tr>
+  </table>
+<button (click)="toggle()">Fancy Table?</button>

@@ -1,0 +1,17 @@
+<form>
+  <label for="radio1">Animals: </label>
+  <input type="radio" id="radio1" name="choice" value="{{animals}}" (change)="animallist()">
+  <label for="radio2">Colors: </label>
+  <input type="radio" id="radio2" name="choice" value="{{colors}}" (change)="colorlist()">
+  <label for="radio3">Days: </label>
+  <input type="radio" id="radio3" name="choice" value="{{days}}" (change)="daylist()">
+  <ul *ngIf="isanimal">
+    <li *ngFor ="let animal of animals" [value]="animal">{{ animal }}</li>
+  </ul>
+  <ul *ngIf="iscolor">
+      <li *ngFor ="let color of colors" [value]="color">{{ color }}</li>
+  </ul>
+  <ul *ngIf="isday">
+      <li *ngFor ="let day of days" [value]="day">{{ day }}</li>
+  </ul>
+</form>

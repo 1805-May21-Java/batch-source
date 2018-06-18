@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="jumbotron">
+      <h4>HTTP Example</h4>
+      <p> Click this button to get all of our users </p>
+      <button class="btn btn-outline-primary" (click)="getUsers()">Fire the GET request!</button>
+    </div>
+    <div>
+      <div *ngFor="let user of users">
+        <h3> User:  {{user.id}}, {{user.name}} </h3>
+        <h4> Address: {{user.address.street}}, {{user.address.suite}}  {{user.address.city}}</h4>
+        <h4> Company: {{user.company.name}},  {{user.company.catchPhrase}}</h4>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,5 @@
+
+<div *ngIf ="vis">Username of the user is: {{ user.username }}</div>
+<div *ngIf ="vis">Email of the user is: {{user.email}}</div>
+<label>Visbility Button: </label>
+<input type="submit" (click) ="showhide()" value="{{vis}}">
