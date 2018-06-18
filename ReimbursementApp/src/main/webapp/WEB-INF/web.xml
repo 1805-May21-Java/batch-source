@@ -82,4 +82,50 @@
     <servlet-name>InformationSessionServlet</servlet-name>
     <url-pattern>/informationSession</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <display-name>PendingAllSessionServlet</display-name>
+    <servlet-name>PendingAllSessionServlet</servlet-name>
+    <servlet-class>com.revature.servlets.PendingAllSessionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PendingAllSessionServlet</servlet-name>
+    <url-pattern>/pendingAllSession</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <display-name>PendingReimbursementsServlet</display-name>
+    <servlet-name>PendingReimbursementsServlet</servlet-name>
+    <servlet-class>com.revature.servlets.PendingReimbursementsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PendingReimbursementsServlet</servlet-name>
+    <url-pattern>/pendingReimbursements</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <display-name>AllEmployeesSessionServlet</display-name>
+    <servlet-name>AllEmployeesSessionServlet</servlet-name>
+    <servlet-class>com.revature.servlets.AllEmployeesSessionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AllEmployeesSessionServlet</servlet-name>
+    <url-pattern>/allEmployeesSession</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <display-name>SearchEmployeeSessionServlet</display-name>
+    <servlet-name>SearchEmployeeSessionServlet</servlet-name>
+    <servlet-class>com.revature.servlets.SearchEmployeeSessionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SearchEmployeeSessionServlet</servlet-name>
+    <url-pattern>/searchEmployeeSession</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <display-name>SearchEmployeeServlet</display-name>
+    <servlet-name>SearchEmployeeServlet</servlet-name>
+    <servlet-class>com.revature.servlets.SearchEmployeeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SearchEmployeeServlet</servlet-name>
+    <url-pattern>/searchEmployee</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

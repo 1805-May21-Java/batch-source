@@ -20,7 +20,7 @@
 
 
 </head>
-<body>
+<body onload="getAllEmployees()">
     
     <div class="container text-center col-sm">
         <h1>All Employees</h1>
@@ -36,8 +36,16 @@
 
     <div id="info_home" class="container text-center">
         <h3>About This Homepage</h3>
-        <p>This will tell you a little about what the Employee Homepage does</p>
+        <p>This will show a table of all employee information</p>
     </div>
+    
+    <div class="container text-center">
+    	<table id="allEmployees" class="table text-center">
+    		
+    	</table>
+    </div>
+    
+    <script type="text/javascript" src="AllEmployeesScript.js"></script>
 
 </body>
 </html>

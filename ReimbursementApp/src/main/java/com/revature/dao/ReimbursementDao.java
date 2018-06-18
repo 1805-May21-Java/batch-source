@@ -7,7 +7,8 @@ import com.revature.pojos.Reimbursement;
 
 public interface ReimbursementDao {
 	
-	public HashMap<Integer, Reimbursement> getReimbursements();
+	//public HashMap<Integer, Reimbursement> getReimbursements();
+	public List<Reimbursement> getReimbursements();
 	
 	public Reimbursement getReimbursementById(Integer id);
 	
@@ -20,6 +21,8 @@ public interface ReimbursementDao {
 	public List<Reimbursement> getPendingByEmployeeId(Integer employeeId);
 	
 	public List<Reimbursement> getResolvedByEmployeeId(Integer employeeId);
+	
+	public List<Reimbursement> getReimbursementByEmployeeId(Integer employeeId);
 	
 
 }

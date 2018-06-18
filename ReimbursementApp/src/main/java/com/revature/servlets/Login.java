@@ -33,7 +33,6 @@ public class Login extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
-		//response.redi
 		request.getRequestDispatcher("Login.html").forward(request, response);
 	}
 
@@ -48,12 +47,13 @@ public class Login extends HttpServlet {
 		String userData;
 		HttpSession session = request.getSession();
 		EmployeeDaoImpl ed1 = new EmployeeDaoImpl();
-		HashMap<String, Employee> employeeList = ed1.getEmployees();
+		//HashMap<String, Employee> employeeList = ed1.getEmployees();
 		ObjectMapper om = new ObjectMapper();
+		Employee current = ed1.getEmployeeByUsername(user);
 		
-		if(employeeList.containsKey(user) && 
-				employeeList.get(user).getPassword().equals(pass)) {
-			Employee current = ed1.getEmployeeByUsername(user);
+		if(current != null && 
+				current.getPassword().equals(pass)) {
+			//Employee current = ed1.getEmployeeByUsername(user);
 			userData = om.writeValueAsString(current);
 			session.setAttribute("user", userData);
 			session.setAttribute("id", current.getEmployee_id());

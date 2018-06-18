@@ -1,12 +1,13 @@
 package com.revature.dao;
 
 import java.util.HashMap;
+import java.util.List;
 
 import com.revature.pojos.Employee;
 
 public interface EmployeeDao {
 	
-	public HashMap<String, Employee> getEmployees();
+	public List<Employee> getEmployees();
 	
 	public Employee getEmployeeByUsername(String username);
 	

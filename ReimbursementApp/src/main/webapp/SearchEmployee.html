@@ -20,7 +20,7 @@
 
 
 </head>
-<body>
+<body onload="getSearchedEmployee()">
     
     <div class="container text-center col-sm">
         <h1>Search Employee</h1>
@@ -35,9 +35,23 @@
     </div>
 
     <div id="info_home" class="container text-center">
-        <h3>About This Homepage</h3>
-        <p>This will tell you a little about what the Employee Homepage does</p>
+        <h3>Search Employee Reimbursement Request</h3>
+        <p>This will print a table displaying searched employee's reimbursement request/</p>
+        <br>
+        <form class="form-group" id="searching" action="searchEmployee" method="POST">
+        	<label>Employee ID:</label>
+        	<input class="form-control text-center project-input" type="text" name="employeeId">
+        	<input id="submit" class="text-center" type="Submit" value="Submit Request">
+        </form>
     </div>
+    
+    <div class="container text-center">
+    	<table class="table text-center" id="searched">
+    		
+    	</table>
+    </div>
+    
+    <script type="text/javascript" src="SearchEmployeeScript.js"></script>
 
 </body>
 </html>

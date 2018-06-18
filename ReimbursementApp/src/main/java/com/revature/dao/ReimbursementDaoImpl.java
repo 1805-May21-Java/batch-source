@@ -14,11 +14,13 @@ import com.revature.pojos.Reimbursement;
 import com.revature.util.ConnectionUtil;
 
 public class ReimbursementDaoImpl implements ReimbursementDao{
-
-	public HashMap<Integer, Reimbursement> getReimbursements() {
+	
+	
+	
+	public List<Reimbursement> getReimbursements() {
 		
 
-		HashMap<Integer, Reimbursement> reimbursementData = new HashMap<Integer, Reimbursement>();
+		List<Reimbursement> reimbursementData = new ArrayList<Reimbursement>();
 		//try/catch block is used to catch any possible IOException and SQLException
 		try {
 			//Connection con is used to create a Statement instance
@@ -37,7 +39,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao{
 				Integer employeeId = rs.getInt("EMPLOYEE_ID");
 				String status = rs.getString("STATUS");
 				Integer reviewerId = rs.getInt("REVIEWER_ID");
-				reimbursementData.put(reimbursementId, new Reimbursement(reimbursementId,
+				reimbursementData.add(new Reimbursement(reimbursementId,
 						money, employeeId, status, reviewerId));
 				
 			}
@@ -257,6 +259,53 @@ public class ReimbursementDaoImpl implements ReimbursementDao{
 				//Integer reviewerId = rs.getInt("REVIEWER_ID");
 				viewReimbursements.add(new Reimbursement(reimbursementId,
 						money, employeeId, status, reviewerId));
+				
+			}
+			
+			
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+
+		return viewReimbursements;
+	}
+
+	@Override
+	public List<Reimbursement> getReimbursementByEmployeeId(Integer employeeId) {
+		List<Reimbursement> viewReimbursements = new ArrayList<Reimbursement>();
+		//try/catch block is used to catch any possible IOException and SQLException
+		try {
+			//Connection con is used to create a Statement instance
+			//using String sql to retrieve all rows from table EMPLOYEE
+			Connection con = ConnectionUtil.getConnection();
+			//String sql = "SELECT REIMBURSEMENT_ID, MONEY, EMPLOYEE_ID, STATUS "
+			//		+"FROM REIMBURSEMENT WHERE EMPLOYEE_ID = ? "
+			//		+ "AND STATUS = 'Pending'";
+			String sql = "SELECT REIMBURSEMENT_ID, MONEY, STATUS "
+					+ "FROM REIMBURSEMENT WHERE EMPLOYEE_ID = ?";
+			//Uses PreparedStatement
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, employeeId);
+			//ps.setString(2, status);
+			//ResultSet rs stores result of Statement
+			//use .executeQuery() for PreparedStatments
+			//use .executeQuery(String arg) for Statement
+			ResultSet rs = ps.executeQuery();
+			//rs is iterated over and values are retrieved and stored into
+			//HashMap employeeData
+			while(rs.next()) {
+				Integer reimbursementId = rs.getInt("REIMBURSEMENT_ID");
+				Double money = rs.getDouble("MONEY");
+				//Integer employee_Id = rs.getInt("EMPLOYEE_ID");
+				String status = rs.getString("STATUS");
+				//Integer reviewerId = rs.getInt("REVIEWER_ID");
+				//Integer reviewerId = rs.getInt("REVIEWER_ID");
+				viewReimbursements.add(new Reimbursement(reimbursementId,
+						money, employeeId,status, null));
 				
 			}
 			

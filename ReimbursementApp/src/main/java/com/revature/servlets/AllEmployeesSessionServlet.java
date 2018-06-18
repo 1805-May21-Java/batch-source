@@ -1,5 +1,5 @@
 package com.revature.servlets;
-
+//url is: /allEmployeesSession
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -10,15 +10,15 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class ReimbursementSessionServlet
+ * Servlet implementation class AllEmployeesSessionServlet
  */
-public class ReimbursementSessionServlet extends HttpServlet {
+public class AllEmployeesSessionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ReimbursementSessionServlet() {
+    public AllEmployeesSessionServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,15 +32,12 @@ public class ReimbursementSessionServlet extends HttpServlet {
 		PrintWriter pw = response.getWriter();
 		response.setContentType("application/json");
 		if(session != null) {
-			//pw.write("{");
-			pw.write("{\"viewList\": "+session.getAttribute("viewList")+"}");
-			//pw.write(",");
-			//pw.write("{\"allReimbursements\": "+session.getAttribute("allReimbursements")+"}");
-			//pw.write("}");
+			
+			pw.write("{\"allEmployees\": "+session.getAttribute("allEmployees")+"}");
+			
 			
 		}else {
-			pw.write("{\"viewList\": null}");
-			//pw.write("{\"allReimbursements\": null}");
+			pw.write("{\"allEmployees\": null}");
 			
 		}
 		pw.close();

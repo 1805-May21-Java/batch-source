@@ -1,11 +1,20 @@
 package com.revature.servlets;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.revature.dao.EmployeeDaoImpl;
+import com.revature.dao.ReimbursementDaoImpl;
+import com.revature.pojos.Employee;
+import com.revature.pojos.Reimbursement;
 
 /**
  * Servlet implementation class HomepageServlet
@@ -33,6 +42,17 @@ public class HomepageServlet extends HttpServlet {
 			request.getRequestDispatcher("EmployeeHomepage.html").forward(request, response);
 		}else if(session != null && session.getAttribute("username") != null &&
 				(Integer)session.getAttribute("isManager") == 1){
+			
+			ReimbursementDaoImpl rd1 = new ReimbursementDaoImpl();
+			List<Reimbursement> allReimbursements = rd1.getReimbursements();
+			ObjectMapper om = new ObjectMapper();
+			String reimbursementData = om.writeValueAsString(allReimbursements);
+			session.setAttribute("allReimbursements", reimbursementData);
+			EmployeeDaoImpl ed1 = new EmployeeDaoImpl();
+			List<Employee> employeeData = ed1.getEmployees();
+			//List<Employee> employeeList = new Ar
+			String employeeList = om.writeValueAsString(employeeData);
+			session.setAttribute("allEmployees", employeeList);
 			request.getRequestDispatcher("ManagerHomepage.html").forward(request, response);
 		}else {
 			response.sendRedirect("login");

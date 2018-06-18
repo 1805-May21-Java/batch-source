@@ -20,7 +20,7 @@
 
 
 </head>
-<body>
+<body onload="getResolvedReimbursements()">
     
     <div class="container text-center col-sm">
         <h1>Reimbursement Receipts</h1>
@@ -35,9 +35,18 @@
     </div>
 
     <div id="info_home" class="container text-center">
-        <h3>About This Homepage</h3>
-        <p>This will tell you a little about what the Employee Homepage does</p>
+        <h3>View Reimbursements Receipts</h3>
+        <p>This will show you all resolved reimbursements.</p>
+        <br>
     </div>
+    <br><br>
+    <div class="container text-center">
+    	<table id="allResolved" class="table text-center">
+    		
+    	</table>
+    </div>
+    
+    <script type="text/javascript" src="ReimbursementReceiptsScript.js"></script>
 
 </body>
 </html>

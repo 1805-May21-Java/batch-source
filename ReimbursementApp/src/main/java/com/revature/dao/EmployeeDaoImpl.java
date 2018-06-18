@@ -6,18 +6,18 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.HashMap;
-
-
+import java.util.List;
 
 import com.revature.pojos.Employee;
 import com.revature.util.ConnectionUtil;
 
 public class EmployeeDaoImpl implements EmployeeDao{
 
-	public HashMap<String, Employee> getEmployees() {
+	public List<Employee> getEmployees() {
 		
-		HashMap<String, Employee> employeeData = new HashMap<String, Employee>();
+		List<Employee> employeeData = new ArrayList<Employee>();
 		//try/catch block is used to catch any possible IOException and SQLException
 		try {
 			//Connection con is used to create a Statement instance
@@ -40,9 +40,8 @@ public class EmployeeDaoImpl implements EmployeeDao{
 				String email = rs.getString("EMAIL");
 				String phone = rs.getString("PHONE");
 				Integer isManager = rs.getInt("ISMANAGER");
-				employeeData.put(username, new Employee(employeeId, firstname,
+				employeeData.add(new Employee(employeeId, firstname,
 						lastname, username, password, address, email, phone, isManager));
-				
 			}
 			
 		} catch (IOException e) {
