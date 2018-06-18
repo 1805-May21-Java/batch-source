@@ -1,0 +1,7 @@
+mark {
+    background-color: white; 
+}
+
+mark:hover{
+    background-color: blueviolet;
+}
