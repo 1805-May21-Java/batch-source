@@ -1,0 +1,20 @@
+<h2 style="margin: 15px 0px">Part 4: Table Component</h2>
+<table [className]="styleWithBootstrap ? 'table' : ''">
+  <thead [ngClass]="currentClasses">
+    <tr>
+      <th>Full Name</th>
+      <th>Email</th>
+      <th>Birthday</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let person of people">
+      <td>{{person.firstName[0] | uppercase}}{{person.firstName.slice(1) | lowercase}} {{person.lastName[0] | uppercase}}{{person.lastName.slice(1)
+        | lowercase}}</td>
+      <td>{{person.email}}</td>
+      <td>{{person.birthday | date:'EEEE, MMMM d, y'}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<button (click)='changeStyle()' class="btn btn-primary" style="margin: 15px 0px">{{buttonText}}</button>

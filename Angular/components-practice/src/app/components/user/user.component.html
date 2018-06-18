@@ -1,0 +1,23 @@
+<h2 style="margin: 15px 0px">Part 5: User Component</h2>
+<button (click)="getUsers()" class="btn btn-primary" style="margin: 15px 0px">Get users</button>
+
+<table class="table table-hover" *ngIf="!isEmpty">
+  <thead class="bg-dark text-white">
+    <tr>
+      <th>Name</th>
+      <th>Username</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Website</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{user.name}}</td>
+      <td>{{user.username}}</td>
+      <td>{{user.email}}</td>
+      <td>{{user.phone}}</td>
+      <td>{{user.website}}</td>
+    </tr>
+  </tbody>
+</table>

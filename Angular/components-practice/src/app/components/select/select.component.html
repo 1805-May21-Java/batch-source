@@ -1,0 +1,22 @@
+<h2 style="margin: 15px 0px">Part 3: Select Component</h2>
+
+<div class="form-check">
+  <input name="option" id="animals" type="radio" class="form-check-input with-gap">
+  <label class="form-check-label" for="animals">Animals</label>
+</div>
+
+<div class="form-check">
+  <input name="option" id="colors" type="radio" class="form-check-input with-gap">
+  <label class="form-check-label" for="colors">Colors</label>
+</div>
+
+<div class="form-check">
+  <input name="option" id="days" type="radio" class="form-check-input with-gap">
+  <label class="form-check-label" for="days">Days</label>
+</div>
+
+<input type="submit" value="Choose an option" (click)="selectOption($event)" class="btn btn-primary" style="margin: 15px 0px">
+
+<ul class="list-group">
+  <li *ngFor="let option of options" class="list-group-item">{{option}}</li>
+</ul>
