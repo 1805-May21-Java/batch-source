@@ -1,0 +1,24 @@
+<form>
+    <input type ="radio" name="select" (change)='selectAnimal()'> Animals
+    <input type='radio' name="select" (change)='selectColor()' > Colors
+    <input type='radio' name="select" (change)='selectDay()' > Days
+</form>
+<br>
+<div *ngIf="value === 'animal'">
+    <ul>
+        <li *ngFor="let select of selects" >{{select.animal}}</li>
+    </ul>
+</div>
+
+<div *ngIf="value === 'color'" >
+    <ul>
+        <li *ngFor="let select of selects" >{{select.color}}</li>
+    </ul>
+</div>
+
+<div *ngIf="value==='day'" >
+    <ul>
+        <li *ngFor="let select of selects" >{{select.day}}</li>
+    </ul>
+</div>
+<br>

@@ -1,0 +1,37 @@
+<div *ngIf="condition" >
+    <table>
+        <tr>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>Birthday</th>
+        </tr>
+        <tr *ngFor="let people of peoples" >
+            <td>{{people.firstName | uppercase}} {{people.lastName | uppercase}}</td>
+            <td>{{people.email}}</td>
+            <td>{{people.birthday| date: "MM/dd/yyyy"}}</td>
+        </tr>
+    </table>
+</div>
+<br>
+<div *ngIf="!condition" >
+    <div class="container">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Full Name</th>
+                    <th scope ="col">Email</th>
+                    <th scope= "col">Birthday</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let people of peoples" >
+                    <td>{{people.firstName | uppercase}} {{people.lastName | uppercase}}</td>
+                    <td>{{people.email}}</td>
+                    <td>{{people.birthday | date: "MM/dd/yyyy"}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<br>
+<button (click)='changeCondition()'>Table Toggle
