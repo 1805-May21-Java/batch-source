@@ -22,7 +22,7 @@ function changeMenu(str) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-
+    sessionStorage.setItem("option", "all");
     changeMenu(menu);
     document.getElementById("goToManageRequests").setAttribute("hidden", true);
 
@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
             summary.innerHTML = "Staff";
             staff.appendChild(summary);
 
-            
+
             let list = document.createElement("ul")
             //point.appendChild(temp);
 

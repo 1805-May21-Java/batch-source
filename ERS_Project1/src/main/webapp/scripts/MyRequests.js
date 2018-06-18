@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
             let summary = document.createElement("summary");
             summary.innerHTML = "Details";
             let reqInfo = document.createElement("p");
-            summary.innerHTML = request.description;
+            reqInfo.innerHTML = request.description;
             details.appendChild(summary);
             details.appendChild(reqInfo);
             temp.appendChild(details);

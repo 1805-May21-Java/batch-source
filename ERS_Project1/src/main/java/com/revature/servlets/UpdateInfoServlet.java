@@ -5,6 +5,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.revature.actors.GateKeeper;
 import com.revature.pojos.Employee;
@@ -40,7 +41,10 @@ public class UpdateInfoServlet extends HttpServlet {
 		//System.out.println(id + " " + firstName + " " + lastName + " " + email);
 		Employee emp = new Employee(id, firstName, lastName, email);
 		//System.out.println(emp);
-		GateKeeper.attemptUpdateInfo(emp);
+		if(GateKeeper.attemptUpdateInfo(emp)) {
+			HttpSession session = request.getSession();
+			session.setAttribute("email", email.toUpperCase());
+		}
 		
 		response.sendRedirect("./Profile");
 	}

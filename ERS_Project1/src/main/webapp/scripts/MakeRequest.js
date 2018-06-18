@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
     sendAjaxGet("http://localhost:8082/ERS_Project1/DisplayMyRequests", function (xhr) {
         let info = JSON.parse(xhr.response);
         document.getElementById("empId").value = info.id;
+        //console.log("info");
         if(info.staff.length > 0) {
             document.getElementById("goToManageRequests").removeAttribute("hidden");
         }
