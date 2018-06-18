@@ -1,0 +1,32 @@
+<div class='container'>
+  <table [ngClass]="style?'table table-striped table-bordered table-hover table-sm':''">
+    <thead>
+      <tr>
+        <th>
+          <p>Name</p>
+        </th>
+        <th>
+          <p>Email</p>
+        </th>
+        <th>
+          <p>Birthday</p>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let person of peeps'>
+        <td>
+          <p>{{person.firstname | titlecase}} {{person.lastname| titlecase}}</p>
+        </td>
+        <td>
+          <p>{{person.email}}</p>
+        </td>
+        <td>
+          <p>{{person.bday | date:'MM/dd/yy'}}</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<button [ngClass]="style?'btn btn-primary':''" (click)='toggleStyle()'>{{style?"Unformat":"Format"}}</button>

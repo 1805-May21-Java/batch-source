@@ -100,10 +100,7 @@ function getmultiple(xhr) {
 
     info = info.results;
 
-    console.log(info);
-
     for (let i = 0; i < info.length; i++) {
-        console.log(info[i]);
         let infot = info[i];
         let firstname = infot.name.first;
         let lastname = infot.name.last;
@@ -124,5 +121,5 @@ function getrndmnumberusers() {
 
     let n = document.getElementById('nusers').value;
     n = Number(n);
-    sendAjaxGet('https://randomuser.me/api/?results=10', getmultiple);
+    sendAjaxGet('https://randomuser.me/api/?results='+n, getmultiple);
 }
