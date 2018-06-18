@@ -1,0 +1,11 @@
+<div>
+  <h2>User Component</h2>
+  <div *ngFor="let user of users$" class="user-info">
+    <h4>{{user.id}} {{user.name}}</h4>
+    <hr>
+    <p>Email: {{user.email}}</p>
+    <p>Address: {{user.address.street}} {{user.address.suite}}  {{user.address.city}} {{user.address.zipcode}}</p>
+    <p>Phone: {{user.phone}}</p>
+    <p>Website: {{user.website}}</p>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+<div>
+  <h2>Profile Component</h2>
+  <button 
+  (click)="toggleVisible()">{{userVisible? "Hide" : "Show"}}</button>
+  
+    <div *ngIf="userVisible">
+      <div      
+        *ngFor="let user of users">
+        <p>Id: {{user.id}}</p>
+        <p>Name: {{user.name}}</p>
+        <p>Email: {{user.email}}</p>
+      </div>
+    </div>
+</div>

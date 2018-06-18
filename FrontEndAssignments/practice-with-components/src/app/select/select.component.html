@@ -1,0 +1,15 @@
+<div>
+  <h2>Select Component</h2>
+  <div *ngFor="let thing of things">
+    <input type="radio" name="list" 
+          [value]="thing.type"
+          [checked]="thing.type == selectedThing"
+          (click)="updateThing(thing.type)">
+    <label>{{thing.type | titlecase}}</label>
+  </div>
+
+  <h3 *ngIf="selectedThing">{{selectedThing | titlecase}}</h3>
+  <ul>
+    <li *ngFor="let item of getSelectedThing()">{{item.name}}</li>
+  </ul>
+</div>

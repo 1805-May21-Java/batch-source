@@ -1,0 +1,23 @@
+<div>
+  <h2>Table Component</h2>
+  <button
+    (click)="generateTable()"
+    >Create Table</button>
+  <button 
+    (click)="changeClass()"
+    >Format Table</button>
+    <table [ngClass]="class">
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Birthday</th>
+      </tr>
+      <tr 
+      *ngFor="let person of people" 
+      >
+        <td>{{person.firstname +' ' + person.lastname | titlecase}}</td>
+        <td>{{person.email}}</td>
+        <td>{{person.birthday | date :'MMM dd, yyyy'}}</td>
+      </tr>
+    </table>
+</div>
