@@ -1,0 +1,23 @@
+
+<div>
+  <br>
+  <form action ="" class="form-control">
+    <input type="radio" name="selectOne"  value="animals" (click)="showSelected('animal')"> Animal
+    <br>
+    <input type="radio" name="selectOne" ngModel ="select" value="colors" (click)="showSelected('color')"> Colors
+    <br>
+    <input type="radio" name="selectOne" ngModel ="select" value="days" (click)="showSelected('day')"> Days
+    <br>
+    <br>
+  </form>
+    <ul id="animal" hidden>
+      <li   *ngFor="let ani of animals" value={{ani}}>{{ani}}</li>
+    </ul>
+    <ul id="color" hidden>
+      <li   *ngFor="let col of colors" value={{col}}>{{col}}</li>
+    </ul>
+    <ul id="day" hidden>
+      <li   *ngFor="let da of days" value={{da}}>{{da}}</li>
+    </ul>
+
+</div>

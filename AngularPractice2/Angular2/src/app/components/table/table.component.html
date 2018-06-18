@@ -1,0 +1,20 @@
+
+<div>
+  <table id="table" [ngClass]="{'container':bool,'table':bool}">
+    <thead>
+      <tr id="header" [ngClass]="{'thead-dark':bool}">
+        <th>Name</th>
+        <th>Email</th>
+        <th>Birthday</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let person of people">
+        <td scope="row">{{(person.firstName|uppercase)+" "+(person.lastName|uppercase)}}</td>
+        <td>{{person.email}}</td>
+        <td>{{person.birthday | date:'shortDate'}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <button class="btn btn-danger" (click)="changeTable()">{{buttonText}}</button>
+</div>
