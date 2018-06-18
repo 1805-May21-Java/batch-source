@@ -1,4 +1,4 @@
-package project0.data;
+package project0.src.main.java.project0.data;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import project0.interfaces.AccountInterface;
+import project0.src.main.java.project0.interfaces.AccountInterface;
 
 public class AccountDao implements AccountInterface {
 

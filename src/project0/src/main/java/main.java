@@ -1,3 +1,5 @@
+package project0.src.main.java;
+
 import java.io.IOException;
 import java.sql.CallableStatement;
 import java.sql.Connection;
@@ -6,12 +8,12 @@ import java.text.DecimalFormat;
 import java.util.Locale;
 import java.util.Scanner;
 
-import project0.data.AccountDao;
-import project0.data.User;
-import project0.data.UserDao;
-import project0.util.ConnectionUtil;
+import project0.src.main.java.project0.data.AccountDao;
+import project0.src.main.java.project0.data.User;
+import project0.src.main.java.project0.data.UserDao;
+import project0.src.main.java.project0.util.ConnectionUtil;
 
-public class main {
+public class main { 
 
 	private static AccountDao accountDao;
 	private static UserDao userDao;

@@ -8,8 +8,8 @@ public class Question14Test {
 
 	@Test
 	public void test() {
-		Question14 question14 = new Question14();
-		question14.switchCase();
+//		Question14 question14 = new Question14();
+//		question14.switchCase();
 	}
 
 }

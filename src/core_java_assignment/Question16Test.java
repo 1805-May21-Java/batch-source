@@ -8,8 +8,8 @@ public class Question16Test {
 
 	@Test
 	public void test() {
-		Question16 question16 = new Question16();
-		System.out.println(question16.stringLength());
+//		Question16 question16 = new Question16();
+//		System.out.println(question16.stringLength());
 	}
 
 }

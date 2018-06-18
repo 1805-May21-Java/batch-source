@@ -1,4 +1,4 @@
-package project0.util;
+package project0.src.main.java.project0.util;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -15,7 +15,7 @@ public class ConnectionUtil {
 
 	public static Connection getConnection() throws IOException, SQLException {
 		Properties prop = new Properties();
-		InputStream in = new FileInputStream(dir + "/src/main/java/project0/raw/connection.properties");
+		InputStream in = new FileInputStream(dir + "/project0/src/main/java/project0/raw/connection.properties");
 		prop.load(in);
 		String url = prop.getProperty("url");
 		String username = prop.getProperty("username");

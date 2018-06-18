@@ -1,11 +1,12 @@
-package project0.util;
+package project0.src.main.java.project0.util;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import project0.data.Account;
+import project0.src.main.java.project0.data.Account;
+
 
 public class DatabaseThings {
 

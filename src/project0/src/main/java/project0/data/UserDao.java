@@ -1,4 +1,4 @@
-package project0.data;
+package project0.src.main.java.project0.data;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,7 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import project0.interfaces.UserInterface;
+import project0.src.main.java.project0.interfaces.UserInterface;
+
 
 public class UserDao implements UserInterface {
 	
@@ -15,17 +16,6 @@ public class UserDao implements UserInterface {
 	private String checkUser = "SELECT * FROM userTable where username = ?";
 	private String getUserById = "SELECT * FROM userTable where userId = ?";
 	private String getUserbyName = "SELECT * FROM userTable where username = ?";
-
-	@Override
-	public long createUser(Connection connection, String username, String password, AccountDao account) throws SQLException {
-		PreparedStatement ps = connection.prepareStatement(insertUser, new String[] {"userID"});
-		ps.setString(1, username);
-		ps.setString(2, password);
-		ps.setLong(3, account.createAccount(connection));
-		ps.executeUpdate();
-		ps.getGeneratedKeys().next();
-		return ps.getGeneratedKeys().getLong(1);
-	}
 
 	@Override
 	public boolean checkUser(Connection connection, String username) throws SQLException {
@@ -75,6 +65,29 @@ public class UserDao implements UserInterface {
 		}
 		return userList;
 		
+	}
+
+	@Override
+	public long createUser(Connection connection, String username, String password, AccountDao account) throws SQLException {
+		PreparedStatement ps = connection.prepareStatement(insertUser, new String[] {"userID"});
+		ps.setString(1, username);
+		ps.setString(2, password);
+		ps.setLong(3, account.createAccount(connection));
+		ps.executeUpdate();
+		ps.getGeneratedKeys().next();
+		return ps.getGeneratedKeys().getLong(1);
+	}
+
+	@Override
+	public long createUser(Connection connection, String username, String password, Account account)
+			throws SQLException {
+		PreparedStatement ps = connection.prepareStatement(insertUser, new String[] {"userID"});
+		ps.setString(1, username);
+		ps.setString(2, password);
+//		ps.setLong(3, account.createAccount(connection));
+		ps.executeUpdate();
+		ps.getGeneratedKeys().next();
+		return ps.getGeneratedKeys().getLong(1);
 	}
 
 }

@@ -1,4 +1,4 @@
-package project0.data;
+package project0.src.main.java.project0.data;
 
 public class Account {
 	private long accountId;

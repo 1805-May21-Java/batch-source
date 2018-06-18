@@ -1,9 +1,10 @@
-package project0.interfaces;
+package project0.src.main.java.project0.interfaces;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 
-import project0.data.Account;
+import project0.src.main.java.project0.data.Account;
+
 
 public interface AccountInterface {
 	long createAccount(Connection connection) throws SQLException;
