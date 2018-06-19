@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Random;
 
 import javax.servlet.ServletException;
@@ -60,8 +61,14 @@ public class ProfileServlet extends HttpServlet {
 			String email = req.getParameter("emplEmail");
 			String last = req.getParameter("emplLast");
 			Date bday = null;
+			
 			if(!req.getParameter("emplBday").equals(""))
 				bday = Date.valueOf(req.getParameter("emplBday"));
+			else
+				bday = SessionServlet.empl.getBday();
+			
+			if(!first.equals("") || !last.equals("") || !email.equals("") || !bday.equals(SessionServlet.empl.getBday()))
+				SessionServlet.messages.add(new Info("Personal info updated", true));
 			
 			if(first.equals(""))
 				first = SessionServlet.empl.getFirst();
@@ -80,7 +87,58 @@ public class ProfileServlet extends HttpServlet {
 		}
 		else if(req.getParameter("removeReimb") != null) {
 			dao.deleteReimbByID(Integer.parseInt(req.getParameter("removeReimb")));
+			
+			SessionServlet.messages.add(new Info("Reimbursement request removed", true));
+			
 			res.sendRedirect("profile");
+		}
+		else if(req.getParameter("reimbAction") != null) {
+			Reimbursement reimb = dao.getReimbursementByID(Integer.parseInt(req.getParameter("reimbValue")));
+			if(req.getParameter("reimbAction").equals("approve"))
+				reimb.setStatus("Approved");
+			else if(req.getParameter("reimbAction").equals("deny"))
+				reimb.setStatus("Denied");
+			reimb.setApproveID(SessionServlet.empl.getID());
+			reimb.setDateOfApprove(Date.valueOf(LocalDate.now()));
+			
+			SessionServlet.messages.add(new Info("Reimbursement request: " + reimb.getStatus(), true));
+			
+			dao.updateReimbursement(reimb);
+			res.sendRedirect("profile");
+		}
+		else if(req.getParameter("newEmail") != null) {
+			String email = req.getParameter("newEmail");
+			String first = req.getParameter("newFirst");
+			String last = req.getParameter("newLast");
+			String title = req.getParameter("newTitle");
+			
+			if(dao.getEmployeeByEmail(email) != null) {
+				SessionServlet.errors.add(new Info("Email already exists in the database", true));
+			}
+			else {
+				Random r = new Random();
+				int ID = r.nextInt(90000000) + 10000000;
+				while(dao.getEmployeeByID(ID) != null)
+					ID = r.nextInt(90000000) + 10000000;
+				Employee empl = new Employee(ID, email, "pass", first, last, null,
+						title, SessionServlet.empl.getID(), false, new ArrayList<Integer>());
+				dao.createEmployee(empl);
+				SessionServlet.messages.add(new Info("Added new Employee!", true));
+			}
+			
+			res.sendRedirect("profile");
+		}
+		else if(req.getParameter("existingID") != null) {
+			int ID = Integer.parseInt(req.getParameter("existingID"));
+			if(dao.getEmployeeByID(ID) == null) {
+				SessionServlet.errors.add(new Info("No such employee exists", true));
+			}
+			else {
+				Employee empl = dao.getEmployeeByID(ID);
+				empl.setManagerID(SessionServlet.empl.getID());
+				dao.updateEmployee(empl);
+				SessionServlet.messages.add(new Info("Successfully added Employee!", true));
+			}
 		}
 		else if(req.getParameter("logout") != null) {
 			SessionServlet.empl = new Employee();

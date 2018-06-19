@@ -4,6 +4,12 @@ let reimbUrl = "http://localhost:8082/ERS/reimbursement"
 let myReimbTable = document.getElementById("myReimbTable");
 let myReimbImage = document.getElementById("myReimbImage");
 let reimbRequest = document.getElementById("reimbRequestForm");
+
+let emplReimbTable = document.getElementById("emplReimbTable");
+let newEmplForm = document.getElementById("newEmplForm");
+let existingEmplForm = document.getElementById("existingEmplForm");
+let myReimbImage2 = document.getElementById("myReimbImage2");
+
 let empl = null;
 
 window.onload = loadData();
@@ -11,6 +17,9 @@ document.getElementById("showReimbsButton").addEventListener("click", toggleMyRe
 document.getElementById("reimbFormButton").addEventListener("click", toggleReimbRequestForm);
 document.getElementById("logoutButton").addEventListener("click", logout);
 document.getElementById("editInfo").addEventListener("click", togglePersonalInfo);
+document.getElementById("showEmplReimbsButton").addEventListener("click", toggleEmplReimbTable);
+document.getElementById("addNewEmplButton").addEventListener("click", toggleNewEmplForm);
+document.getElementById("addExistingEmplButton").addEventListener("click", toggleExistingEmplForm);
 
 function loadData(){
     sendAjaxGet(sessionUrl, initProfilePage);
@@ -155,10 +164,6 @@ function loadReimbs(xhr){
         }
         
         let viewButton = document.createElement("button");
-        let removeButton = document.createElement("button");
-        let hiddenRemoveInput = document.createElement("input");
-        let removeForm = document.createElement("form");
-        let reimbID = r.id;
         let picURL = r.picURL;
 
         viewButton.setAttribute("class", "btn btn-small btn-primary");
@@ -166,25 +171,38 @@ function loadReimbs(xhr){
         viewButton.innerHTML = "View Image";
         viewButton.setAttribute("style", "margin-right: 10px");
 
-        removeButton.setAttribute("class", "btn btn-small btn-danger");
-        removeButton.setAttribute("type", "submit");
-        removeButton.setAttribute("id", "remove" + reimbID);
-        removeButton.innerHTML = "Remove Request";
-
-        hiddenRemoveInput.setAttribute("id", "removeInput" + reimbID);
-        hiddenRemoveInput.setAttribute("type", "text");
-        hiddenRemoveInput.setAttribute("name", "removeReimb");
-        hiddenRemoveInput.setAttribute("hidden", "true");
-
-        removeForm.setAttribute("id", "removeForm" + reimbID);
-        removeForm.setAttribute("action", "profile");
-        removeForm.setAttribute("method", "post");
-
-        removeForm.appendChild(hiddenRemoveInput);
-        removeForm.appendChild(removeButton);
-
         cell8.appendChild(viewButton);
-        cell8.appendChild(removeForm);
+
+        if(r.status == "Pending"){
+            let removeButton = document.createElement("button");
+            let hiddenRemoveInput = document.createElement("input");
+            let removeForm = document.createElement("form");
+            let reimbID = r.id;
+
+            removeButton.setAttribute("class", "btn btn-small btn-danger");
+            removeButton.setAttribute("type", "submit");
+            removeButton.setAttribute("id", "remove" + reimbID);
+            removeButton.innerHTML = "Remove Request";
+
+            hiddenRemoveInput.setAttribute("id", "removeInput" + reimbID);
+            hiddenRemoveInput.setAttribute("type", "text");
+            hiddenRemoveInput.setAttribute("name", "removeReimb");
+            hiddenRemoveInput.setAttribute("hidden", "true");
+
+            removeForm.setAttribute("id", "removeForm" + reimbID);
+            removeForm.setAttribute("action", "profile");
+            removeForm.setAttribute("method", "post");
+
+            removeForm.appendChild(hiddenRemoveInput);
+            removeForm.appendChild(removeButton);
+            
+            cell8.appendChild(removeForm);
+
+            removeButton.addEventListener("click", function(){
+                hiddenRemoveInput.value = reimbID;
+            });
+        }
+
 
         newRow.appendChild(cell1);
         newRow.appendChild(cell2);
@@ -196,9 +214,106 @@ function loadReimbs(xhr){
         newRow.appendChild(cell8);
 
         document.getElementById("myReimbs").appendChild(newRow);
-        document.getElementById("remove" + reimbID).addEventListener("click", function(){
-            hiddenRemoveInput.value = reimbID;
-        });
+    }
+    
+    for(x of yourReimbs){
+        let newRow = document.createElement("tr");
+
+        let cell1 = document.createElement("th");
+        let cell2 = document.createElement("td");
+        let cell3 = document.createElement("td");
+        let cell4 = document.createElement("td");
+        let cell5 = document.createElement("td");
+        let cell6 = document.createElement("td");
+        let cell7 = document.createElement("td");
+        let cell8 = document.createElement("td");
+        let cell9 = document.createElement("td");
+
+        cell1.setAttribute("scope", "row");
+
+        cell1.innerHTML = x.id;
+        cell2.innerHTML = x.requestID;
+        cell3.innerHTML = x.dateOfRequest;
+        cell4.innerHTML = "$" + x.amountRequest.toFixed(2);
+        cell5.innerHTML = x.description;
+        cell6.innerHTML = x.status;
+        if(x.approveID){
+            cell7.innerHTML = x.approveID;
+        }
+        if(x.dateOfApprove){
+            cell8.innerHTML = x.dateOfApprove;
+        }
+        
+        let viewButton = document.createElement("button");
+        let picURL2 = x.picURL;
+
+        viewButton.setAttribute("class", "btn btn-small btn-primary");
+        viewButton.addEventListener("click", ()=>showReimbImage2(picURL2));
+        viewButton.innerHTML = "View Image";
+        viewButton.setAttribute("style", "margin-right: 10px");
+
+        cell9.appendChild(viewButton);
+
+        if(x.status == "Pending"){
+            let approveButton = document.createElement("button");
+            let denyButton = document.createElement("button");
+            let hiddenActionInput = document.createElement("input");
+            let hiddenActionInput2 = document.createElement("input");
+            let actionForm = document.createElement("form");
+            let reimbID2 = x.id;
+
+            approveButton.setAttribute("class", "btn btn-small btn-success");
+            approveButton.setAttribute("type", "submit");
+            approveButton.setAttribute("id", "approve" + reimbID2);
+            approveButton.innerHTML = "Approve";
+
+            denyButton.setAttribute("class", "btn btn-small btn-danger");
+            denyButton.setAttribute("type", "submit");
+            denyButton.setAttribute("id", "deny" + reimbID2);
+            denyButton.innerHTML = "Deny";
+
+            hiddenActionInput.setAttribute("id", "action" + reimbID2);
+            hiddenActionInput.setAttribute("type", "text");
+            hiddenActionInput.setAttribute("name", "reimbAction");
+            hiddenActionInput.setAttribute("hidden", "true");
+            
+            hiddenActionInput2.setAttribute("id", "value" + reimbID2);
+            hiddenActionInput2.setAttribute("type", "text");
+            hiddenActionInput2.setAttribute("name", "reimbValue");
+            hiddenActionInput2.setAttribute("hidden", "true");
+
+            actionForm.setAttribute("id", "actionForm" + reimbID2);
+            actionForm.setAttribute("action", "profile");
+            actionForm.setAttribute("method", "post");
+
+            actionForm.appendChild(hiddenActionInput);
+            actionForm.appendChild(hiddenActionInput2);
+            actionForm.appendChild(approveButton);
+            actionForm.appendChild(denyButton);
+
+            cell9.appendChild(actionForm);
+
+            approveButton.addEventListener("click", function(){
+                hiddenActionInput.value = "approve";
+                hiddenActionInput2.value = reimbID2;
+            });
+            denyButton.addEventListener("click", function(){
+                hiddenActionInput.value = "deny";
+                hiddenActionInput2.value = reimbID2;
+            });
+        }
+
+        newRow.appendChild(cell1);
+        newRow.appendChild(cell2);
+        newRow.appendChild(cell3);
+        newRow.appendChild(cell4);
+        newRow.appendChild(cell5);
+        newRow.appendChild(cell6);
+        newRow.appendChild(cell7);
+        newRow.appendChild(cell8);
+        newRow.appendChild(cell9);
+
+        document.getElementById("emplReimbs").appendChild(newRow);
     }
 }
 
@@ -209,8 +324,78 @@ function logout(){
 function showReimbImage(URL){
     document.getElementById("reimbFormButton").innerHTML = "Submit a Reimbursement Request";
     document.getElementById("showReimbsButton").innerHTML = "View Reimbursement Requests";
+    
     myReimbTable.setAttribute("hidden", "true");
     myReimbImage.setAttribute("src", URL);
+    
     myReimbImage.setAttribute("alt", "No Image Provided");
     myReimbImage.removeAttribute("hidden");
+}
+
+function showReimbImage2(URL){
+    document.getElementById("showEmplReimbsButton").innerHTML = "View Employee Reimbursement Requests";
+    document.getElementById("addNewEmplButton").innerHTML = "Add New Employee";
+    document.getElementById("addExistingEmplButton").innerHTML = "Add Existing Employee";
+    
+    emplReimbTable.setAttribute("hidden", "true");
+    myReimbImage2.setAttribute("src", URL);
+    
+    myReimbImage2.setAttribute("alt", "No Image Provided");
+    myReimbImage2.removeAttribute("hidden");
+}
+
+function toggleEmplReimbTable(){
+    newEmplForm.setAttribute("hidden", "true");
+    existingEmplForm.setAttribute("hidden", "true");
+    myReimbImage2.setAttribute("hidden", "true");
+
+    document.getElementById("addNewEmplButton").innerHTML = "Add New Employee";
+    document.getElementById("addExistingEmplButton").innerHTML = "Add Existing Employee";
+    document.getElementById("showEmplReimbsButton").innerHTML = "View Employee Reimbursement Requests";
+    if(emplReimbTable.hasAttribute("hidden")){
+        emplReimbTable.removeAttribute("hidden");
+        document.getElementById("showEmplReimbsButton").innerHTML = "Hide Employee Reimbursement Requests";
+    }
+    else{
+        emplReimbTable.setAttribute("hidden", "true");
+        document.getElementById("showEmplReimbsButton").innerHTML = "View Employee Reimbursement Requests";
+    }
+}
+
+function toggleNewEmplForm(){
+    emplReimbTable.setAttribute("hidden", "true");
+    existingEmplForm.setAttribute("hidden", "true");
+    myReimbImage2.setAttribute("hidden", "true");
+    
+    document.getElementById("newEmail").value = null;
+    document.getElementById("showEmplReimbsButton").innerHTML = "View Employee Reimbursement Requests";
+    document.getElementById("addExistingEmplButton").innerHTML = "Add Existing Employee";
+    document.getElementById("addNewEmplButton").innerHTML = "Add New Employee";
+    if(newEmplForm.hasAttribute("hidden")){
+        newEmplForm.removeAttribute("hidden");
+        document.getElementById("addNewEmplButton").innerHTML = "Cancel New Employee Process";
+    }
+    else{
+        newEmplForm.setAttribute("hidden", "true");
+        document.getElementById("addNewEmplButton").innerHTML = "Add New Employee";
+    }
+}
+
+function toggleExistingEmplForm(){
+    emplReimbTable.setAttribute("hidden", "true");
+    newEmplForm.setAttribute("hidden", "true");
+    myReimbImage2.setAttribute("hidden", "true");
+
+    document.getElementById("existingID").value = null;
+    document.getElementById("showEmplReimbsButton").innerHTML = "View Employee Reimbursement Requests";
+    document.getElementById("addNewEmplButton").innerHTML = "Add New Employee";
+    document.getElementById("addExistingEmplButton").innerHTML = "Add Existing Employee";
+    if(existingEmplForm.hasAttribute("hidden")){
+        existingEmplForm.removeAttribute("hidden");
+        document.getElementById("addExistingEmplButton").innerHTML = "Cancel Existing Employee Process";
+    }
+    else{
+        existingEmplForm.setAttribute("hidden", "true");
+        document.getElementById("addExistingEmplButton").innerHTML = "Add Existing Employee";
+    }
 }

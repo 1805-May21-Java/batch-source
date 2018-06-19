@@ -68,6 +68,7 @@ public class ERSDaoImpl implements ERSDao {
 			
 			while(rs.next()) {
 				int ID = rs.getInt("REIMB_ID");
+				int requestID = rs.getInt("REQ_BY");
 				String picURL = rs.getString("PIC_URL");
 				double amount = rs.getDouble("AMOUNT_REQ");
 				String description = rs.getString("DESCRIPTION");
@@ -76,7 +77,7 @@ public class ERSDaoImpl implements ERSDao {
 				int approveID = rs.getInt("APPR_BY");
 				Date dateApprove = rs.getDate("DATE_APPR");
 				
-				reimbs.add(new Reimbursement(ID, empl_id, picURL, amount, description,
+				reimbs.add(new Reimbursement(ID, requestID, picURL, amount, description,
 						dateReq, status, approveID, dateApprove));
 			}
 			
