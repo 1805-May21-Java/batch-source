@@ -190,14 +190,14 @@ public class EmployeeDaoImpl implements EmployeeDao
 	}
 
 	@Override
-	public Employee getEmployeeByName(String name) {
+	public Employee getEmployeeByName(String newUserName) {
 		Employee employee = null;
 		
 		try {
 			Connection con = ConnectionUtil.getConnection();
-			String sql = "SELECT * FROM EMPLOYEE WHERE EMP_NAME = ?";
+			String sql = "SELECT * FROM EMPLOYEE WHERE USER_NAME = ?";
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setString(1, name);
+			ps.setString(1, newUserName);
 			ResultSet rs = ps.executeQuery();
 			
 			while(rs.next()) {
@@ -226,9 +226,9 @@ public class EmployeeDaoImpl implements EmployeeDao
 	}
 
 	@Override
-	public ArrayList<Integer> getEmployeesUnderManager(List<Employee> employees, int managerId)
+	public List<Integer> getEmployeesUnderManager(List<Employee> employees, int managerId)
 	{
-		ArrayList<Integer> result =new ArrayList<>();
+		List<Integer> result =new ArrayList<>();
 		
 		for(int i=0; i<employees.size(); i++)
 		{
@@ -236,6 +236,35 @@ public class EmployeeDaoImpl implements EmployeeDao
 				result.add(i+1);
 		}
 		
+		return result;
+	}
+
+	@Override
+	public int getIdByUser(String employeeUser)
+	{
+		
+		int result=0;
+		try {
+			Connection con = ConnectionUtil.getConnection();
+			String sql = "SELECT * FROM EMPLOYEE WHERE USER_NAME = ?";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, employeeUser);
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				result = rs.getInt("EMP_ID");
+						
+			}
+			
+			con.close();
+
+		} catch (IOException e1) {
+			
+			e1.printStackTrace();
+		} catch (SQLException e1) {
+			
+			e1.printStackTrace();
+		}
 		return result;
 	}
 	

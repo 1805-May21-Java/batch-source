@@ -180,5 +180,39 @@ public class ReimbursementDaoImpl implements ReimbursementDao
 		}
 		return result;
 	}
+	
+	
+	@Override
+	public List<Reimbursement> getReimbursementsByEmpId(int id)
+	{
+		List<Reimbursement> reimbursements = new ArrayList<>();
+		try {
+			Connection con = ConnectionUtil.getConnection();
+			String sql = "SELECT * FROM REIMBURSE WHERE REQUEST_BY = ?";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, id);
+			ResultSet rs = ps.executeQuery();	
+			while(rs.next()) {
+				int reimburseId = rs.getInt("REIMBURSE_ID");
+				int requestBy = rs.getInt("REQUEST_BY");
+				Double amount = rs.getDouble("AMOUNT");
+				int aprroveBy = rs.getInt("APPROVE_BY");
+				Date dateRequest = rs.getDate("DATE_REQUEST");
+				Date dateApprove = rs.getDate("DATE_APPROVE");
+				String status = rs.getString("STATUS");
+				String url = rs.getString("URL");
+				reimbursements.add(new Reimbursement(reimburseId, requestBy, amount, aprroveBy, dateRequest, dateApprove, status, url));
+			}		
+			con.close();
+
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}	
+		return reimbursements;
+	}
 
 }

@@ -45,4 +45,12 @@
     <servlet-name>ReimbursementsApiServlet</servlet-name>
     <url-pattern>/api/reimbursements</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>SessionServlet</servlet-name>
+    <servlet-class>com.revature.servlets.SessionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SessionServlet</servlet-name>
+    <url-pattern>/api/session</url-pattern>
+  </servlet-mapping>
 </web-app>

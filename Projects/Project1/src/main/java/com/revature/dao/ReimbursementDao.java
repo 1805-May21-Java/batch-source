@@ -11,4 +11,5 @@ public interface ReimbursementDao
 	void deleteReimbursementById(int id);
 	void updateReimbursement(Reimbursement reimbursement);
 	List<Reimbursement> getReimbursementsByEmpIds(List<Reimbursement> reimbursements, List<Integer> empIds);
+	List<Reimbursement> getReimbursementsByEmpId(int id);
 }

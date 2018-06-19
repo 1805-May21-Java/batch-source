@@ -151,6 +151,13 @@ class DaoImplementsTests
 //		
 //	}
 
+	@Test
+	void getIdbyUser()
+	{
+		EmployeeDao edi = new EmployeeDaoImpl();
+		System.out.println(edi.getIdByUser("jackson"));
+		
+	}
 	
 	
 	

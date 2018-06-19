@@ -27,6 +27,7 @@ public class ReimbursementsApiServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String idStr = request.getParameter("id");
 		String managerId=request.getParameter("manager_id");
+		String employeeId=request.getParameter("employee_id");
 		ReimbursementDaoImpl rdi = new ReimbursementDaoImpl();
 		EmployeeDaoImpl edi = new EmployeeDaoImpl();
 		ObjectMapper om = new ObjectMapper();
@@ -40,6 +41,13 @@ public class ReimbursementsApiServlet extends HttpServlet {
 			List<Reimbursement> reimbursements = rdi.getReimbursements();		
 			List<Reimbursement> reimbursementsByIds = rdi.getReimbursementsByEmpIds(reimbursements, empIds);
 			reimbursementString = om.writeValueAsString(reimbursementsByIds);
+			reimbursementString = "{\"reimbursements\":"+reimbursementString+"}";
+		}
+		if(employeeId!=null)
+		{
+			int employeeID = Integer.valueOf(employeeId);
+			List<Reimbursement> reimbursementsById = rdi.getReimbursementsByEmpId(employeeID);
+			reimbursementString = om.writeValueAsString(reimbursementsById);
 			reimbursementString = "{\"reimbursements\":"+reimbursementString+"}";
 		}
 		else if (idStr != null) {

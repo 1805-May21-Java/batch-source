@@ -19,14 +19,11 @@ public class ReimbursementServlet extends HttpServlet
 	{
 		HttpSession session = req.getSession(false);
 		
-		if ( session!=null && session.getAttribute("userName") != null) {
-		    System.out.println("THIS IS YOUR USERNAME: "+ session.getAttribute("userName").toString());
+		if ( session!=null) {
 			req.getRequestDispatcher("Reimbursement.html").forward(req, resp); 
 			
 		} else {
 			resp.sendRedirect("login");
 		}	
 	}
-
-	
 }
