@@ -1,0 +1,33 @@
+<table *ngIf="ugly">
+  <tr>
+    <th>Name</th>
+    <th>email</th>
+    <th>Birthday</th>
+    <th>Quote</th>
+  </tr>
+  <tr *ngFor="let user of users">
+    <td>{{(user.first|uppercase) + " " + (user.last|uppercase)}}</td>
+    <td>{{user.email}}</td>
+    <td>{{user.birthday|date:longDate}}</td>
+    <td>{{user.quote}}</td>
+  </tr>
+</table>
+<table *ngIf="!ugly" class="table table-hover">
+  <thead>
+  <tr>
+    <th scope="col">Name</th>
+    <th scope="col">email</th>
+    <th scope="col">Birthday</th>
+    <th scope="col">Quote</th>
+  </tr>
+  </thead>
+  <tr *ngFor="let user of users" scope="row">
+    <td>{{(user.first|uppercase) + " " + (user.last|uppercase)}}</td>
+    <td>{{user.email}}</td>
+    <td>{{user.birthday|date:longDate}}</td>
+    <td>{{user.quote}}</td>
+  </tr>
+</table>
+
+
+<button value="Switch" (click)="switch()">Switch</button>

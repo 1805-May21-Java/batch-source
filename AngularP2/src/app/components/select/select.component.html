@@ -1,0 +1,25 @@
+<form>
+  <input type="radio" id="animals" [value]="animals" ng-model="selected" name="input" (click)="setVal('animals')">
+  <label for="animals">Animals</label>
+  
+  <input type="radio" id="colors" [value]="colors" ng-model="selected" name="input" (click)="setVal('colors')">
+  <label for="colors">Colors</label>
+
+  <input type="radio" id="days" [value]="days" ng-model="selected" name="input" (click)="setVal('days')">
+  <label for="days">Days</label>
+</form>
+  <ul #colorSelect name="selectedColor" *ngIf="selected=='colors'">
+    <li *ngFor="let color of colors" [value]="color">
+      {{ color }}
+    </li>
+  </ul>
+  <ul #colorSelect name="selectedAnimal" *ngIf="selected=='animals'">
+    <li *ngFor="let animal of animals" [value]="animal">
+      {{ animal }}
+    </li>
+  </ul>
+  <ul #colorSelect name="selectedDay" *ngIf="selected=='days'">
+    <li *ngFor="let day of days" [value]="day">
+      {{ day }}
+    </li>
+  </ul>

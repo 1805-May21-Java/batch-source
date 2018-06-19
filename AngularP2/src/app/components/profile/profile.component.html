@@ -1,0 +1,16 @@
+<button (click)="switch()">{{toggle}}</button>
+
+<ul *ngIf="hide">
+  <li>
+    Name: {{user.name}}
+  </li>
+  <li>
+    Height: {{user.height}}
+  </li>
+  <li>
+    Weight: {{user.weight}}
+  </li>
+  <li>
+    Quote: {{user.quote}}
+  </li>
+</ul>
