@@ -22,7 +22,7 @@ public class ERSDaoImpl implements ERSDao {
 		try {
 			Connection con = ConnectionUtil.getConnection();
 			String sql = "SELECT * FROM ERS_REIMBURSEMENT WHERE REQ_BY = ?"
-					+ " ORDER BY REIMB_ID ASC";
+					+ " ORDER BY STATUS DESC";
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1, empl_id);
 			ResultSet rs = ps.executeQuery();
@@ -61,7 +61,7 @@ public class ERSDaoImpl implements ERSDao {
 			String sql = "SELECT * FROM " + 
 					"ERS_REIMBURSEMENT INNER JOIN (SELECT * FROM ERS_EMPLOYEE WHERE REPORTS_TO = ?) TAB2 " +
 					"ON ERS_REIMBURSEMENT.REQ_BY = TAB2.EMPL_ID " +
-					"ORDER BY REIMB_ID ASC";
+					"ORDER BY STATUS DESC";
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1, empl_id);
 			ResultSet rs = ps.executeQuery();
@@ -112,7 +112,7 @@ public class ERSDaoImpl implements ERSDao {
 				int managerID = rs.getInt("REPORTS_TO");
 				boolean isManager = Boolean.parseBoolean(rs.getString("IS_MANAGER"));
 				
-				ArrayList<Integer> minions = new ArrayList<Integer>();
+				ArrayList<Employee> minions = new ArrayList<Employee>();
 				
 				sql = "SELECT * FROM ERS_EMPLOYEE WHERE REPORTS_TO = ?";
 				ps = con.prepareStatement(sql);
@@ -120,7 +120,7 @@ public class ERSDaoImpl implements ERSDao {
 				ResultSet rs2 = ps.executeQuery();
 				
 				while(rs2.next()) {
-					minions.add(rs2.getInt("EMPL_ID"));
+					minions.add(getEmployeeByID(rs2.getInt("EMPL_ID")));
 				}
 				
 				empl = new Employee(ID, email, pass, first,
@@ -158,7 +158,7 @@ public class ERSDaoImpl implements ERSDao {
 				int managerID = rs.getInt("REPORTS_TO");
 				boolean isManager = Boolean.parseBoolean(rs.getString("IS_MANAGER"));
 				
-				ArrayList<Integer> minions = new ArrayList<Integer>();
+				ArrayList<Employee> minions = new ArrayList<Employee>();
 				
 				sql = "SELECT * FROM ERS_EMPLOYEE WHERE REPORTS_TO = ?";
 				ps = con.prepareStatement(sql);
@@ -166,7 +166,7 @@ public class ERSDaoImpl implements ERSDao {
 				ResultSet rs2 = ps.executeQuery();
 				
 				while(rs2.next()) {
-					minions.add(rs2.getInt("EMPL_ID"));
+					minions.add(getEmployeeByID(rs2.getInt("EMPL_ID")));
 				}
 				empl = new Employee(empl_id, email, pass, first,
 						last, bday, title, managerID, isManager, minions);

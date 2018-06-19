@@ -21,9 +21,13 @@ document.getElementById("showEmplReimbsButton").addEventListener("click", toggle
 document.getElementById("addNewEmplButton").addEventListener("click", toggleNewEmplForm);
 document.getElementById("addExistingEmplButton").addEventListener("click", toggleExistingEmplForm);
 
+document.getElementById("empls").addEventListener("change", ()=>sendAjaxGet(reimbUrl, loadReimbs2));
+document.getElementById("personalEmpls").addEventListener("change", changePersonalInfo);
+
 function loadData(){
     sendAjaxGet(sessionUrl, initProfilePage);
     sendAjaxGet(reimbUrl, loadReimbs);
+    sendAjaxGet(reimbUrl, loadReimbs2);
 }
 
 function sendAjaxGet(url, func){
@@ -53,6 +57,7 @@ function initProfilePage(xhr){
     welcome.innerHTML += "Welcome, " + empl.first + " " + empl.last + "!";
     if(empl.manager){
         document.getElementById("nav-manager-tab").removeAttribute("hidden");
+        document.getElementById("personalEmplDiv").removeAttribute("hidden");
     }
 
     document.getElementById("emplID").innerHTML = empl.id;
@@ -62,6 +67,20 @@ function initProfilePage(xhr){
     document.getElementById("emplBday").innerHTML = empl.bday;
 
     document.getElementById("logoutText").value = "";
+
+    for(e of empl.minions){
+        let option = document.createElement("option");
+        let option2 = document.createElement("option");
+
+        option.setAttribute("value", e.id);
+        option.innerHTML = e.first + " " + e.last;
+
+        option2.setAttribute("value", e.id);
+        option2.innerHTML = e.first + " " + e.last;
+
+        document.getElementById("empls").appendChild(option);
+        document.getElementById("personalEmpls").appendChild(option2);
+    }
 }
 
 function toggleMyReimbTable(){
@@ -94,6 +113,10 @@ function toggleReimbRequestForm(){
 
 function togglePersonalInfo(){
     if(document.getElementById("inEmplFirst").hasAttribute("hidden")){
+        if(empl.manager){
+            document.getElementById("personalEmplDiv").setAttribute("hidden", "true");
+        }
+
         if(empl.first){
             document.getElementById("inEmplFirst").setAttribute("placeholder", empl.first);
         }
@@ -117,6 +140,10 @@ function togglePersonalInfo(){
         document.getElementById("editInfo").innerHTML = "Cancel Edit";
     }
     else{
+        if(empl.manager){
+            document.getElementById("personalEmplDiv").removeAttribute("hidden");
+        }
+
         document.getElementById("inEmplFirst").setAttribute("hidden", "true");
         document.getElementById("inEmplLast").setAttribute("hidden", "true");
         document.getElementById("inEmplEmail").setAttribute("hidden", "true");
@@ -135,7 +162,10 @@ function togglePersonalInfo(){
 function loadReimbs(xhr){
     reimbs = JSON.parse(xhr.responseText);
     myReimbs = reimbs[0];
-    yourReimbs = reimbs[1];
+
+    while(document.getElementById("myReimbs").firstChild){
+        document.getElementById("myReimbs").firstChild.remove();
+    }
 
     for(r of myReimbs){
         let newRow = document.createElement("tr");
@@ -215,7 +245,16 @@ function loadReimbs(xhr){
 
         document.getElementById("myReimbs").appendChild(newRow);
     }
-    
+}
+
+function loadReimbs2(xhr){
+    reimbs = JSON.parse(xhr.responseText);
+    yourReimbs = reimbs[1];
+
+    while(document.getElementById("emplReimbs").firstChild){
+        document.getElementById("emplReimbs").firstChild.remove();
+    }
+
     for(x of yourReimbs){
         let newRow = document.createElement("tr");
 
@@ -232,7 +271,14 @@ function loadReimbs(xhr){
         cell1.setAttribute("scope", "row");
 
         cell1.innerHTML = x.id;
-        cell2.innerHTML = x.requestID;
+
+        for(e of empl.minions){
+            if(x.requestID == e.id){
+                cell2.innerHTML = e.first + " " + e.last;
+            }
+        }
+
+        // cell2.innerHTML = x.requestID;
         cell3.innerHTML = x.dateOfRequest;
         cell4.innerHTML = "$" + x.amountRequest.toFixed(2);
         cell5.innerHTML = x.description;
@@ -313,7 +359,9 @@ function loadReimbs(xhr){
         newRow.appendChild(cell8);
         newRow.appendChild(cell9);
 
-        document.getElementById("emplReimbs").appendChild(newRow);
+        if(x.requestID == document.getElementById("empls").value || document.getElementById("empls").value == 0){
+            document.getElementById("emplReimbs").appendChild(newRow);
+        }
     }
 }
 
@@ -398,4 +446,27 @@ function toggleExistingEmplForm(){
         existingEmplForm.setAttribute("hidden", "true");
         document.getElementById("addExistingEmplButton").innerHTML = "Add Existing Employee";
     }
+}
+
+function changePersonalInfo(){
+    let personal = empl;
+
+    if(document.getElementById("personalEmpls").value != 0){
+        for(e of empl.minions){
+            if(document.getElementById("personalEmpls").value == e.id){
+                personal = e;
+            }
+        }
+
+        document.getElementById("editInfo").setAttribute("hidden", "true");
+    }
+    else{
+        document.getElementById("editInfo").removeAttribute("hidden");
+    }
+
+    document.getElementById("emplID").innerHTML = personal.id;
+    document.getElementById("emplFirst").innerHTML = personal.first;
+    document.getElementById("emplLast").innerHTML = personal.last;
+    document.getElementById("emplEmail").innerHTML = personal.email;
+    document.getElementById("emplBday").innerHTML = personal.bday;
 }

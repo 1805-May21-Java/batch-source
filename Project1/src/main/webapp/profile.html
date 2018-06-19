@@ -80,7 +80,7 @@
     <div id="welcome">
         <form id="logoutForm" action="profile" method="post">
             <input hidden id="logoutText" type="text" name="logout">
-            <button type="submit" id="logoutButton" style="float: right; margin-right: 40px" class="btn btn-large btn-danger">Log out</button>
+            <button type="submit" id="logoutButton" style="float: right; margin-right: 20px" class="btn btn-large btn-danger">Log out</button>
         </form>
     </div>
     <div id="messagesAndErrors">
@@ -127,8 +127,13 @@
             <div><img hidden id="myReimbImage"></div>
         </div>
         <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-            <button id="editInfo" class="btn btn-large btn-outline-primary" style="margin: 10px">Edit Personal Info</button>
-            <form id="personalForm" style="margin: 20px" class="form-signin" action="profile" method="post">
+            <div hidden id="personalEmplDiv" style="padding: 20px; max-width: 400px;">
+                <label style="font-size: 20px">Show Employee</label>
+                <select class="form-control" id="personalEmpls">
+                    <option value="0">You</option>
+                </select>
+            </div>
+            <form id="personalForm" style="padding: 20px" class="form-signin" action="profile" method="post">
                 <h2 class="form-signin-heading">Personal Info</h2>
                 <div>
                     <label style="font-size: 20px">Empl ID: </label>
@@ -156,29 +161,38 @@
                 </div>
                 <button hidden id="personalSaveButton" type="submit" style="margin-top:10px; max-width: 200px;" class="btn btn-success btn-block">Save</button>
             </form>
+            <button id="editInfo" class="btn btn-large btn-outline-primary" style="margin: 10px">Edit Personal Info</button>
         </div>
         <div class="tab-pane fade" id="nav-manager" role="tabpanel" aria-labelledby="nav-managerS-tab">
             <button id="showEmplReimbsButton" class="btn btn-large btn-outline-primary" style="margin: 10px">View Employee Reimbursement Requests</button>
             <button id="addNewEmplButton" class="btn btn-large btn-outline-success" style="margin: 10px">Add New Employee</button>
             <button id="addExistingEmplButton" class="btn btn-large btn-outline-dark" style="margin: 10px">Add Existing Employee</button>
-            <table hidden class="table table-hover" id="emplReimbTable">
-                <thead>
-                    <tr>
-                    <th scope="col">Reimbursement ID</th>
-                    <th scope="col">Requested By</th>
-                    <th scope="col">Date Requested</th>
-                    <th scope="col">Amount Requested</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Resolved By</th>
-                    <th scope="col">Date Resolved</th>
-                    <th scope="col"></th>
-                    </tr>
-                </thead>
-                <tbody id="emplReimbs">
+            <div hidden id="emplReimbTable">
+                <div style="margin: 20px; max-width: 400px;">
+                    <label style="font-size: 20px">Employee</label>
+                    <select class="form-control" id="empls">
+                        <option value="0">All Employees</option>
+                    </select>
+                </div>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                        <th scope="col">Reimbursement ID</th>
+                        <th scope="col">Requested By</th>
+                        <th scope="col">Date Requested</th>
+                        <th scope="col">Amount Requested</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Resolved By</th>
+                        <th scope="col">Date Resolved</th>
+                        <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="emplReimbs">
 
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </div>
             <form hidden id="newEmplForm" class="form-reg" action="profile" method="post">
                 <h2 class="form-signin-heading">Register New Employee</h2>
                 <label for="newEmail" class="sr-only">Email Address</label>

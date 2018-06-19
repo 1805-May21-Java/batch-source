@@ -120,7 +120,7 @@ public class ProfileServlet extends HttpServlet {
 				while(dao.getEmployeeByID(ID) != null)
 					ID = r.nextInt(90000000) + 10000000;
 				Employee empl = new Employee(ID, email, "pass", first, last, null,
-						title, SessionServlet.empl.getID(), false, new ArrayList<Integer>());
+						title, SessionServlet.empl.getID(), false, new ArrayList<Employee>());
 				dao.createEmployee(empl);
 				SessionServlet.messages.add(new Info("Added new Employee!", true));
 			}

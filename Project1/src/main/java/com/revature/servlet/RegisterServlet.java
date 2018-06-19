@@ -54,7 +54,8 @@ public class RegisterServlet extends HttpServlet {
 			int ID = r.nextInt(90000000) + 10000000;
 			while(dao.getEmployeeByID(ID) != null)
 				ID = r.nextInt(90000000) + 10000000;
-			Employee empl = new Employee(ID, user, pass1, first, last, null, title, 0, isManager, new ArrayList<Integer>());
+			Employee empl = new Employee(ID, user, pass1, first,
+					last, null, title, 0, isManager, new ArrayList<Employee>());
 			dao.createEmployee(empl);
 			SessionServlet.messages.add(new Info("Successfully created a new account!", true));
 			res.sendRedirect("login");

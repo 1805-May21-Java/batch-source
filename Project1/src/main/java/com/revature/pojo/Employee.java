@@ -14,13 +14,13 @@ public class Employee {
 	private String title;
 	private int managerID;
 	private boolean isManager;
-	private ArrayList<Integer> minions;
+	private ArrayList<Employee> minions;
 	
 	public Employee() {
 		super();
 	}
 
-	public Employee(int ID, String email, String pass, String first, String last, boolean isManager, ArrayList<Integer> minions) {
+	public Employee(int ID, String email, String pass, String first, String last, boolean isManager, ArrayList<Employee> minions) {
 		super();
 		this.ID = ID;
 		this.email = email;
@@ -33,7 +33,7 @@ public class Employee {
 	}
 	
 	public Employee(int ID, String email, String pass, String first,
-			String last, Date bday, String title, int managerID, boolean isManager, ArrayList<Integer> minions) {
+			String last, Date bday, String title, int managerID, boolean isManager, ArrayList<Employee> minions) {
 		super();
 		this.ID = ID;
 		this.email = email;
@@ -119,16 +119,16 @@ public class Employee {
 		this.isManager = isManager;
 	}
 
-	public ArrayList<Integer> getMinions() {
+	public ArrayList<Employee> getMinions() {
 		return minions;
 	}
 
-	public void setMinions(ArrayList<Integer> minions) {
+	public void setMinions(ArrayList<Employee> minions) {
 		this.minions = minions;
 	}
 	
-	public void addMinion(int empl_id) {
-		this.minions.add(empl_id);
+	public void addMinion(Employee empl) {
+		this.minions.add(empl);
 	}
 
 	public static boolean validatePassword(String s) {
