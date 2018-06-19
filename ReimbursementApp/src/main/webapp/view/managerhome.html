@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Reimbursement Home</title>
+    <!-- Vendor -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <!-- Custom Styles -->
+    <style>
+    
+    .request-modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+    .request-modal-content {
+        background-color: #fefefe;
+        margin: 15% auto; /* 15% from the top and centered */
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%; /* Could be more or less, depending on screen size */
+    }
+
+    /* The Close Button */
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+    <h1>Reimbursement Management</h1>
+    <ul>
+        <li><a href="./home">Home</a></li>
+        <li><a href="./requests">Requests</a></li>
+        <li><a href="./employees">Employees</a></li>
+        <li><a href="./profile">Profile</a></li>
+        <li><a href="./logout">Logout</a></li>
+    </ul>
+
+    <div>
+        <h2>Needs Approval</h2>
+        <form></form>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Req No.</th>
+                    <th>Subject</th>
+                    <th>Requested Amount</th>
+                    <th>Submitted Date</th>
+                </tr>
+            </thead>
+            <tbody id="needs-approval">
+
+            </tbody>
+        </table>
+    </div>
+
+    <!-- hidden request details modal -->
+    <div id="request-modal" class="request-modal">
+        <div class="request-modal-content">
+                <button id="close-modal">&times;</button>
+                <h3>Request Details</h3>
+                <hr>
+                <form action="requests" method="post">
+                    <p>RequestNo: <span id="request-num"></span></p>
+                    <p>Subject: <span id="subject"></span></p>
+                    <p>Requested Date: <span id="request-date"></span></p>
+                    <p>Requested amount: <span id="request-amount"></span></p>
+                    <input id="request-id" hidden type="text" name="request_id">
+                    <div class="form-group">
+                        <label>Approved Amount: </label>
+                        <input type="text" name="approved_amount">
+                        </div>
+                    <button class="btn btn-success" name="action" value="approve">Approve</button>
+                    <button class="btn btn-danger" name="action" value="deny">Deny</button>
+                </form>
+        </div>
+
+    </div>
+</div>
+    <script>
+        window.onload = function() {
+
+            let requestUrl = './api/requests';
+
+            getRequest(requestUrl + '?status=1', getPendingRequests);
+            
+            
+            
+            
+            
+            function getRequest(url, func){
+                let xhr = new XMLHttpRequest();
+                
+                xhr.onreadystatechange = function(){
+                    if(this.readyState == 4 && this.status == 200){
+                        func(this);
+                    }
+                }
+                xhr.open('GET', url);
+                xhr.send();
+            }
+
+            function getPendingRequests(xhr) {
+                let pendingRequests = document.getElementById('needs-approval');
+                let results = JSON.parse(xhr.response);
+
+                for(result of results.requests) {
+                    let tableRow = document.createElement('tr');
+                    let viewDetails = document.createElement('td');
+                    let requestNumCell = document.createElement('td');
+                    let subjectCell = document.createElement('td');
+                    let amountCell = document.createElement('td');
+                    let dateSubmittedCell = document.createElement('td');
+
+                    viewDetails.innerHTML = '<button class="btn btn-primary view-request" data-rq-id="' + result.requestId + '">View Details</button>'
+                    requestNumCell.innerHTML = result.requestId;
+                    subjectCell.innerHTML = result.subject;
+                    amountCell.innerHTML = result.requestedAmount;
+                    dateSubmittedCell.innerHTML = new Date(result.dateSubmitted).toLocaleDateString("en-US");
+
+                    tableRow.appendChild(viewDetails);
+                    tableRow.appendChild(requestNumCell);
+                    tableRow.appendChild(subjectCell);
+                    tableRow.appendChild(amountCell);
+                    tableRow.appendChild(dateSubmittedCell);
+
+                    pendingRequests.appendChild(tableRow);
+
+                }
+                initializeViewRequests();
+            }
+
+            function initializeViewRequests() {
+                let viewRequestButtons = document.getElementsByClassName('view-request');
+
+                console.log("here");
+                console.log(viewRequestButtons);
+                
+                for(button of viewRequestButtons) {
+                    button.addEventListener('click', showRequestDetailModal);
+                }
+            }
+
+            function showRequestDetailModal(event) {
+                let modal = document.getElementById('request-modal');
+                let requestId = event.target.getAttribute('data-rq-id');
+                //get the request data and populate modal
+
+                 modal.style.display = "block";
+                document.getElementById('close-modal').addEventListener('click', function(){
+                    modal.style.display = "none";
+                });
+
+
+                getRequest(requestUrl + '?request_id=' + requestId, getRequestDetails);
+            
+
+              
+            }
+
+            function getRequestDetails(xhr) {
+                let pendingRequests = document.getElementById('needs-approval');
+                let results = JSON.parse(xhr.response);
+
+                console.log(results);
+
+                document.getElementById('request-num').innerHTML = results.requests.requestId;
+                document.getElementById('subject').innerHTML = results.requests.subject;
+                document.getElementById('request-date').innerHTML = (new Date(results.requests.dateSubmitted)).toLocaleDateString("en-US");
+                document.getElementById('request-amount').innerHTML = results.requests.requestedAmount;
+                document.getElementById('request-id').value = results.requests.requestId;
+
+            }
+
+        };
+    </script>
+</body>
+</html> 

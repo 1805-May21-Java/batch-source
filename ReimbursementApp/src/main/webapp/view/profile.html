@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Reimbursement Home</title>
+    <!-- Vendor -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <!-- Custom Styles -->
+</head>
+<body>
+
+        <div class="container">
+        <h1>Reimbursement Profile</h1>
+        <ul>
+            <li><a href="./home">Home</a></li>
+            <li><a href="./requests">Requests</a></li>
+            <li><a href="./profile">Profile</a></li>
+            <li><a href="./logout">Logout</a></li>
+        </ul>
+        
+
+            <h3>Credentials</h3>
+            <hr>
+            <p>Username: <span id="username"></span></p>
+            <p>Password: <span id="password"></span></p>
+
+
+            <h3>Personal Infomation</h3>
+            <hr>
+            <p>First name: <span id="firstname"></span></p>
+            <p>Last name: <span id="lastname"></span></p>
+            <p>Email address: <span id="email"></span></p>
+
+            <h3>Work Infomation</h3>
+            <hr>
+            <p>Role: <span id="role"></span></p>
+            <p>Manager: <span id="manager"></span></p>
+
+    </div>
+
+
+    <script>
+        window.onload = function() {
+
+            let employeeUrl = './api/employees';
+            let credentialUrl = './api/credentials';
+
+            getRequest(employeeUrl + "?profile=true", displayPersonalInformation)
+            
+            
+            function getRequest(url, func){
+                let xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function(){
+                    if(this.readyState == 4 && this.status == 200){
+                        func(this);
+                    }
+                }
+                xhr.open('GET', url);
+                xhr.send();
+            }
+
+            function displayPersonalInformation(xhr) {
+                let allRequests = document.getElementById('all-requests');
+                let results = JSON.parse(xhr.response);
+
+                document.getElementById('email').innerHTML = results.employee.emailAddress;
+                document.getElementById('firstname').innerHTML = results.employee.lastName;
+                document.getElementById('lastname').innerHTML = results.employee.firstName;
+                document.getElementById('role').innerHTML = results.employee.roleId > 1 ? 'Manager' : 'Employee';
+                
+                //get manager info
+                if(results.employee.managerId)
+                    getRequest(employeeUrl + '?employee_id=' + results.employee.managerId, displayWorkInformation);
+
+                //get credential info
+                getRequest(credentialUrl, displayCredentialInformation);
+            }
+
+            function displayWorkInformation(xhr) {
+                let results = JSON.parse(xhr.response);
+                document.getElementById('manager').innerHTML = results.employee.firstName + ' ' + results.employee.lastName;
+            }
+
+            function displayCredentialInformation(xhr) {
+                let results = JSON.parse(xhr.response);
+                document.getElementById('username').innerHTML = results.credential.username;
+                document.getElementById('password').innerHTML = "*".repeat(results.credential.password.length);
+            }
+
+        };
+    </script>
+</body>
+</html>

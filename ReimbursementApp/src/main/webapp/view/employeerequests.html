@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Reimbursement Home</title>
+    <!-- Vendor -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <!-- Custom Styles -->
+</head>
+<body>
+    <div class="container">
+    <h1>Reimbursement Portal</h1>
+    <ul>
+        <li><a href="./home">Home</a></li>
+        <li><a href="./requests">Requests</a></li>
+        <li><a href="./profile">Profile</a></li>
+        <li><a href="./logout">Logout</a></li>
+    </ul>
+
+   <a href="./requests/new">Make a new request</a>
+
+    <!--<div>
+        <h2>Needs Submission</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Request No.</th>
+                    <th>Subject</th>
+                    <th>Requested Amount</th>
+                </tr>
+            </thead>
+            <tbody id="saved-requests">               
+            </tbody>
+        </table>
+
+    </div>-->
+    <div>
+        <h2>Pending Requests</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Request No.</th>
+                    <th>Subject</th>
+                    <th>Requested Amount</th>
+                    <th>Approved Amount</th>
+                    <th>Date Submitted</th>
+                    <th>Date Approved</th>
+                </tr>
+            </thead>
+            <tbody id="pending-requests">               
+            </tbody>
+        </table>
+
+    </div>
+    <div>
+            <h2>Resolved Requests</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Request No.</th>
+                        <th>Subject</th>
+                        <th>Requested Amount</th>
+                        <th>Approved Amount</th>
+                        <th>Date Submitted</th>
+                        <th>Date Resolved</th>
+                    </tr>
+                </thead>
+                <tbody id="resolved-requests">               
+                </tbody>
+            </table>
+    
+        </div>
+
+        </div>
+    <script>
+        let requestsUrl = './api/requests';
+        
+        getRequest(requestsUrl, getAllRequests);
+
+        function getRequest(url, func){
+            let xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function(){
+                if(this.readyState == 4 && this.status == 200){
+                    func(this);
+                }
+            }
+            xhr.open('GET', url);
+            xhr.send();
+        }
+
+        function getAllRequests(xhr) {
+            let allRequests = document.getElementById('all-requests');
+            let results = JSON.parse(xhr.response);
+
+            console.log(results);
+
+            for(result of results.requests) {
+                console.log(result.status);
+                console.log(result.requestId);
+               switch (result.status) {
+                   /*case 0:
+                       addToSavedTable(result);
+                       break;*/
+                    case 1:
+                        addToPendingTable(result);
+                        break;
+                    case 2:
+                    case 3:
+                        addToResolvedTable(result);
+                    break;
+               }
+                
+                // let tableRow = document.createElement('tr');
+                // let requestNumCell = document.createElement('td');
+                // let subjectCell = document.createElement('td');
+                // let amountCell = document.createElement('td');
+                // let approvedAmountCell = document.createElement('td');
+                // let dateSubmittedCell = document.createElement('td');
+                // let dateApprovedCell = document.createElement('td');
+
+
+                
+
+                // requestNumCell.innerHTML = result.requestId;
+                // subjectCell.innerHTML = result.subject;
+                // amountCell.innerHTML = result.requestedAmount;
+                // approvedAmountCell.innerHTML = result.status < 2 ? '-' : result.approvedAmount;
+                // dateSubmittedCell.innerHTML = new Date(result.dateSubmitted).toLocaleDateString("en-US");
+                // dateApprovedCell.innerHTML = (result.dateApproved) ?  Date(result.dateApproved).toLocaleDateString("en-US") : '-';
+
+                // tableRow.appendChild(requestNumCell);
+                // tableRow.appendChild(subjectCell);
+                // tableRow.appendChild(amountCell);
+                // tableRow.appendChild(approvedAmountCell);
+                // tableRow.appendChild(dateSubmittedCell);
+                // tableRow.appendChild(dateApprovedCell);
+
+                // allRequests.appendChild(tableRow);
+            }
+        }
+
+        function addToSavedTable(result) {
+            let savedRequests = document.getElementById('saved-requests');
+            let tableRow = document.createElement('tr');
+            let editCell = document.createElement('td');
+            let requestNumCell = document.createElement('td');
+            let subjectCell = document.createElement('td');
+            let amountCell = document.createElement('td');
+            
+            editCell.innerHTML = '<form action="./requests/new" method="get"><button class="btn-link" type="submit" value="' +result.requestId + '">Edit</button></form>'
+            
+            requestNumCell.innerHTML = result.requestId;
+            subjectCell.innerHTML = result.subject;
+            amountCell.innerHTML = result.requestedAmount;
+            
+            tableRow.appendChild(requestNumCell);
+            tableRow.appendChild(subjectCell);
+            tableRow.appendChild(amountCell);
+
+            savedRequests.appendChild(tableRow);
+        }
+
+        function addToPendingTable(result) {
+            let pendingRequests = document.getElementById('pending-requests');
+            let tableRow = document.createElement('tr');
+            let requestNumCell = document.createElement('td');
+            let subjectCell = document.createElement('td');
+            let amountCell = document.createElement('td');
+            let approvedAmountCell = document.createElement('td');
+            let dateSubmittedCell = document.createElement('td');
+            let dateApprovedCell = document.createElement('td');
+            
+
+            requestNumCell.innerHTML = result.requestId;
+            subjectCell.innerHTML = result.subject;
+            amountCell.innerHTML = result.requestedAmount;
+            approvedAmountCell.innerHTML = result.status < 2 ? '-' : result.approvedAmount;
+            dateSubmittedCell.innerHTML = new Date(result.dateSubmitted).toLocaleDateString("en-US");
+            dateApprovedCell.innerHTML = (result.dateApproved) ?  Date(result.dateApproved).toLocaleDateString("en-US") : '-';
+
+            tableRow.appendChild(requestNumCell);
+            tableRow.appendChild(subjectCell);
+            tableRow.appendChild(amountCell);
+            tableRow.appendChild(approvedAmountCell);
+            tableRow.appendChild(dateSubmittedCell);
+            tableRow.appendChild(dateApprovedCell);
+
+            pendingRequests.appendChild(tableRow);
+        }
+
+        function addToResolvedTable(result) {
+            let resolvedRequests = document.getElementById('resolved-requests');
+            let tableRow = document.createElement('tr');
+            let requestNumCell = document.createElement('td');
+            let subjectCell = document.createElement('td');
+            let amountCell = document.createElement('td');
+            let approvedAmountCell = document.createElement('td');
+            let dateSubmittedCell = document.createElement('td');
+            let dateApprovedCell = document.createElement('td');
+
+            requestNumCell.innerHTML = result.requestId;
+            subjectCell.innerHTML = result.subject;
+            amountCell.innerHTML = result.requestedAmount;
+            approvedAmountCell.innerHTML = result.status < 2 ? '-' : result.approvedAmount;
+            dateSubmittedCell.innerHTML = new Date(result.dateSubmitted).toLocaleDateString("en-US");
+            dateApprovedCell.innerHTML = (result.dateApproved) ?  (new Date(result.dateApproved)).toLocaleDateString("en-US") : '-';
+
+            tableRow.appendChild(requestNumCell);
+            tableRow.appendChild(subjectCell);
+            tableRow.appendChild(amountCell);
+            tableRow.appendChild(approvedAmountCell);
+            tableRow.appendChild(dateSubmittedCell);
+            tableRow.appendChild(dateApprovedCell);
+
+            resolvedRequests.appendChild(tableRow);
+        }
+
+    </script>
+   </body>
+   </html>
