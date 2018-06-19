@@ -1,3 +1,30 @@
-<p>
-  select works!
-</p>
+<div ng-init="topic = 'animals'">
+  Pick a topic
+  <input type="radio"
+         name="option"
+         ng-model="topic"
+         value="animals"
+         (change)="chooseOption()">Animals
+  <input type="radio"
+         name="option"
+         ng-model="topic"
+         value="colors">Colors
+  <input type="radio"
+         name="option"
+         ng-model="topic"
+         value="days">Days
+</div>
+
+<div>Selected Option: {{ topic }}</div>
+
+<!-- <div ng-switch="topic">
+  <div ng-switch-when="animals">
+    <h3>Animals</h3>
+  </div>
+  <div ng-switch-when="colors">
+    <h3>Colors</h3>
+  </div>
+  <div ng-switch-when="days">
+    <h3>Days</h3>
+  </div>
+</div> -->

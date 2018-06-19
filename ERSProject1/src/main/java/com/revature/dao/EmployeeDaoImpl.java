@@ -29,11 +29,10 @@ public class EmployeeDaoImpl implements EmployeeDao {
 				String lastname = rs.getString("last_name");
 				int reportsto = rs.getInt("reports_to");
 				String email = rs.getString("email");
-				String phone = rs.getString("phone");
 				String username = rs.getString("emp_username");
 				String password = rs.getString("emp_password");
 				
-				employeeList.add(new Employee(employeeId, firstname, lastname, reportsto, email, phone, username, password));
+				employeeList.add(new Employee(employeeId, firstname, lastname, reportsto, email, username, password));
 			}
 			
 			con.close();
@@ -63,11 +62,10 @@ public class EmployeeDaoImpl implements EmployeeDao {
 				String lastname = rSet.getString("last_name");
 				int reportsto = rSet.getInt("reports_to");
 				String email = rSet.getString("email");
-				String phone = rSet.getString("phone");
 				String username = rSet.getString("emp_username");
 				String password = rSet.getString("emp_password");
 				
-				employee = new Employee(employeeId, firstname, lastname, reportsto, email, phone, username, password);
+				employee = new Employee(employeeId, firstname, lastname, reportsto, email, username, password);
 			}
 			
 			connection.close();
@@ -97,11 +95,10 @@ public class EmployeeDaoImpl implements EmployeeDao {
 				String lastname = rSet.getString("last_name");
 				int reportsto = rSet.getInt("reports_to");
 				String email = rSet.getString("email");
-				String phone = rSet.getString("phone");
 				String username = rSet.getString("emp_username");
 				String password = rSet.getString("emp_password");
 				
-				employee = new Employee(employeeId, firstname, lastname, reportsto, email, phone, username, password);
+				employee = new Employee(employeeId, firstname, lastname, reportsto, email, username, password);
 			}
 			
 			connection.close();
@@ -134,11 +131,10 @@ public class EmployeeDaoImpl implements EmployeeDao {
 				String lastname = rSet.getString("last_name");
 				int reportsto = rSet.getInt("reports_to");
 				String email = rSet.getString("email");
-				String phone = rSet.getString("phone");
 				String username = rSet.getString("emp_username");
 				String password = rSet.getString("emp_password");
 				
-				managerList.add(new Employee(employeeId, firstname, lastname, reportsto, email, phone, username, password));
+				managerList.add(new Employee(employeeId, firstname, lastname, reportsto, email, username, password));
 			}
 			
 			connection.close();

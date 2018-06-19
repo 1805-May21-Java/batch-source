@@ -7,7 +7,6 @@ public class Employee {
 	private String lastname;
 	private int reportsto;
 	private String email;
-	private String phone;
 	private String username;
 	private String password;
 	
@@ -16,7 +15,7 @@ public class Employee {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Employee(int id, String firstname, String lastname, int reportsto, String email, String phone,
+	public Employee(int id, String firstname, String lastname, int reportsto, String email, 
 			String username, String password) {
 		super();
 		this.id = id;
@@ -24,7 +23,6 @@ public class Employee {
 		this.lastname = lastname;
 		this.reportsto = reportsto;
 		this.email = email;
-		this.phone = phone;
 		this.username = username;
 		this.password = password;
 	}
@@ -69,14 +67,6 @@ public class Employee {
 		this.email = email;
 	}
 
-	public String getPhone() {
-		return phone;
-	}
-
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
-
 	public String getUsername() {
 		return username;
 	}
@@ -102,7 +92,6 @@ public class Employee {
 		result = prime * result + id;
 		result = prime * result + ((lastname == null) ? 0 : lastname.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
-		result = prime * result + ((phone == null) ? 0 : phone.hashCode());
 		result = prime * result + reportsto;
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		return result;
@@ -139,11 +128,6 @@ public class Employee {
 				return false;
 		} else if (!password.equals(other.password))
 			return false;
-		if (phone == null) {
-			if (other.phone != null)
-				return false;
-		} else if (!phone.equals(other.phone))
-			return false;
 		if (reportsto != other.reportsto)
 			return false;
 		if (username == null) {
@@ -157,7 +141,7 @@ public class Employee {
 	@Override
 	public String toString() {
 		return "Employee [id=" + id + ", firstname=" + firstname + ", lastname=" + lastname + ", reportsto=" + reportsto
-				+ ", email=" + email + ", phone=" + phone + ", username=" + username + ", password=" + password + "]";
+				+ ", email=" + email + ", username=" + username + ", password=" + password + "]";
 	}
 	
 	

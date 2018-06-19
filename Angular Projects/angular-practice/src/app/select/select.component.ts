@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SelectComponent implements OnInit {
 
+  topic = "animals";
+
   constructor() { }
 
   ngOnInit() {
