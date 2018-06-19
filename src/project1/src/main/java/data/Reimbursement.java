@@ -3,12 +3,13 @@ package data;
 import java.util.Date;
 
 public class Reimbursement {
-	long reimbursementId, employeeId, reimbursementValue, managerId;
+	long reimbursementId, employeeId, managerId;
+	double reimbursementValue;
 	String reimbursementReason;
-	boolean status;
+	int status; //=>2 is resolved, 1 is denied, 0 is pending
 	Date date;
 	
-	public Reimbursement(long reimbursementId, long employeeId, long reimbursementValue, long managerId, String reimbursementReason, boolean status, Date date){
+	public Reimbursement(long reimbursementId, long employeeId, double reimbursementValue, long managerId, String reimbursementReason, int status, Date date){
 		this.reimbursementId = reimbursementId;
 		this.employeeId = employeeId;
 		this.reimbursementValue = reimbursementValue;
@@ -17,7 +18,7 @@ public class Reimbursement {
 		this.status = status;
 		this.date = date;
 	}
-	public Reimbursement(long reimbursementId, long employeeId, long reimbursementValue, String reimbursementReason, boolean status){
+	public Reimbursement(long reimbursementId, long employeeId, double reimbursementValue, String reimbursementReason, int status){
 		this.reimbursementId = reimbursementId;
 		this.employeeId = employeeId;
 		this.reimbursementValue = reimbursementValue;
@@ -37,10 +38,10 @@ public class Reimbursement {
 	public void setEmployeId(long employeId) {
 		this.employeeId = employeId;
 	}
-	public long getReimbursementValue() {
+	public double getReimbursementValue() {
 		return reimbursementValue;
 	}
-	public void setReimbursementValue(long reimbursementValue) {
+	public void setReimbursementValue(double reimbursementValue) {
 		this.reimbursementValue = reimbursementValue;
 	}
 	public long getManagerId() {
@@ -55,10 +56,10 @@ public class Reimbursement {
 	public void setReimbursementReason(String reimbursementReason) {
 		this.reimbursementReason = reimbursementReason;
 	}
-	public boolean isStatus() {
+	public int getStatus() {
 		return status;
 	}
-	public void setStatus(boolean status) {
+	public void setStatus(int status) {
 		this.status = status;
 	}
 	public Date getDate() {

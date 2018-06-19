@@ -14,19 +14,29 @@ public class ConnectionUtil {
 	private static String dir = System.getProperty("user.dir");
 
 	public static Connection getConnection() throws IOException, SQLException {
+
+		Properties prop = new Properties();
+		
+		ClassLoader loader = Thread.currentThread().getContextClassLoader();
+		prop.load(loader.getResourceAsStream("connection.properties"));
+		
+//		InputStream in = new FileInputStream(dir + "/src/main/java/raw/connection.properties");
+//		prop.load(in);
+		
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-		Properties prop = new Properties();
-		InputStream in = new FileInputStream(dir + "/src/main/java/raw/connection.properties");
-		prop.load(in);
 		String url = prop.getProperty("url");
 		String username = prop.getProperty("username");
 		String password = prop.getProperty("password");
 
-		return DriverManager.getConnection(url, username, password);
+		if(connection == null || connection.isClosed()) {
+			connection = DriverManager.getConnection(url, username, password);
+		}
+		
+		return connection;
 	}
 
 }

@@ -16,6 +16,7 @@ public class EmployeeDao implements EmployeeInterface{
 	private String getEmployeeById = "SELECT * FROM EMPLOYEE where employeeId = ?";
 	private String getEmployeeByUsername = "SELECT * FROM EMPLOYEE where username = ?";
 	private String updatePassword = "UPDATE EMPLOYEE SET password = ? WHERE employeeId = ?";
+	private String updateUsername = "UPDATE EMPLOYEE SET username = ? WHERE employeeId = ?";
 	
 	public long createEmployee(Connection connection, long employeeId, long reportsTo, String employeeName, String password, String username) throws SQLException {
 		PreparedStatement ps = connection.prepareStatement(createEmployee, new String[] {"employeeId"});
@@ -85,6 +86,15 @@ public class EmployeeDao implements EmployeeInterface{
 			employeeList.add(new Employee(rs.getLong("employeeId"), rs.getLong("reportsTo"), rs.getString("employeeName"), rs.getString("password"), rs.getString("username")));
 		}
 		return employeeList;
+	}
+
+	@Override
+	public void updateEmployeeUsername(Connection connection, long employeeId, String username) throws SQLException {
+		PreparedStatement ps = connection.prepareStatement(updatePassword);
+		ps.setString(1, username);
+		ps.setLong(2, employeeId);
+		ps.executeUpdate();
+		
 	}
 	
 }

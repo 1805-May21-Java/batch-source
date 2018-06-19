@@ -1,2 +1,3 @@
 /bin/
 src/project0/src/main/java/project0/raw/connection.properties
+*.properties
