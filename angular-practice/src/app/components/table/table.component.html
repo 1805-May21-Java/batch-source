@@ -1,0 +1,25 @@
+<h3>4) Table Component</h3>
+
+<table [ngClass]="selectedClass">
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Birthday</th>
+    </tr>
+    <tr *ngFor='let person of people'>
+        <td>{{person.firstName | uppercase}} {{person.lastName | uppercase}}</td>
+        <td>{{person.email}}</td>
+        <td>{{person.birthday | date:'MMMM d, y'}}</td>
+    </tr>
+</table>
+
+<div [ngSwitch]="btnTitle">
+    <span *ngSwitchCase="'unformat'">
+        <button (click)="format()">Format</button>
+    </span>
+    <span *ngSwitchCase="'format'">
+        <button class="btn btn-primary" (click)="unformat()">Unformat</button>
+    </span>
+</div>
+
+<hr>

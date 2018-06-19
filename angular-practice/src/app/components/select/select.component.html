@@ -1,0 +1,11 @@
+<h3>3) Select Component</h3>
+<div class="container">
+  <input type="radio" name="select" (click)="animal()">Animals<br>
+  <input type="radio" name="select" (click)="color()">Colors<br>
+  <input type="radio" name="select" (click)="day()">Days<br>
+</div>
+<br>
+<ul>
+  <li *ngFor="let element of array">{{element}}</li>
+</ul>
+<hr>

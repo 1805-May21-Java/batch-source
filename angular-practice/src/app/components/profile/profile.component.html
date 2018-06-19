@@ -1,0 +1,16 @@
+<h3>2) Profile Component</h3>
+<div *ngIf="condition">
+    <label>Name: </label>{{user.name}}<br>
+    <label>Gender: </label>{{user.gender}}<br>
+    <label>Hometown: </label>{{user.hometown}}<br>
+</div>
+<br>
+<div [ngSwitch]="btnTitle">
+    <span *ngSwitchCase="'Show'">
+        <button (click)="onShow()">Show</button>
+    </span>
+    <span *ngSwitchCase="'Hide'">
+        <button (click)="onHide()">Hide</button>
+    </span>
+</div>
+<hr>
