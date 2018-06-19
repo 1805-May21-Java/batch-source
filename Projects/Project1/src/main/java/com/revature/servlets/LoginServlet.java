@@ -12,6 +12,7 @@ import com.revature.dao.EmployeeDaoImpl;
 
 
 
+
 public class LoginServlet extends HttpServlet
 {
 
@@ -20,7 +21,7 @@ public class LoginServlet extends HttpServlet
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
 	{
-
+		HttpSession session = req.getSession();
 		req.getRequestDispatcher("Login.html").forward(req, resp);
 	}
 	@Override
@@ -36,7 +37,7 @@ public class LoginServlet extends HttpServlet
 		{
 			
 			session.setAttribute("userName", usr);
-			resp.sendRedirect("Reimbursement");
+			resp.sendRedirect("reimbursement");
 		}
 		else {
 			resp.sendRedirect("login");

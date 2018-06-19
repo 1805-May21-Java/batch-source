@@ -1,5 +1,6 @@
 package com.revature.servlets;
 
+
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -17,8 +18,10 @@ public class ReimbursementServlet extends HttpServlet
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
 	{
 		HttpSession session = req.getSession(false);
-		if ( session!=null) {
-			req.getRequestDispatcher("Reimbursement").forward(req, resp); 
+		
+		if ( session!=null && session.getAttribute("userName") != null) {
+		    System.out.println("THIS IS YOUR USERNAME: "+ session.getAttribute("userName").toString());
+			req.getRequestDispatcher("Reimbursement.html").forward(req, resp); 
 			
 		} else {
 			resp.sendRedirect("login");

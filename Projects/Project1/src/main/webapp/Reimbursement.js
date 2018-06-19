@@ -1,7 +1,7 @@
 let allEmpsUrl = "http://localhost:8080/Project1/api/employees"
 let allReimburseUrl = "http://localhost:8080/Project1/api/reimbursements"
 
-function init(){
+function showAllReimbursements(){
 	sendAjaxGet(allReimburseUrl, display)
 }
 	
@@ -33,8 +33,6 @@ function display(xhr)
 		
 		getEmployeeName(reimbursement.requestBy, reimbursement.reimburseId);
 
-
-		
 
 		tr.setAttribute("scope","row");
 		table.appendChild(tr);

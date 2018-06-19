@@ -15,7 +15,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>reimbursementServlet</servlet-name>
-    <url-pattern>/Reimbursement</url-pattern>
+    <url-pattern>/reimbursement</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>logoutServlet</servlet-name>
