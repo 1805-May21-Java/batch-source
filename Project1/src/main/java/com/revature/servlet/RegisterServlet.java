@@ -30,6 +30,10 @@ public class RegisterServlet extends HttpServlet {
 		String pass2 = req.getParameter("password2");
 		String first = req.getParameter("first");
 		String last = req.getParameter("last");
+		String title = req.getParameter("title");
+		boolean isManager = false;
+		if(req.getParameterValues("manager") != null)
+			isManager = true;
 		
 		// search user records for username
 		if(dao.getEmployeeByEmail(user) != null) {
@@ -50,7 +54,7 @@ public class RegisterServlet extends HttpServlet {
 			int ID = r.nextInt(90000000) + 10000000;
 			while(dao.getEmployeeByID(ID) != null)
 				ID = r.nextInt(90000000) + 10000000;
-			Employee empl = new Employee(ID, user, pass1, first, last, true, new ArrayList<Integer>());
+			Employee empl = new Employee(ID, user, pass1, first, last, null, title, 0, isManager, new ArrayList<Integer>());
 			dao.createEmployee(empl);
 			SessionServlet.messages.add(new Info("Successfully created a new account!", true));
 			res.sendRedirect("login");

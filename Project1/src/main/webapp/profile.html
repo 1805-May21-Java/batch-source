@@ -19,7 +19,7 @@
             font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         }
         body {
-            background-color: white;
+            background-color: rgb(202, 238, 226);
         }
         .form-reg {
             max-width: 500px;
@@ -65,9 +65,11 @@
             color: white;
             font-size: 20px;
         }
-        .navbar.navbar-expand-lg.navbar-light.bg-light,
-        .nav.nav-tabs, #welcome{
-            background-color: rgb(202, 238, 226);
+        .nav-tab.nav-link {
+            background-color: white;
+        }
+        #welcome, #messagesAndErrors {
+            margin: 20px;
         }
         #welcome {
             font-size: 30px;
@@ -75,25 +77,23 @@
     </style>
 </head>
 <body>
-    <div style="background-color: rgb(202, 238, 226);"><br></div>
     <div id="welcome">
         <form id="logoutForm" action="profile" method="post">
             <input hidden id="logoutText" type="text" name="logout">
             <button type="submit" id="logoutButton" style="float: right; margin-right: 40px" class="btn btn-large btn-danger">Log out</button>
         </form>
     </div>
-    <div style="background-color: rgb(202, 238, 226);"><br></div>
-    <div id="messagesAndErrors" style="background-color: rgb(202, 238, 226)">
+    <div id="messagesAndErrors">
 
     </div>
-    <nav style="background-color: rgb(202, 238, 226)">
+    <nav>
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
             <a class="nav-item nav-link active" id="nav-reqs-tab" data-toggle="tab" href="#nav-reqs" role="tab" aria-controls="nav-reqs" aria-selected="true">Your Requests</a>
             <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</a>
             <a hidden class="nav-item nav-link" id="nav-manager-tab" data-toggle="tab" href="#nav-manager" role="tab" aria-controls="nav-manager" aria-selected="false">Manager Tab</a>
         </div>
     </nav>
-    <div class="tab-content" id="nav-tabContent">
+    <div style="padding-bottom: 100%; background-color: white;" class="tab-content" id="nav-tabContent">
         <div class="tab-pane fade show active" id="nav-reqs" role="tabpanel" aria-labelledby="nav-reqs-tab">
             <button id="showReimbsButton" class="btn btn-large btn-outline-primary" style="margin: 10px">View Reimbursement Requests</button>
             <button id="reimbFormButton" class="btn btn-large btn-outline-success" style="margin: 10px">Submit a Reimbursement Request</button>

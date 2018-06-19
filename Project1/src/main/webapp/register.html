@@ -50,7 +50,8 @@
         }
         .form-signin input[id="inPassword"],
         .form-signin input[id="inLast"],
-        .form-signin input[id="inFirst"] {
+        .form-signin input[id="inFirst"],
+        .form-signin input[id="inTitle"] {
             margin-top: -1px;
             border-top-left-radius: 0;
             border-top-right-radius: 0;
@@ -88,6 +89,8 @@
             <input type="text" id = "inFirst" class="form-control" name="first" placeholder="First Name" required>
             <label for="inLast" class="sr-only">Last Name</label>
             <input type="text" id = "inLast" class="form-control" name="last" placeholder="Last Name" required>
+            <label for="inTitle" class="sr-only">Job Title</label>
+            <input type="text" id = "inTitle" class="form-control" name="title" placeholder="Job Title" required>
             <label for="inPassword" class="sr-only">Password</label>
             <input type="password" id ="inPassword" class="form-control" name="password1" placeholder="Password" required>
             <label for="inPassword2" class="sr-only">Repeat Password</label>
@@ -100,7 +103,8 @@
                     <li>At least 1 numerical digit (0-9)</li>
                 </ul>
             </small>
-            <button type="submit" class="btn btn-lg btn-primary btn-block">Register</button>
+            <input type="checkbox" name="manager" value="true"> I am registering as a manager
+            <button type="submit" style="margin-top: 20px" class="btn btn-lg btn-primary btn-block">Register</button>
         </form>
         <a href="login" style="text-decoration: none;">
             <button id="backButton" class="btn btn-lg btn-info btn-block">Back</button>

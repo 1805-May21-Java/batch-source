@@ -35,7 +35,6 @@ public class ProfileServlet extends HttpServlet {
 		
 		if(req.getParameter("amount") != null) {
 			try{
-				System.out.println(req.getParameter("amount"));
 				double amount = Double.parseDouble(req.getParameter("amount"));
 				String description = req.getParameter("description");
 				String picURL = req.getParameter("picURL");
@@ -130,6 +129,7 @@ public class ProfileServlet extends HttpServlet {
 		}
 		else if(req.getParameter("existingID") != null) {
 			int ID = Integer.parseInt(req.getParameter("existingID"));
+			
 			if(dao.getEmployeeByID(ID) == null) {
 				SessionServlet.errors.add(new Info("No such employee exists", true));
 			}
@@ -139,6 +139,8 @@ public class ProfileServlet extends HttpServlet {
 				dao.updateEmployee(empl);
 				SessionServlet.messages.add(new Info("Successfully added Employee!", true));
 			}
+			
+			res.sendRedirect("profile");
 		}
 		else if(req.getParameter("logout") != null) {
 			SessionServlet.empl = new Employee();
