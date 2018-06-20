@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     sendAjaxGet("http://localhost:8082/ERS_Project1/EmployeeRequests", function (xhr) {
         let info = JSON.parse(xhr.response);
-        console.log(info);
         //console.log(info);
         let employees = info.staff;
         //console.log(employees);
@@ -29,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 row.appendChild(temp);
 
                 temp = document.createElement("td");
-                temp.innerHTML = "$" + request.amount;
+                temp.innerHTML = "$" + Math.floor(request.amount*100)/100;
                 row.appendChild(temp);
 
                 temp = document.createElement("td");

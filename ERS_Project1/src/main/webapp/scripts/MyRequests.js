@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
             let row = document.createElement("tr");
 
             let temp = document.createElement("td");
-            temp.innerHTML = "$" + request.amount;
+            temp.innerHTML = "$" + Math.floor(request.amount*100)/100;
             row.appendChild(temp);
 
             temp = document.createElement("td");
