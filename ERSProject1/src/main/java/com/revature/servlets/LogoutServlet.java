@@ -33,11 +33,7 @@ public class LogoutServlet extends HttpServlet {
 		if (session != null) {
 			session.invalidate();
 		}
-		response.setContentType("text/html");
-		PrintWriter pWriter = response.getWriter();
-		pWriter.println("<p> You have been successfully logged out </p>");
-		pWriter.println("<p> <a href=\"Index.html\">Go Back</a> </p>");
-		pWriter.close();
+		response.sendRedirect("login");
 	}
 
 	/**

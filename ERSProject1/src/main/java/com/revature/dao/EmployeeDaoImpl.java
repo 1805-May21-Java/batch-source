@@ -119,7 +119,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
 		try {
 			Connection connection = ConnectionUtil.getConnection();
-			String sql = "SELECT DISTINCT e.emp_id, e.first_name, e.last_name, e.reports_to, e.email, e.phone, e.emp_username, e.emp_password\n" + 
+			String sql = "SELECT DISTINCT e.emp_id, e.first_name, e.last_name, e.reports_to, e.email, e.emp_username, e.emp_password\n" + 
 					"FROM employee e, employee m\n" + 
 					"WHERE e.emp_id = m.reports_to";
 			PreparedStatement pStatement = connection.prepareStatement(sql);
@@ -154,9 +154,28 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		return false;
 	}
 
-	public int createEmployee(Employee employee) {
-		// TODO Auto-generated method stub
-		return 0;
+	public void createEmployee(String firstname, String lastname, int reportsto, String email, String username,
+			String password) {
+		try {
+			Connection connection = ConnectionUtil.getConnection();
+			String sql = "INSERT INTO employee (first_name, last_name, email, reports_to, emp_username, emp_password)\n" +
+						"VALUES (?, ?, ?, ?, ?, ?)";
+			PreparedStatement pStatement = connection.prepareStatement(sql);
+			pStatement.setString(1, firstname);
+			pStatement.setString(2, lastname);
+			pStatement.setString(3, email);
+			pStatement.setInt(4, reportsto);
+			pStatement.setString(5, username);
+			pStatement.setString(6, password);
+			pStatement.executeQuery();
+			
+			connection.close();
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public int updateEmployee(Employee employee) {
@@ -168,5 +187,8 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+
+
 
 }

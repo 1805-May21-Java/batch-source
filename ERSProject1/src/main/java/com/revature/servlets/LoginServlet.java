@@ -1,7 +1,6 @@
 package com.revature.servlets;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -57,21 +56,21 @@ public class LoginServlet extends HttpServlet {
 		}
 	}
 	
-	
-	// check that username and password are valid
-	protected boolean validation(String user, String pass, HttpSession session) {
-		EmployeeDaoImpl employeeDaoImpl = new EmployeeDaoImpl();
-		List<Employee> allEmployees = employeeDaoImpl.getEmployees(); // get all employees
-		// iterate thru employees
-		for (Employee employee : allEmployees) {
-			if (employee.getUsername().equals(user) && employee.getPassword().equals(pass)) {
-				session.setAttribute("id", employee.getId());
-				return true;
-			}
-		}
-		return false;
-		
-	}
+	//TODO: delete?
+//	// check that username and password are valid
+//	protected boolean validation(String user, String pass, HttpSession session) {
+//		EmployeeDaoImpl employeeDaoImpl = new EmployeeDaoImpl();
+//		List<Employee> allEmployees = employeeDaoImpl.getEmployees(); // get all employees
+//		// iterate thru employees
+//		for (Employee employee : allEmployees) {
+//			if (employee.getUsername().equals(user) && employee.getPassword().equals(pass)) {
+//				session.setAttribute("id", employee.getId());
+//				return true;
+//			}
+//		}
+//		return false;
+//		
+//	}
 
 
 }
