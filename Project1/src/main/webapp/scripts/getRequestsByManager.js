@@ -13,7 +13,7 @@ function getRequests(){
 
 function showRequests(xhr){
     let response = JSON.parse(xhr.response).requests;
-
+    
     console.log(response);
     for(let i=0; i<response.length; i++){
         let row = document.createElement("tr");

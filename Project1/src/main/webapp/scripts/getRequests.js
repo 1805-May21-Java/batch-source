@@ -14,6 +14,7 @@ function getRequests(){
 function showRequests(xhr){
     let response = JSON.parse(xhr.response).requests;
 
+    document.getElementById("nameHeader").innerHTML = "Welcome "+response[0].name;
     console.log(response);
     for(let i=0; i<response.length; i++){
         let row = document.createElement("tr");
