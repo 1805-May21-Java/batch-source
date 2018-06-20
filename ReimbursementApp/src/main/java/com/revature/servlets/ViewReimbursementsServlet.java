@@ -36,6 +36,7 @@ public class ViewReimbursementsServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession(false);
+		//response.sendRedirect("ViewReimbursements.html");
 		request.getRequestDispatcher("ViewReimbursements.html").forward(request, response);
 	}
 	
@@ -63,8 +64,8 @@ public class ViewReimbursementsServlet extends HttpServlet {
 			Integer eid = (Integer) session.getAttribute("id");
 			List<Reimbursement> pendingList = rd1.getResolvedByEmployeeId(eid);
 			ObjectMapper om = new ObjectMapper();
-			String pendingStr = om.writeValueAsString(pendingList);
-			session.setAttribute("viewList", pendingStr);
+			String resolvedStr = om.writeValueAsString(pendingList);
+			session.setAttribute("viewList", resolvedStr);
 			response.sendRedirect("viewReimbursements");
 		}else {
 			request.getRequestDispatcher("ViewReimbursements.html").forward(request, response);

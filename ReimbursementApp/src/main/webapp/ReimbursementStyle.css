@@ -3,7 +3,7 @@
 }
 
 body{
-    background-color: #9999ff;
+    background-color: lightblue;
 }
 
 #name{
@@ -22,11 +22,15 @@ body{
 
 #info_home{
     margin-top: 40px;
+    width: 50%;
 }
 
 a{
     margin-left: 30px;
     margin-right: 30px;
+    color: white;
+    border-style: solid;
+    border-color: gray;
 }
 
 .topnav{
@@ -54,3 +58,18 @@ a{
     width: 20px;
     margin : 0 auto;
 }
+
+
+.topnav{
+    background-color: #333;
+    color: white;
+}
+
+#body_info{
+    margin-top: 40px;
+}
+
+.col{
+    border-style: solid;
+}
+

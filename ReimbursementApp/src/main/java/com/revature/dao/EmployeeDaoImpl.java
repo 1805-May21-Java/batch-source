@@ -15,6 +15,7 @@ import com.revature.util.ConnectionUtil;
 
 public class EmployeeDaoImpl implements EmployeeDao{
 
+	//Returns a List of Employees
 	public List<Employee> getEmployees() {
 		
 		List<Employee> employeeData = new ArrayList<Employee>();
@@ -29,8 +30,11 @@ public class EmployeeDaoImpl implements EmployeeDao{
 			//ResultSet rs stores result of Statement
 			ResultSet rs = s.executeQuery(sql);
 			//rs is iterated over and values are retrieved and stored into
-			//HashMap employeeData
+			//List employeeData
 			while(rs.next()) {
+				//Values are retrieved from each row
+				//an Employee object is created using those values
+				//and is added to employeeData
 				Integer employeeId = rs.getInt("EMPLOYEE_ID");
 				String firstname = rs.getString("FIRSTNAME");
 				String lastname = rs.getString("LASTNAME");
@@ -55,10 +59,12 @@ public class EmployeeDaoImpl implements EmployeeDao{
 		return employeeData;
 	}
 
+	//Returns an Employee object with the matching username
 	public Employee getEmployeeByUsername(String username) {
 		Employee user = null;
 		
 		try {
+			//Connection con is used to create a PreparedStatement instance.
 			Connection con = ConnectionUtil.getConnection();
 			String sql = "SELECT * FROM EMPLOYEE WHERE USERNAME = ?";
 			//PreparedStatement is created using the Connection con
@@ -67,7 +73,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 			ps.setString(1, username);
 			ResultSet rs = ps.executeQuery();
 			//Result set is iterated and data retrieved to create a 
-			//new Account object.
+			//new Employee object.
 			while(rs.next()) {
 				Integer employeeId = rs.getInt("EMPLOYEE_ID");
 				String firstname = rs.getString("FIRSTNAME");
@@ -97,6 +103,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 		int employeesDeleted = 0;
 		
 		try {
+			//Connection con is used to create a PreparedStatment instance.
 			Connection con = ConnectionUtil.getConnection();
 			//Auto commit set to false to prevent uncalled commits
 			con.setAutoCommit(false);
@@ -118,10 +125,11 @@ public class EmployeeDaoImpl implements EmployeeDao{
 		return employeesDeleted;
 	}
 
-	public int updateEmployee(Employee newAccount) {
+	public int updateEmployee(Employee oldEmployee) {
 		int accountsUpdated = 0;
 		
 		try {
+			//Connection con is used to create a PreparedStatement instance.
 			Connection con = ConnectionUtil.getConnection();
 			//Auto commit is set to false to prevent uncalled commits
 			con.setAutoCommit(false);
@@ -131,13 +139,13 @@ public class EmployeeDaoImpl implements EmployeeDao{
 					+ "EMAIL = ?, "
 					+ "PHONE = ?"
 					+ " WHERE USERNAME = ?";
-			//Used PreparedStatement and filled it with values from newAccount
+			//Used PreparedStatement and filled it with values from oldEmployee
 			PreparedStatement pStatement = con.prepareStatement(sql);
-			pStatement.setString(1, newAccount.getPassword());
-			pStatement.setString(2, newAccount.getAddress());
-			pStatement.setString(3, newAccount.getEmail());
-			pStatement.setString(4, newAccount.getPhone());
-			pStatement.setString(5, newAccount.getUsername());
+			pStatement.setString(1, oldEmployee.getPassword());
+			pStatement.setString(2, oldEmployee.getAddress());
+			pStatement.setString(3, oldEmployee.getEmail());
+			pStatement.setString(4, oldEmployee.getPhone());
+			pStatement.setString(5, oldEmployee.getUsername());
 			//PreparedStatment is executed and commited.
 			accountsUpdated = pStatement.executeUpdate();
 			con.commit();
@@ -150,27 +158,6 @@ public class EmployeeDaoImpl implements EmployeeDao{
 		}
 		//returns number of rows updated in the database.
 		return accountsUpdated;
-	}
-
-	//return reimbursement rows as a hashmap
-	public void viewPendingById(Integer employeeId) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void viewResolvedById(Integer employeeId) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void approveReimbursement(int reimbursementId, String yesOrNo) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void pendingReimbursementsByEmployeeId(int EmployeeId) {
-		// TODO Auto-generated method stub
-		
 	}
 
 }

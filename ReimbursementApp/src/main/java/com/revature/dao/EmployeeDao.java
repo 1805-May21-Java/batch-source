@@ -15,12 +15,4 @@ public interface EmployeeDao {
 	
 	public int updateEmployee(Employee newAccount);
 	
-	public void viewPendingById(Integer employeeId);
-	
-	public void viewResolvedById(Integer employeeId);
-	
-	public void approveReimbursement(int reimbursementId, String yesOrNo);
-	
-	public void pendingReimbursementsByEmployeeId(int EmployeeId);
-	
 }

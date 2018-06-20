@@ -21,21 +21,50 @@
 </head>
 <body>
 
-    <div class="container text-center col-sm">
+    <div class="container text-center col-sm topnav">
         <h1>Employee Homepage</h1>
         <div class="container topnav">
-            <a class="active" href="EmployeeHomepage.html">Home</a>
-            <a href="CreateReimbursement.html">Create Reimbursement</a>
-            <a href="ViewReimbursements.html">View Reimbursements</a>
-            <a href="ViewInformation.html">User Information</a>
+            <a class="active" href="EmployeeHomepage.html">Home</a>  |
+            <a href="CreateReimbursement.html">Create Reimbursement</a>  |
+            <a href="ViewReimbursements.html">View Reimbursements</a>  |
+            <a href="ViewInformation.html">User Information</a>  |
             <a href ="logout">Log Out</a>
-            <!--<a href="Login.html">Log Out</a>-->
         </div>
     </div>
 
+    <!--Remember to change this-->
     <div id="info_home" class="container text-center">
-        <h3>About This Homepage</h3>
-        <p>This will tell you a little about what the Employee Homepage does</p>
+        <h3>Welcome employee</h3>
+        <p class="text-center">As an employee if this company, this website is meant to help facilitate any
+            and all reimbursement needs. More details can be read below.
+        </p>
+    </div>
+    <div id="body_info" class="container text-center">
+        <div class="row">
+            <div class="col">
+              <h4><u>Creating Reimbursements</u></h4>
+              <p>In the "Create Reimbursement" section, you can request a reimbursement by simply writing an
+                  amount and submitting the request. A manager will be responsible to determine whether or
+                  not the reimbursement will be approved.
+              </p>
+            </div>
+            <div class="col">
+              <h4><u>Viewing Reimbursements</u></h4>
+              <p>
+                  The "View Reimbursements" section will allow you to view all your reimbursement requests.
+                  Once on the page, choose between pending and resolved request to view your Reimbursements.
+                  (Note, resolved requests will include requests that have been approved and denied).
+              </p>
+            </div>
+            <div class="col">
+              <h4><u>Updating Your Information</u></h4>
+              <p>
+                  The "View Information" section will allow you to view your user information. Here you
+                  can change your personable info (address, email, phone number). Additionally you
+                  can also update your password.
+              </p>
+            </div>
+          </div>
     </div>
     
 </body>

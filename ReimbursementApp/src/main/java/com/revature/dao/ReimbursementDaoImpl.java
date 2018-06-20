@@ -300,10 +300,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao{
 			while(rs.next()) {
 				Integer reimbursementId = rs.getInt("REIMBURSEMENT_ID");
 				Double money = rs.getDouble("MONEY");
-				//Integer employee_Id = rs.getInt("EMPLOYEE_ID");
 				String status = rs.getString("STATUS");
-				//Integer reviewerId = rs.getInt("REVIEWER_ID");
-				//Integer reviewerId = rs.getInt("REVIEWER_ID");
 				viewReimbursements.add(new Reimbursement(reimbursementId,
 						money, employeeId,status, null));
 				

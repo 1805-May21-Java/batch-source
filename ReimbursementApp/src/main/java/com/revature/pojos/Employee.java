@@ -1,5 +1,7 @@
 package com.revature.pojos;
 
+//POJO is meant to act as an object instance of my EMPLOYEE table
+//from my database
 public class Employee {
 	private Integer employee_id;
 	private String firstname;
