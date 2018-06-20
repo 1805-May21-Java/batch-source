@@ -50,8 +50,12 @@ public class CreateReimbursement extends HttpServlet {
 		Reimbursement reimbursement = mapper.readValue(request.getReader().readLine(), Reimbursement.class);
 		//Gets employeeId to add to new reimbursement
 		HttpSession session = request.getSession();
+		System.out.println((Employee)session.getAttribute("employee"));
+		System.out.println(((Employee)session.getAttribute("employee")).getIdNumber()  );
 		reimbursement.setEmployeeId(((Employee) session.getAttribute("employee")).getIdNumber());
+		session.setAttribute("newReimbursement", reimbursement);
 		daoReimbursementImpl.insertNewReimbursement(reimbursement);
+		response.sendRedirect("NewReimbursementEmail");
 	}
 
 }

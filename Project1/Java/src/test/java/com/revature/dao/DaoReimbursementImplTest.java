@@ -22,7 +22,7 @@ public class DaoReimbursementImplTest {
 	public void getReimbursementExistingId() {
 		//known reimbursement
 		Reimbursement reimbursement = dImplR.getReimbursementById(1);
-		assertEquals("Goats",reimbursement.getName());
+		assertEquals("Plastic forks",reimbursement.getName());
 	}
 
 	@Test
@@ -43,7 +43,7 @@ public class DaoReimbursementImplTest {
 		 dImplR.updateOldReimbursement(reimbursement);
 		assertEquals(dImplR.getReimbursementById(1).getName(), "NewName");
 		//give back old name
-		reimbursement.setName("Goats");
+		reimbursement.setName("Plastic forks");
 		dImplR.updateOldReimbursement(reimbursement);
 	}
 	@Test

@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Employee</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="res/icon.png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+
+<body>
+    <div class=container>
+        <div collapse navbar-collapse>
+            <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
+                    <a class="navbar-brand" href="#"></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+                <li class="active nav-item">
+                    <a class="nav-link" href="emplRemb.html">Your Reimbursement<span class="sr-only">(current)</span></a>
+                </li>
+
+                <li class="active nav-item" id="managerTab" hidden>
+                    <a class="nav-link" href="approveReimb.html">Management</a>
+                </li>
+                <li class="active nav-item">
+                    <a class="nav-link" href="settings.html">Settings</a>
+                </li>
+                 <li class="active nav-item">
+                        <a class="nav-link" href="Logout" onClick="sessionStorage.clear()">Logout</a>
+                 </li>
+            </ul>
+            </div>
+        </nav>
+        </div>
+
+        <div class="jumbotron main ">
+            <h1 class="text-center" id="welcome">Loading...</h1>
+            <br>
+            <br>
+            <div>
+                <div>
+                    <h3 class="btn btn-secondary" onclick="unhide('CreateReimburse')" 
+                    class="options" id="CreateReimburseButton">Create a new Reimbursement</h3>
+                    <br>
+                    <div id="CreateReimburse" class="form-group" hidden>
+                         <form class="form-control"> 
+                         	<div>
+                                <label name="name" class="control-label">Name:</label>
+                                <input type="name" name="name" class="form-control" placeholder="Name" id="name">
+                            </div>
+                            <div>
+                                <label name="amount" class="control-label">Amount:</label>
+                                <input type="number" step="0.01" name="amount" class="form-control" placeholder="0.00" id="amount">
+                            </div>
+                            <br>
+                            <div>
+                                <label name="description" class="control-label">Description:</label>
+                                <textarea name="description" class="form-control" rows="5" placeholder="Justify the expense" id="description"></textarea>
+                            </div>
+                            <div>
+                                <br>
+                                <button type="button" class="btn btn-secondary" id="submitButton">Submit</button>
+                            </div>
+                            <span id="error"></span>
+                        </form>  
+                    </div>
+                    <br>
+                    <h3 class="btn btn-secondary" class="options" onclick="unhide('pending')">View Submitted Reimbursements</h3>
+                    <table class="table table-secondary" hidden id="pending">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Amount</th>
+                                <th>Description</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="submittedBody">
+                        </tbody>
+                    </table>
+                    <br>
+                    <br>
+            </div>
+        </div>
+    </div>
+	</div>
+    <script src="./scripts/empRemib.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

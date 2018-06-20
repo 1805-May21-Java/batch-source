@@ -96,6 +96,26 @@ public class DaoEmployeeImpl implements DaoEmployee {
 		//if out here, was not able to find matching email
 		return false;
 	}
+	
+	@Override
+	public String getPasswordFromEmail(String email) {
+		try(Connection connection = ConnectionUtil.getConnection()){
+			String sql = String.format("SELECT * FROM %s WHERE %s = ?",
+				ERSContract.EMPLOYEE_TABLE_NAME,ERSContract.EMPLOYEE_EMAIL);
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setString(1, email);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			while(resultSet.next()) {
+				System.out.println("here!");
+				//if inside here, then there is an email address matching the string
+				return resultSet.getString(ERSContract.EMPLOYEE_PASSWORD);
+			}
+		} catch (SQLException | IOException e) {
+			e.printStackTrace();
+		}
+		//if out here, was not able to find matching email
+		return null;
+	}
 
 	public int updateOldEmployee(Employee employee) {
 		try(Connection connection = ConnectionUtil.getConnection()){

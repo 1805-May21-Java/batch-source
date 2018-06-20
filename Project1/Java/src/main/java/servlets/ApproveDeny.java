@@ -42,9 +42,13 @@ public class ApproveDeny extends HttpServlet {
 		ObjectMapper mapper = new ObjectMapper();
 		mapper.setSerializationInclusion(Include.NON_NULL);
 		mapper.setSerializationInclusion(Include.NON_EMPTY);
-		System.out.println(daoReimbursementImplTest.updateOldReimbursement(
-				mapper.readValue(request.getReader().readLine(), Reimbursement.class)));
-		request.getRequestDispatcher("GetAllEmployeeReimbursements").forward(request, response);
+		Reimbursement reimbursement = mapper.readValue(request.getReader().readLine(), Reimbursement.class);
+		daoReimbursementImplTest.updateOldReimbursement(reimbursement);
+		//Adds to session for email
+		HttpSession session = request.getSession();
+		session.setAttribute("alteredReimbursement", reimbursement);
+		//sends email to employee of update
+		response.sendRedirect("AlteredReimbursementEmail");
 		
 	}
 

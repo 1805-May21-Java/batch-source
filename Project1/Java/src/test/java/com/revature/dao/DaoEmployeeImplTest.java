@@ -22,16 +22,16 @@ public class DaoEmployeeImplTest {
 	public void getEmployeeExistingId() {
 		//known employee
 		Employee employee= dImplE.getEmployeeById(2);
-		assertEquals("Jeffry",employee.getName());
+		assertEquals("Jeffrey Terrasse",employee.getName());
 	}
 	@Test
 	public void loginEmployeeCredentials() {
 		Employee employee= dImplE.employeeLogin("insert@java.com", "password");
-		assertEquals(employee.getName(),"Jeffry");
+		assertEquals(employee.getName(),"Jeffrey Terrasse");
 	}
 	@Test
 	public void loginManagerCredentials() {
-		Manager manager= (Manager) dImplE.employeeLogin("query@java.com", "password");
+		Manager manager= (Manager) dImplE.employeeLogin("holly.reimbursements@gmail.com", "password");
 	
 		assertTrue(manager.getEmployeeList().size() > 0);
 	}

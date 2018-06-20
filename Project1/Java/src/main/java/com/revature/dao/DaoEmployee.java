@@ -13,4 +13,5 @@ public interface DaoEmployee {
 	public int deleteEmployeeById(int employeeId);
 	public int deleteAllEmployees(int managerId);
 	public boolean emailExists(String email);
+	String getPasswordFromEmail(String email);
 }

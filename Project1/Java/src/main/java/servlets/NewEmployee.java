@@ -47,15 +47,17 @@ public class NewEmployee extends HttpServlet {
 				if(daoEmployeeImpl.emailExists(employee.getEmail())) {
 					//email already exists, don't insert and send error
 					session.setAttribute("emailInvalid", true);
+					response.sendRedirect("ValidInvalid");
 				}else {
 					//email unique, insert
 					//Gets manager to add to new reimbursement
-					session = request.getSession();
 					employee.setManagerId(((Employee) session.getAttribute("employee")).getIdNumber());
 					daoEmployeeImpl.insertNewEmployee(employee);
 					session.setAttribute("emailInvalid", false);
+					session.setAttribute("newEmployee", employee);
+					response.sendRedirect("NewEmployeeEmail");
 				}
-				response.sendRedirect("ValidInvalid");
+				
 	}
 				
 
