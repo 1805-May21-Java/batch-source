@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Login</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="res/icon.png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/styles.css">
+  </head>
+  <body >
+    
+    <div class="container text-center jumbotron main">
+        <div>
+            <h1>Universal Reimbursal</h1>
+        </div>
+        <div>
+          <br>
+          <br>
+          <br>
+  	      <form action="Login" method="POST" class="text-left ">
+            <div class="form-group form-inline">
+	            <label name="usurename" class="control-label col-lg-1" >Email:</label>
+	            <input type="email" name="username" class="col-lg-3:5 form-control" placeholder="Email">
+	            <span class="forget"> <a href="https://www.google.com/search?q=what%27s+my+email&oq=what%27s+my+email&aqs=chrome.0.69i59.3392j0j1&sourceid=chrome&ie=UTF-8">Forgot email?</a></span>
+            </div>
+            <br>
+            <div class="form-inline">
+	            <label name="password" class=" control-label col-lg-1" >Password:</label>
+	            <input type="password" name="password" class="col-lg-3:5 form-control" placeholder="Password">
+	            <span class="forget"><a href="https://www.google.com/search?q=what%27s+my+password%3F&oq=what%27s+my+password%3F&aqs=chrome..69i57.2461j0j7&sourceid=chrome&ie=UTF-8">Forgot password?</a></span>
+          	</div>
+	          <br>
+	          <div class="text-danger" hidden id="incorrectCredentialsMessage"><p>Incorrect email/password!</p></div>
+	          <button type="submit" class="btn col-lg-2" id="submit">Log In</button>
+          </form>
+        </div>
+      </div>
+
+    <script src="./scripts/login.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>

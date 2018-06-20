@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Employee</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="res/icon.png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+
+<body>
+   <div class="container">
+        <div collapse navbar-collapse>
+            <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
+                    <a class="navbar-brand" href="#"></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+                <li class="active nav-item">
+                    <a class="nav-link" href="emplRemb.html">Your Reimbursement<span class="sr-only">(current)</span></a>
+                </li>
+
+                <li class="active nav-item">
+                    <a class="nav-link" href="approveReimb.html">Management</a>
+                </li>
+                <li class="active nav-item">
+                    <a class="nav-link" href="settings.html">Settings</a>
+                </li>
+                 <li class="active nav-item">
+                        <a class="nav-link" href="Logout" onClick="sessionStorage.clear()">Logout</a>
+                 </li>
+            </ul>
+            </div>
+        </nav>
+        </div>
+            <div class="jumbotron main">
+
+            <div class="text-center">
+                <h1>View Reimbursements</h1>
+            </div>
+            <br>
+           <span class="dropdown">
+			  <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" id="dropdownButton">All Reimbursements</button>
+			  <ul class="dropdown-menu">
+			    <li class="dropdown-item" id="all"> All Reimbursements</li>
+			    <li class="dropdown-item" id="pending">Pending</li>
+			    <li class="dropdown-item" id="approved">Approved</li>
+			    <li class="dropdown-item" id="denied">Denied</li>
+			  </ul>
+			</span>
+			<span class="dropdown">
+			  <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" id="employeeDropButton">All Employees</button>
+			  <ul class="dropdown-menu" id="employeeList">
+				<li class="dropdown-item" id="allEmp">All Employees</li>
+			  </ul>
+			</span>
+			<br>
+			<br>
+            <table class="table table-secondary text-center">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Amount</th>
+                            <th>Description</th>
+                            <th>Status</th>
+                            <th>Approve/Deny</th>
+                            <th>Resolved By</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                    </tbody>
+                </table>
+            <br>
+            <br>
+            <button id="registerButton" class="btn btn-secondary">Register New Employee</button>
+            <br>
+            <br>
+            <form action="" id="register" class="form-control form-control" hidden>
+	            <label class="control-label">Name</label>
+	            <input type="text" class="form-control" id="name">
+	            <br>
+	             <label class="control-label">Email</label>
+	            <input type="email" class="form-control" id="email">
+	            <br>
+	             <label class="control-label">Temporary Password</label>
+	            <input type="password" class="form-control" id="password">
+	            <br>
+	            <button type="button" class="btn btn-secondary" id="newEmployeeButton">Submit</button>
+	            <br>
+	            <br>
+	            <span id="errorMessage"></span>
+            </form>
+       	</div>
+      </div>
+    <script src="./scripts/managerApproveReimburse.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+</html>

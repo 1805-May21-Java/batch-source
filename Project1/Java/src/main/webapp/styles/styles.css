@@ -1,0 +1,20 @@
+.forget{
+    margin: 10px;
+    font-size: 13px
+}
+#submit{
+    margin-left: 90px
+}
+body{
+    background-color: silver
+}
+.navbar-nav {
+    display:table;
+    width:85%;
+    margin: 0;
+}
+.navbar-nav > li {
+    float:none;
+    display:table-cell;
+    text-align:center;
+}
