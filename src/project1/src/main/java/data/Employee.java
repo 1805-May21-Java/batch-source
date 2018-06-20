@@ -13,6 +13,7 @@ public class Employee {
 	}
 	public Employee(long employeeId, String employeeName, String password, String username){
 		this.employeeId = employeeId;
+		this.reportsTo = -1;
 		this.employeeName = employeeName;
 		this.password = password;
 		this.username = username;

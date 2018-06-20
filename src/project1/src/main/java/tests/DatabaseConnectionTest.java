@@ -25,7 +25,7 @@ public class DatabaseConnectionTest {
 		long employeeId = 1;
 		Employee employee = employeeDao.getEmployeeById(connection.getConnection(), employeeId);
 		if(employee == null){
-			employeeDao.createEmployee(connection.getConnection(), employeeId, 0, "Thomas Jansen", "password", "TJansen");
+			employeeDao.createEmployee(connection.getConnection(), 0, "Thomas Jansen", "password", "TJansen");
 			employee = employeeDao.getEmployeeById(connection.getConnection(), employeeId);
 		}
 		assertNotNull(employee);

@@ -9,26 +9,23 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import data.Employee;
 import data.EmployeeDao;
-import data.Reimbursement;
-import data.ReimbursementDao;
 import util.ConnectionUtil;
 
 /**
- * Servlet implementation class SessionServlet
+ * Servlet implementation class GetManagerServlet
  */
-public class SessionServlet extends HttpServlet {
+public class GetManagerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SessionServlet() {
+    public GetManagerServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,29 +34,20 @@ public class SessionServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("Enter doGet SessionServlet");
-		HttpSession session = request.getSession(false);
+		response.addHeader("Access-Control-Allow-Origin", "*");
 		PrintWriter pw = response.getWriter();
 		response.setContentType("application/json");
 		ObjectMapper objectMapper = new ObjectMapper();
 		EmployeeDao employeeDao = new EmployeeDao();
-		ReimbursementDao reimbursementDao = new ReimbursementDao();
-		if (session != null) {
-			try {
-				Employee employee = employeeDao.getEmployeeByName(ConnectionUtil.getConnection(), session.getAttribute("username").toString());
-				String jsonInString = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(employee);
-				pw.write(jsonInString);
-//				ArrayList<Reimbursement> reimbursementList = new ArrayList();
-//				reimbursementList = reimbursementDao.getAllReimbursement(ConnectionUtil.getConnection());
-//				jsonInString = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(reimbursementList);
-//				pw.write(jsonInString);
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		} else {
-			pw.write("{\"username\": null}");
+		ArrayList<Employee> managerList = new ArrayList();
+		try {
+			managerList = employeeDao.getAllSubordinates(ConnectionUtil.getConnection());
+			String jsonInString = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(managerList);
+			pw.write(jsonInString);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		pw.close();
 	}
 
 	/**

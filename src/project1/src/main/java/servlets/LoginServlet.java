@@ -10,8 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import data.Employee;
 import data.EmployeeDao;
+import data.ReimbursementDao;
 import util.ConnectionUtil;
 
 /**
@@ -35,8 +38,12 @@ public class LoginServlet extends HttpServlet {
 			throws ServletException, IOException {
 		System.out.println("Enter doGet");
 		HttpSession session = request.getSession(false);
-		session.invalidate();
-		request.getRequestDispatcher("index.html").forward(request, response);
+//		session.invalidate();
+		if(session == null) {
+			request.getRequestDispatcher("index.html").forward(request, response);
+		} else {
+			request.getRequestDispatcher("homepage.html").forward(request, response);
+		}
 
 	}
 
@@ -50,8 +57,6 @@ public class LoginServlet extends HttpServlet {
 		String user = request.getParameter("usernameForm");
 		String pass = request.getParameter("passwordForm");
 
-		System.out.println(user + " " + pass);
-
 		HttpSession session = request.getSession();
 		if (user.equals("") || user == null || pass.equals("") || pass == null) {
 			response.sendRedirect("LoginFailed.html");
@@ -59,12 +64,16 @@ public class LoginServlet extends HttpServlet {
 			try {
 				Connection connection = ConnectionUtil.getConnection();
 				EmployeeDao employeeDao = new EmployeeDao();
+				ReimbursementDao reimbursementDao = new ReimbursementDao();
 
 				if (employeeDao.checkEmployee(connection, user)) {
 					Employee employee = employeeDao.getEmployeeByName(connection, user);
 					if (pass.equals(employee.getPassword())) {
+						
 						// System.out.println("login was successful - correct credentials");
-						session.setAttribute("username", "admin");
+						session.setAttribute("username", employee.getUsername());
+						session.setAttribute("name", employee.getEmployeeName());
+						session.setAttribute("employeeId", employee.getEmployeeId());
 						response.sendRedirect("homepage.html");
 					} else {
 						// System.out.println("login was not successful - please try again");

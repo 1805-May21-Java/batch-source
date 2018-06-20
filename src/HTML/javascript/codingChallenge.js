@@ -2,6 +2,9 @@ console.log("hi");
 	
 	var table = document.getElementById("userTable");
 	var select = document.getElementById("amountSelect");
+	var nameInput = document.getElementById("name");
+	var phoneInput = document.getElementById("phone");
+	var emailInput = document.getElementById("email");
 	
 	
 function sendAjaxGet(url, func) {
@@ -21,6 +24,11 @@ function getUser(num) {
 	
     sendAjaxGet(baseUrl, addUser);
 }
+function getSingleUser() {
+    let baseUrl = "https://randomuser.me/api/";
+	
+    sendAjaxGet(baseUrl, addSingleUser);
+}
 
 function addUser(xhr) {
     let response = xhr.response;
@@ -39,9 +47,22 @@ function addUser(xhr) {
 	};
 }
 
+function addSingleUser(xhr) {
+    let response = xhr.response;
+    let info = JSON.parse(response);
+	
+	nameInput.value = info.results[0].name.first + " " + info.results[0].name.last;
+	phoneInput.value = info.results[0].phone;
+	emailInput.value = info.results[0].email;
+}
+
 function onClickGenerate(){
 	clearTable();
 	getUser(select.value);
+};
+
+function onClickGenerateSingleUser(){
+	getSingleUser();
 };
 
 function clearTable(){

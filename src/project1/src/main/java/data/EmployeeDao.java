@@ -17,8 +17,9 @@ public class EmployeeDao implements EmployeeInterface{
 	private String getEmployeeByUsername = "SELECT * FROM EMPLOYEE where username = ?";
 	private String updatePassword = "UPDATE EMPLOYEE SET password = ? WHERE employeeId = ?";
 	private String updateUsername = "UPDATE EMPLOYEE SET username = ? WHERE employeeId = ?";
+	private String getManagers = "SELECT * FROM EMPLOYEE WHERE reportsTo = 0";
 	
-	public long createEmployee(Connection connection, long employeeId, long reportsTo, String employeeName, String password, String username) throws SQLException {
+	public long createEmployee(Connection connection, long reportsTo, String employeeName, String password, String username) throws SQLException {
 		PreparedStatement ps = connection.prepareStatement(createEmployee, new String[] {"employeeId"});
 		ps.setLong(1, reportsTo);
 		ps.setString(2, employeeName);
@@ -29,7 +30,7 @@ public class EmployeeDao implements EmployeeInterface{
 		return ps.getGeneratedKeys().getLong(1);
 	}
 
-	public long createEmployee(Connection connection, long employeeId, String employeeName, String password,
+	public long createEmployee(Connection connection, String employeeName, String password,
 			String username) throws SQLException {
 		PreparedStatement ps = connection.prepareStatement(createManager, new String[] {"employeeId"});
 		ps.setString(1, employeeName);
@@ -95,6 +96,17 @@ public class EmployeeDao implements EmployeeInterface{
 		ps.setLong(2, employeeId);
 		ps.executeUpdate();
 		
+	}
+
+	@Override
+	public ArrayList<Employee> getAllSubordinates(Connection connection) throws SQLException {
+		ArrayList<Employee> employeeList = new ArrayList();
+		PreparedStatement ps = connection.prepareStatement(getManagers);
+		ResultSet rs = ps.executeQuery();
+		while(rs.next()){
+			employeeList.add(new Employee(rs.getLong("employeeId"), rs.getString("employeeName"), rs.getString("password"), rs.getString("username")));
+		}
+		return employeeList;
 	}
 	
 }

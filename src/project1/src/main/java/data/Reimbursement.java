@@ -18,7 +18,7 @@ public class Reimbursement {
 		this.status = status;
 		this.date = date;
 	}
-	public Reimbursement(long reimbursementId, long employeeId, double reimbursementValue, String reimbursementReason, int status){
+	public Reimbursement(long reimbursementId, long employeeId, double reimbursementValue, String reimbursementReason, int status, Date date){
 		this.reimbursementId = reimbursementId;
 		this.employeeId = employeeId;
 		this.reimbursementValue = reimbursementValue;

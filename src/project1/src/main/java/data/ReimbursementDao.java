@@ -39,18 +39,18 @@ public class ReimbursementDao implements ReimbursementInterface{
 		ps.setLong(1, reimbursementId);
 		ResultSet rs = ps.executeQuery();
 		while(rs.next()){
-			reimbursement = new Reimbursement(rs.getLong("reimbursementId"), rs.getLong("employeeId"), rs.getDouble("reimbursementValue"), rs.getString("reimbursementReason"), rs.getInt("status"));
+			reimbursement = new Reimbursement(rs.getLong("reimbursementId"), rs.getLong("employeeId"), rs.getDouble("reimbursementValue"), rs.getString("reimbursementReason"), rs.getInt("status"), rs.getDate("datesubmitted"));
 		}
 		return reimbursement;
 	}
 
 	public ArrayList<Reimbursement> getReimbursementByEmployeeId(Connection connection, long employeeId) throws SQLException {
 		ArrayList<Reimbursement> reimbursementList = new ArrayList();
-		PreparedStatement ps = connection.prepareStatement("SELECT * FROM REIMBURSEMENT WHERE employeeId = ?");
+		PreparedStatement ps = connection.prepareStatement("SELECT * FROM REIMBURSEMENT WHERE employeeId = ? ORDER BY reimbursementId");
 		ps.setLong(1, employeeId);
 		ResultSet rs = ps.executeQuery();
 		while(rs.next()){
-			reimbursementList.add(new Reimbursement(rs.getLong("reimbursementId"), rs.getLong("employeeId"), rs.getDouble("reimbursementValue"), rs.getString("reimbursementReason"), rs.getInt("status")));
+			reimbursementList.add(new Reimbursement(rs.getLong("reimbursementId"), rs.getLong("employeeId"), rs.getDouble("reimbursementValue"), rs.getString("reimbursementReason"), rs.getInt("status"), rs.getDate("datesubmitted")));
 		}
 		return reimbursementList;
 	}
@@ -60,7 +60,7 @@ public class ReimbursementDao implements ReimbursementInterface{
 		PreparedStatement ps = connection.prepareStatement("SELECT * FROM REIMBURSEMENT");
 		ResultSet rs = ps.executeQuery();
 		while(rs.next()){
-			reimbursementList.add(new Reimbursement(rs.getLong("reimbursementId"), rs.getLong("employeeId"), rs.getDouble("reimbursementValue"), rs.getString("reimbursementReason"), rs.getInt("status")));
+			reimbursementList.add(new Reimbursement(rs.getLong("reimbursementId"), rs.getLong("employeeId"), rs.getDouble("reimbursementValue"), rs.getString("reimbursementReason"), rs.getInt("status"), rs.getDate("datesubmitted")));
 		}
 		return reimbursementList;
 	}
@@ -71,7 +71,46 @@ public class ReimbursementDao implements ReimbursementInterface{
 		PreparedStatement ps = connection.prepareStatement("SELECT * FROM REIMBURSEMENT WHERE status = 0");
 		ResultSet rs = ps.executeQuery();
 		while(rs.next()){
-			reimbursementList.add(new Reimbursement(rs.getLong("reimbursementId"), rs.getLong("employeeId"), rs.getDouble("reimbursementValue"), rs.getString("reimbursementReason"), rs.getInt("status")));
+			reimbursementList.add(new Reimbursement(rs.getLong("reimbursementId"), rs.getLong("employeeId"), rs.getDouble("reimbursementValue"), rs.getString("reimbursementReason"), rs.getInt("status"), rs.getDate("datesubmitted")));
+		}
+		return reimbursementList;
+	}
+
+	@Override
+	public ArrayList<Reimbursement> getPendingReimbursementByEmployeeId(Connection connection, long employeeId)
+			throws SQLException {
+		ArrayList<Reimbursement> reimbursementList = new ArrayList();
+		PreparedStatement ps = connection.prepareStatement("SELECT * FROM REIMBURSEMENT WHERE status = 0 AND employeeId = ?");
+		ps.setLong(1, employeeId);
+		ResultSet rs = ps.executeQuery();
+		while(rs.next()){
+			reimbursementList.add(new Reimbursement(rs.getLong("reimbursementId"), rs.getLong("employeeId"), rs.getDouble("reimbursementValue"), rs.getString("reimbursementReason"), rs.getInt("status"), rs.getDate("datesubmitted")));
+		}
+		return reimbursementList;
+	}
+
+	@Override
+	public ArrayList<Reimbursement> getDeniedReimbursementByEmployeeId(Connection connection, long employeeId)
+			throws SQLException {
+		ArrayList<Reimbursement> reimbursementList = new ArrayList();
+		PreparedStatement ps = connection.prepareStatement("SELECT * FROM REIMBURSEMENT WHERE status = 1 AND employeeId = ?");
+		ps.setLong(1, employeeId);
+		ResultSet rs = ps.executeQuery();
+		while(rs.next()){
+			reimbursementList.add(new Reimbursement(rs.getLong("reimbursementId"), rs.getLong("employeeId"), rs.getDouble("reimbursementValue"), rs.getString("reimbursementReason"), rs.getInt("status"), rs.getDate("datesubmitted")));
+		}
+		return reimbursementList;
+	}
+
+	@Override
+	public ArrayList<Reimbursement> getApprovedReimbursementByEmployeeId(Connection connection, long employeeId)
+			throws SQLException {
+		ArrayList<Reimbursement> reimbursementList = new ArrayList();
+		PreparedStatement ps = connection.prepareStatement("SELECT * FROM REIMBURSEMENT WHERE status = 2 AND employeeId = ?");
+		ps.setLong(1, employeeId);
+		ResultSet rs = ps.executeQuery();
+		while(rs.next()){
+			reimbursementList.add(new Reimbursement(rs.getLong("reimbursementId"), rs.getLong("employeeId"), rs.getDouble("reimbursementValue"), rs.getString("reimbursementReason"), rs.getInt("status"), rs.getDate("datesubmitted")));
 		}
 		return reimbursementList;
 	}
