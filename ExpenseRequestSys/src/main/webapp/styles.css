@@ -1,0 +1,23 @@
+.center {
+	display: block;
+	margin: auto;
+}
+
+.jumbo {
+	padding: 15px;
+}
+
+#myHead {
+	font-size: 36;
+	font-weight: bold;
+}
+
+#table-scroll {
+    display: block;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.highlight{
+    background-color: rgba(211, 211, 211, 0.6);
+}

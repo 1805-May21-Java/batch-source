@@ -1,0 +1,3 @@
+url=jdbc:oracle:thin:@revdb.cdlm1yleomtl.us-east-2.rds.amazonaws.com:1521:ORCL
+username=tjansen17
+password=Tho321mas
