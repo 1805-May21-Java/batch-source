@@ -43,6 +43,7 @@ public class LoginServlet extends HttpServlet
 			session.setAttribute("userFullname", employee.getEmpName());
 			session.setAttribute("userBirthdate", employee.getBirthDate());
 			session.setAttribute("userUrl", employee.getUrl());
+			session.setAttribute("managerId", employee.getReportTo());
 			resp.sendRedirect("reimbursement");
 		}
 		else {

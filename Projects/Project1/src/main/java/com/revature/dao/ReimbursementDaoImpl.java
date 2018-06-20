@@ -36,8 +36,9 @@ public class ReimbursementDaoImpl implements ReimbursementDao
 				Date dateRequest = rs.getDate("DATE_REQUEST");
 				Date dateApprove = rs.getDate("DATE_APPROVE");
 				String status = rs.getString("STATUS");
+				String description = rs.getString("DESCRIPTION");
 				String url = rs.getString("URL");
-				reimbursements.add(new Reimbursement(reimburseId, requestBy, amount, aprroveBy, dateRequest, dateApprove, status, url));
+				reimbursements.add(new Reimbursement(reimburseId, requestBy, amount, aprroveBy, dateRequest, dateApprove, status, description, url));
 			}
 			con.close();
 			
@@ -67,8 +68,9 @@ public class ReimbursementDaoImpl implements ReimbursementDao
 				Date dateRequest = rs.getDate("DATE_REQUEST");
 				Date dateApprove = rs.getDate("DATE_APPROVE");
 				String status = rs.getString("STATUS");
+				String description = rs.getString("DESCRIPTION");
 				String url = rs.getString("URL");
-				reimbursement = new Reimbursement(reimburseId, requestBy, amount, aprroveBy, dateRequest, dateApprove, status, url);
+				reimbursement = new Reimbursement(reimburseId, requestBy, amount, aprroveBy, dateRequest, dateApprove, status, description, url);
 			}		
 			con.close();
 
@@ -87,7 +89,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao
 	{
 		try {
 			Connection con = ConnectionUtil.getConnection();
-			String sql = "INSERT INTO REIMBURSE (REQUEST_BY, AMOUNT, APPROVE_BY, DATE_REQUEST, DATE_APPROVE, STATUS, URL) VALUES (?,?,?,?,?,?,?)";
+			String sql = "INSERT INTO REIMBURSE (REQUEST_BY, AMOUNT, APPROVE_BY, DATE_REQUEST, DATE_APPROVE, STATUS, DESCRIPTION, URL) VALUES (?,?,?,?,?,?,?,?)";
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1, newReimbursement.getRequestBy());
 			ps.setDouble(2, newReimbursement.getAmount());
@@ -95,7 +97,8 @@ public class ReimbursementDaoImpl implements ReimbursementDao
 			ps.setDate(4, newReimbursement.getDateRequest());
 			ps.setDate(5, newReimbursement.getDateApprove());
 			ps.setString(6, newReimbursement.getStatus());
-			ps.setString(7, newReimbursement.getUrl());
+			ps.setString(7, newReimbursement.getDescription());
+			ps.setString(8, newReimbursement.getUrl());
 			ps.executeUpdate();
 			
 			con.close();
@@ -142,7 +145,8 @@ public class ReimbursementDaoImpl implements ReimbursementDao
 				+ "DATE_REQUEST = ?, "
 				+ "DATE_APPROVE = ?, "
 				+ "STATUS = ?, "
-				+"URL = ? "
+				+ "DESCRIPTION = ?, "
+				+ "URL = ? "
 				+ "WHERE REIMBURSE_ID = ?";
 		try {
 			Connection con = ConnectionUtil.getConnection();
@@ -154,8 +158,9 @@ public class ReimbursementDaoImpl implements ReimbursementDao
 			ps.setDate(4, newReimbursement.getDateRequest());
 			ps.setDate(5, newReimbursement.getDateApprove());
 			ps.setString(6, newReimbursement.getStatus());
-			ps.setString(7, newReimbursement.getUrl());
-			ps.setInt(8, newReimbursement.getReimburseId());
+			ps.setString(7, newReimbursement.getDescription());
+			ps.setString(8, newReimbursement.getUrl());
+			ps.setInt(9, newReimbursement.getReimburseId());
 			
 			ps.executeUpdate();
 			con.commit();
@@ -200,8 +205,9 @@ public class ReimbursementDaoImpl implements ReimbursementDao
 				Date dateRequest = rs.getDate("DATE_REQUEST");
 				Date dateApprove = rs.getDate("DATE_APPROVE");
 				String status = rs.getString("STATUS");
+				String description = rs.getString("DESCRIPTION");
 				String url = rs.getString("URL");
-				reimbursements.add(new Reimbursement(reimburseId, requestBy, amount, aprroveBy, dateRequest, dateApprove, status, url));
+				reimbursements.add(new Reimbursement(reimburseId, requestBy, amount, aprroveBy, dateRequest, dateApprove, status, description, url));
 			}		
 			con.close();
 
@@ -214,5 +220,32 @@ public class ReimbursementDaoImpl implements ReimbursementDao
 		}	
 		return reimbursements;
 	}
+
+	@Override
+	public void updateStatus(int id, String status)
+	{
+		String sql = "UPDATE REIMBURSE "
+				+ "SET DATE_APPROVE = ?, "
+				+ "STATUS = ? "
+				+ "WHERE REIMBURSE_ID = ?";
+		try {
+			Date todayDate = new Date(System.currentTimeMillis());
+			Connection con = ConnectionUtil.getConnection();
+			con.setAutoCommit(false);
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setDate(1, todayDate);
+			ps.setString(2, status);
+			ps.setInt(3, id);
+			
+			ps.executeUpdate();
+			con.commit();
+			con.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+	
+	
 
 }

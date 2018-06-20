@@ -12,12 +12,23 @@ import com.revature.dao.ReimbursementDao;
 import com.revature.dao.ReimbursementDaoImpl;
 import com.revature.pojos.Employee;
 import com.revature.pojos.Reimbursement;
+
+import javafx.scene.chart.PieChart.Data;
+import oracle.sql.DATE;
 //import com.revature.servlets.EmployeeServlet;
 
 
 class DaoImplementsTests
 {
 
+	
+//	@Test
+//	void getEmployees()
+//	{
+//		Date date = new Date(System.currentTimeMillis());
+//		System.out.println(date);
+//	}
+	
 
 //	@Test
 //	void getEmployees()
@@ -44,25 +55,25 @@ class DaoImplementsTests
 //		Employee employee = dao.getEmployeeByName("Vannara Houth");
 //		System.out.println(employee.getEmpName());
 //	}
-	
-	@Test
-	void isAuthenticated()
-	{
-		EmployeeDao dao = new EmployeeDaoImpl();
-		Boolean isAuthenticated =dao.isAuthenticated("Vannara", "123");
-		System.out.println(isAuthenticated);
-	}
-	
-	
+//	
 //	@Test
-//	void createEmployee()
+//	void isAuthenticated()
 //	{
 //		EmployeeDao dao = new EmployeeDaoImpl();
-//		Employee employee = new Employee("James Bond", "James", "password", 1, Date.valueOf("1980-10-10"), "www.google.com" );
-//		dao.createEmployee(employee);
-//
+//		Boolean isAuthenticated =dao.isAuthenticated("Vannara", "123");
+//		System.out.println(isAuthenticated);
 //	}
-//	
+	
+	
+	@Test
+	void createEmployee()
+	{
+		EmployeeDao dao = new EmployeeDaoImpl();
+		Employee employee = new Employee("James Bond", "James", "password", 1, Date.valueOf("1980-10-10"), "www.google.com" );
+		dao.createEmployee(employee);
+
+	}
+	
 //	
 //	@Test
 //	void updateEmployee()
@@ -100,8 +111,10 @@ class DaoImplementsTests
 //	@Test
 //	void createReimbursement()
 //	{
+//		Date date1 = null;
 //		ReimbursementDao dao = new ReimbursementDaoImpl();
-//		Reimbursement reimbursement = new Reimbursement(1, 12.56, 1, Date.valueOf("1999-10-10"),  Date.valueOf("1999-10-10"), "Denied", "wwww.twitter.com");
+//		//Reimbursement reimbursement = new Reimbursement(6, 12.56, 1, Date.valueOf("1999-10-10"),  Date.valueOf("1999-10-10"), "Denied", "trip to sangapore", "wwww.twitter.com");
+//		Reimbursement reimbursement = new Reimbursement(6, 12.56, 1, date1,  Date.valueOf("1999-10-10"), "Denied", "trip to sangapore", "wwww.twitter.com");
 //		dao.createReimbursement(reimbursement);
 //	}
 //	
@@ -129,19 +142,19 @@ class DaoImplementsTests
 //		
 //		EmployeeDao daoEmp = new EmployeeDaoImpl();
 //		List<Employee> employees = daoEmp.getEmployees();
-//		
+		
 //		for(Employee reimbursement: employees)
 //		{
 //			System.out.println(reimbursement.getEmpName());
 //		}
 //		int managerId =2;
 //		List<Integer> empIds =  daoEmp.getEmployeesUnderManager(employees, managerId);
-//		
+		
 //		for(Integer i : empIds)
 //		{
 //			System.out.println(i);
 //		}
-//		
+		
 //		List<Reimbursement> reimbursements2=dao.getReimbursementsByEmpIds(reimbursements, empIds);
 //		
 //		for(Reimbursement reimbursement: reimbursements2)
@@ -151,16 +164,22 @@ class DaoImplementsTests
 //		
 //	}
 
+//	@Test
+//	void getIdbyUser()
+//	{
+//		EmployeeDao edi = new EmployeeDaoImpl();
+//		System.out.println(edi.getIdByUser("jackson"));
+//		
+//	}
+	
+	
 	@Test
-	void getIdbyUser()
+	void updateStatus()
 	{
-		EmployeeDao edi = new EmployeeDaoImpl();
-		System.out.println(edi.getIdByUser("jackson"));
+		ReimbursementDao rdi = new ReimbursementDaoImpl();
+		rdi.updateStatus(6, "Approved");
 		
 	}
-	
-	
-	
 
 	
 

@@ -43,7 +43,7 @@ public class ReimbursementsApiServlet extends HttpServlet {
 			reimbursementString = om.writeValueAsString(reimbursementsByIds);
 			reimbursementString = "{\"reimbursements\":"+reimbursementString+"}";
 		}
-		if(employeeId!=null)
+		else if(employeeId!=null)
 		{
 			int employeeID = Integer.valueOf(employeeId);
 			List<Reimbursement> reimbursementsById = rdi.getReimbursementsByEmpId(employeeID);

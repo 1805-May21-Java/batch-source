@@ -53,4 +53,24 @@
     <servlet-name>SessionServlet</servlet-name>
     <url-pattern>/api/session</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ApprovedDenied</display-name>
+    <servlet-name>ApprovedDenied</servlet-name>
+    <servlet-class>com.revature.servlets.ApprovedDenied</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ApprovedDenied</servlet-name>
+    <url-pattern>/ApprovedDenied</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Signup</display-name>
+    <servlet-name>Signup</servlet-name>
+    <servlet-class>com.revature.servlets.Signup</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Signup</servlet-name>
+    <url-pattern>/Signup</url-pattern>
+  </servlet-mapping>
 </web-app>

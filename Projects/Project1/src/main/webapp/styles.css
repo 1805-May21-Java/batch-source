@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans:100,300,400,600,700');
+
+.panel-heading{
+	background-color: orange;
+}
+
+
+.login{
+   font-family: 'Josefin Sans', sans-serif;
+   background: #fbfbfb; 
+   padding:40px 0px;
+}
+
+label{
+    font-weight:400;
+    font-size:15px;
+}
+ 
+.login-box{
+    -webkit-box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.24);
+    -moz-box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.24);
+    box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.24);
+    padding:0px;
+    background:orange;
+}
+
+.left-box{
+	padding:50px;
+	color:#FFF;
+}
+
+.left-box h1{
+	font-weight:600;
+    font-family: 'Josefin Sans', sans-serif;
+    text-transform:capitalize;
+    color:#FFF;
+    font-size:32px;
+}
+
+.right-box{
+	background:#FFF;
+	min-height:520px;
+}
+
+.right-box h1{
+	font-weight:600;
+    font-family: 'Josefin Sans', sans-serif;
+    color:#444;
+    font-size:32px;
+    padding:50px;
+}
+	
+.form{
+    padding:20px 30px;
+}
+
+.form-control{
+    box-shadow: none;
+    border-radius: 0px;
+    border-bottom: 1px solid #2196f3;
+    border-top: 1px;
+    border-left: none;
+    border-right: none;
+}
+
+.btn{
+    font-weight: 700;
+    font-size:15px;
+    color:#FFF;
+    border-radius: 0;
+    background: #78d46e;
+    padding:12px 30px;
+    float:right;
+    margin-top:40px;
+}
+
+.btn:hover{
+    border:2px solid #78d46e;
+    background:#FFF;
+}
+
+input[type=text], input[type=password], input[type=email] {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #d2d2d2;
+    border-radius: 0;
+    margin-bottom:50px;
+    box-shadow: none;
+}
+
+input[type=text]:focus, input[type=password]:focus, input[type=email]:focus {
+    box-shadow: none;
+    border-bottom: 1px solid #78d46e;
+}
+
+.form2 {
+    padding:30px 0px;
+}
+
+.white-btn{
+    background:#FFF;
+    color:#78d46e;
+}

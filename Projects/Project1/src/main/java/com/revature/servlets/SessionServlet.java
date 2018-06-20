@@ -13,12 +13,21 @@ public class SessionServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		HttpSession session = request.getSession(false);
-		PrintWriter pw = response.getWriter();
-		response.setContentType("application/json");
+		if(session!=null)
+		{
+			PrintWriter pw = response.getWriter();
+			response.setContentType("application/json");
+			pw.write("{\"username\":\""+session.getAttribute("userName")+"\", \"managerid\":\""+ session.getAttribute("managerId")+"\", \"userid\":\""+session.getAttribute("userId")+"\", \"fullname\":\""+session.getAttribute("userFullname") +"\", \"birthdate\":\""+session.getAttribute("userBirthdate")+"\", \"userurl\":\""+session.getAttribute("userUrl")+"\"}");
+			pw.close();
+		}
+		else {
+			PrintWriter pw = response.getWriter();
+			response.setContentType("application/json");
+			pw.write("{\"username\":\"null\"");
+			pw.close();
+		}
+		
 
-		pw.write("{\"username\":\""+session.getAttribute("userName")+"\", \"userid\":\""+session.getAttribute("userId")+"\", \"fullname\":\""+session.getAttribute("userFullname") +"\", \"birthdate\":\""+session.getAttribute("userBirthdate")+"\", \"userurl\":\""+session.getAttribute("userUrl")+"\"}");
-
-		pw.close();
 	}
 
 }

@@ -18,9 +18,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
 
-
+<link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<!-- <body>
 
 	<form action = "logout" method="post">
 	<input type="submit" name="usrlogout">
@@ -29,21 +29,75 @@
 	<table id="table" class="table">
 		<tr id="headerRow">
 			<th>Reimbursement ID</th>
-			<th>Date Request</th>
-			<th>Date Approve</th>
+			<th>Date Requested</th>
+			<th>Date Approved</th>
 			<th>Amount</th>
 			<th>Status</th>
 			<th>Request By</th>
 			
 		</tr>
+	</table> -->
+	
+	<div class="container-fluid">
+    <div class="panel panel-warning">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-3">
+            <h2 class="text-center pull-left" style="padding-left: 30px;"> <span class="glyphicon glyphicon-list-alt"> </span> Details </h2>
+          </div>
+          	
+              
+               
+              </div>
+            </div>
+          </div>
+        </div>
+     
+
+      <div class="panel-body table-responsive">
+        <table id="table" class="table table-hover">
+          <thead>
+            <tr>
+              <th class="text-center"> Reimbursement ID </th>
+              <th class="text-center"> Date Request </th>
+              <th class="text-center"> Date Approve </th>
+              <th class="text-center"> Amount </th>
+              <th class="text-center"> Status </th>
+              <th class="text-center"> Request By </th>
+            </tr>
+          </thead>
+
+          <tbody id="mytbody">
+            </tbody>
 	</table>
 
 
  
   <button onclick="showAllReimbursements();">Show All Reimbursements(s)</button>
   <button onclick="showMyReimbursements();">Show My Reimbursements(s)</button>
-    <button onclick="showMyEmployeesReimbursements();">Show My Employee Reimbursement(s)</button>
-    
+  <button onclick="showMyEmployeesReimbursements();">Show My Employee Reimbursement(s)</button>
+  
+  
+	<form action="reimbursement" method="post">
+		<label>Create Reimbursement Request </label><br>
+		<input type="hidden" name="request_by" id="request_by" ><br>
+		<input type="hidden" name="approve_by" id="approve_by" ><br>
+		<input type="text" name="amount" onchange="hiddenFormInit()" placeholder="amount.."><br>
+		<input type="text" name="description" placeholder="description.."><br>
+		<input type="text" name="url" placeholder="url.."><br>
+		<input type="submit" name="submit">
+	</form>
+  
+  
+  	<form action="signup" method="post">
+		<label>Sign Up </label><br>
+		<input type="text" name="empName" id="request_by" ><br>
+		<input type="text" name="userName" id="approve_by" ><br>
+		<input type="text" name="userPassword" placeholder="amount.."><br>
+		<input type="password" name="userPassword">
+		<input type="text" name="birthdate" placeholder="description.."><br>
+
+	</form>
 
   
   

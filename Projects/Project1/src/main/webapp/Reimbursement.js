@@ -1,10 +1,42 @@
+window.onload = function(){init();}
+
+
 let allEmpsUrl = "http://localhost:8080/Project1/api/employees"
 let allReimburseUrl = "http://localhost:8080/Project1/api/reimbursements"
+let sessionUrl = "http://localhost:8080/Project1/api/session"
+let sessionData;
+
+function hiddenFormInit(){
+	let input1 = document.getElementById("request_by");
+	input1.value = sessionData.userid;
+	let input2 = document.getElementById("approve_by");
+	input2.value = sessionData.managerid;
+}
 
 function showAllReimbursements(){
 	sendAjaxGet(allReimburseUrl, display)
 }
+
+function showMyReimbursements(){
+	sendAjaxGet(allReimburseUrl+"?employee_id="+sessionData.userid, display)
+}
+
+function showMyEmployeesReimbursements(){
+	sendAjaxGet(allReimburseUrl+"?manager_id="+sessionData.userid, displayEmps)
+}
 	
+
+function init(){
+	sendAjaxGet(sessionUrl, getSession)
+}
+
+function getSession(xhr)
+{
+	sessionData = JSON.parse(xhr.response)
+}
+
+
+
 function sendAjaxGet(url, func){
     let xhr = new XMLHttpRequest() || new ActiveXObject("Microsoft.HTTPRequest");
     xhr.onreadystatechange = function() {
@@ -19,35 +51,61 @@ function sendAjaxGet(url, func){
 function display(xhr)
 {
 	let reimbursements = JSON.parse(xhr.response)
-	let table = document.getElementById("table");
-	
+	let table = document.getElementById("mytbody");
 
 	for(let reimbursement of reimbursements.reimbursements){
 		tr = document.createElement("tr");
+		tr.setAttribute('class', 'edit');
 		tr.setAttribute('id', reimbursement.reimburseId);
-		tr.innerHTML = `<td> ${reimbursement.reimburseId} </td>`;
-		tr.innerHTML +=`<td> ${reimbursement.dateRequest}</td>`;
-		tr.innerHTML +=`<td> ${reimbursement.dateApprove}</td>`;
-		tr.innerHTML +=`<td> ${reimbursement.amount}</td>`;
-		tr.innerHTML +=`<td> ${reimbursement.status}</td>`;
+		
+		tr.innerHTML = `<td class="text-center"> ${reimbursement.reimburseId}</td>`;
+		tr.innerHTML +=`<td class="text-center"> ${reimbursement.dateRequest}</td>`;
+		tr.innerHTML +=`<td class="text-center"> ${reimbursement.dateApprove}</td>`;
+		tr.innerHTML +=`<td class="text-center"> ${reimbursement.amount}</td>`;
+		tr.innerHTML +=`<td class="text-center"> ${reimbursement.status}</td>`;
 		
 		getEmployeeName(reimbursement.requestBy, reimbursement.reimburseId);
-
 
 		tr.setAttribute("scope","row");
 		table.appendChild(tr);
 	}
 }
 
-function getReimbursementsArr(xhr){
-	let reimbursements = JSON.parse(xhr.response)
-	reimbursementsArr = reimbursements;
-}
-
-function displayEmployeeName(xhr)
+function displayEmps(xhr)
 {
-	let employee = JSON.parse(xhr.response)
-	employee.empName;
+	let reimbursements = JSON.parse(xhr.response)
+	let table = document.getElementById("mytbody");
+
+	for(let reimbursement of reimbursements.reimbursements){
+		tr = document.createElement("tr");
+		tr.setAttribute('class', 'edit');
+		tr.setAttribute('id', reimbursement.reimburseId);
+		
+		tr.innerHTML = `<td class="text-center"> ${reimbursement.reimburseId}</td>`;
+		tr.innerHTML +=`<td class="text-center"> ${reimbursement.dateRequest}</td>`;
+		tr.innerHTML +=`<td class="text-center"> ${reimbursement.dateApprove}</td>`;
+		tr.innerHTML +=`<td class="text-center"> ${reimbursement.amount}</td>`;
+		tr.innerHTML +=`<td class="text-center"> 
+			<form action="ApprovedDenied" method="post">
+				<input type="hidden" name=reimburseId value=${reimbursement.reimburseId}>
+				<select name="reimburseStatus">
+				    <option value="Approved">Approve</option>
+				    <option value="Denied">Deny</option>
+				</select>
+				<input type="submit" name="Submit" >
+			</form>
+	
+		
+		</td>`;
+
+		
+		
+		getEmployeeName(reimbursement.requestBy, reimbursement.reimburseId);
+
+		tr.setAttribute("scope","row");
+		
+		table.appendChild(tr);
+	}
 }
 
 function getEmployeeName(empId, rowId)
@@ -60,11 +118,10 @@ function getEmployeeName(empId, rowId)
            let response = JSON.parse(this.response);
           
 	        	   let tr = document.getElementById(rowId);
-//	        	   tr.innerHTML += `<td> ${response.empName} </td>`;
-	        	   let td = document.createElement('td');
-	        	   td.innerHTML = response.empName;
-	        	   tr.appendChild(td);
-
+	        	   tr.innerHTML += `<td class="text-center"> ${response.empName} </td>`;
+//	        	   let td = document.createElement('td');
+//	        	   td.innerHTML = response.empName;
+//	        	   tr.appendChild(td);
         }
     }
     xhr.open("GET", "http://localhost:8080/Project1/api/employees?id="+empId);

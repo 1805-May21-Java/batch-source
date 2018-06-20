@@ -12,11 +12,15 @@ public class Reimbursement
 	private Date dateRequest;
 	private Date dateApprove;
 	private String status;
+	private String description;
 	private String url;
 	
+
 	public Reimbursement(
-			int requestBy, double amount, int approveBy, Date dateRequest, Date dateApprove, String status, String url
-	)	{
+			int requestBy, double amount, int approveBy, Date dateRequest, Date dateApprove, String status,
+			String description, String url
+	)
+	{
 		super();
 		this.requestBy = requestBy;
 		this.amount = amount;
@@ -24,14 +28,14 @@ public class Reimbursement
 		this.dateRequest = dateRequest;
 		this.dateApprove = dateApprove;
 		this.status = status;
+		this.description = description;
 		this.url = url;
 	}
-	
 
 
 	public Reimbursement(
 			int reimburseId, int requestBy, double amount, int approveBy, Date dateRequest, Date dateApprove,
-			String status, String url
+			String status, String description, String url
 	)
 	{
 		super();
@@ -42,15 +46,11 @@ public class Reimbursement
 		this.dateRequest = dateRequest;
 		this.dateApprove = dateApprove;
 		this.status = status;
+		this.description = description;
 		this.url = url;
 	}
+	
 
-
-	public Reimbursement()
-	{
-		super();
-		// TODO Auto-generated constructor stub
-	}
 	public int getReimburseId()
 	{
 		return reimburseId;
@@ -116,12 +116,29 @@ public class Reimbursement
 		this.url = url;
 	}
 
+
+
+
+	public String getDescription()
+	{
+		return description;
+	}
+
+
+
+	public void setDescription(String description)
+	{
+		this.description = description;
+	}
+
+
+
 	@Override
 	public String toString()
 	{
 		return "Reimbursement [reimburseId=" + reimburseId + ", requestBy=" + requestBy + ", amount=" + amount
 				+ ", approveBy=" + approveBy + ", dateRequest=" + dateRequest + ", dateApprove=" + dateApprove
-				+ ", status=" + status + ", url=" + url + "]";
+				+ ", status=" + status + ", description=" + description + ", url=" + url + "]";
 	}
 	
 	
