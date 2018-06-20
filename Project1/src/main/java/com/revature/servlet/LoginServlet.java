@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import com.revature.dao.ERSDaoImpl;
 import com.revature.pojo.Employee;
 import com.revature.servlet.SessionServlet.Info;
+import com.revature.util.MailUtil;
 
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 6435207802030991523L;

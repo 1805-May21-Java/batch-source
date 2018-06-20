@@ -3,6 +3,7 @@ package com.revature.servlet;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.sql.Date;
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Random;
@@ -17,9 +18,11 @@ import com.revature.dao.ERSDaoImpl;
 import com.revature.pojo.Employee;
 import com.revature.pojo.Reimbursement;
 import com.revature.servlet.SessionServlet.Info;
+import com.revature.util.MailUtil;
 
 public class ProfileServlet extends HttpServlet {
 	private static final long serialVersionUID = -7797812828514308149L;
+	private static final DecimalFormat df = new DecimalFormat("#0.00");
 	ERSDaoImpl dao = new ERSDaoImpl();
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
@@ -57,6 +60,14 @@ public class ProfileServlet extends HttpServlet {
 					}
 					SessionServlet.messages.add(new Info("Successfully submit reimbursement request", true));
 					
+					MailUtil.send("p1reimbursements@gmail.com", "Passw0rd---",
+							SessionServlet.empl.getEmail(), "Reimbursement Request Received",
+							"Hello " + SessionServlet.empl.getFirst() +
+							",\n\nYour reimbursement request has been processed!\n\nRequest Details:\nAmount - $" +
+							df.format(amount) + "\nDescription - " + description + "\n\nYou can track the activity of " +
+							"this request in the \"Your Request\" tab of the ERS Portal." +
+							"\n\nBest,\n\nERS Team");
+					
 					dao.createReimbursement(new Reimbursement(reimb_id, request_id,
 							picURL, amount, description, requestDate, status, 0, null));
 				}
@@ -73,12 +84,19 @@ public class ProfileServlet extends HttpServlet {
 				String last = req.getParameter("emplLast");
 				Date bday = null;
 				
+				if(first == null)
+					first = "";
+				if(last == null)
+					last = "";
+				if(email == null)
+					email = "";
+				
 				if(!req.getParameter("emplBday").equals(""))
 					bday = Date.valueOf(req.getParameter("emplBday"));
 				else
 					bday = SessionServlet.empl.getBday();
 				
-				if(!first.equals("") || !last.equals("") || !email.equals("") || !bday.equals(SessionServlet.empl.getBday()))
+				if(!first.equals("") || !last.equals("") || !email.equals("") || (bday != null && !bday.equals(SessionServlet.empl.getBday())))
 					SessionServlet.messages.add(new Info("Personal info updated", true));
 				
 				if(first.equals(""))
@@ -105,6 +123,14 @@ public class ProfileServlet extends HttpServlet {
 				else {
 					SessionServlet.empl.setPass(pass);
 					dao.updateEmployee(SessionServlet.empl);
+					
+					MailUtil.send("p1reimbursements@gmail.com", "Passw0rd---",
+							SessionServlet.empl.getEmail(), "ERS Account Password Reset",
+							"Hello " + SessionServlet.empl.getFirst() +
+							",\n\nYour password has been reset!\n\nNew Password - " +
+							pass + "\n\nUse this new password next time you wish to log " +
+							"in to your ERS Account.\n\nBest,\n\nERS Team");
+					
 					SessionServlet.messages.add(new Info("Password successfully reset", true));
 				}
 			}
@@ -112,6 +138,12 @@ public class ProfileServlet extends HttpServlet {
 		}
 		else if(req.getParameter("removeReimb") != null) {
 			dao.deleteReimbByID(Integer.parseInt(req.getParameter("removeReimb")));
+			
+			MailUtil.send("p1reimbursements@gmail.com", "Passw0rd---",
+					SessionServlet.empl.getEmail(), "Reimbursement Request #"
+					+ req.getParameter("removeReimb") + " Removed",
+					"Hello " + SessionServlet.empl.getFirst() +
+					",\n\nYour reimbursement request has been removed.\n\nBest,\n\nERS Team");
 			
 			SessionServlet.messages.add(new Info("Reimbursement request removed", true));
 			
@@ -126,9 +158,18 @@ public class ProfileServlet extends HttpServlet {
 			reimb.setApproveID(SessionServlet.empl.getID());
 			reimb.setDateOfApprove(Date.valueOf(LocalDate.now()));
 			
-			SessionServlet.messages.add(new Info("Reimbursement request: " + reimb.getStatus(), true));
+			SessionServlet.messages.add(new Info("Reimbursement request " +
+					reimb.getStatus().toLowerCase(), true));
 			
 			dao.updateReimbursement(reimb);
+			
+			MailUtil.send("p1reimbursements@gmail.com", "Passw0rd---",
+					dao.getEmployeeByID(reimb.getRequestID()).getEmail(), "Reimbursement Request #"
+					+ reimb.getID() + " " + reimb.getStatus(),
+					"Hello " + dao.getEmployeeByID(reimb.getRequestID()).getFirst() +
+					",\n\nYour reimbursement request has been " + reimb.getStatus().toLowerCase()
+					+ " by your manager.\n\nBest,\n\nERS Team");
+			
 			res.sendRedirect("profile");
 		}
 		else if(req.getParameter("newEmail") != null) {
@@ -148,6 +189,17 @@ public class ProfileServlet extends HttpServlet {
 				Employee empl = new Employee(ID, email, "pass", first, last, null,
 						title, SessionServlet.empl.getID(), false, new ArrayList<Employee>());
 				dao.createEmployee(empl);
+				
+				MailUtil.send("p1reimbursements@gmail.com", "Passw0rd---",
+						email, "Welcome to the ERS",
+						"Hello " + first + ",\n\nWelcome to the ERS!\n\nYou have been added to " +
+						"the system by your manager, " + SessionServlet.empl.getFirst() +
+						".\n\nYour new EMPL ID is: " + ID + "\nYour new password is: pass" +
+						"\n\nLog into your ERS account using your email and the provided password." +
+						"\n\nIt is highly recommended that you reset your password immediately from " +
+						"the \"Profile\" tab of the ERS Portal to follow password security criteria." +
+						"\n\nBest,\n\nERS Team");
+				
 				SessionServlet.messages.add(new Info("Added new Employee!", true));
 			}
 			
@@ -168,6 +220,14 @@ public class ProfileServlet extends HttpServlet {
 					Employee empl = dao.getEmployeeByID(ID);
 					empl.setManagerID(SessionServlet.empl.getID());
 					dao.updateEmployee(empl);
+					
+					MailUtil.send("p1reimbursements@gmail.com", "Passw0rd---",
+							dao.getEmployeeByID(ID).getEmail(), "Added by Manager",
+							"Hello " + dao.getEmployeeByID(ID).getFirst() + ",\n\nYou have been added by " +
+							"your manager, " + SessionServlet.empl.getFirst() +
+							"!\n\nYour reimbursement requests may now be resolved by your manager." +
+							"\n\nBest,\n\nERS Team");
+					
 					SessionServlet.messages.add(new Info("Successfully added Employee!", true));
 				}
 			}
@@ -182,6 +242,15 @@ public class ProfileServlet extends HttpServlet {
 					Employee empl = dao.getEmployeeByID(ID);
 					empl.setManagerID(0);
 					dao.updateEmployee(empl);
+					
+					MailUtil.send("p1reimbursements@gmail.com", "Passw0rd---",
+							dao.getEmployeeByID(ID).getEmail(), "Removed by Manager",
+							"Hello " + dao.getEmployeeByID(ID).getFirst() + ",\n\nYou have been removed from " +
+							SessionServlet.empl.getFirst() + "'s roster." +
+							"\n\nFor now, your reimbursement requests will not be resolved until you are added to " +
+							"a manager's roster in the system." +
+							"\n\nBest,\n\nERS Team");
+					
 					SessionServlet.messages.add(new Info("Successfully removed Employee!", true));
 				}
 			}
@@ -193,18 +262,5 @@ public class ProfileServlet extends HttpServlet {
 			req.getSession(false).removeAttribute("id");
 			res.sendRedirect("login");
 		}
-//			BufferedReader br = req.getReader();
-//			String post = br.readLine();
-//			if(post.matches("^RemoveReimb [0-9]{8}$")) {
-//				int reimb_id = Integer.parseInt(post.substring(12));
-//				dao.deleteReimbByID(reimb_id);
-//				res.sendRedirect("profile");
-//			}
-//			else if(post.equals("Logout")) {
-//				SessionServlet.empl = new Employee();
-//				req.getSession(false).removeAttribute("id");
-//				res.sendRedirect("login");
-//			}
-			// more possible custom post requests
 	}
 }

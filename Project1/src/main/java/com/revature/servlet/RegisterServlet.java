@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.revature.dao.ERSDaoImpl;
 import com.revature.pojo.Employee;
 import com.revature.servlet.SessionServlet.Info;
+import com.revature.util.MailUtil;
 
 public class RegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -55,6 +56,11 @@ public class RegisterServlet extends HttpServlet {
 					last, null, title, 0, isManager, new ArrayList<Employee>());
 			dao.createEmployee(empl);
 			SessionServlet.messages.add(new Info("Successfully created a new account!", true));
+			MailUtil.send("p1reimbursements@gmail.com", "Passw0rd---", user, "Welcome to the ERS",
+					"Hello " + first + ",\n\nWelcome to the ERS!\n\nYour new EMPL ID is: " + ID +
+					"\n\nAnother email will be sent to this address when your manager adds " +
+					"your provided EMPL ID to the roster. Please feel free to submit any reimbursement " +
+					"requests until that point.\n\nBest,\n\nERS Team");
 			res.sendRedirect("login");
 		}
 		else {
