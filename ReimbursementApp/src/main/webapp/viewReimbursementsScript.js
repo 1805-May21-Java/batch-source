@@ -78,5 +78,5 @@ function displayReimbursements(xhr){
 }
 
 //was infoTable and on button in html
-document.getElementById("generate").addEventListener("click", getReimbursements);
+document.getElementById("viewTable").addEventListener("click", getReimbursements);
 
