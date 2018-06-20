@@ -10,7 +10,7 @@ public interface EmployeeDao {
 	 */
 	public int checkLoginCredentials(String username, String password);
 	public Employee getEmployeeById(int id);
-	public void updateEmployee(Employee emp);
+	public int updateEmployee(Employee emp);
 	public ArrayList<Employee> getAllEmployees();
 	
 }

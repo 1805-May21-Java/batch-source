@@ -76,24 +76,65 @@ public class EmployeeDaoImpl implements EmployeeDao{
 			
 			return new Employee(un, fn, ln, dob, phone, em, man, eid);
 		} catch (SQLException se) {
+			return null;
+		} catch (IOException ioe) {
+			return null;
+		}
+	}
+
+	@Override
+	public int updateEmployee(Employee emp) {
+		String sql = "UPDATE EMPLOYEE SET FIRSTNAME = ?, LASTNAME = ?, DOB = ?, PHONE = ?, EMAIL = ? WHERE EMPLOYEEID = ?";
+		int numUpdated = 0;
+		
+		try {
+			Connection conn = ConnectionUtil.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1,  emp.getFirstname());
+			ps.setString(2,  emp.getLastname());
+			ps.setDate(3,  emp.getDob());
+			ps.setLong(4,  emp.getPhone());
+			ps.setString(5,  emp.getEmail());
+			ps.setInt(6, emp.getEmployeeId());
+			numUpdated = ps.executeUpdate();
+		} catch (SQLException se) {
+			System.out.println(se.getMessage());
+			return 0;
+		} catch (IOException ioe) {
+			System.out.println(ioe.getMessage());
+			return 0;
+		}
+		return numUpdated;
+	}
+
+	@Override
+	public ArrayList<Employee> getAllEmployees() {
+		String sql = "SELECT * FROM EMPLOYEE";
+		ArrayList<Employee> result = new ArrayList<Employee>();
+		
+		try {
+			Connection conn = ConnectionUtil.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				result.add(new Employee(
+						rs.getString("USERNAME"),
+						rs.getString("FIRSTNAME"),
+						rs.getString("LASTNAME"),
+						rs.getDate("DOB"),
+						rs.getLong("PHONE"),
+						rs.getString("EMAIL"),
+						(rs.getInt("MANAGER") < 0),
+						rs.getInt("EMPLOYEEID")));
+			}
+		} catch (SQLException se) {
 			System.out.println(se.getMessage());
 			return null;
 		} catch (IOException ioe) {
 			System.out.println(ioe.getMessage());
 			return null;
 		}
-	}
-
-	@Override
-	public void updateEmployee(Employee emp) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public ArrayList<Employee> getAllEmployees() {
-		// TODO Auto-generated method stub
-		return null;
+		return result;
 	}
 
 }
