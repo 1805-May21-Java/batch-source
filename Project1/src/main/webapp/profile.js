@@ -17,9 +17,12 @@ document.getElementById("showReimbsButton").addEventListener("click", toggleMyRe
 document.getElementById("reimbFormButton").addEventListener("click", toggleReimbRequestForm);
 document.getElementById("logoutButton").addEventListener("click", logout);
 document.getElementById("editInfo").addEventListener("click", togglePersonalInfo);
+document.getElementById("resetPass").addEventListener("click", toggleResetPass);
 document.getElementById("showEmplReimbsButton").addEventListener("click", toggleEmplReimbTable);
 document.getElementById("addNewEmplButton").addEventListener("click", toggleNewEmplForm);
 document.getElementById("addExistingEmplButton").addEventListener("click", toggleExistingEmplForm);
+document.getElementById("registerEmpl").addEventListener("click", registerEmpl);
+document.getElementById("unregisterEmpl").addEventListener("click", unregisterEmpl)
 
 document.getElementById("empls").addEventListener("change", ()=>sendAjaxGet(reimbUrl, loadReimbs2));
 document.getElementById("personalEmpls").addEventListener("change", changePersonalInfo);
@@ -135,7 +138,7 @@ function togglePersonalInfo(){
         document.getElementById("inEmplLast").removeAttribute("hidden");
         document.getElementById("inEmplEmail").removeAttribute("hidden");
         document.getElementById("inEmplBday").removeAttribute("hidden");
-
+        document.getElementById("resetPass").removeAttribute("hidden");
         document.getElementById("personalSaveButton").removeAttribute("hidden");
         document.getElementById("editInfo").innerHTML = "Cancel Edit";
     }
@@ -153,10 +156,27 @@ function togglePersonalInfo(){
         document.getElementById("emplEmail").removeAttribute("hidden");
         document.getElementById("emplBday").removeAttribute("hidden");
         document.getElementById("personalSaveButton").setAttribute("hidden", "true");
-
+        document.getElementById("resetPass").setAttribute("hidden", "true");
         document.getElementById("inEmplBday").value = null;
         document.getElementById("editInfo").innerHTML = "Edit Personal Info";
     }
+}
+
+function toggleResetPass(){
+    if(document.getElementById("newPass").hasAttribute("hidden")){
+        document.getElementById("newPass").removeAttribute("hidden");
+        document.getElementById("newPass2").removeAttribute("hidden");
+        
+        document.getElementById("resetPass").innerHTML = "Cancel Reset";
+    }
+    else{
+        document.getElementById("resetPass").innerHTML = "Reset Password";
+
+        document.getElementById("newPass").setAttribute("hidden", "true");
+        document.getElementById("newPass2").setAttribute("hidden", "true");
+        
+        document.getElementById("inEmplPass").value = null;
+    }    
 }
 
 function loadReimbs(xhr){
@@ -185,6 +205,7 @@ function loadReimbs(xhr){
         cell2.innerHTML = r.dateOfRequest;
         cell3.innerHTML = "$" + r.amountRequest.toFixed(2);
         cell4.innerHTML = r.description;
+        cell4.setAttribute("style", "word-wrap: break-word");
         cell5.innerHTML = r.status;
         if(r.approveID){
             cell6.innerHTML = r.approveID;
@@ -278,10 +299,10 @@ function loadReimbs2(xhr){
             }
         }
 
-        // cell2.innerHTML = x.requestID;
         cell3.innerHTML = x.dateOfRequest;
         cell4.innerHTML = "$" + x.amountRequest.toFixed(2);
         cell5.innerHTML = x.description;
+        cell5.setAttribute("style", "word-wrap: break-word");
         cell6.innerHTML = x.status;
         if(x.approveID){
             cell7.innerHTML = x.approveID;
@@ -383,7 +404,7 @@ function showReimbImage(URL){
 function showReimbImage2(URL){
     document.getElementById("showEmplReimbsButton").innerHTML = "View Employee Reimbursement Requests";
     document.getElementById("addNewEmplButton").innerHTML = "Add New Employee";
-    document.getElementById("addExistingEmplButton").innerHTML = "Add Existing Employee";
+    document.getElementById("addExistingEmplButton").innerHTML = "Add/Remove Existing Employee";
     
     emplReimbTable.setAttribute("hidden", "true");
     myReimbImage2.setAttribute("src", URL);
@@ -398,7 +419,7 @@ function toggleEmplReimbTable(){
     myReimbImage2.setAttribute("hidden", "true");
 
     document.getElementById("addNewEmplButton").innerHTML = "Add New Employee";
-    document.getElementById("addExistingEmplButton").innerHTML = "Add Existing Employee";
+    document.getElementById("addExistingEmplButton").innerHTML = "Add/Remove Existing Employee";
     document.getElementById("showEmplReimbsButton").innerHTML = "View Employee Reimbursement Requests";
     if(emplReimbTable.hasAttribute("hidden")){
         emplReimbTable.removeAttribute("hidden");
@@ -417,7 +438,7 @@ function toggleNewEmplForm(){
     
     document.getElementById("newEmail").value = null;
     document.getElementById("showEmplReimbsButton").innerHTML = "View Employee Reimbursement Requests";
-    document.getElementById("addExistingEmplButton").innerHTML = "Add Existing Employee";
+    document.getElementById("addExistingEmplButton").innerHTML = "Add/Remove Existing Employee";
     document.getElementById("addNewEmplButton").innerHTML = "Add New Employee";
     if(newEmplForm.hasAttribute("hidden")){
         newEmplForm.removeAttribute("hidden");
@@ -437,14 +458,14 @@ function toggleExistingEmplForm(){
     document.getElementById("existingID").value = null;
     document.getElementById("showEmplReimbsButton").innerHTML = "View Employee Reimbursement Requests";
     document.getElementById("addNewEmplButton").innerHTML = "Add New Employee";
-    document.getElementById("addExistingEmplButton").innerHTML = "Add Existing Employee";
+    document.getElementById("addExistingEmplButton").innerHTML = "Add/Remove Existing Employee";
     if(existingEmplForm.hasAttribute("hidden")){
         existingEmplForm.removeAttribute("hidden");
         document.getElementById("addExistingEmplButton").innerHTML = "Cancel Existing Employee Process";
     }
     else{
         existingEmplForm.setAttribute("hidden", "true");
-        document.getElementById("addExistingEmplButton").innerHTML = "Add Existing Employee";
+        document.getElementById("addExistingEmplButton").innerHTML = "Add/Remove Existing Employee";
     }
 }
 
@@ -459,9 +480,11 @@ function changePersonalInfo(){
         }
 
         document.getElementById("editInfo").setAttribute("hidden", "true");
+        document.getElementById("resetPass").setAttribute("hidden", "true");
     }
     else{
         document.getElementById("editInfo").removeAttribute("hidden");
+        document.getElementById("resetPass").removeAttribute("hidden");
     }
 
     document.getElementById("emplID").innerHTML = personal.id;
@@ -469,4 +492,12 @@ function changePersonalInfo(){
     document.getElementById("emplLast").innerHTML = personal.last;
     document.getElementById("emplEmail").innerHTML = personal.email;
     document.getElementById("emplBday").innerHTML = personal.bday;
+}
+
+function registerEmpl(){
+    document.getElementById("existingAction").value = "register";
+}
+
+function unregisterEmpl(){
+    document.getElementById("existingAction").value = "unregister";
 }

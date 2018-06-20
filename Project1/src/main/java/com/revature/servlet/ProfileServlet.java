@@ -36,52 +36,78 @@ public class ProfileServlet extends HttpServlet {
 		if(req.getParameter("amount") != null) {
 			try{
 				double amount = Double.parseDouble(req.getParameter("amount"));
-				String description = req.getParameter("description");
-				String picURL = req.getParameter("picURL");
-				
-				Random r = new Random();
-				int reimb_id = r.nextInt(90000000) + 10000000;
-				while(dao.getReimbursementByID(reimb_id) != null)
-					reimb_id = r.nextInt(90000000) + 10000000;
-				int request_id = SessionServlet.empl.getID();
-				Date requestDate = Date.valueOf(LocalDate.now());
-				String status = "Pending";
-				
-				dao.createReimbursement(new Reimbursement(reimb_id, request_id,
-						picURL, amount, description, requestDate, status, 0, null));
+				if(amount < 0.01) {
+					SessionServlet.errors.add(new Info("Invalid request amount", true));
+				}
+				else {
+					String description = req.getParameter("description");
+					String picURL = req.getParameter("picURL");
+					
+					Random r = new Random();
+					int reimb_id = r.nextInt(90000000) + 10000000;
+					while(dao.getReimbursementByID(reimb_id) != null)
+						reimb_id = r.nextInt(90000000) + 10000000;
+					int request_id = SessionServlet.empl.getID();
+					Date requestDate = Date.valueOf(LocalDate.now());
+					String status = "Pending";
+					
+					if(description.length() > 255) {
+						SessionServlet.errors.add(new Info("Description truncated to max length of 255 characters", true));
+						description = description.substring(0, 255);
+					}
+					SessionServlet.messages.add(new Info("Successfully submit reimbursement request", true));
+					
+					dao.createReimbursement(new Reimbursement(reimb_id, request_id,
+							picURL, amount, description, requestDate, status, 0, null));
+				}
 			} catch(NumberFormatException e) {
 				e.printStackTrace();
 				SessionServlet.errors.add(new Info("Invalid amount provided", true));
 			}
 			res.sendRedirect("profile");
 		}
-		else if(req.getParameter("emplBday") != null) {
-			String first = req.getParameter("emplFirst");
-			String email = req.getParameter("emplEmail");
-			String last = req.getParameter("emplLast");
-			Date bday = null;
-			
-			if(!req.getParameter("emplBday").equals(""))
-				bday = Date.valueOf(req.getParameter("emplBday"));
-			else
-				bday = SessionServlet.empl.getBday();
-			
-			if(!first.equals("") || !last.equals("") || !email.equals("") || !bday.equals(SessionServlet.empl.getBday()))
-				SessionServlet.messages.add(new Info("Personal info updated", true));
-			
-			if(first.equals(""))
-				first = SessionServlet.empl.getFirst();
-			if(last.equals(""))
-				last = SessionServlet.empl.getLast();
-			if(email.equals(""))
-				email = SessionServlet.empl.getEmail();
-			
-			SessionServlet.empl.setFirst(first);
-			SessionServlet.empl.setLast(last);
-			SessionServlet.empl.setEmail(email);
-			SessionServlet.empl.setBday(bday);
-			dao.updateEmployee(SessionServlet.empl);
-			
+		else if(req.getParameter("emplBday") != null || req.getParameter("emplPass") != null) {
+			if(req.getParameter("emplBday") != null) {
+				String first = req.getParameter("emplFirst");
+				String email = req.getParameter("emplEmail");
+				String last = req.getParameter("emplLast");
+				Date bday = null;
+				
+				if(!req.getParameter("emplBday").equals(""))
+					bday = Date.valueOf(req.getParameter("emplBday"));
+				else
+					bday = SessionServlet.empl.getBday();
+				
+				if(!first.equals("") || !last.equals("") || !email.equals("") || !bday.equals(SessionServlet.empl.getBday()))
+					SessionServlet.messages.add(new Info("Personal info updated", true));
+				
+				if(first.equals(""))
+					first = SessionServlet.empl.getFirst();
+				if(last.equals(""))
+					last = SessionServlet.empl.getLast();
+				if(email.equals(""))
+					email = SessionServlet.empl.getEmail();
+				
+				SessionServlet.empl.setFirst(first);
+				SessionServlet.empl.setLast(last);
+				SessionServlet.empl.setEmail(email);
+				SessionServlet.empl.setBday(bday);
+				dao.updateEmployee(SessionServlet.empl);
+			}
+			if(req.getParameter("emplPass") != null) {
+				String pass = req.getParameter("emplPass");
+				if(!pass.equals(req.getParameter("emplPass2"))) {
+					SessionServlet.errors.add(new Info("New passwords do not match", true));
+				}
+				else if(!Employee.validatePassword(pass)){
+					SessionServlet.errors.add(new Info("Password does not match criteria", true));
+				}
+				else {
+					SessionServlet.empl.setPass(pass);
+					dao.updateEmployee(SessionServlet.empl);
+					SessionServlet.messages.add(new Info("Password successfully reset", true));
+				}
+			}
 			res.sendRedirect("profile");
 		}
 		else if(req.getParameter("removeReimb") != null) {
@@ -127,17 +153,37 @@ public class ProfileServlet extends HttpServlet {
 			
 			res.sendRedirect("profile");
 		}
-		else if(req.getParameter("existingID") != null) {
+		else if(req.getParameter("existingAction") != null) {
 			int ID = Integer.parseInt(req.getParameter("existingID"));
+			String action = req.getParameter("existingAction");
 			
-			if(dao.getEmployeeByID(ID) == null) {
-				SessionServlet.errors.add(new Info("No such employee exists", true));
+			if(action.equals("register")) {
+				if(dao.getEmployeeByID(ID) == null) {
+					SessionServlet.errors.add(new Info("No such employee exists", true));
+				}
+				else if(dao.getEmployeeByID(ID).getManagerID() != 0) {
+					SessionServlet.errors.add(new Info("Employee already reports to a manager", true));
+				}
+				else {
+					Employee empl = dao.getEmployeeByID(ID);
+					empl.setManagerID(SessionServlet.empl.getID());
+					dao.updateEmployee(empl);
+					SessionServlet.messages.add(new Info("Successfully added Employee!", true));
+				}
 			}
-			else {
-				Employee empl = dao.getEmployeeByID(ID);
-				empl.setManagerID(SessionServlet.empl.getID());
-				dao.updateEmployee(empl);
-				SessionServlet.messages.add(new Info("Successfully added Employee!", true));
+			else if(action.equals("unregister")) {
+				if(dao.getEmployeeByID(ID) == null) {
+					SessionServlet.errors.add(new Info("No such employee exists", true));
+				}
+				else if(dao.getEmployeeByID(ID).getManagerID() != SessionServlet.empl.getID()) {
+					SessionServlet.errors.add(new Info("Employee does not directly report to you", true));
+				}
+				else {
+					Employee empl = dao.getEmployeeByID(ID);
+					empl.setManagerID(0);
+					dao.updateEmployee(empl);
+					SessionServlet.messages.add(new Info("Successfully removed Employee!", true));
+				}
 			}
 			
 			res.sendRedirect("profile");

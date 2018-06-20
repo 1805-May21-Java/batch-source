@@ -97,17 +97,17 @@
         <div class="tab-pane fade show active" id="nav-reqs" role="tabpanel" aria-labelledby="nav-reqs-tab">
             <button id="showReimbsButton" class="btn btn-large btn-outline-primary" style="margin: 10px">View Reimbursement Requests</button>
             <button id="reimbFormButton" class="btn btn-large btn-outline-success" style="margin: 10px">Submit a Reimbursement Request</button>
-            <table hidden class="table table-hover" id="myReimbTable">
+            <table hidden class="table table-hover" style="table-layout: fixed; width: 100%" id="myReimbTable">
                 <thead>
                     <tr>
-                    <th scope="col">Reimbursement ID</th>
-                    <th scope="col">Date Requested</th>
-                    <th scope="col">Amount Requested</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Resolved By</th>
-                    <th scope="col">Date Resolved</th>
-                    <th scope="col"></th>
+                        <th scope="col">Reimbursement ID</th>
+                        <th scope="col">Date Requested</th>
+                        <th scope="col">Amount Requested</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Resolved By</th>
+                        <th scope="col">Date Resolved</th>
+                        <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody id="myReimbs">
@@ -120,6 +120,7 @@
                 <input type="number" style="max-width:200px" id="inAmount" class="form-control" name="amount" step=".01" placeholder="0.00" required>
                 <label style="font-size: 20px; margin-top:10px" for="inDescription">Description</label>
                 <textarea style="max-width: 500px;" rows="4" id="inDescription" class="form-control" name="description" placeholder="ex: Travel Expenses"></textarea>
+                <small class="form-text text-muted">Max length: 255 characters</small>
                 <label style="font-size: 20px; margin-top:10px" for="inURL">Image URL for Receipt (optional)</label>
                 <input type="text" style="max-width:500px" id="inURL" class="form-control" name="picURL">
                 <button type="submit" style="margin-top:10px; max-width: 200px;" class="btn btn-success btn-block">Submit</button>
@@ -159,9 +160,28 @@
                     <span id="emplBday"></span>
                     <input hidden type="date" style="max-width:200px; display: inline" id="inEmplBday" class="form-control" name="emplBday">
                 </div>
+                <div hidden id="newPass">
+                    <label style="font-size: 20px" for="inEmplPass">New Password: </label>
+                    <span id="emplPass"></span>
+                    <input type="password" style="max-width:200px; display: inline" id="inEmplPass" class="form-control" name="emplPass">
+                </div>
+                <div hidden id="newPass2">
+                    <label style="font-size: 20px" for="inEmplPass2">Repeat Password: </label>
+                    <span id="emplPass2"></span>
+                    <input type="password" style="max-width:200px; display: inline" id="inEmplPass2" class="form-control" name="emplPass2">
+                    <small id="passHelp1" class="form-text text-muted">Password must have:<br>
+                        <ul>
+                            <li>At least 6 characters</li>
+                            <li>At least 1 uppercase letter</li>
+                            <li>At least 1 lowercase letter</li>
+                            <li>At least 1 numerical digit (0-9)</li>
+                        </ul>
+                    </small>
+                </div>
                 <button hidden id="personalSaveButton" type="submit" style="margin-top:10px; max-width: 200px;" class="btn btn-success btn-block">Save</button>
             </form>
             <button id="editInfo" class="btn btn-large btn-outline-primary" style="margin: 10px">Edit Personal Info</button>
+            <button hidden id="resetPass" class="btn btn-large btn-outline-dark" style="margin: 10px">Reset Password</button>
         </div>
         <div class="tab-pane fade" id="nav-manager" role="tabpanel" aria-labelledby="nav-managerS-tab">
             <button id="showEmplReimbsButton" class="btn btn-large btn-outline-primary" style="margin: 10px">View Employee Reimbursement Requests</button>
@@ -174,7 +194,7 @@
                         <option value="0">All Employees</option>
                     </select>
                 </div>
-                <table class="table table-hover">
+                <table class="table table-hover" style="table-layout: fixed; width: 100%">
                     <thead>
                         <tr>
                         <th scope="col">Reimbursement ID</th>
@@ -206,10 +226,12 @@
                 <button type="submit" style="max-width: 330px" class="btn btn-lg btn-primary btn-block">Register Employee</button>
             </form>
             <form hidden id="existingEmplForm" class="form-signin" action="profile" method="post" style="margin: 20px">
-                <h2 class="form-signin-heading">Register Existing Employee</h2>
+                <h2 class="form-signin-heading">Add/Remove Existing Employee</h2>
                 <label style="font-size: 20px" for="existingID">Employee ID</label>
                 <input type="number" style="max-width:200px" id="existingID" class="form-control" name="existingID" required>
-                <button type="submit" style="margin-top:10px; max-width: 150px;" class="btn btn-lg btn-primary btn-block">Add Employee</button>
+                <button type="submit" id="registerEmpl" style="margin-top:10px; max-width: 150px;" class="btn btn-lg btn-primary btn-block">Add Employee</button>
+                <button type="submit" id="unregisterEmpl" style="margin-top:10px; max-width: 150px;" class="btn btn-lg btn-danger btn-block">Remove Employee</button>
+                <input hidden type="text" id="existingAction" name="existingAction">
             </form>
             <div><img hidden id="myReimbImage2"></div>
         </div>

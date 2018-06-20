@@ -38,15 +38,12 @@ public class RegisterServlet extends HttpServlet {
 		// search user records for username
 		if(dao.getEmployeeByEmail(user) != null) {
 			SessionServlet.errors.add(new Info("Email already exists in the database", true));
-			System.out.println("exists");
 		}
 		if(!Employee.validatePassword(pass1)) {
 			SessionServlet.errors.add(new Info("Password does not meet security criteria", true));
-			System.out.println("invalid");
 		}
 		if(!pass1.equals(pass2)) {
 			SessionServlet.errors.add(new Info("Passwords do not match", true));
-			System.out.println("unmatched");
 		}
 		if(dao.getEmployeeByEmail(user) == null && Employee.validatePassword(pass1)
 				&& pass1.equals(pass2) && !first.equals("") && !last.equals("")) {
