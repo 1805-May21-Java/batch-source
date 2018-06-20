@@ -1,10 +1,14 @@
 window.onload = function(){
 	sendAjaxGet("http://localhost:8080/project1/GetReimbursementById", populateUser);
+	sendAjaxGet("http://localhost:8080/project1/SessionServlet", getEmployee);
+	sendAjaxGet("http://localhost:8080/project1/GetManagerServlet", setManagerList);
 }
 
 var table = document.getElementById("userTable");
 var reimbursementSelect = document.getElementById("reimbursementSelect");
-var isManager;
+var isManager = false;
+var managerList = [];
+var employeeId;
 
 function sendAjaxGet(url, func){
 	let xhr = new XMLHttpRequest() || new ActiveXObject("Microsoft.HTTPRequest");
@@ -30,8 +34,34 @@ function populateUser(xhr){
 	// }
 }
 
+function setManagerList(xhr){
+	let response = JSON.parse(xhr.response);
+	console.log(response);
+	
+	if ( response != "null" ){
+		for(i = 0; i<response.length; i++){
+			if(employeeId = response[i]){
+				isManager = true;
+				break;
+			}
+			managerList.push(response[i]);
+		}
+		console.log("setManagerList " + managerList);
+	}
+}
+
+function getEmployee(xhr){
+	let response = JSON.parse(xhr.response);
+	console.log(response.employeeId);
+	
+	if ( response != "null" ){
+		employeeId = response.employeeId;
+	}
+}
+
 function addToTable(response){
 	let newRow;
+	console.log("EmployeeId is: " + employeeId);
 	for(i = 0; i<response.length;i++){
 		// if(table.rows.length > amountSelect.value){
 		// 	break;
@@ -50,9 +80,16 @@ function addToTable(response){
 			newRow.insertCell(2).innerHTML = "Approved";
 				break;
 		}
-		newRow.insertCell(3).innerHTML = response[i].reimbursementValue;
+		newRow.insertCell(3).innerHTML = "$" + response[i].reimbursementValue;
 		newRow.insertCell(4).innerHTML = response[i].reimbursementReason;
-		newRow.insertCell(5).innerHTML = response[i].managerId;
+		console.log("employeeId is " + employeeId)
+		// console.log("managerList is " + managerList)
+		for(manager of managerList){
+			if(manager.employeeId == response[i].managerId){
+				newRow.insertCell(5).innerHTML = manager.employeeName;
+				break;
+			}
+		}
 	};
 }
 

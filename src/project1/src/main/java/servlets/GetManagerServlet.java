@@ -41,7 +41,8 @@ public class GetManagerServlet extends HttpServlet {
 		EmployeeDao employeeDao = new EmployeeDao();
 		ArrayList<Employee> managerList = new ArrayList();
 		try {
-			managerList = employeeDao.getAllSubordinates(ConnectionUtil.getConnection());
+			managerList.add(employeeDao.getEmployeeById(ConnectionUtil.getConnection(), 0));
+			managerList.addAll(employeeDao.getAllSubordinates(ConnectionUtil.getConnection())) ;
 			String jsonInString = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(managerList);
 			pw.write(jsonInString);
 		} catch (SQLException e) {
