@@ -9,6 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.revature.dao.EmployeeDAOImpl;
+import com.revature.pojos.employee;
+
 /**
  * Servlet implementation class SessServ
  */
@@ -28,18 +32,20 @@ public class SessServ extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		PrintWriter pw = response.getWriter();
 		response.setContentType("application/json");
-		System.out.println(response);
-		System.out.println(session);
-		if(session != null) {
-			pw.write("{\"EmployeeID\":\"" + request.getAttribute("E_ID") + "\", \"EmployeeName\":\"" + 
-					session.getAttribute("EMP_NAME") + "\", \"Role\":\"" + session.getAttribute("E_TYPE") + 
-					"\", \"EmployeeUsername\":\"" + session.getAttribute("E_USERNAME") + "\", \"EmployeePassword\":\"" + session.getAttribute("E_PASSWORD") +
-					"\", \"Occupation\":\"" + session.getAttribute("E_POSITION") + "\"}");
+		ObjectMapper om = new ObjectMapper();
+		//Change to DAO calls upon revisit
+		if(session != null && session.getAttribute("username") != null) {
+			String username = (String) session.getAttribute("username");
+			EmployeeDAOImpl edi = new EmployeeDAOImpl();
+			employee employ = edi.getEmployeeByUser(((String) session.getAttribute("username")));
+			String employeeStr = om.writeValueAsString(employ);
+			employeeStr = "{\"employee\":"+employeeStr+"}";
+			PrintWriter pw = response.getWriter();
+			pw.println(employeeStr);
+			//request.getRequestDispatcher("Profile.html").forward(request, response);
 		}else {
-			pw.write("{\"Employee ID\": null, \"Employee Name\": null, \"Role\": null, \"Employee Username\": null, \"Employee Password\": null, \"Occupation\": null,}");
-
+			response.sendRedirect("login");
 		}
 	}
 
@@ -52,3 +58,18 @@ public class SessServ extends HttpServlet {
 	}
 
 }
+
+
+
+
+
+
+//if(session != null) {
+//pw.write("{\"EmployeeID\":\"" + request.getAttribute("E_ID") + "\", \"EmployeeName\":\"" + 
+//		session.getAttribute("EMP_NAME") + "\", \"Role\":\"" + session.getAttribute("E_TYPE") + 
+//		"\", \"EmployeeUsername\":\"" + session.getAttribute("E_USERNAME") + "\", \"EmployeePassword\":\"" + session.getAttribute("E_PASSWORD") +
+//		"\", \"Occupation\":\"" + session.getAttribute("E_POSITION") + "\"}");
+//}else {
+//pw.write("{\"Employee ID\": null, \"Employee Name\": null, \"Role\": null, \"Employee Username\": null, \"Employee Password\": null, \"Occupation\": null,}");
+//
+//}

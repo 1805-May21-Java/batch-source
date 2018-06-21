@@ -18,7 +18,12 @@ function sendAjaxGet(url, func) {
 }
 
 function displayUserInfo(xhr){
-    console.log(xhr.response);
-    let resp = JSON.parse(xhr.response);
-    console.log(resp);
+    let resp = xhr.response;
+    let user = JSON.parse(resp);
+    console.log(user);
+
+    document.getElementById("EmployeeName").innerHTML = user.employee.empName;
+    document.getElementById("EmployeeID").innerHTML = user.employee.e_Id;
+    document.getElementById("EmployeeUsername").innerHTML = user.employee.uName;
+    document.getElementById("EmployeeJob").innerHTML = user.employee.ePosition;
 }
