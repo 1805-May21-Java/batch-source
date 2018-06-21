@@ -65,9 +65,12 @@ public class RegisterServlet extends HttpServlet {
 			employeeDaoImpl.createEmployee(firstname, lastname, managerId, email, user, pass);
 			Employee employee = employeeDaoImpl.getEmployeeByUsername(user);
 			session.setAttribute("username", user);
-			session.setAttribute("fullname", employee.getFirstname() + " " + employee.getLastname());
+			session.setAttribute("firstname", employee.getFirstname());
+			session.setAttribute("lastname", employee.getLastname());
 			session.setAttribute("id", employee.getId());
 			session.setAttribute("manager", employee.getReportsto());
+			session.setAttribute("email", employee.getEmail());
+			session.setAttribute("password", pass);
 			response.sendRedirect("dashboard");
 			
 		} else {

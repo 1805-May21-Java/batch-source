@@ -116,7 +116,7 @@ INSERT INTO request (emp_id, title, amount, comments, date_created)
 VALUES ( 6, 'Work laptop', 2500.00, 'It is a very good laptop.', CURRENT_TIMESTAMP);
 
 ALTER TABLE employee
-ADD manager_name VARCHAR(50);
+DROP COLUMN manager_name;
 
 COMMIT;
 
@@ -133,7 +133,7 @@ WHERE e.emp_id = m.reports_to) mng
 WHERE emp.reports_to = mng.ManagerId
 GROUP BY mng.ManagerId, mng.ManagerName;
 
-
+-- get all subordinates
 SELECT *
 FROM employee tier1
 WHERE reports_to = 9

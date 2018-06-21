@@ -20,8 +20,10 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		try {
 			Connection con = ConnectionUtil.getConnection();
 			String sql = "SELECT * FROM employee";
-			Statement statement = con.createStatement(); //TODO: convert to PreparedStatement?
-			ResultSet rs = statement.executeQuery(sql);
+			PreparedStatement pStatement = con.prepareStatement(sql);
+			ResultSet rs = pStatement.executeQuery();
+//			Statement statement = con.createStatement(); //TODO: convert to PreparedStatement?
+//			ResultSet rs = statement.executeQuery(sql);
 			
 			while (rs.next()) {
 				int employeeId = rs.getInt("emp_id");
