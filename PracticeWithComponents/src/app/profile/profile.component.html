@@ -1,0 +1,6 @@
+<div *ngIf="show">
+  <p>First Name: {{firstname}}</p>
+  <p>Last Name: {{lastname}}</p>
+  <p>Email: {{email}}</p>
+</div>
+<button (click)="toggleShow()">{{show?'Hide':'Show'}}</button>

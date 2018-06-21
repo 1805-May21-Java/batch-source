@@ -1,0 +1,12 @@
+<label>Animals</label>
+<input name="opt" type="radio" (click)="setCurrentArray(animalsArr)">
+<label>Colors</label>
+<input name="opt" type="radio" (click)="setCurrentArray(colorsArr)">
+<label>Days</label>
+<input name="opt" type="radio" (click)="setCurrentArray(daysArr)">
+
+<div>
+  <ul *ngFor='let elem of currentArr'>
+    <li>{{elem}}</li>
+  </ul>
+</div> 
