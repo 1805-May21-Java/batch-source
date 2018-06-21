@@ -63,11 +63,11 @@ public class NewEmployeeServlet extends HttpServlet {
 		try {
 			if (emp.getUsername() == null || emp.getReportsTo() == null || emp.getFirstName() == null
 					|| emp.getLastName() == null || emp.getEmail() == null) {
-				ResponseUtil.setResponse(response, 401, "application/json", "{\"error\":\"Missing Information\"}");
+				ResponseUtil.setResponse(response, 401, "application/json", "{\"error\":\"Missing Information\",\"location\":\"err\"}");
 			} else if (!empDao.checkUsernameAvailable(emp.getUsername())) {
-				ResponseUtil.setResponse(response, 401, "application/json", "{\"error\":\"Username Taken\"}");
+				ResponseUtil.setResponse(response, 401, "application/json", "{\"error\":\"Username Taken\",\"location\":\"usernameerr\"}");
 			} else if (empDao.checkUsernameAvailable(emp.getReportsTo())) {
-				ResponseUtil.setResponse(response, 401, "appliction/json", "{\"error\":\"Invalid Manager\"}");
+				ResponseUtil.setResponse(response, 401, "appliction/json", "{\"error\":\"Invalid Manager\",\"location\":\"reportserr\"}");
 			} else {
 				empDao.createEmployee(emp);
 

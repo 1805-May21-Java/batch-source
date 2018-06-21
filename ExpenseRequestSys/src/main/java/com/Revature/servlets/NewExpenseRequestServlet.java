@@ -75,16 +75,23 @@ public class NewExpenseRequestServlet extends HttpServlet {
 		} else {
 			ObjectMapper om = new ObjectMapper();
 			ExpenseRequest er = om.readValue(request.getReader().readLine(), ExpenseRequest.class);
-			
+
 			er.setSubmitter((String) session.getAttribute("username"));
 
 			ExpenseRequestDao erDao = new ExpenseRequestDaoImpl();
 			try {
-				if (er.getAmount() > 0 && er.getExpense() != null) {
+				if (er.getAmount() < 9999999999.0 && er.getAmount() > 0 && er.getExpense() != null) {
 					erDao.createExpenseRequest(er);
 					ResponseUtil.setResponse(response, 200, "application/json", "{\"response\":\"Success\"}");
+				} else if (er.getAmount() < 0 || er.getAmount() > 9999999999.0) {
+					ResponseUtil.setResponse(response, 401, "application/json",
+							"{\"err\":\"Invalid Amount\",\"location\":\"amounterr\"}");
+				} else if (er.getExpense() == null) {
+					ResponseUtil.setResponse(response, 401, "application/json",
+							"{\"err\":\"Expense Required\",\"location\":\"expenseerr\"}");
 				} else {
-					ResponseUtil.setResponse(response, 401, "application/json", "{\"err\":\"Invalid Input\"}");
+					ResponseUtil.setResponse(response, 401, "application/json",
+							"{\"err\":\"Invalid Input\",\"location\":\"msg\"}");
 				}
 			} catch (SQLException e) {
 				ResponseUtil.setResponse(response, 300, "application/json", "{\"url\":\"login\"}");

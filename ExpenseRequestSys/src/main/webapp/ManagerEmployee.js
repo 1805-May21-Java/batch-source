@@ -224,6 +224,8 @@ function approveRequest() {
         return;
     }
 
+    document.getElementById('err').innerHTML = '';
+
     let er = getExpense(currentExpense.getElementsByTagName('td')[0].innerHTML);
 
     let toSend = {'requestId':er.requestId , 'submitter':er.submitter,
@@ -240,6 +242,8 @@ function denyRequest() {
     if (currentExpense == null) {
         return;
     }
+
+    document.getElementById('err').innerHTML = '';
 
     let er = getExpense(currentExpense.getElementsByTagName('td')[0].innerHTML);
 

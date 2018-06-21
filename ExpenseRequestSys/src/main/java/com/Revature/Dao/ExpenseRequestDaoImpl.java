@@ -31,7 +31,7 @@ public class ExpenseRequestDaoImpl implements ExpenseRequestDao {
 			String sql = "INSERT INTO EXPENSE_REQUEST(USERNAME,AMOUNT,EXPENSE) VALUES(?,?,?)";
 			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setString(1, er.getSubmitter());
-			stmt.setFloat(2, er.getAmount());
+			stmt.setDouble(2, er.getAmount());
 			stmt.setString(3, er.getExpense());
 
 			rval = stmt.executeUpdate();
@@ -54,7 +54,7 @@ public class ExpenseRequestDaoImpl implements ExpenseRequestDao {
 			if (rs.next()) {
 				String username = rs.getString("USERNAME");
 				Date submissionDate = rs.getDate("SUBMISSION_DATE");
-				float amount = rs.getFloat("AMOUNT");
+				double amount = rs.getDouble("AMOUNT");
 				String expense = rs.getString("EXPENSE");
 				String state = rs.getString("STATE");
 				String resolvingManager = rs.getString("RESOLVING_MANAGER");
@@ -110,7 +110,7 @@ public class ExpenseRequestDaoImpl implements ExpenseRequestDao {
 				int id = rs.getInt("REQUEST_ID");
 				String username = rs.getString("USERNAME");
 				Date submissionDate = rs.getDate("SUBMISSION_DATE");
-				float amount = rs.getFloat("AMOUNT");
+				double amount = rs.getDouble("AMOUNT");
 				String expense = rs.getString("EXPENSE");
 				String state = rs.getString("STATE");
 				String resolvingManager = rs.getString("RESOLVING_MANAGER");
@@ -132,7 +132,7 @@ public class ExpenseRequestDaoImpl implements ExpenseRequestDao {
 				int id = rs.getInt("REQUEST_ID");
 				String username = rs.getString("USERNAME");
 				Date submissionDate = rs.getDate("SUBMISSION_DATE");
-				float amount = rs.getFloat("AMOUNT");
+				double amount = rs.getDouble("AMOUNT");
 				String expense = rs.getString("EXPENSE");
 				String state = rs.getString("STATE");
 				String resolvingManager = rs.getString("RESOLVING_MANAGER");

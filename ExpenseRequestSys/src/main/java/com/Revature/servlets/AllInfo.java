@@ -79,7 +79,6 @@ public class AllInfo extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession(false);
-		String resp = null;
 		if (session == null || session.getAttribute("username") == null) {
 			// Could send a redirect instead
 			ResponseUtil.setResponse(response, 300, "application/json", "{\"url\":\"login\"}");

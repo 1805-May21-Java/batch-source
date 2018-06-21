@@ -26,8 +26,13 @@ function redir(xhr) {
 }
 
 function err(xhr) {
+    document.getElementById('usernameerr').innerHTML="";
+    document.getElementById('passerr').innerHTML="";
+    document.getElementById('reportserr').innerHTML="";
+    document.getElementById('err').innerHTML="";
+
     let data = JSON.parse(xhr.response);
-    document.getElementById("err").innerHTML = data.error;
+    document.getElementById(data.location).innerHTML = data.error;
 }
 
 function submitNewEmployee() {
@@ -40,7 +45,7 @@ function submitNewEmployee() {
     let reportsTo = (document.getElementById('reportsto').value || null);
 
     if (pwd1 !== pwd2) {
-        document.getElementById('err').innerHTML = "Passwords do not match";
+        document.getElementById('passerr').innerHTML = "Passwords do not match";
         return;
     }
 
@@ -51,3 +56,17 @@ function submitNewEmployee() {
         "lastName": lastname, "email": email, "reportsTo": reportsTo
     }, redir, err);
 }
+
+function enterListener(key,fcn){
+    if ( key.keyCode == 13 ) {
+        fcn();
+    }
+}
+
+document.getElementById('username').onkeypress = (key)=>enterListener(key,submitNewEmployee);
+document.getElementById('pass1').onkeypress = (key)=>enterListener(key,submitNewEmployee);
+document.getElementById('pass2').onkeypress = (key)=>enterListener(key,submitNewEmployee);
+document.getElementById('firstname').onkeypress = (key)=>enterListener(key,submitNewEmployee);
+document.getElementById('lastname').onkeypress = (key)=>enterListener(key,submitNewEmployee);
+document.getElementById('email').onkeypress = (key)=>enterListener(key,submitNewEmployee);
+document.getElementById('reportsto').onkeypress = (key)=>enterListener(key,submitNewEmployee);

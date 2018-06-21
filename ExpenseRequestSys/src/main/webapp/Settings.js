@@ -38,10 +38,10 @@ function redir(xhr) {
 }
 
 function recieveOK(xhr) {
-    document.getElementById('pwd').readOnly = true;
-    document.getElementById('firstName').readOnly = true;
-    document.getElementById('lastName').readOnly = true;
-    document.getElementById('email').readOnly = true;
+    document.getElementById('pwd').disabled = true;
+    document.getElementById('firstName').disabled = true;
+    document.getElementById('lastName').disabled = true;
+    document.getElementById('email').disabled = true;
 
     document.getElementById('msg').innerHTML='Changes Accepted';
 }
@@ -60,17 +60,29 @@ function toggleReadOnly(id) {
     if (item === null) {
         return;
     }
-    item.readOnly = !item.readOnly;
+    item.disabled = !item.disabled;
 }
 
 function sendNewSettings() {
-    let pwd = (document.getElementById('pwd').readOnly) ? null : document.getElementById('pwd').value;
-    let firstName = (document.getElementById('firstName').readOnly) ? null : document.getElementById('firstName').value;
-    let lastName = (document.getElementById('lastName').readOnly) ? null : document.getElementById('lastName').value;
-    let email = (document.getElementById('email').readOnly) ? null : document.getElementById('email').value;
+    let pwd = (document.getElementById('pwd').disabled) ? null : document.getElementById('pwd').value;
+    let firstName = (document.getElementById('firstName').disabled) ? null : document.getElementById('firstName').value;
+    let lastName = (document.getElementById('lastName').disabled) ? null : document.getElementById('lastName').value;
+    let email = (document.getElementById('email').disabled) ? null : document.getElementById('email').value;
 
     let e = { 'pwd': pwd, 'firstName': firstName, 'lastName': lastName, 'email': email };
     sendAjaxPost(settingurl, e, recieveOK, redir);
+
+    document.getElementById('msg').innerHTML='';
+}
+
+function enterListener(key,fcn){
+    if ( key.keyCode == 13 ) {
+        fcn();
+    }
 }
 
 document.onload = sendAjaxGet(infourl, getEmployeeInfo);
+document.getElementById('pwd').onkeypress = (key)=>enterListener(key,sendNewSettings);
+document.getElementById('firstName').onkeypress = (key)=>enterListener(key,sendNewSettings);
+document.getElementById('lastName').onkeypress = (key)=>enterListener(key,sendNewSettings);
+document.getElementById('email').onkeypress = (key)=>enterListener(key,sendNewSettings);

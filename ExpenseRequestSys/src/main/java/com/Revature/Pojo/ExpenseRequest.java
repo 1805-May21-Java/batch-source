@@ -6,7 +6,7 @@ public class ExpenseRequest {
 	private int requestId;
 	private String submitter;
 	private Date submissionDate;
-	private float amount;
+	private double amount;
 	private String expense;
 	private String state;
 	private String resolvingManager;
@@ -22,7 +22,7 @@ public class ExpenseRequest {
 		this.expense = expense;
 	}
 
-	public ExpenseRequest(int requestId, String submitter, Date submissionDate, float amount, String expense,
+	public ExpenseRequest(int requestId, String submitter, Date submissionDate, double amount, String expense,
 			String state, String resolvingManager) {
 		super();
 		this.requestId = requestId;
@@ -58,11 +58,11 @@ public class ExpenseRequest {
 		this.submissionDate = submissionDate;
 	}
 
-	public float getAmount() {
+	public double getAmount() {
 		return amount;
 	}
 
-	public void setAmount(float amount) {
+	public void setAmount(double amount) {
 		this.amount = amount;
 	}
 
@@ -94,7 +94,9 @@ public class ExpenseRequest {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + Float.floatToIntBits(amount);
+		long temp;
+		temp = Double.doubleToLongBits(amount);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + ((expense == null) ? 0 : expense.hashCode());
 		result = prime * result + requestId;
 		result = prime * result + ((resolvingManager == null) ? 0 : resolvingManager.hashCode());
@@ -113,7 +115,7 @@ public class ExpenseRequest {
 		if (getClass() != obj.getClass())
 			return false;
 		ExpenseRequest other = (ExpenseRequest) obj;
-		if (Float.floatToIntBits(amount) != Float.floatToIntBits(other.amount))
+		if (Double.doubleToLongBits(amount) != Double.doubleToLongBits(other.amount))
 			return false;
 		if (expense == null) {
 			if (other.expense != null)

@@ -25,11 +25,12 @@ function sendAjaxPost(url, obj, func, redir, errfcn) {
 }
 
 function errhandle(xhr) {
-    let errmsg = JSON.parse(xhr.response).err;
+    document.getElementById('amounterr').innerHTML = "";
+    document.getElementById('expenseerr').innerHTML = "";
+    document.getElementById('msg').innerHTML = "";
 
-    document.getElementById('msg').innerHTML = errmsg;
-    document.getElementById('amount').value = '';
-    document.getElementById('expense').value = '';
+    let errmsg = JSON.parse(xhr.response);
+    document.getElementById(errmsg.location).innerHTML = errmsg.err;
 }
 
 function redir(xhr) {
@@ -39,9 +40,6 @@ function redir(xhr) {
 
 function recieveOK(xhr) {
     window.location = expurl
-    // document.getElementById('msg').innerHTML = 'Request Submitted'
-    // document.getElementById('amount').value = '';
-    // document.getElementById('expense').value = '';
 }
 
 function sendNewExpense() {
@@ -52,3 +50,12 @@ function sendNewExpense() {
 
     sendAjaxPost(newexpurl, ex, recieveOK, redir, errhandle);
 }
+
+function enterListener(key, fcn) {
+    if (key.keyCode == 13) {
+        fcn();
+    }
+}
+
+document.getElementById('amount').onkeypress = (key) => enterListener(key, sendNewExpense);
+document.getElementById('expense').onkeypress = (key) => enterListener(key, sendNewExpense);
