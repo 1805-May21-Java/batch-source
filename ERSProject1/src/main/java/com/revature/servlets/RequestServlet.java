@@ -33,10 +33,7 @@ public class RequestServlet extends HttpServlet{
 		RequestDaoImpl requestDaoImpl = new RequestDaoImpl();
 		ObjectMapper om = new ObjectMapper();
 		String requestString;
-		
-		if (request.getParameter("pending-tab") != null) {
-			System.out.println("in the pending tab");
-		}
+
 		
 		HttpSession session = request.getSession(false);
 		int id = (Integer) session.getAttribute("id"); // current user id
@@ -48,7 +45,6 @@ public class RequestServlet extends HttpServlet{
 			List<Request> reqs = requestDaoImpl.getRequestsById(id);
 			requestString = om.writeValueAsString(reqs);
 		} else {
-			System.out.println("No idString. Pulls all requests.");
 			List<Request> myRequests = requestDaoImpl.getRequestsById(id);
 			requestString = om.writeValueAsString(myRequests);
 			requestString = "{\"requests\":"+requestString+"}";

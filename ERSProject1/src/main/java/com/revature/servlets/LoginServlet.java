@@ -26,7 +26,8 @@ public class LoginServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// go to registration page
-		if (request.getParameter("register-button") != null) {
+		// TODO: outdated code?
+		if (request.getParameter("register-button") != null) { 
 			response.sendRedirect("register");
 		} else {
 			// check user input credentials
@@ -41,9 +42,12 @@ public class LoginServlet extends HttpServlet {
 			
 			if(employee != null && pass.equals(employee.getPassword())) {
 				session.setAttribute("username", user);
-				session.setAttribute("fullname", employee.getFirstname() + " " + employee.getLastname());
+				session.setAttribute("firstname", employee.getFirstname());
+				session.setAttribute("lastname", employee.getLastname());
 				session.setAttribute("id", employee.getId());
 				session.setAttribute("manager", employee.getReportsto());
+				session.setAttribute("email", employee.getEmail());
+				session.setAttribute("password", pass);
 				if (employeeDaoImpl.isEmployeeManager(employee)) {
 					response.sendRedirect("manager");
 				} else {

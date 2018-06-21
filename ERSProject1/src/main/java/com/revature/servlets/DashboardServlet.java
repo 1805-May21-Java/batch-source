@@ -18,7 +18,7 @@ public class DashboardServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(false);
-		if (session!=null && session.getAttribute("fullname") != null) {
+		if (session!=null && session.getAttribute("id") != null) {
 			
 			request.getRequestDispatcher("Dashboard.html").forward(request, response);
 		} else {

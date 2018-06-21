@@ -178,14 +178,34 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		}
 	}
 
-	public int updateEmployee(Employee employee) {
+	public int deleteEmployeeById(int id) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
-	public int deleteEmployeeById(int id) {
-		// TODO Auto-generated method stub
-		return 0;
+
+	public void updateEmployee(int id, String firstname, String lastname, String email, String username,
+			String password) {
+		try {
+			Connection connection = ConnectionUtil.getConnection();
+			String sql = "UPDATE employee SET first_name=?, last_name=?, email=?, emp_username=?, emp_password=?\n" +
+						"WHERE emp_id=?";
+			PreparedStatement pStatement = connection.prepareStatement(sql);
+			pStatement.setString(1, firstname);
+			pStatement.setString(2, lastname);
+			pStatement.setString(3, email);
+			pStatement.setString(4, username);
+			pStatement.setString(5, password);
+			pStatement.setInt(6, id);
+			pStatement.executeQuery();
+			
+			connection.close();
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 

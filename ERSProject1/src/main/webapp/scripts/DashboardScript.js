@@ -1,10 +1,10 @@
 //document.getElementById("pending-tab").addEventListener("click", callDisplayRequests);
 
-function callDisplayRequests() {
-	console.log("back to pending");
-	sendAjaxGet("http://localhost:8082/ERSProject1/request", displayRequests);
-	// sendAjaxPost?
-}
+//function callDisplayRequests() {
+//	console.log("back to pending");
+//	sendAjaxGet("http://localhost:8082/ERSProject1/request", displayRequests);
+//	// sendAjaxPost?
+//}
 
 function sendAjaxPost(url, contents){
     let xhr = (new XMLHttpRequest() || new ActiveXObject());
@@ -29,19 +29,23 @@ sendAjaxGet("http://localhost:8082/ERSProject1/session", displayCurrentUser);
 function displayCurrentUser(xhr){
 	let response = JSON.parse(xhr.response);
 	if (response.username != "null") {
-		document.getElementById("user").innerHTML = "You are logged in as: " + response.fullname;
+		document.getElementById("user").innerHTML = "You are logged in as: " + response.firstname + " " + response.lastname;
+		document.getElementById("card-name").innerHTML = response.firstname + " " + response.lastname;
+		document.getElementById("card-email").innerHTML = "Email: " + response.email;
+		document.getElementById("card-username").innerHTML = "Username: " + response.username;
 	} else {
 		window.location = "http://localhost:8082/ERSProject1/login";
 	}
 }
 
+// display all requests by employee
+// TODO: change this to pending requests only
 sendAjaxGet("http://localhost:8082/ERSProject1/request", displayRequests);
 
 function displayRequests(xhr){
 	requests = JSON.parse(xhr.response)
 	requestsArr = requests.requests;
 	table = document.getElementById("table");
-	console.log("Inside displayRequests");
 	
 	for(i in requestsArr){
 		console.log(requestsArr[i]);
@@ -55,6 +59,18 @@ function displayRequests(xhr){
 	}
 	
 }
+
+//// display current user's information
+//sendAjaxGet("http://localhost:8082/ERSProject1/session", displayProfile);
+//
+//function displayProfile(xhr) {
+//	let response = JSON.parse(xhr.response);
+//	if (response.id != "null") {
+//		document.getElementById("user").innerHTML = "You are logged in as: " + response.firstname + " " + response.lastname;
+//	} else {
+//		window.location = "http://localhost:8082/ERSProject1/login";
+//	}
+//}
 
 //sendAjaxGet("http://localhost:8082/ERSProject1/employee", displayEmployees);
 //

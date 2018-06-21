@@ -21,11 +21,12 @@ public class SessionServlet extends HttpServlet {
 		PrintWriter pWriter = response.getWriter();
 		response.setContentType("application/json");
 		if (session != null) {
-			pWriter.write("{\"user\":\"" + session.getAttribute("user") + "\", \"fullname\":\"" + 
-						session.getAttribute("fullname") + "\", \"id\":\"" + session.getAttribute("id") + 
-						"\", \"manager\":\"" + session.getAttribute("manager") + "\"}");
+			pWriter.write("{\"username\":\"" + session.getAttribute("username") + "\", \"firstname\":\"" + 
+						session.getAttribute("firstname") + "\", \"lastname\":\"" + session.getAttribute("lastname") + 
+						"\", \"id\":\"" + session.getAttribute("id") + "\", \"email\":\"" + session.getAttribute("email") +
+						"\", \"password\":\"" + session.getAttribute("password") + "\", \"manager\":\"" + session.getAttribute("manager") + "\"}");
 		} else {
-			pWriter.write("{\"user\": null, \"fullname\": null, \"id\": null, \"manager\": null,}");
+			pWriter.write("{\"user\": null, \"firstname\": null, \"lastname\": null, \"id\": null, \"email\": null, \"password\": null, \"manager\": null,}");
 		}
 	}
 
