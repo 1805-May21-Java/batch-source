@@ -1,6 +1,6 @@
 package com.revature.servlets;
 
-import static org.hamcrest.CoreMatchers.containsString;
+
 
 import java.io.IOException;
 import java.sql.Date;
@@ -43,14 +43,14 @@ public class Signup extends HttpServlet {
 		String fullName = request.getParameter("firstName")+" "+request.getParameter("lastName");
 		String user = request.getParameter("userName");
 		String pwd = request.getParameter("userPassword");
-		Date date = Date.valueOf(request.getParameter("birthdate"));
-		int managerId = 1;
-		
+		Date birthdate = Date.valueOf(request.getParameter("birthdate"));
+		int managerId = Integer.parseInt(request.getParameter("userManagerId"));
+		String userUrl="https://randomuser.me/api/portraits/men/77.jpg";
 		EmployeeDao dao = new EmployeeDaoImpl();
 		
-		Employee employee = new Employee(fullName, user, pwd, managerId, date, "null" );
+		Employee employee = new Employee(fullName, user, pwd, managerId, birthdate, userUrl);
 		dao.createEmployee(employee);
-		doGet(request, response);
+		response.sendRedirect("login");
 	}
 
 }

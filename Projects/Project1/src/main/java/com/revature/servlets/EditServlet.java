@@ -1,24 +1,27 @@
 package com.revature.servlets;
 
 import java.io.IOException;
+import java.sql.Date;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.revature.dao.ReimbursementDao;
-import com.revature.dao.ReimbursementDaoImpl;
+import com.revature.dao.EmployeeDao;
+import com.revature.dao.EmployeeDaoImpl;
+import com.revature.pojos.Employee;
 
 /**
- * Servlet implementation class ApprovedDenied
+ * Servlet implementation class EditServlet
  */
-public class ApprovedDenied extends HttpServlet {
+public class EditServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ApprovedDenied() {
+    public EditServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,11 +38,17 @@ public class ApprovedDenied extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ReimbursementDao rdi = new ReimbursementDaoImpl();
-		int id= Integer.parseInt(request.getParameter("reimburseId"));
-		String status = request.getParameter("reimburseStatus");
-		rdi.updateStatus(id, status);
-		doGet(request, response);
+		String fullName = request.getParameter("fullName");
+		int userId = Integer.parseInt(request.getParameter("userId"));
+		String user = request.getParameter("userName");
+		String pwd = request.getParameter("userPassword");
+		Date date = Date.valueOf(request.getParameter("birthdate"));
+		int managerId = 1;
+		String userUrl = request.getParameter("userUrl");
+		EmployeeDao edi = new EmployeeDaoImpl();
+		Employee employee = new Employee(userId, fullName, user, pwd, managerId, date, userUrl);
+	
+		edi.updateEmployee(employee);
 		response.sendRedirect("reimbursement");
 	}
 

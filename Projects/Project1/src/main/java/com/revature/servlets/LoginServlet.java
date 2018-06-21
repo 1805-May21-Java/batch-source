@@ -22,8 +22,30 @@ public class LoginServlet extends HttpServlet
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
 	{
-		HttpSession session = req.getSession();
-		req.getRequestDispatcher("Login.html").forward(req, resp);
+		
+		HttpSession session = req.getSession(false);
+		if(session!=null)
+		{
+			resp.sendRedirect("reimbursement");
+		}
+		else
+			{
+			session = req.getSession();
+			req.getRequestDispatcher("Login.html").forward(req,  resp);
+			}
+		
+		
+//		HttpSession session = req.getSession(false);	
+//		if ( session!=null) {
+//			req.getRequestDispatcher("Reimbursement.html").forward(req, resp); 
+//			
+//		} else {
+//			resp.sendRedirect("login");
+//		}	
+		
+		
+		//HttpSession session = req.getSession();
+	//	req.getRequestDispatcher("Login.html").forward(req, resp);
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
@@ -40,6 +62,7 @@ public class LoginServlet extends HttpServlet
 			Employee employee = dao.getEmployeeByName(usr);
 			session.setAttribute("userName", employee.getUserName());
 			session.setAttribute("userId", employee.getEmpId());
+			session.setAttribute("userPassword", pwd);
 			session.setAttribute("userFullname", employee.getEmpName());
 			session.setAttribute("userBirthdate", employee.getBirthDate());
 			session.setAttribute("userUrl", employee.getUrl());

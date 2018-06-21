@@ -65,24 +65,49 @@ class DaoImplementsTests
 //	}
 	
 	
-	@Test
-	void createEmployee()
-	{
-		EmployeeDao dao = new EmployeeDaoImpl();
-		Employee employee = new Employee("Justin Benner", "James", "password", 1, Date.valueOf("1980-10-10"), "www.google.com" );
-		dao.createEmployee(employee);
-
-	}
-	
-//	
 //	@Test
-//	void updateEmployee()
+//	void createEmployee()
 //	{
+//		EmployeeDao dao = new EmployeeDaoImpl();
+//		Employee employee = new Employee("James Bond", "James", "password", 1, Date.valueOf("1980-10-10"), "www.google.com" );
+//		dao.createEmployee(employee);
+//
+//	}
+	
+	
+	@Test
+	void updateEmployee()
+	{
 //		EmployeeDao dao = new EmployeeDaoImpl();
 //		Employee employee = new Employee(2, "Michael Everd", "James", "password", 1, Date.valueOf("1999-10-10"), "www.google.com" );
 //		dao.updateEmployee(employee);
-//	}
-//	
+		
+		String fullName = "Marble Omega";
+		int userId = 1;
+		String user = "marble";
+		String pwd ="123";
+		Date date = Date.valueOf("1990-12-01");
+		int managerId = 1;
+		String userUrl = "www.gogole.com";
+		EmployeeDao edi = new EmployeeDaoImpl();
+		Employee employee = new Employee(userId, fullName, user, pwd, managerId, date, userUrl);
+		edi.updateEmployee(employee);
+	}
+	
+//	String fullName = request.getParameter("fullName");
+//	int userId = Integer.parseInt(request.getParameter("userId"));
+//	String user = request.getParameter("userName");
+//	String pwd = request.getParameter("userPassword");
+//	Date date = Date.valueOf(request.getParameter("birthdate"));
+//	int managerId = Integer.parseInt(request.getParameter("userManagerId"));
+//	String userUrl = request.getParameter("userUrl");
+//	EmployeeDao edi = new EmployeeDaoImpl();
+//	Employee employee = new Employee(userId, fullName, user, pwd, managerId, date, userUrl);
+
+
+	
+	
+	
 //	@Test
 //	void deleteEmployeeById()
 //	{
@@ -173,13 +198,13 @@ class DaoImplementsTests
 //	}
 	
 	
-	@Test
-	void updateStatus()
-	{
-		ReimbursementDao rdi = new ReimbursementDaoImpl();
-		rdi.updateStatus(6, "Approved");
-		
-	}
+//	@Test
+//	void updateStatus()
+//	{
+//		ReimbursementDao rdi = new ReimbursementDaoImpl();
+//		rdi.updateStatus(6, "Approved");
+//		
+//	}
 
 	
 

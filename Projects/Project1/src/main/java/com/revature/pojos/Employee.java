@@ -12,10 +12,10 @@ public class Employee {
 	private Date birthDate;
 	private String url;
 	
-	public Employee(
-			int empId, String empName, String userName, String userPass, int reportTo, Date birthDate, String url
-	)
-	{
+
+	
+	public Employee(int empId, String empName, String userName, String userPass, int reportTo, Date birthDate,
+			String url) {
 		super();
 		this.empId = empId;
 		this.empName = empName;
@@ -25,7 +25,8 @@ public class Employee {
 		this.birthDate = birthDate;
 		this.url = url;
 	}
-	
+
+
 	public Employee(String empName, String userName, String userPass, int reportTo, Date birthDate, String url
 	)
 	{

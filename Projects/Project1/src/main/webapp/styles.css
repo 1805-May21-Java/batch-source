@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans:100,300,400,600,700');
 
 .panel-heading{
-	background-color: orange;
+	background-color: f36b27;
 }
 
 
@@ -69,9 +69,9 @@ label{
     color:#FFF;
     border-radius: 0;
     background: #78d46e;
-    padding:12px 30px;
+    padding:1px 30px;
     float:right;
-    margin-top:40px;
+    margin-top:10px;
 }
 
 .btn:hover{
@@ -101,3 +101,46 @@ input[type=text]:focus, input[type=password]:focus, input[type=email]:focus {
     background:#FFF;
     color:#78d46e;
 }
+
+body{
+font-family: 'Open Sans', sans-serif;
+}
+
+.custom-tab > li > a {
+-webkit-border-radius: 0;
+-moz-border-radius: 0;
+border-radius: 0;
+}
+.custom-tab > li {
+-webkit-border-radius: 0;
+-moz-border-radius: 0;
+border-radius: 0;
+}
+
+.custom-tab > li > a:link {
+    border-top: 4px solid #ff6633;
+	border-right: 1px solid #ff6633;
+	border-left: 2px solid #ff6633;
+}
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:visited {  
+   background-color:#00bfff;
+    border-top: 3px solid #00bfff;
+	border-right: 1px solid #00bfff;
+	border-left: 1px solid #ff6633;
+	color:#FFF;
+    background-color:#00bfff;
+}
+i{
+color:#000;
+}
+.link-lable{
+text-decoration:none;
+color:#000;
+}
+ @media screen and (max-width: 767px)
+        {
+		
+         .link-lable{
+			display:none;
+		 }
+        }

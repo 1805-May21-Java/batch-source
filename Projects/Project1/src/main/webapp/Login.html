@@ -1,75 +1,123 @@
-<!-- <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-	<form action="login" method="post">
-		<label>User Name: </label>
-		<input type="text" name="username"><br>
-		
-		<label>Password: </label>
-		<input type="password" name="password"><br>	
-		<input type="submit" name="submit">
 
-	</form>
-
-</body>
-</html>
- -->
- 
- <link rel="stylesheet" href="styles.css">
- 
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="styles.css">
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> 
 
-<form action="login" method="post">
-<div class="login">
-   	<div class="container">
-	    
-		<div class="col-lg-8 col-lg-offset-2 login-box" >
-		    
-    		<div class="col-lg-6 left-box">
-        		<h1>Expense Reimbursement System</h1>
-        		<p>Revature <br>11730 Plaza America Dr #205, Reston, VA 20190</p>
-        		<br>
-            </div>
-    		
-    		<div class="col-lg-6 right-box">
-    		<h1>Login</h1>
-	
-                <div class="form">
-            
-                    <div class="form-group">
-            		    <label for="username">Your usersname </label>
-                        <input type="text" name="username" class="form-control">
-                        
-                    </div>
-            
-                    <div class="form-group">
-            		    <label for="password">Your password</label>
-                        <input type="password" name="password" class="form-control">
-                       
-                    <div class="login-button" align="justify" style="padding: 30px">
-                        <button class="btn btn-default">Login</button>
-                    </div>
-                    </div>
-            
-               
-            
-                </div>
+
+	<div class="login" id="signinform">
+	   	<div class="container">
+			<div class="col-lg-8 col-lg-offset-2 login-box" >   
+	    		<div class="col-lg-6 left-box">
+	        		<h1>Expense Reimbursement System</h1>
+	        		<p>Revature <br>11730 Plaza America Dr #205, Reston, VA 20190</p>
+	        		<br>
+	            </div>
+	    		<form action="login" method="post">
+	    		<div class="col-lg-6 right-box">
+	    		<h1>Login</h1>
+	                <div class="form">
+	                    <div class="form-group">
+	            		    <label for="username">Your usersname </label>
+	                        <input type="text" name="username" class="form-control">  
+	                    </div>
+	            
+	                    <div class="form-group">
+	            		    <label for="password">Your password</label>
+	                        <input type="password" name="password" class="form-control">
+	                       
+		                    <div class="login-button" align="justify" style="padding: 30px">
+		                        <button class="btn btn-default">Login</button>
+		                    </div>
+		                   
+		                     <div class="login-button" align="right" style="padding: 30px">
+		                      <br>Did not have the account?
+		                       
+		                    </div>
+	                    </div>
+	                </div>
+		    	</div> 
+				</form>   
+			</div>
+			<button class="btn btn-success" onclick="showsignupform();" style="margin-right: 49%">Signup</button>
+	   </div>
+	</div> 
+	  
+
  
-	    	</div>  
-		</div> 
-        
-   </div>
-</div>    
+
+
+
+<form action="Signup" method="post" id="signupform" hidden="true" >
+	<div class="signup">
+	   	<div class="container">
+			<div class="col-lg-8 col-lg-offset-2 login-box" >   
+	    		<div class="col-lg-6 left-box">
+	        		<h1>Expense Reimbursement System</h1>
+	        		<p>Revature <br>11730 Plaza America Dr #205, Reston, VA 20190</p>
+	        		<br>
+	            </div>
+	    		
+	    		<div class="col-lg-6 right-box">
+	    		<h1>Sign Up</h1>
+	                <div class="form">
+	                    <div class="form-group">
+	            		    <label for="username">Your Firstname </label>
+	                        <input type="text" name="firstName" id="firstName" placeholder="First Name" > 
+	                    </div>
+	                    
+	                    
+	                    <div class="form-group">
+	            		    <label for="username">Your Lastname </label>
+	                        <input type="text" name="lastName" id="lastName" placeholder="Last Name"><br>
+	                    </div>
+	                    
+	                    
+	                   	<div class="form-group">
+	            		    <label for="username">Your Usersname </label>
+	                        <input type="text" name="userName" id="userName" placeholder="User Name"><br>
+	                    </div>
+	                    
+	                    
+	                    <div class="form-group">
+	            		    <label for="username">Your Password </label>
+	                        <input type="password" name="userPassword" placeholder="Password"><br>
+	                    </div>
+	            
+	                    <div class="form-group">
+	            		    <label for="password">Your password</label>
+	                        <input type="password" name="userPassword2" placeholder="Password"><br>
+	                     </div>
+	                     
+	                     
+	                     <div class="form-group">
+	            		    <label for="username">Your Manager Id </label>
+	                        <input type="text" name="userManagerId" id="userManagerId" placeholder="Manager ID"><br>
+	                    </div>
+	                    
+	                    
+	                   	<div class="form-group">
+	            		    <label for="username">Your Birthdate </label>
+	                        <input type="date" name="birthdate" placeholder="birthdate"><br>
+	                    </div>
+	                    
+	                        <div class="login-button" align="justify" style="padding: 30px">
+		                        <button class="btn btn-default">Sign Up</button>
+		                    </div>
+
+	                </div>
+		    	</div>  
+			</div> 
+	   </div>
+	</div>    
 </form>
 
+
+
+</body>
+<script type="text/javascript" src="Login.js"></script>
+</html>
 
 

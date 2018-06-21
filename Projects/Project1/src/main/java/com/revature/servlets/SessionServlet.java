@@ -17,13 +17,13 @@ public class SessionServlet extends HttpServlet {
 		{
 			PrintWriter pw = response.getWriter();
 			response.setContentType("application/json");
-			pw.write("{\"username\":\""+session.getAttribute("userName")+"\", \"managerid\":\""+ session.getAttribute("managerId")+"\", \"userid\":\""+session.getAttribute("userId")+"\", \"fullname\":\""+session.getAttribute("userFullname") +"\", \"birthdate\":\""+session.getAttribute("userBirthdate")+"\", \"userurl\":\""+session.getAttribute("userUrl")+"\"}");
+			pw.write("{\"username\":\""+session.getAttribute("userName")+"\", \"userpassword\":\""+ session.getAttribute("userPassword")+"\", \"managerid\":\""+ session.getAttribute("managerId")+"\", \"userid\":\""+session.getAttribute("userId")+"\", \"fullname\":\""+session.getAttribute("userFullname") +"\", \"birthdate\":\""+session.getAttribute("userBirthdate")+"\", \"userurl\":\""+session.getAttribute("userUrl")+"\"}");
 			pw.close();
 		}
 		else {
 			PrintWriter pw = response.getWriter();
 			response.setContentType("application/json");
-			pw.write("{\"username\":\"null\"");
+			pw.write("{\"null\"}");
 			pw.close();
 		}
 		
