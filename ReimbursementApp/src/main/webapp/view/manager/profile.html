@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Reimbursement Home</title>
+    <!-- Vendor -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="./view/styles.css">
+</head>
+<body>
+
+       <div class="header">
+    <div class="container">
+    <h1>Expense Reimbursement System</h1>
+        </div>
+    
+</div>
+<div class="navigation">  
+    <div class="container">
+    <ul>
+    <li><a class="nav-item nav-link active" href="./home">Home</a></li>
+    <li><a class="nav-item nav-link" href="./requests">Requests</a></li>
+    <li><a class="nav-item nav-link" href="./employees">Employees</a>
+    <li><a class="nav-item nav-link" href="./profile">Profile</a></li>
+    <li><a class="nav-item nav-link" href="./logout">Logout</a></li>
+    </ul>
+    </div>
+</div>
+<div class="container">
+        	<h2>Manager Profile</h2>
+
+            <h3>Credentials</h3>
+            <button class="btn btn-link btn-edit" data-edit="credentials">Edit</button>
+            <hr>
+            <p>Username: <span id="username"></span></p>
+            <p>Password: <span id="password"></span></p>
+
+
+            <h3>Personal Information</h3>
+            <button class="btn btn-link btn-edit" data-edit="employees">Edit</button>
+            <hr>
+            <p>First name: <span id="firstname"></span></p>
+            <p>Last name: <span id="lastname"></span></p>
+            <p>Email address: <span id="email"></span></p>
+
+            <h3>Work Information</h3>
+            <hr>
+            <p>Employee ID: <span id="employeeId"></span></p>
+            <p>Role: <span id="role"></span></p>
+            <p>Manager: <span id="manager"></span></p>
+
+    </div>
+    
+    <!-- hidden request details modal -->
+    <div id="edit-modal" class="edit-modal">
+        <div class="edit-modal-content">
+                <button id="close-modal">&times;</button>
+                <h3 id = "edit-modal-title"></h3>
+                <hr>
+        </div>
+
+    </div>
+
+
+    <script>
+        window.onload = function() {
+
+            let employeeUrl = './api/employees';
+            let credentialUrl = './api/credentials';
+
+            getRequest(employeeUrl + "?profile=true", displayPersonalInformation)
+            
+            
+            function getRequest(url, func){
+                let xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function(){
+                    if(this.readyState == 4 && this.status == 200){
+                        func(this);
+                    }
+                }
+                xhr.open('GET', url);
+                xhr.send();
+            }
+
+            function displayPersonalInformation(xhr) {
+                let allRequests = document.getElementById('all-requests');
+                let results = JSON.parse(xhr.response);
+
+                document.getElementById('email').innerHTML = results.employee.emailAddress;
+                document.getElementById('firstname').innerHTML = results.employee.lastName;
+                document.getElementById('lastname').innerHTML = results.employee.firstName;
+                document.getElementById('role').innerHTML = results.employee.roleId > 1 ? 'Manager' : 'Employee';
+                document.getElementById('employeeId').innerHTML = results.employee.employeeId;
+                
+                //get manager info
+                if(results.employee.managerId)
+                    getRequest(employeeUrl + '?employee_id=' + results.employee.managerId, displayWorkInformation);
+
+                //get credential info
+                getRequest(credentialUrl, displayCredentialInformation);
+            }
+
+            function displayWorkInformation(xhr) {
+                let results = JSON.parse(xhr.response);
+                document.getElementById('manager').innerHTML = results.employee.firstName + ' ' + results.employee.lastName;
+            }
+
+            function displayCredentialInformation(xhr) {
+                let results = JSON.parse(xhr.response);
+                document.getElementById('username').innerHTML = results.credential.username;
+                document.getElementById('password').innerHTML = "*".repeat(results.credential.password.length);
+            }
+            
+            
+            let editButtons = document.getElementsByClassName('btn-edit');
+            for(button of editButtons) {
+            	button.addEventListener('click', displayModal);
+            }
+            
+            function displayModal(event) {
+            	let editType = event.target.getAttribute('data-edit');
+                if(editType == 'credentials')
+                    displayCredentialForm();
+                if(editType == 'employees')
+                    displayEmployeeForm();
+            }
+            
+            function displayCredentialForm() {
+
+                 
+                console.log("trying to display credentials");
+                //get data
+                getRequest(credentialUrl, function (xhr) {
+
+                    let results = JSON.parse(xhr.response);
+                 console.log(results);
+
+                    console.log("i got the data");
+                    //display data
+                    document.getElementById('edit-modal-title').innerHTML = "Edit Credentials";
+                    document.getElementById('edit-modal-content').appendChild = 
+                    `
+                    <form id="edit-form" action="./api/credentials" method="post">
+                        <div class="form-group">
+                        <input type="text" name="username" value="${results.credential.username}" hidden>
+                        <label>Old password</label>
+                        <input type="password" name="password">
+                        <label>New password</label>
+                        <input type="password" name="new_password">
+                        <label>Confirm new password</label>
+                        <input type="password" name="new_password_confirm">
+                    </div>
+                    <button class="btn btn-primary" name="action" value="update" >Submit</button>
+                    </form>`;
+
+                    //display form
+                    let modal = document.getElementById('edit-modal');
+                    modal.style.display = "block";
+                    document.getElementById('close-modal').addEventListener('click', function(){
+                        modal.style.display = "none";
+                    });
+                });
+            }
+
+            function displayEmployeeForm() {        
+                console.log("trying to display employee info");
+                //get data
+                let empId = document.getElementById('employeeId').innerText;
+                getRequest(employeeUrl + "?employee_id=" + empId, function (xhr) {
+
+                let results = JSON.parse(xhr.response);
+                console.log(results);
+
+                    console.log("i got the data");
+                    //display data
+                    document.getElementById('edit-modal-title').innerHTML = "Edit Employee";
+                    document.getElementById('edit-modal-content').innerHTML = 
+                    `
+                    <form id="edit-form" action="./api/employees" method="post">
+                        <div class="form-group">
+                        <input type="text" name="employee_id" value="${empId}" hidden>
+                        <label>FirstName</label>
+                        <input type="text" name="first_name">
+                        <label>New password</label>
+                        <input type="text" name="last_name">
+                        <label>Confirm new password</label>
+                        <input type="email" name="email">
+                    </div>
+                    <button class="btn btn-primary" name="action" value="update" >Submit</button>
+                    </form>`;
+
+                    //display form
+                    let modal = document.getElementById('edit-modal');
+                    modal.style.display = "block";
+                    document.getElementById('close-modal').addEventListener('click', function(){
+                        modal.style.display = "none";
+                    });
+                });
+                }
+            
+
+        };
+    </script>
+</body>
+</html>

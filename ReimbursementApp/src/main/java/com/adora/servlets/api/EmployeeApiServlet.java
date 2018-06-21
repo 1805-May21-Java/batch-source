@@ -1,9 +1,8 @@
-package com.adora.servlets;
+package com.adora.servlets.api;
 
-import static org.hamcrest.CoreMatchers.not;
+
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -17,23 +16,10 @@ import com.adora.managers.SessionManager;
 import com.adora.pojos.Employee;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-/**
- * Servlet implementation class EmployeeApiServlet
- */
+
 public class EmployeeApiServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public EmployeeApiServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		EmployeeDao edi = new EmployeeDaoImpl();
 		Boolean profile = false;
@@ -64,19 +50,26 @@ public class EmployeeApiServlet extends HttpServlet {
 			// if not employee id	
 			List<Employee> employeeList = edi.getEmployees();
 			employeeStr = om.writeValueAsString(employeeList);
-			employeeStr = "{\"employee\":" + employeeStr + "}";
+			employeeStr = "{\"employees\":" + employeeStr + "}";
 		}
 		
 		response.getWriter().write(employeeStr);
 		
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		String action = request.getParameter("action");
+		
+		if(action.equals("update")) {
+			String employeeId = request.getParameter("employee_id");
+			String firstName = request.getParameter("first_name");
+			String lastName = request.getParameter("last_name");
+			String email = request.getParameter("email");
+			
+			System.out.println(employeeId + " " + firstName + lastName + " " + email);
+			
+		}
 	}
 
 }

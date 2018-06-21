@@ -5,7 +5,7 @@
     <description></description>
     <display-name>HomeServlet</display-name>
     <servlet-name>HomeServlet</servlet-name>
-    <servlet-class>com.adora.servlets.HomeServlet</servlet-class>
+    <servlet-class>com.adora.servlets.views.HomeServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>HomeServlet</servlet-name>
@@ -16,7 +16,7 @@
     <description></description>
     <display-name>LoginServlet</display-name>
     <servlet-name>LoginServlet</servlet-name>
-    <servlet-class>com.adora.servlets.LoginServlet</servlet-class>
+    <servlet-class>com.adora.servlets.views.LoginServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>LoginServlet</servlet-name>
@@ -26,7 +26,7 @@
     <description></description>
     <display-name>NewRequestServlet</display-name>
     <servlet-name>NewRequest</servlet-name>
-    <servlet-class>com.adora.servlets.NewRequestServlet</servlet-class>
+    <servlet-class>com.adora.servlets.views.NewRequestServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>NewRequest</servlet-name>
@@ -34,29 +34,9 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>RequestApiServlet</display-name>
-    <servlet-name>RequestApiServlet</servlet-name>
-    <servlet-class>com.adora.servlets.RequestApiServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>RequestApiServlet</servlet-name>
-    <url-pattern>/api/requests</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>RequestServlet</display-name>
-    <servlet-name>RequestServlet</servlet-name>
-    <servlet-class>com.adora.servlets.RequestServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>RequestServlet</servlet-name>
-    <url-pattern>/requests</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
     <display-name>LogoutServlet</display-name>
     <servlet-name>LogoutServlet</servlet-name>
-    <servlet-class>com.adora.servlets.LogoutServlet</servlet-class>
+    <servlet-class>com.adora.servlets.views.LogoutServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>LogoutServlet</servlet-name>
@@ -66,7 +46,7 @@
     <description></description>
     <display-name>ProfileServlet</display-name>
     <servlet-name>ProfileServlet</servlet-name>
-    <servlet-class>com.adora.servlets.ProfileServlet</servlet-class>
+    <servlet-class>com.adora.servlets.views.ProfileServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ProfileServlet</servlet-name>
@@ -74,9 +54,29 @@
   </servlet-mapping>
   <servlet>
     <description></description>
+    <display-name>RequestServlet</display-name>
+    <servlet-name>RequestServlet</servlet-name>
+    <servlet-class>com.adora.servlets.views.RequestServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RequestServlet</servlet-name>
+    <url-pattern>/requests</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>RequestApiServlet</display-name>
+    <servlet-name>RequestApiServlet</servlet-name>
+    <servlet-class>com.adora.servlets.api.RequestApiServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RequestApiServlet</servlet-name>
+    <url-pattern>/api/requests</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
     <display-name>EmployeeApiServlet</display-name>
     <servlet-name>EmployeeApiServlet</servlet-name>
-    <servlet-class>com.adora.servlets.EmployeeApiServlet</servlet-class>
+    <servlet-class>com.adora.servlets.api.EmployeeApiServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>EmployeeApiServlet</servlet-name>
@@ -86,10 +86,20 @@
     <description></description>
     <display-name>CredentialApiServlet</display-name>
     <servlet-name>CredentialApiServlet</servlet-name>
-    <servlet-class>com.adora.servlets.CredentialApiServlet</servlet-class>
+    <servlet-class>com.adora.servlets.api.CredentialApiServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>CredentialApiServlet</servlet-name>
     <url-pattern>/api/credentials</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>EmployeeServlet</display-name>
+    <servlet-name>EmployeeServlet</servlet-name>
+    <servlet-class>com.adora.servlets.views.EmployeeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EmployeeServlet</servlet-name>
+    <url-pattern>/employees</url-pattern>
   </servlet-mapping>
 </web-app>

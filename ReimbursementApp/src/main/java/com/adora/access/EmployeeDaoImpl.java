@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.sql.ResultSet;
 
-import com.adora.pojos.Credential;
 import com.adora.pojos.Employee;
 import com.adora.utils.ConnectionUtil;
 
@@ -16,7 +15,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
 	@Override
 	public List<Employee> getEmployees() {
-		List<Employee> employeeList = new ArrayList();
+		List<Employee> employeeList = new ArrayList<Employee>();
 		
 		try(Connection connection = ConnectionUtil.getConnection()) {
 			String sql = "SELECT * FROM employee";

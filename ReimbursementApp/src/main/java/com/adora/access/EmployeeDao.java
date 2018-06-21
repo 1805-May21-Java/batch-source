@@ -2,7 +2,6 @@ package com.adora.access;
 
 import java.util.List;
 
-import com.adora.pojos.Credential;
 import com.adora.pojos.Employee;
 
 public interface EmployeeDao {

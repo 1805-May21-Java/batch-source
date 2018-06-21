@@ -58,6 +58,24 @@ public class CredentialDaoImpl implements CredentialDao {
 		return credential;
 	}
 
+	@Override
+	public int updateCredentials(Credential credential) {
+		int result = 0;
+		try(Connection connection = ConnectionUtil.getConnection()) {
+			String sql = "UPDATE credential SET user_pass=? WHERE user_name=? AND employee_id=?";
+			PreparedStatement ps = connection.prepareStatement(sql);
+			ps.setString(1, credential.getPassword());
+			ps.setString(2, credential.getUsername());
+			ps.setInt(3, credential.getEmployee_id());
+			
+			result = ps.executeUpdate();
+			
+		} catch (SQLException | IOException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
 	
 
 }

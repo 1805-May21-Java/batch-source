@@ -9,4 +9,7 @@ public interface CredentialDao {
 	public Credential checkCredentials(Credential credential);
 	
 	public Credential getCredentials(int employeeId);
+	
+	//change credential (password)
+	public int updateCredentials(Credential credential);
 }	

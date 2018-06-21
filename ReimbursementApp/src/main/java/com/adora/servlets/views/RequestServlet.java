@@ -1,4 +1,6 @@
-package com.adora.servlets;
+package com.adora.servlets.views;
+
+
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,33 +10,25 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.adora.managers.SessionManager;
 
-/**
- * Servlet implementation class LogoutServlet
- */
-public class LogoutServlet extends HttpServlet {
+
+
+public class RequestServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public LogoutServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		SessionManager.logout(request);
-		response.sendRedirect("login");
+		response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+		// employee requests
+		if(SessionManager.isManager(request)) {
+			System.out.println(SessionManager.getEmployeeId(request));
+			request.getRequestDispatcher("/view/manager/requests.html").forward(request, response);
+		} else {
+			request.getRequestDispatcher("/view/employee/requests.html").forward(request, response);
+		}
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 	}
 
 }

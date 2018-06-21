@@ -2,22 +2,24 @@ package com.adora.access;
 
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.Date;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
-import java.util.Calendar;
+
 import java.util.List;
 
 import com.adora.pojos.Request;
 import com.adora.utils.ConnectionUtil;
 
+
 public class RequestDaoImpl implements RequestDao{
 
 	@Override
 	public List<Request> getAllRequests(int employeeId) {
-List<Request> requestList = new ArrayList();
+		List<Request> requestList = new ArrayList<Request>();
 		
 		try(Connection connection = ConnectionUtil.getConnection()) {
 			String sql = "SELECT * FROM request WHERE employee_id <> ?";
@@ -55,7 +57,7 @@ List<Request> requestList = new ArrayList();
 		List<Request> requestList = new ArrayList<Request>();
 		
 		try(Connection connection = ConnectionUtil.getConnection()) {
-			String sql = "SELECT * FROM request WHERE employee_id = ?";
+			String sql = "SELECT * FROM request WHERE employee_id = ? ORDER BY date_submitted DESC";
 			PreparedStatement ps = connection.prepareStatement(sql);
 			ps.setInt(1, employeeId);
 			ResultSet results = ps.executeQuery();
@@ -87,16 +89,14 @@ List<Request> requestList = new ArrayList();
 	}
 
 	@Override
-	public Request getRequestById(int requestId) {
-		Request request = null;
+	public Request getRequest(Request request) {
 			try(Connection connection = ConnectionUtil.getConnection()) {
 				String sql = "SELECT * FROM request WHERE request_id = ?";
 				PreparedStatement ps = connection.prepareStatement(sql);
-				ps.setInt(1, requestId);
+				ps.setInt(1, request.getRequestId());
 				ResultSet  results = ps.executeQuery();
 				
 				while(results.next()) {
-					request = new Request();
 					request.setRequestId(results.getInt("request_id"));
 					request.setEmployeeId(results.getInt("employee_id"));
 					request.setManagerId(results.getInt("manager_id"));
@@ -112,13 +112,12 @@ List<Request> requestList = new ArrayList();
 				e.printStackTrace();
 			}
 		
-		
 		return request;
 	}
 
 	@Override
 	public List<Request> getAllRequestsByManager(int managerId) {
-		List<Request> requestList = new ArrayList();
+		List<Request> requestList = new ArrayList<Request>();
 		
 		try(Connection connection = ConnectionUtil.getConnection()) {
 			String sql = "SELECT * FROM request WHERE manager_id = ? and employee_id <> ?";
@@ -160,7 +159,12 @@ List<Request> requestList = new ArrayList();
 			PreparedStatement ps = connection.prepareStatement(sql);
 			ps.setInt(1, 0);
 			ps.setInt(2, request.getEmployeeId());
-			ps.setInt(3, request.getManagerId());
+			
+			if(request.getManagerId() != 0)
+				ps.setInt(3, request.getManagerId());
+			else 
+				ps.setNull(3, Types.INTEGER);
+			
 			ps.setDouble(4, request.getRequestedAmount());
 			ps.setInt(5, request.getStatus());
 			ps.setDate(6, request.getDateSubmitted());
@@ -176,21 +180,17 @@ List<Request> requestList = new ArrayList();
 		return result;
 	}
 
-	@Override
-	public List<Request> getAllPendingRequests() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
-	public List<Request> getAllPendingRequestsByManager(int managerId) {
-		List<Request> requestList = new ArrayList();
+	public List<Request> getAllStatusRequestsByManager(int managerId, int status) {
+		List<Request> requestList = new ArrayList<Request>();
 		
 		try(Connection connection = ConnectionUtil.getConnection()) {
-			String sql = "SELECT * FROM request WHERE manager_id = ? and employee_id <> ? and status = 1";
+			String sql = "SELECT * FROM request WHERE manager_id = ? and employee_id <> ? and status = ?";
 			PreparedStatement ps = connection.prepareStatement(sql);
 			ps.setInt(1, managerId);
 			ps.setInt(2, managerId);
+			ps.setInt(3,  status);
 			
 			ResultSet results = ps.executeQuery();
 			while(results.next()) {
@@ -216,13 +216,14 @@ List<Request> requestList = new ArrayList();
 	}
 
 	@Override
-	public List<Request> getAllPendingRequestsByEmployee(int employeeId) {
-		List<Request> requestList = new ArrayList();
+	public List<Request> getAllStatusRequestsByEmployee(int employeeId, int status) {
+		List<Request> requestList = new ArrayList<Request>();
 		
 		try(Connection connection = ConnectionUtil.getConnection()) {
-			String sql = "SELECT * FROM request WHERE employee_id = ? and status = 1";
+			String sql = "SELECT * FROM request WHERE employee_id = ? and status = ?";
 			PreparedStatement ps = connection.prepareStatement(sql);
 			ps.setInt(1, employeeId);
+			ps.setInt(2,  status);
 			
 			
 			ResultSet results = ps.executeQuery();
@@ -249,44 +250,28 @@ List<Request> requestList = new ArrayList();
 	}
 
 
-	public int approveRequest(int requestId, int managerId, double requestAmount) {
-		int result = 0;
+
+	@Override
+	public int updateRequest(Request request) {
 		
-		try(Connection connection = ConnectionUtil.getConnection()) {
-			String sql = "UPDATE request SET status=2, manager_id=?, approved_amount=?, date_approved=? WHERE request_id=? ";
-			PreparedStatement ps = connection.prepareStatement(sql);
-			ps.setInt(1, managerId);
-			ps.setDouble(2, requestAmount);
-			ps.setDate(3, new Date(Calendar.getInstance().getTimeInMillis()));
-			ps.setInt(4, requestId);
+		int result = 0;
+		try (Connection connection = ConnectionUtil.getConnection()) {
+			String sql = "UPDATE request SET approved_amount=?, date_approved=?, status=? WHERE request_id=? ";
+			PreparedStatement pStatement = connection.prepareStatement(sql);
+			pStatement.setDouble(1, request.getApprovedAmount());
+			pStatement.setDate(2, request.getDateApproved());
+			pStatement.setInt(3, request.getStatus());
+			pStatement.setInt(4, request.getRequestId());
 			
-			result = ps.executeUpdate();
-			System.out.println("Approved");
+			result = pStatement.executeUpdate();
 			
 		} catch (SQLException | IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		return result;
+		return result;		
 	}
-	
-	public int denyRequest(int requestId, int managerId) {
-		int result = 0;
-		
-		try(Connection connection = ConnectionUtil.getConnection()) {
-			String sql = "UPDATE request SET status=3, manager_id=?, approved_amount=0, date_approved=? WHERE request_id=?";
-			PreparedStatement ps = connection.prepareStatement(sql);
-			ps.setInt(1, managerId);
-			ps.setDate(2, new Date(Calendar.getInstance().getTimeInMillis()));
-			ps.setInt(3, requestId);
-			
-			result = ps.executeUpdate();
-			
-			
-		} catch (SQLException | IOException e) {
-			e.printStackTrace();
-		}
-		
-		return result;
-	}
+
+
 }

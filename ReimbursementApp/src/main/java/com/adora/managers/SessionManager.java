@@ -6,7 +6,6 @@ import javax.servlet.http.HttpSession;
 import com.adora.access.EmployeeDaoImpl;
 import com.adora.pojos.Credential;
 import com.adora.pojos.Employee;
-import com.adora.pojos.Request;
 
 public class SessionManager {
 
