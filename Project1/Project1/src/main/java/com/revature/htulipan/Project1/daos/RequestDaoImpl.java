@@ -171,6 +171,29 @@ public class RequestDaoImpl implements RequestDao {
 		return results;
 	}
 
+	@Override
+	public int createRequest(int eid, float amount, String text, int status) {
+		String sql = "INSERT INTO REQUEST (EMPLOYEEID, AMOUNT, REQUESTTEXT, STATUS) VALUES (?, ?, ?, ?)";
+		
+		int result = 0;
+		try {
+			Connection conn = ConnectionUtil.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1,  eid);
+			ps.setFloat(2,  amount);
+			ps.setString(3,  text);
+			ps.setInt(4,  status);
+			result = ps.executeUpdate();
+		} catch (SQLException se) {
+			System.out.println(se.getMessage());
+			return 0;
+		} catch (IOException ioe) {
+			System.out.println(ioe.getMessage());
+			return 0;
+		}
+		return result;
+	}
+
 }
 
 

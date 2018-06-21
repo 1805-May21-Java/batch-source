@@ -33,12 +33,12 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>RequestsServlet</display-name>
-    <servlet-name>RequestsServlet</servlet-name>
-    <servlet-class>com.revature.htulipan.Project1.servlets.RequestsServlet</servlet-class>
+    <display-name>RequestServlet</display-name>
+    <servlet-name>RequestServlet</servlet-name>
+    <servlet-class>com.revature.htulipan.Project1.servlets.RequestServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>RequestsServlet</servlet-name>
+    <servlet-name>RequestServlet</servlet-name>
     <url-pattern>/requests</url-pattern>
   </servlet-mapping>
   <servlet>
@@ -70,5 +70,25 @@
   <servlet-mapping>
     <servlet-name>LogoutServlet</servlet-name>
     <url-pattern>/logout</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>EmployeeQueryServlet</display-name>
+    <servlet-name>EmployeeQueryServlet</servlet-name>
+    <servlet-class>com.revature.htulipan.Project1.servlets.EmployeeQueryServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EmployeeQueryServlet</servlet-name>
+    <url-pattern>/employeequery</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>RequestQueryServlet</display-name>
+    <servlet-name>RequestQueryServlet</servlet-name>
+    <servlet-class>com.revature.htulipan.Project1.servlets.RequestQueryServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RequestQueryServlet</servlet-name>
+    <url-pattern>/requestquery</url-pattern>
   </servlet-mapping>
 </web-app>

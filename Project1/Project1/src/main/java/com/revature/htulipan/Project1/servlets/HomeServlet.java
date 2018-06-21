@@ -17,13 +17,18 @@ public class HomeServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		
-		HttpSession session = req.getSession(false);
-		if (session == null || session.getAttribute("employeeId") == null ) {
-			System.out.println("Redirecting to login.");
-			res.sendRedirect("login");
+		int id = 0;
+		try {
+			HttpSession session = req.getSession(false);
+			if (session == null || session.getAttribute("employeeId") == null) {
+				throw new NullPointerException();
+			}
+
+			id = (Integer) session.getAttribute("employeeId");
+		} catch (NullPointerException npe) {
+			res.sendRedirect("logout");
 		}
 		
-		int id = (Integer) session.getAttribute("employeeId");
 		PrintWriter pw = res.getWriter();
 		ClassLoader cl = getClass().getClassLoader();
 		File html = new File(cl.getResource("templates/Home.html").getFile());

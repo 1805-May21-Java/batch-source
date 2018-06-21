@@ -69,7 +69,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 				dob = rs.getDate("DOB");
 				phone = rs.getLong("PHONE");
 				em = rs.getString("EMAIL");
-				man = (rs.getInt("MANAGER") < 0);
+				man = (rs.getInt("MANAGER") > 0);
 				eid = rs.getInt("EMPLOYEEID");
 			}
 			if (un == null || eid < 1) return null;
@@ -124,7 +124,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 						rs.getDate("DOB"),
 						rs.getLong("PHONE"),
 						rs.getString("EMAIL"),
-						(rs.getInt("MANAGER") < 0),
+						(rs.getInt("MANAGER") > 0),
 						rs.getInt("EMPLOYEEID")));
 			}
 		} catch (SQLException se) {

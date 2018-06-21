@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.htulipan.Project1.daos.EmployeeDaoImpl;
 import com.revature.htulipan.Project1.daos.RequestDaoImpl;
 import com.revature.htulipan.Project1.pojos.Employee;
@@ -93,7 +95,7 @@ public class TestingDriver {
 		/*
 		 * Get one request by its id.
 		 */
-		RequestDaoImpl rdi = new RequestDaoImpl();
+//		RequestDaoImpl rdi = new RequestDaoImpl();
 		
 //		Request test = rdi.getRequestById(3);
 //		System.out.println(test);
@@ -136,6 +138,8 @@ public class TestingDriver {
 //			System.out.println(r);
 //		}
 //		System.out.println(count);
+		
+	
 	}
 	
 }

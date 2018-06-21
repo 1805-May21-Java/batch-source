@@ -1,16 +1,43 @@
 #box {
-  background-color: #B7B0B7;
-  width: 25%;
+  background-color: #FAFAFA;
+  width: 80%;
   height: auto;
   margin-right: auto;
   margin-left: auto;
   margin-top: 50px;
   padding: 10px 5px 10px 5px;
-  border-radius: 10px;
+  border-radius: 5px;
+}
+
+.homeLink {
+	text-align: center;
+	width: 90%;
+	margin-bottom: 5px;
+}
+
+.navBar {
+	text-align: right;
+}
+
+.navLink {
+	text-align: center;
+	margin-bottom: 5px;
+}
+
+.centered {
+	text-align: center;
+}
+
+.light {
+	background-color: #FDFDFD;
+}
+
+#newRequest {
+	padding: 5px;
 }
 
 #loginform {
-	width: 80%;
+	width: 25%;
 	height: auto;
 	margin-right: auto;
 	margin-left: auto;
@@ -19,6 +46,6 @@
 }
 
 body {
-  background-color: #DADADA;
+  background-color: #2A1A6A;
 }
 

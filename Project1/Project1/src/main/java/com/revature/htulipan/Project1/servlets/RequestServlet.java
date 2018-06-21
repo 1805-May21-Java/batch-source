@@ -14,14 +14,15 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.revature.htulipan.Project1.daos.EmployeeDaoImpl;
+import com.revature.htulipan.Project1.daos.RequestDaoImpl;
 import com.revature.htulipan.Project1.pojos.Employee;
+import com.revature.htulipan.Project1.pojos.Request;
 
-public class ProfileServlet extends HttpServlet {
+public class RequestServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		
 		int id = 0;
 		try {
 			HttpSession session = req.getSession(false);
@@ -36,7 +37,7 @@ public class ProfileServlet extends HttpServlet {
 		
 		PrintWriter pw = res.getWriter();
 		ClassLoader cl = getClass().getClassLoader();
-		File html = new File(cl.getResource("templates/Profile.html").getFile());
+		File html = new File(cl.getResource("templates/Requests.html").getFile());
 		writeHtml(pw, html, id);
 	}
 	
@@ -54,8 +55,9 @@ public class ProfileServlet extends HttpServlet {
 			res.sendRedirect("logout");
 		}
 		
-		EmployeeDaoImpl edi = new EmployeeDaoImpl();
-		Employee emp = edi.getEmployeeById(id);
+		RequestDaoImpl rdi = new RequestDaoImpl();
+		float amount = 0.0f;
+		String text = "";
 		try {
 			Enumeration<String> paramNames = req.getParameterNames();
 			while (paramNames.hasMoreElements()) {
@@ -64,34 +66,23 @@ public class ProfileServlet extends HttpServlet {
 				if (value.equals(""))
 					continue;
 				switch (name) {
-				case "firstname":
-					emp.setFirstname(value);
+				case "amount":
+					amount = Float.parseFloat(value);
 					break;
-				case "lastname":
-					emp.setLastname(value);
-					break;
-				case "dob":
-					Date dob = Date.valueOf(value);
-					emp.setDob(dob);
-					break;
-				case "phone":
-					long phone = Long.parseLong(value);
-					emp.setPhone(phone);
-					break;
-				case "email":
-					emp.setEmail(value);
+				case "requesttext":
+					text = value;
 					break;
 				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("Redirecting to profile.");
-			res.sendRedirect("profile");
+			res.sendRedirect("requests");
 			return;
 		}
 
-		edi.updateEmployee(emp);
-		res.sendRedirect("profile");
+		rdi.createRequest(id, amount, text, 0);
+		res.sendRedirect("requests");
 	}
 	
 	private void writeHtml(PrintWriter pw, File html, int id) throws IOException {
