@@ -99,4 +99,54 @@
     <servlet-name>GetApprovedReimbursementById</servlet-name>
     <url-pattern>/GetApprovedReimbursementById</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetAllReimbursement</display-name>
+    <servlet-name>GetAllReimbursement</servlet-name>
+    <servlet-class>servlets.GetAllReimbursement</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetAllReimbursement</servlet-name>
+    <url-pattern>/GetAllReimbursement</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UpdateRequestServlet</display-name>
+    <servlet-name>UpdateRequestServlet</servlet-name>
+    <servlet-class>servlets.UpdateRequestServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateRequestServlet</servlet-name>
+    <url-pattern>/UpdateRequestServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetAllEmployees</display-name>
+    <servlet-name>GetAllEmployees</servlet-name>
+    <servlet-class>servlets.GetAllEmployees</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetAllEmployees</servlet-name>
+    <url-pattern>/GetAllEmployees</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>NewReimbursement</display-name>
+    <servlet-name>NewReimbursement</servlet-name>
+    <servlet-class>servlets.NewReimbursement</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>NewReimbursement</servlet-name>
+    <url-pattern>/NewReimbursement</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UpdateEmployee</display-name>
+    <servlet-name>UpdateEmployee</servlet-name>
+    <servlet-class>servlets.UpdateEmployee</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateEmployee</servlet-name>
+    <url-pattern>/UpdateEmployee</url-pattern>
+  </servlet-mapping>
 </web-app>

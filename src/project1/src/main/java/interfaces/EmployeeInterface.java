@@ -14,6 +14,7 @@ public interface EmployeeInterface {
 	Employee getEmployeeByName(Connection connection, String username) throws SQLException;
 	void updateEmployeePassword(Connection connection, long employeeId, String newPassword) throws SQLException;
 	void updateEmployeeUsername(Connection connection, long employeeId, String username) throws SQLException;
+	void updateEmployee(Connection connection, long employeeId, String username, String newPassword, String name) throws SQLException;
 	ArrayList<Employee> getAllEmployee(Connection connection) throws SQLException;
 	ArrayList<Employee> getAllSubordinates(Connection connection) throws SQLException;
 }

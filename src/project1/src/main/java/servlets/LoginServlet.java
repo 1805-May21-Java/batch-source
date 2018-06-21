@@ -39,11 +39,11 @@ public class LoginServlet extends HttpServlet {
 		System.out.println("Enter doGet");
 		HttpSession session = request.getSession(false);
 //		session.invalidate();
-		if(session == null) {
+//		if(session.getAttribute("username") == null) {
 			request.getRequestDispatcher("index.html").forward(request, response);
-		} else {
-			request.getRequestDispatcher("homepage.html").forward(request, response);
-		}
+//		} else {
+//			request.getRequestDispatcher("homepage.html").forward(request, response);
+//		}
 
 	}
 

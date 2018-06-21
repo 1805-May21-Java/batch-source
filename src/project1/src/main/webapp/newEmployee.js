@@ -15,13 +15,14 @@ function sendAjaxGet(url, func){
 
 function populateUser(xhr){
 	let response = JSON.parse(xhr.response);
-	console.log(response[0]);
-	var option = document.createElement("option");
+	console.log(response.length);
 	var managerSelect = document.getElementById("managerSelect");
 	if ( response != "null" ){
 		for(i = 0; i<response.length; i++){
+			console.log(response[i]);
+			var option = document.createElement("option");
 			option.value=response[i].employeeId;
-			option.text=response[i].employeeName;
+			option.text=response[i].employeeName + " (" + response[i].username + ")";
 			managerSelect.add(option,null);
 		}
 	} 

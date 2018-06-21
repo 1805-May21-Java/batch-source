@@ -54,7 +54,7 @@ public class DatabaseConnectionTest {
 		long reimbursementId = 1;
 		Reimbursement reimbursement = reimbursementDao.getReimbursementById(connection.getConnection(), reimbursementId);
 		if(reimbursement == null) {
-			reimbursementDao.createReimbursement(connection.getConnection(), reimbursementId, 1, 10.12, 0, "reason", 1);
+			reimbursementDao.createReimbursement(connection.getConnection(), 1, 10.12, 0, "reason", 1);
 			reimbursement = reimbursementDao.getReimbursementById(connection.getConnection(), reimbursementId);
 		}
 

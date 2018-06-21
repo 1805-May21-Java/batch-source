@@ -1,13 +1,13 @@
 package data;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Reimbursement {
-	long reimbursementId, employeeId, managerId;
-	double reimbursementValue;
-	String reimbursementReason;
-	int status; //=>2 is resolved, 1 is denied, 0 is pending
-	Date date;
+	private long reimbursementId, employeeId, managerId;
+	private double reimbursementValue;
+	private String reimbursementReason;
+	private int status; //=>2 is resolved, 1 is denied, 0 is pending
+	private Date date;
 	
 	public Reimbursement(long reimbursementId, long employeeId, double reimbursementValue, long managerId, String reimbursementReason, int status, Date date){
 		this.reimbursementId = reimbursementId;
@@ -24,6 +24,7 @@ public class Reimbursement {
 		this.reimbursementValue = reimbursementValue;
 		this.reimbursementReason = reimbursementReason;
 		this.status = status;
+		this.date = date;
 	}
 	
 	public long getReimbursementId() {
@@ -32,10 +33,10 @@ public class Reimbursement {
 	public void setReimbursementId(long reimbursementId) {
 		this.reimbursementId = reimbursementId;
 	}
-	public long getEmployeId() {
+	public long getEmployeeId() {
 		return employeeId;
 	}
-	public void setEmployeId(long employeId) {
+	public void setEmployeeId(long employeId) {
 		this.employeeId = employeId;
 	}
 	public double getReimbursementValue() {

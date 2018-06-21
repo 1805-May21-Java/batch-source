@@ -12,32 +12,60 @@
 </head>
 
 <body class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">ERS</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="homepage.html">Home
+                        
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="profile.html">Profile<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Reimbursements
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="viewReimbursement.html">View Reimbursements</a>
+                        <a class="dropdown-item" href="SubmitReimbursement.html">Submit Reimbursement</a>
+                        <!-- <a class="dropdown-item" href="#">Resolve Reimbursements</a> -->
+                    </div>
+                </li>
+                <!-- <li class="nav-item">
+                    <a class="nav-link" href="#">Settings</a>
+                </li> -->
+                <li class="nav-item">
+                    <a class="nav-link" href="LogoutServlet">Log Out</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
     <div class="jumbotron container">
         <div class="row" align="center">
             <div class="col span3"></div>
-            <form class="col span6" name="nameFormGroup">
+            <form class="col span6" action="UpdateEmployee" method="post" name="nameFormGroup">
                 <label>Name: </label>
-                <input class="form-control" name="nameForm">
-            </form>
-            <div class="col span3"></div>
-        </div>
-        <div class="row" align="center">
-            <div class="col span3"></div>
-            <form class="col span6" name="usernameFormGroup">
+                <input class="form-control" type="text" name="nameForm" id="nameForm">
                 <label>Username: </label>
-                <input class="form-control" name="usernameForm">
-            </form>
-            <div class="col span3"></div>
-        </div>
-        <div class="row" align="center">
-            <div class="col span3"></div>
-            <form class="col span6" name="passwordFormGroup">
+                <input class="form-control" type="text" name="usernameForm" id="usernameForm">
                 <label>Password: </label>
-                <input class="form-control" name="passwordForm">
+                <input class="form-control" type="password" name="passwordForm" id="passwordForm">
+                <label>Confirm Password: </label>
+                <input class="form-control" type="password" name="confirmPasswordForm" id="confirmPasswordForm">
+                <br>
+                <button class="btn btn-primary" type="submit">Update</button>
             </form>
             <div class="col span3"></div>
         </div>
     </div>
+    <script src="profile.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
