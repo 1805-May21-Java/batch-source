@@ -46,17 +46,54 @@ function displayRequests(xhr){
 	requests = JSON.parse(xhr.response)
 	requestsArr = requests.requests;
 	table = document.getElementById("table");
-	
-	for(i in requestsArr){
-		console.log(requestsArr[i]);
+
+	for(req of requestsArr){
+		
+		let reqId = req.id;
 		nextRow = document.createElement("tr");
-		nextRow.innerHTML = `<td> ${requestsArr[i].id} </td>
-		<td> ${requestsArr[i].title} </td>
-		<td> ${requestsArr[i].amount} </td>
-		<td> ${requestsArr[i].dateCreated} </td>`;
-		nextRow.setAttribute("scope","row");
+		nextRow.setAttribute("style", "background-color:lightgreen");
+		let cell1 = document.createElement("th");
+		let cell2 = document.createElement("td");
+		let cell3 = document.createElement("td");
+		let cell4 = document.createElement("td");
+		let cell5 = document.createElement("td");
+		let cell6 = document.createElement("td");
+		let cell7 = document.createElement("td");
+		let cell8 = document.createElement("td");
+		cell1.setAttribute("scope", "row");
+		cell1.innerHTML = reqId;
+		cell2.innerHTML = req.title;
+		cell3.innerHTML = "$" + req.amount.toFixed(2);
+		cell4.innerHTML = req.comments;
+		cell5.innerHTML = req.dateCreated;
+		cell6.innerHTML = req.dateApproved;
+		cell7.innerHTML = req.managerName;
+
+		// pending requests
+		if(req.dateApproved == null) {
+			nextRow.setAttribute("style", "background-color:lightsalmon");
+		}
+		
+		nextRow.appendChild(cell1);
+		nextRow.appendChild(cell2);
+		nextRow.appendChild(cell3);
+		nextRow.appendChild(cell4);
+		nextRow.appendChild(cell5);
+		nextRow.appendChild(cell6);
+		nextRow.appendChild(cell7);
 		table.appendChild(nextRow);
 	}
+	
+	// for(i in requestsArr){
+	// 	console.log(requestsArr[i]);
+	// 	nextRow = document.createElement("tr");
+	// 	nextRow.innerHTML = `<td> ${requestsArr[i].id} </td>
+	// 	<td> ${requestsArr[i].title} </td>
+	// 	<td> ${requestsArr[i].amount} </td>
+	// 	<td> ${requestsArr[i].dateCreated} </td>`;
+	// 	nextRow.setAttribute("scope","row");
+	// 	table.appendChild(nextRow);
+	// }
 	
 }
 
@@ -72,20 +109,3 @@ function displayRequests(xhr){
 //	}
 //}
 
-//sendAjaxGet("http://localhost:8082/ERSProject1/employee", displayEmployees);
-//
-//function displayEmployees(xhr){
-//	employees = JSON.parse(xhr.response);
-//	employeesArr = employees.employees;
-//	table = document.getElementById("table");
-//	
-//	for(i in employeesArr){
-//		nextRow = document.createElement("tr");
-//		nextRow.innerHTML = `<td> ${employeesArr[i].firstname} </td>
-//		<td> ${employeesArr[i].username} </td>
-//		<td> ${employeesArr[i].reportsto} </td>`;
-//		nextRow.setAttribute("scope","row");
-//		table.appendChild(nextRow);
-//	}
-//	
-//}

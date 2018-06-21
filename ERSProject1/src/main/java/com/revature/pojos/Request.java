@@ -13,14 +13,23 @@ public class Request {
 	private String comments;
 	private Date dateCreated;
 	private Date dateApproved;
+	private String managerName;
 	
 	public Request() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
+	public String getManagerName() {
+		return managerName;
+	}
+
+	public void setManagerName(String managerName) {
+		this.managerName = managerName;
+	}
+
 	public Request(int id, String imageURL, int employeeId, int managerId, String title, Double amount, String comments,
-			Date dateCreated, Date dateApproved) {
+			Date dateCreated, Date dateApproved, String managerName) {
 		super();
 		this.id = id;
 		this.imageURL = imageURL;
@@ -31,6 +40,7 @@ public class Request {
 		this.comments = comments;
 		this.dateCreated = dateCreated;
 		this.dateApproved = dateApproved;
+		this.managerName = managerName;
 	}
 
 	public int getId() {
@@ -117,6 +127,7 @@ public class Request {
 		result = prime * result + id;
 		result = prime * result + ((imageURL == null) ? 0 : imageURL.hashCode());
 		result = prime * result + managerId;
+		result = prime * result + ((managerName == null) ? 0 : managerName.hashCode());
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		return result;
 	}
@@ -161,6 +172,11 @@ public class Request {
 			return false;
 		if (managerId != other.managerId)
 			return false;
+		if (managerName == null) {
+			if (other.managerName != null)
+				return false;
+		} else if (!managerName.equals(other.managerName))
+			return false;
 		if (title == null) {
 			if (other.title != null)
 				return false;
@@ -173,7 +189,7 @@ public class Request {
 	public String toString() {
 		return "Request [id=" + id + ", imageURL=" + imageURL + ", employeeId=" + employeeId + ", managerId="
 				+ managerId + ", title=" + title + ", amount=" + amount + ", comments=" + comments + ", dateCreated="
-				+ dateCreated + ", dateApproved=" + dateApproved + "]";
+				+ dateCreated + ", dateApproved=" + dateApproved + ", managerName=" + managerName + "]";
 	}
 	
 	

@@ -24,9 +24,10 @@ public class SessionServlet extends HttpServlet {
 			pWriter.write("{\"username\":\"" + session.getAttribute("username") + "\", \"firstname\":\"" + 
 						session.getAttribute("firstname") + "\", \"lastname\":\"" + session.getAttribute("lastname") + 
 						"\", \"id\":\"" + session.getAttribute("id") + "\", \"email\":\"" + session.getAttribute("email") +
-						"\", \"password\":\"" + session.getAttribute("password") + "\", \"manager\":\"" + session.getAttribute("manager") + "\"}");
+						"\", \"password\":\"" + session.getAttribute("password") + "\", \"managerDash\":\"" + session.getAttribute("managerDash") + 
+						"\", \"manager\":\"" + session.getAttribute("manager") + "\"}");
 		} else {
-			pWriter.write("{\"user\": null, \"firstname\": null, \"lastname\": null, \"id\": null, \"email\": null, \"password\": null, \"manager\": null,}");
+			pWriter.write("{\"user\": null, \"firstname\": null, \"lastname\": null, \"id\": null, \"email\": null, \"password\": null, \"managerDash\": null, \"manager\": null,}");
 		}
 	}
 

@@ -2,6 +2,8 @@ package com.revature.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -10,10 +12,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.omg.PortableServer.REQUEST_PROCESSING_POLICY_ID;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.dao.EmployeeDaoImpl;
 import com.revature.dao.RequestDaoImpl;
-import com.revature.pojos.Employee;
 import com.revature.pojos.Request;
 
 public class RequestServlet extends HttpServlet{
@@ -61,25 +64,49 @@ public class RequestServlet extends HttpServlet{
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//doGet(request, response);
-		// get new reimbursement data
-		System.out.println("submitting request");
-		String title = request.getParameter("title");
-		double amount = Double.parseDouble(request.getParameter("amount"));
-		String comments = request.getParameter("comments");
-		
+		RequestDaoImpl requestDaoImpl = new RequestDaoImpl();
 		HttpSession session = request.getSession(false);
 		int id = (Integer) session.getAttribute("id"); // current user id
 		
-		RequestDaoImpl requestDaoImpl = new RequestDaoImpl();
 		
+		System.out.println(request.getParameterMap().keySet());
 		
-		// insert into Request database
-		if((title != null) && (amount > 0.00)) {
-			requestDaoImpl.createRequest(id, title, amount, comments);			
+		if (request.getParameter("title") != null) {
+			// create and insert new request
+			String title = request.getParameter("title");
+			double amount = Double.parseDouble(request.getParameter("amount"));
+			String comments = request.getParameter("comments");
+			
+			// insert into Request database
+			if((title != null) && (amount > 0.00)) {
+				requestDaoImpl.createRequest(id, title, amount, comments);			
+			}
+			
+			if (session.getAttribute("managerDash").toString().equals("inManager")) {
+				response.sendRedirect("manager");
+			} else {
+				response.sendRedirect("dashboard");
+			}
+			
+		} else if (request.getParameter("postAction") != null) {
+			// approve or deny request
+			int reqId = Integer.parseInt(request.getParameter("postValue"));
+			Request currentRequest = requestDaoImpl.getRequestById(reqId);
+			if (request.getParameter("postAction").equals("approve")) {
+				// approved!
+				Date currDate = Date.valueOf(LocalDate.now());
+				String managerName = session.getAttribute("firstname") + " " + session.getAttribute("lastname");
+				currentRequest.setDateApproved(currDate);
+				currentRequest.setManagerId(id);
+				currentRequest.setManagerName(managerName); 
+				requestDaoImpl.updateRequest(reqId, id, currDate, managerName);
+			} else {
+				// denied! which here just means delete
+				requestDaoImpl.deleteRequestById(reqId);
+			}
+			response.sendRedirect("manager");
 		}
-		
-		response.sendRedirect("dashboard");
+
 	}
 
 }

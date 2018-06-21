@@ -107,18 +107,16 @@ ADD date_approved DATE;
 
 -- create dummy request data
 INSERT INTO request (emp_id, title, amount, comments, date_created)
-VALUES ( 12, 'Cleaning supplies (various)', 967.60, 'Bat guano doesn''t clean itself Master Wayne.', CURRENT_TIMESTAMP);
-INSERT INTO request (emp_id, title, amount, comments, date_created)
-VALUES ( 11, 'Custom crafted katana (sharpened)', 200.00, 'Don''t worry, I won''t actually kill anyone with it. Maim on the other hand...', CURRENT_TIMESTAMP);
+VALUES ( 12, 'Cleaning supplies (various)', 967.60, 'Batcave doesn''t clean itself Master Wayne.', CURRENT_TIMESTAMP);
 INSERT INTO request (emp_id, title, amount, comments, date_created)
 VALUES ( 12, 'Travel expenses', 5200.55, 'Planes, trains, and automobiles, plus hotel expenses.', CURRENT_TIMESTAMP);
 INSERT INTO request (emp_id, title, amount, comments, date_created)
 VALUES ( 16, 'Reading body language online course', 85.00, 'The course comes with access codes for up to 10 people. Should be useful.', CURRENT_TIMESTAMP);
 INSERT INTO request (emp_id, title, amount, comments, date_created)
-VALUES ( 6, 'Work laptop', 2500.00, 'The work I am doing requires some pretty heavy processing power.', CURRENT_TIMESTAMP);
+VALUES ( 6, 'Work laptop', 2500.00, 'It is a very good laptop.', CURRENT_TIMESTAMP);
 
 ALTER TABLE employee
-DROP COLUMN phone;
+ADD manager_name VARCHAR(50);
 
 COMMIT;
 

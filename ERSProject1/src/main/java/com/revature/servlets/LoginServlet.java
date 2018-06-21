@@ -49,8 +49,10 @@ public class LoginServlet extends HttpServlet {
 				session.setAttribute("email", employee.getEmail());
 				session.setAttribute("password", pass);
 				if (employeeDaoImpl.isEmployeeManager(employee)) {
+					session.setAttribute("managerDash", "inManager");
 					response.sendRedirect("manager");
 				} else {
+					session.setAttribute("managerDash", "notManager");
 					response.sendRedirect("dashboard");
 				}
 				

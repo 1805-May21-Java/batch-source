@@ -61,7 +61,11 @@ public class EmployeeServlet extends HttpServlet{
 		
 		// make sure that unfilled fields don't change during update
 		if(newFirstname == "" && newLastname == "" && newEmail == "" && newUsername == "" && newPassword == "") {
-			response.sendRedirect("dashboard");
+			if (session.getAttribute("managerDash").equals("inManager")) {
+				response.sendRedirect("manager");
+			} else {
+				response.sendRedirect("dashboard");
+			}
 		} else {
 			if (newFirstname != "") {
 				session.setAttribute("firstname", newFirstname);
@@ -80,7 +84,13 @@ public class EmployeeServlet extends HttpServlet{
 			}
 			employeeDaoImpl.updateEmployee(id, session.getAttribute("firstname").toString(), session.getAttribute("lastname").toString(), 
 					session.getAttribute("email").toString(), session.getAttribute("username").toString(), session.getAttribute("password").toString());
-			response.sendRedirect("dashboard");
+			if (session.getAttribute("managerDash").toString().equals("inManager")) {
+				response.sendRedirect("manager");
+			} else {
+				response.sendRedirect("dashboard");
+			}
+			
+			
 		}
 	
 	}

@@ -1,6 +1,15 @@
+.jumbotron {
+  background-color: lightseagreen;
+}
+body {
+  background-color: lightseagreen;
+}
+a {
+  color: ghostwhite;
+}
 form {
 	margin:0 auto;
-	width:300px
+	width:300px;
   }
   input, select {
 	margin-bottom:3px;
