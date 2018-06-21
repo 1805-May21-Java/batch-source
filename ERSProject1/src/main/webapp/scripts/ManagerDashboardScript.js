@@ -15,7 +15,10 @@ sendAjaxGet("http://localhost:8082/ERSProject1/session", displayCurrentUser);
 function displayCurrentUser(xhr){
 	let response = JSON.parse(xhr.response);
 	if (response.username != "null") {
-		document.getElementById("user").innerHTML = "You are logged in as: " + response.fullname;
+		document.getElementById("user").innerHTML = "You are logged in as: " + response.firstname + " " + response.lastname + "(Manager)";
+		document.getElementById("card-name").innerHTML = response.firstname + " " + response.lastname;
+		document.getElementById("card-email").innerHTML = "Email: " + response.email;
+		document.getElementById("card-username").innerHTML = "Username: " + response.username;
 	} else {
 		window.location = "http://localhost:8082/ERSProject1/login";
 	}

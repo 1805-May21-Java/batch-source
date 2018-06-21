@@ -4,7 +4,6 @@ CREATE TABLE employee (
     last_name VARCHAR(50),
     reports_to NUMBER(5),
     email VARCHAR(50),
-    phone VARCHAR(50),
     emp_username VARCHAR(50),
     emp_password VARCHAR(50)
 );
@@ -118,6 +117,36 @@ VALUES ( 16, 'Reading body language online course', 85.00, 'The course comes wit
 INSERT INTO request (emp_id, title, amount, comments, date_created)
 VALUES ( 6, 'Work laptop', 2500.00, 'The work I am doing requires some pretty heavy processing power.', CURRENT_TIMESTAMP);
 
+ALTER TABLE employee
+DROP COLUMN phone;
+
 COMMIT;
+
+SELECT *
+FROM request
+WHERE emp_id=12;
+
+-- number of employees per manager
+SELECT COUNT(emp.emp_id) AS EmployeeCount, mng.ManagerName AS ManagerName
+FROM employee emp, 
+(SELECT DISTINCT e.emp_id AS ManagerId, e.first_name AS ManagerName
+FROM employee e, employee m
+WHERE e.emp_id = m.reports_to) mng
+WHERE emp.reports_to = mng.ManagerId
+GROUP BY mng.ManagerId, mng.ManagerName;
+
+
+SELECT *
+FROM employee tier1
+WHERE reports_to = 9
+OR EXISTS (SELECT *
+FROM employee tier2
+WHERE emp_id = tier1.reports_to
+AND (reports_to = 9
+OR EXISTS (SELECT *
+FROM employee tier3
+WHERE emp_id = tier2.reports_to
+AND reports_to = 9)));
+
 
 

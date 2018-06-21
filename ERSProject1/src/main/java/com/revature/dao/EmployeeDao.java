@@ -12,5 +12,6 @@ public interface EmployeeDao {
 	public boolean isEmployeeManager(Employee employee);
 	public void createEmployee(String firstname, String lastname, int reportsto, String email, String username, String password);
 	public void updateEmployee(int id, String firstname, String lastname, String email, String username, String password);
+	public List<Employee> getAllSubordinates(int id);
 	public int deleteEmployeeById(int id);
 }

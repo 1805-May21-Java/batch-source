@@ -31,6 +31,7 @@ public class RequestServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String idString = request.getParameter("id");
 		RequestDaoImpl requestDaoImpl = new RequestDaoImpl();
+		EmployeeDaoImpl employeeDaoImpl = new EmployeeDaoImpl();
 		ObjectMapper om = new ObjectMapper();
 		String requestString;
 
@@ -38,20 +39,25 @@ public class RequestServlet extends HttpServlet{
 		HttpSession session = request.getSession(false);
 		int id = (Integer) session.getAttribute("id"); // current user id
 		
-		
-		if (idString != null) {
-			System.out.println("what is idString?");
-			//int id = Integer.valueOf(idString);
-			List<Request> reqs = requestDaoImpl.getRequestsById(id);
-			requestString = om.writeValueAsString(reqs);
-		} else {
-			List<Request> myRequests = requestDaoImpl.getRequestsById(id);
-			requestString = om.writeValueAsString(myRequests);
+		if(employeeDaoImpl.isEmployeeManager(employeeDaoImpl.getEmployeeById(id))) {
+			List<Request> allRequests = requestDaoImpl.getRequests(); // get requests from all users
+			requestString = om.writeValueAsString(allRequests);
 			requestString = "{\"requests\":"+requestString+"}";
+		} else {
+			if (idString != null) {
+				System.out.println("what is idString?");
+				//int id = Integer.valueOf(idString);
+				List<Request> reqs = requestDaoImpl.getRequestsById(id);
+				requestString = om.writeValueAsString(reqs);
+			} else {
+				List<Request> myRequests = requestDaoImpl.getRequestsById(id);
+				requestString = om.writeValueAsString(myRequests);
+				requestString = "{\"requests\":"+requestString+"}";
+			}
 		}
-		
 		PrintWriter pWriter = response.getWriter();
 		pWriter.print(requestString);
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -208,6 +208,52 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		}
 	}
 
+	// get employees and employees of employees
+	public List<Employee> getAllSubordinates(int id) {
+		List<Employee> employeeList = new ArrayList<Employee>();
+		
+		try {
+			Connection con = ConnectionUtil.getConnection();
+			String sql = "SELECT *\n" + 
+					"FROM employee tier1\n" + 
+					"WHERE reports_to=?\n" + 
+					"OR EXISTS (SELECT *\n" + 
+					"FROM employee tier2\n" + 
+					"WHERE emp_id = tier1.reports_to\n" + 
+					"AND (reports_to=?\n" + 
+					"OR EXISTS (SELECT *\n" + 
+					"FROM employee tier3\n" + 
+					"WHERE emp_id = tier2.reports_to\n" + 
+					"AND reports_to=?)));";
+			PreparedStatement pStatement = con.prepareStatement(sql);
+			pStatement.setInt(1, id);
+			pStatement.setInt(2, id);
+			pStatement.setInt(3, id);
+			ResultSet rs = pStatement.executeQuery();
+			
+			while (rs.next()) {
+				int employeeId = rs.getInt("emp_id");
+				String firstname = rs.getString("first_name");
+				String lastname = rs.getString("last_name");
+				int reportsto = rs.getInt("reports_to");
+				String email = rs.getString("email");
+				String username = rs.getString("emp_username");
+				String password = rs.getString("emp_password");
+				
+				employeeList.add(new Employee(employeeId, firstname, lastname, reportsto, email, username, password));
+			}
+			
+			con.close();
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return employeeList;
+	}
+
 
 
 
