@@ -148,8 +148,9 @@ function addToTable(response) {
 			console.log("ReimbursementList is: " + reimbursementList);
 			console.log("ROw index is: " + this.parentNode.parentNode.rowIndex);
 			console.log(reimbursementList[this.parentNode.parentNode.rowIndex - 1]);
-			if (reimbursementList[this.parentNode.parentNode.rowIndex - 1].employeeId != employeeId && employeeId != 0) {
-				// window.location.replace("PermissionDenied.html");
+			console.log(getReportsTo(reimbursementList[this.parentNode.parentNode.rowIndex - 1].employeeId))
+			if (getReportsTo(reimbursementList[this.parentNode.parentNode.rowIndex - 1].employeeId) != employeeId && employeeId != 0) {
+				window.location.replace("PermissionDenied.html");
 			} else {
 				sendAjaxPost("http://localhost:8080/project1/UpdateRequestServlet", { reimbursementId: this.value, status: 2, managerId: employeeId }, postFunction)
 			}
@@ -161,7 +162,7 @@ function addToTable(response) {
 		denyButton.innerHTML = "Deny";
 		denyButton.addEventListener("click", function () {
 			console.log(reimbursementList[this.parentNode.parentNode.rowIndex - 1].managerId);
-			if (reimbursementList[this.parentNode.parentNode.rowIndex - 1].employeeId != employeeId && employeeId != 0) {
+			if (getReportsTo(reimbursementList[this.parentNode.parentNode.rowIndex - 1].employeeId) != employeeId && employeeId != 0) {
 				window.location.replace("PermissionDenied.html");
 			} else {
 				sendAjaxPost("http://localhost:8080/project1/UpdateRequestServlet", { reimbursementId: this.value, status: 1, managerId: employeeId }, postFunction)
@@ -172,6 +173,15 @@ function addToTable(response) {
 			newRow.cells.item(6).appendChild(denyButton);
 		}
 	};
+}
+
+function getReportsTo(id){
+	for(employee of employeeList){
+		if(employee.employeeId == id){
+			return employee.reportsTo;
+		}
+	}
+
 }
 
 function clearTable() {
