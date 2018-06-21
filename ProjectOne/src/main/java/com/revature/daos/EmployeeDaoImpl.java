@@ -95,6 +95,7 @@ public class EmployeeDaoImpl implements EmployeeDao
 			String sql = "SELECT * FROM EMPLOYEE";
 			Statement s = con.createStatement();
 			ResultSet rs = s.executeQuery(sql);
+			ArrayList<Integer> ids = new ArrayList<Integer>();
 			
 			while(rs.next())
 			{
@@ -104,17 +105,16 @@ public class EmployeeDaoImpl implements EmployeeDao
 				String email = rs.getString("EMAIL");
 				String password = rs.getString("PWORD");
 				int managerId = rs.getInt("MANAGER_ID");
-				Employee manager;
-				if(managerId != 0) {
-					manager = getEmployeeById(managerId);
-				}
-				else {
-					manager = null;
-				}
-				results.add(new Employee(id, firstname, lastname, email, password, manager));
+				ids.add(managerId);
+				results.add(new Employee(id, firstname, lastname, email, password));
+			}
+
+			con.close();
+			
+			for(int i = 0; i < results.size(); i++) {
+				results.get(i).setManager(getEmployeeById(ids.get(i)));
 			}
 			
-			con.close();
 		}
 		catch (IOException e)
 		{

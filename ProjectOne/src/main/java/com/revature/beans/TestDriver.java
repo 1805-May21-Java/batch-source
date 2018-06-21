@@ -13,9 +13,14 @@ public class TestDriver
 		EmployeeDaoImpl edi = new EmployeeDaoImpl();
 		ReimbursementRequestDaoImpl rdi = new ReimbursementRequestDaoImpl();
 				
-		//rdi.approveRiR(1, 1);
+		Employee smith = edi.getEmployeeById(21);
+		System.out.println(smith);
 		
-		System.out.println(rdi.getRiRbyID(1));
+		List<Employee> managees = smith.managedEployees();
+		
+		for(Employee employee : managees) {
+			System.out.println(employee);
+		}
 	}
 
 }

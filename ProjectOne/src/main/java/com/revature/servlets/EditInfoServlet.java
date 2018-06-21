@@ -5,21 +5,20 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.revature.daos.EmployeeDaoImpl;
 import com.revature.pojos.Employee;
 
 /**
- * Servlet implementation class Home
+ * Servlet implementation class EditInfoServlet
  */
-public class HomeServlet extends HttpServlet {
+public class EditInfoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public HomeServlet() {
+    public EditInfoServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,13 +32,13 @@ public class HomeServlet extends HttpServlet {
 		Employee loggedIn = edi.getEmployeeById(id);
 		
 		if(!loggedIn.isManager()) {
-			request.getRequestDispatcher("Views/EmployeeHome.html").forward(request, response);			
+			request.getRequestDispatcher("Views/EditInfoEmployee.html").forward(request, response);			
 		}
 		else if(!loggedIn.isHeadHoncho()) {
-			request.getRequestDispatcher("Views/ManagerHome.html").forward(request, response);
+			request.getRequestDispatcher("Views/EditInfoManager.html").forward(request, response);
 		}
 		else {
-			request.getRequestDispatcher("Views/HeadHome.html").forward(request, response);
+			request.getRequestDispatcher("Views/EditInfoHead.html").forward(request, response);;
 		}
 	}
 
@@ -47,7 +46,7 @@ public class HomeServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("Inside post");
+		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

@@ -31,19 +31,19 @@ public class EmployeeServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if(request.getParameter("id") != null)
-		{
-			int id = Integer.parseInt(request.getParameter("id"));
-		}
 		ObjectMapper mapper = new ObjectMapper();
 		
 		List<Employee> employees = edi.getAllEmployees();
-		for(Employee employee : employees) {
-			System.out.println("test");
-			System.out.println(mapper.writeValueAsString(employee));
+		String json = "";
+		if(request.getParameter("id") != null)
+		{
+			int id = Integer.parseInt(request.getParameter("id"));
+			json = mapper.writeValueAsString(edi.getEmployeeById(id));
 		}
-		String json = mapper.writeValueAsString(employees);
-		System.out.println(json);
+		else 
+		{
+			json = mapper.writeValueAsString(employees);
+		}
 		json = "{\"employees\":" + json + "}";
 		PrintWriter pw = response.getWriter();
 		pw.write(json);
@@ -53,7 +53,6 @@ public class EmployeeServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

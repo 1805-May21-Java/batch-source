@@ -12,7 +12,6 @@ public class Employee
 	private String email;
 	private String password;
 	private Employee manager;
-	private List<ReimbursementRequest> requests;
 	private EmployeeDaoImpl edi = new EmployeeDaoImpl();
 	
 	public Employee()
@@ -45,14 +44,15 @@ public class Employee
 		this.manager = manager;
 	}
 
-	public EmployeeDaoImpl getEdi()
+	public Employee(int id, String firstName, String lastName, String email, String password)
 	{
-		return edi;
-	}
-
-	public void setEdi(EmployeeDaoImpl edi)
-	{
-		this.edi = edi;
+		super();
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.password = password;
+		this.manager = null;
 	}
 
 	public int getId()
@@ -110,9 +110,9 @@ public class Employee
 		return manager;
 	}
 
-	public void setManager(int managerId)
+	public void setManager(Employee manager)
 	{
-		this.manager = edi.getEmployeeById(managerId);
+		this.manager = manager;
 	}
 	
 	@Override
@@ -127,7 +127,6 @@ public class Employee
 		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
 		result = prime * result + ((manager == null) ? 0 : manager.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
-		result = prime * result + ((requests == null) ? 0 : requests.hashCode());
 		return result;
 	}
 
@@ -141,65 +140,14 @@ public class Employee
 		if (getClass() != obj.getClass())
 			return false;
 		Employee other = (Employee) obj;
-		if (edi == null)
-		{
-			if (other.edi != null)
-				return false;
-		}
-		else if (!edi.equals(other.edi))
-			return false;
-		if (email == null)
-		{
-			if (other.email != null)
-				return false;
-		}
-		else if (!email.equals(other.email))
-			return false;
-		if (firstName == null)
-		{
-			if (other.firstName != null)
-				return false;
-		}
-		else if (!firstName.equals(other.firstName))
-			return false;
-		if (id != other.id)
-			return false;
-		if (lastName == null)
-		{
-			if (other.lastName != null)
-				return false;
-		}
-		else if (!lastName.equals(other.lastName))
-			return false;
-		if (manager == null)
-		{
-			if (other.manager != null)
-				return false;
-		}
-		else if (!manager.equals(other.manager))
-			return false;
-		if (password == null)
-		{
-			if (other.password != null)
-				return false;
-		}
-		else if (!password.equals(other.password))
-			return false;
-		if (requests == null)
-		{
-			if (other.requests != null)
-				return false;
-		}
-		else if (!requests.equals(other.requests))
-			return false;
-		return true;
+		return this.id == other.getId();
 	}
 	
 	@Override
 	public String toString()
 	{
 		return "Employee [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
-				+ ", password=" + password + ", manager=" + manager + ", requests=" + requests + ", edi=" + edi + "]";
+				+ ", password=" + password + ", manager=" + manager + ", edi=" + edi + "]";
 	}
 
 	public List<Employee> managedEployees()
