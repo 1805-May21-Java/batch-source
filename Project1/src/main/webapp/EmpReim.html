@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Pending Reimbursements</title>
+    <link rel="icon" href="https://cdn3.iconfinder.com/data/icons/social-messaging-productivity-4/128/home2-512.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+        crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+        crossorigin="anonymous"></script>
+
+</head>
+
+<body class="container mb-2 bg-secondary text-black">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand">ERS</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="MngHome.html">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="Profile.html">Profile</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="Employees.html">Employees</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="EmpReim.html">Reimbursement by Employee</a>
+                </li>
+                <li class="nav-item dropdown active">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        Reimbursement Requests
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="MngPending.html">Pending</a>
+                        <a class="dropdown-item" href="MngResolved.html">Resolved</a>
+                        <a class="dropdown-item" href="Submit.html">Submit</a>
+                    </div>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0" action="login">
+                <button class="btn btn-warning my-2 my-sm-0">Log Out</button>
+            </form>
+        </div>
+    </nav>
+    
+    <div class="container bg-light text-center">
+    	<h3>Single Employee Reimbursement</h3>
+    	<br>
+    	<form action="empReim" method="POST">
+			<div class="row justify-content-center">
+				<input type="number" name="emp" placeholder="Employee ID">
+				<button class="btn btn-primary">View Reimbursements</button>
+			</div>
+		</form>
+		<br>
+	    <table id="empReim" class="table table-striped w-50 p-3 text-center" align="center">
+				<tr id="headerRow">
+					<th>Reimbursement ID</th>
+					<th>Status</th>
+					<th>Description</th>
+					<th>Amount</th>
+					<th>EmpId</th>
+				</tr>
+		</table>
+		<br>
+	</div>
+
+	<script type="text/javascript" src="./Scripts/empReim.js"></script></body>
+
+</html>
