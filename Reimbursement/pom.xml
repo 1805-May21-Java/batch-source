@@ -4,4 +4,29 @@
   <artifactId>Reimbursement</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
+  
+  
+  <properties>
+  	<maven.compiler.source>1.8</maven.compiler.source>
+  	<maven.target.source>1.8</maven.target.source>
+  </properties>
+  
+  <dependencies>
+  	<dependency>
+  		<groupId>javax.servlet</groupId>
+  		<artifactId>servlet-api</artifactId>
+  		<version>2.5</version>
+  	</dependency>
+  	<dependency>
+    <groupId>com.fasterxml.jackson.core</groupId>
+    <artifactId>jackson-databind</artifactId>
+    <version>2.9.4</version>
+	</dependency>
+	<dependency>
+  		<groupId>com.oracle</groupId>
+  		<artifactId>ojdbc7</artifactId>
+  		<version>12.1.0</version>
+  	</dependency>
+  </dependencies>
+  
 </project>

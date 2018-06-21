@@ -10,30 +10,37 @@
     <link rel="stylesheet" href="css/bootstrap-reboot.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 </head>
-<body>
+<body style="background-color: #b3d7ff">
     <nav class="navbar navbar-dark bg-dark">
             <i class="fab fa-affiliatetheme text-center" style="color: #9fcdff; font-size: 25px; text-align: center"></i>
     </nav>
     <div class="container">
         <div class="text-center">
             <br><br><br>
-            <h4>Ana Amari Clinical</h4>
+            <div align="center">
+            <div class="card"  style="width:250px; height:100px;">
+                <div class="card-body" style="background-color: #69e6ff;">
+                    <h4 style="color: #5a6268;">Ana Amari Clinical</h4>
+                </div>
+            </div>
+            </div>
             <br>
         </div>
         <div>
+            <form class="form-group" action="login-page" method="post">
             <div class="card text-white bg-dark">
                 <label class="text-center">Username: </label>
-                <input type="text">
+                <input type="text" id="emailField" name="usernamebox" class="form-control text-center" placeholder="Where you put your username">
                 <br>
                 <label class="text-center">Password</label>
-                <input type="text" name="password">
+                <input type="password" id="passField" name="passwordbox" class="form-control text-center" placeholder="Insert Password here">
                 <br>
                 <br>
                 <button id="Submitter" class="btn btn-primary" style="alignment: center; max-width: 300px;">Submit</button>
+                <div id="warning"></div>
                 <br>
             </div>
-        </div>
-            </div>
+            </form>
         </div>
     </div>
 <script src="js/bootstrap.bundle.js"></script>

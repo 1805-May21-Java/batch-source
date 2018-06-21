@@ -1,52 +1,21 @@
 package com.revature.dao;
 
-import java.io.IOException;
-import java.sql.*;
-import java.util.ArrayList;
 import java.util.List;
 
-import com.revature.pojos.employee;
-import com.revature.util.*;
+import com.revature.pojos.*;
 
-public class EmployeeDAO implements EmployeeDAOImpl {
-
-	public List<employee> getEmployees() {
-		List<employee> employeeList = new ArrayList<employee>();
-		
-		try {
-			Connection conn = ConnectionUtil.getConnection();
-			String sql = "SELECT * FROM EMPLOYEE";
-			PreparedStatement ps = conn.prepareStatement(sql);
-			ResultSet rs = ps.executeQuery();
-			while(rs.next()) {
-				int
-			}
-		}catch(SQLException e) {
-			e.printStackTrace();
-		}catch(IOException e) {
-			e.printStackTrace();
-		}
-		
-		return employeeList;
-	}
-
-	public employee getEmployeeByID(int e_Id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public int createEmployee(employee emp) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	public int updateInfo(employee emp) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	public int removeEmp(int e_Id) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+public interface EmployeeDAO {
+	//Get all Employees in DB
+	public List<employee> getEmployees();
+	//Check to see if passed Employee has manager Type_ID tag by comparing list of managers to employee list
+	public boolean etypeCheck(employee emp);
+	//Retireve Employee by Username
+	public employee getEmployeeByUser(String user);
+	//Get Employees by ID
+	public employee getEmployeeByID(int e_Id);
+	//Creates Employees
+	public int createEmployee(employee emp);
+	//Updates Info about Employees
+	public int updateInfo(employee emp);
 }
+

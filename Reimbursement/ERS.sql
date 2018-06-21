@@ -75,3 +75,9 @@ END;
 
 INSERT INTO REIMBURSEMENT (MODIFIER_ID, AMOUNT, REASON, DATE_MADE, DATE_MODI, STATE_NUMBER, E_ID, TYPE_ID) VALUES (25, 1000, 'Soothed 30 more sandwiches than originally informed to sooth', DATE '2017-12-21', DATE '2018-02-12', 2,15,5);
 INSERT INTO EMPLOYEE (EMP_NAME, E_TYPE, E_USERNAME, E_PASSWORD, E_POSITION) VALUES ('Jeffery Montgomery', 'Manager','Jmont','pass11!','Motivational Yeller');
+INSERT INTO EMPLOYEE (EMP_NAME, E_TYPE, E_USERNAME, E_PASSWORD, E_POSITION) VALUES ('Malcom Hayward', 'Manager','Hway','pares2','Mean Yeller');
+INSERT INTO EMPLOYEE (EMP_NAME, E_TYPE, E_USERNAME, E_PASSWORD, E_POSITION) VALUES ('Ja Ruler', 'Regular','JaRuled','Babbbyyy','Positive Influence');
+
+SELECT * FROM EMPLOYEE WHERE E_TYPE = 'Manager';
+
+COMMIT;
