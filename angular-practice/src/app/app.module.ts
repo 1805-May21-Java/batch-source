@@ -9,7 +9,6 @@ import { FormsModule } from '@angular/forms';
 import { SelectComponent } from './select/select.component';
 import { TableComponent } from './table/table.component';
 import { UsergenComponent } from './usergen/usergen.component';
-import { HttpClient } from 'selenium-webdriver/http';
 import { HttpClientModule } from '@angular/common/http';
 import { NavComponent } from './nav/nav.component';
 import { RouterModule } from '@angular/router';
