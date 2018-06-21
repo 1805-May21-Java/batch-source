@@ -1,4 +1,12 @@
 let url = 'http://localhost:8080/ExpenseRequestSys/allinfo';
+let infourl = 'http://localhost:8080/ExpenseRequestSys/info';
+
+let me=null;
+
+sendAjaxGet(infourl, function (xhr) {
+    me = JSON.parse(xhr.response).result;
+    console.log(me);
+}, redir);
 
 function sendAjaxGet(url, func, redirfcn) {
     xhr = (new XMLHttpRequest() || new ActiveXObject('Microsoft.HTTPRequest'));
@@ -51,36 +59,7 @@ function getAllEmployees(xhr) {
     empList = data.employees;
     erList = data.expenses;
 
-    for (let i = 0; i < empList.length; i++) {
-        let ex = empList[i];
-
-        let row = document.createElement('tr');
-        row.setAttribute('scope', 'row');
-
-        let username = document.createElement('td');
-        username.innerHTML = ex.username;
-
-        let name = document.createElement('td');
-        name.innerHTML = ex.firstName + " " + ex.lastName;
-
-        let email = document.createElement('td');
-        email.innerHTML = ex.email;
-
-        let manager = document.createElement('td');
-        manager.innerHTML = ex.reportsTo;
-
-        row.appendChild(username);
-        row.appendChild(name);
-        row.appendChild(email);
-        row.appendChild(manager);
-
-        row.setAttribute('onclick', "populateExpenseTable(this.getElementsByTagName('td')[0].innerHTML,this)");
-        row.onmouseenter = function () { this.setAttribute('class', 'highlight') };
-        row.onmouseleave = function () {
-            if (this != currentEmployee) { this.setAttribute('class', '') }
-        };
-        document.getElementById("employeeTable").appendChild(row);
-    }
+    filterEmployees();
 }
 
 let currentEmployee = null;
@@ -194,7 +173,7 @@ function addButtons(elem) {
     approve.onclick = approveRequest;
 
     let sp = document.createElement('span');
-    sp.innerHTML=" ";
+    sp.innerHTML = " ";
 
     let deny = document.createElement('button');
     deny.setAttribute('class', 'btn btn-default');
@@ -228,11 +207,13 @@ function approveRequest() {
 
     let er = getExpense(currentExpense.getElementsByTagName('td')[0].innerHTML);
 
-    let toSend = {'requestId':er.requestId , 'submitter':er.submitter,
-    		'submissionDate':er.submissionDate,'amount':er.amount,
-    		'expense':er.expense,'state':'APPROVED', 
-    		'resolvingManager':er.resolvingManager};
-    
+    let toSend = {
+        'requestId': er.requestId, 'submitter': er.submitter,
+        'submissionDate': er.submissionDate, 'amount': er.amount,
+        'expense': er.expense, 'state': 'APPROVED',
+        'resolvingManager': er.resolvingManager
+    };
+
     sendAjaxPost(url, toSend, function () {
         window.location = "view";
     }, redir, errhndl);
@@ -247,11 +228,13 @@ function denyRequest() {
 
     let er = getExpense(currentExpense.getElementsByTagName('td')[0].innerHTML);
 
-    let toSend = {'requestId':er.requestId , 'submitter':er.submitter,
-    		'submissionDate':er.submissionDate,'amount':er.amount,
-    		'expense':er.expense,'state':'DENIED', 
-    		'resolvingManager':er.resolvingManager};
-    
+    let toSend = {
+        'requestId': er.requestId, 'submitter': er.submitter,
+        'submissionDate': er.submissionDate, 'amount': er.amount,
+        'expense': er.expense, 'state': 'DENIED',
+        'resolvingManager': er.resolvingManager
+    };
+
     sendAjaxPost(url, toSend, function () {
         window.location = "view";
     }, redir, errhndl);
@@ -260,3 +243,70 @@ function denyRequest() {
 document.onload = sendAjaxGet(url, getAllEmployees, redir);
 
 document.getElementById('filter').onchange = filterExpenseTable;
+
+function getEmployee(username) {
+    for (emp of empList) {
+        if (emp.username == username) {
+            return emp;
+        }
+    }
+}
+
+function isSubEmployee(manager, emp) {
+    if ( manager == null ) {
+        return false;
+    }
+    if (emp.reportsTo == null) {
+        return false;
+    }
+
+    if (emp.reportsTo == manager.username) {
+        return true;
+    }
+
+    return isSubEmployee(manager, getEmployee(emp.reportsTo));
+}
+
+function filterEmployees() {
+    document.getElementById('employeeTable').innerHTML = "";
+
+    let filt = document.getElementById('empfilter').value;
+
+
+    for (let i = 0; i < empList.length; i++) {
+        let ex = empList[i];
+
+        if (filt != 'All' && !isSubEmployee(me, ex)) {
+            continue
+        }
+
+        let row = document.createElement('tr');
+        row.setAttribute('scope', 'row');
+
+        let username = document.createElement('td');
+        username.innerHTML = ex.username;
+
+        let name = document.createElement('td');
+        name.innerHTML = ex.firstName + " " + ex.lastName;
+
+        let email = document.createElement('td');
+        email.innerHTML = ex.email;
+
+        let manager = document.createElement('td');
+        manager.innerHTML = ex.reportsTo;
+
+        row.appendChild(username);
+        row.appendChild(name);
+        row.appendChild(email);
+        row.appendChild(manager);
+
+        row.setAttribute('onclick', "populateExpenseTable(this.getElementsByTagName('td')[0].innerHTML,this)");
+        row.onmouseenter = function () { this.setAttribute('class', 'highlight') };
+        row.onmouseleave = function () {
+            if (this != currentEmployee) { this.setAttribute('class', '') }
+        };
+        document.getElementById("employeeTable").appendChild(row);
+    }
+}
+
+document.getElementById('empfilter').onchange = filterEmployees;
