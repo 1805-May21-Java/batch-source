@@ -1,5 +1,5 @@
 package com.revature.servlets;
-
+//url is: /login
 import java.io.IOException;
 import java.util.HashMap;
 
@@ -41,24 +41,30 @@ public class Login extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//Change int isManager to Integer isManager
+		//Gets the values at Login.html's parameter names
 		String user = request.getParameter("username");
 		String pass = request.getParameter("password");
+		String loginType = request.getParameter("loginType");
 		String userData;
+		//creates a new HTTPSession
 		HttpSession session = request.getSession();
+		//Used EmploteeDaoImpl to create an Employee Object
+		//based on user's login input.
 		EmployeeDaoImpl ed1 = new EmployeeDaoImpl();
-		//HashMap<String, Employee> employeeList = ed1.getEmployees();
 		ObjectMapper om = new ObjectMapper();
 		Employee current = ed1.getEmployeeByUsername(user);
-		
+		//If user is not null and password matches, servlet
+		//redirects to the HomepageServlet (/homepage)
+		//else it redirects back to login
 		if(current != null && 
 				current.getPassword().equals(pass)) {
-			//Employee current = ed1.getEmployeeByUsername(user);
 			userData = om.writeValueAsString(current);
+			//session attributes are set using Employee object data.
 			session.setAttribute("user", userData);
 			session.setAttribute("id", current.getEmployee_id());
 			session.setAttribute("isManager", current.getIsManager());
 			session.setAttribute("username", user);
+			session.setAttribute("loginType", loginType);
 			response.sendRedirect("homepage");
 		}else {
 			System.out.println("No successful login");

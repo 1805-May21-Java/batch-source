@@ -1,5 +1,5 @@
 package com.revature.servlets;
-
+//url is: /userSession
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -10,15 +10,15 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class SessionServlet
+ * Servlet implementation class UserSession
  */
-public class SessionServlet extends HttpServlet {
+public class UserSession extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SessionServlet() {
+    public UserSession() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,35 +27,24 @@ public class SessionServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
+HttpSession session = request.getSession();
 		
 		PrintWriter pw = response.getWriter();
 		response.setContentType("application/json");
 		if(session != null) {
-			pw.write("{\"username\":\""+session.getAttribute("username")+"\"}");
-			pw.write("{\"id\":\""+session.getAttribute("id")+"\"}");
-			pw.write("{\"isManager\":\""+session.getAttribute("isManager")+"\"}");
-			pw.write("{\"loginType\":\""+session.getAttribute("loginType")+"\"}");
 			pw.write("{\"user\": "+session.getAttribute("user")+"}");
-			pw.write("{\"viewList\": "+session.getAttribute("viewList")+"}");
-			
 		}else {
-			pw.write("{\"username\": null}");
-			pw.write("{\"id\": null}");
-			pw.write("{\"isManager\": null}");
-			pw.write("{\"loginType\": null}");
 			pw.write("{\"user\": null}");
-			pw.write("{\"viewList\": null}");
-			
 		}
 		pw.close();
 	}
 
-	
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-	
 
 }

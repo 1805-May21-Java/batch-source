@@ -285,7 +285,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao{
 			//String sql = "SELECT REIMBURSEMENT_ID, MONEY, EMPLOYEE_ID, STATUS "
 			//		+"FROM REIMBURSEMENT WHERE EMPLOYEE_ID = ? "
 			//		+ "AND STATUS = 'Pending'";
-			String sql = "SELECT REIMBURSEMENT_ID, MONEY, STATUS "
+			String sql = "SELECT REIMBURSEMENT_ID, MONEY, STATUS, REVIEWER_ID "
 					+ "FROM REIMBURSEMENT WHERE EMPLOYEE_ID = ?";
 			//Uses PreparedStatement
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -301,8 +301,9 @@ public class ReimbursementDaoImpl implements ReimbursementDao{
 				Integer reimbursementId = rs.getInt("REIMBURSEMENT_ID");
 				Double money = rs.getDouble("MONEY");
 				String status = rs.getString("STATUS");
+				Integer revId = rs.getInt("REVIEWER_ID");
 				viewReimbursements.add(new Reimbursement(reimbursementId,
-						money, employeeId,status, null));
+						money, employeeId,status, revId));
 				
 			}
 			

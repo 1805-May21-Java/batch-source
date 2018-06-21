@@ -1,5 +1,13 @@
 
 baseUrl = "http://localhost:8082/ReimbursementApp/pendingAllSession";
+userUrl = "http://localhost:8082/ReimbursementApp/userSession";
+
+userId = "";
+
+function start(){
+	getUserInfo();
+	getPendingReimbursements();
+}
 
 
 function getPendingReimbursements(){
@@ -13,7 +21,7 @@ function getPendingReimbursements(){
 function sendAjaxGet(url, func){
     let xhr = (new XMLHttpRequest() || new ActiveXObject("Microsoft.HTTPRequest"));
     xhr.onreadystatechange = function(){
-        //console.log(xhr.readyState);
+        
         if(this.status == 200 && this.readyState == 4){
             func(this);
         }
@@ -49,6 +57,8 @@ function displayPendingReimbursements(xhr){
     
     for(var x in reimbursementList){
     	if(reimbursementList[x].status === "Pending"){
+    		
+    		if(reimbursementList[x].employee_id === userId){continue};
     		let row = document.createElement("tr");
     		let ridCell = document.createElement("td");
     		let moneyCell = document.createElement("td");
@@ -56,7 +66,7 @@ function displayPendingReimbursements(xhr){
     		let statusCell = document.createElement("td");
     		let revIdCell = document.createElement("td");
     		ridCell.innerHTML = reimbursementList[x].reimbursement_id;
-    		moneyCell.innerHTML = reimbursementList[x].money;
+    		moneyCell.innerHTML = "$"+reimbursementList[x].money;
     		eidCell.innerHTML = reimbursementList[x].employee_id;
     		statusCell.innerHTML = reimbursementList[x].status;
     		revIdCell.innerHTML = reimbursementList[x].reviewer_id;
@@ -69,6 +79,20 @@ function displayPendingReimbursements(xhr){
     		}
     }
 }
+
+
+function getUserInfo(){
+    sendAjaxGet(userUrl, displayUserInfo);
+}
+
+function displayUserInfo(xhr){
+	let pending = JSON.parse(xhr.response);
+	console.log(pending.user.employee_id);
+	userId = pending.user.employee_id;
+}
+
+
+
 
 
 

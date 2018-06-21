@@ -67,7 +67,7 @@ function displayAllEmployees(xhr){
     	addressCell.innerHTML = employeeInfo[x].address;
     	emailCell.innerHTML = employeeInfo[x].email;
     	phoneCell.innerHTML = employeeInfo[x].phone;
-    	if(employeeInfo[x].isManager === "0"){
+    	if(employeeInfo[x].isManager === 0){
     		isManagerCell.innerHTML = "No";
     	}else{
     		isManagerCell.innerHTML = "Yes";

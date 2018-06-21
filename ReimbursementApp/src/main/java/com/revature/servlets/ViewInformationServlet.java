@@ -47,7 +47,9 @@ public class ViewInformationServlet extends HttpServlet {
 		String username = session.getAttribute("username").toString();
 		Employee currentUser = ed1.getEmployeeByUsername(username);
 		ObjectMapper om = new ObjectMapper();
-		currentUser.setPassword(password);
+		if(password.length() != 0){
+			currentUser.setPassword(password);
+		}
 		currentUser.setAddress(address);
 		currentUser.setEmail(email);
 		currentUser.setPhone(phone);

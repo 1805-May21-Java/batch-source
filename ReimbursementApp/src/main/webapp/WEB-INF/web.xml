@@ -127,5 +127,13 @@
     <servlet-name>SearchEmployeeServlet</servlet-name>
     <url-pattern>/searchEmployee</url-pattern>
   </servlet-mapping>
-  
+  <servlet>
+    <display-name>UserSession</display-name>
+    <servlet-name>UserSession</servlet-name>
+    <servlet-class>com.revature.servlets.UserSession</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserSession</servlet-name>
+    <url-pattern>/userSession</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -53,10 +53,15 @@ function displaySearchedEmployee(xhr){
 	    		let statusCell = document.createElement("td");
 	    		let revIdCell = document.createElement("td");
 	    		ridCell.innerHTML = reimbursementList[x].reimbursement_id;
-	    		moneyCell.innerHTML = reimbursementList[x].money;
+	    		moneyCell.innerHTML = "$"+reimbursementList[x].money;
 	    		eidCell.innerHTML = reimbursementList[x].employee_id;
 	    		statusCell.innerHTML = reimbursementList[x].status;
-	    		revIdCell.innerHTML = "N/A";
+	    		//revIdCell.innerHTML = "N/A";
+	    		if(reimbursementList[x].reviewer_id === 0){
+	    			revIdCell.innerHTML = "N/A"
+	    		}else{
+	    			revIdCell.innerHTML = reimbursementList[x].reviewer_id
+	    		}
 	    		row.appendChild(ridCell);
 	    		row.appendChild(moneyCell);
 	    		row.appendChild(eidCell);

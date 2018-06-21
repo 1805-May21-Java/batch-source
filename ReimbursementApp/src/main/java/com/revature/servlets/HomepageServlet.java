@@ -37,11 +37,24 @@ public class HomepageServlet extends HttpServlet {
 		//Success, login works!
 		//But make you pass the database table data to your session!
 		HttpSession session = request.getSession(false);
+		if(session != null && session.getAttribute("loginType") == null) {
+			response.sendRedirect("login");
+		}
+		
 		if(session!=null && session.getAttribute("username") != null && 
 				(Integer)session.getAttribute("isManager") == 0) {
+			//radio button at login
+			if(session.getAttribute("loginType").equals("manager")) {
+				response.sendRedirect("login");
+			}else {
 			request.getRequestDispatcher("EmployeeHomepage.html").forward(request, response);
+			}
 		}else if(session != null && session.getAttribute("username") != null &&
 				(Integer)session.getAttribute("isManager") == 1){
+			//added radio button at login
+			if(session.getAttribute("loginType").equals("employee")) {
+				request.getRequestDispatcher("EmployeeHomepage.html").forward(request, response);
+			}else {
 			
 			ReimbursementDaoImpl rd1 = new ReimbursementDaoImpl();
 			List<Reimbursement> allReimbursements = rd1.getReimbursements();
@@ -54,6 +67,7 @@ public class HomepageServlet extends HttpServlet {
 			String employeeList = om.writeValueAsString(employeeData);
 			session.setAttribute("allEmployees", employeeList);
 			request.getRequestDispatcher("ManagerHomepage.html").forward(request, response);
+			}
 		}else {
 			response.sendRedirect("login");
 		}
