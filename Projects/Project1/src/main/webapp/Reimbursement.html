@@ -76,6 +76,7 @@
   <button onclick="showAllReimbursements();">Show All Reimbursements(s)</button>
   <button onclick="showMyReimbursements();">Show My Reimbursements(s)</button>
   <button onclick="showMyEmployeesReimbursements();">Show My Employee Reimbursement(s)</button>
+   <button onclick="displayProfile();">Show me my profile</button>
   
   
 	<form action="reimbursement" method="post">
@@ -89,15 +90,21 @@
 	</form>
   
   
-  	<form action="signup" method="post">
+  	<form action="Signup" method="post">
 		<label>Sign Up </label><br>
-		<input type="text" name="empName" id="request_by" ><br>
-		<input type="text" name="userName" id="approve_by" ><br>
-		<input type="text" name="userPassword" placeholder="amount.."><br>
-		<input type="password" name="userPassword">
-		<input type="text" name="birthdate" placeholder="description.."><br>
-
+		<input type="text" name="firstName" id="firstName" placeholder="First Name" ><br>
+		<input type="text" name="lastName" id="lastName" placeholder="Last Name"><br>
+		<input type="text" name="userName" id="userName" placeholder="User Name"><br>
+		<input type="password" name="userPassword" placeholder="Password"><br>
+		<input type="password" name="userPassword" placeholder="Password">
+		<input type="date" name="birthdate" placeholder="birthdate"><br>
+		<input type="submit" name="submit">
 	</form>
+	
+	<div id="profile">
+		
+	
+	</div>
 
   
   

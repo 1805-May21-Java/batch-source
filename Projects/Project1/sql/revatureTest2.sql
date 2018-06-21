@@ -62,22 +62,22 @@ BEGIN
 END;
 /
 INSERT INTO EMPLOYEE(EMP_NAME, USER_NAME, USER_PASS, REPORT_TO, BIRTH_DATE, URL)
-    VALUES('Vannara Houth', 'vannara', '123', 1, DATE '1980-12-01', 'wwww.google.com');
+    VALUES('Dustin Harbor', 'dustin123', '123', 1, DATE '1980-12-01', 'https://randomuser.me/api/portraits/men/10.jpg');
     
 INSERT INTO EMPLOYEE(EMP_NAME, USER_NAME, USER_PASS, REPORT_TO, BIRTH_DATE, URL)
-    VALUES('Bonon Jackson', 'bonon', '123', 1, DATE '1971-10-01', 'wwww.yahoo.com');
+    VALUES('Bonon Jackson', 'bonon', '123', 1, DATE '1971-10-01', 'https://randomuser.me/api/portraits/men/11.jpg');
     
 INSERT INTO EMPLOYEE(EMP_NAME, USER_NAME, USER_PASS, REPORT_TO, BIRTH_DATE, URL)
-    VALUES('Justin Bine', 'justin', '123', 1, DATE '1982-02-01', 'wwww.twitter.com');
+    VALUES('Justin Bine', 'justin', '123', 1, DATE '1982-02-01', 'https://randomuser.me/api/portraits/men/12.jpg');
     
 INSERT INTO EMPLOYEE(EMP_NAME, USER_NAME, USER_PASS, REPORT_TO, BIRTH_DATE, URL)
-    VALUES('Jackson Wield', 'jackson', '123', 2, DATE '1980-12-01', 'wwww.google.com');
+    VALUES('Jackson Wield', 'jackson', '123', 2, DATE '1980-12-01', 'https://randomuser.me/api/portraits/women/49.jpg');
     
 INSERT INTO EMPLOYEE(EMP_NAME, USER_NAME, USER_PASS, REPORT_TO, BIRTH_DATE, URL)
-    VALUES('Michael Jackson', 'michael', '123', 3, DATE '1979-10-01', 'wwww.yahoo.com');
+    VALUES('Michael Jackson', 'michael', '123', 3, DATE '1979-10-01', 'https://randomuser.me/api/portraits/women/39.jpg');
     
 INSERT INTO EMPLOYEE(EMP_NAME, USER_NAME, USER_PASS, REPORT_TO, BIRTH_DATE, URL)
-    VALUES('Dustin Bean', 'dustin', '123', 2, DATE '1989-02-01', 'wwww.twitter.com');
+    VALUES('Dustin Bean', 'dustin', '123', 2, DATE '1989-02-01', 'https://randomuser.me/api/portraits/women/29.jpg');
 /    
     
     
@@ -114,4 +114,5 @@ SELECT * FROM REIMBURSE;
 
 describe employee;
     
+
     

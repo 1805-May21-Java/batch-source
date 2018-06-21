@@ -69,7 +69,7 @@ class DaoImplementsTests
 	void createEmployee()
 	{
 		EmployeeDao dao = new EmployeeDaoImpl();
-		Employee employee = new Employee("James Bond", "James", "password", 1, Date.valueOf("1980-10-10"), "www.google.com" );
+		Employee employee = new Employee("Justin Benner", "James", "password", 1, Date.valueOf("1980-10-10"), "www.google.com" );
 		dao.createEmployee(employee);
 
 	}

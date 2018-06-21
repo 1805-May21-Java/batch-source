@@ -6,6 +6,45 @@ let allReimburseUrl = "http://localhost:8080/Project1/api/reimbursements"
 let sessionUrl = "http://localhost:8080/Project1/api/session"
 let sessionData;
 
+function displayProfile()
+{
+	profile = document.getElementById("profile");
+	profile.innerHTML = `<h1>Profile</h1><table>
+    <tbody>
+    <tr>
+      <td>Name:</td>
+      <td>${sessionData.fullname}</td>
+    </tr>
+     <tr>
+      <td>User:</td>
+      <td>${sessionData.username}</td>
+    </tr>
+    <tr>
+      <td>User ID:</td>
+      <td>${sessionData.userid}</td>
+    </tr>
+     <tr>
+      <td>Birthdate:</td>
+      <td>${sessionData.birthdate}</td>
+    </tr>
+     <tr>
+      
+      <td><img src="${sessionData.userurl}"></td>
+    </tr>
+    
+   
+  </tbody>
+</table>`;
+
+
+}
+
+
+
+
+
+
+
 function hiddenFormInit(){
 	let input1 = document.getElementById("request_by");
 	input1.value = sessionData.userid;
