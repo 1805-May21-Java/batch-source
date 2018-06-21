@@ -4,10 +4,17 @@ import java.io.*;
 import java.sql.*;
 import java.util.Properties;
 
+/*
+ * Connection Utility Class
+ * 
+ * Contains globally accessing methods to establish a Connection
+ * to the Amazon RDS Oracle SQL database using JDBC
+ */
 public class ConnectionUtil {
-	
+
 	private static Connection connection;
-	
+
+	// Establishes the connection with the provided hardcoded string values
 	public static Connection getHardcodedConnection() throws SQLException {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -23,6 +30,7 @@ public class ConnectionUtil {
 		return DriverManager.getConnection(url, username, password);
 	}
 	
+	// Establishes the connection using the connection.properties file in src/main/resources
 	public static Connection getConnection() throws IOException, SQLException {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");

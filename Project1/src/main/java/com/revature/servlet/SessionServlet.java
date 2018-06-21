@@ -13,8 +13,17 @@ import javax.servlet.http.HttpSession;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.pojo.Employee;
 
+/*
+ * Session Servlet
+ * 
+ * Persists Employee data from the active session in JSON format
+ * for the frontend to display up-to-date information
+ */
 public class SessionServlet extends HttpServlet{
 	private static final long serialVersionUID = -6426094775000334662L;
+	
+	// Nested class representing frontend displayed messages
+	// canShow is immediately switched off upon display by the frontend
 	public static class Info{
 		private String message;
 		private boolean canShow;
@@ -45,6 +54,9 @@ public class SessionServlet extends HttpServlet{
 			this.canShow = canShow;
 		}
 	}
+	
+	// Messages and errors shown to the user
+	// Messages are shown with lightbulbs, errors are shown with warning signs
 	public static ArrayList<Info> messages = new ArrayList<Info>();
 	public static ArrayList<Info> errors = new ArrayList<Info>();
 	public static Employee empl = new Employee();
@@ -63,6 +75,7 @@ public class SessionServlet extends HttpServlet{
 		pw.close();
 	}
 	
+	// Clears all messages from the messages and errors lists
 	public static void clearMessagesAndErrors() {
 		if(messages.size() != 0) {
 			for(int i = messages.size()-1; i >= 0; i--) {

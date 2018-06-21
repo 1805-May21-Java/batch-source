@@ -20,6 +20,17 @@ import com.revature.pojo.Reimbursement;
 import com.revature.servlet.SessionServlet.Info;
 import com.revature.util.MailUtil;
 
+/*
+ * Profile Servlet
+ * 
+ * Since profile.html and profile.js construct a single page application,
+ * this servlet handles many use cases in the doPost service method.
+ * 
+ * In most cases, the MailUtil class is used to send automated email messages
+ * to inform the user of various changes in the system
+ * 
+ * In the case of lacking an active session, the user is redirected to the login page
+ */
 public class ProfileServlet extends HttpServlet {
 	private static final long serialVersionUID = -7797812828514308149L;
 	private static final DecimalFormat df = new DecimalFormat("#0.00");
@@ -27,6 +38,7 @@ public class ProfileServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		HttpSession session = req.getSession(false);
+		// If there is no active session, redirect to the login page
 		if(session != null && session.getAttribute("id") != null)
 			req.getRequestDispatcher("profile.html").forward(req, res);
 		else
@@ -36,6 +48,7 @@ public class ProfileServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		SessionServlet.clearMessagesAndErrors();
 		
+		// Handles submission of new reimbursement requests
 		if(req.getParameter("amount") != null) {
 			try{
 				double amount = Double.parseDouble(req.getParameter("amount"));
@@ -77,6 +90,8 @@ public class ProfileServlet extends HttpServlet {
 			}
 			res.sendRedirect("profile");
 		}
+		
+		// Handles personal info edits and password resets
 		else if(req.getParameter("emplBday") != null || req.getParameter("emplPass") != null) {
 			if(req.getParameter("emplBday") != null) {
 				String first = req.getParameter("emplFirst");
@@ -136,6 +151,8 @@ public class ProfileServlet extends HttpServlet {
 			}
 			res.sendRedirect("profile");
 		}
+		
+		// Handles request removal by the requesting user
 		else if(req.getParameter("removeReimb") != null) {
 			dao.deleteReimbByID(Integer.parseInt(req.getParameter("removeReimb")));
 			
@@ -149,6 +166,8 @@ public class ProfileServlet extends HttpServlet {
 			
 			res.sendRedirect("profile");
 		}
+		
+		// Handles approval/denial of requests by the requester's manager
 		else if(req.getParameter("reimbAction") != null) {
 			Reimbursement reimb = dao.getReimbursementByID(Integer.parseInt(req.getParameter("reimbValue")));
 			if(req.getParameter("reimbAction").equals("approve"))
@@ -172,6 +191,8 @@ public class ProfileServlet extends HttpServlet {
 			
 			res.sendRedirect("profile");
 		}
+		
+		// Handles creation of a new Employee by their manager
 		else if(req.getParameter("newEmail") != null) {
 			String email = req.getParameter("newEmail");
 			String first = req.getParameter("newFirst");
@@ -205,6 +226,8 @@ public class ProfileServlet extends HttpServlet {
 			
 			res.sendRedirect("profile");
 		}
+		
+		// Handles the manager adding/removing an existing Employee to/from their roster
 		else if(req.getParameter("existingAction") != null) {
 			int ID = Integer.parseInt(req.getParameter("existingID"));
 			String action = req.getParameter("existingAction");
@@ -231,6 +254,8 @@ public class ProfileServlet extends HttpServlet {
 					SessionServlet.messages.add(new Info("Successfully added Employee!", true));
 				}
 			}
+			
+			// Handles t
 			else if(action.equals("unregister")) {
 				if(dao.getEmployeeByID(ID) == null) {
 					SessionServlet.errors.add(new Info("No such employee exists", true));
@@ -257,6 +282,8 @@ public class ProfileServlet extends HttpServlet {
 			
 			res.sendRedirect("profile");
 		}
+		
+		// Handles the logout button by ending session and clearing the static Employee variable
 		else if(req.getParameter("logout") != null) {
 			SessionServlet.empl = new Employee();
 			req.getSession(false).removeAttribute("id");

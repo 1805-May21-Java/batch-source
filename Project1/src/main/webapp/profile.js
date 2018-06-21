@@ -1,18 +1,27 @@
+/*
+ * This is why we use Angular for single page apps
+ */
+
+// URL paths for AJAX processing
 let sessionUrl = "http://localhost:8082/ERS/session";
 let profileUrl = "http://localhost:8082/ERS/profile";
 let reimbUrl = "http://localhost:8082/ERS/reimbursement"
+
+// Global access elements referenced across the script
 let myReimbTable = document.getElementById("myReimbTable");
 let myReimbImage = document.getElementById("myReimbImage");
 let reimbRequest = document.getElementById("reimbRequestForm");
-
 let emplReimbTable = document.getElementById("emplReimbTable");
 let newEmplForm = document.getElementById("newEmplForm");
 let existingEmplForm = document.getElementById("existingEmplForm");
 let myReimbImage2 = document.getElementById("myReimbImage2");
 
+// Global access Employee object assigned upon initializing the page
 let empl = null;
 
 window.onload = loadData();
+
+// Event listeners for all buttons in the single page app
 document.getElementById("showReimbsButton").addEventListener("click", toggleMyReimbTable);
 document.getElementById("reimbFormButton").addEventListener("click", toggleReimbRequestForm);
 document.getElementById("logoutButton").addEventListener("click", logout);
@@ -27,6 +36,7 @@ document.getElementById("unregisterEmpl").addEventListener("click", unregisterEm
 document.getElementById("empls").addEventListener("change", ()=>sendAjaxGet(reimbUrl, loadReimbs2));
 document.getElementById("personalEmpls").addEventListener("change", changePersonalInfo);
 
+// Initializes the page will all necessary Employee and Reimbursement data
 function loadData(){
     sendAjaxGet(sessionUrl, initProfilePage);
     sendAjaxGet(reimbUrl, loadReimbs);
@@ -56,8 +66,8 @@ function sendAjaxPost(url, contents){
 function initProfilePage(xhr){
     empl = JSON.parse(xhr.responseText);
     
-    let welcome = document.getElementById("welcome");
-    welcome.innerHTML += "Welcome, " + empl.first + " " + empl.last + "!";
+    let welcome = document.getElementById("headerText");
+    welcome.innerHTML = "Welcome, " + empl.first + " " + empl.last + "!";
     if(empl.manager){
         document.getElementById("nav-manager-tab").removeAttribute("hidden");
         document.getElementById("personalEmplDiv").removeAttribute("hidden");

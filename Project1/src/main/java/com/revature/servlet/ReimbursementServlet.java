@@ -16,6 +16,14 @@ import com.revature.dao.ERSDaoImpl;
 import com.revature.pojo.Employee;
 import com.revature.pojo.Reimbursement;
 
+/*
+ * Reimbursement Servlet
+ * 
+ * Persists the Reimbursement data from the Employee in the session with 2 JSON arrays
+ * 
+ * The first one represents the requests submitting by the Employee, while the second
+ * one represents the requests submitted by the Employees they manage
+ */
 public class ReimbursementServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	ERSDaoImpl dao = new ERSDaoImpl();

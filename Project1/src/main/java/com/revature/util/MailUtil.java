@@ -4,11 +4,27 @@ import java.util.Properties;
 import javax.mail.*;
 import javax.mail.internet.*;
 
+/*
+ * Mail Utility Class
+ * 
+ * Contains a single static method to handle email sending functionality
+ */
 public class MailUtil {
+	
+	/* 
+	 * Uses the gmail SMTP (Simple Mail Transfer Protocol) to send
+	 * an SSL (Secure Socket Layer) encrypted email with the given arguments
+	 * 
+	 * Fails authentication if the given password does not match the email
+	 * address provided in the "from" argument
+	 * 
+	 * Sends an email to the email provided in the "to" argument with subject
+	 * line provided by "sub" and body provided by "msg"
+	 */
     public static void send(final String from,final String password,String to,String sub,String msg){
         Properties props = new Properties();
         props.put("mail.smtp.host", "smtp.gmail.com");
-        props.put("mail.smtp.socketFactory.port", "465"); // 587
+        props.put("mail.smtp.socketFactory.port", "465");
         props.put("mail.smtp.socketFactory.class",
                   "javax.net.ssl.SSLSocketFactory");
         props.put("mail.smtp.auth", "true");
@@ -32,5 +48,4 @@ public class MailUtil {
 		}
 	}
 }
-// MailUtil.send("from@gmail.com","xxxxx","to@gmail.com","hello javatpoint","How r u?");  
 

@@ -15,6 +15,12 @@ import com.revature.pojo.Employee;
 import com.revature.servlet.SessionServlet.Info;
 import com.revature.util.MailUtil;
 
+/*
+ * Register Servlet
+ * 
+ * Handles the backend login from user input on the ERS Registration page
+ * and sends an email upon successful registration using the MailUtil class
+ */
 public class RegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	ERSDaoImpl dao = new ERSDaoImpl();

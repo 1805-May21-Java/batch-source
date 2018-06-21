@@ -8,6 +8,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/*
+ * Info Servlet
+ * 
+ * Takes list of messages and errors from the SessionServlet and
+ * writes them to the url path in JSON format for the frontend to use
+ */
 public class InfoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

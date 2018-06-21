@@ -14,6 +14,13 @@ import com.revature.pojo.Employee;
 import com.revature.servlet.SessionServlet.Info;
 import com.revature.util.MailUtil;
 
+/*
+ * Login Servlet
+ * 
+ * Handles login functionality from the frontend and redirects user based on input validity
+ * 
+ * In the case of an active session, the user is redirected to the profile page
+ */
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 6435207802030991523L;
 	ERSDaoImpl dao = new ERSDaoImpl();
@@ -21,6 +28,7 @@ public class LoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		HttpSession session = req.getSession(false);
 		
+		// Redirect the user to the profile if there is an active session
 		if(session != null && session.getAttribute("id") != null)
 			res.sendRedirect("profile");
 		else
@@ -33,6 +41,7 @@ public class LoginServlet extends HttpServlet {
 		String user = req.getParameter("username");
 		String pass = req.getParameter("password");
 		
+		// If the credentials are valid, redirect to the profile
 		Employee empl = dao.getEmployeeByEmail(user);
 		if(empl != null && pass.equals(empl.getPass())) {
 			HttpSession session = req.getSession();
@@ -40,6 +49,7 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("id", empl.getID());
 			res.sendRedirect("profile");
 		}
+		// Otherwise, stay on the login page
 		else {
 			SessionServlet.errors.add(new Info("Incorrect email and/or password", true));
 			

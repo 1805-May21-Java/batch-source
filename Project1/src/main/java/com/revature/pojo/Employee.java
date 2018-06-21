@@ -3,6 +3,11 @@ package com.revature.pojo;
 import java.sql.Date;
 import java.util.ArrayList;
 
+/*
+ * Employee POJO
+ * 
+ * Managers are also considered Employees, the difference is the isManager boolean
+ */
 public class Employee {
 
 	private int ID;
@@ -131,6 +136,14 @@ public class Employee {
 		this.minions.add(empl);
 	}
 
+	/*
+	 * Validates the password using the following criteria
+	 * - at least 6 characters
+	 * - at least one lowercase letter
+	 * - at least one uppercase character
+	 * 
+	 * Returns a boolean determining the password's validity
+	 */
 	public static boolean validatePassword(String s) {
 		if(s.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{6,63}$")) {
 			return true;

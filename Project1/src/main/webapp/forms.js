@@ -23,6 +23,11 @@ function sendAjaxPost(url, str) {
     xhr.send(str);
 }
 
+/* Loads messages and errors from the Info Servlet in the backend
+ * 
+ * Sends post request for the Info Servlet to save the
+ * remaining messages and errors with canShow as false
+ */
 function loadMessagesAndErrors(xhr, url){
     let messageArr = JSON.parse(xhr.responseText).messages;
     let errorArr = JSON.parse(xhr.responseText).errors;

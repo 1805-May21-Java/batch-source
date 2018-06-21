@@ -2,6 +2,9 @@ package com.revature.pojo;
 
 import java.sql.Date;
 
+/*
+ * Reimbursement POJO
+ */
 public class Reimbursement {
 
 	private int ID;
