@@ -1,10 +1,20 @@
+//local URLs
+//let urlPopulateEmployee = "http://localhost:8082/Project1/PopulateEmployee";
+//let urlGetAllReimbursements = "http://localhost:8082/Project1/GetAllReimbursements";
+//let urlCreateReimbursement = "http://localhost:8082/Project1/CreateReimbursement";
+
+//EC2 URLs
+let urlGetAllReimbursements = "http://ec2-18-191-251-160.us-east-2.compute.amazonaws.com:8080/GetAllReimbursements";
+let urlPopulateEmployee = "http://ec2-18-191-251-160.us-east-2.compute.amazonaws.com:8080/PopulateEmployee";
+let urlCreateReimbursement = "http://ec2-18-191-251-160.us-east-2.compute.amazonaws.com:8080/CreateReimbursement";
+
 //check if session saved, if so get it, if not retrieve
 if(sessionStorage.getItem("employee")){
     getEmployeeOldSession(JSON.parse(sessionStorage.getItem("employee")));
     getOldEmployeeReimbursements(JSON.parse(sessionStorage.getItem("personalReimbursements")))
 }else{
-    sendAjax("GET","http://localhost:8082/Project1/PopulateEmployee",getEmployeeNewSession);
-    sendAjax("GET","http://localhost:8082/Project1/GetAllReimbursements",getNewEmployeeReimbursements);
+    sendAjax("GET",urlPopulateEmployee,getEmployeeNewSession);
+    sendAjax("GET",urlGetAllReimbursements,getNewEmployeeReimbursements);
 }
 
 //where error message is displayed
@@ -35,7 +45,7 @@ document.getElementById("submitButton").addEventListener("click",function(){
         }
         errorElement.setAttribute("class","text-info");
         createErrorMessage("Adding reimbursement...");
-        sendAjax("POST","http://localhost:8082/Project1/CreateReimbursement",postReimbursement,JSON.stringify(reimbursement));
+        sendAjax("POST",urlCreateReimbursement,postReimbursement,JSON.stringify(reimbursement));
     }
 
    
@@ -162,7 +172,7 @@ function postReimbursement(xhr){
     errorElement.setAttribute("class","text-success")
     createErrorMessage("Reimbursement addded!");
     //updates session with new reimbursement
-	sendAjax("GET","http://localhost:8082/Project1/GetAllReimbursements",getNewEmployeeReimbursements);
+	sendAjax("GET",urlGetAllReimbursements,getNewEmployeeReimbursements);
 }
 
 function unhide(id){

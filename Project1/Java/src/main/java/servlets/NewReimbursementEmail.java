@@ -84,7 +84,7 @@ public class NewReimbursementEmail extends HttpServlet {
 	    	    	    " has sumbitted a new reimbursement request.",
 	    	    	    "  The details of this reimbursement are below:",
 	    	    	    "<br><br>Name: "+reimbursement.getName(),
-	    	    	    "<br>Amount: "+reimbursement.getReimbursementAmount(),
+	    	    	    "<br>Amount: $"+reimbursement.getReimbursementAmount(),
 	    	    	    "<br>Description: "+reimbursement.getDescription(),
 	    	    	    "<br><br>The reimbursement can be approved or denied <a href='http://localhost:8082/Project1/'>here.</a>"
 	    	    	);

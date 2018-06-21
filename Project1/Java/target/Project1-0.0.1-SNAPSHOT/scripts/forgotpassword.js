@@ -1,9 +1,16 @@
-let url = "http://localhost:8082/Project1/EmailServlet";
+//local url's
+//let urlEmail = "http://localhost:8082/Project1/EmailServlet";
+//let urlEmailValid = "http://localhost:8082/Project1/ValidInvalid";
+
+//E2C url's
+let urlEmail = "http://ec2-18-191-251-160.us-east-2.compute.amazonaws.com:8080/EmailServlet";
+let urlEmailValid = "http://ec2-18-191-251-160.us-east-2.compute.amazonaws.com:8080/ValidInvalid";
+
 let errorElement = document.getElementById("errorMessage");
 
 document.getElementById("emailButton").addEventListener("click",function(){
     let email = {email:  document.getElementById("email").value}
-    sendAjax("POST",url,postEmail,document.getElementById("email").value);
+    sendAjax("POST",urlEmail,postEmail,document.getElementById("email").value);
 })
 
 
@@ -19,7 +26,7 @@ function sendAjax(verb,url,func,data){
 }
 
 function postEmail(){
-	 sendAjax("GET","http://localhost:8082/Project1/ValidInvalid",showResultMessage);
+	 sendAjax("GET",urlEmailValid,showResultMessage);
 }
 
 function showResultMessage(xhr){

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="8" failures="0" name="com.revature.dao.DaoEmployeeImplTest" time="3.102" errors="0" skipped="0">
+<testsuite tests="8" failures="0" name="com.revature.dao.DaoEmployeeImplTest" time="4.223" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="java.vm.version" value="10.0.1+10"/>
@@ -62,12 +62,12 @@
     <property name="java.vendor.version" value="18.3"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="com.revature.dao.DaoEmployeeImplTest" name="getEmployeeExistingId" time="0.264"/>
-  <testcase classname="com.revature.dao.DaoEmployeeImplTest" name="getAllEmployeesExistantManager" time="0.354"/>
-  <testcase classname="com.revature.dao.DaoEmployeeImplTest" name="loginManagerCredentials" time="0.3"/>
-  <testcase classname="com.revature.dao.DaoEmployeeImplTest" name="getAllEmployeesNonExistingManager" time="0.262"/>
-  <testcase classname="com.revature.dao.DaoEmployeeImplTest" name="saveNewEmployee" time="0.833"/>
-  <testcase classname="com.revature.dao.DaoEmployeeImplTest" name="deleteEmployeeNonexistentId" time="0.263"/>
-  <testcase classname="com.revature.dao.DaoEmployeeImplTest" name="loginEmployeeCredentials" time="0.264"/>
-  <testcase classname="com.revature.dao.DaoEmployeeImplTest" name="deleteEmployeeExistingId" time="0.562"/>
+  <testcase classname="com.revature.dao.DaoEmployeeImplTest" name="getEmployeeExistingId" time="0.28"/>
+  <testcase classname="com.revature.dao.DaoEmployeeImplTest" name="getAllEmployeesExistantManager" time="0.29"/>
+  <testcase classname="com.revature.dao.DaoEmployeeImplTest" name="loginManagerCredentials" time="0.303"/>
+  <testcase classname="com.revature.dao.DaoEmployeeImplTest" name="getAllEmployeesNonExistingManager" time="0.523"/>
+  <testcase classname="com.revature.dao.DaoEmployeeImplTest" name="saveNewEmployee" time="1.584"/>
+  <testcase classname="com.revature.dao.DaoEmployeeImplTest" name="deleteEmployeeNonexistentId" time="0.373"/>
+  <testcase classname="com.revature.dao.DaoEmployeeImplTest" name="loginEmployeeCredentials" time="0.314"/>
+  <testcase classname="com.revature.dao.DaoEmployeeImplTest" name="deleteEmployeeExistingId" time="0.556"/>
 </testsuite>

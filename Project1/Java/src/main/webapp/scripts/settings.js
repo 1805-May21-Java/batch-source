@@ -1,4 +1,14 @@
-sendAjax("GET","http://localhost:8082/Project1/ValidInvalid",checkValidEmail);
+//local url's
+//let urlEmailValid = "http://localhost:8082/Project1/ValidInvalid";
+//let urlUpdateEmployee = "http://localhost:8082/Project1/UpdateEmployee";
+////let urlPopulateEmployee = "http://localhost:8082/Project1/PopulateEmployee";
+
+//EC2 url's
+let urlEmailValid = "http://ec2-18-191-251-160.us-east-2.compute.amazonaws.com:8080/ValidInvalid";
+let urlUpdateEmployee = "http://ec2-18-191-251-160.us-east-2.compute.amazonaws.com:8080/UpdateEmployee";
+let urlPopulateEmployee = "http://ec2-18-191-251-160.us-east-2.compute.amazonaws.com:8080/PopulateEmployee";
+
+sendAjax("GET",urlEmailValid,checkValidEmail);
 let employee = JSON.parse(sessionStorage.getItem("employee"));
 
 //set up listeners
@@ -62,7 +72,7 @@ document.getElementById("save").addEventListener("click",function(){
     employee.email = changedEmployee.email;
     employee.password = changedEmployee.password;
   	sessionStorage.setItem("employee",JSON.stringify(employee));
-    sendAjax("POST","http://localhost:8082/Project1/UpdateEmployee",reload,JSON.stringify(changedEmployee));
+    sendAjax("POST",urlUpdateEmployee,reload,JSON.stringify(changedEmployee));
 });
 
 //Reads employee, fills fields with current values
@@ -97,7 +107,7 @@ function checkValidEmail(xhr){
 	  if(response.emailValid == "Invalid"){
       //user tried to enter invalid email, displays error message and refreshes correct information
       unhide("invalidEmail");
-      sendAjax("GET","http://localhost:8082/Project1/PopulateEmployee",updateSession);
+      sendAjax("GET",urlPopulateEmployee,updateSession);
 	  }
 }
 

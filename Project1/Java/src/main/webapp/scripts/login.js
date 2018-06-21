@@ -1,4 +1,10 @@
-sendAjax("GET","http://localhost:8082/Project1/Login",checkPreviousLogin);
+//local url's
+//let urlLogin  = "http://localhost:8082/Project1/Login";
+
+//remoteurl's
+let urlLogin = "http://ec2-18-191-251-160.us-east-2.compute.amazonaws.com:8080/Login";
+
+sendAjax("GET",urlLogin,checkPreviousLogin);
 
 function sendAjax(verb,url,func){
   let xhr = new XMLHttpRequest();

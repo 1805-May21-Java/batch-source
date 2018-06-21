@@ -1,4 +1,16 @@
-sendAjax("GET","http://localhost:8082/Project1/GetAllEmployeeReimbursements",storeReimbursementsSession);
+//local url's
+//let urlGetAllReimbursements = "http://localhost:8082/Project1/GetAllReimbursements";
+//let urlApproveDeny = "http://localhost:8082/Project1/ApproveDeny";
+//let urlEmailValid = "http://localhost:8082/Project1/ValidInvalid";
+//let urlNewEmployee = "http://localhost:8082/Project1/NewEmployee";
+
+//EC2 url's
+let urlGetAllReimbursements = "http://ec2-18-191-251-160.us-east-2.compute.amazonaws.com:8080/GetAllReimbursements";
+let urlApproveDeny = "http://ec2-18-191-251-160.us-east-2.compute.amazonaws.com:8080/ApproveDeny";
+let urlEmailValid = "http://ec2-18-191-251-160.us-east-2.compute.amazonaws.com:8080/ValidInvalid";
+let urlNewEmployee = "http://ec2-18-191-251-160.us-east-2.compute.amazonaws.com:8080/NewEmployee";
+
+sendAjax("GET",urlGetAllReimbursements,storeReimbursementsSession);
 fillEmployeeList();
 
 errorElement = document.getElementById("errorMessage");
@@ -144,9 +156,9 @@ function sendApproveDeny(reimbursement,change){
     //display loading message
     let err = document.getElementById("errorMessageReimb");
     err.setAttribute("class","text-info");
-    err.innerText = "Altering..."
+    err.innerText = "Resolving Request..."
     //sends off changed reimbursement to servlet
-    sendAjax("POST", "http://localhost:8082/Project1/ApproveDeny", postSend, reimbursement);
+    sendAjax("POST", urlApproveDeny, postSend, reimbursement);
 }
 
 function statusToMessage(status){
@@ -240,7 +252,7 @@ document.getElementById("newEmployeeButton").addEventListener("click",function()
         }
         errorElement.setAttribute("class","text-info");
         createErrorMessage("Adding employee...");
-        sendAjax("POST","http://localhost:8082/Project1/NewEmployee",postGetEmployee,employee);
+        sendAjax("POST",urlNewEmployee,postGetEmployee,employee);
     }
 });
 
@@ -250,7 +262,7 @@ function createErrorMessage(message){
 }
 
 function postGetEmployee(){
-    sendAjax("GET","http://localhost:8082/Project1/ValidInvalid",showResultMessage);
+    sendAjax("GET",urlEmailValid,showResultMessage);
 }
 
 function showResultMessage(xhr){

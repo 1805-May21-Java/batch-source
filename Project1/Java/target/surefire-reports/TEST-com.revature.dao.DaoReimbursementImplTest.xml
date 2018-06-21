@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="7" failures="0" name="com.revature.dao.DaoReimbursementImplTest" time="5.049" errors="0" skipped="0">
+<testsuite tests="7" failures="0" name="com.revature.dao.DaoReimbursementImplTest" time="8.751" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="java.vm.version" value="10.0.1+10"/>
@@ -62,11 +62,11 @@
     <property name="java.vendor.version" value="18.3"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="com.revature.dao.DaoReimbursementImplTest" name="deleteByExistingId" time="1.94"/>
-  <testcase classname="com.revature.dao.DaoReimbursementImplTest" name="getReimbursementExistingId" time="0.307"/>
-  <testcase classname="com.revature.dao.DaoReimbursementImplTest" name="deleteByNonExistingId" time="0.295"/>
-  <testcase classname="com.revature.dao.DaoReimbursementImplTest" name="getReimbursementNonexistantReimbursement" time="0.305"/>
-  <testcase classname="com.revature.dao.DaoReimbursementImplTest" name="updateOldReimbursement" time="1.071"/>
-  <testcase classname="com.revature.dao.DaoReimbursementImplTest" name="getPendingReimbursements" time="0.296"/>
-  <testcase classname="com.revature.dao.DaoReimbursementImplTest" name="saveReimbursement" time="0.835"/>
+  <testcase classname="com.revature.dao.DaoReimbursementImplTest" name="deleteByExistingId" time="3.032"/>
+  <testcase classname="com.revature.dao.DaoReimbursementImplTest" name="getReimbursementExistingId" time="1.275"/>
+  <testcase classname="com.revature.dao.DaoReimbursementImplTest" name="deleteByNonExistingId" time="0.499"/>
+  <testcase classname="com.revature.dao.DaoReimbursementImplTest" name="getReimbursementNonexistantReimbursement" time="0.28"/>
+  <testcase classname="com.revature.dao.DaoReimbursementImplTest" name="updateOldReimbursement" time="1.905"/>
+  <testcase classname="com.revature.dao.DaoReimbursementImplTest" name="getPendingReimbursements" time="0.554"/>
+  <testcase classname="com.revature.dao.DaoReimbursementImplTest" name="saveReimbursement" time="1.206"/>
 </testsuite>
