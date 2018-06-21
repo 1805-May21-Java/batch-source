@@ -20,6 +20,7 @@ function sendAjaxGet(url, func) {
 function displayData(xhr){
     let response = xhr.response;
     let requests = JSON.parse(response);
+    console.log("Resetting tables");
     resetTables();
 
     for(request of requests.requests){
@@ -34,6 +35,7 @@ function displayData(xhr){
 
 function pendingDisplay(json) {
     let row = document.createElement("tr");
+    let id = document.createElement("td");
     let desc = document.createElement("td");
     let val = document.createElement("td");
 
@@ -93,10 +95,9 @@ function sendAjaxPost(url) {
     xhr.send();
 }
 
-document.getElementById("search").addEventListener("click", updateDisplays);
+document.getElementById("search").addEventListener("click", updateDisplay);
 
-function updateDisplays() {
-	console.log("resetting tables");
+function updateDisplay() {
     let id = document.getElementById("employeeId").value;
     let url;
     if(id != ""){
