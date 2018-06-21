@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Expense Reimbursement System</title>
+    <link rel = 'stylesheet' href="Styles/Main.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+        crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+        crossorigin="anonymous"></script>
+</head>
+
+<body class = 'bg-secondary'>
+	<center><h1 class= 'text-white'>Viewing Reimbursements</h1></center>
+	<br>
+    <div class = 'container-fluid bg-light'>
+        <div class = 'container'>
+            <a class="navbar-brand text-black"><h3>Navigation</h3></a>
+            <div class = 'btn group'>
+                <a class="btn btn-info" href="home" role="button"><h3>Home</h3></a>
+                <a class="btn btn-info" href="reimb" role="button"><h3>Reimbursement</h3></a>
+                <a class="btn btn-info" href="info" role="button"><h3>Information</h3></a>
+                <a class="btn btn-info" href="logout" role="button"><h3>Logout</h3></a>
+            </div>
+        </div>
+	</div>
+    <br>
+    <div class="container" id="main">
+        <center class = 'text-black'><h2>Pending Requests</h2></center>
+        <br>
+        <table class = "table table-bordered">
+            <thead class = 'thead-dark'>
+                <tr>
+                    <th scope ='col'>Reason</th>
+                    <th scope ='col'>Amount</th>
+                    <th scope = 'col'>User Id</th>
+                    <th scope = 'col'>Approve?</th>
+                </tr>
+            </thead>
+            <tbody id="pendingBody">
+            </tbody>
+        </table>
+        <br>
+        <center class = 'text-black'><h2>Resolved Requests</h2></center>
+        <br>
+        <table class = 'table table-bordered'>
+            <thead class = 'thead-dark'>
+                <tr>
+                    <th scope ='col'>Reason</th>
+                    <th scope ='col'>Amount</th>
+                    <th scope = 'col'>User Id</th>
+                    <th scope = 'col'>Resolved By Manager Id</th>
+                </tr>
+            </thead>
+            <tbody id="resolvedBody">
+            </tbody>
+        </table>
+        <br>
+        <div id='empIdDiv' hidden>
+            <div  class= "form-row">
+                <div class = 'col-sm-5'>
+                    <label class= 'text-black'><h4>View Requests of Employee</h4></label>
+                    <input class="form-control" type="text" name = 'empId' id="empId"placeholder="Employee Id">
+                </div>
+                <div class="col-sm-5">
+                    <button class="btn btn-info" id="viewEmp" onclick="getEmpById()"><h4>Submit</h4></button>
+                </div>
+            </div>
+            <br>
+            <table class = "table table-bordered">
+                <thead class = 'thead-dark'>
+                    <tr>
+                        <th scope ='col'>Reason</th>
+                        <th scope ='col'>Amount</th>
+                        <th scope = 'col'>User Id</th>
+                    </tr>
+                </thead>
+                <tbody id="idBody">
+                </tbody>
+            </table>
+        </div>
+        <br>
+    <script type = 'text/javascript' src = "Scripts/ReimbursementScript.js"></script>
+</body>
+</html>

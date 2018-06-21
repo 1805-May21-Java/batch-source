@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Expense Reimbursement System</title>
+        <link rel = 'stylesheet' href='Styles/Main.css'>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+        crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+        crossorigin="anonymous"></script>
+</head>
+
+<body class = 'bg-secondary'>
+	<center><h1 class= 'text-white'>Employee Information</h1></center>
+	<br>
+    <div class = 'container-fluid bg-light'>
+        <div class = 'container'>
+            <a class="navbar-brand text-black"><h3>Navigation</h3></a>
+            <div class = 'btn group'>
+                <a class="btn btn-info" href="home" role="button"><h3>Home</h3></a>
+                <a class="btn btn-info" href="reimb" role="button"><h3>Reimbursement</h3></a>
+                <a class="btn btn-info" href="info" role="button"><h3>Information</h3></a>
+                <a class="btn btn-info" href="logout" role="button"><h3>Logout</h3></a>
+            </div>
+        </div>
+	</div>
+    <br>
+    <div class='container' id='main'>
+    	<div class = 'container'>
+            <form action = "info" method = "post">
+                <div  class= "form-row">
+        			<div class = 'col-sm-5'>
+        				<label for="inputFirstName" class= 'text-black'><h4>First Name</h4></label>
+        				<input class="form-control" type="text" name = 'firstName'placeholder="First Name">
+        			</div>
+        			<div class = 'col-sm-5'>
+        				<label for="inputLastName" class = 'text-black'><h4>Last Name</h4></label>
+        				<input class="form-control" type="text" name = 'lastName'placeholder="Last Name">
+        			</div>
+        		</div>
+                <br>
+                <div class = 'form-row'>
+                    <div class = 'col-sm-5'>
+                        <label for="inputEmail" class = 'text-black'><h4>Email</h4></label>
+                        <input class="form-control" type="text" name='email' placeholder="Email">
+                    </div>
+                </div>
+                <br>
+                <div class = 'form-row'>
+            			<div class = 'col-sm-5'>
+                            <label for="inputUserName" class = 'text-black'><h4>Username</h4></label>
+                			<input class="form-control" type="text" name='username' placeholder="Username">
+            			</div>
+                        <div class = 'col-sm-5'>
+                            <label for="inputPassword" class = 'text-black'><h4>Password</h4></label>
+                            <input class="form-control" type="text" name = 'pw' placeholder="Password">
+                        </div>
+            	</div>
+                <br>
+                <div class="form-row">
+                    <div class = 'col-sm-5'>
+                        <label for="inputPhone" class = 'text-black'><h4>Phone</h4></label>
+                        <input class="form-control" type="text" name = 'phone' placeholder="Phone">
+                    </div>
+                </div>
+                <br>
+                <div class="form-row">
+                    <div class = 'col-sm-5'>
+                        <label for="inputAddress" class = 'text-black'><h4>Address</h4></label>
+                        <input class="form-control" type="text" name = 'address' placeholder="Address">
+                    </div>
+                    <div class = 'col-sm-2'>
+                        <label for="inputState" class = 'text-black'><h4>State</h4></label>
+                        <input class="form-control" type="text" name = 'state' placeholder="Ex: CA for California">
+                    </div>
+                    <div class = 'col-sm-3'>
+                        <label for="inputZipcode" class = 'text-black'><h4>Zipcode</h4></label>
+                        <input class="form-control" type="text" name = 'zipcode' placeholder="Zipcode">
+                    </div>
+                </div>
+                <br>
+                <button type="submit" class="btn btn-info btn-block btn-sm" value="info" id='submit1'><h4>Submit</h4></button>
+            </form>
+            <br>
+    	</div>
+    </div>
+</body>
+</html>
