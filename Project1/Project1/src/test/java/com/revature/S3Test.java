@@ -27,7 +27,7 @@ public class S3Test {
 	
 	@Test
 	public void testPutGet() throws IOException {
-		File file1 = new File("C:\\Users\\nickc\\Downloads\\hades.png");
+		File file1 = new File("C:\\Users\\nickc\\Downloads\\images\\hades.png");
 		File file2 = new File("C:\\Users\\nickc\\Desktop\\hades.png");
 		assertTrue(FileUtils.contentEquals(file1, file2));
 	}
