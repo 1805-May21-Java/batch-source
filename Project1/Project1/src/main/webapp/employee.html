@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Employee profile</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+	    crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+	  crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+	  crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+		crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.js"></script>
+</head>
+<body class="container">
+	<h2 class="text-center p-5">Employee Homepage</h2>
+	<ul class="nav nav-tabs" id="myTab" role="tablist">
+	  <li class="nav-item">
+	    <a class="nav-link active" id="submit-tab" data-toggle="tab" href="#submitRequest">Submit request</a>
+	  </li>
+	  <li class="nav-item">
+	    <a class="nav-link" id="pending-tab" data-toggle="tab" href="#viewAllPending">View pending requests</a>
+	  </li>
+	  <li class="nav-item">
+	    <a class="nav-link" id="resolved-tab" data-toggle="tab" href="#viewAllResolved">View resolved requests</a>
+	  </li>
+	  <li class="nav-item">
+	    <a class="nav-link" id="viewInfo-tab" data-toggle="tab" href="#viewInfo" >View Information</a>
+	  </li>
+	  <li class="nav-item">
+	    <a class="nav-link" id="updateInfo-tab" data-toggle="tab" href="#updateInfo" >Update Information</a>
+	  </li>
+	  <li class="nav-item">
+	    <a class="nav-link" id="changePassword-tab" data-toggle="tab" href="#changePassword" >Change password</a>
+	  </li>
+	  <li class="nav-item">
+	    <a class="nav-link" id="logout-tab" data-toggle="tab" href="#logout">Logout</a>
+	  </li>
+	</ul>
+
+	<div class="tab-content" id="myTabContent">
+	  <div class="tab-pane fade show active" id="submitRequest">
+		<form action="reimbursement" method="POST" enctype="multipart/form-data" class="mt-4">
+			<div class="form-group">
+				<label>Amount:</label>
+				<input type="number" min="0" step="any" name="amount" class="form-control" placeholder="Enter the amount of money you'd like to be reimbursed for"/>
+			</div>
+			<div class="form-group">
+				<label>Reason:</label>
+				<input type="text" name="reason" class="form-control" placeholder="Enter the reason for the reimbursement"/>
+			</div>
+			<div class="form-group">
+				<label>Select an image of a receipt</label>
+				<input type="file" name="receipt" class="form-control-file"/>
+			</div>
+			<input type="submit" value="Submit Request" class="btn btn-primary">
+		</form>
+	  </div>
+	
+	  <div class="tab-pane fade" id="viewAllPending"></div>
+	  
+	  <div class="tab-pane fade" id="viewAllResolved"></div>
+	  
+	  <div class="tab-pane fade" id="changePassword">
+	  	<label class="mt-4">Enter new password:</label>
+	  	<input type="password" name="password" id="password" class="form-control">
+		<input type="submit" id="changePasswordButton" value="Change password" class="btn btn-primary mt-3">
+	  </div>	  
+	  
+	  
+	  <div class="tab-pane fade" id="viewInfo">
+	  </div>
+	  
+	  <div class="tab-pane fade" id="updateInfo">
+	 	<form action="manager" method="POST" class="mt-4">
+		 	<div class="form-group">
+				<label>First Name:</label>
+				<input type="text" name="firstName" class="form-control" placeholder="Enter first name"/>
+			</div>
+			<div class="form-group">
+				<label>Last Name:</label>
+				<input type="text" name="lastName" class="form-control" placeholder="Enter last name"/>
+			</div>
+			<div class="form-group">
+				<label>Phone Number:</label>
+				<input type="text" name="phone" class="form-control" placeholder="Enter phone number"/>
+			</div>
+			<div class="form-group">
+				<label>Street Address:</label>
+				<input type="text" name="streetAddress" class="form-control" placeholder="Enter street address"/>
+			</div>
+			<div class="form-group">	
+				<label>City:</label>
+				<input type="text" name="city" class="form-control" placeholder="Enter city"/>
+			</div>
+			<div class="form-group">	
+				<label>State:</label>
+				<input type="text" name="state" class="form-control" placeholder="Enter state"/>
+			</div>
+			<div class="form-group">	
+				<label>Zip Code:</label>
+				<input type="text" name="zipCode" class="form-control" placeholder="Enter zip code"/>
+			</div>
+			<input type="submit" value="Update Information" class="btn btn-primary">
+		</form>
+	  </div>
+	  
+	  
+	  <div class="tab-pane fade" id="logout"><p><a href="logout">Logout</a></p></div>
+	</div>
+	
+	
+	<script src="employee.js"></script>
+</body>
+</html>

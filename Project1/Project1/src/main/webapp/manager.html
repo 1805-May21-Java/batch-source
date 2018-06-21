@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Manager profile</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+	    crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+	  crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+	  crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+		crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.js"></script>
+</head>
+<body class="container">
+	<h2 class="text-center p-5">Manager Homepage</h2>
+	<ul class="nav nav-tabs" id="myTab" role="tablist">
+	  <li class="nav-item">
+	    <a class="nav-link active" id="pending-tab" data-toggle="tab" href="#viewAllPending" role="tab" aria-controls="home" aria-selected="true">View pending requests</a>
+	  </li>
+	  <li class="nav-item">
+	    <a class="nav-link" id="resolved-tab" data-toggle="tab" href="#viewAllResolved" role="tab" aria-controls="profile" aria-selected="false">View resolved requests</a>
+	  </li>
+	  <li class="nav-item">
+	    <a class="nav-link" id="viewSingleEmployee-tab" data-toggle="tab" href="#viewSingleEmployee" role="tab" aria-controls="contact" aria-selected="false">View requests from an employee</a>
+	  </li>
+	  <li class="nav-item">
+	    <a class="nav-link" id="viewEmployees-tab" data-toggle="tab" href="#viewEmployees" role="tab" aria-controls="contact" aria-selected="false">View employees</a>
+	  </li>
+	  <li class="nav-item">
+	    <a class="nav-link" id="register-tab" data-toggle="tab" href="#register" role="tab" aria-controls="contact" aria-selected="false">Register employee</a>
+	  </li>
+	  <li class="nav-item">
+	    <a class="nav-link" id="logout-tab" data-toggle="tab" href="#logout" role="tab" aria-controls="contact" aria-selected="false">Logout</a>
+	  </li>
+	</ul>
+
+	<div class="tab-content" id="myTabContent">
+	  <div class="tab-pane fade show active" id="viewAllPending" role="tabpanel" aria-labelledby="home-tab"><!--  <button id="getPending">Get pending reimbursement requests</button>-->	</div>
+	  
+	  <div class="tab-pane fade" id="viewAllResolved" role="tabpanel" aria-labelledby="profile-tab"><!--<button id="getResolved">Get resolved reimbursement requests</button>--></div>
+	  
+	  <div class="tab-pane fade" id="viewSingleEmployee" role="tabpanel" aria-labelledby="contact-tab">
+		<input type="email" id="employeeEmail" class="form-control mt-4" placeholder="Enter employee's email address">
+		<input type="submit" id="getReimbursementRequests" value="View requests" class="btn btn-primary mt-3">
+	  </div>
+	  
+	  <div class="tab-pane fade" id="viewEmployees" role="tabpanel" aria-labelledby="profile-tab"></div>
+	  	  
+	  <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="contact-tab">	
+		  <form action="employee" method="POST" class="mt-4 container">
+			 <div class="form-group">
+				<label>Email:</label>
+				<input type="email" name="email" class="form-control" placeholder="Enter employee's email address"/>
+			</div>
+			<div class="form-group">
+				<label>Password:</label>
+				<input type="password" name="password" class="form-control" placeholder="Enter employee's temporary password"/>
+			</div>
+			<input type="submit" value="Register Employee" class="btn btn-primary">
+		</form>
+	  </div>
+	  <div class="tab-pane fade" id="logout" role="tabpanel" aria-labelledby="contact-tab"><p><a href="logout">Logout</a></p></div>
+	</div>
+	<script src="manager.js"></script>
+</body>
+</html>

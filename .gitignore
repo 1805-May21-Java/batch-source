@@ -91,4 +91,4 @@ Servers/
 
 JDBC/target/
 
-Project0/project0/connection.properties
+*.properties
