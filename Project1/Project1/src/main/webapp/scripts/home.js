@@ -42,7 +42,7 @@ function setDashboardOptions() {
 		window.location.href = 'http://localhost:8082/Project1/profile';
 	});
 	myRequests.addEventListener("click", function() {
-		window.location.href = 'http://localhost:8082/Project1/requests';
+		window.location.href = `./requests?eid=${id}`;
 	})
 	
 	if (isManager) {

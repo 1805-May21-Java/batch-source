@@ -3,16 +3,90 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Review Requests</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 <script>const id=%;</script>
 <link rel="stylesheet" type="text/css" href="./styles/login.css">
+<style>
+#box {
+	width: 95%;
+}
+</style>
 </head>
 <body>
-	<div id="maindiv">
-    <div id="box">
-    	<a href="localhost:8082/logout">Logout</a>
-      
-    </div>
-  </div>
+	<div id="box">
+	<div class="container">
+		<div class="navBar">
+			<a href="./home"><span class="navLink btn btn-outline-danger" id="homelink">Home</span></a>
+			<a href="./logout"><span class="navLink btn btn-outline-danger" id="logoutLink">Logout</span></a>
+		</div>
+		<div class="table">
+			<div class="row">
+				<span class="col-lg-4 centered">
+				<h4>Requests Directory</h4>
+				<br>
+				<h4>Request Information</h4>
+				<div id="requestDetails" class="light">
+					<label><strong>Request ID:</strong></label><span>   </span>
+					<span id="detailsRID"></span>
+					<br>
+					<label><strong>Employee ID:</strong></label><span>   </span>
+					<span id="detailsEID"></span>
+					<br>
+					<label><strong>Employee Name:</strong></label><span>   </span>
+					<span id="detailsEName"></span>
+					<br>
+					<label><strong>Amount:</strong></label><span>   </span>
+					<span id="detailsAmount"></span>
+					<br>
+					<label><strong>Created:</strong></label><span>   </span>
+					<span id="detailsCreated"></span>
+					<br>
+					<label><strong>Status:</strong></label><span>   </span>
+					<span id="detailsStatus"></span>
+					<br>
+					<label><strong>Resolved:</strong></label><span>   </span>
+					<span id="detailsResolved"></span>
+					<br>
+					<label><strong>Resolver ID:</strong></label><span>   </span>
+					<span id="detailsMID"></span>
+					<br>
+					<label><strong>Resolver Name:</strong></label><span>   </span>
+					<span id="detailsRName"></span>
+					<br>
+					<label><strong>Details:</strong></label><span>   </span>
+					<span id="detailsDetails"></span>
+					<br>
+					<span id="actions"></span>
+				</div>
+				<br>
+				</span>
+				<span class="col-lg-8 centered light">
+					<table id="allRequests">
+						<thead>
+							<tr>
+								<th>Request ID</th>
+								<th>Amount</th>
+								<th>Requester Name</th>
+								<th>Date Created</th>
+								<th>Status</th>
+								<th>Date Resolved</th>
+								<th>Resolver Name</th>
+								<th>View</th>
+							</tr>
+						</thead>
+						<tbody id="allRequestsTable">
+							
+						</tbody>
+					</table>
+				</span>
+			</div>
+		</div>
+		
+	</div>
+	</div>
 <script src="./scripts/requestapproval.js"></script>
 </body>
 </html>

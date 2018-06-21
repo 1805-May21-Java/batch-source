@@ -1,6 +1,7 @@
 package com.revature.htulipan.Project1.daos;
 
 import java.io.IOException;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -191,6 +192,31 @@ public class RequestDaoImpl implements RequestDao {
 			System.out.println(ioe.getMessage());
 			return 0;
 		}
+		return result;
+	}
+
+	@Override
+	public int updateRequest(int rid, int mid, int status) {
+		String sql = "{CALL SETTLEREQUEST(?, ?, ?, ?)}";
+		int result = 0;
+		
+		try {
+			Connection conn = ConnectionUtil.getConnection();
+			CallableStatement cs = conn.prepareCall(sql);
+			cs.setInt(1, mid);
+			cs.setInt(2,  rid);
+			cs.setInt(3,  status);
+			cs.registerOutParameter(4, java.sql.Types.INTEGER);
+			
+			cs.executeQuery();
+			result = cs.getInt(3);
+			
+		} catch (SQLException se) { 
+			result = 0;
+		} catch (IOException ioe) {
+			result = 0;
+		}
+		
 		return result;
 	}
 

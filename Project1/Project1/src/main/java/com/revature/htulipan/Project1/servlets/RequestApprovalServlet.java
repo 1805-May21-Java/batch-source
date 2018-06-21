@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Date;
 import java.util.Enumeration;
 
 import javax.servlet.ServletException;
@@ -16,14 +15,13 @@ import javax.servlet.http.HttpSession;
 import com.revature.htulipan.Project1.daos.EmployeeDaoImpl;
 import com.revature.htulipan.Project1.daos.RequestDaoImpl;
 import com.revature.htulipan.Project1.pojos.Employee;
-import com.revature.htulipan.Project1.pojos.Request;
 
-public class RequestServlet extends HttpServlet {
+public class RequestApprovalServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		System.out.println(req.getParameter("eid"));
+		
 		int id = 0;
 		try {
 			HttpSession session = req.getSession(false);
@@ -34,31 +32,21 @@ public class RequestServlet extends HttpServlet {
 			id = (Integer) session.getAttribute("employeeId");
 		} catch (NullPointerException npe) {
 			res.sendRedirect("logout");
-		}
-		
-		String eidStr = "";
-		int eid = id;
-		try {
-			eidStr = req.getParameter("eid");
-			System.out.println(eidStr);
-			eid = Integer.parseInt(eidStr);
-		} catch (NullPointerException npe) {
-			System.out.println("Got null pointer.");
-			eid = id;
+			return;
 		}
 		
 		PrintWriter pw = res.getWriter();
 		ClassLoader cl = getClass().getClassLoader();
-		File html = new File(cl.getResource("templates/Requests.html").getFile());
+		File html = new File(cl.getResource("templates/RequestApproval.html").getFile());
 		Employee emp = new EmployeeDaoImpl().getEmployeeById(id);
 		if (!emp.isManager()) {
-			eid = id;
+			res.sendRedirect("home");
+			return;
 		} 
-		writeHtml(pw, html, eid);
+		writeHtml(pw, html, id);
 	}
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		
 		int id = 0;
 		try {
 			HttpSession session = req.getSession(false);
@@ -69,11 +57,18 @@ public class RequestServlet extends HttpServlet {
 			id = (Integer) session.getAttribute("employeeId");
 		} catch (NullPointerException npe) {
 			res.sendRedirect("logout");
+			return;
+		}
+		
+		Employee emp = new EmployeeDaoImpl().getEmployeeById(id);
+		if (!emp.isManager()) {
+			res.sendRedirect("home");
+			return;
 		}
 		
 		RequestDaoImpl rdi = new RequestDaoImpl();
-		float amount = 0.0f;
-		String text = "";
+		int rid = 0;
+		String result = "";
 		try {
 			Enumeration<String> paramNames = req.getParameterNames();
 			while (paramNames.hasMoreElements()) {
@@ -82,23 +77,27 @@ public class RequestServlet extends HttpServlet {
 				if (value.equals(""))
 					continue;
 				switch (name) {
-				case "amount":
-					amount = Float.parseFloat(value);
+				case "rid":
+					rid = Integer.parseInt(value);
 					break;
-				case "requesttext":
-					text = value;
+				case "approve":
+					result = value;
+					break;
+				case "deny":
+					result = value;
 					break;
 				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("Redirecting to profile.");
-			res.sendRedirect("requests");
+			res.sendRedirect("requestapproval");
 			return;
 		}
-
-		rdi.createRequest(id, amount, text, 0);
-		res.sendRedirect("requests");
+		if (rid != 0 && !result.equals("")) {
+			rdi.updateRequest(rid, id, result.equals("Approve")?1:-1);
+		}
+		
+		res.sendRedirect("requestapproval");
 	}
 	
 	private void writeHtml(PrintWriter pw, File html, int id) throws IOException {
@@ -115,5 +114,7 @@ public class RequestServlet extends HttpServlet {
 			cint = fr.read();
 		}
 	}
-
+	
 }
+	
+	
