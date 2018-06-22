@@ -2,7 +2,7 @@ package com.revature.dao;
 
 import java.util.List;
 
-import com.revature.models.Transaction;
+import com.revature.pojos.Transaction;
 
 public interface TransactionDao {
 	public List<Transaction> getTransactions ();

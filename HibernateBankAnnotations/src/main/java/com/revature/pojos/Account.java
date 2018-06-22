@@ -1,4 +1,4 @@
-package com.revature.models;
+package com.revature.pojos;
 
 import java.util.ArrayList;
 import java.util.List;

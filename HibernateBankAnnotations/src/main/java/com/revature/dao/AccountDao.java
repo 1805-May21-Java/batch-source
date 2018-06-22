@@ -2,7 +2,7 @@ package com.revature.dao;
 
 import java.util.List;
 
-import com.revature.models.Account;
+import com.revature.pojos.Account;
 
 public interface AccountDao {
 	public List<Account> getAccounts();

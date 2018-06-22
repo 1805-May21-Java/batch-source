@@ -16,8 +16,8 @@
 		<property name="hibernate.show_sql">true</property>
 		<property name="hibernate.hbm2ddl.auto">create</property>
 		
-		<mapping class="com.revature.models.Transaction"/>
-		<mapping class="com.revature.models.Account"/>
-		<mapping class="com.revature.models.User"/>
+		<mapping class="com.revature.pojos.Transaction"/>
+		<mapping class="com.revature.pojos.Account"/>
+		<mapping class="com.revature.pojos.User"/>
 	</session-factory>
 </hibernate-configuration>
