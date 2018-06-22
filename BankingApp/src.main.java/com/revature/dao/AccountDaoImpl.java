@@ -22,7 +22,7 @@ public class AccountDaoImpl implements AccountDao {
 		
 		// connect to the database
 		try {
-			Connection con = ConnectionUtil.getConnection();
+			Connection con = ConnectionUtil.getHardcodedConnection();
 			String sql = "SELECT * FROM ACCOUNT"; // get all entries in Account
 			Statement s = con.createStatement();
 			ResultSet rs = s.executeQuery(sql);
@@ -37,8 +37,6 @@ public class AccountDaoImpl implements AccountDao {
 				accountList.add(new Account(accountId, username, password, balance));
 			}
 			con.close();
-		} catch (IOException e) {
-			e.printStackTrace();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -52,7 +50,7 @@ public class AccountDaoImpl implements AccountDao {
 		Account a = null;
 		
 		try {
-			Connection con = ConnectionUtil.getConnection();
+			Connection con = ConnectionUtil.getHardcodedConnection();
 			String sql = "SELECT * FROM ACCOUNT WHERE ACC_ID = ?"; // select desired account
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1, id);
@@ -67,8 +65,6 @@ public class AccountDaoImpl implements AccountDao {
 				a = new Account(accountId, username, password, balance);
 			}
 			con.close();
-		} catch (IOException e) {
-			e.printStackTrace();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -81,7 +77,7 @@ public class AccountDaoImpl implements AccountDao {
 		
 		int accountCreated = 0;
 		try {
-			Connection con = ConnectionUtil.getConnection();
+			Connection con = ConnectionUtil.getHardcodedConnection();
 			String sql = "INSERT INTO ACCOUNT (ACC_USERNAME, ACC_PASSWORD, ACC_BALANCE) VALUES (?,?,?)";
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, account.getUsername());
@@ -89,8 +85,6 @@ public class AccountDaoImpl implements AccountDao {
 			ps.setDouble(3, account.getBalance());
 			accountCreated = ps.executeUpdate();
 			con.close();
-		} catch (IOException e) {
-			e.printStackTrace();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -100,17 +94,18 @@ public class AccountDaoImpl implements AccountDao {
 
 	@Override
 	public int updateAccount(Account account) {
+		System.out.println("Inside updateAccount");
 		
 		int accountUpdated = 0;
 		String sql = "UPDATE ACCOUNT SET ACC_BALANCE = ? WHERE ACC_ID = ?";
 		try {
-			Connection con = ConnectionUtil.getConnection();
-			con.setAutoCommit(false);
+			Connection con = ConnectionUtil.getHardcodedConnection();
+			//con.setAutoCommit(false);
 			PreparedStatement pstatement = con.prepareStatement(sql);
 			pstatement.setDouble(1, account.getBalance());
 			pstatement.setInt(2, account.getId());
 			accountUpdated = pstatement.executeUpdate();
-			con.commit();
+			//con.commit();
 			con.close();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -126,7 +121,7 @@ public class AccountDaoImpl implements AccountDao {
 		int rowsUpdated = 0;
 		
 		try {
-			Connection con = ConnectionUtil.getConnection();
+			Connection con = ConnectionUtil.getHardcodedConnection();
 			con.setAutoCommit(false);
 			String sql = "{call DELETE_ACCOUNT (?)}";
 			CallableStatement cs = con.prepareCall(sql);
@@ -136,8 +131,6 @@ public class AccountDaoImpl implements AccountDao {
 			con.commit();
 			con.close();	
 		} catch (SQLException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		return rowsUpdated;
