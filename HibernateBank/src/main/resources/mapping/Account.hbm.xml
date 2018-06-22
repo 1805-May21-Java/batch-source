@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.revature.models.Account">
+		<id name="accountNumber" column="ACCOUNT_NUMBER">
+			<generator class="increment"></generator>
+		</id>
+		<property name="balance" type="org.hibernate.type.DoubleType"></property>
+		<bag name="users" table="USER_ACCOUNT">
+			<key>
+				<column name="ACCOUNT_NUMBER" not-null="true"></column>
+			</key>
+			<many-to-many entity-name="com.revature.models.User">
+				<column name="USER_ID" not-null="true"></column>
+			</many-to-many>
+		</bag>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.revature.models.Transaction">
+		<id name="transactionId" column="TRANSACTION_ID">
+			<generator class="increment"></generator>
+		</id>
+		
+		<many-to-one name="associatedAccount" column="ACCOUNT_ID" class="com.revature.models.Account"></many-to-one>
+		<property name="transactionDate" column="TRANSACTION_DATE" type="org.hibernate.type.DateType"></property>
+		<property name="description" type="org.hibernate.type.StringType"></property>
+	</class>
+</hibernate-mapping>
