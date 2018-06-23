@@ -69,7 +69,7 @@ function displayPendingReimbursements(xhr){
     		moneyCell.innerHTML = "$"+reimbursementList[x].money;
     		eidCell.innerHTML = reimbursementList[x].employee_id;
     		statusCell.innerHTML = reimbursementList[x].status;
-    		revIdCell.innerHTML = reimbursementList[x].reviewer_id;
+    		revIdCell.innerHTML = "N/A";
     		row.appendChild(ridCell);
     		row.appendChild(moneyCell);
     		row.appendChild(eidCell);

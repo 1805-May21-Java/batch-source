@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.revature.pojos.Account" table="ACCOUNT">
+		<id name="id" column="USER_ID">
+			<generator class="increment"></generator>
+		</id>
+		<property name="username" type="org.hibernate.type.StringType" not-null="true" unique="true"></property>
+		<property name="password" type="org.hibernate.type.StringType"></property>
+		<property name="checking" type="org.hibernate.type.DoubleType"></property>
+		<property name="savings" type="org.hibernate.type.DoubleType"></property>
+		
+	</class>
+</hibernate-mapping>
