@@ -23,7 +23,7 @@ public class User {
 	@Column
 	private String password;
 	
-	@ManyToMany
+	@ManyToMany(fetch=FetchType.EAGER)
 	@JoinTable(
 			name="JPA_USER_ACCOUNT",
 			joinColumns={@JoinColumn(name="USER_ID")},
@@ -32,6 +32,27 @@ public class User {
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+	public User(int userId, String username, String email, String password, List<Account> linkedAccounts) {
+		super();
+		this.userId = userId;
+		this.username = username;
+		this.email = email;
+		this.password = password;
+		this.linkedAccounts = linkedAccounts;
+	}
+	public User(String username, String email, String password, List<Account> linkedAccounts) {
+		super();
+		this.username = username;
+		this.email = email;
+		this.password = password;
+		this.linkedAccounts = linkedAccounts;
+	}
+	public User(String username, String email, String password) {
+		super();
+		this.username = username;
+		this.email = email;
+		this.password = password;
 	}
 	public int getUserId() {
 		return userId;

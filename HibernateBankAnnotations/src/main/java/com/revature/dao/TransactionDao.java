@@ -2,13 +2,12 @@ package com.revature.dao;
 
 import java.util.List;
 
-import com.revature.pojos.Transaction;
 
 public interface TransactionDao {
-	public List<Transaction> getTransactions ();
-	public List<Transaction> getAccountTransactions(long acctNumber);
-	public List<Transaction> getAccountTransactions(long acctNumber, int max);
-	public int createTransaction(Transaction action);
+	public List<com.revature.pojos.Transaction> getTransactions ();
+	public List<com.revature.pojos.Transaction> getAccountTransactions(long acctNumber);
+	public List<com.revature.pojos.Transaction> getAccountTransactions(long acctNumber, int max);
+	public int createTransaction(com.revature.pojos.Transaction action);
 	
 	//won't need for this version of the app but may be useful in the future
 	

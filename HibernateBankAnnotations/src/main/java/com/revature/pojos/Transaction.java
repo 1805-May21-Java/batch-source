@@ -1,6 +1,6 @@
 package com.revature.pojos;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.*;
 
@@ -26,6 +26,22 @@ public class Transaction {
 	public Transaction() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+	public Transaction(Account associatedAccount, Date transactionDate, String description) {
+		super();
+		this.associatedAccount = associatedAccount;
+		this.transactionDate = transactionDate;
+		this.description = description;
+	}
+	public Transaction(Date transactionDate, String description) {
+		super();
+		this.transactionDate = transactionDate;
+		this.description = description;
+	}
+	public Transaction(Account associatedAccount, String description) {
+		super();
+		this.associatedAccount = associatedAccount;
+		this.description = description;
 	}
 	public int getTransactionId() {
 		return transactionId;

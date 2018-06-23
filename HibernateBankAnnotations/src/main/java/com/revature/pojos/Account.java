@@ -17,15 +17,31 @@ public class Account {
 	@Column
 	private double balance;
 	
-	@ManyToMany
+	@ManyToMany(fetch=FetchType.EAGER)
 	@JoinTable(
 			name="JPA_USER_ACCOUNT",
 			joinColumns={@JoinColumn(name="ACCOUNT_NUMBER")},
 			inverseJoinColumns={@JoinColumn(name="USER_ID")})
 	private List<User> users = new ArrayList<User>();
+	
 	public Account() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+	public Account(long accountNumber, double balance, List<User> jointUsers) {
+		super();
+		this.accountNumber = accountNumber;
+		this.balance = balance;
+		this.users = jointUsers;
+	}
+	public Account(long accountNumber, double balance) {
+		super();
+		this.accountNumber = accountNumber;
+		this.balance = balance;
+	}
+	public Account(double balance) {
+		super();
+		this.balance = balance;
 	}
 	public long getAccountNumber() {
 		return accountNumber;
