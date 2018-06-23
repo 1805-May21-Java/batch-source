@@ -1,15 +1,23 @@
 package com.revature.util;
 
 import java.sql.Date;
+import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import com.revature.models.*;
+import com.revature.dao.BearDao;
+import com.revature.dao.BearDaoImpl;
+import com.revature.dao.CaveDao;
+import com.revature.dao.CaveDaoImpl;
+import com.revature.models.Bear;
+import com.revature.models.Beehive;
+import com.revature.models.Cave;
 
 public class Driver {
 
 	public static void main(String[] args) {
+		/*
 		Session s = HibernateUtil.getSession();
 		
 		Cave c1 = new Cave("Mammoth Caves");
@@ -50,6 +58,57 @@ public class Driver {
 		tx.commit();
 		
 		s.close();
+		*/
+		
+		CaveDao cd = new CaveDaoImpl();
+		BearDao bd = new BearDaoImpl();
+		/*
+		List<Cave> caves = cd.getCaves();
+		for(Cave c: caves) {
+			System.out.println(c);
+		}
+	
+		System.out.println(cd.getCaveById(5));
+		
+		
+		Cave newCave = new Cave(8, "Cool New Cave");
+		//int pk = cd.createCave(newCave);
+		//System.out.println(pk);
+		
+		newCave.setName("Even cooler even newer cave");
+		cd.updateCave(newCave);
+		
+		
+		cd.deleteCaveById(8);
+		
+		List<Bear> bears = bd.getBears();
+		for(Bear b: bears) {
+			System.out.println(b);
+		}
+		
+		Cave c = cd.getCaveByName("Mammoth Caves");
+		System.out.println(c);
+		
+		
+		System.out.println(bd.getBearsByCave(4));
+		
+		
+		List<Bear> bears = bd.getSBears();
+		for(Bear b: bears) {
+			System.out.println(b);
+		}
+		
+		bd.printCount();
+		
+		
+		List<Bear> bears = bd.findBearByName("Smokey");
+		for(Bear b: bears) {
+			System.out.println(b);
+		}
+		*/
+		
+		
+		
 		System.out.println("done");
 
 	}

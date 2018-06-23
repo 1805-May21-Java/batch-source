@@ -27,6 +27,12 @@ public class Cave {
 
 
 
+	public Cave(int id, String name) {
+		super();
+		this.id = id;
+		this.name = name;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -39,6 +45,12 @@ public class Cave {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	@Override
+	public String toString() {
+		return "Cave [id=" + id + ", name=" + name + "]";
+	}
+	
 	
 	
 

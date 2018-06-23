@@ -6,6 +6,8 @@ import java.util.List;
 
 import javax.persistence.*;
 
+@NamedQueries( { @NamedQuery(name="findBearByCave", query = "from Bear where cave =:caveVar")})
+
 @Entity
 @Table
 public class Bear {
@@ -23,7 +25,7 @@ public class Bear {
 	Date birthday;
 	
 	//@Transient
-	@ManyToMany
+	@ManyToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	@JoinTable(
 			name="BEAR_BEEHIVE",
 			joinColumns = { @JoinColumn(name="BEAR_ID") }, //columns from this table 
