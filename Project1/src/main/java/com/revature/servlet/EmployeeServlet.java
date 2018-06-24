@@ -1,6 +1,8 @@
 package com.revature.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -30,7 +32,15 @@ public class EmployeeServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// get employees
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		response.addHeader("Access-Control-Allow-Origin", "*");
+		Employee curEmp = (Employee) request.getSession().getAttribute("curEmployee");
+		ObjectMapper om = new ObjectMapper();
+		String empString = om.writeValueAsString(curEmp);
+		empString = "{\"employee\":"+empString+"}";
+		System.out.println(empString);
+
+		PrintWriter pw = response.getWriter();
+		pw.write(empString);
 	}
 
 	/**
@@ -42,7 +52,8 @@ public class EmployeeServlet extends HttpServlet {
 		String requestBodyText = request.getReader().readLine();
 		Employee emp = new Employee();
 		Employee curEmp = (Employee) request.getSession().getAttribute("curEmployee");
-		String[] strings = requestBodyText.split("&");
+		if(requestBodyText.contains("username")) {
+			String[] strings = requestBodyText.split("&");
 		emp.setName(strings[0].substring(5));
 		emp.setUsername(strings[1].substring(9));
 		emp.setPassword(strings[2].substring(9));
@@ -53,6 +64,23 @@ public class EmployeeServlet extends HttpServlet {
 		edi.createEmployee(emp);
 		
 		response.sendRedirect("managerHome.html");
+		} else {
+			//update employee
+			System.out.println("Updating");
+			String[] strings = requestBodyText.split("&");
+			curEmp.setName(strings[0].substring(5));
+			curEmp.setUsername(strings[1].substring(6));
+			curEmp.setPassword(strings[2].substring(6));
+			edi.updateEmployee(curEmp);
+			if(curEmp.isManager()) {
+				//send to manager home
+				response.sendRedirect("managerHome.html");
+			} else {
+				//send to employee home
+				response.sendRedirect("employeeHome.html");
+			}
+		}
+		
 		
 	}
 

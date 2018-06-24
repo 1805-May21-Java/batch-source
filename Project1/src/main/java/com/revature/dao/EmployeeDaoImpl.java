@@ -68,8 +68,25 @@ public class EmployeeDaoImpl implements EmployeeDAO {
 
 	@Override
 	public int updateEmployee(Employee emp) {
-		// TODO Auto-generated method stub
-		return 0;
+		int requestUpdates = 0;
+		try {
+			Connection connection = ConnectionUtils.getConnection();
+			connection.setAutoCommit(false);
+			String sql = "update EMPLOYEE set EMP_NAME=?, USERNAME=?, PWORD=? where EMPLOYEE_ID=?";
+			PreparedStatement pStatement = connection.prepareStatement(sql);
+			pStatement.setString(1, emp.getName());
+			pStatement.setString(2, emp.getUsername());
+			pStatement.setString(3, emp.getPassword());
+			pStatement.setInt(4, emp.getEmployeeId());
+			requestUpdates = pStatement.executeUpdate();
+			connection.commit();
+			connection.close();
+		} catch (IOException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return requestUpdates;
 	}
 
 	@Override
