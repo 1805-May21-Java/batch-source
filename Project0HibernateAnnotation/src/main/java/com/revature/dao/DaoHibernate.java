@@ -72,7 +72,9 @@ public class DaoHibernate implements daoInterface{
 	@Override
 	public boolean saveNewClient(Client client) {
 		Session session = HibernateUtil.getSession();
+		org.hibernate.Transaction tx = session.beginTransaction();
 		session.save(client);
+		tx.commit();
 		session.close();
 		return true;
 	}
@@ -80,8 +82,10 @@ public class DaoHibernate implements daoInterface{
 	@Override
 	public boolean saveNewAccount(BankAccount bankAccount, Client client) {
 		Session session = HibernateUtil.getSession();
+		org.hibernate.Transaction tx = session.beginTransaction();
 		session.save(client);
 		session.save(bankAccount);
+		tx.commit();
 		session.close();
 		return true;
 	}
@@ -89,7 +93,9 @@ public class DaoHibernate implements daoInterface{
 	@Override
 	public boolean saveOldAccount(BankAccount bankAccount, Client client) {
 		Session session = HibernateUtil.getSession();
+		org.hibernate.Transaction tx = session.beginTransaction();
 		session.save(bankAccount);
+		tx.commit();
 		session.close();
 		return true;
 	}
@@ -97,8 +103,10 @@ public class DaoHibernate implements daoInterface{
 	@Override
 	public boolean saveAccountClientLink(BankAccount bankAccount, Client client) {
 		Session session = HibernateUtil.getSession();
+		org.hibernate.Transaction tx = session.beginTransaction();
 		session.save(client);
 		session.save(bankAccount);
+		tx.commit();
 		session.close();
 		return false;
 	}
@@ -122,7 +130,9 @@ public class DaoHibernate implements daoInterface{
 	@Override
 	public boolean recordTransation(Transaction transaction) {
 		Session session = HibernateUtil.getSession();
+		org.hibernate.Transaction tx = session.beginTransaction();
 		session.save(transaction);
+		tx.commit();
 		session.close();
 		return false;
 	}
