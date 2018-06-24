@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.revature.pojos.User" table="USER_ACCOUNTS">
+		<id name ="id" column="USER_ID">
+			<generator class="increment"></generator>
+		</id>
+		<property name="username" type="org.hibernate.type.StringType" column="USERNAME"></property>
+		<property name="email" type="org.hibernate.type.StringType" column="EMAIL"></property>
+		<property name="pw" type="org.hibernate.type.StringType" column="PASSWORD"></property>
+	</class>
+</hibernate-mapping>
