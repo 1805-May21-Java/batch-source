@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.revature.pojos.Transaction">
+		<id name="transactionId" column="TRANSACTION_ID">
+			<generator class="increment"></generator>
+		</id>
+		<property name="transactionMessage" type="org.hibernate.type.StringType"></property>
+		<property name="clientUsername" type="org.hibernate.type.StringType"></property>
+		<property name="date" type="org.hibernate.type.DateType"></property>
+		<many-to-one name="bankAccount" column="BANK_ACCOUNT_ID" class="com.revature.pojos.BankAccount"></many-to-one>
+	</class>
+
+</hibernate-mapping>
