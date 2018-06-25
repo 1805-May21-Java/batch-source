@@ -28,7 +28,7 @@ public class MyRequestsServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		EmployeeDaoImpl edi = new EmployeeDaoImpl();
-		int id = (int)request.getSession().getAttribute("id");
+		int id = (Integer)request.getSession().getAttribute("id");
 		Employee loggedIn = edi.getEmployeeById(id);
 		
 		if(!loggedIn.isManager()) {

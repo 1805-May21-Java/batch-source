@@ -39,7 +39,7 @@ public class ApproveServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		if(request.getParameter("id") != null) {			
 			int id = Integer.parseInt(request.getParameter("id"));
-			rdi.approveRiR(id, (int)session.getAttribute("id"));			
+			rdi.approveRiR(id, (Integer)session.getAttribute("id"));			
 		}
 		else {
 			System.out.println("null id");

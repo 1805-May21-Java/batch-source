@@ -3,14 +3,35 @@ package com.revature.pojos;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="MULTI_ACCOUNT")
 public class MultiAccount
 {
 	NumberFormat formatter = new DecimalFormat("#0.00");
 	
+	@Id
+	@Column
 	private String username;
+	@Id
+	@Column(name="ACCT_TYPE")
 	private String accountType;
+
+	@Column
 	private double balance;
-	
+
+	public MultiAccount(String username, String accountType)
+	{
+		super();
+		this.username = username;
+		this.accountType = accountType;
+		balance = 0;
+	}
+
 	public MultiAccount()
 	{
 		super();

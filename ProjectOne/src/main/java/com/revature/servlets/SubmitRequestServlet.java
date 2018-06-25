@@ -38,7 +38,7 @@ public class SubmitRequestServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ReimbursementRequestDaoImpl rdi = new ReimbursementRequestDaoImpl();
 		EmployeeDaoImpl edi = new EmployeeDaoImpl();
-		int loggedInID = (int)request.getSession().getAttribute("id");
+		int loggedInID = (Integer)request.getSession().getAttribute("id");
 		
 		String description = request.getParameter("reason");
 		double value = Double.parseDouble(request.getParameter("value"));

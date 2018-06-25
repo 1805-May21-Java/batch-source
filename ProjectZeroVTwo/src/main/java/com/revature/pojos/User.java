@@ -1,8 +1,15 @@
 package com.revature.pojos;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="USERS")
 public class User
 {
+	@Id
+	@Column
 	private String username;
+	@Column
 	private String password;
 	
 	public User()
@@ -21,7 +28,7 @@ public class User
 	{
 		super();
 		this.username = username;
-		this.password = "";
+		this.password = null;
 	}
 
 

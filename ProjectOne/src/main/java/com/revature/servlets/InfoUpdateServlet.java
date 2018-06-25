@@ -39,7 +39,7 @@ public class InfoUpdateServlet extends HttpServlet {
 		EmployeeDaoImpl edi = new EmployeeDaoImpl();
 		
 		HttpSession session = request.getSession();
-		int id = (int)session.getAttribute("id");
+		int id = (Integer)session.getAttribute("id");
 		Employee loggedIn = edi.getEmployeeById(id);
 		
 		loggedIn.setFirstName(request.getParameter("firstname"));

@@ -14,7 +14,6 @@ public class EmployeeDaoImpl implements EmployeeDao
 		super();
 	}
 
-	@Override
 	public Employee getEmployeeById(int id)
 	{
 		try
@@ -49,7 +48,6 @@ public class EmployeeDaoImpl implements EmployeeDao
 		return null;
 	}
 
-	@Override
 	public Employee getEmployeeByCredentials(String email, String pass)
 	{
 		try
@@ -84,7 +82,6 @@ public class EmployeeDaoImpl implements EmployeeDao
 		return null;
 	}
 
-	@Override
 	public List<Employee> getAllEmployees()
 	{
 		ArrayList<Employee> results = new ArrayList<Employee>();
@@ -127,13 +124,11 @@ public class EmployeeDaoImpl implements EmployeeDao
 		return results;
 	}
 
-	@Override
 	public boolean isValidLogin(String email, String pass)
 	{
 		return this.getEmployeeByCredentials(email, pass) != null;
 	}
 
-	@Override
 	public void updateEmployee(Employee emp)
 	{
 		try

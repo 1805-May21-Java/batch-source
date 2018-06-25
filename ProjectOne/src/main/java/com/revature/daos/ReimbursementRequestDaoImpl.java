@@ -11,7 +11,6 @@ public class ReimbursementRequestDaoImpl implements ReimbursementRequestDao
 {
 	EmployeeDaoImpl edi = new EmployeeDaoImpl();
 	
-	@Override
 	public ReimbursementRequest getRiRbyID(int rirId)
 	{
 		try
@@ -55,7 +54,6 @@ public class ReimbursementRequestDaoImpl implements ReimbursementRequestDao
 		return null;
 	}
 
-	@Override
 	public List<ReimbursementRequest> getRiRsByEmpId(int empId)
 	{
 		ArrayList<ReimbursementRequest> result = new ArrayList<ReimbursementRequest>();
@@ -107,7 +105,6 @@ public class ReimbursementRequestDaoImpl implements ReimbursementRequestDao
 		return result;
 	}
 
-	@Override
 	public void createRiR(int empId, String description, double value)
 	{
 		try
@@ -134,7 +131,6 @@ public class ReimbursementRequestDaoImpl implements ReimbursementRequestDao
 		}
 	}
 
-	@Override
 	public void approveRiR(int rirId, int managerId)
 	{
 		try

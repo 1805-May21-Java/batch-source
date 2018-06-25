@@ -36,7 +36,7 @@ public class RIRServlet extends HttpServlet {
 		ReimbursementRequestDaoImpl rdi = new ReimbursementRequestDaoImpl();
 		EmployeeDaoImpl edi = new EmployeeDaoImpl();
 		HttpSession session = request.getSession();
-		Employee loggedIn = edi.getEmployeeById((int)session.getAttribute("id"));
+		Employee loggedIn = edi.getEmployeeById((Integer)session.getAttribute("id"));
 		List<ReimbursementRequest> requests = null;
 		
 		//If an id is passed in, return all reqeuests from that employee iff that employee is managed by
