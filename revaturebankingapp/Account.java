@@ -1,16 +1,47 @@
 package com.revature.revaturebankingapp;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
+@Entity
+@Table(name="RBA_ACCOUNT")
 public class Account {
 
+	//Variables
+	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="accountSequence")
+	@SequenceGenerator(allocationSize=46, name="accountSequence", sequenceName="SQ_ACCOUNT_PK")
+	@Column(name="ACCOUNTID")
 	int accountid;
+	
+	@Column(name="ACCOUNTTYPE", length=10)
 	String accounttype;
+	
+	@Column(name="balance")
 	double balance;
+	
+	@Column(name="USERID")
 	int userid;
 	
+//	@ManyToOne
+//	@JoinColumn(name="USERID")
+//	User user;
+	
+	@Transient
 	Scanner sc = new Scanner(System.in);
 	
+	//Method to deposit funds into user specified account, calls balanceInquiry and updateBalance methods from AccountDAOImpl class
 	public void deposit() {
 		AccountDAOImpl account = new AccountDAOImpl();
 		System.out.println("^^^Please select an Account ID to deposit your funds^^^");
@@ -37,7 +68,7 @@ public class Account {
 		System.out.println();
 		return;
 	}
-	
+	//Method to withdraw funds from user specified accounts, calls balanceInquiry and updateBalance methods from AccountDAOImpl class
 	public void withdraw() {
 		AccountDAOImpl account = new AccountDAOImpl();
 		System.out.println("^^^Please select an Account ID to withdraw your funds^^^");
@@ -67,16 +98,22 @@ public class Account {
 		return;
 	}
 	
-	public void viewAccounts(User user) {
+	//Method to view all accounts associated with a user. Calls getAccountsByUserId from AccountDAOImpl class
+	public void viewAccounts(int id) {
 		AccountDAOImpl account = new AccountDAOImpl();
-		account.getAccountsByUserId(user);
+		ArrayList<Account> accounts = account.getAccountsByUserId(id);
+		for(Account a : accounts) {
+			System.out.println(a);
+		}
 	}
 	
+	//Method creates new account to be associated with inputted User, calls addAccount from AccountDAOImpl class
 	public void newAccount(User user) {
 		
 		String accounttype = null;
 		while (accounttype == null) {
-			System.out.println("What type of account would you like to set up?");
+			
+			try {System.out.println("What type of account would you like to set up?");
 			System.out.println("Press 1 for a CHECKING account");
 			System.out.println("Press 2 for a SAVINGS account");
 			int check = Integer.parseInt(sc.nextLine());
@@ -87,6 +124,9 @@ public class Account {
 		} else {System.out.println("Invalid input. Please enter valid choice");
 		System.out.println();
 		}
+		} catch (NumberFormatException e) {
+			System.out.println("Please enter a valid integer to select your account type.");
+			break;
 		}
 		
 		AccountDAOImpl account = new AccountDAOImpl();
@@ -94,11 +134,12 @@ public class Account {
 		account.addAccount(a);
 		System.out.println("Account created!");
 	}
-	
+	}
+	//No args constructor
 	public Account() {
 		super();
 	}
-	
+	//Constructor with fields
 	public Account(int accountid, String accounttype, double balance, int userid) {
 		super();
 		this.accountid = accountid;
@@ -107,6 +148,14 @@ public class Account {
 		this.userid = userid;
 	}
 	
+	public Account(String accounttype, double balance, int userid) {
+		super();
+		this.accounttype = accounttype;
+		this.balance = balance;
+		this.userid = userid;
+	}
+	
+	//Getters and setters
 	public int getAccountid() {
 		return accountid;
 	}
@@ -131,10 +180,12 @@ public class Account {
 	public void setUserid(int userid) {
 		this.userid = userid;
 	}
+	//Overriden toString() method
 	@Override
 	public String toString() {
 		return accounttype +" Account ID: " + accountid + "  Balance: $" + balance;
 	}
+	//overridden hashCode() method
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -147,6 +198,7 @@ public class Account {
 		result = prime * result + userid;
 		return result;
 	}
+	//Overriden equals() method
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

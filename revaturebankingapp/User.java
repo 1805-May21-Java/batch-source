@@ -2,16 +2,42 @@ package com.revature.revaturebankingapp;
 
 import java.util.Scanner;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
+@Entity
+@Table(name="RBA_USER")
 public class User {
 
+	//Variables
+	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="userSequence")
+	@SequenceGenerator(allocationSize=46, name="userSequence", sequenceName="SQ_USER_PK")
+	@Column(name="USERID")
 	int accountid;
+	
+	@Column(name="EMAIL")
 	String email;
+	
+	@Column(name="PASSWORD")
 	String password;
+	
+	@Column(name="FIRSTNAME")
 	String firstname;
+	
+	@Column(name="LASTNAME")
 	String lastname;
 	
+	@Transient
 	Scanner sc = new Scanner(System.in);
 	
+	//Method to create new user in User table returns that user
 	public User newUser() {
 		System.out.println("Please enter your email to serve as your username:");
 		email = sc.nextLine();
@@ -26,12 +52,14 @@ public class User {
 		String lastname = sc.nextLine();
 		
 		UserDAOImpl user = new UserDAOImpl();
+		//Placeholder value of 10 for UserID since there is a trigger setup for new users in Oracle SQl Developer
 		User u = new User(10, email, password, firstname, lastname);
 		user.createUser(u);
 		System.out.println("Thank you for banking with Revature, " + u.getFirstname() + " " + u.getLastname() + "! Your account is set up and ready to use.");
 		return user.getUserByEmail(email);
 	}
 	
+	//Method to login an existing user, returns that user
 	public User login() {
 		boolean loggedin = false;
 		UserDAOImpl user = new UserDAOImpl();
@@ -53,11 +81,12 @@ public class User {
 		return user.getUserByEmail(email);
 	}
 	
-	
+	//No args constructor
 	public User() {
 		super();
 	}
 	
+	//Constructor with fields
 	public User(int accountid, String email, String password, String firstname, String lastname) {
 		super();
 		this.accountid = accountid;
@@ -67,6 +96,15 @@ public class User {
 		this.lastname = lastname;
 	}
 	
+	public User(String email, String password, String firstname, String lastname) {
+		super();
+		this.email = email;
+		this.password = password;
+		this.firstname = firstname;
+		this.lastname = lastname;
+	}
+	
+	//Gettters and Setters
 	public int getAccountid() {
 		return accountid;
 	}
@@ -97,11 +135,14 @@ public class User {
 	public void setLastname(String lastname) {
 		this.lastname = lastname;
 	}
+	
+	//Overriden toString() method
 	@Override
 	public String toString() {
 		return "User [accountid=" + accountid + ", email=" + email + ", password=" + password + ", firstname="
 				+ firstname + ", lastname=" + lastname + "]";
 	}
+	//Overidden hashCode() method
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -113,6 +154,7 @@ public class User {
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		return result;
 	}
+	//Overriden equals() method
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

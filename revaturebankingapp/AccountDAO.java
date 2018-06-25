@@ -7,6 +7,6 @@ public interface AccountDAO {
 
 	public void updateBalance(int accountid, double balance);
 	public double balanceInquiry(int id);
-	public ArrayList<Account> getAccountsByUserId(User user);
+	public ArrayList<Account> getAccountsByUserId(int id);
 	public void addAccount(Account account);
 }
