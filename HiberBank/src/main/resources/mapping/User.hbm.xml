@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.revature.models.User">
+		<id name="userId" column="USER_ID">
+			<generator class="increment"></generator>
+		</id>
+		<property name="userName" type="org.hibernate.type.StringType" column="USER_NAME"></property>
+		<property name="password" type="org.hibernate.type.StringType" column="USER_PASS"></property>
+		<property name="balance" type="org.hibernate.type.DoubleType" column="BALANCE"></property>
+	</class>
+</hibernate-mapping>
