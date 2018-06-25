@@ -4,8 +4,10 @@
 
 <hibernate-mapping>
 	<class name="com.revature.pojos.MultiAccount">
-		<id name="username" column="USERNAME"/>
-		<id name="accountType" column="ACCT_TYPE"/>
+		<composite-id>
+			<key-property name="username" column="USERNAME"/>
+			<key-property name="accountType" column="ACCT_TYPE"></key-property>
+		</composite-id>
 		<property name="balance" column="BALANCE"/>
 	</class>
 </hibernate-mapping>
