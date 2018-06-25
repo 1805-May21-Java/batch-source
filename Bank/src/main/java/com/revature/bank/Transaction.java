@@ -1,16 +1,38 @@
 package com.revature.bank;
 
 import java.text.DecimalFormat;
+
+import javax.persistence.*;
+
 import java.sql.Date;
 
+@Entity
+@Table
 public class Transaction {	
 	private static final DecimalFormat df = new DecimalFormat("#0.00");
 	
+	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="transactionSequence")
+	@SequenceGenerator(allocationSize=1, name="transactionSequence", sequenceName="SQ_TRANSACTION_PK")
+	@Column(name="TRANSACTION_ID")
+	private int Id;
+	
+	@Column(name="TRANSACTION_TYPE")
 	private String type;
+	
+	@Column(name="TRANSACTION_USER")
 	private String user;
+	
+	@Column(name="TRANSACTION_AMOUNT")
 	private double amount;
+	
+	@Column(name="TRANSACTION_BALANCE")
 	private double balance;
+	
+	@Column(name="TRANSACTION_DATE")
 	private Date date;
+	
+	@Column(name="TRANSACTION_OTHER")
 	private int otherAccount;
 	
 	public Transaction() {
@@ -26,6 +48,14 @@ public class Transaction {
 		this.balance = balance;
 		this.date = date;
 		this.otherAccount = otherAccount;
+	}
+	
+	public int getId() {
+		return Id;
+	}
+
+	public void setId(int id) {
+		Id = id;
 	}
 
 	public String getType() {

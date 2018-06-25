@@ -232,7 +232,7 @@ public class BankMenu {
 		if(confirm) {
 			Account acc = new Account(accountID, 0, nickname);
 			dao.createAccount(acc);
-			dao.createLink(bankInfo.getUser().getUser(), accountID);
+//			dao.createLink(bankInfo.getUser().getUser(), accountID);
 			
 			dao.createTransaction(new Transaction("Open", bankInfo.getUser().getUser(), 0,
 					acc.getBalance(), Date.valueOf(LocalDate.now()), acc.getId()), acc.getId());
@@ -440,7 +440,7 @@ public class BankMenu {
 				} while(true);
 				
 				if(confirm) {
-					dao.createLink(newUser, account.getId());
+//					dao.createLink(newUser, account.getId());
 					dao.createTransaction(new Transaction("Add", newUser, 0, 0,
 							Date.valueOf(LocalDate.now()), account.getId()), account.getId());
 					
@@ -517,7 +517,7 @@ public class BankMenu {
 				} while(true);
 				
 				if(confirm) {
-					dao.deleteLink(newUser, account.getId());
+//					dao.deleteLink(newUser, account.getId());
 					dao.createTransaction(new Transaction("Remove", newUser, 0, 0,
 							Date.valueOf(LocalDate.now()), account.getId()), account.getId());
 					

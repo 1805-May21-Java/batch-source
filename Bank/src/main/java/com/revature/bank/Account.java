@@ -4,12 +4,32 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 
 import com.revature.bank.Transaction;
+import javax.persistence.*;
 
+@Entity
+@Table
 public class Account {
+	@Id
+	@Column(name="ACCOUNT_ID")
 	private int id;
+	
+	@Column(name="BALANCE", columnDefinition="NUMBER(*,2)")
 	private double balance;
+	
+	@Column(name="NICKNAME", columnDefinition="VARCHAR2(255)")
 	private String nickname;
+	
+	//@Transient
+	@ManyToMany
+	@JoinTable(
+			name="ACCOUNT_USER",
+			joinColumns = { @JoinColumn(name="ACCOUNT_ID") }, //columns from this table 
+			inverseJoinColumns = { @JoinColumn(name="NAME")} ) //columns from user table
 	private ArrayList<String> users;
+	
+	//@Transient
+	@OneToMany
+	@JoinColumn(name="ACCOUNT_ID")
 	private LinkedList<Transaction> transactions;
 	
 	public Account() {

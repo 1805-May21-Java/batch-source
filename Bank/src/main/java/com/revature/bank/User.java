@@ -2,9 +2,19 @@ package com.revature.bank;
 
 import java.util.ArrayList;
 
+import javax.persistence.*;
+
+@Entity
+@Table
 public class User {
+	@Id
+	@Column(name="USERNAME")
 	private String user;
+	
+	@Column(name="PASSWORD")
 	private String pass;
+	
+	@Transient
 	private ArrayList<Integer> accounts;
 	
 	public User() {
