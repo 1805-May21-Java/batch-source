@@ -2,15 +2,15 @@ package com.adora.app;
 
 import java.util.List;
 
-import com.adora.access.UserDao;
-import com.adora.access.UserDaoImpl;
-import com.adora.object.User;
+import com.adora.access.CustomerDao;
+import com.adora.access.CustomerDaoImpl;
+import com.adora.object.Customer;
 
 public class LoginManager {
 
-	private static UserDao udi = new UserDaoImpl();
+	private static CustomerDao udi = new CustomerDaoImpl();
 	private static List<String> userNames;
-	private static User currentUser;
+	private static Customer currentUser;
 	
 	
 	static boolean isValidUsername(String username) {
@@ -59,8 +59,8 @@ public class LoginManager {
 	
 	static boolean addUser(String username, String password) {
 		
-		User user = new User(username, password);
-		int success = udi.createUser(user);
+		Customer customer = new Customer(username, password);
+		int success = udi.createUser(customer);
 		
 		if(success == 0) {
 			System.out.println("User was not added. Try again later.\n\n");
@@ -73,7 +73,7 @@ public class LoginManager {
 	
 	
 	static void login (String username, String password) {
-		currentUser = udi.getUserByCredentials(new User(username, password));
+		currentUser = udi.getUserByCredentials(new Customer(username, password));
 	}
 	static void logout () {
 		currentUser = null;
@@ -81,12 +81,12 @@ public class LoginManager {
 		
 		AccountManager.clearAccount();
 	}
-	static User getCurrentUser() {
+	static Customer getCurrentUser() {
 		return currentUser;
 	}
 	
 	static boolean isLoggedIn() {
-		if(currentUser.getUserId() == 0)
+		if(currentUser.getCustomerId() == 0)
 			return false;
 		return true;
 	}

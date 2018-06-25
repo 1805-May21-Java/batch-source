@@ -7,19 +7,19 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.adora.access.UserDaoImpl;
-import com.adora.object.User;
+import com.adora.access.CustomerDaoImpl;
+import com.adora.object.Customer;
 
 public class TestUserDao {
 
-	private List<User> userList;
+	private List<Customer> userList;
 	private List<String> userNameList;
-	private UserDaoImpl udi = new UserDaoImpl();
+	private CustomerDaoImpl udi = new CustomerDaoImpl();
 	
 
 	@Test
 	public void testCreateUser() {
-		int success = udi.createUser(new User("blahblahblah6", "passpass"));
+		int success = udi.createUser(new Customer("blahblahblah6", "passpass"));
 		System.out.println(success);
 		assert(success != 0);
 	}
@@ -27,7 +27,7 @@ public class TestUserDao {
 	
 	@Before 
 	public void populateUserLists() {
-		userList = udi.getUsers();
+		userList = udi.getCustomers();
 		userNameList = udi.getUserNames();
 		
 	}
@@ -40,9 +40,9 @@ public class TestUserDao {
 	@Test
 	public void testUpdateAccount() {
 		int updated = 0;
-		User user = userList.get(0);
-		user.setPassword("testupdatepasswod");
-		updated = udi.updateUser(user);
+		Customer customer = userList.get(0);
+		customer.setPassword("testupdatepasswod");
+		updated = udi.updateUser(customer);
 		assertEquals(updated, 1);
 	}
 	
