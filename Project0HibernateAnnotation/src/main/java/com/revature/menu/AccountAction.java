@@ -1,6 +1,7 @@
 package com.revature.menu;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.revature.pojos.*;
 
@@ -51,7 +52,7 @@ public class AccountAction extends Menu{
 		case "6":
 			System.out.println(lineBreak);
 			//Prints out all transactions on that account
-			ArrayList<Transaction> transactionList = dImpl.getTransactions(bankAccount);
+			List<Transaction> transactionList = dImpl.getTransactions(bankAccount);
 			for(Transaction transaction : transactionList) {
 				System.out.println(transaction.getDate()+" Transaction done by "+
 			transaction.getClientUsername());

@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Types;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.revature.pojos.BankAccount;
 import com.revature.pojos.Client;
@@ -261,9 +262,9 @@ public class DaoInterfaceImpl implements daoInterface {
 	}
 
 	@Override
-	public ArrayList<Transaction> getTransactions(BankAccount bankAccount) {
+	public List<Transaction> getTransactions(BankAccount bankAccount) {
 		//gets all transactions from a bank account
-		ArrayList<Transaction> transactionList = new ArrayList<>();
+		List<Transaction> transactionList = new ArrayList<>();
 		try(Connection connection = ConnectionUtil.getConnection()){
 			String sql = String.format("SELECT * FROM %s WHERE %s = ?", 
 					BankContract.LOG_TABLE_NAME,

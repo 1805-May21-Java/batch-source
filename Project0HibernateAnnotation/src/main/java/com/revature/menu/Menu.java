@@ -2,6 +2,7 @@ package com.revature.menu;
 
 import java.util.Scanner;
 
+import com.revature.dao.DaoHibernate;
 import com.revature.dao.DaoInterfaceImpl;
 import com.revature.pojos.*;
 
@@ -9,7 +10,8 @@ public class Menu {
 	//Common methods and variables for all menu classes
 	
 	static Scanner scan = new Scanner(System.in);
-	static DaoInterfaceImpl dImpl = new DaoInterfaceImpl();
+//	static DaoInterfaceImpl dImpl = new DaoInterfaceImpl();
+	static DaoHibernate dImpl = new DaoHibernate();
 	Client client;
 	public static final String lineBreak = "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~";
 	public static final String loadingMessage = "Processing...";

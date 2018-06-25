@@ -7,10 +7,9 @@ import com.revature.menu.Menu;
 import com.revature.pojos.*;
 
 //Stores methods that write and read bank account information
-public class GetClient {
+public class GetClient extends Menu{
 	
 	private static Scanner scanner = new Scanner(System.in);
-	private static DaoInterfaceImpl dImpl = new DaoInterfaceImpl();
 	static String username;
 	static String password;
 

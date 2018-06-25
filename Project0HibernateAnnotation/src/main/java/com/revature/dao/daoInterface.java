@@ -1,6 +1,8 @@
 package com.revature.dao;
 
 import java.util.ArrayList;
+import java.util.List;
+
 import com.revature.pojos.*;
 
 public interface daoInterface {
@@ -15,5 +17,5 @@ public interface daoInterface {
 	public boolean saveAccountClientLink(BankAccount bankAccount,Client client);
 	public boolean userNameExists(String newUserName);
 	public boolean recordTransation(Transaction transaction);
-	public ArrayList<Transaction> getTransactions(BankAccount bankAccount);
+	public List<Transaction> getTransactions(BankAccount bankAccount);
 }

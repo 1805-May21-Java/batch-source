@@ -1,6 +1,5 @@
 package com.revature.menu;
 
-import com.revature.dao.DaoInterfaceImpl;
 import com.revature.pojos.*;
 
 public class SelectAccount extends Menu{
@@ -15,7 +14,6 @@ public class SelectAccount extends Menu{
 			BankAccount account = inputAccount(client);
 			System.out.println(lineBreak);
 			AccountAction.accountAction(account,client);
-			
 		}
 		
 		//user entry for selecting an existing account or opening a new one
@@ -59,7 +57,6 @@ public class SelectAccount extends Menu{
 					
 					//creates new account
 					client.addNewAccount(bankAccount);
-					DaoInterfaceImpl dImpl = new DaoInterfaceImpl();
 					dImpl.saveNewAccount(bankAccount,client);
 					dImpl.saveAccountClientLink(bankAccount, client);
 					return bankAccount;

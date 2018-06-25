@@ -32,7 +32,7 @@ public final class BankContract {
     public static final String ANNOTATIONS_TRANSACTION_TABLE_NAME = "ANNOTATIONS_TRANSACTIONS";
     public static final String ANNOTATIONS_CLIENT_ACCOUNT_TABLE_NAME = "ANNOTATIONS_CLIENT_ACCOUNT";
     public static final String ANNOTATIONS_BANK_ID = "ACCOUNT_ID";
-    public static final String ANNOTATIONS_CLIENT_EMAIL ="ACCOUNT_CLIENT";
+    public static final String ANNOTATIONS_CLIENT_USERNAME ="ACCOUNT_CLIENT_USERNAME";
     public static final String ANNOTATIONS_TRANACTION_ID = "ANNOTATIONS_TRANSACTION_ID";
    
 }

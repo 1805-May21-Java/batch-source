@@ -31,16 +31,17 @@ public class Client implements Serializable{
 	@ManyToMany
 	@JoinTable(
 			name=BankContract.ANNOTATIONS_CLIENT_ACCOUNT_TABLE_NAME,
-			joinColumns= {@JoinColumn(name=BankContract.ANNOTATIONS_CLIENT_EMAIL)}, 
+			joinColumns= {@JoinColumn(name=BankContract.ANNOTATIONS_CLIENT_USERNAME)}, 
 			inverseJoinColumns={@JoinColumn(name=BankContract.ANNOTATIONS_BANK_ID)})
 	private List<BankAccount> accounts = new ArrayList<>();
 	
+	@Id
 	@Column
 	private String username;
 	@Column
 	private String password;
-	@Column(name=BankContract.ANNOTATIONS_CLIENT_EMAIL)
-	@Id
+	@Column(name=BankContract.ANNOTATIONS_CLIENT_USERNAME)
+	
 	private String email;
 
 	public Client() {
@@ -58,8 +59,8 @@ public class Client implements Serializable{
 
 	
 
-	public ArrayList<BankAccount> getAccounts() {
-		return (ArrayList<BankAccount>) accounts;
+	public List<BankAccount> getAccounts() {
+		return (List<BankAccount>) accounts;
 	}
 
 
