@@ -2,14 +2,14 @@ package com.revature.dao;
 
 import java.util.List;
 
-import com.revature.bankingapp.Account;
+import com.revature.models.Account;
 
 public interface AccountDao {
 
 	public List<Account> getAccounts();
 	public Account getAccountById(int id);
-	public int createAccount(Account account);
-	public int updateAccount(Account account);
+	public void createAccount(Account account);
+	public void updateAccount(Account account);
 	public int deleteAccountById(int id);
 	
 }

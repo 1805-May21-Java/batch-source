@@ -1,10 +1,24 @@
-package com.revature.bankingapp;
+package com.revature.models;
 
+import javax.persistence.*;
+
+@Entity
+@Table
 public class Account {
 	
+	@Id
+	@Column(name="ACC_ID")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="IdSequence")
+	@SequenceGenerator(allocationSize=1, name="IdSequence", sequenceName="SQ_ACCOUNTS_PK")
 	private int id;
+	
+	@Column(name="ACC_USERNAME", columnDefinition="VARCHAR(25)")
 	private String username;
+	
+	@Column(name="ACC_PASSWORD", columnDefinition="VARCHAR(25)")
 	private String password;
+	
+	@Column
 	private double balance; // new account balance always starts at zero
 
 	public Account(int id, String username, String password, double balance) {
