@@ -22,7 +22,7 @@ public class AccountDaoImpl implements AccountDao {
 	public List<Account> getAccounts() {
 		
 		Session session = HibernateUtil.getSession();
-		List<Account> accountList = session.createQuery("from ACCOUNT").list();
+		List<Account> accountList = session.createQuery("from Account").list();
 		session.close();
 		
 		
