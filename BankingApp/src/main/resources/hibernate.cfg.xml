@@ -14,8 +14,8 @@
 		<property name="hibernate.show_sql">true</property>
 		<property name="hibernate.hbm2ddl.auto">update</property>
 	
-		<mapping resource="mapping/Account.hbm.xml" />
-		<mapping resource="mapping/Customer.hbm.xml"/>
+		<mapping class="com.adora.object.Account" />
+		<mapping class="com.adora.object.Customer"/>
 
 	</session-factory>
 </hibernate-configuration>

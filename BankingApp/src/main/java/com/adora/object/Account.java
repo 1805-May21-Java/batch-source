@@ -1,9 +1,19 @@
 package com.adora.object;
 
+import javax.persistence.*;
+
+@Entity
+@Table
 public class Account {
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="accountSequence")
+	@SequenceGenerator(allocationSize=1, name="accountSequence", sequenceName="account_pk_sq")
+	@Column(name="account_id")
 	private int accountId;
+	@Column(name="account_type")
 	private String accountType;
+	@Column(name="account_balance")
 	private double accountBalance;
 	
 	public Account() {

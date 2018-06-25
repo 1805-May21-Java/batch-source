@@ -2,14 +2,30 @@ package com.adora.object;
 
 import java.util.List;
 
-import org.hibernate.type.CompositeCustomType;
+import javax.persistence.*;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
+
+@Entity
+@Table
 public class Customer {
-	
+	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="customerSequence")
+	@SequenceGenerator(allocationSize=1, name="customerSequence", sequenceName="customer_pk_sq")
+	@Column(name="customer_id")
 	private int customerId;
+	@Column(name="customer_name")
 	private String customerName;
+	@Column(name="customer_pass")
 	private String password;
+	
+	@OneToMany
+	@JoinColumn(name="account_id")
 	private List<Account> accounts;
+	
+	
+	
 	public Customer() {
 		super();
 		// TODO Auto-generated constructor stub
