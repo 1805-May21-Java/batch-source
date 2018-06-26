@@ -1,0 +1,26 @@
+
+
+
+<div *ngFor='let t of myType'>
+      <input name="category" type="radio" [value]="t" (click)="isType(t)"> {{t}}
+</div>
+
+  <div *ngIf="isAnimal">
+    <div *ngFor="let animal of TYPE.Animals">
+      {{animal}}
+    </div>
+  </div>
+
+
+  <div *ngIf="isColor">
+      <div *ngFor="let color of TYPE.Colors">
+        {{color}}
+      </div>
+    </div>
+
+
+    <div *ngIf="isDay">
+        <div *ngFor="let day of TYPE.Days">
+          {{day}}
+        </div>
+    </div>

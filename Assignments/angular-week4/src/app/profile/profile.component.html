@@ -1,0 +1,6 @@
+
+<button (click)="toggleShow()">{{isClicked? "Hide": "Show"}}</button>
+<div *ngIf="isClicked">
+    {{all_users[0].name}}
+    {{all_users[0].id}} 
+</div>

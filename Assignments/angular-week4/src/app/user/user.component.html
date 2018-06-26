@@ -1,0 +1,14 @@
+<h4>User Component</h4>
+
+<table class="container table">
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Phone</th>
+  </tr>
+  <tr *ngFor="let person of people">
+    <td>{{person.name}}</td>
+    <td>{{person.email}}</td>
+    <td>{{person.phone}}</td>
+  </tr>
+</table>

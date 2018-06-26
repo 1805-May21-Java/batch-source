@@ -1,0 +1,21 @@
+
+
+<button (click)="toggle()">Change Format</button>
+<div>
+  <table [ngClass]="tableStyle">
+    <thead>
+      <tr>
+        <th>Name?</th>
+        <th>Email</th>
+        <th>Birthday</th>
+      </tr>
+    </thead>
+      <tr *ngFor="let person of PEOPLE">
+        <td> {{person.firstname}} {{person.lastname}}</td>
+        <td> {{person.email}}</td>
+        <td> {{person.birthday}}</td>
+        </tr>
+  </table>
+</div>
+
+
