@@ -1,0 +1,13 @@
+2018-06-27 12:54:10 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@2957fcb0: startup date [Wed Jun 27 12:54:10 EDT 2018]; root of context hierarchy
+2018-06-27 12:54:10 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 12:54:11 INFO  root:23 - int com.revature.beans.Calculator.add(int,int)
+2018-06-27 12:54:11 INFO  root:27 - 1+2 = 3
+2018-06-27 12:54:11 INFO  root:23 - int com.revature.beans.Calculator.subtract(int,int)
+2018-06-27 12:54:11 INFO  root:31 - 5-4 = 1
+2018-06-27 12:54:11 INFO  root:23 - int com.revature.beans.Calculator.multiply(int,int)
+2018-06-27 12:54:11 INFO  root:35 - 5*2 = 10
+2018-06-27 12:54:11 ERROR root:66 - Cannot divide by 0
+2018-06-27 12:54:11 INFO  root:23 - int com.revature.beans.Calculator.divide(int,int)
+2018-06-27 12:54:11 INFO  root:23 - int com.revature.beans.Calculator.divide(int,int)
+2018-06-27 12:54:11 INFO  root:41 - 12/2 = 6
+2018-06-27 12:54:11 INFO  ClassPathXmlApplicationContext:960 - Closing org.springframework.context.support.ClassPathXmlApplicationContext@2957fcb0: startup date [Wed Jun 27 12:54:10 EDT 2018]; root of context hierarchy
