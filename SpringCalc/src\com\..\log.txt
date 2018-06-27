@@ -1,0 +1,301 @@
+2018-06-27 11:10:34 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@deb6432: startup date [Wed Jun 27 11:10:34 EDT 2018]; root of context hierarchy
+2018-06-27 11:10:35 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 11:10:35 WARN  ClassPathXmlApplicationContext:546 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'calculator' defined in file [/Users/jayfman/Google Drive/Revature/Assignments/batch-source/SpringCalc/target/classes/com/revature/beans/Calculator.class]: Initialization of bean failed; nested exception is java.lang.IllegalArgumentException: warning no match for this type name: com.revature.Calculator [Xlint:invalidAbsoluteTypeName]
+2018-06-27 11:11:02 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@deb6432: startup date [Wed Jun 27 11:11:02 EDT 2018]; root of context hierarchy
+2018-06-27 11:11:02 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 11:11:03 INFO  root:17 - double com.revature.beans.Calculator.add(double,double)
+2018-06-27 11:11:03 INFO  root:17 - double com.revature.beans.Calculator.subtract(double,double)
+2018-06-27 11:11:03 INFO  root:17 - double com.revature.beans.Calculator.multiply(double,double)
+2018-06-27 11:11:03 INFO  root:17 - double com.revature.beans.Calculator.divide(double,double)
+2018-06-27 11:13:18 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@deb6432: startup date [Wed Jun 27 11:13:18 EDT 2018]; root of context hierarchy
+2018-06-27 11:13:18 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 11:13:18 INFO  root:18 - Calculator.add(..)
+2018-06-27 11:13:18 INFO  root:18 - Calculator.subtract(..)
+2018-06-27 11:13:18 INFO  root:18 - Calculator.multiply(..)
+2018-06-27 11:13:18 INFO  root:18 - Calculator.divide(..)
+2018-06-27 11:18:26 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@deb6432: startup date [Wed Jun 27 11:18:26 EDT 2018]; root of context hierarchy
+2018-06-27 11:18:26 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 11:18:27 INFO  root:18 - Calculator.add(..)
+2018-06-27 11:18:49 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@deb6432: startup date [Wed Jun 27 11:18:49 EDT 2018]; root of context hierarchy
+2018-06-27 11:18:49 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 11:18:49 INFO  root:18 - Calculator.add(..)
+2018-06-27 11:18:49 INFO  root:18 - Calculator.subtract(..)
+2018-06-27 11:18:49 INFO  root:18 - Calculator.multiply(..)
+2018-06-27 11:18:49 INFO  root:18 - Calculator.divide(..)
+2018-06-27 11:20:25 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@deb6432: startup date [Wed Jun 27 11:20:25 EDT 2018]; root of context hierarchy
+2018-06-27 11:20:25 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 11:20:26 INFO  root:18 - Calculator.add(..)
+2018-06-27 11:20:26 INFO  root:18 - Calculator.subtract(..)
+2018-06-27 11:20:26 INFO  root:18 - Calculator.multiply(..)
+2018-06-27 11:20:26 INFO  root:18 - Calculator.divide(..)
+2018-06-27 11:20:57 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@deb6432: startup date [Wed Jun 27 11:20:57 EDT 2018]; root of context hierarchy
+2018-06-27 11:20:58 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 11:20:58 INFO  root:18 - Calculator.add(..)
+2018-06-27 11:20:58 INFO  root:18 - Calculator.subtract(..)
+2018-06-27 11:20:58 INFO  root:18 - Calculator.multiply(..)
+2018-06-27 11:20:58 INFO  root:18 - Calculator.divide(..)
+2018-06-27 11:21:29 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@deb6432: startup date [Wed Jun 27 11:21:29 EDT 2018]; root of context hierarchy
+2018-06-27 11:21:29 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 11:21:30 INFO  root:18 - Calculator.add(..)
+2018-06-27 11:21:30 INFO  root:18 - Calculator.subtract(..)
+2018-06-27 11:21:30 INFO  root:18 - Calculator.multiply(..)
+2018-06-27 11:21:30 INFO  root:18 - Calculator.divide(..)
+2018-06-27 11:21:44 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@deb6432: startup date [Wed Jun 27 11:21:44 EDT 2018]; root of context hierarchy
+2018-06-27 11:21:45 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 11:21:45 INFO  root:18 - Calculator.add(..)
+2018-06-27 11:21:45 INFO  root:18 - Calculator.subtract(..)
+2018-06-27 11:21:45 INFO  root:18 - Calculator.multiply(..)
+2018-06-27 11:21:45 INFO  root:18 - Calculator.divide(..)
+2018-06-27 11:21:52 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@deb6432: startup date [Wed Jun 27 11:21:52 EDT 2018]; root of context hierarchy
+2018-06-27 11:21:52 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 11:21:53 INFO  root:18 - Calculator.add(..)
+2018-06-27 11:21:53 INFO  root:18 - Calculator.subtract(..)
+2018-06-27 11:21:53 INFO  root:18 - Calculator.multiply(..)
+2018-06-27 11:21:53 INFO  root:18 - Calculator.divide(..)
+2018-06-27 11:23:38 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@deb6432: startup date [Wed Jun 27 11:23:38 EDT 2018]; root of context hierarchy
+2018-06-27 11:23:38 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 11:23:38 INFO  root:18 - Calculator.add(..)
+2018-06-27 11:23:38 INFO  root:18 - Calculator.subtract(..)
+2018-06-27 11:23:38 INFO  root:18 - Calculator.multiply(..)
+2018-06-27 11:23:38 INFO  root:18 - Calculator.divide(..)
+2018-06-27 11:24:05 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@deb6432: startup date [Wed Jun 27 11:24:05 EDT 2018]; root of context hierarchy
+2018-06-27 11:24:05 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 11:24:06 INFO  root:18 - Calculator.add(..)
+2018-06-27 11:24:06 INFO  root:18 - Calculator.subtract(..)
+2018-06-27 11:24:06 INFO  root:18 - Calculator.multiply(..)
+2018-06-27 11:24:06 INFO  root:18 - Calculator.divide(..)
+2018-06-27 11:28:31 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@deb6432: startup date [Wed Jun 27 11:28:31 EDT 2018]; root of context hierarchy
+2018-06-27 11:28:31 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 11:28:31 INFO  root:18 - Calculator.add(..)
+2018-06-27 11:28:31 INFO  root:40 - 5.0 + 3.6 = 8.6
+2018-06-27 11:28:31 INFO  root:18 - Calculator.subtract(..)
+2018-06-27 11:28:31 INFO  root:40 - 3.0 - 8.0 = -5.0
+2018-06-27 11:28:31 INFO  root:18 - Calculator.multiply(..)
+2018-06-27 11:28:31 INFO  root:40 - 4.0 * 8.0 = 32.0
+2018-06-27 11:28:31 INFO  root:18 - Calculator.divide(..)
+2018-06-27 11:28:31 INFO  root:40 - 5.0 / 3.0 = 1.6666666666666667
+2018-06-27 11:33:12 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@deb6432: startup date [Wed Jun 27 11:33:12 EDT 2018]; root of context hierarchy
+2018-06-27 11:33:12 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 11:33:12 WARN  ClassPathXmlApplicationContext:546 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'calculator' defined in file [/Users/jayfman/Google Drive/Revature/Assignments/batch-source/SpringCalc/target/classes/com/revature/beans/Calculator.class]: Initialization of bean failed; nested exception is java.lang.IllegalArgumentException: error at ::0 formal unbound in pointcut 
+2018-06-27 11:35:01 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@deb6432: startup date [Wed Jun 27 11:35:01 EDT 2018]; root of context hierarchy
+2018-06-27 11:35:01 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 11:35:02 WARN  ClassPathXmlApplicationContext:546 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'calculator' defined in file [/Users/jayfman/Google Drive/Revature/Assignments/batch-source/SpringCalc/target/classes/com/revature/beans/Calculator.class]: Initialization of bean failed; nested exception is java.lang.IllegalArgumentException: Pointcut is not well-formed: expecting '(' at character position 0
+com.revature.beans.Calculator.divide
+^
+
+2018-06-27 11:35:20 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@deb6432: startup date [Wed Jun 27 11:35:20 EDT 2018]; root of context hierarchy
+2018-06-27 11:35:21 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 11:35:21 WARN  ClassPathXmlApplicationContext:546 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'calculator' defined in file [/Users/jayfman/Google Drive/Revature/Assignments/batch-source/SpringCalc/target/classes/com/revature/beans/Calculator.class]: Initialization of bean failed; nested exception is java.lang.IllegalArgumentException: error at ::0 can't find referenced pointcut divide
+2018-06-27 11:35:35 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@deb6432: startup date [Wed Jun 27 11:35:35 EDT 2018]; root of context hierarchy
+2018-06-27 11:35:35 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 11:35:36 WARN  ClassPathXmlApplicationContext:546 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'calculator' defined in file [/Users/jayfman/Google Drive/Revature/Assignments/batch-source/SpringCalc/target/classes/com/revature/beans/Calculator.class]: Initialization of bean failed; nested exception is java.lang.IllegalArgumentException: error at ::0 formal unbound in pointcut 
+2018-06-27 11:35:55 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@deb6432: startup date [Wed Jun 27 11:35:55 EDT 2018]; root of context hierarchy
+2018-06-27 11:35:55 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 11:35:55 WARN  ClassPathXmlApplicationContext:546 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'calculator' defined in file [/Users/jayfman/Google Drive/Revature/Assignments/batch-source/SpringCalc/target/classes/com/revature/beans/Calculator.class]: Initialization of bean failed; nested exception is java.lang.IllegalArgumentException: error at ::0 can't find referenced pointcut divide
+2018-06-27 11:37:24 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@deb6432: startup date [Wed Jun 27 11:37:24 EDT 2018]; root of context hierarchy
+2018-06-27 11:37:24 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 11:37:24 WARN  ClassPathXmlApplicationContext:546 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'calculator' defined in file [/Users/jayfman/Google Drive/Revature/Assignments/batch-source/SpringCalc/target/classes/com/revature/beans/Calculator.class]: Initialization of bean failed; nested exception is java.lang.IllegalArgumentException: error at ::0 formal unbound in pointcut 
+2018-06-27 11:37:32 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@deb6432: startup date [Wed Jun 27 11:37:32 EDT 2018]; root of context hierarchy
+2018-06-27 11:37:32 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 11:37:33 WARN  ClassPathXmlApplicationContext:546 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'calculator' defined in file [/Users/jayfman/Google Drive/Revature/Assignments/batch-source/SpringCalc/target/classes/com/revature/beans/Calculator.class]: Initialization of bean failed; nested exception is java.lang.IllegalArgumentException: error at ::0 formal unbound in pointcut 
+2018-06-27 11:37:45 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@deb6432: startup date [Wed Jun 27 11:37:45 EDT 2018]; root of context hierarchy
+2018-06-27 11:37:45 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 11:37:46 WARN  ClassPathXmlApplicationContext:546 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'calculator' defined in file [/Users/jayfman/Google Drive/Revature/Assignments/batch-source/SpringCalc/target/classes/com/revature/beans/Calculator.class]: Initialization of bean failed; nested exception is java.lang.IllegalArgumentException: error at ::0 formal unbound in pointcut 
+2018-06-27 11:38:44 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@deb6432: startup date [Wed Jun 27 11:38:44 EDT 2018]; root of context hierarchy
+2018-06-27 11:38:44 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 11:38:44 INFO  root:28 - Calculator.add(..)
+2018-06-27 11:38:44 INFO  root:50 - 5.0 + 3.6 = 8.6
+2018-06-27 11:38:44 INFO  root:28 - Calculator.subtract(..)
+2018-06-27 11:38:44 INFO  root:50 - 3.0 - 8.0 = -5.0
+2018-06-27 11:38:44 INFO  root:28 - Calculator.multiply(..)
+2018-06-27 11:38:44 INFO  root:50 - 4.0 * 8.0 = 32.0
+2018-06-27 11:38:59 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@deb6432: startup date [Wed Jun 27 11:38:59 EDT 2018]; root of context hierarchy
+2018-06-27 11:38:59 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 11:39:00 INFO  root:28 - Calculator.add(..)
+2018-06-27 11:39:00 INFO  root:50 - 5.0 + 3.6 = 8.6
+2018-06-27 11:39:00 INFO  root:28 - Calculator.subtract(..)
+2018-06-27 11:39:00 INFO  root:50 - 3.0 - 8.0 = -5.0
+2018-06-27 11:39:00 INFO  root:28 - Calculator.multiply(..)
+2018-06-27 11:39:00 INFO  root:50 - 4.0 * 8.0 = 32.0
+2018-06-27 11:39:08 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@deb6432: startup date [Wed Jun 27 11:39:08 EDT 2018]; root of context hierarchy
+2018-06-27 11:39:08 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 11:39:09 INFO  root:28 - Calculator.add(..)
+2018-06-27 11:39:09 INFO  root:50 - 5.0 + 3.6 = 8.6
+2018-06-27 11:39:09 INFO  root:28 - Calculator.subtract(..)
+2018-06-27 11:39:09 INFO  root:50 - 3.0 - 8.0 = -5.0
+2018-06-27 11:39:09 INFO  root:28 - Calculator.multiply(..)
+2018-06-27 11:39:09 INFO  root:50 - 4.0 * 8.0 = 32.0
+2018-06-27 11:39:56 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@deb6432: startup date [Wed Jun 27 11:39:56 EDT 2018]; root of context hierarchy
+2018-06-27 11:39:57 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 11:39:57 INFO  root:28 - Calculator.add(..)
+2018-06-27 11:39:57 INFO  root:50 - 5.0 + 3.6 = 8.6
+2018-06-27 11:39:57 INFO  root:28 - Calculator.subtract(..)
+2018-06-27 11:39:57 INFO  root:50 - 3.0 - 8.0 = -5.0
+2018-06-27 11:39:57 INFO  root:28 - Calculator.multiply(..)
+2018-06-27 11:39:57 INFO  root:50 - 4.0 * 8.0 = 32.0
+2018-06-27 11:40:01 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@deb6432: startup date [Wed Jun 27 11:40:01 EDT 2018]; root of context hierarchy
+2018-06-27 11:40:01 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 11:40:02 WARN  ClassPathXmlApplicationContext:546 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'calculator' defined in file [/Users/jayfman/Google Drive/Revature/Assignments/batch-source/SpringCalc/target/classes/com/revature/beans/Calculator.class]: Initialization of bean failed; nested exception is java.lang.IllegalArgumentException: error at ::0 formal unbound in pointcut 
+2018-06-27 11:40:27 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@deb6432: startup date [Wed Jun 27 11:40:27 EDT 2018]; root of context hierarchy
+2018-06-27 11:40:27 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 11:40:27 INFO  root:28 - Calculator.add(..)
+2018-06-27 11:40:27 INFO  root:50 - 5.0 + 3.6 = 8.6
+2018-06-27 11:40:27 INFO  root:28 - Calculator.subtract(..)
+2018-06-27 11:40:27 INFO  root:50 - 3.0 - 8.0 = -5.0
+2018-06-27 11:40:27 INFO  root:28 - Calculator.multiply(..)
+2018-06-27 11:40:27 INFO  root:50 - 4.0 * 8.0 = 32.0
+2018-06-27 11:41:02 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@deb6432: startup date [Wed Jun 27 11:41:02 EDT 2018]; root of context hierarchy
+2018-06-27 11:41:03 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 11:41:03 WARN  ClassPathXmlApplicationContext:546 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'calculator' defined in file [/Users/jayfman/Google Drive/Revature/Assignments/batch-source/SpringCalc/target/classes/com/revature/beans/Calculator.class]: Initialization of bean failed; nested exception is java.lang.IllegalArgumentException: error at ::0 formal unbound in pointcut 
+2018-06-27 11:41:08 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@deb6432: startup date [Wed Jun 27 11:41:08 EDT 2018]; root of context hierarchy
+2018-06-27 11:41:08 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 11:41:08 INFO  root:28 - Calculator.add(..)
+2018-06-27 11:41:08 INFO  root:50 - 5.0 + 3.6 = 8.6
+2018-06-27 11:41:08 INFO  root:28 - Calculator.subtract(..)
+2018-06-27 11:41:08 INFO  root:50 - 3.0 - 8.0 = -5.0
+2018-06-27 11:41:08 INFO  root:28 - Calculator.multiply(..)
+2018-06-27 11:41:08 INFO  root:50 - 4.0 * 8.0 = 32.0
+2018-06-27 11:43:32 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@deb6432: startup date [Wed Jun 27 11:43:32 EDT 2018]; root of context hierarchy
+2018-06-27 11:43:32 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 11:43:32 WARN  ClassPathXmlApplicationContext:546 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'calculator' defined in file [/Users/jayfman/Google Drive/Revature/Assignments/batch-source/SpringCalc/target/classes/com/revature/beans/Calculator.class]: Initialization of bean failed; nested exception is java.lang.IllegalArgumentException: error at ::0 can't find referenced pointcut divide
+2018-06-27 11:45:34 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@deb6432: startup date [Wed Jun 27 11:45:34 EDT 2018]; root of context hierarchy
+2018-06-27 11:45:34 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 11:45:35 INFO  root:28 - Calculator.add(..)
+2018-06-27 11:45:35 INFO  root:50 - 5.0 + 3.6 = 8.6
+2018-06-27 11:45:35 INFO  root:28 - Calculator.subtract(..)
+2018-06-27 11:45:35 INFO  root:50 - 3.0 - 8.0 = -5.0
+2018-06-27 11:45:35 INFO  root:28 - Calculator.multiply(..)
+2018-06-27 11:45:35 INFO  root:50 - 4.0 * 8.0 = 32.0
+2018-06-27 11:46:07 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@deb6432: startup date [Wed Jun 27 11:46:07 EDT 2018]; root of context hierarchy
+2018-06-27 11:46:07 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 11:46:08 WARN  ClassPathXmlApplicationContext:546 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'calculator' defined in file [/Users/jayfman/Google Drive/Revature/Assignments/batch-source/SpringCalc/target/classes/com/revature/beans/Calculator.class]: Initialization of bean failed; nested exception is java.lang.IllegalArgumentException: error at ::0 formal unbound in pointcut 
+2018-06-27 11:46:50 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@deb6432: startup date [Wed Jun 27 11:46:50 EDT 2018]; root of context hierarchy
+2018-06-27 11:46:50 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 11:46:51 INFO  root:28 - Calculator.add(..)
+2018-06-27 11:46:51 INFO  root:50 - 5.0 + 3.6 = 8.6
+2018-06-27 11:46:51 INFO  root:28 - Calculator.subtract(..)
+2018-06-27 11:46:51 INFO  root:50 - 3.0 - 8.0 = -5.0
+2018-06-27 11:46:51 INFO  root:28 - Calculator.multiply(..)
+2018-06-27 11:46:51 INFO  root:50 - 4.0 * 8.0 = 32.0
+2018-06-27 11:51:02 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@deb6432: startup date [Wed Jun 27 11:51:02 EDT 2018]; root of context hierarchy
+2018-06-27 11:51:02 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 11:51:03 INFO  root:28 - Calculator.add(..)
+2018-06-27 11:51:03 INFO  root:50 - 5.0 + 3.6 = 8.6
+2018-06-27 11:51:03 INFO  root:28 - Calculator.subtract(..)
+2018-06-27 11:51:03 INFO  root:50 - 3.0 - 8.0 = -5.0
+2018-06-27 11:51:03 INFO  root:28 - Calculator.multiply(..)
+2018-06-27 11:51:03 INFO  root:50 - 4.0 * 8.0 = 32.0
+2018-06-27 11:51:47 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@deb6432: startup date [Wed Jun 27 11:51:47 EDT 2018]; root of context hierarchy
+2018-06-27 11:51:47 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 11:51:48 INFO  root:28 - Calculator.add(..)
+2018-06-27 11:51:48 INFO  root:50 - 5.0 + 3.6 = 8.6
+2018-06-27 11:51:48 INFO  root:28 - Calculator.subtract(..)
+2018-06-27 11:51:48 INFO  root:50 - 3.0 - 8.0 = -5.0
+2018-06-27 11:51:48 INFO  root:28 - Calculator.multiply(..)
+2018-06-27 11:51:48 INFO  root:50 - 4.0 * 8.0 = 32.0
+2018-06-27 11:51:55 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@deb6432: startup date [Wed Jun 27 11:51:55 EDT 2018]; root of context hierarchy
+2018-06-27 11:51:55 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 11:51:56 INFO  root:29 - Calculator.add(..)
+2018-06-27 11:51:56 INFO  root:51 - 5.0 + 3.6 = 8.6
+2018-06-27 11:51:56 INFO  root:29 - Calculator.subtract(..)
+2018-06-27 11:51:56 INFO  root:51 - 3.0 - 8.0 = -5.0
+2018-06-27 11:51:56 INFO  root:29 - Calculator.multiply(..)
+2018-06-27 11:51:56 INFO  root:51 - 4.0 * 8.0 = 32.0
+2018-06-27 11:51:57 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@deb6432: startup date [Wed Jun 27 11:51:57 EDT 2018]; root of context hierarchy
+2018-06-27 11:51:57 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 11:51:58 INFO  root:29 - Calculator.add(..)
+2018-06-27 11:51:58 INFO  root:51 - 5.0 + 3.6 = 8.6
+2018-06-27 11:51:58 INFO  root:29 - Calculator.subtract(..)
+2018-06-27 11:51:58 INFO  root:51 - 3.0 - 8.0 = -5.0
+2018-06-27 11:51:58 INFO  root:29 - Calculator.multiply(..)
+2018-06-27 11:51:58 INFO  root:51 - 4.0 * 8.0 = 32.0
+2018-06-27 11:51:58 INFO  root:29 - Calculator.divide(..)
+2018-06-27 11:51:58 INFO  root:51 - 5.0 / 3.0 = 0.5
+2018-06-27 11:54:47 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@deb6432: startup date [Wed Jun 27 11:54:47 EDT 2018]; root of context hierarchy
+2018-06-27 11:54:47 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 11:54:48 INFO  root:38 - Calculator.add(..)
+2018-06-27 11:54:48 INFO  root:60 - 5.0 + 3.6 = 8.6
+2018-06-27 11:54:48 INFO  root:38 - Calculator.subtract(..)
+2018-06-27 11:54:48 INFO  root:60 - 3.0 - 8.0 = -5.0
+2018-06-27 11:54:48 INFO  root:38 - Calculator.multiply(..)
+2018-06-27 11:54:48 INFO  root:60 - 4.0 * 8.0 = 32.0
+2018-06-27 11:54:48 INFO  root:38 - Calculator.divide(..)
+2018-06-27 11:54:48 INFO  root:60 - 5.0 / 3.0 = 1.6666666666666667
+2018-06-27 11:55:02 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@deb6432: startup date [Wed Jun 27 11:55:02 EDT 2018]; root of context hierarchy
+2018-06-27 11:55:02 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 11:55:03 INFO  root:38 - Calculator.add(..)
+2018-06-27 11:55:03 INFO  root:60 - 5.0 + 3.6 = 8.6
+2018-06-27 11:55:03 INFO  root:38 - Calculator.subtract(..)
+2018-06-27 11:55:03 INFO  root:60 - 3.0 - 8.0 = -5.0
+2018-06-27 11:55:03 INFO  root:38 - Calculator.multiply(..)
+2018-06-27 11:55:03 INFO  root:60 - 4.0 * 8.0 = 32.0
+2018-06-27 11:55:03 INFO  root:38 - Calculator.divide(..)
+2018-06-27 11:55:03 INFO  root:60 - 5.0 / 0.0 = Infinity
+2018-06-27 11:55:41 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@deb6432: startup date [Wed Jun 27 11:55:41 EDT 2018]; root of context hierarchy
+2018-06-27 11:55:41 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 11:55:42 INFO  root:38 - Calculator.add(..)
+2018-06-27 11:55:42 INFO  root:60 - 5.0 + 3.6 = 8.6
+2018-06-27 11:55:42 INFO  root:38 - Calculator.subtract(..)
+2018-06-27 11:55:42 INFO  root:60 - 3.0 - 8.0 = -5.0
+2018-06-27 11:55:42 INFO  root:38 - Calculator.multiply(..)
+2018-06-27 11:55:42 INFO  root:60 - 4.0 * 8.0 = 32.0
+2018-06-27 11:56:15 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@deb6432: startup date [Wed Jun 27 11:56:15 EDT 2018]; root of context hierarchy
+2018-06-27 11:56:15 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 11:56:16 INFO  root:38 - Calculator.add(..)
+2018-06-27 11:56:16 INFO  root:60 - 5.0 + 3.6 = 8.6
+2018-06-27 11:56:16 INFO  root:38 - Calculator.subtract(..)
+2018-06-27 11:56:16 INFO  root:60 - 3.0 - 8.0 = -5.0
+2018-06-27 11:56:16 INFO  root:38 - Calculator.multiply(..)
+2018-06-27 11:56:16 INFO  root:60 - 4.0 * 8.0 = 32.0
+2018-06-27 11:56:16 INFO  root:38 - Calculator.divide(..)
+2018-06-27 11:56:16 INFO  root:60 - 5.0 / 0.0 = 0.0
+2018-06-27 11:56:21 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@deb6432: startup date [Wed Jun 27 11:56:21 EDT 2018]; root of context hierarchy
+2018-06-27 11:56:21 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 11:56:22 INFO  root:38 - Calculator.add(..)
+2018-06-27 11:56:22 INFO  root:60 - 5.0 + 3.6 = 8.6
+2018-06-27 11:56:22 INFO  root:38 - Calculator.subtract(..)
+2018-06-27 11:56:22 INFO  root:60 - 3.0 - 8.0 = -5.0
+2018-06-27 11:56:22 INFO  root:38 - Calculator.multiply(..)
+2018-06-27 11:56:22 INFO  root:60 - 4.0 * 8.0 = 32.0
+2018-06-27 11:56:22 INFO  root:38 - Calculator.divide(..)
+2018-06-27 11:56:22 INFO  root:60 - 5.0 / 3.0 = 1.6666666666666667
+2018-06-27 11:56:44 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@deb6432: startup date [Wed Jun 27 11:56:44 EDT 2018]; root of context hierarchy
+2018-06-27 11:56:44 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 11:56:44 INFO  root:38 - Calculator.add(..)
+2018-06-27 11:56:44 INFO  root:60 - 5.0 + 3.6 = 8.6
+2018-06-27 11:56:44 INFO  root:38 - Calculator.subtract(..)
+2018-06-27 11:56:44 INFO  root:60 - 3.0 - 8.0 = -5.0
+2018-06-27 11:56:44 INFO  root:38 - Calculator.multiply(..)
+2018-06-27 11:56:44 INFO  root:60 - 4.0 * 8.0 = 32.0
+2018-06-27 11:56:44 INFO  root:38 - Calculator.divide(..)
+2018-06-27 11:56:44 INFO  root:60 - 5.0 / 3.0 = 0.0
+2018-06-27 11:57:09 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@deb6432: startup date [Wed Jun 27 11:57:09 EDT 2018]; root of context hierarchy
+2018-06-27 11:57:09 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 11:57:10 INFO  root:38 - Calculator.add(..)
+2018-06-27 11:57:10 INFO  root:60 - 5.0 + 3.6 = 8.6
+2018-06-27 11:57:10 INFO  root:38 - Calculator.subtract(..)
+2018-06-27 11:57:10 INFO  root:60 - 3.0 - 8.0 = -5.0
+2018-06-27 11:57:10 INFO  root:38 - Calculator.multiply(..)
+2018-06-27 11:57:10 INFO  root:60 - 4.0 * 8.0 = 32.0
+2018-06-27 11:57:10 INFO  root:38 - Calculator.divide(..)
+2018-06-27 11:57:10 INFO  root:60 - 5.0 / 3.0 = 1.6666666666666667
+2018-06-27 11:57:14 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@deb6432: startup date [Wed Jun 27 11:57:14 EDT 2018]; root of context hierarchy
+2018-06-27 11:57:14 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 11:57:14 INFO  root:38 - Calculator.add(..)
+2018-06-27 11:57:14 INFO  root:60 - 5.0 + 3.6 = 8.6
+2018-06-27 11:57:14 INFO  root:38 - Calculator.subtract(..)
+2018-06-27 11:57:14 INFO  root:60 - 3.0 - 8.0 = -5.0
+2018-06-27 11:57:14 INFO  root:38 - Calculator.multiply(..)
+2018-06-27 11:57:14 INFO  root:60 - 4.0 * 8.0 = 32.0
+2018-06-27 11:57:14 INFO  root:38 - Calculator.divide(..)
+2018-06-27 11:57:14 INFO  root:60 - 5.0 / 0.0 = 0.0
+2018-06-27 11:57:20 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@deb6432: startup date [Wed Jun 27 11:57:20 EDT 2018]; root of context hierarchy
+2018-06-27 11:57:20 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 11:57:21 INFO  root:38 - Calculator.add(..)
+2018-06-27 11:57:21 INFO  root:60 - 5.0 + 3.6 = 8.6
+2018-06-27 11:57:21 INFO  root:38 - Calculator.subtract(..)
+2018-06-27 11:57:21 INFO  root:60 - 3.0 - 8.0 = -5.0
+2018-06-27 11:57:21 INFO  root:38 - Calculator.multiply(..)
+2018-06-27 11:57:21 INFO  root:60 - 4.0 * 8.0 = 32.0
+2018-06-27 11:57:21 INFO  root:38 - Calculator.divide(..)
+2018-06-27 11:57:21 INFO  root:60 - 5.0 / 0.0 = 5.0

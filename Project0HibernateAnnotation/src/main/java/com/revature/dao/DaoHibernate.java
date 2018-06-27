@@ -49,7 +49,7 @@ public class DaoHibernate implements daoInterface{
 		try {
 			//if it doesn't through an exception, the client exists and is returned
 			Client client = (Client) criteria.list().get(0);
-			System.out.println(client);
+			System.out.println(client.getAccounts());
 			return client;
 		} catch (IndexOutOfBoundsException e) {
 			//If it threw an exception, no client exists that matches the credentials
@@ -78,7 +78,6 @@ public class DaoHibernate implements daoInterface{
 
 	@Override
 	public boolean saveNewClient(Client client) {
-		System.out.println(client);
 		Session session = HibernateUtil.getSession();
 		org.hibernate.Transaction tx = session.beginTransaction();
 		session.save(client);
