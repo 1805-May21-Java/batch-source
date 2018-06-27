@@ -1,0 +1,9 @@
+2018-06-27 16:27:47 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@deb6432: startup date [Wed Jun 27 16:27:47 EDT 2018]; root of context hierarchy
+2018-06-27 16:27:48 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 16:27:48 INFO  root:24 - 6 + 3 = 9
+2018-06-27 16:27:48 INFO  root:26 - 6 - 3 = 3
+2018-06-27 16:27:48 INFO  root:28 - 6 * 3 = 18
+2018-06-27 16:27:48 INFO  root:30 - 6 / 3 = 2
+2018-06-27 16:27:48 ERROR root:39 - Cannot divide by zero
+2018-06-27 16:27:48 INFO  root:30 - 6 / 0 = -1
+2018-06-27 16:27:48 INFO  ClassPathXmlApplicationContext:960 - Closing org.springframework.context.support.ClassPathXmlApplicationContext@deb6432: startup date [Wed Jun 27 16:27:47 EDT 2018]; root of context hierarchy
