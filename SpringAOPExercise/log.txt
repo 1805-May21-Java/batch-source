@@ -1,0 +1,29 @@
+2018-06-27 12:03:48 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@2957fcb0: startup date [Wed Jun 27 12:03:48 EDT 2018]; root of context hierarchy
+2018-06-27 12:03:48 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 12:03:48 INFO  root:49 - 1.0 + 2.0 = 3.0
+2018-06-27 12:03:48 INFO  root:49 - 1.0 - 2.0 = -1.0
+2018-06-27 12:37:39 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@2957fcb0: startup date [Wed Jun 27 12:37:39 EDT 2018]; root of context hierarchy
+2018-06-27 12:37:39 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 12:38:04 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@2957fcb0: startup date [Wed Jun 27 12:38:04 EDT 2018]; root of context hierarchy
+2018-06-27 12:38:04 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 12:41:49 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@2957fcb0: startup date [Wed Jun 27 12:41:49 EDT 2018]; root of context hierarchy
+2018-06-27 12:41:49 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 12:41:49 INFO  root:54 - 1.0 + 2.0 = 3.0
+2018-06-27 12:41:49 INFO  root:54 - 1.0 - 5.0 = -4.0
+2018-06-27 12:41:49 INFO  root:54 - 4.0 * 7.0 = 28.0
+2018-06-27 12:41:49 INFO  root:54 - 10.0 / 4.0 = 2.5
+2018-06-27 12:41:49 ERROR root:50 - please do not divide by zero.
+2018-06-27 12:42:39 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@2957fcb0: startup date [Wed Jun 27 12:42:39 EDT 2018]; root of context hierarchy
+2018-06-27 12:42:39 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 12:42:39 INFO  root:54 - 1.0 + 2.0 = 3.0
+2018-06-27 12:42:39 INFO  root:54 - 1.0 - 5.0 = -4.0
+2018-06-27 12:42:39 INFO  root:54 - 4.0 * 7.0 = 28.0
+2018-06-27 12:42:39 INFO  root:54 - 10.0 / 4.0 = 2.5
+2018-06-27 12:42:39 ERROR root:50 - please do not divide by zero.
+2018-06-27 12:47:47 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@2957fcb0: startup date [Wed Jun 27 12:47:47 EDT 2018]; root of context hierarchy
+2018-06-27 12:47:47 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 12:47:48 INFO  root:45 - 1.0 + 2.0 = 3.0
+2018-06-27 12:47:48 INFO  root:45 - 1.0 - 5.0 = -4.0
+2018-06-27 12:47:48 INFO  root:45 - 4.0 * 7.0 = 28.0
+2018-06-27 12:47:48 INFO  root:45 - 10.0 / 4.0 = 2.5
+2018-06-27 12:47:48 ERROR root:42 - please do not divide by zero.
