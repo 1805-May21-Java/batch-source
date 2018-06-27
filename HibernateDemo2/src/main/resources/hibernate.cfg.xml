@@ -5,7 +5,7 @@
 
 <hibernate-configuration>
 	<session-factory>
-		<property name="hibernate.connection.url">jdbc:oracle:thin:@hibernate.cdoaisum0qfz.us-east-2.rds.amazonaws.com:1521:ORCL</property>
+		<property name="hibernate.connection.url">url</property>
 		<property name="hibernate.connection.username">admin</property>
 		<property name="hibernate.connection.password">p4ssw0rd</property>
 		
