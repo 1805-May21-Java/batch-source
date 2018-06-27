@@ -11,9 +11,9 @@ import com.revature.htulipan.project0hibernate.models.BankUser;
 
 public class TestDriver {
 	public static void main(String[] args) {
-//		Session s = HibernateUtil.getSession();
-//		s.close();
-//		System.out.println("done");
+		Session s = HibernateUtil.getSession();
+		s.close();
+		System.out.println("done");
 		
 		testTheDaos();
 	}
