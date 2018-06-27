@@ -1,0 +1,55 @@
+2018-06-27 11:43:50 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@2957fcb0: startup date [Wed Jun 27 11:43:50 EDT 2018]; root of context hierarchy
+2018-06-27 11:43:50 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 11:43:52 WARN  ClassPathXmlApplicationContext:546 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.context.event.internalEventListenerProcessor': BeanPostProcessor before instantiation of bean failed; nested exception is java.lang.IllegalStateException: Expecting to find 4 arguments to bind by name in advice, but actually found 2 arguments.
+2018-06-27 11:44:42 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@2957fcb0: startup date [Wed Jun 27 11:44:42 EDT 2018]; root of context hierarchy
+2018-06-27 11:44:42 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 11:44:43 WARN  ClassPathXmlApplicationContext:546 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.context.event.internalEventListenerProcessor': BeanPostProcessor before instantiation of bean failed; nested exception is java.lang.IllegalStateException: Expecting to find 4 arguments to bind by name in advice, but actually found 2 arguments.
+2018-06-27 11:46:26 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@2957fcb0: startup date [Wed Jun 27 11:46:26 EDT 2018]; root of context hierarchy
+2018-06-27 11:46:26 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 11:46:28 WARN  ClassPathXmlApplicationContext:546 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.context.event.internalEventListenerProcessor': BeanPostProcessor before instantiation of bean failed; nested exception is java.lang.IllegalStateException: Expecting to find 3 arguments to bind by name in advice, but actually found 2 arguments.
+2018-06-27 11:50:25 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@2957fcb0: startup date [Wed Jun 27 11:50:25 EDT 2018]; root of context hierarchy
+2018-06-27 11:50:25 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 11:50:46 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@2957fcb0: startup date [Wed Jun 27 11:50:46 EDT 2018]; root of context hierarchy
+2018-06-27 11:50:46 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 11:52:46 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@2957fcb0: startup date [Wed Jun 27 11:52:46 EDT 2018]; root of context hierarchy
+2018-06-27 11:52:46 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 11:52:48 INFO  root:21 - 1.0 + 2.0 = 3.0
+2018-06-27 11:52:48 INFO  ClassPathXmlApplicationContext:960 - Closing org.springframework.context.support.ClassPathXmlApplicationContext@2957fcb0: startup date [Wed Jun 27 11:52:46 EDT 2018]; root of context hierarchy
+2018-06-27 11:58:48 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@2957fcb0: startup date [Wed Jun 27 11:58:48 EDT 2018]; root of context hierarchy
+2018-06-27 11:58:48 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 11:58:50 INFO  root:21 - 1.0 + 2.0 = 3.0
+2018-06-27 11:58:50 INFO  root:21 - 8.7 + 0.0 = 8.7
+2018-06-27 11:58:50 INFO  root:23 - 4.0 - 4.0 = 0.0
+2018-06-27 11:58:51 INFO  root:23 - 8.0 - 1.1 = 6.9
+2018-06-27 11:58:51 INFO  root:23 - 0.0 - -133.0 = 133.0
+2018-06-27 11:58:51 INFO  root:25 - 0.0 * 1.0 = 0.0
+2018-06-27 11:58:51 INFO  root:25 - 2.2 * 0.1 = 0.22000000000000003
+2018-06-27 11:58:51 INFO  root:27 - 1.0 / 2.0 = 0.5
+2018-06-27 11:58:51 INFO  root:27 - 0.0 / 4.3 = 0.0
+2018-06-27 11:58:51 ERROR root:32 - Stop that
+2018-06-27 13:04:13 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@2957fcb0: startup date [Wed Jun 27 13:04:13 EDT 2018]; root of context hierarchy
+2018-06-27 13:04:13 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 13:04:15 INFO  root:59 - 1.0 + 2.0 = 3.0
+2018-06-27 13:04:15 INFO  root:59 - 8.7 + 0.0 = 8.7
+2018-06-27 13:04:15 INFO  root:59 - 4.0 - 4.0 = 0.0
+2018-06-27 13:04:15 INFO  root:59 - 8.0 - 1.1 = 6.9
+2018-06-27 13:04:15 INFO  root:59 - 0.0 - -133.0 = 133.0
+2018-06-27 13:04:15 INFO  root:59 - 0.0 * 1.0 = 0.0
+2018-06-27 13:04:15 INFO  root:59 - 2.2 * 0.1 = 0.22000000000000003
+2018-06-27 13:04:15 INFO  root:59 - 1.0 / 2.0 = 0.5
+2018-06-27 13:04:15 INFO  root:59 - 0.0 / 4.3 = 0.0
+2018-06-27 13:04:15 ERROR root:54 - stop that
+2018-06-27 13:04:15 INFO  ClassPathXmlApplicationContext:960 - Closing org.springframework.context.support.ClassPathXmlApplicationContext@2957fcb0: startup date [Wed Jun 27 13:04:13 EDT 2018]; root of context hierarchy
+2018-06-27 13:05:25 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@2957fcb0: startup date [Wed Jun 27 13:05:25 EDT 2018]; root of context hierarchy
+2018-06-27 13:05:25 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 13:05:27 INFO  root:59 - 1.0 + 2.0 = 3.0
+2018-06-27 13:05:27 INFO  root:59 - 8.7 + 0.0 = 8.7
+2018-06-27 13:05:27 INFO  root:59 - 4.0 - 4.0 = 0.0
+2018-06-27 13:05:27 INFO  root:59 - 8.0 - 1.1 = 6.9
+2018-06-27 13:05:27 INFO  root:59 - 0.0 - -133.0 = 133.0
+2018-06-27 13:05:27 INFO  root:59 - 0.0 * 1.0 = 0.0
+2018-06-27 13:05:27 INFO  root:59 - 2.2 * 0.1 = 0.22000000000000003
+2018-06-27 13:05:27 INFO  root:59 - 1.0 / 2.0 = 0.5
+2018-06-27 13:05:27 INFO  root:59 - 0.0 / 4.3 = 0.0
+2018-06-27 13:05:27 ERROR root:54 - stop that
+2018-06-27 13:05:27 INFO  ClassPathXmlApplicationContext:960 - Closing org.springframework.context.support.ClassPathXmlApplicationContext@2957fcb0: startup date [Wed Jun 27 13:05:25 EDT 2018]; root of context hierarchy
