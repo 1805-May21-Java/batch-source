@@ -1,0 +1,21 @@
+2018-06-27 15:48:12 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@32cf48b7: startup date [Wed Jun 27 15:48:12 EDT 2018]; root of context hierarchy
+2018-06-27 15:48:12 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 15:48:16 INFO  root:26 - int com.revature.beans.Calculator.getOperation()
+2018-06-27 15:48:16 INFO  root:27 - getOperation
+2018-06-27 15:48:21 INFO  root:26 - int com.revature.beans.Calculator.getOperation()
+2018-06-27 15:48:21 INFO  root:27 - getOperation
+2018-06-27 15:50:29 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@32cf48b7: startup date [Wed Jun 27 15:50:29 EDT 2018]; root of context hierarchy
+2018-06-27 15:50:29 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 15:50:34 INFO  root:26 - int com.revature.beans.Calculator.getOperation()
+2018-06-27 15:50:34 INFO  root:27 - getOperation
+2018-06-27 15:50:36 INFO  root:26 - double com.revature.beans.Calculator.division(double,double)
+2018-06-27 15:50:36 INFO  root:27 - division
+2018-06-27 15:50:36 INFO  root:40 - 78.0/7.0= 0
+2018-06-27 15:51:16 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@32cf48b7: startup date [Wed Jun 27 15:51:16 EDT 2018]; root of context hierarchy
+2018-06-27 15:51:16 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 15:51:18 INFO  root:26 - int com.revature.beans.Calculator.getOperation()
+2018-06-27 15:51:18 INFO  root:27 - getOperation
+2018-06-27 15:51:50 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@32cf48b7: startup date [Wed Jun 27 15:51:50 EDT 2018]; root of context hierarchy
+2018-06-27 15:51:50 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 15:51:53 INFO  root:26 - int com.revature.beans.Calculator.getOperation()
+2018-06-27 15:51:53 INFO  root:27 - getOperation
