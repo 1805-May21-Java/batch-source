@@ -47,7 +47,7 @@ public class MultiAccountDaoImpl implements MultiAccountDao
 //		return account;
 		
 		Session s = HibernateUtil.getSession();
-		String hql = "from MULTI_ACCOUNT where username=:userVar and ACCT_TYPE=typeVar";
+		String hql = "from MultiAccount where username=:userVar and accountType=typeVar";
 		Query q = s.createQuery(hql);
 		q.setString("userVar", username);
 		q.setString("typeVar", type);
@@ -88,7 +88,7 @@ public class MultiAccountDaoImpl implements MultiAccountDao
 //		return 0;
 		
 		Session s = HibernateUtil.getSession();
-		String hql = "from MULTI_ACCOUNT where ACCT_TYPE=:typeVar and USERNAME=:userVar";
+		String hql = "from MultiAccount where accountType=:typeVar and username=:userVar";
 		Query q = s.createQuery(hql);
 		q.setString("typeVar", type);
 		q.setString("userVar", username);
@@ -185,7 +185,7 @@ public class MultiAccountDaoImpl implements MultiAccountDao
 //		return false;
 		
 		Session s = HibernateUtil.getSession();
-		String hql = "from MULTI_ACCOUNT where USERNAME=:userVar";
+		String hql = "from MultiAccount where username=:userVar";
 		Query q = s.createQuery(hql);
 		q.setString("userVar", username);
 		List<MultiAccount> accts = q.list();

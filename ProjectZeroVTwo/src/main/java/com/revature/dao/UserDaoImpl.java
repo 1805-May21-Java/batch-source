@@ -46,7 +46,7 @@ public class UserDaoImpl implements UserDao
 //		return null;
 		
 		Session s = HibernateUtil.getSession();
-		String hql = "from MULTI_ACCOUNT where username=:userVar";
+		String hql = "from MultiAccount where username=:userVar";
 		Query q = s.createQuery(hql);
 		q.setString("userVar", username);
 		List<MultiAccount> accts = q.list();
@@ -85,7 +85,7 @@ public class UserDaoImpl implements UserDao
 //		return false;
 		
 		Session s = HibernateUtil.getSession();
-		String hql = "from USERS where username=:userVar";
+		String hql = "from User where username=:userVar";
 		Query q = s.createQuery(hql);
 		q.setString("userVar", username);
 		List<User> users = q.list();
@@ -190,7 +190,7 @@ public class UserDaoImpl implements UserDao
 //		return accountTypes;
 		
 		Session s = HibernateUtil.getSession();
-		String hql = "from MULTI_ACCOUNT where username=:userVar";
+		String hql = "from MultiAccount where username=:userVar";
 		Query q = s.createQuery(hql);
 		q.setString("userVar", username);
 		List<MultiAccount> accts = q.list();
@@ -233,7 +233,7 @@ public class UserDaoImpl implements UserDao
 //		return user;
 		
 		Session s = HibernateUtil.getSession();
-		String hql = "from USERS where username=:userVar and password is null";
+		String hql = "from User where username=:userVar and password is null";
 		Query q = s.createQuery(hql);
 		List<User> users = q.list();
 		User result = null;
@@ -275,7 +275,7 @@ public class UserDaoImpl implements UserDao
 //		return user;
 		
 		Session s = HibernateUtil.getSession();
-		String hql = "from USERS where username=:userVar and password=:passVar";
+		String hql = "from User where username=:userVar and password=:passVar";
 		Query q = s.createQuery(hql);
 		q.setString("userVar", username);
 		q.setString("passVar", password);
@@ -347,7 +347,7 @@ public class UserDaoImpl implements UserDao
 //		return false;
 		
 		Session s = HibernateUtil.getSession();
-		String hql = "from USERS";
+		String hql = "from User";
 		Query q = s.createQuery(hql);
 		List<User> users = q.list();
 		s.close();

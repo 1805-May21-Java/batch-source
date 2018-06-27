@@ -1,5 +1,6 @@
 package com.revature.pojos;
 
+import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 
@@ -10,8 +11,13 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="MULTI_ACCOUNT")
-public class MultiAccount
+public class MultiAccount implements Serializable
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1405186840794255938L;
+
 	NumberFormat formatter = new DecimalFormat("#0.00");
 	
 	@Id
