@@ -42,17 +42,21 @@ public class LoggingAspect {
 		}
 	}
 	
-	@AfterThrowing(pointcut = "within(com.revature.beans.*)")
-	public void logAfter(JoinPoint jp) {
-		logger.error(jp.getSignature());
-	}
 	
 	@Around("within(com.revature.beans.Calculator)")
-	public void logAfter(ProceedingJoinPoint jpx) throws Throwable {
-		if (jpx.getSignature().getName().equals("divide")) {
+	public double logAfter(ProceedingJoinPoint jpx) throws Throwable {
+		String operation = jpx.getSignature().getName();
+		double b = (Double) jpx.getArgs()[1];
+		double result; // returns with nothing or the division quotient
+		if (operation.equals("divide") && b == 0) {
+			logger.error("DIVISION BY ZERO");
 			System.out.println("divide by zero");
+			result = 0;
+		} else {
+			result = (Double) jpx.proceed();
+			logger.info(operation + ": " + jpx.getArgs()[0] + " / " + b + " = " + result);
 		}
-		jpx.proceed();
+		return result;
 	}
 	
 
