@@ -1,0 +1,14 @@
+2018-06-27 21:53:27 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@51521cc1: startup date [Wed Jun 27 21:53:27 EDT 2018]; root of context hierarchy
+2018-06-27 21:53:27 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 21:53:27 INFO  root:23 - double data.Calculator.add(double,double)
+2018-06-27 21:53:27 INFO  root:25 - Calculator adds 1.0 + 2.0 = 3.0
+2018-06-27 21:53:27 INFO  root:23 - double data.Calculator.subtract(double,double)
+2018-06-27 21:53:27 INFO  root:27 - Calculator subtracts 1.0 - 2.0 = -1.0
+2018-06-27 21:53:27 INFO  root:23 - double data.Calculator.multiply(double,double)
+2018-06-27 21:53:27 INFO  root:29 - Calculator multiplies 1.0 * 2.0 = 2.0
+2018-06-27 21:53:27 INFO  root:23 - double data.Calculator.divide(double,double)
+2018-06-27 21:53:27 INFO  root:31 - Calculator divides 1.0 / 2.0 = 0.5
+2018-06-27 21:53:27 INFO  root:39 - Divided by 0.
+2018-06-27 21:53:27 INFO  root:23 - double data.Calculator.divide(double,double)
+2018-06-27 21:53:27 INFO  root:31 - Calculator divides 1.0 / 0.0 = 0.0
+2018-06-27 21:53:27 INFO  ClassPathXmlApplicationContext:960 - Closing org.springframework.context.support.ClassPathXmlApplicationContext@51521cc1: startup date [Wed Jun 27 21:53:27 EDT 2018]; root of context hierarchy
