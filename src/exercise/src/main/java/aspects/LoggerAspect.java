@@ -36,11 +36,11 @@ private static Logger log = Logger.getRootLogger();
 	public double stopDivisionZero(ProceedingJoinPoint proceedingJp) throws NumberFormatException, Throwable {
 		Object[] args = proceedingJp.getArgs();
 		if(args[1].equals(0.)) {
-			log.info("Divided by 0.");;
+			log.info("Divided by 0, you monster.");
+			throw new IllegalArgumentException("Divided by 0, you monster.");
 		}else {
 			return Double.parseDouble(proceedingJp.proceed().toString());
 		}
-		return 0;
 	}
 		
 }
