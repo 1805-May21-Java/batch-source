@@ -5,16 +5,17 @@
 
 <hibernate-configuration>
 	<session-factory>
-		<property name="hibernate.connection.url">jdbc:oracle:thin:@hibernate.cdoaisum0qfz.us-east-2.rds.amazonaws.com:1521:ORCL</property>
-		<property name="hibernate.connection.username">admin</property>
-		<property name="hibernate.connection.password">p4ssw0rd</property>
+		<property name="hibernate.connection.url">jdbc:oracle:thin:@ersdatabase.camswdktogrj.us-east-2.rds.amazonaws.com:1521:ORCL</property>
+		<property name="hibernate.connection.username">sydneymercier</property>
+		<property name="hibernate.connection.password">classof2009</property>
 		
 		<property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
 		
 		<property name="hibernate.show_sql">true</property>
 		<property name="hibernate.hbm2ddl.auto">create</property>
+		<property name="connection.autocommit">true</property>
 		
-		<mapping resource="Account.hbm.xml"/>
+		<!-- <mapping resource="Account.hbm.xml"/> -->
 		<mapping class="com.revature.models.Account"></mapping>
 	</session-factory>
 </hibernate-configuration>

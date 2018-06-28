@@ -1,0 +1,164 @@
+2018-06-27 23:52:15 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@694f9431: startup date [Wed Jun 27 23:52:15 EDT 2018]; root of context hierarchy
+2018-06-27 23:52:15 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 23:53:00 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@694f9431: startup date [Wed Jun 27 23:53:00 EDT 2018]; root of context hierarchy
+2018-06-27 23:53:00 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 23:53:01 INFO  root:19 - double com.revature.beans.Calculator.add(double,double)
+2018-06-27 23:53:01 INFO  root:19 - double com.revature.beans.Calculator.add(double,double)
+2018-06-27 23:53:01 INFO  root:19 - double com.revature.beans.Calculator.add(double,double)
+2018-06-27 23:53:01 INFO  ClassPathXmlApplicationContext:960 - Closing org.springframework.context.support.ClassPathXmlApplicationContext@694f9431: startup date [Wed Jun 27 23:53:00 EDT 2018]; root of context hierarchy
+2018-06-27 23:53:39 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@694f9431: startup date [Wed Jun 27 23:53:39 EDT 2018]; root of context hierarchy
+2018-06-27 23:53:39 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 23:53:40 INFO  root:19 - double com.revature.beans.Calculator.add(double,double)
+2018-06-27 23:53:40 INFO  root:19 - double com.revature.beans.Calculator.add(double,double)
+2018-06-27 23:53:40 INFO  root:19 - double com.revature.beans.Calculator.add(double,double)
+2018-06-27 23:53:40 INFO  ClassPathXmlApplicationContext:960 - Closing org.springframework.context.support.ClassPathXmlApplicationContext@694f9431: startup date [Wed Jun 27 23:53:39 EDT 2018]; root of context hierarchy
+2018-06-27 23:56:49 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@694f9431: startup date [Wed Jun 27 23:56:49 EDT 2018]; root of context hierarchy
+2018-06-27 23:56:49 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 23:56:50 INFO  root:19 - double com.revature.beans.Calculator.add(double,double)
+2018-06-27 23:56:50 INFO  root:19 - double com.revature.beans.Calculator.add(double,double)
+2018-06-27 23:56:50 INFO  root:19 - double com.revature.beans.Calculator.add(double,double)
+2018-06-27 23:56:50 INFO  ClassPathXmlApplicationContext:960 - Closing org.springframework.context.support.ClassPathXmlApplicationContext@694f9431: startup date [Wed Jun 27 23:56:49 EDT 2018]; root of context hierarchy
+2018-06-27 23:58:21 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@694f9431: startup date [Wed Jun 27 23:58:21 EDT 2018]; root of context hierarchy
+2018-06-27 23:58:21 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 23:58:21 INFO  root:19 - double com.revature.beans.Calculator.add(double,double)
+2018-06-27 23:58:21 INFO  root:19 - double com.revature.beans.Calculator.add(double,double)
+2018-06-27 23:58:21 INFO  root:19 - double com.revature.beans.Calculator.add(double,double)
+2018-06-27 23:58:21 INFO  ClassPathXmlApplicationContext:960 - Closing org.springframework.context.support.ClassPathXmlApplicationContext@694f9431: startup date [Wed Jun 27 23:58:21 EDT 2018]; root of context hierarchy
+2018-06-27 23:59:25 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@694f9431: startup date [Wed Jun 27 23:59:25 EDT 2018]; root of context hierarchy
+2018-06-27 23:59:25 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 23:59:25 INFO  root:19 - double com.revature.beans.Calculator.add(double,double)
+2018-06-27 23:59:25 INFO  root:19 - double com.revature.beans.Calculator.add(double,double)
+2018-06-27 23:59:25 INFO  root:19 - double com.revature.beans.Calculator.add(double,double)
+2018-06-27 23:59:25 INFO  ClassPathXmlApplicationContext:960 - Closing org.springframework.context.support.ClassPathXmlApplicationContext@694f9431: startup date [Wed Jun 27 23:59:25 EDT 2018]; root of context hierarchy
+2018-06-28 00:00:30 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@694f9431: startup date [Thu Jun 28 00:00:30 EDT 2018]; root of context hierarchy
+2018-06-28 00:00:30 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-28 00:00:30 INFO  root:19 - double com.revature.beans.Calculator.add(double,double)
+2018-06-28 00:00:30 INFO  root:19 - double com.revature.beans.Calculator.add(double,double)
+2018-06-28 00:00:30 INFO  root:19 - double com.revature.beans.Calculator.add(double,double)
+2018-06-28 00:00:30 INFO  ClassPathXmlApplicationContext:960 - Closing org.springframework.context.support.ClassPathXmlApplicationContext@694f9431: startup date [Thu Jun 28 00:00:30 EDT 2018]; root of context hierarchy
+2018-06-28 00:00:58 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@694f9431: startup date [Thu Jun 28 00:00:58 EDT 2018]; root of context hierarchy
+2018-06-28 00:00:58 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-28 00:00:59 INFO  root:19 - double com.revature.beans.Calculator.add(double,double)
+2018-06-28 00:00:59 INFO  root:19 - double com.revature.beans.Calculator.add(double,double)
+2018-06-28 00:00:59 INFO  root:19 - double com.revature.beans.Calculator.add(double,double)
+2018-06-28 00:00:59 INFO  ClassPathXmlApplicationContext:960 - Closing org.springframework.context.support.ClassPathXmlApplicationContext@694f9431: startup date [Thu Jun 28 00:00:58 EDT 2018]; root of context hierarchy
+2018-06-28 00:01:13 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@694f9431: startup date [Thu Jun 28 00:01:13 EDT 2018]; root of context hierarchy
+2018-06-28 00:01:13 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-28 00:01:13 INFO  root:19 - double com.revature.beans.Calculator.add(double,double)
+2018-06-28 00:01:13 INFO  root:19 - double com.revature.beans.Calculator.add(double,double)
+2018-06-28 00:01:13 INFO  root:19 - double com.revature.beans.Calculator.add(double,double)
+2018-06-28 00:01:13 INFO  ClassPathXmlApplicationContext:960 - Closing org.springframework.context.support.ClassPathXmlApplicationContext@694f9431: startup date [Thu Jun 28 00:01:13 EDT 2018]; root of context hierarchy
+2018-06-28 00:01:47 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@694f9431: startup date [Thu Jun 28 00:01:47 EDT 2018]; root of context hierarchy
+2018-06-28 00:01:47 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-28 00:01:47 INFO  root:19 - double com.revature.beans.Calculator.add(double,double)
+2018-06-28 00:01:47 INFO  root:19 - double com.revature.beans.Calculator.add(double,double)
+2018-06-28 00:01:47 INFO  root:19 - double com.revature.beans.Calculator.add(double,double)
+2018-06-28 00:01:47 INFO  ClassPathXmlApplicationContext:960 - Closing org.springframework.context.support.ClassPathXmlApplicationContext@694f9431: startup date [Thu Jun 28 00:01:47 EDT 2018]; root of context hierarchy
+2018-06-28 00:01:59 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@694f9431: startup date [Thu Jun 28 00:01:59 EDT 2018]; root of context hierarchy
+2018-06-28 00:01:59 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-28 00:01:59 INFO  root:19 - double com.revature.beans.Calculator.add(double,double)
+2018-06-28 00:01:59 INFO  root:19 - double com.revature.beans.Calculator.add(double,double)
+2018-06-28 00:01:59 INFO  root:19 - double com.revature.beans.Calculator.add(double,double)
+2018-06-28 00:01:59 INFO  ClassPathXmlApplicationContext:960 - Closing org.springframework.context.support.ClassPathXmlApplicationContext@694f9431: startup date [Thu Jun 28 00:01:59 EDT 2018]; root of context hierarchy
+2018-06-28 00:02:21 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@694f9431: startup date [Thu Jun 28 00:02:21 EDT 2018]; root of context hierarchy
+2018-06-28 00:02:21 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-28 00:02:22 INFO  root:19 - double com.revature.beans.Calculator.add(double,double)
+2018-06-28 00:02:22 INFO  root:19 - double com.revature.beans.Calculator.add(double,double)
+2018-06-28 00:02:22 INFO  root:19 - double com.revature.beans.Calculator.add(double,double)
+2018-06-28 00:02:22 INFO  ClassPathXmlApplicationContext:960 - Closing org.springframework.context.support.ClassPathXmlApplicationContext@694f9431: startup date [Thu Jun 28 00:02:21 EDT 2018]; root of context hierarchy
+2018-06-28 00:02:31 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@694f9431: startup date [Thu Jun 28 00:02:31 EDT 2018]; root of context hierarchy
+2018-06-28 00:02:31 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-28 00:02:32 INFO  root:19 - double com.revature.beans.Calculator.add(double,double)
+2018-06-28 00:02:32 INFO  root:19 - double com.revature.beans.Calculator.add(double,double)
+2018-06-28 00:02:32 INFO  root:19 - double com.revature.beans.Calculator.add(double,double)
+2018-06-28 00:02:32 INFO  ClassPathXmlApplicationContext:960 - Closing org.springframework.context.support.ClassPathXmlApplicationContext@694f9431: startup date [Thu Jun 28 00:02:31 EDT 2018]; root of context hierarchy
+2018-06-28 00:02:48 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@694f9431: startup date [Thu Jun 28 00:02:48 EDT 2018]; root of context hierarchy
+2018-06-28 00:02:48 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-28 00:02:48 INFO  root:19 - double com.revature.beans.Calculator.add(double,double)
+2018-06-28 00:02:48 INFO  root:19 - double com.revature.beans.Calculator.add(double,double)
+2018-06-28 00:02:48 INFO  root:19 - double com.revature.beans.Calculator.add(double,double)
+2018-06-28 00:02:48 INFO  ClassPathXmlApplicationContext:960 - Closing org.springframework.context.support.ClassPathXmlApplicationContext@694f9431: startup date [Thu Jun 28 00:02:48 EDT 2018]; root of context hierarchy
+2018-06-28 00:08:16 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@694f9431: startup date [Thu Jun 28 00:08:16 EDT 2018]; root of context hierarchy
+2018-06-28 00:08:16 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-28 00:08:17 INFO  root:17 - double com.revature.beans.Calculator.add(double,double)
+2018-06-28 00:08:17 INFO  root:17 - double com.revature.beans.Calculator.add(double,double)
+2018-06-28 00:08:17 INFO  root:17 - double com.revature.beans.Calculator.add(double,double)
+2018-06-28 00:08:17 INFO  ClassPathXmlApplicationContext:960 - Closing org.springframework.context.support.ClassPathXmlApplicationContext@694f9431: startup date [Thu Jun 28 00:08:16 EDT 2018]; root of context hierarchy
+2018-06-28 00:13:27 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@694f9431: startup date [Thu Jun 28 00:13:27 EDT 2018]; root of context hierarchy
+2018-06-28 00:13:28 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-28 00:13:28 INFO  root:17 - double com.revature.beans.Calculator.add(double,double)
+2018-06-28 00:13:28 INFO  root:28 - 2.0 + 7.0 = 9.0
+2018-06-28 00:13:28 INFO  root:17 - double com.revature.beans.Calculator.add(double,double)
+2018-06-28 00:13:28 INFO  root:28 - 2.5 + 7.6 = 10.1
+2018-06-28 00:13:28 INFO  root:17 - double com.revature.beans.Calculator.add(double,double)
+2018-06-28 00:13:28 INFO  root:28 - 27.0 + 0.0 = 27.0
+2018-06-28 00:13:28 INFO  ClassPathXmlApplicationContext:960 - Closing org.springframework.context.support.ClassPathXmlApplicationContext@694f9431: startup date [Thu Jun 28 00:13:27 EDT 2018]; root of context hierarchy
+2018-06-28 00:16:21 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@694f9431: startup date [Thu Jun 28 00:16:21 EDT 2018]; root of context hierarchy
+2018-06-28 00:16:21 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-28 00:16:22 INFO  root:17 - double com.revature.beans.Calculator.add(double,double)
+2018-06-28 00:16:22 INFO  root:28 - add: 2.0 + 7.0 = 9.0
+2018-06-28 00:16:22 INFO  root:17 - double com.revature.beans.Calculator.add(double,double)
+2018-06-28 00:16:22 INFO  root:28 - add: 2.5 + 7.6 = 10.1
+2018-06-28 00:16:22 INFO  root:17 - double com.revature.beans.Calculator.add(double,double)
+2018-06-28 00:16:22 INFO  root:28 - add: 27.0 + 0.0 = 27.0
+2018-06-28 00:16:22 INFO  root:17 - double com.revature.beans.Calculator.subtract(double,double)
+2018-06-28 00:16:22 INFO  root:30 - subtract: 6.0 - 3.0 = 3.0
+2018-06-28 00:16:22 INFO  root:17 - double com.revature.beans.Calculator.subtract(double,double)
+2018-06-28 00:16:22 INFO  root:30 - subtract: 6.45 - 3.2 = 3.25
+2018-06-28 00:16:22 INFO  root:17 - double com.revature.beans.Calculator.subtract(double,double)
+2018-06-28 00:16:22 INFO  root:30 - subtract: 63.0 - 0.0 = 63.0
+2018-06-28 00:16:22 INFO  ClassPathXmlApplicationContext:960 - Closing org.springframework.context.support.ClassPathXmlApplicationContext@694f9431: startup date [Thu Jun 28 00:16:21 EDT 2018]; root of context hierarchy
+2018-06-28 00:17:39 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@694f9431: startup date [Thu Jun 28 00:17:39 EDT 2018]; root of context hierarchy
+2018-06-28 00:17:39 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-28 00:17:40 INFO  root:17 - double com.revature.beans.Calculator.add(double,double)
+2018-06-28 00:17:40 INFO  root:28 - add: 2.0 + 7.0 = 9.0
+2018-06-28 00:17:40 INFO  root:17 - double com.revature.beans.Calculator.add(double,double)
+2018-06-28 00:17:40 INFO  root:28 - add: 2.5 + 7.6 = 10.1
+2018-06-28 00:17:40 INFO  root:17 - double com.revature.beans.Calculator.add(double,double)
+2018-06-28 00:17:40 INFO  root:28 - add: 27.0 + 0.0 = 27.0
+2018-06-28 00:17:40 INFO  root:17 - double com.revature.beans.Calculator.subtract(double,double)
+2018-06-28 00:17:40 INFO  root:30 - subtract: 6.0 - 3.0 = 3.0
+2018-06-28 00:17:40 INFO  root:17 - double com.revature.beans.Calculator.subtract(double,double)
+2018-06-28 00:17:40 INFO  root:30 - subtract: 6.45 - 3.2 = 3.25
+2018-06-28 00:17:40 INFO  root:17 - double com.revature.beans.Calculator.subtract(double,double)
+2018-06-28 00:17:40 INFO  root:30 - subtract: 63.0 - 0.0 = 63.0
+2018-06-28 00:17:40 INFO  root:17 - double com.revature.beans.Calculator.multiply(double,double)
+2018-06-28 00:17:40 INFO  root:32 - multiply: 10.0 * 5.0 = 50.0
+2018-06-28 00:17:40 INFO  root:17 - double com.revature.beans.Calculator.multiply(double,double)
+2018-06-28 00:17:40 INFO  root:32 - multiply: 10.2 * 5.3 = 54.059999999999995
+2018-06-28 00:17:40 INFO  root:17 - double com.revature.beans.Calculator.multiply(double,double)
+2018-06-28 00:17:40 INFO  root:32 - multiply: 105.0 * 0.0 = 0.0
+2018-06-28 00:17:40 INFO  ClassPathXmlApplicationContext:960 - Closing org.springframework.context.support.ClassPathXmlApplicationContext@694f9431: startup date [Thu Jun 28 00:17:39 EDT 2018]; root of context hierarchy
+2018-06-28 00:27:56 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@694f9431: startup date [Thu Jun 28 00:27:56 EDT 2018]; root of context hierarchy
+2018-06-28 00:27:56 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-28 00:27:57 INFO  root:18 - double com.revature.beans.Calculator.add(double,double)
+2018-06-28 00:27:57 INFO  root:29 - add: 2.0 + 7.0 = 9.0
+2018-06-28 00:27:57 INFO  root:18 - double com.revature.beans.Calculator.add(double,double)
+2018-06-28 00:27:57 INFO  root:29 - add: 2.5 + 7.6 = 10.1
+2018-06-28 00:27:57 INFO  root:18 - double com.revature.beans.Calculator.add(double,double)
+2018-06-28 00:27:57 INFO  root:29 - add: 27.0 + 0.0 = 27.0
+2018-06-28 00:27:57 INFO  root:18 - double com.revature.beans.Calculator.subtract(double,double)
+2018-06-28 00:27:57 INFO  root:31 - subtract: 6.0 - 3.0 = 3.0
+2018-06-28 00:27:57 INFO  root:18 - double com.revature.beans.Calculator.subtract(double,double)
+2018-06-28 00:27:57 INFO  root:31 - subtract: 6.45 - 3.2 = 3.25
+2018-06-28 00:27:57 INFO  root:18 - double com.revature.beans.Calculator.subtract(double,double)
+2018-06-28 00:27:57 INFO  root:31 - subtract: 63.0 - 0.0 = 63.0
+2018-06-28 00:27:57 INFO  root:18 - double com.revature.beans.Calculator.multiply(double,double)
+2018-06-28 00:27:57 INFO  root:33 - multiply: 10.0 * 5.0 = 50.0
+2018-06-28 00:27:57 INFO  root:18 - double com.revature.beans.Calculator.multiply(double,double)
+2018-06-28 00:27:57 INFO  root:33 - multiply: 10.2 * 5.3 = 54.059999999999995
+2018-06-28 00:27:57 INFO  root:18 - double com.revature.beans.Calculator.multiply(double,double)
+2018-06-28 00:27:57 INFO  root:33 - multiply: 105.0 * 0.0 = 0.0
+2018-06-28 00:27:57 INFO  root:18 - double com.revature.beans.Calculator.divide(double,double)
+2018-06-28 00:27:57 INFO  root:38 - divide: 4.0 / 8.0 = 0.5
+2018-06-28 00:27:57 INFO  root:18 - double com.revature.beans.Calculator.divide(double,double)
+2018-06-28 00:27:57 INFO  root:38 - divide: 8.6 / 4.2 = 2.0476190476190474
+2018-06-28 00:27:57 INFO  root:18 - double com.revature.beans.Calculator.divide(double,double)
+2018-06-28 00:27:57 INFO  root:38 - divide: 48.0 / 0.0 = Infinity
+2018-06-28 00:27:57 INFO  ClassPathXmlApplicationContext:960 - Closing org.springframework.context.support.ClassPathXmlApplicationContext@694f9431: startup date [Thu Jun 28 00:27:56 EDT 2018]; root of context hierarchy
+2018-06-28 00:51:14 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@694f9431: startup date [Thu Jun 28 00:51:14 EDT 2018]; root of context hierarchy
+2018-06-28 00:51:14 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-28 00:51:15 ERROR root:47 - double com.revature.beans.Calculator.add(double,double)
+2018-06-28 00:52:13 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@694f9431: startup date [Thu Jun 28 00:52:13 EDT 2018]; root of context hierarchy
+2018-06-28 00:52:13 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-28 00:52:14 ERROR root:47 - double com.revature.beans.Calculator.add(double,double)

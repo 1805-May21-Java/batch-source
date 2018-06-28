@@ -1,0 +1,44 @@
+2018-06-27 10:03:09 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@694f9431: startup date [Wed Jun 27 10:03:09 EDT 2018]; root of context hierarchy
+2018-06-27 10:03:09 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 10:03:09 WARN  ClassPathXmlApplicationContext:546 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.aop.config.internalAutoProxyCreator': Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.aop.aspectj.annotation.AnnotationAwareAspectJAutoProxyCreator]: Constructor threw exception; nested exception is java.lang.NoClassDefFoundError: org/aspectj/lang/annotation/Around
+2018-06-27 10:03:27 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@694f9431: startup date [Wed Jun 27 10:03:27 EDT 2018]; root of context hierarchy
+2018-06-27 10:03:27 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 10:03:27 WARN  ClassPathXmlApplicationContext:546 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.aop.config.internalAutoProxyCreator': Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.aop.aspectj.annotation.AnnotationAwareAspectJAutoProxyCreator]: Constructor threw exception; nested exception is java.lang.NoClassDefFoundError: org/aspectj/lang/annotation/Around
+2018-06-27 10:04:39 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@694f9431: startup date [Wed Jun 27 10:04:39 EDT 2018]; root of context hierarchy
+2018-06-27 10:04:39 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 10:04:39 WARN  ClassPathXmlApplicationContext:546 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.aop.config.internalAutoProxyCreator': Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.aop.aspectj.annotation.AnnotationAwareAspectJAutoProxyCreator]: Constructor threw exception; nested exception is java.lang.NoClassDefFoundError: org/aspectj/lang/annotation/Around
+2018-06-27 11:32:16 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@694f9431: startup date [Wed Jun 27 11:32:16 EDT 2018]; root of context hierarchy
+2018-06-27 11:32:16 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 11:32:17 INFO  root:16 - void com.revature.beans.Bear.setFull(boolean)
+2018-06-27 11:32:17 INFO  root:16 - boolean com.revature.beans.Bear.isFull()
+2018-06-27 11:32:17 INFO  root:16 - boolean com.revature.beans.Bear.isAwake()
+2018-06-27 11:32:17 INFO  root:26 - bear is trying to hibernate
+2018-06-27 11:32:17 INFO  root:16 - void com.revature.beans.Bear.bearHibernates()
+2018-06-27 11:32:17 INFO  root:16 - void com.revature.beans.Bear.wakeUpBear()
+2018-06-27 11:32:17 INFO  ClassPathXmlApplicationContext:960 - Closing org.springframework.context.support.ClassPathXmlApplicationContext@694f9431: startup date [Wed Jun 27 11:32:16 EDT 2018]; root of context hierarchy
+2018-06-27 11:33:15 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@694f9431: startup date [Wed Jun 27 11:33:15 EDT 2018]; root of context hierarchy
+2018-06-27 11:33:15 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 11:33:16 INFO  root:16 - void com.revature.beans.Bear.setFull(boolean)
+2018-06-27 11:33:16 INFO  root:16 - boolean com.revature.beans.Bear.isFull()
+2018-06-27 11:33:16 INFO  root:16 - boolean com.revature.beans.Bear.isAwake()
+2018-06-27 11:33:16 INFO  root:26 - bear is trying to hibernate
+2018-06-27 11:33:16 INFO  root:16 - void com.revature.beans.Bear.bearHibernates()
+2018-06-27 11:33:16 INFO  root:16 - void com.revature.beans.Bear.wakeUpBear()
+2018-06-27 11:33:16 INFO  ClassPathXmlApplicationContext:960 - Closing org.springframework.context.support.ClassPathXmlApplicationContext@694f9431: startup date [Wed Jun 27 11:33:15 EDT 2018]; root of context hierarchy
+2018-06-27 11:33:34 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@694f9431: startup date [Wed Jun 27 11:33:34 EDT 2018]; root of context hierarchy
+2018-06-27 11:33:34 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 11:33:34 INFO  root:16 - boolean com.revature.beans.Bear.isFull()
+2018-06-27 11:33:34 INFO  root:16 - boolean com.revature.beans.Bear.isAwake()
+2018-06-27 11:33:34 INFO  root:26 - bear is trying to hibernate
+2018-06-27 11:33:34 INFO  root:16 - void com.revature.beans.Bear.bearHibernates()
+2018-06-27 11:33:34 INFO  root:16 - void com.revature.beans.Bear.wakeUpBear()
+2018-06-27 11:33:34 INFO  ClassPathXmlApplicationContext:960 - Closing org.springframework.context.support.ClassPathXmlApplicationContext@694f9431: startup date [Wed Jun 27 11:33:34 EDT 2018]; root of context hierarchy
+2018-06-27 11:33:45 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@694f9431: startup date [Wed Jun 27 11:33:45 EDT 2018]; root of context hierarchy
+2018-06-27 11:33:45 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-27 11:33:45 INFO  root:16 - void com.revature.beans.Bear.setFull(boolean)
+2018-06-27 11:33:45 INFO  root:16 - boolean com.revature.beans.Bear.isFull()
+2018-06-27 11:33:45 INFO  root:16 - boolean com.revature.beans.Bear.isAwake()
+2018-06-27 11:33:45 INFO  root:26 - bear is trying to hibernate
+2018-06-27 11:33:45 INFO  root:16 - void com.revature.beans.Bear.bearHibernates()
+2018-06-27 11:33:45 INFO  root:16 - void com.revature.beans.Bear.wakeUpBear()
+2018-06-27 11:33:45 INFO  ClassPathXmlApplicationContext:960 - Closing org.springframework.context.support.ClassPathXmlApplicationContext@694f9431: startup date [Wed Jun 27 11:33:45 EDT 2018]; root of context hierarchy

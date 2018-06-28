@@ -12,14 +12,20 @@ public class Account {
 	@SequenceGenerator(allocationSize=1, name="IdSequence", sequenceName="SQ_ACCOUNTS_PK")
 	private int id;
 	
-	@Column(name="ACC_USERNAME", columnDefinition="VARCHAR(25)")
+	@Column(name="ACC_USERNAME")
 	private String username;
 	
-	@Column(name="ACC_PASSWORD", columnDefinition="VARCHAR(25)")
+	@Column(name="ACC_PASSWORD")
 	private String password;
 	
 	@Column
 	private double balance; // new account balance always starts at zero
+	
+	
+
+	public Account() {
+		super();
+	}
 
 	public Account(int id, String username, String password, double balance) {
 		super();

@@ -2,13 +2,10 @@ package com.revature.dao;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -22,7 +19,8 @@ public class AccountDaoImpl implements AccountDao {
 	public List<Account> getAccounts() {
 		
 		Session session = HibernateUtil.getSession();
-		List<Account> accountList = session.createQuery("from Account").list();
+		Query query = session.createQuery("from Account");
+		List<Account> accountList = query.list();
 		session.close();
 		
 		
