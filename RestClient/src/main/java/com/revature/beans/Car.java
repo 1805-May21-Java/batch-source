@@ -1,6 +1,7 @@
 package com.revature.beans;
 
 public class Car {
+	// on the client side, I need an object to correspond with the resource we plan to consume from our REST Service
 	
 	int vin;
 	String make;
@@ -9,7 +10,6 @@ public class Car {
 
 	public Car() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Car(int vin, String make, String model, int year) {
