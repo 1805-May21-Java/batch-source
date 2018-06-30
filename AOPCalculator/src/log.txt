@@ -80,3 +80,17 @@
 2018-06-27 13:10:32 ERROR root:45 - Can't divide by zero
 2018-06-27 13:10:32 INFO  root:25 - double com.revature.beans.Calculator.calculate(String,double,double)
 2018-06-27 13:10:32 INFO  root:36 - 1.0 / 0.0  = 0.0
+2018-06-30 16:21:22 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@2957fcb0: startup date [Sat Jun 30 16:21:22 EDT 2018]; root of context hierarchy
+2018-06-30 16:21:22 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [beans.xml]
+2018-06-30 16:21:24 INFO  root:25 - double com.revature.beans.Calculator.calculate(String,double,double)
+2018-06-30 16:21:24 INFO  root:36 - 1.0 + 2.0  = 3.0
+2018-06-30 16:21:24 INFO  root:25 - double com.revature.beans.Calculator.calculate(String,double,double)
+2018-06-30 16:21:24 INFO  root:36 - 1.0 multiply 2.0  = 2.0
+2018-06-30 16:21:24 INFO  root:25 - double com.revature.beans.Calculator.calculate(String,double,double)
+2018-06-30 16:21:24 INFO  root:36 - 1.0 - 2.0  = -1.0
+2018-06-30 16:21:24 INFO  root:25 - double com.revature.beans.Calculator.calculate(String,double,double)
+2018-06-30 16:21:24 INFO  root:36 - 1.0 / 2.0  = 0.5
+2018-06-30 16:21:24 INFO  root:44 - double com.revature.beans.Calculator.calculate(String,double,double)
+2018-06-30 16:21:24 ERROR root:45 - Can't divide by zero
+2018-06-30 16:21:24 INFO  root:25 - double com.revature.beans.Calculator.calculate(String,double,double)
+2018-06-30 16:21:24 INFO  root:36 - 1.0 / 0.0  = 0.0
