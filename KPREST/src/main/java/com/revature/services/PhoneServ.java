@@ -1,7 +1,7 @@
 package com.revature.services;
 
 import java.util.*;
-import com.revature.beans.*;
+import com.revature.beans.Phone;
 
 public interface PhoneServ {
 	public Phone findPhoneByID(int id);

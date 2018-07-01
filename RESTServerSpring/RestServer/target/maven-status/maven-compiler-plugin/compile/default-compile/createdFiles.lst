@@ -1,0 +1,6 @@
+com\revature\htulipan\RestServer\BootDriver.class
+com\revature\htulipan\RestServer\controllers\PhoneController.class
+com\revature\htulipan\RestServer\services\PhoneService.class
+com\revature\htulipan\RestServer\beans\Phone.class
+com\revature\htulipan\RestServer\services\PhoneServiceImp.class
+com\revature\htulipan\RestServer\repositories\PhoneRepository.class

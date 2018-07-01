@@ -9,7 +9,5 @@ public class DriverBoot {
 	public static void main(String[] args) {
 		
 		SpringApplication.run(DriverBoot.class, args);
-
 	}
-
 }

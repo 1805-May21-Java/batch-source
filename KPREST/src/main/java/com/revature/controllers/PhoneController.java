@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
 import com.revature.beans.*;
 import com.revature.services.*;
 
@@ -24,17 +25,17 @@ public class PhoneController {
 	PhoneServ phoneserv;
 	
 	@GetMapping(produces=MediaType.APPLICATION_JSON_VALUE)
-	public List<Phone> AllPhones(){
+	public List<Phone> getAllPhones(){
 		return phoneserv.getAllPhones();
 	}
 	
 	@GetMapping(value="/{id}",produces=MediaType.APPLICATION_JSON_VALUE)
-	public Phone getCarById(@PathVariable("id") Integer id) {
+	public Phone getPhoneById(@PathVariable("id") Integer id) {
 		return phoneserv.findPhoneByID(id);
 	}
 	
 	@PostMapping(consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
-	public Phone createPhone(@RequestBody Phone phone) {
+	public Phone makePhone(@RequestBody Phone phone) {
 		return phoneserv.makePhone(phone);
 	}
 	
@@ -44,7 +45,7 @@ public class PhoneController {
 	}
 	
 	@DeleteMapping(consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
-	public Phone destroyPhone(@RequestBody Phone phone) {
+	public Phone deletePhone(@RequestBody Phone phone) {
 		phoneserv.deletePhone(phone);
 		return phone;
 	}
