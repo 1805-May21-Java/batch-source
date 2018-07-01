@@ -41,7 +41,7 @@ public class GameController {
 		return gameService.updateGame(game);
 	}
 	
-	@DeleteMapping(value="/{id}", consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
+	@DeleteMapping(value="/{id}", produces=MediaType.APPLICATION_JSON_VALUE)
 	public Game deleteGameById(@PathVariable("id") Integer id) {
 		return gameService.deleteGameById(id);
 	}
