@@ -22,6 +22,7 @@ function displayUserInfo(xhr){
     let user = JSON.parse(resp);
     console.log(user);
 
+    document.getElementById("TitleName").innerHTML = user.employee.empName;
     document.getElementById("EmployeeName").innerHTML = user.employee.empName;
     document.getElementById("EmployeeID").innerHTML = user.employee.e_Id;
     document.getElementById("EmployeeUsername").innerHTML = user.employee.uName;

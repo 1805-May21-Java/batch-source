@@ -4,20 +4,10 @@ import javax.persistence.*;
 @Entity
 @Table
 public class User {
-	
-	@Id
-	@Column(name="USER_ID")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="IDSequence")
-	@SequenceGenerator(allocationSize=1, name="IDSequence", sequenceName="SQ_UserID_PK")
+
 	int userId;
-	
-	@Column(name="USER_NAME", columnDefinition="VARCHAR2(25)")
 	String userName;
-	
-	@Column(name="USER_PASS", columnDefinition= "VARCHAR2(25)")
 	String password;
-	
-	@Column
 	Double balance;
 	
 

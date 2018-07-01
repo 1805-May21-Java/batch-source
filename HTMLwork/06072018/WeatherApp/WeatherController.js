@@ -24,7 +24,7 @@ function sendAjaxGet(url, func) {
 function displayWeather(xhr){
     let response = xhr.response;
     let weather = JSON.parse(response);
-    console.log(weather);r
+    console.log(weather);
     document.getElementById("location").innerHTML = "Weather for "+weather.location.name+", "+weather.location.region;
     document.getElementById("icon").setAttribute("src","http:"+weather.current.condition.icon);
 

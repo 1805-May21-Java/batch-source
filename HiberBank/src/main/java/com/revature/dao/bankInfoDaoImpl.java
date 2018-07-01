@@ -187,12 +187,14 @@ public class bankInfoDaoImpl implements bankInfoDAO
 
 	public Boolean doesExist(String newName) {
 		Session s = HibernateUtil.getSession();
-		Query q = s.createQuery("FROM User WHERE USER_NAME = :nameVar");
+		Query q = s.createQuery("FROM User WHERE userName = :nameVar");
 		q.setString("nameVar", newName);
 		List<User> users = q.list();
 		if(users.size()!=0) {
+			s.close();
 			return true;
 		}else {
+			s.close();
 			return false;
 		}
 //		try {
