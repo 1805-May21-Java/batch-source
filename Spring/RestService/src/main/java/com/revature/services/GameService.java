@@ -9,5 +9,5 @@ public interface GameService {
 	public List<Game> findAllGames();
 	public Game createGame(Game game);
 	public Game updateGame(Game game);
-	public Game deleteGame(Game game);
+	public Game deleteGameById(int id);
 }

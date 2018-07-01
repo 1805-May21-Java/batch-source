@@ -26,7 +26,7 @@ public class GameController {
 		return gameService.findAllGames();
 	} 
 	
-	@GetMapping(value="/{id}",produces=MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value="/{id}", produces=MediaType.APPLICATION_JSON_VALUE)
 	public Game getGameById(@PathVariable("id") Integer id) {
 		return gameService.findGameById(id);
 	}
@@ -41,8 +41,8 @@ public class GameController {
 		return gameService.updateGame(game);
 	}
 	
-	@DeleteMapping(consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
-	public Game deleteGame(@RequestBody Game game) {
-		return gameService.deleteGame(game);
+	@DeleteMapping(value="/{id}", consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
+	public Game deleteGameById(@PathVariable("id") Integer id) {
+		return gameService.deleteGameById(id);
 	}
 }

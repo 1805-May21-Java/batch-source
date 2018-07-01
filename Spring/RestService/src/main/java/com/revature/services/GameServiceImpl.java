@@ -30,9 +30,9 @@ public class GameServiceImpl implements GameService {
 		return gameRepo.save(game);
 	}
 
-	public Game deleteGame(Game game) {
-		gameRepo.delete(game);
+	public Game deleteGameById(int id) {
+		Game game = gameRepo.getOne(id);
+		gameRepo.deleteById(id);
 		return game;
 	}
-
 }
