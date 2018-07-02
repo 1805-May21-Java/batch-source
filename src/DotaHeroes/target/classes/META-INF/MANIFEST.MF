@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Built-By: ophi
+Build-Jdk: 10.0.1
+Implementation-Title: RestService
+Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: com.revature
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/RestService
+Created-By: Maven Integration for Eclipse
+
