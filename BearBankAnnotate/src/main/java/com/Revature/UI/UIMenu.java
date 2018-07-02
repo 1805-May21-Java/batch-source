@@ -146,6 +146,7 @@ public class UIMenu implements Runnable {
 			currentUser.getAccounts().add(bankDao.getBankAccount(pk));
 //			bankDao.createBankAccount(currentUser, new BankAccount(bankDao.getNextAccountNumber(), 0f));
 			userDao.updateUserProfile(currentUser);
+			currentUser=userDao.getUserProfile(currentUser.getUsername(), currentUser.getPassword());
 			System.out.println("Account creation successful");
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -211,6 +212,7 @@ public class UIMenu implements Runnable {
 
 			if (accList.contains(toBeClosed) && toBeClosed.getBalance() == 0) {
 				bankDao.deleteBankAccount(toBeClosed.getAccountNumber());
+				currentUser=userDao.getUserProfile(currentUser.getUsername(), currentUser.getPassword());
 				System.out.println("Account deleted");
 			} else {
 				System.out.println("Account is not empty");
@@ -260,6 +262,7 @@ public class UIMenu implements Runnable {
 			// If acc is null, if statement will return false
 			if (accList.contains(acc)) { // Checks if the account is owned by currentUser
 				bankDao.withdrawFromBank(acc, amount);
+				currentUser=userDao.getUserProfile(currentUser.getUsername(), currentUser.getPassword());
 				System.out.println("Withdraw Successful");
 			} else { // Generic message to the user
 				System.out.println("Account was not found");
@@ -309,6 +312,7 @@ public class UIMenu implements Runnable {
 
 			if (accList.contains(acc)) {
 				bankDao.depositToBank(acc, amount);
+				currentUser=userDao.getUserProfile(currentUser.getUsername(), currentUser.getPassword());
 				System.out.println("Deposit Successful");
 			} else {
 				System.out.println("Account was not found");
@@ -370,6 +374,7 @@ public class UIMenu implements Runnable {
 			}
 
 			bankDao.transferMoneyBetweenAccounts(src, dest, amount);
+			currentUser=userDao.getUserProfile(currentUser.getUsername(), currentUser.getPassword());
 
 			System.out.println("Transfer Successful");
 
@@ -429,6 +434,7 @@ public class UIMenu implements Runnable {
 			} else {
 				joiner.getAccounts().add(acc);
 				userDao.updateUserProfile(joiner);
+				currentUser=userDao.getUserProfile(currentUser.getUsername(), currentUser.getPassword());
 				System.out.println("User added successfully");
 			}
 
@@ -455,6 +461,7 @@ public class UIMenu implements Runnable {
 			currentUser.setPassword(newPass); // Updates password
 			try {
 				userDao.updateUserProfile(currentUser); // updates db
+				currentUser=userDao.getUserProfile(currentUser.getUsername(), newPass);
 				System.out.println("Password Change Successful");
 			} catch (Exception e) {
 				System.out.println("We encountered an error");
