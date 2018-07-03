@@ -21,7 +21,7 @@ public class Driver {
 		}
 		
 		String postRequestUrl = "http://benie-baby-api.us-east-2.elasticbeanstalk.com/beanie-babies";
-		BeanieBaby newBB = new BeanieBaby(40195, "Winksy", "Rabbit", 2004); // try (42106, "Tundra", "White Tiger", 2014) to add something new
+		BeanieBaby newBB = new BeanieBaby(42106, "Tundra", "White Tiger", 2014); 
 		
 		try {
 			BeanieBaby addedBB = restTemplate.postForObject(postRequestUrl, newBB, BeanieBaby.class);
