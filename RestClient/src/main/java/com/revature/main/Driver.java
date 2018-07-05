@@ -1,6 +1,8 @@
 package com.revature.main;
 
 import java.net.URI;
+import java.util.Arrays;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,7 +19,7 @@ public class Driver {
 		//RestTemplate is an object provided by Spring Web module which allows us to map resources from a REST service to java objects
 		RestTemplate restTemplate = new RestTemplate();
 		
-		String postRequestUrl = "http://localhost:8084/pokemon";
+		String postRequestUrl = "http://pokemonrest-env.xcfeygvu8a.us-west-2.elasticbeanstalk.com/pokemon";
 		Pokemon newP = new Pokemon(1325, "Bulbasaur", "Grass", "First");
 		Pokemon newP2 = new Pokemon(1234, "Squirtle", "Water", "First");
 		
@@ -34,7 +36,7 @@ public class Driver {
 			log.error("Resource Consumption Unsuccessful");
 		}
 		
-		String getRequestUrl = "http://localhost:8084/pokemon/1325";
+		String getRequestUrl = "http://pokemonrest-env.xcfeygvu8a.us-west-2.elasticbeanstalk.com/pokemon/1325";
 		
 		//Get a Pokemon 
 		try {
@@ -42,7 +44,7 @@ public class Driver {
 	    	//the class we want the resource to be mapped to, as well as the URL of the resource must be provided
 			Pokemon p = restTemplate.getForObject(getRequestUrl, Pokemon.class);
 			log.info("Resource consumption successful");
-			log.info(p.toString());
+			log.info("Got : " + p.toString());
 		}catch(Exception e) {
 			log.error("Resource consumption unsuccessful");
 		}
@@ -52,19 +54,31 @@ public class Driver {
 			URI pLink = new URI(getRequestUrl);
 			restTemplate.delete(pLink);
 			log.info("Resource consumption successful");
-			//Cant log in Object that was deleted
+			log.info("Deleted: " + newP.toString());
 		}catch (Exception e) {
 			log.error("Resource consumption unsuccessful");
 		}
 		
-		String updateRequestUrl = "http://localhost:8084/pokemon/1234";
+		String updateRequestUrl = "http://pokemonrest-env.xcfeygvu8a.us-west-2.elasticbeanstalk.com/pokemon/1234";
 		try {
 			newP2.setName("Blastoise");
 			newP2.setEvolutionStage("Second");
 			Pokemon updateP = restTemplate.patchForObject(updateRequestUrl, newP2, Pokemon.class);
+			log.info("Resource Consumption successful");
+			log.info("Updated: " + newP2.toString());
 			
 		}catch(Exception e) {
-			
+			log.error("Resource consumption unsuccessful");
+		}
+		
+		//Get all instances
+		try {
+			Pokemon[] getAllP = restTemplate.getForObject(postRequestUrl, Pokemon[].class);
+			List<Pokemon> getAllPList = Arrays.asList(getAllP);
+			log.info("Resource consumption successful");
+			log.info("GetAll: " + getAllPList.toString());
+		}catch(Exception e) {
+			log.error("Resource consumption successful");
 		}
 		
 		
