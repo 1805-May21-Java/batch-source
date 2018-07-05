@@ -18,7 +18,7 @@
 	</parent>
 
 	<build>
-		<finalName>account-service</finalName>
+		<finalName>discovery-service</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

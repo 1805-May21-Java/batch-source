@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,7 +16,7 @@ import com.revature.models.Account;
 public class AccountController {
 	
 	protected Logger logger = Logger.getLogger(AccountController.class.getName());
-
+	
 	private List<Account> accounts;
 	
 	public AccountController() {
