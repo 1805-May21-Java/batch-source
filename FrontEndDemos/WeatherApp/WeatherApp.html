@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Today's Weather</title>
+
+    <link rel="icon" href="https://clipart.info/images/ccovers/1486149489Sunshine-sun-clip-art-with-transparent-background-free.png">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="http://code.jquery.com/jquery.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+        crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container text-center">
+        <div class="jumbotron">
+            <h1>Weather</h1>
+            <p>Enter the zipcode where you would like to check the weather</p>
+
+            <div class="form-group form-inline">
+                <input type="number" id="zipcode" class="form-control" placeholder="Zipcode"/>
+                <button onclick="searchWeather()" class="btn btn-default btn-center">Submit</button>
+                <div class="text-warning" id="alert"></div>
+            </div>
+
+            <div class="container">
+                <h2 id="location"></h2>
+                <img id="icon"/>
+                <h4 id="status"></h4>
+                <h4 id="temperature"></h4>
+            </div>
+        </div>
+    </div>
+
+    <script src="WeatherController2.js"></script>
+</body>
+</html>
