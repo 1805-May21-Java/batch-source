@@ -6,6 +6,7 @@ import java.io.InputStream;
 
 import org.apache.commons.io.FileUtils;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -39,5 +40,11 @@ public class HelloController {
 			e.printStackTrace();
 		}
 		return "fileUploadView";
+	}
+	
+	@GetMapping("/uploadfile")
+	public String testep() {
+		System.out.println("ok");
+		return "OK";
 	}
 }
