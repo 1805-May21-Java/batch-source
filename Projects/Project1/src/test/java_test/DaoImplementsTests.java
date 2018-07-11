@@ -1,4 +1,4 @@
-import static org.junit.jupiter.api.Assertions.*;
+package java_test;
 
 import java.sql.Date;
 import java.util.ArrayList;
@@ -56,13 +56,13 @@ class DaoImplementsTests
 //		System.out.println(employee.getEmpName());
 //	}
 //	
-//	@Test
-//	void isAuthenticated()
-//	{
-//		EmployeeDao dao = new EmployeeDaoImpl();
-//		Boolean isAuthenticated =dao.isAuthenticated("Vannara", "123");
-//		System.out.println(isAuthenticated);
-//	}
+	@Test
+	void isAuthenticated()
+	{
+		EmployeeDao dao = new EmployeeDaoImpl();
+		Boolean isAuthenticated =dao.isAuthenticated("james1", "password1");
+		System.out.println(isAuthenticated);
+	}
 	
 	
 //	@Test
@@ -75,24 +75,24 @@ class DaoImplementsTests
 //	}
 	
 	
-	@Test
-	void updateEmployee()
-	{
-//		EmployeeDao dao = new EmployeeDaoImpl();
-//		Employee employee = new Employee(2, "Michael Everd", "James", "password", 1, Date.valueOf("1999-10-10"), "www.google.com" );
-//		dao.updateEmployee(employee);
-		
-		String fullName = "Marble Omega";
-		int userId = 1;
-		String user = "marble";
-		String pwd ="123";
-		Date date = Date.valueOf("1990-12-01");
-		int managerId = 1;
-		String userUrl = "www.gogole.com";
-		EmployeeDao edi = new EmployeeDaoImpl();
-		Employee employee = new Employee(userId, fullName, user, pwd, managerId, date, userUrl);
-		edi.updateEmployee(employee);
-	}
+//	@Test
+//	void updateEmployee()
+//	{
+////		EmployeeDao dao = new EmployeeDaoImpl();
+////		Employee employee = new Employee(2, "Michael Everd", "James", "password", 1, Date.valueOf("1999-10-10"), "www.google.com" );
+////		dao.updateEmployee(employee);
+//		
+//		String fullName = "Marble Omega";
+//		int userId = 1;
+//		String user = "marble";
+//		String pwd ="123";
+//		Date date = Date.valueOf("1990-12-01");
+//		int managerId = 1;
+//		String userUrl = "www.gogole.com";
+//		EmployeeDao edi = new EmployeeDaoImpl();
+//		Employee employee = new Employee(userId, fullName, user, pwd, managerId, date, userUrl);
+//		edi.updateEmployee(employee);
+//	}
 	
 //	String fullName = request.getParameter("fullName");
 //	int userId = Integer.parseInt(request.getParameter("userId"));

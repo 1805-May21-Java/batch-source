@@ -30,28 +30,16 @@ public class LoginServlet extends HttpServlet
 		}
 		else
 			{
-			session = req.getSession();
 			req.getRequestDispatcher("Login.html").forward(req,  resp);
 			}
-		
-		
-//		HttpSession session = req.getSession(false);	
-//		if ( session!=null) {
-//			req.getRequestDispatcher("Reimbursement.html").forward(req, resp); 
-//			
-//		} else {
-//			resp.sendRedirect("login");
-//		}	
-		
-		
-		//HttpSession session = req.getSession();
-	//	req.getRequestDispatcher("Login.html").forward(req, resp);
+
+
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
 	{
 		
-		HttpSession session = req.getSession();
+		
 		System.out.println(req.getParameter("username")+req.getParameter("password"));
 		String usr = req.getParameter("username");
 		String pwd = req.getParameter("password");
@@ -59,6 +47,8 @@ public class LoginServlet extends HttpServlet
 
 		if(dao.isAuthenticated(usr, pwd))
 		{
+			System.out.println("Is Authenticated!");
+			HttpSession session = req.getSession();
 			Employee employee = dao.getEmployeeByName(usr);
 			session.setAttribute("userName", employee.getUserName());
 			session.setAttribute("userId", employee.getEmpId());

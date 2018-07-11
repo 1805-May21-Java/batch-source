@@ -106,8 +106,8 @@ function hiddenFormInit(){
 	input2.value = sessionData.managerid;
 }
 
-function showAllReimbursements(){
-	sendAjaxGet(allReimburseUrl, display)
+function send_display_all_employees_body(){
+	sendAjaxGet(allReimburseUrl, display_all_employees_body)
 }
 
 function showUnderManager(){
@@ -143,68 +143,13 @@ function displayMyrequest(xhr)
 }
 
 
-function displayx(xhr)
-{
-	let reimbursements = JSON.parse(xhr.response)
-	let table = document.getElementById("myemployeesonly");
-	table.innerHTML =``;
-	for(let reimbursement of reimbursements.reimbursements){
-		tr = document.createElement("tr");
-		tr.setAttribute('class', 'edit');
-		tr.setAttribute('id', reimbursement.reimburseId);
-		
-		tr.innerHTML = `<td class="text-center"> ${reimbursement.reimburseId}</td>`;
-		tr.innerHTML +=`<td class="text-center"> ${reimbursement.dateRequest}</td>`;
-		tr.innerHTML +=`<td class="text-center"> ${reimbursement.dateApprove}</td>`;
-		tr.innerHTML +=`<td class="text-center"> ${reimbursement.amount}</td>
-		<form action="ApprovedDenied" method="post">
-			<input type="hidden" name=reimburseId value=${reimbursement.reimburseId}>
-			<select name="reimburseStatus">
-			    <option value="Approved">Approve</option>
-			    <option value="Denied">Deny</option>
-			</select>
-		<button type="submit" name="Submit" value="Submit" >Submit</button>
-		</form>`
-			getEmployeeName(reimbursement.requestBy, reimbursement.reimburseId);	
-			
-
-		tr.setAttribute("scope","row");
-		table.appendChild(tr);
-	}
-}
-
-function displayEmployees(xhr)
-{
-	let reimbursements = JSON.parse(xhr.response)
-	let table = document.getElementById("underManager");
-	table.innerHTML =``;
-	for(let reimbursement of reimbursements.reimbursements){
-		tr = document.createElement("tr");
-		tr.setAttribute('class', 'edit');
-		tr.setAttribute('id', reimbursement.reimburseId);
-		
-		tr.innerHTML = `<td class="text-center"> ${reimbursement.reimburseId}</td>`;
-		tr.innerHTML +=`<td class="text-center"> ${reimbursement.dateRequest}</td>`;
-		tr.innerHTML +=`<td class="text-center"> ${reimbursement.dateApprove}</td>`;
-		tr.innerHTML +=`<td class="text-center"> ${reimbursement.amount}</td>`;
-		tr.innerHTML +=`<td class="text-center"> ${reimbursement.status}</td>`;
-			
-
-		tr.setAttribute("scope","row");
-		table.appendChild(tr);
-	}
-}
 
 
 
 
 
-
-
-
-
-function showMyEmployeesReimbursement(){
-	sendAjaxGet(allReimburseUrl+"?manager_id="+sessionData.userid, displayx)
+function send_display_my_employees_body(){
+	sendAjaxGet(allReimburseUrl+"?manager_id="+sessionData.userid, display_my_employees_body)
 }
 	
 
@@ -230,7 +175,48 @@ function sendAjaxGet(url, func){
     xhr.send();
 }
 
-function display(xhr)
+function display_my_employees_body(xhr)
+{
+	let reimbursements = JSON.parse(xhr.response)
+	let table = document.getElementById("my_employees_body");
+	table.innerHTML =``;
+	for(let reimbursement of reimbursements.reimbursements)
+	{
+		tr = document.createElement("tr");
+		tr.setAttribute('class', 'edit');
+		tr.setAttribute('id', reimbursement.reimburseId);
+		
+		tr.innerHTML = `<td class="text-center"> ${reimbursement.reimburseId}</td>`;
+		tr.innerHTML +=`<td class="text-center"> ${reimbursement.dateRequest}</td>`;
+		tr.innerHTML +=`<td class="text-center"> ${reimbursement.dateApprove}</td>`;
+		tr.innerHTML +=`<td class="text-center"> ${reimbursement.amount}</td>`;
+			if(reimbursement.status=="Pending")
+			{
+				tr.innerHTML +=	`<td style="text-align:center;">
+					<form action="approveddenied" method="post">
+						<input type="hidden" name=reimburseId value=${reimbursement.reimburseId}>
+						<select name="reimburseStatus">
+						    <option value="Approved">Approve</option>
+						    <option value="Denied">Deny</option>
+						</select>
+					<button type="submit" name="Submit" value="Submit" >Submit</button>
+					</form>
+				</td>`;
+			}
+			else{
+				tr.innerHTML+=`
+				<td style="text-align:center;">
+					${reimbursement.status}
+				</td>`;
+			}
+		tr.setAttribute("scope","row");		
+		table.appendChild(tr);
+
+	}
+	
+	
+}
+function display_all_employees_body(xhr)
 {
 	let reimbursements = JSON.parse(xhr.response)
 	let table = document.getElementById("allofemployees");
@@ -250,26 +236,4 @@ function display(xhr)
 		tr.setAttribute("scope","row");
 		table.appendChild(tr);
 	}
-}
-
-
-
-function getEmployeeName(empId, rowId)
-{
-	let xhr = new XMLHttpRequest() || new ActiveXObject("Microsoft.HTTPRequest");
-    xhr.onreadystatechange = function() 
-    {
-        if(this.readyState == 4 && this.status ==200)
-        {
-           let response = JSON.parse(this.response);
-          
-	        	   let tr = document.getElementById(rowId);
-	        	   tr.innerHTML += `<td class="text-center"> ${response.empName} </td>`;
-//	        	   let td = document.createElement('td');
-//	        	   td.innerHTML = response.empName;
-//	        	   tr.appendChild(td);
-        }
-    }
-    xhr.open("GET", "http://localhost:8080/Project1/api/employees?id="+empId);
-    xhr.send();
 }

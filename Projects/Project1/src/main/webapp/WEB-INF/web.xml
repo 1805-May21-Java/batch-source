@@ -61,7 +61,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>ApprovedDenied</servlet-name>
-    <url-pattern>/ApprovedDenied</url-pattern>
+    <url-pattern>/approveddenied</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
