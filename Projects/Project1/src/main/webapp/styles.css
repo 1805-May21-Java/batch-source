@@ -1,7 +1,30 @@
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans:100,300,400,600,700');
 
+
+
 .panel-heading{
 	background-color: f36b27;
+}
+
+.table-danger{
+    border-radius: 70px;
+    background-color: #ff9999;
+    padding-left: 31px;  
+    padding-right: 29px;  
+    width: 160px;
+	padding-bottom: 9px;
+    padding-top: 4px; 
+
+}
+.table-success{
+    border-radius: 70px;
+    background-color: #ccffcc;
+    padding-left: 20px;  
+    padding-right:20px;
+    padding-bottom: 9px;
+    padding-top: 4px;
+    width: 160px;
+
 }
 
 
@@ -144,3 +167,7 @@ color:#000;
 			display:none;
 		 }
         }
+        
+        
+        
+  

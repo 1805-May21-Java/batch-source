@@ -188,7 +188,12 @@ function display_my_employees_body(xhr)
 		
 		tr.innerHTML = `<td class="text-center"> ${reimbursement.reimburseId}</td>`;
 		tr.innerHTML +=`<td class="text-center"> ${reimbursement.dateRequest}</td>`;
-		tr.innerHTML +=`<td class="text-center"> ${reimbursement.dateApprove}</td>`;
+		if(reimbursement.dateApprove==null){
+			tr.innerHTML +=`<td class="text-center"> -- </td>`;
+		}else{
+			tr.innerHTML +=`<td class="text-center"> ${reimbursement.dateApprove}</td>`;
+		}
+		
 		tr.innerHTML +=`<td class="text-center"> ${reimbursement.amount}</td>`;
 			if(reimbursement.status=="Pending")
 			{
@@ -199,14 +204,20 @@ function display_my_employees_body(xhr)
 						    <option value="Approved">Approve</option>
 						    <option value="Denied">Deny</option>
 						</select>
-					<button type="submit" name="Submit" value="Submit" >Submit</button>
+					<button type="submit" name="Submit" value="Submit">Submit</button>
 					</form>
+				</td>`;
+			}
+			else if(reimbursement.status=="Denied"){
+				tr.innerHTML+=`
+				<td style="text-align:center;">
+					<span class="table-danger">${reimbursement.status}</span>
 				</td>`;
 			}
 			else{
 				tr.innerHTML+=`
 				<td style="text-align:center;">
-					${reimbursement.status}
+					<span class="table-success"> ${reimbursement.status}</span>
 				</td>`;
 			}
 		tr.setAttribute("scope","row");		
